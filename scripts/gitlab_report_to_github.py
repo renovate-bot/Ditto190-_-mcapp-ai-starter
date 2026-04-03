@@ -114,7 +114,7 @@ def post_commit_status(owner: str, repo: str) -> None:
     description = f"GitLab CI: {_raw_status}"
     payload = {
         "state": GITHUB_STATE,
-        "description": description[:140],  # GitHub enforces 140-char limit
+        "description": (description[:137] + "...") if len(description) > 140 else description,
         "context": f"gitlab-ci / {CI_PROJECT_NAME}",
         "target_url": CI_PIPELINE_URL or None,
     }

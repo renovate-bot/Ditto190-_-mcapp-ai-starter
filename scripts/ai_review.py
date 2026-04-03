@@ -125,9 +125,13 @@ def call_github_models(diff: str) -> dict[str, Any]:
 
 
 def post_pr_comment(owner: str, repo: str, pr_number: int, body: str) -> None:
-    """Post a comment on the given PR."""
+    """Post a comment on the given PR. Logs a warning on failure but does not raise."""
     url = f"{GITHUB_API}/repos/{owner}/{repo}/issues/{pr_number}/comments"
-    requests.post(url, headers=_gh_headers(), json={"body": body}, timeout=30)
+    try:
+        resp = requests.post(url, headers=_gh_headers(), json={"body": body}, timeout=30)
+        resp.raise_for_status()
+    except requests.HTTPError as exc:
+        print(f"::warning::Could not post PR comment ({exc}). The verdict is still recorded.")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────

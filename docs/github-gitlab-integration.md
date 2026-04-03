@@ -104,7 +104,7 @@ Repo → Settings → Secrets and variables → Actions → Secrets
 ```
 GitLab project → Settings → Repository → Mirroring repositories
   Mirror direction: Pull
-  URL: https://github.com/Ditto190/mcapp-ai-starter.git
+  URL: https://github.com/OWNER/REPO.git   ← replace with your GitHub repo URL
   Authentication: GitHub PAT (repo scope)
   ☑ Only mirror protected branches
 ```
@@ -118,7 +118,7 @@ GitLab project → Settings → CI/CD → Variables
 | Variable | Value | Protected | Masked |
 |---|---|---|---|
 | `GITHUB_TOKEN_FOR_GITLAB` | GitHub PAT (`repo` scope) | ✅ | ✅ |
-| `GITHUB_REPO` | `Ditto190/mcapp-ai-starter` | | |
+| `GITHUB_REPO` | `OWNER/REPO` (e.g. `Ditto190/mcapp-ai-starter`) | | |
 
 With these set, the `gl:github-commit-status` and `gl:github-pr-comment-on-failure` jobs
 in the `auxiliary` stage will automatically post results to GitHub.

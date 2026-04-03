@@ -156,13 +156,15 @@ jobs:
 
       - name: Scan diff for obvious secret patterns
         # Low-cost heuristic scan — not a replacement for a dedicated secret scanner.
+        # Uses a permissive pattern (spaces around = allowed, both quote styles).
         run: |
           git fetch origin "${{ github.base_ref }}" --quiet
           DIFF=$(git diff "origin/${{ github.base_ref }}"...HEAD -- \
             '*.ts' '*.js' '*.py' '*.cs' '*.json' '*.yml' '*.yaml' \
             2>/dev/null || true)
-          if echo "$DIFF" | grep -iE \
-            '(password|secret|api_key|private_key)\s*[:=]\s*["\x27`][^"\x27`]{8,}["\x27`]' \
+          # Match: key = "value" or key: 'value' or key="value" etc. (8+ char values)
+          if printf '%s' "$DIFF" | grep -iE \
+            '(password|secret|api_key|private_key)\s*[:=]\s*["'"'"'`][^"'"'"'`]{8,}["'"'"'`]' \
             --quiet; then
             echo "::error::Potential hardcoded secret detected in diff. Review before merging."
             exit 1
@@ -202,9 +204,10 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-          # Override model via repo/org secret if desired:
+          # Override model via repo variable if desired (Repo → Settings → Variables):
           # AI_REVIEW_MODEL: gpt-4o-mini  (default)
-          # Set AI_REVIEW_SKIP=true to disable AI review entirely:
+          # Disable AI review entirely by setting the repository variable AI_REVIEW_SKIP=true
+          # (Repo → Settings → Secrets and variables → Actions → Variables → AI_REVIEW_SKIP):
           AI_REVIEW_SKIP: ${{ vars.AI_REVIEW_SKIP || 'false' }}
         run: python scripts/ai_review.py
 

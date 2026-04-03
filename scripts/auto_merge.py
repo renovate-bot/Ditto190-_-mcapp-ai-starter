@@ -163,7 +163,12 @@ def parse_args() -> argparse.Namespace:
         description=textwrap.dedent(__doc__ or ""),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    p.add_argument("--pr", type=int, default=int(os.environ.get("PR_NUMBER") or 0))
+    _pr_env = os.environ.get("PR_NUMBER") or "0"
+    try:
+        _pr_default = int(_pr_env)
+    except ValueError:
+        _pr_default = 0
+    p.add_argument("--pr", type=int, default=_pr_default)
     p.add_argument("--repo", default=os.environ.get("GITHUB_REPOSITORY", ""))
     p.add_argument(
         "--dry-run",
