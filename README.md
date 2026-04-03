@@ -233,3 +233,157 @@ can:
   pro, the community and our team are ready to support with any challenges.
 - **Propose Ideas**: Have an idea for a feature or improvement? Let us know!
   We’re always eager to hear what you’d like to see next.
+
+---
+
+## 🚀 Codespace Automation — What's been added
+
+This fork extends the original starter kit with **automated DevOps scaffolding**
+designed for vibe-coding — you don't need to remember commands; scripts handle
+the routine work for you.
+
+### Auto-installed when you open this Codespace
+
+| What                       | How to use                                        |
+|----------------------------|---------------------------------------------------|
+| Memory guard daemon        | Starts automatically — watches RAM, prunes Docker when memory is low |
+| Python 3.12 + uv           | Ready to use: `uv run python ...`                 |
+| Node 20 + npm              | Ready to use: `npm install / npm test`            |
+| 24 VSCode extensions       | Copilot, GitLens, ShellCheck, REST Client, Ruff, Prettier — installed on first open |
+| Git hooks                  | Auto-runs format checks on commit                 |
+
+### Scripts you can run anytime
+
+```bash
+# Check everything is healthy (Docker, ports, RAM, toolchain)
+bash .devcontainer/scripts/health-check.sh
+
+# Auto-fix missing dependencies, secrets, venvs, Docker images
+bash .devcontainer/scripts/self-heal-deps.sh
+
+# Interactively configure LLM providers (OpenAI, Anthropic, Gemini, OpenRouter)
+bash .devcontainer/scripts/setup-llm.sh
+
+# Run all tests across npm and Python sub-projects
+bash scripts/test-runner.sh
+
+# Run only Python tests (fast, no LLM API keys needed)
+bash scripts/test-runner.sh --suite python --fast
+```
+
+### LLM providers — Ollama works out of the box
+
+The `llm.config.json` file lists all supported providers. Ollama runs
+locally inside Docker (no API key needed). To enable cloud providers:
+
+1. Run `bash .devcontainer/scripts/setup-llm.sh` — it will prompt you for keys
+2. Or add keys to `.env` manually: `OPENAI_API_KEY=sk-...`
+3. Restart the stack: `docker compose --profile cpu down && docker compose --profile cpu up -d`
+
+---
+
+## 🧭 Next Steps — What to do after opening your Codespace
+
+### Step 1 — Start the AI stack
+
+```bash
+docker compose --profile cpu up -d
+# Wait ~60 seconds, then:
+bash .devcontainer/scripts/health-check.sh
+```
+
+Open n8n at <http://localhost:5678> and complete the one-time setup wizard.
+
+### Step 2 — Set up Codespaces Secrets (replaces `.env` for shared use)
+
+For any API keys you use regularly, store them as **Codespaces secrets** so
+they are automatically available every time you open a codespace — no need to
+re-enter them:
+
+1. Go to **github.com → Settings → Codespaces → Secrets**
+2. Add: `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GEMINI_API_KEY` (whichever you use)
+3. In `.devcontainer/devcontainer.json`, the `remoteEnv` block will pick them up automatically
+
+### Step 3 — Connect GitLab CI/CD
+
+This repo includes a `.gitlab-ci.yml` pipeline. If you want automated
+pipelines on GitLab (useful for teams or if you want a second CI provider):
+
+➡️ **See [GITLAB_SETUP.md](GITLAB_SETUP.md) for a beginner-friendly walkthrough.**
+
+Key steps (takes ~15 minutes):
+- Create a GitLab account at [gitlab.com](https://gitlab.com)
+- Import this GitHub repo into GitLab (**New project → Import → GitHub**)
+- Enable auto-mirroring (GitLab pulls from GitHub every 5 minutes)
+- Add your secrets as **CI/CD Variables** in GitLab Settings
+- Set up a weekly schedule for dependency audits
+
+### Step 4 — Try GenerateAgents.md (auto-generates AGENTS.md for any repo)
+
+```bash
+cd GenerateAgents.md
+uv sync --extra dev
+# Analyse this repo (uses Ollama by default — no API key needed)
+uv run autogenerateagentsmd .. --style comprehensive
+```
+
+This creates an `AGENTS.md` that teaches Copilot about the codebase structure,
+making vibe-coding suggestions much more accurate.
+
+### Step 5 — Pull a better LLM model into Ollama
+
+The default model (`phi`) is small and fast. For better reasoning, pull a
+larger model when you have RAM headroom:
+
+```bash
+# Inside your Codespace terminal:
+docker exec ollama ollama pull llama3.2        # ~4GB, good general model
+docker exec ollama ollama pull mistral         # ~4GB, good for coding
+docker exec ollama ollama pull deepseek-r1:7b  # ~5GB, strong reasoning
+
+# List what's available
+docker exec ollama ollama list
+```
+
+Update `llm.config.json` → `providers.ollama.default_model` to switch.
+
+### Step 6 — Set up n8n → Webhook notifications (optional)
+
+Connect GitLab or GitHub pipeline events to n8n for custom notifications:
+
+1. In n8n: **New workflow → Webhook trigger** → copy the URL
+2. GitHub: **Repo Settings → Webhooks** → paste URL, select "Workflow runs"
+3. Or GitLab: **Settings → Webhooks** → paste URL, select "Pipeline events"
+4. Build a workflow that sends a Discord/Slack message or logs the result
+
+---
+
+## 🗺️ Reference repos worth exploring
+
+These repos inspired the patterns in this starter kit and are worth exploring
+for ideas and code reuse:
+
+| Repo | What it's useful for |
+|------|---------------------|
+| [ag2](https://github.com/Ditto190/ag2) | Multi-agent framework — good patterns for agent orchestration and pre-commit hooks |
+| [modme-ui-01](https://github.com/Ditto190/modme-ui-01) | Codespaces secrets management, MCP server integration patterns |
+| [Github-runner-package](https://github.com/Ditto190/Github-runner-package) | Advanced GitHub Actions: build matrix, npm/docker upgrade automation, stale bot |
+| [awesome-agent-skills](https://github.com/Ditto190/awesome-agent-skills) | AgentSkills format, skill validation patterns |
+| [self-hosted-ai-starter-kit](https://github.com/Ditto190/self-hosted-ai-starter-kit) | The upstream project this is based on |
+| [foam-knowledgebase](https://github.com/Ditto190/foam-knowledgebase) | Foam-based knowledge graph — good for documenting what you build |
+| [llama-fs](https://github.com/Ditto190/llama-fs) | LLM-powered file system organiser |
+| [open-multi-agent](https://github.com/Ditto190/open-multi-agent) | Multi-agent coordination patterns |
+| [agno](https://github.com/Ditto190/agno) | Lightweight agent framework |
+
+---
+
+## ⚠️ What still needs manual setup (things agents can't do for you yet)
+
+| Task | Why it needs you | How to do it |
+|------|-----------------|--------------|
+| **Generate real API keys** | Keys are account-specific secrets | Visit provider dashboards (OpenAI, Anthropic, etc.) and paste into `.env` or Codespaces Secrets |
+| **First-time n8n login** | n8n requires interactive account creation | Open <http://localhost:5678> and complete the form |
+| **GitLab account + import** | Requires account creation and OAuth | Follow [GITLAB_SETUP.md](GITLAB_SETUP.md) steps 1-3 |
+| **Choosing an Ollama model** | Depends on your RAM and use case | Run `docker exec ollama ollama pull <model>` |
+| **Foam knowledge base** | Personal knowledge — agents can't write your notes | Clone [foam-knowledgebase](https://github.com/Ditto190/foam-knowledgebase) and start adding `.md` files |
+| **GitHub Codespaces billing** | Free tier has 60hr/month limit | Monitor usage at github.com/settings/billing |

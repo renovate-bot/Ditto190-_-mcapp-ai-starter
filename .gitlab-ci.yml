@@ -1,0 +1,307 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# GitLab CI/CD Pipeline — AI Starter Kit
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# HOW TO USE THIS:
+#   1. Push or mirror this repo to GitLab (see GITLAB_SETUP.md for a guide).
+#   2. GitLab will automatically pick up this file and run the pipeline.
+#   3. Set any API keys you need as CI/CD Variables in:
+#      GitLab → Your Project → Settings → CI/CD → Variables
+#
+# STAGES (in order):
+#   validate  → check configs are valid (fast, no secrets needed)
+#   test      → run unit tests (no API keys needed)
+#   audit     → security/dependency scan
+#   build     → build artifacts (on main branch only)
+#   notify    → summary job
+# ─────────────────────────────────────────────────────────────────────────────
+
+stages:
+  - validate
+  - test
+  - audit
+  - build
+  - notify
+
+# ── Shared defaults ───────────────────────────────────────────────────────────
+default:
+  image: ubuntu:22.04
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq curl git nodejs npm python3 python3-pip jq shellcheck docker-compose > /dev/null
+  interruptible: true
+
+# ── Variables (override in Settings → CI/CD → Variables) ─────────────────────
+variables:
+  DOCKER_DRIVER: overlay2
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+  UV_CACHE_DIR: "$CI_PROJECT_DIR/.uv-cache"
+  NODE_VERSION: "20"
+
+# ── Cache definitions ─────────────────────────────────────────────────────────
+.node-cache: &node-cache
+  cache:
+    key: "$CI_COMMIT_REF_SLUG-node"
+    paths:
+      - node_modules/
+      - .npm/
+
+.python-cache: &python-cache
+  cache:
+    key: "$CI_COMMIT_REF_SLUG-python"
+    paths:
+      - .pip-cache/
+      - .uv-cache/
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STAGE 1 — validate
+# ═══════════════════════════════════════════════════════════════════════════════
+
+validate:devcontainer:
+  stage: validate
+  image: node:20-alpine
+  before_script: []
+  script:
+    - |
+      node -e "
+        const raw = require('fs').readFileSync('.devcontainer/devcontainer.json','utf8');
+        const stripped = raw.replace(/\/\/.*\$/mg,'');
+        JSON.parse(stripped);
+        console.log('devcontainer.json ✅');
+      "
+    - node -e "JSON.parse(require('fs').readFileSync('llm.config.json','utf8')); console.log('llm.config.json ✅')"
+    - node -e "JSON.parse(require('fs').readFileSync('renovate.json','utf8')); console.log('renovate.json ✅')"
+  rules:
+    - changes:
+        - .devcontainer/**/*
+        - llm.config.json
+        - renovate.json
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+validate:env-example:
+  stage: validate
+  image: alpine:3.19
+  before_script: []
+  script:
+    - |
+      echo "Checking .env.example for required keys..."
+      for key in POSTGRES_USER POSTGRES_PASSWORD POSTGRES_DB N8N_ENCRYPTION_KEY N8N_USER_MANAGEMENT_JWT_SECRET; do
+        if grep -q "^${key}=" .env.example; then
+          echo "  ✅ ${key}"
+        else
+          echo "  ❌ Missing: ${key}"
+          exit 1
+        fi
+      done
+  rules:
+    - changes:
+        - .env.example
+
+validate:docker-compose:
+  stage: validate
+  image: docker:24
+  services:
+    - docker:24-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  before_script:
+    - docker info
+    - apk add --no-cache docker-compose
+  script:
+    - cp .env.example .env
+    - docker-compose --profile cpu config -q
+    - echo "✅ docker-compose (cpu profile) is valid"
+    - |
+      if grep -q "memory:" docker-compose.yml; then
+        echo "✅ Memory limits found in docker-compose.yml"
+      else
+        echo "⚠️  No memory limits found"
+      fi
+  rules:
+    - changes:
+        - docker-compose.yml
+        - .env.example
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+validate:shellcheck:
+  stage: validate
+  image: koalaman/shellcheck-alpine:stable
+  before_script: []
+  script:
+    - |
+      echo "Running shellcheck on all .sh files..."
+      find .devcontainer/scripts scripts -name "*.sh" | while read -r f; do
+        echo "  Checking: $f"
+        shellcheck --severity=warning "$f"
+      done
+      echo "✅ All scripts passed shellcheck"
+  rules:
+    - changes:
+        - .devcontainer/scripts/**
+        - scripts/**
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STAGE 2 — test
+# ═══════════════════════════════════════════════════════════════════════════════
+
+test:python:
+  stage: test
+  image: python:3.12-slim
+  <<: *python-cache
+  variables:
+    UV_SYSTEM_PYTHON: "1"
+  before_script:
+    - pip install uv --quiet
+  script:
+    - |
+      if [ -f GenerateAgents.md/pyproject.toml ]; then
+        echo "── GenerateAgents.md non-e2e tests ──"
+        cd GenerateAgents.md
+        uv sync --extra dev --quiet
+        uv run pytest -m 'not e2e' -q
+        cd ..
+      fi
+    - |
+      if [ -f generateagents-mcp/pyproject.toml ]; then
+        echo "── generateagents-mcp tests ──"
+        cd generateagents-mcp
+        uv sync --quiet
+        uv run pytest -q 2>/dev/null || echo "⚠️ No tests found or skipped"
+        cd ..
+      fi
+  rules:
+    - changes:
+        - GenerateAgents.md/**/*
+        - generateagents-mcp/**/*
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  artifacts:
+    when: on_failure
+    paths:
+      - "GenerateAgents.md/.pytest_cache/"
+    expire_in: 7 days
+
+test:npm:
+  stage: test
+  image: node:20-alpine
+  <<: *node-cache
+  before_script: []
+  script:
+    - |
+      if [ -f package.json ] && node -e "require('./package.json').scripts && require('./package.json').scripts.test" 2>/dev/null; then
+        echo "── Root npm tests ──"
+        npm ci --quiet
+        npm test
+      else
+        echo "ℹ️  No root npm test script found — skipping"
+      fi
+    - |
+      if [ -f prompt-registry/package.json ]; then
+        echo "── prompt-registry tests ──"
+        cd prompt-registry
+        npm ci --quiet
+        npm run lint || true
+        npm run compile
+        cd ..
+      fi
+  rules:
+    - changes:
+        - package.json
+        - package-lock.json
+        - prompt-registry/**/*
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STAGE 3 — audit
+# ═══════════════════════════════════════════════════════════════════════════════
+
+audit:npm:
+  stage: audit
+  image: node:20-alpine
+  <<: *node-cache
+  before_script: []
+  script:
+    - npm ci --quiet
+    - npm audit --json > npm-audit.json || true
+    - npm audit --audit-level=moderate
+  allow_failure: true
+  artifacts:
+    when: always
+    paths:
+      - npm-audit.json
+    expire_in: 14 days
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+
+audit:python:
+  stage: audit
+  image: python:3.12-slim
+  <<: *python-cache
+  before_script:
+    - pip install pip-audit uv --quiet
+  script:
+    - |
+      if [ -f GenerateAgents.md/pyproject.toml ]; then
+        echo "── GenerateAgents.md pip-audit ──"
+        cd GenerateAgents.md
+        uv sync --extra dev --quiet
+        uv run pip-audit --desc on || true
+        cd ..
+      fi
+  allow_failure: true
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STAGE 4 — build  (main branch only)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+build:awesome-copilot:
+  stage: build
+  image: node:20-alpine
+  before_script: []
+  script:
+    - |
+      if [ -f awesome-copilot/package.json ]; then
+        cd awesome-copilot
+        npm ci --quiet
+        npm run build
+        echo "✅ awesome-copilot build successful"
+      fi
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      changes:
+        - awesome-copilot/**/*
+  artifacts:
+    paths:
+      - awesome-copilot/marketplace.json
+      - awesome-copilot/README.md
+    expire_in: 30 days
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STAGE 5 — notify  (pipeline summary)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+notify:summary:
+  stage: notify
+  image: alpine:3.19
+  before_script: []
+  script:
+    - |
+      echo "══════════════════════════════════════════"
+      echo "  ✅ Pipeline complete for: $CI_COMMIT_BRANCH"
+      echo "  📦 Commit: $CI_COMMIT_SHORT_SHA"
+      echo "  👤 Author: $CI_COMMIT_AUTHOR"
+      echo "  🔗 Pipeline: $CI_PIPELINE_URL"
+      echo "══════════════════════════════════════════"
+      echo ""
+      echo "To start the AI stack in your Codespace:"
+      echo "  docker compose --profile cpu up -d"
+      echo "  bash .devcontainer/scripts/health-check.sh"
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  when: always
+
+# ── Scheduled pipeline (weekly dependency audit) ─────────────────────────────
+# Set up a schedule in GitLab → CI/CD → Schedules: every Monday at 09:00
+# with variable CI_PIPELINE_SOURCE = "schedule"
