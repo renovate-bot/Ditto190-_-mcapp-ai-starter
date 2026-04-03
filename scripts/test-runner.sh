@@ -77,7 +77,11 @@ if [[ "$SUITE" == "all" || "$SUITE" == "npm" ]]; then
   fi
 
   # prompt-registry
-  run_suite "prompt-registry" "prompt-registry" "npm ci --quiet && npm test 2>&1"
+  if [ -f prompt-registry/package.json ]; then
+    run_suite "prompt-registry" "prompt-registry" "npm ci --quiet && npm test 2>&1"
+  else
+    skip "prompt-registry: no package.json"
+  fi
 
   # awesome-copilot build check
   if [ -f awesome-copilot/package.json ]; then
