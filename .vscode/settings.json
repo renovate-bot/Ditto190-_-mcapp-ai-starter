@@ -76,5 +76,6 @@
     "chat.useCustomAgentHooks": true,
     "files.autoSave": "afterDelay",
     "git.rememberPostCommitCommand": true,
-    "gitlab.duoAgentPlatform.defaultNamespace": "Modifyme_glabs"
+    "gitlab.duoAgentPlatform.defaultNamespace": "Modifyme_glabs",
+    "fastapi.telemetry.enabled": false
 }
