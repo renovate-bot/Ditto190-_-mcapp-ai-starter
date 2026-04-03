@@ -1,13 +1,12 @@
 #!/bin/bash
 # setup-llm.sh — Interactive LLM provider configuration wizard.
-# Reads llm.config.json and helps the user set API keys in .env.
+# Helps the user set API keys in .env.
 #
 # Usage: bash .devcontainer/scripts/setup-llm.sh
 
 set -euo pipefail
 
 ENV_FILE=".env"
-CONFIG_FILE="llm.config.json"
 
 echo ""
 echo "🤖 LLM Provider Setup"
