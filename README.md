@@ -10,7 +10,53 @@ quickly get started with building self-hosted AI workflows.
 
 > [!TIP]
 > [Read the announcement](https://blog.n8n.io/self-hosted-ai/)
+---
 
+## 🤖 For AI Agents: START HERE
+
+> **Mandatory:** Every agent working on this project must read these documents in order before starting any tasks.
+
+1. **[AGENT_QUICKSTART.md](.github/instructions/AGENT_QUICKSTART.md)** — 5-minute onboarding (sets expectations, tools, ContextStream session setup)
+2. **[SETUP_STATUS.md](.github/instructions/SETUP_STATUS.md)** — Current phase & immediate next steps (know what's done, what's pending, what's blocked)
+3. **[multi-agent-workflow.instructions.md](.github/instructions/multi-agent-workflow.instructions.md)** — 5-phase pipeline reference (understand orchestration, git worktrees, automatic commits, PR workflow, ContextStream persistence)
+4. **[initial-setup.instructions.md](.github/instructions/initial-setup.instructions.md)** — Bootstrap guide (Phase 1 setup, git configuration, Docker stack verification)
+
+### Multi-Agent Development Framework
+
+This project uses **isolated git worktrees** and **coordinated agent orchestration** for parallel AI-driven development:
+
+- **Isolation:** Each agent works in its own branch (e.g., `feature/agent-foo`)  with independent git worktree
+- **Parallel Work:** Multiple agents can work simultaneously without conflicts
+- **Automatic Coordination:** [multi-agent-orchestrator.agent.md](.github/agents/multi-agent-orchestrator.agent.md) auto-detects completed work, creates PRs, merges on approval
+- **Code Gating:** [migration-analyst.agent.md](.github/agents/migration-analyst.agent.md) gates all external code integration with security/quality analysis
+- **Persistent Memory:** All agent decisions and state persisted across sessions via ContextStream
+
+### How It Works
+
+```
+Agent creates worktree → Makes changes → Tests pass → Commits & pushes
+    ↓
+Orchestrator detects new commits → Creates draft PR → Requests reviews
+    ↓
+Reviews approved → Orchestrator auto-merges → All agents sync to latest main
+    ↓
+Migration-analyst verifies any migration/ code before final approval
+    ↓
+Next agent task ready | ContextStream persists entire workflow history
+```
+
+### Proactive Documentation Directives
+
+**Agents must follow these rules or face auto-rejection:**
+
+- ⚠️ **Before any task:** Read [AGENT_QUICKSTART.md](.github/instructions/AGENT_QUICKSTART.md) — mandatory first step
+- ⚠️ **Before git worktree:** Check [SETUP_STATUS.md](.github/instructions/SETUP_STATUS.md) — know current phase
+- ⚠️ **Before PRs/commits:** Review [multi-agent-workflow.instructions.md](.github/instructions/multi-agent-workflow.instructions.md) — understand flow
+- ⚠️ **Migration folder code:** [migration-analyst.agent.md](.github/agents/migration-analyst.agent.md) will gate it — expect automated analysis
+- ⚠️ **Session persistence:** Use ContextStream (see [contextstream-knowledge-management.instructions.md](.github/instructions/contextstream-knowledge-management.instructions.md)) — state carries across sessions
+- ⚠️ **Codebase context:** See [.github/copilot-instructions.md](.github/copilot-instructions.md) — project conventions and tool access rules
+
+---
 ### What’s included
 
 ✅ [**Self-hosted n8n**](https://n8n.io/) - Low-code platform with over 400
