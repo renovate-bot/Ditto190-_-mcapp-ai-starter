@@ -43,8 +43,9 @@ drop_caches() {
 }
 
 compact_docker() {
-  # Remove stopped containers and dangling images/volumes
-  docker system prune -f --volumes 2>/dev/null | tail -1 | xargs -I{} log "🐳 Docker prune: {}" || true
+  # Remove stopped containers and dangling images without touching named volumes.
+  docker container prune -f 2>/dev/null | tail -1 | xargs -I{} log "🐳 Docker container prune: {}" || true
+  docker image prune -f 2>/dev/null | tail -1 | xargs -I{} log "🐳 Docker image prune: {}" || true
 }
 
 log "🛡️  Memory guard started (PID $$) — thresholds: warn=${WARN_THRESHOLD}%, crit=${CRIT_THRESHOLD}%"
