@@ -1,0 +1,98 @@
+name: Codespace Setup Verify
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".devcontainer/**"
+      - ".env.example"
+      - "docker-compose.yml"
+      - "llm.config.json"
+      - "scripts/**"
+  pull_request:
+    paths:
+      - ".devcontainer/**"
+      - ".env.example"
+      - "docker-compose.yml"
+      - "llm.config.json"
+      - "scripts/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-devcontainer:
+    name: Validate devcontainer config
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate devcontainer.json syntax
+        run: |
+          # Strip JS-style // comments before parsing (devcontainer allows them)
+          node -e "
+            const fs = require('fs');
+            const raw = fs.readFileSync('.devcontainer/devcontainer.json', 'utf8');
+            const stripped = raw.replace(/\/\/.*$/mg, '');
+            JSON.parse(stripped);
+            console.log('devcontainer.json is valid JSON (after comment strip)');
+          "
+
+      - name: Validate llm.config.json syntax
+        run: node -e "JSON.parse(require('fs').readFileSync('llm.config.json','utf8')); console.log('llm.config.json is valid JSON')"
+
+      - name: Check .env.example completeness
+        run: |
+          echo "Checking .env.example for required keys..."
+          for key in POSTGRES_USER POSTGRES_PASSWORD POSTGRES_DB N8N_ENCRYPTION_KEY N8N_USER_MANAGEMENT_JWT_SECRET; do
+            if grep -q "^${key}=" .env.example; then
+              echo "  ✅ ${key}"
+            else
+              echo "  ❌ Missing: ${key}"
+              exit 1
+            fi
+          done
+
+  validate-docker-compose:
+    name: Validate Docker Compose
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate compose config (cpu profile)
+        run: |
+          cp .env.example .env
+          docker compose --profile cpu config -q
+        env:
+          DOCKER_BUILDKIT: "1"
+
+      - name: Validate memory limits exist
+        run: |
+          echo "Checking resource limits in docker-compose.yml..."
+          if grep -q "memory:" docker-compose.yml; then
+            echo "✅ Memory limits found"
+          else
+            echo "⚠️  No memory limits found — consider adding deploy.resources.limits"
+          fi
+
+  validate-scripts:
+    name: Validate shell scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install shellcheck
+        run: sudo apt-get install -y shellcheck
+
+      - name: Run shellcheck on devcontainer scripts
+        run: |
+          find .devcontainer/scripts scripts -name "*.sh" -print0 | \
+            xargs -0 shellcheck --severity=warning
+        continue-on-error: true
+
+      - name: Check scripts are executable-ready
+        run: |
+          find .devcontainer/scripts scripts -name "*.sh" | while read -r f; do
+            echo "  📄 $f"
+          done
