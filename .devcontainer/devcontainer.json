@@ -13,7 +13,13 @@
       "version": "20"
     }
   },
-  "forwardPorts": [5678, 11434, 6333, 5432, 8080],
+  "forwardPorts": [
+    5678,
+    11434,
+    6333,
+    5432,
+    8080
+  ],
   "portsAttributes": {
     "5678": {
       "label": "n8n UI",
@@ -92,7 +98,7 @@
         "[python]": {
           "editor.defaultFormatter": "ms-python.black-formatter"
         },
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.defaultInterpreterPath": "/usr/bin/python3",
         "python.linting.enabled": true,
         "python.linting.pylintEnabled": true,
         "files.watcherExclude": {
