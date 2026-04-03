@@ -83,7 +83,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install shellcheck
-        run: sudo apt-get install -y shellcheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
 
       - name: Run shellcheck on devcontainer scripts
         run: |
