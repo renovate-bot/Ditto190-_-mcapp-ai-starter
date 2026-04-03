@@ -3,12 +3,13 @@ description: >
   Complete multi-agent setup and workflow reference. Covers foundation (Phase 1),
   worktree creation (Phase 2), automatic commits (Phase 3), persistence (Phase 5),
   and troubleshooting.
-applyTo: '**'
+applyTo: "**"
 ---
 
 # Multi-Agent Development — Complete Setup & Workflow Reference
 
 ## Quick Links
+
 - [Initial Setup Instructions](./../instructions/initial-setup.instructions.md) — Foundation (Phases 1–5)
 - [Multi-Agent Orchestrator](./../agents/multi-agent-orchestrator.agent.md) — Automated PR/merge coordination
 - [Migration Analyst](./../agents/migration-analyst.agent.md) — Code recycling from `migration/` folder
@@ -19,6 +20,7 @@ applyTo: '**'
 ## Priority 1: Multi-Agent Git Worktrees & Automatic Commits
 
 ### Why This Matters
+
 - **Isolation**: Each AI agent works in its own worktree (branch + directory) without blocking others
 - **Parallel speed**: Multiple agents commit independently; no rebasing bottlenecks
 - **Automatic tracking**: Changes auto-committed, PRs auto-created, reviews auto-requested
@@ -127,6 +129,7 @@ worktree-agent-bar/
 ```
 
 **Benefits:**
+
 - Shared git objects → zero duplicate storage
 - Independent branches → no interference
 - Fast checkout → no rebasing needed before merge
@@ -286,6 +289,7 @@ git worktree unlock ../mcapp-agent-foo
 ### Q: Agent changes are not auto-committed
 
 Ensure:
+
 1. Tests pass: `npm test && npm run lint`
 2. .git/config has correct user.name/email (per-worktree)
 3. Commit message follows Conventional Commits: `feat|fix|chore|docs(...)`
@@ -294,6 +298,7 @@ Ensure:
 ### Q: GitLab mirroring is delayed
 
 Check GitLab webhook status:
+
 1. Go to GitLab project → Integrations → GitHub
 2. View recent deliveries (should be <5 sec latency)
 3. If failed, re-trigger manually or adjust webhook settings

@@ -28,11 +28,13 @@ git worktree list | grep feature/
 ## Your First Commands
 
 ### Read the Rules
+
 - **Workspace**: [.github/copilot-instructions.md](.github/copilot-instructions.md)
 - **Setup**: [.github/instructions/initial-setup.instructions.md](.github/instructions/initial-setup.instructions.md)
 - **Workflow**: [.github/instructions/multi-agent-workflow.instructions.md](.github/instructions/multi-agent-workflow.instructions.md)
 
 ### Understand Your Environment
+
 ```bash
 # Python projects: 3.12+
 cd GenerateAgents.md && uv sync && cd ..
@@ -60,12 +62,14 @@ git remote -v
 ## Your Workflow
 
 ### 1. **Get Work Assignment**
+
 ```bash
 # Your task is described here (agent-specific .instructions.md)
 cat .github/instructions/agent-<yourname>.instructions.md
 ```
 
 ### 2. **Create Your Worktree** (if new)
+
 ```bash
 git worktree add ../mcapp-agent-<yourname> -b feature/agent-<yourname>
 cd ../mcapp-agent-<yourname>
@@ -76,6 +80,7 @@ SESSION_ID="agent-<yourname>-session-2026-04-03"
 ```
 
 ### 3. **Make Changes**
+
 ```bash
 # Edit files, run tests
 npm test && npm run lint
@@ -86,6 +91,7 @@ rm -rf node_modules package-lock.json && npm install  # Full reset
 ```
 
 ### 4. **Commit & Push**
+
 ```bash
 git add .
 git commit -m "feat(component): your description here"
@@ -95,6 +101,7 @@ git push origin feature/agent-<yourname>
 ```
 
 ### 5. **Wait for Review & Merge**
+
 - PR will be created by orchestrator
 - Reviews requested automatically
 - On approval → auto-merged to main
@@ -103,12 +110,14 @@ git push origin feature/agent-<yourname>
 ## Key Rules
 
 ⚠️ **DO NOT**:
+
 - Commit directly to `main`
 - Use `git push -f` without `--force-with-lease`
 - Test in Docker without running `docker compose up -d` first
 - Ignore failing tests (they **must** pass before commit)
 
 ✅ **DO**:
+
 - Run tests locally: `npm test || uv run pytest -q`
 - Commit early, often, with clear messages
 - Use [Conventional Commits](https://www.conventionalcommits.org/):
@@ -165,6 +174,7 @@ await contextstream.session.capture({
 ## Troubleshooting
 
 **Q: Tests are failing**
+
 ```bash
 npm run lint  # Check syntax
 npm test      # Run unit tests
@@ -172,18 +182,21 @@ npm test:e2e  # Run end-to-end tests (slow; Playwright)
 ```
 
 **Q: Docker service not running**
+
 ```bash
 docker compose up -d
 docker compose ps
 ```
 
 **Q: Git branch is behind main**
+
 ```bash
 git fetch origin main
 git rebase origin/main
 ```
 
 **Q: PR was not auto-created**
+
 ```bash
 # Manually create it:
 gh pr create --base main --head feature/agent-<yourname> --draft
@@ -193,6 +206,7 @@ git log --oneline | grep "orchestrator\|Merge\|Merge pull"
 ```
 
 **Q: ContextStream not working**
+
 ```bash
 # Reinit
 contextstream-mcp setup --force
@@ -233,4 +247,3 @@ git worktree remove ../mcapp-agent-myname
 **You're ready to go!** 🚀 Start by reading your task, creating your worktree, and committing code. The multi-agent orchestrator will handle PR creation and review coordination.
 
 **Questions?** → Check the [Copilot Instructions](.github/copilot-instructions.md) or ask in your agent's instructions file.
-

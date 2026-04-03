@@ -1,4 +1,30 @@
 {
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.env.linux": {
+        "MEMORY_GUARD": "enabled"
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "files.watcherExclude": {
+        "**/n8n-data/**": true,
+        "**/ollama_storage/**": true,
+        "**/postgres_storage/**": true,
+        "**/qdrant_storage/**": true,
+        "**/.venv/**": true,
+        "**/node_modules/**": true
+    },
+    "files.exclude": {
+        "**/.venv": true,
+        "**/node_modules": true,
+        "**/__pycache__": true
+    },
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
     "copilot.advanced": {
         "debug.testingEnabled": true
     },
@@ -45,5 +71,10 @@
             }
         ]
     },
-    "markdown.validate.enabled": true
+    "markdown.validate.enabled": true,
+    "chat.useClaudeHooks": true,
+    "chat.useCustomAgentHooks": true,
+    "files.autoSave": "afterDelay",
+    "git.rememberPostCommitCommand": true,
+    "gitlab.duoAgentPlatform.defaultNamespace": "Modifyme_glabs"
 }

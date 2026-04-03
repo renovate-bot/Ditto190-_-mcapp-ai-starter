@@ -57,6 +57,7 @@ Next agent task ready | ContextStream persists entire workflow history
 - ⚠️ **Codebase context:** See [.github/copilot-instructions.md](.github/copilot-instructions.md) — project conventions and tool access rules
 
 ---
+
 ### What’s included
 
 ✅ [**Self-hosted n8n**](https://n8n.io/) - Low-code platform with over 400
@@ -140,12 +141,12 @@ docker compose up
 
 If you're running OLLAMA locally on your Mac (not in Docker), you need to modify the OLLAMA_HOST environment variable
 
-1. Set OLLAMA_HOST to `host.docker.internal:11434` in your .env file. 
+1. Set OLLAMA_HOST to `host.docker.internal:11434` in your .env file.
 2. Additionally, after you see "Editor is now accessible via: <http://localhost:5678/>":
 
     1. Head to <http://localhost:5678/home/credentials>
     2. Click on "Local Ollama service"
-    3. Change the base URL to "http://host.docker.internal:11434/"
+    3. Change the base URL to "<http://host.docker.internal:11434/>"
 
 #### For everyone else
 
@@ -188,21 +189,21 @@ language model and Qdrant as your vector store.
 
 ## Upgrading
 
-* ### For Nvidia GPU setups:
+- ### For Nvidia GPU setups
 
 ```bash
 docker compose --profile gpu-nvidia pull
 docker compose create && docker compose --profile gpu-nvidia up
 ```
 
-* ### For Mac / Apple Silicon users
+- ### For Mac / Apple Silicon users
 
 ```bash
 docker compose pull
 docker compose create && docker compose up
 ```
 
-* ### For Non-GPU setups:
+- ### For Non-GPU setups
 
 ```bash
 docker compose --profile cpu pull
@@ -358,6 +359,7 @@ pipelines on GitLab (useful for teams or if you want a second CI provider):
 ➡️ **See [GITLAB_SETUP.md](GITLAB_SETUP.md) for a beginner-friendly walkthrough.**
 
 Key steps (takes ~15 minutes):
+
 - Create a GitLab account at [gitlab.com](https://gitlab.com)
 - Import this GitHub repo into GitLab (**New project → Import → GitHub**)
 - Enable auto-mirroring (GitLab pulls from GitHub every 5 minutes)

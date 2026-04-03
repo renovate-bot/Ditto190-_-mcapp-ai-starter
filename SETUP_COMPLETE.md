@@ -11,6 +11,7 @@
 ### **7 New Infrastructure Files**
 
 #### **Agents** (`.github/agents/`)
+
 1. **`migration-analyst.agent.md`** (53 lines)
    - Purpose: Analyze code in `migration/` folder for reuse opportunities
    - Workflow: List files → assess value → scan credentials → recommend gating
@@ -22,25 +23,26 @@
    - Runs scheduled (every 15 minutes)
 
 #### **Instructions** (`.github/instructions/`)
+
 3. **`initial-setup.instructions.md`** (300+ lines) — **⭐ START HERE**
    - Phases 1–5: Foundation, worktree creation, automatic commits, persistence, cleanup
    - Docker stack startup, dependency installation, ContextStream init
    - One-command sequences for component setup
 
-4. **`multi-agent-workflow.instructions.md`** (300+ lines)
+2. **`multi-agent-workflow.instructions.md`** (300+ lines)
    - Complete workflow reference with practical examples
    - 2-agent parallel example (Agent Foo + Agent Bar)
    - Automatic commit flow diagram
    - Troubleshooting guide (10+ common issues)
 
-5. **`SETUP_STATUS.md`** (200+ lines)
+3. **`SETUP_STATUS.md`** (200+ lines)
    - Complete status of foundation layer (all items ✅)
    - Immediate next steps (6 phases with time estimates)
    - Phase 2 scripts to create (orchestrator.sh, git hooks)
    - Manual testing checklist
    - Priority 2 (per-agent instructions template)
 
-6. **`AGENT_QUICKSTART.md`** (250+ lines) — **⭐ FOR AGENTS TO READ**
+4. **`AGENT_QUICKSTART.md`** (250+ lines) — **⭐ FOR AGENTS TO READ**
    - 5-minute onboarding card for AI agents
    - Quick reference: build/test/deploy per component
    - Your workflow loop (commit → PR → merge → sync)
@@ -48,12 +50,14 @@
    - Troubleshooting one-liners
 
 #### **Security & CI/CD**
+
 7. **`.github/workflows/codeql.yml`** (44 lines)
    - Security scanning for JavaScript/TypeScript + Python
    - Least-privilege permissions (security-events: write job-level)
    - Runs on: push to main, PR to main, weekly schedule
 
 #### **Reference Update**
+
 - **`.github/copilot-instructions.md`** — Trimmed 882→469 lines (46.9% reduction)
   - Compact 2-page guide with full ContextStream block
   - Added migration folder rules + git worktree conventions
@@ -77,6 +81,7 @@
 ## 🚀 Immediate Next Steps (In Priority Order)
 
 ### **Phase 1: Run Foundation Setup** (10–15 min)
+
 ```bash
 cd /workspaces/mcapp-ai-starter
 
@@ -96,6 +101,7 @@ docker compose config -q && docker compose up -d && sleep 30
 **Expected Outcome**: Docker services running, dependencies installed, ready for first worktree.
 
 ### **Phase 2: Create First Sandbox Worktree** (5 min)
+
 ```bash
 git worktree add ../mcapp-agent-sandbox -b feature/agent-sandbox
 cd ../mcapp-agent-sandbox
@@ -107,6 +113,7 @@ contextstream-mcp init --folder-path=$(pwd)
 **Expected Outcome**: Isolated worktree ready for test commits.
 
 ### **Phase 3: Test the Commit → PR → Merge Loop** (5 min)
+
 ```bash
 # Make change
 echo "// test" >> README.md
@@ -123,11 +130,13 @@ git push origin feature/agent-sandbox
 **Expected Outcome**: PR created, merge process verified.
 
 ### **Phase 4: Create Orchestrator Script** (20 min)
+
 Create `.github/scripts/orchestrator.sh` (auto-detect commits → PR → merge → sync)
 
 **Expected Outcome**: Fully automated multi-agent coordination (every 15 min).
 
 ### **Phase 5: Assign First Real Agent** (Start work)
+
 1. Create `.github/instructions/agent-<name>.instructions.md`
 2. Assign task to agent
 3. Agent runs setup, creates worktree, starts coding
@@ -158,16 +167,19 @@ Create `.github/scripts/orchestrator.sh` (auto-detect commits → PR → merge �
 ## 🔗 Navigation for Users
 
 ### **For Workspace Maintainers**
+
 1. **Setup**: [.github/instructions/SETUP_STATUS.md](.github/instructions/SETUP_STATUS.md) ← Complete checklist
 2. **Architecture**: [.github/copilot-instructions.md](.github/copilot-instructions.md) ← Rules + conventions
 3. **Troubleshooting**: [.github/instructions/multi-agent-workflow.instructions.md](.github/instructions/multi-agent-workflow.instructions.md) ← FAQ section
 
 ### **For Agent Developers**
+
 1. **Start Here**: [.github/instructions/AGENT_QUICKSTART.md](.github/instructions/AGENT_QUICKSTART.md) ← 5-min onboarding
 2. **Full Setup**: [.github/instructions/initial-setup.instructions.md](.github/instructions/initial-setup.instructions.md) ← Phases 1–5
 3. **Workflow Loop**: [.github/instructions/multi-agent-workflow.instructions.md](.github/instructions/multi-agent-workflow.instructions.md) ← Examples + troubleshooting
 
 ### **For Infrastructure**
+
 1. **Orchestration**: [.github/agents/multi-agent-orchestrator.agent.md](.github/agents/multi-agent-orchestrator.agent.md)
 2. **Migration**: [.github/agents/migration-analyst.agent.md](.github/agents/migration-analyst.agent.md)
 3. **Security**: [.github/workflows/codeql.yml](.github/workflows/codeql.yml)
@@ -239,4 +251,3 @@ This enables everything else. (10–15 min)
 **Estimated Full Setup Time**: 30–45 minutes (including Docker startup).  
 
 🚀 **You're good to go!**
-

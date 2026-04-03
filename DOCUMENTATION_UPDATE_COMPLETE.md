@@ -11,6 +11,7 @@
 ### 1. **AGENTS.md — Complete Rewrite (556 new lines)**
 
 **What Changed:**
+
 - Replaced SDK-focused content with multi-agent development documentation
 - Added two agent role definitions with **Required Reading** directives
 - Included proactive agent directives (checklists agents MUST follow)
@@ -19,6 +20,7 @@
 **New Agent Definitions:**
 
 #### 🔄 multi-agent-orchestrator.agent.md
+
 - **Symlink:** [→ .github/agents/multi-agent-orchestrator.agent.md](.github/agents/multi-agent-orchestrator.agent.md)
 - **Proactive Trigger:** "When multiple agents have completed features (committed + pushed to feature/* branches)"
 - **Required Reading:**
@@ -29,6 +31,7 @@
 - **Success Indicators:** 4 metrics (PR auto-create, reviews requested, auto-merge, worktree sync)
 
 #### 🔍 migration-analyst.agent.md
+
 - **Symlink:** [→ .github/agents/migration-analyst.agent.md](.github/agents/migration-analyst.agent.md)
 - **Proactive Trigger:** "When PR references code/configs from migration/ folder"
 - **Required Reading:**
@@ -41,23 +44,27 @@
 **Proactive Directives for ALL Agents:**
 
 Before Starting:
+
 - [ ] Read AGENT_QUICKSTART.md (5 min mandatory)
 - [ ] Check SETUP_STATUS.md (know current phase)
 - [ ] Review multi-agent-workflow.instructions.md (understand 5-phase pipeline)
 
 During Execution:
+
 - [ ] Create/use designated worktree (feature/agent-name)
 - [ ] Run full test suite before committing
 - [ ] Commit with conventional messages (feat|fix|chore|docs:)
 - [ ] Push to origin (orchestrator will auto-detect)
 
 On Completion:
+
 - [ ] Do NOT push/PR manually (orchestrator handles it)
 - [ ] Sync to latest main
 - [ ] Capture session notes to ContextStream
 - [ ] Check SETUP_STATUS.md for next phase
 
 If Blocked:
+
 - [ ] Log decision/blockage to ContextStream
 - [ ] Leave clear notes in PR comments
 - [ ] Escalate if blocker > 30 minutes
@@ -67,6 +74,7 @@ If Blocked:
 **New Section: "🤖 For AI Agents: START HERE"**
 
 Contains:
+
 1. **Mandatory Reading Order** (with links to 4 documents)
    - AGENT_QUICKSTART.md (5-min mandatory)
    - SETUP_STATUS.md (current phase)
@@ -81,6 +89,7 @@ Contains:
    - Persistent Memory: ContextStream persists state across sessions
 
 3. **How It Works** (ASCII workflow diagram)
+
    ```
    Agent → Commits → Orchestrator detects → PR created → Reviews → Auto-merge
    ```
@@ -98,6 +107,7 @@ Contains:
 ## Verification Checklist
 
 ✅ **All symlink targets verified to exist:**
+
 - ✅ .github/agents/multi-agent-orchestrator.agent.md
 - ✅ .github/agents/migration-analyst.agent.md
 - ✅ .github/instructions/AGENT_QUICKSTART.md
@@ -107,10 +117,12 @@ Contains:
 - ✅ .github/copilot-instructions.md
 
 ✅ **Files Updated:**
+
 - AGENTS.md: 1 insertion, 556 lines changed (including ContextStream frontmatter)
 - README.md: 46 new lines added (inserted after intro, before "What's included")
 
 ✅ **Commit Information:**
+
 - Commit Hash: `4fdc014`
 - Message: `docs(agents,readme): add multi-agent framework references and symlinks`
 - Date: Fri Apr 3 21:16:24 2026 +0000
@@ -149,11 +161,13 @@ Contains:
 **For Agents Reading This:**
 
 1. **Session Init:** Before starting any work, initialize ContextStream:
+
    ```bash
    contextstream-mcp init --folder-path=$(pwd)
    ```
 
 2. **Search-First Approach:** When looking for info, always use ContextStream search before reading files:
+
    ```
    mcp_contextstream_search(mode="auto", query="multi-agent workflow documentation")
    ```
@@ -163,6 +177,7 @@ Contains:
    - Session snapshots captured (see SETUP_COMPLETE.md)
 
 4. **Memory Capture:** Log decisions and blockers to ContextStream (not local files):
+
    ```
    mcp_contextstream_memory(action="create_node", node_type="decision", title="...", content="...")
    ```
@@ -207,7 +222,7 @@ Contains:
 
 ## What Agents See When They Read These Files
 
-### When Opening README.md:
+### When Opening README.md
 
 ```
 [Header intro...]
@@ -227,6 +242,7 @@ This project uses isolated git worktrees and coordinated agent orchestration...
 ```
 
 **Agent Behavior:**
+
 1. Agent reads "For AI Agents: START HERE"
 2. Clicks [AGENT_QUICKSTART.md] link
 3. Reads 5-min quickstart (learns tools, ContextStream setup, worktree creation)
@@ -235,7 +251,7 @@ This project uses isolated git worktrees and coordinated agent orchestration...
 6. Creates worktree per [initial-setup.instructions.md]
 7. Proceeds with task, knowing orchestrator will handle PRs and merges
 
-### When Opening AGENTS.md:
+### When Opening AGENTS.md
 
 ```
 # 🤖 Active Agents — mcapp-ai-starter
@@ -254,6 +270,7 @@ This project uses isolated git worktrees and coordinated agent orchestration...
 ```
 
 **Agent Behavior:**
+
 1. Agent reads agent names and descriptions
 2. Finds multi-agent-orchestrator agent in list
 3. Sees "Required Reading BEFORE using" section

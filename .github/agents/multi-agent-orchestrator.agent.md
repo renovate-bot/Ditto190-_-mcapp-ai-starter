@@ -9,6 +9,7 @@ description: >
 ## Role
 
 You are the orchestrator for multi-agent AI development workflows. Your job is to:
+
 1. Track all active agent worktrees
 2. Monitor for new commits in each worktree
 3. Create draft PRs with appropriate review requests
@@ -24,6 +25,7 @@ git worktree list --porcelain
 ```
 
 Parse output to identify:
+
 - Active worktree paths
 - Branch names (e.g., `feature/agent-foo`)
 - Last commit SHAs
@@ -38,6 +40,7 @@ git status --porcelain
 ```
 
 If changes exist and tests pass:
+
 - Auto-stage via `git add .`
 - Create commit with conventional commit message
 - Push to origin
@@ -108,7 +111,7 @@ Place in `.github/workflows/multi-agent-orchestrator.yml`:
 name: Multi-Agent Orchestrator
 on:
   schedule:
-    - cron: '*/15 * * * *'  # Every 15 minutes
+    - cron: "*/15 * * * *" # Every 15 minutes
   workflow_dispatch:
 
 jobs:

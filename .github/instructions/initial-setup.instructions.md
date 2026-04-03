@@ -1,6 +1,6 @@
 ---
 description: Initial setup for multi-agent AI development with git worktrees, automatic commits, and coordinated reviews.
-applyTo: '**'
+applyTo: "**"
 ---
 
 # Initial Setup — Multi-Agent Orchestration & Git Worktrees
@@ -13,7 +13,7 @@ This file documents the foundation-level setup for enabling multiple AI agents t
 ✅ **Automatic Commit Tracking**: Changes auto-staged, committed on-demand  
 ✅ **Coordinated Reviews**: Automatic draft PRs with agent-specific review requests  
 ✅ **GitLab Mirroring**: All changes propagated to `.gitlab-ci.yml` pipeline  
-✅ **ContextStream Memory**: Multi-agent progress persisted across sessions  
+✅ **ContextStream Memory**: Multi-agent progress persisted across sessions
 
 ---
 
@@ -128,6 +128,7 @@ feature/agent-bar/           # Agent Bar's worktree
 ```
 
 **Key properties:**
+
 - Worktrees share a single git object database (`.git/` is a link)
 - Each worktree has its own branch (e.g., `feature/agent-foo`)
 - Changes in one worktree don't affect another
@@ -151,6 +152,7 @@ git worktree list
 ```
 
 **Agent naming convention**: lowercase-hyphen (`agent-name`). Maps to:
+
 - Worktree: `../mcapp-agent-name`
 - Branch: `feature/agent-name`
 - Agent file: `.github/agents/agent-name.agent.md`
@@ -221,6 +223,7 @@ git push --set-upstream origin pr/agent-foo-merge
 ### 3.3 GitLab Mirroring
 
 The `.gitlab-ci.yml` pipeline is configured to:
+
 - Mirror commits from GitHub → GitLab (via webhook)
 - Run same checks (lint, test, security scan)
 - Report back to GitHub PR via GitLab status checks
@@ -250,20 +253,23 @@ After creating each worktree, create a `.instructions.md` file scoped to that ag
 ```markdown
 ---
 description: Agent Foo's workflow for feature X
-applyTo: '**' # or specific globs: 'src/components/**', 'docs/**'
+applyTo: "**" # or specific globs: 'src/components/**', 'docs/**'
 ---
 
 # Agent Foo — Feature X Development
 
 ## Your Worktree
+
 - Location: `/workspaces/mcapp-agent-foo`
 - Branch: `feature/agent-foo`
 - Session ID: `agent-foo-session-2026-04-03`
 
 ## Assigned Task
+
 [Summary of what Agent Foo is building]
 
 ## Success Criteria
+
 - [ ] Tests pass: `cd ../../ && npm test:e2e`
 - [ ] Lint passes: `npm run lint:foo`
 - [ ] Code review approved
