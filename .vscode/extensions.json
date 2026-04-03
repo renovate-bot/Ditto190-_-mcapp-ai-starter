@@ -1,0 +1,38 @@
+{
+  "recommendations": [
+    // ── Containers & Docker ──────────────────────────────────────────────────
+    "ms-vscode-remote.remote-containers",
+    "ms-azuretools.vscode-docker",
+    // ── AI & Copilot ────────────────────────────────────────────────────────
+    "github.copilot",
+    "github.copilot-chat",
+    // ── Python ──────────────────────────────────────────────────────────────
+    "ms-python.python",
+    "ms-python.debugpy",
+    "ms-python.pylint",
+    "ms-python.black-formatter",
+    "charliermarsh.ruff",
+    // ── Node / JS / TS ───────────────────────────────────────────────────────
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    // ── YAML & JSON ──────────────────────────────────────────────────────────
+    "redhat.vscode-yaml",
+    // ── Git & CI/CD ──────────────────────────────────────────────────────────
+    "github.vscode-github-actions",
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    // ── Env & Secrets ────────────────────────────────────────────────────────
+    "mikestead.dotenv",
+    // ── Shell scripting ──────────────────────────────────────────────────────
+    "timonwong.shellcheck",
+    "foxundermoon.shell-format",
+    // ── REST & API testing ───────────────────────────────────────────────────
+    "humao.rest-client",
+    // ── Markdown ─────────────────────────────────────────────────────────────
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    // ── Productivity ─────────────────────────────────────────────────────────
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens"
+  ]
+}

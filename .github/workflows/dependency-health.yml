@@ -1,0 +1,127 @@
+name: Dependency Health
+
+on:
+  schedule:
+    # Run every Monday at 09:00 UTC
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "package.json"
+      - "package-lock.json"
+      - "**/package.json"
+      - "GenerateAgents.md/pyproject.toml"
+      - "generateagents-mcp/pyproject.toml"
+      - ".github/workflows/dependency-health.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  npm-audit:
+    name: npm security audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Run npm audit (root)
+        run: |
+          npm audit --json > npm-audit-root.json || true
+          npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Run npm audit (prompt-registry)
+        if: hashFiles('prompt-registry/package-lock.json') != ''
+        working-directory: prompt-registry
+        run: |
+          npm ci
+          npm audit --json > ../npm-audit-prompt-registry.json || true
+          npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Upload audit results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-audit-results
+          path: |
+            npm-audit-root.json
+            npm-audit-prompt-registry.json
+          retention-days: 14
+
+  python-audit:
+    name: Python dependency audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Install pip-audit
+        run: pip install pip-audit
+
+      - name: Audit GenerateAgents.md
+        if: hashFiles('GenerateAgents.md/pyproject.toml') != ''
+        working-directory: GenerateAgents.md
+        run: |
+          uv sync --extra dev
+          uv run pip-audit --desc on
+        continue-on-error: true
+
+      - name: Audit generateagents-mcp
+        if: hashFiles('generateagents-mcp/pyproject.toml') != ''
+        working-directory: generateagents-mcp
+        run: |
+          uv sync
+          uv run pip-audit --desc on
+        continue-on-error: true
+
+  docker-outdated:
+    name: Check Docker image freshness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check docker-compose image tags
+        run: |
+          echo "## Docker image tags in docker-compose.yml" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          grep -E '^\s+image:' docker-compose.yml | sort -u | while read -r line; do
+            echo "- \`$line\`" >> "$GITHUB_STEP_SUMMARY"
+          done
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "_Note: Renovate bot handles automatic version updates._" >> "$GITHUB_STEP_SUMMARY"
+
+  outdated-report:
+    name: npm outdated report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for outdated packages
+        run: |
+          echo "## Outdated npm packages" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          npm outdated || true
+          npm outdated >> "$GITHUB_STEP_SUMMARY" 2>&1 || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+        continue-on-error: true

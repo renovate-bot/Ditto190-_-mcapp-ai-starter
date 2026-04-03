@@ -1,17 +1,19 @@
 {
-  "name": "n8n AI Starter Kit - CPU Mode",
+  "name": "AI Starter Kit - Codespace",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12",
+      "installTools": true
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
     }
   },
-  "forwardPorts": [
-    5678,
-    11434,
-    6333,
-    5432
-  ],
+  "forwardPorts": [5678, 11434, 6333, 5432, 8080],
   "portsAttributes": {
     "5678": {
       "label": "n8n UI",
@@ -35,25 +37,79 @@
       "label": "PostgreSQL",
       "onAutoForward": "silent",
       "visibility": "private"
+    },
+    "8080": {
+      "label": "Dev Server",
+      "onAutoForward": "silent",
+      "visibility": "private"
     }
   },
   "customizations": {
     "vscode": {
       "extensions": [
+        // --- Containers & Docker ---
         "ms-vscode-remote.remote-containers",
-        "ms-docker.docker",
         "ms-azuretools.vscode-docker",
+        // --- Python ---
         "ms-python.python",
-        "ms-python.debugpy"
+        "ms-python.debugpy",
+        "ms-python.pylint",
+        "ms-python.black-formatter",
+        "charliermarsh.ruff",
+        // --- Node / JS / TS ---
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        // --- AI & Copilot ---
+        "github.copilot",
+        "github.copilot-chat",
+        // --- YAML & JSON ---
+        "redhat.vscode-yaml",
+        // --- Git & versioning ---
+        "github.vscode-github-actions",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        // --- Env & secrets ---
+        "mikestead.dotenv",
+        // --- Shell scripting ---
+        "timonwong.shellcheck",
+        "foxundermoon.shell-format",
+        // --- REST & API testing ---
+        "humao.rest-client",
+        // --- Markdown ---
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
+        // --- Productivity ---
+        "streetsidesoftware.code-spell-checker",
+        "usernamehw.errorlens"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.env.linux": {
+          "MEMORY_GUARD": "enabled"
+        },
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter"
+        },
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
         "files.watcherExclude": {
           "**/n8n-data/**": true,
           "**/ollama_storage/**": true,
           "**/postgres_storage/**": true,
-          "**/qdrant_storage/**": true
-        }
+          "**/qdrant_storage/**": true,
+          "**/.venv/**": true,
+          "**/node_modules/**": true
+        },
+        "files.exclude": {
+          "**/.venv": true,
+          "**/node_modules": true,
+          "**/__pycache__": true
+        },
+        "git.autofetch": true,
+        "git.enableSmartCommit": true
       }
     }
   },
@@ -61,17 +117,18 @@
   "remoteEnv": {
     "DOCKER_BUILDKIT": "1",
     "COMPOSE_DOCKER_CLI_BUILD": "1",
-    "DB_TYPE": "sqlite",
     "N8N_PORT": "5678",
     "N8N_PROTOCOL": "http",
     "N8N_HOST": "localhost",
     "OLLAMA_HOST": "ollama:11434",
     "QDRANT_HOST": "qdrant",
-    "QDRANT_PORT": "6333"
+    "QDRANT_PORT": "6333",
+    "UV_SYSTEM_PYTHON": "1"
   },
   "hostRequirements": {
     "cpus": 4,
-    "memory": "16gb"
+    "memory": "16gb",
+    "storage": "32gb"
   },
   "remoteUser": "root",
   "privileged": true
