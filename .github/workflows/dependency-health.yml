@@ -33,7 +33,9 @@ jobs:
         run: npm ci
 
       - name: Run npm audit (root)
-        run: npm audit --audit-level=moderate
+        run: |
+          npm audit --json > npm-audit-root.json || true
+          npm audit --audit-level=moderate
         continue-on-error: true
 
       - name: Run npm audit (prompt-registry)
@@ -41,6 +43,7 @@ jobs:
         working-directory: prompt-registry
         run: |
           npm ci
+          npm audit --json > ../npm-audit-prompt-registry.json || true
           npm audit --audit-level=moderate
         continue-on-error: true
 
@@ -50,7 +53,8 @@ jobs:
         with:
           name: npm-audit-results
           path: |
-            npm-audit.json
+            npm-audit-root.json
+            npm-audit-prompt-registry.json
           retention-days: 14
 
   python-audit:

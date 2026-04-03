@@ -64,7 +64,6 @@
         "github.copilot-chat",
         // --- YAML & JSON ---
         "redhat.vscode-yaml",
-        "zainchen.json",
         // --- Git & versioning ---
         "github.vscode-github-actions",
         "eamodio.gitlens",

@@ -26,7 +26,16 @@ for key in N8N_ENCRYPTION_KEY N8N_USER_MANAGEMENT_JWT_SECRET; do
   val=$(grep "^${key}=" .env | cut -d= -f2- | tr -d '"')
   if echo "$val" | grep -qE "^(super-secret|even-more-secret|generate_with|your_|CHANGE_ME|)$|^$"; then
     NEW=$(openssl rand -base64 32)
-    sed -i "s|^${key}=.*|${key}=${NEW}|" .env
+    # Use Python to safely substitute (avoids sed special-character issues with base64 values)
+    python3 -c "
+import re, sys
+key, new_val = sys.argv[1], sys.argv[2]
+with open('.env', 'r') as f:
+    content = f.read()
+content = re.sub(r'^' + re.escape(key) + r'=.*$', key + '=' + new_val, content, flags=re.MULTILINE)
+with open('.env', 'w') as f:
+    f.write(content)
+" "$key" "$NEW"
     fix "Regenerated secure value for ${key}"
   else
     ok "${key} already set"

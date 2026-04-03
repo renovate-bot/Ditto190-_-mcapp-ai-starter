@@ -29,9 +29,16 @@ get_free_pct() {
 }
 
 drop_caches() {
-  # Drop page cache (safe; kernel will reclaim on demand)
+  # Drop page cache (safe; kernel reclaims on demand).
+  # Opt-in: set MEMORY_GUARD_DROP_CACHES=1 to enable (requires root and a non-restricted kernel).
+  if [ "${MEMORY_GUARD_DROP_CACHES:-0}" != "1" ]; then
+    log "ℹ️  Cache drop skipped (set MEMORY_GUARD_DROP_CACHES=1 to enable)"
+    return
+  fi
   if sync && echo 1 > /proc/sys/vm/drop_caches 2>/dev/null; then
     log "🧹 Dropped page cache"
+  else
+    log "⚠️  Could not drop page cache (may lack kernel privileges)"
   fi
 }
 

@@ -22,13 +22,16 @@ if [ ! -f "$ENV_FILE" ]; then
   echo "📝 Created .env from template"
 fi
 
-# Helper: set or update a key in .env
+# Helper: set or update a key in .env, safely escaping special characters
 set_env_key() {
   local key=$1 value=$2
+  # Escape value for use as sed replacement (handles &, /, \, | and newlines)
+  local escaped_value
+  escaped_value=$(printf '%s\n' "$value" | sed 's:[\\&|/]:\\&:g; s/$/\\/' | head -c -1)
   if grep -q "^${key}=" "$ENV_FILE"; then
-    sed -i "s|^${key}=.*|${key}=${value}|" "$ENV_FILE"
+    sed -i "s|^${key}=.*|${key}=${escaped_value}|" "$ENV_FILE"
   else
-    echo "${key}=${value}" >> "$ENV_FILE"
+    printf '%s=%s\n' "$key" "$value" >> "$ENV_FILE"
   fi
 }
 
