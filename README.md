@@ -302,7 +302,7 @@ re-enter them:
 
 1. Go to **github.com → Settings → Codespaces → Secrets**
 2. Add: `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GEMINI_API_KEY` (whichever you use)
-3. In `.devcontainer/devcontainer.json`, the `remoteEnv` block will pick them up automatically
+3. To make them available in the container, add each secret name to the `remoteEnv` block in `.devcontainer/devcontainer.json`, e.g. `"OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"`
 
 ### Step 3 — Connect GitLab CI/CD
 
@@ -323,7 +323,7 @@ Key steps (takes ~15 minutes):
 ```bash
 cd GenerateAgents.md
 uv sync --extra dev
-# Analyse this repo (uses Ollama by default — no API key needed)
+# Analyze this repo (uses Ollama by default — no API key needed)
 uv run autogenerateagentsmd .. --style comprehensive
 ```
 
