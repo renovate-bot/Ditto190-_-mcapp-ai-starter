@@ -1,0 +1,342 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Auto-Merge Gate — GitHub-first, GitLab-augmented
+# ──────────────────────────────────────────────────────────────────────────────
+#
+# HOW IT WORKS:
+#   1. When a PR is opened/updated, run fast rule-based checks.
+#   2. On success, run a low-cost AI code review (GitHub Models API).
+#   3. Scan ALL PR comments for a "don't auto-merge" directive.
+#      If found, disable auto-merge and stop.
+#   4. If all checks pass and no block directive exists, enable GitHub's
+#      native auto-merge (squash). GitHub will merge once all required
+#      status checks pass (branch protection settings).
+#
+# OVERRIDE (disable auto-merge):
+#   Add any comment to the PR containing one of:
+#     • don't auto-merge
+#     • dont auto-merge
+#     • do not auto-merge
+#     • no auto-merge
+#
+# RE-ENABLE:
+#   Push a new commit or close+reopen the PR to re-trigger this workflow.
+#   Auto-merge will re-enable if none of the block phrases are present.
+#
+# GITLAB AUGMENTATION:
+#   GitLab CI runs a parallel pipeline (see .gitlab-ci.yml auxiliary stage)
+#   that posts commit statuses and review comments back to this PR via
+#   the GITHUB_TOKEN_FOR_GITLAB variable stored in GitLab CI settings.
+#   If configured, those commit statuses can be added to GitHub's required
+#   status checks to gate the auto-merge further.
+#
+# SETUP (one-time, repository admin):
+#   1. Repo Settings → General → Pull Requests → Allow auto-merge: ✅
+#   2. Repo Settings → Branches → Branch protection rule for `main`:
+#      - Require status checks to pass before merging
+#      - Add status checks: "Rule-based checks", "AI review (low-cost)"
+#        (and optionally "gitlab-ci / auxiliary" if GitLab is configured)
+#   3. Optionally add GITLAB_TOKEN secret (GitLab PAT) to trigger GitLab
+#      pipelines directly from this workflow.
+# ──────────────────────────────────────────────────────────────────────────────
+
+name: Auto-Merge Gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+  # Re-evaluate when someone adds/edits a PR comment (e.g. "don't auto-merge")
+  issue_comment:
+    types: [created, edited, deleted]
+
+concurrency:
+  # Only one auto-merge evaluation at a time per PR.
+  group: auto-merge-${{ github.event.pull_request.number || github.event.issue.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # ── Job 1: Detect "don't auto-merge" override ─────────────────────────────
+  check-override:
+    name: Check auto-merge override
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request != null)
+    permissions:
+      pull-requests: read
+    outputs:
+      blocked: ${{ steps.detect.outputs.blocked }}
+      pr_number: ${{ steps.detect.outputs.pr_number }}
+    steps:
+      - name: Detect override directive
+        id: detect
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber =
+              context.payload.pull_request?.number ??
+              context.payload.issue?.number;
+
+            core.setOutput('pr_number', String(prNumber ?? ''));
+
+            if (!prNumber) {
+              core.setOutput('blocked', 'false');
+              return;
+            }
+
+            // Fetch all comments (paginated)
+            const comments = await github.paginate(
+              github.rest.issues.listComments,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+              }
+            );
+
+            // Also check the PR body itself
+            const prBody = context.payload.pull_request?.body ?? '';
+
+            const allText = [
+              prBody,
+              ...comments.map(c => c.body ?? ''),
+            ].join('\n').toLowerCase();
+
+            const blockPhrases = [
+              "don't auto-merge",
+              "dont auto-merge",
+              "do not auto-merge",
+              "no auto-merge",
+            ];
+
+            const blocked = blockPhrases.some(phrase => allText.includes(phrase));
+
+            core.setOutput('blocked', blocked ? 'true' : 'false');
+            if (blocked) {
+              core.warning(`⛔ Auto-merge is blocked for PR #${prNumber} — override directive found.`);
+            } else {
+              core.info(`✅ No auto-merge block found for PR #${prNumber}.`);
+            }
+
+  # ── Job 2: Rule-based fast checks ─────────────────────────────────────────
+  rule-checks:
+    name: Rule-based checks
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      passed: ${{ steps.mark-passed.outputs.passed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: PR must not be a draft
+        run: |
+          if [ "${{ github.event.pull_request.draft }}" = "true" ]; then
+            echo "::notice::PR is a draft — auto-merge will re-evaluate when marked ready."
+            exit 1
+          fi
+          echo "Not a draft ✅"
+
+      - name: Branch must be up-to-date with base
+        run: |
+          git fetch origin "${{ github.base_ref }}" --quiet
+          BEHIND=$(git rev-list HEAD..origin/"${{ github.base_ref }}" --count)
+          if [ "$BEHIND" -gt 0 ]; then
+            echo "::warning::Branch is $BEHIND commit(s) behind ${{ github.base_ref }}. Rebase or merge first."
+            exit 1
+          fi
+          echo "Branch is up-to-date ✅"
+
+      - name: Scan diff for obvious secret patterns
+        # Low-cost heuristic scan — not a replacement for a dedicated secret scanner.
+        run: |
+          git fetch origin "${{ github.base_ref }}" --quiet
+          DIFF=$(git diff "origin/${{ github.base_ref }}"...HEAD -- \
+            '*.ts' '*.js' '*.py' '*.cs' '*.json' '*.yml' '*.yaml' \
+            2>/dev/null || true)
+          if echo "$DIFF" | grep -iE \
+            '(password|secret|api_key|private_key)\s*[:=]\s*["\x27`][^"\x27`]{8,}["\x27`]' \
+            --quiet; then
+            echo "::error::Potential hardcoded secret detected in diff. Review before merging."
+            exit 1
+          fi
+          echo "No obvious secrets in diff ✅"
+
+      - id: mark-passed
+        if: success()
+        run: echo "passed=true" >> "$GITHUB_OUTPUT"
+
+  # ── Job 3: Low-cost AI review (GitHub Models API) ─────────────────────────
+  ai-review:
+    name: AI review (low-cost)
+    runs-on: ubuntu-latest
+    needs: [rule-checks]
+    if: needs.rule-checks.outputs.passed == 'true'
+    permissions:
+      contents: read
+      pull-requests: write
+      # GitHub Models access uses the standard GITHUB_TOKEN — no extra permission needed.
+    outputs:
+      verdict: ${{ steps.review.outputs.verdict }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests --quiet
+
+      - name: Run AI review
+        id: review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          # Override model via repo/org secret if desired:
+          # AI_REVIEW_MODEL: gpt-4o-mini  (default)
+          # Set AI_REVIEW_SKIP=true to disable AI review entirely:
+          AI_REVIEW_SKIP: ${{ vars.AI_REVIEW_SKIP || 'false' }}
+        run: python scripts/ai_review.py
+
+  # ── Job 4: Enable auto-merge (all gates passed) ───────────────────────────
+  enable-auto-merge:
+    name: Enable auto-merge
+    runs-on: ubuntu-latest
+    needs: [check-override, rule-checks, ai-review]
+    # Only run on PR events, not comment events.
+    # Only if override is not set, rule checks passed, and AI did not fail.
+    if: |
+      always() &&
+      github.event_name == 'pull_request' &&
+      needs.check-override.outputs.blocked == 'false' &&
+      needs.rule-checks.result == 'success' &&
+      needs.ai-review.result != 'failure'
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Enable auto-merge via GraphQL
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = context.payload.pull_request?.number;
+            if (!prNumber) {
+              core.warning('Could not determine PR number. Skipping.');
+              return;
+            }
+
+            // Fetch full PR to get its GraphQL node ID.
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+            });
+
+            if (pr.merged) {
+              core.info(`PR #${prNumber} is already merged.`);
+              return;
+            }
+            if (pr.state !== 'open') {
+              core.info(`PR #${prNumber} is not open (state=${pr.state}).`);
+              return;
+            }
+
+            try {
+              await github.graphql(`
+                mutation EnableAutoMerge($pullRequestId: ID!) {
+                  enablePullRequestAutoMerge(input: {
+                    pullRequestId: $pullRequestId,
+                    mergeMethod: SQUASH
+                  }) {
+                    pullRequest { number autoMergeRequest { mergeMethod } }
+                  }
+                }
+              `, { pullRequestId: pr.node_id });
+
+              core.info(`✅ Auto-merge (squash) enabled for PR #${prNumber}.`);
+              core.info(
+                'GitHub will merge automatically once all required status checks pass.'
+              );
+            } catch (err) {
+              // Auto-merge feature may not be enabled in repo settings.
+              // Fall back to a direct merge if all checks are already green.
+              core.warning(
+                `enablePullRequestAutoMerge failed: ${err.message}\n` +
+                'Ensure "Allow auto-merge" is enabled in Repo → Settings → General → Pull Requests.\n' +
+                'Attempting direct merge as fallback…'
+              );
+              try {
+                await github.rest.pulls.merge({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: prNumber,
+                  merge_method: 'squash',
+                });
+                core.info(`✅ PR #${prNumber} merged directly (fallback).`);
+              } catch (mergeErr) {
+                core.warning(
+                  `Direct merge also unavailable: ${mergeErr.message}\n` +
+                  'The PR may need human review or pending status checks to pass first.'
+                );
+              }
+            }
+
+  # ── Job 5: Disable auto-merge (override directive detected) ───────────────
+  disable-auto-merge:
+    name: Disable auto-merge (override active)
+    runs-on: ubuntu-latest
+    needs: [check-override]
+    if: always() && needs.check-override.outputs.blocked == 'true'
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Disable auto-merge via GraphQL
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = parseInt(
+              '${{ needs.check-override.outputs.pr_number }}' || '0'
+            );
+            if (!prNumber) return;
+
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+            });
+
+            if (!pr.auto_merge) {
+              core.info(`Auto-merge was not enabled on PR #${prNumber}. Nothing to disable.`);
+              return;
+            }
+
+            try {
+              await github.graphql(`
+                mutation DisableAutoMerge($pullRequestId: ID!) {
+                  disablePullRequestAutoMerge(input: {
+                    pullRequestId: $pullRequestId
+                  }) {
+                    pullRequest { number }
+                  }
+                }
+              `, { pullRequestId: pr.node_id });
+
+              core.info(
+                `⛔ Auto-merge disabled for PR #${prNumber} — "don't auto-merge" directive found.`
+              );
+            } catch (err) {
+              core.warning(`Could not disable auto-merge: ${err.message}`);
+            }
