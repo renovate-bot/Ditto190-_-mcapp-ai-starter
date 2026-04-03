@@ -165,7 +165,7 @@ test:python:
         echo "── generateagents-mcp tests ──"
         cd generateagents-mcp
         uv sync --quiet
-        uv run pytest -q 2>/dev/null || echo "⚠️ No tests found or skipped"
+        uv run pytest -q 2>/dev/null || { code=$?; if [ "$code" -eq 5 ]; then echo "⚠️ No tests found or skipped"; else exit "$code"; fi; }
         cd ..
       fi
   rules:
