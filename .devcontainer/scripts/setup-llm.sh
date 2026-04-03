@@ -45,7 +45,8 @@ configure_provider() {
     echo "  Already configured ✅"
     return
   fi
-  read -rp "  Enter ${key_name} (leave blank to skip): " api_key
+  read -rsp "  Enter ${key_name} (leave blank to skip): " api_key
+  echo ""
   if [ -n "$api_key" ]; then
     set_env_key "$key_name" "$api_key"
     echo "  Saved ${key_name} to .env ✅"
