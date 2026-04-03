@@ -23,7 +23,7 @@ if [ ! -f .env ]; then
 fi
 
 for key in N8N_ENCRYPTION_KEY N8N_USER_MANAGEMENT_JWT_SECRET; do
-  val=$(grep "^${key}=" .env | cut -d= -f2- | tr -d '"')
+  val=$(grep -m1 "^${key}=" .env | cut -d= -f2- | tr -d '"' || true)
   if echo "$val" | grep -qE "^(super-secret|even-more-secret|generate_with|your_|CHANGE_ME|)$|^$"; then
     NEW=$(openssl rand -base64 32)
     # Use Python to safely substitute (avoids sed special-character issues with base64 values)
