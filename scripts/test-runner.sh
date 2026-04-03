@@ -6,10 +6,44 @@
 
 set -euo pipefail
 
-SUITE="${1:-all}"
-FAST=false
-[ "${2:-}" = "--fast" ] && FAST=true
+usage() {
+  echo "Usage: bash scripts/test-runner.sh [--fast] [--suite npm|python|all]" >&2
+}
 
+SUITE="all"
+FAST=false
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --fast)
+      FAST=true
+      shift
+      ;;
+    --suite)
+      if [ "$#" -lt 2 ]; then
+        echo "Error: --suite requires a value." >&2
+        usage
+        exit 1
+      fi
+      case "$2" in
+        npm|python|all)
+          SUITE="$2"
+          shift 2
+          ;;
+        *)
+          echo "Error: invalid suite '$2'. Expected one of: npm, python, all." >&2
+          usage
+          exit 1
+          ;;
+      esac
+      ;;
+    *)
+      echo "Error: unknown argument '$1'." >&2
+      usage
+      exit 1
+      ;;
+  esac
+done
 PASS=0
 FAIL=0
 SKIP=0
