@@ -249,7 +249,7 @@ the routine work for you.
 | Memory guard daemon        | Starts automatically — watches RAM, prunes Docker when memory is low |
 | Python 3.12 + uv           | Ready to use: `uv run python ...`                 |
 | Node 20 + npm              | Ready to use: `npm install / npm test`            |
-| 24 VSCode extensions       | Copilot, GitLens, ShellCheck, REST Client, Ruff, Prettier — installed on first open |
+| 23 VSCode extensions       | Copilot, GitLens, ShellCheck, REST Client, Ruff, Prettier — installed on first open |
 | Git hooks                  | Auto-runs format checks on commit                 |
 
 ### Scripts you can run anytime
