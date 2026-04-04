@@ -5,6 +5,9 @@
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "version": "latest"
     },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    },
     "ghcr.io/devcontainers/features/python:1": {
       "version": "3.12",
       "installTools": true
@@ -51,6 +54,7 @@
     }
   },
   "initializeCommand": "npm install -g @contextstream/mcp-server@latest",
+  "onCreateCommand": "bash .devcontainer/pre-install.sh",
   "customizations": {
     "vscode": {
       "extensions": [
