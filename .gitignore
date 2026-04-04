@@ -31,3 +31,6 @@ skills-lock.json
 __pycache__/
 *.pyc
 node_modules
+
+# Ignore migration repodumps (large external project dumps)
+/migration/repodumps/
