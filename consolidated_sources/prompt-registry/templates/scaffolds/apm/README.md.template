@@ -1,0 +1,44 @@
+# {{name}}
+
+{{description}}
+
+## Installation
+
+### Using APM CLI
+
+```bash
+apm install {{author}}/{{name}}
+```
+
+### Using Prompt Registry
+
+Add to your hub configuration:
+
+```yaml
+sources:
+  - id: {{name}}
+    type: local-apm
+    url: file://path/to/{{name}}
+```
+
+## Contents
+
+### Prompts
+
+Located in `.apm/prompts/`:
+- `{{name}}.prompt.md` - Main prompt
+
+### Instructions
+
+Located in `.apm/instructions/`:
+- `coding-standards.instructions.md` - Coding standards
+
+## Development
+
+1. Edit prompts in `.apm/prompts/`
+2. Edit instructions in `.apm/instructions/`
+3. Update `apm.yml` as needed
+
+## License
+
+MIT

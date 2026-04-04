@@ -1,0 +1,6 @@
+# In this test we always want to get the latest published TypeSpec libraries for test.
+basic-latest/package-lock.json
+
+# This test is generated on the fly.
+basic-current/package.json
+basic-current/package-lock.json

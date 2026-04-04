@@ -1,0 +1,26 @@
+{
+  "name": "typespec-agentspec",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "CodebaseAnalyst",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        0,
+        240
+      ],
+      "parameters": {
+        "model": "gemini/gemini-2.5-pro",
+        "description": "Analyzes repository structure and conventions."
+      }
+    }
+  ],
+  "connections": {},
+  "settings": {},
+  "staticData": null,
+  "pinData": {},
+  "meta": {
+    "generatedFrom": "AgentSpec"
+  }
+}

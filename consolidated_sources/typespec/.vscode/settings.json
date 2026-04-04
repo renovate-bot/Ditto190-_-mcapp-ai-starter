@@ -1,0 +1,62 @@
+{
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "search.exclude": {
+    "**/dist/**": true,
+    "**/dist-dev/**": true,
+    "**/.docusaurus/**": true,
+    "**/CHANGELOG.json": true,
+    "docs/spec.html": true,
+    "**/node_modules/**": true,
+    "**/.tsbuildinfo": true,
+    "packages/compiler/templates/__snapshots__/**": true,
+    "packages/website/versioned_docs/**": true,
+    "packages/http-client-csharp/**/Generated/**": true,
+    "packages/samples/scratch/**": false // Those files are in gitignore but we still want to search for them
+  },
+  "files.exclude": {
+    "**/common/temp/**": true,
+    "**/obj/**": true,
+    "**/bin/**": true,
+    "**/.git": true,
+    "**/.DS_Store": true
+  },
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false, // work around https://github.com/simonhaenisch/prettier-plugin-organize-imports/issues/53
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json][[jsonc][yaml][typespec][markdown][css][astro][mdx][shellscript][dockerfile]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[csharp]": {
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4
+  },
+  "[xml]": {
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2
+  },
+  "files.associations": {
+    "rush.json": "jsonc",
+    "common-versions.json": "jsonc",
+    "command-line.json": "jsonc",
+    "pnpm-config.json": "jsonc",
+    "version-policies.json": "jsonc"
+  },
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "git.ignoreLimitWarning": true,
+  "vitest.rootConfig": "vitest.config.js",
+  "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
+  "typespec.tsp-server.path": "${workspaceFolder}/packages/compiler"
+}

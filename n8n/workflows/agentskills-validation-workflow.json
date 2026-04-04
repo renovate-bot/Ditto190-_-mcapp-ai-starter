@@ -1,0 +1,355 @@
+{
+    "name": "AgentSkills Validation Workflow",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "agentskills-validate",
+                "responseMode": "responseNode",
+                "options": {}
+            },
+            "id": "webhook-trigger",
+            "name": "Webhook Trigger",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 2,
+            "position": [
+                240,
+                300
+            ],
+            "webhookId": "agentskills-validate"
+        },
+        {
+            "parameters": {
+                "jsCode": "// Extract request payload\nconst payload = $input.item.json;\nconst skillPath = payload.skillPath || payload.skill_path;\nconst validateAll = payload.validateAll || false;\n\nif (!skillPath && !validateAll) {\n  throw new Error('Missing required parameter: skillPath or validateAll=true');\n}\n\n// Return validation configuration\nreturn {\n  json: {\n    skillPath: skillPath,\n    validateAll: validateAll,\n    timestamp: new Date().toISOString(),\n    requestId: `val-${Date.now()}`\n  }\n};"
+            },
+            "id": "parse-request",
+            "name": "Parse Request",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                460,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "boolean": [
+                        {
+                            "value1": "={{ $json.validateAll }}",
+                            "value2": true
+                        }
+                    ]
+                }
+            },
+            "id": "check-validate-all",
+            "name": "Validate All?",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 2,
+            "position": [
+                680,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "command": "cd /workspaces/self-hosted-ai-starter-kit/agentskills/skills-ref && source .venv/bin/activate && cd /workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills && for skill in */; do echo \"Validating: $skill\"; skills-ref validate \"$skill\" 2>&1; done"
+            },
+            "id": "validate-all-skills",
+            "name": "Validate All Skills",
+            "type": "n8n-nodes-base.executeCommand",
+            "typeVersion": 1,
+            "position": [
+                900,
+                180
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "command": "=cd /workspaces/self-hosted-ai-starter-kit/agentskills/skills-ref && source .venv/bin/activate && skills-ref validate {{ $json.skillPath }}"
+            },
+            "id": "validate-single-skill",
+            "name": "Validate Single Skill",
+            "type": "n8n-nodes-base.executeCommand",
+            "typeVersion": 1,
+            "position": [
+                900,
+                420
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "jsCode": "// Parse validation output\nconst output = $input.item.json.stdout || '';\nconst stderr = $input.item.json.stderr || '';\nconst exitCode = $input.item.json.exitCode || 0;\nconst skillPath = $('Parse Request').item.json.skillPath;\nconst requestId = $('Parse Request').item.json.requestId;\n\n// Determine validation status\nconst isValid = exitCode === 0 && !stderr.toLowerCase().includes('error');\nconst errors = [];\n\nif (!isValid) {\n  // Parse error messages from stderr\n  const errorLines = stderr.split('\\n').filter(line => \n    line.includes('error') || line.includes('Error') || line.includes('invalid')\n  );\n  \n  errorLines.forEach(line => {\n    errors.push({\n      message: line.trim(),\n      type: 'validation_error'\n    });\n  });\n}\n\n// Structure validation report\nreturn {\n  json: {\n    requestId: requestId,\n    timestamp: new Date().toISOString(),\n    skillPath: skillPath || 'all-skills',\n    status: isValid ? 'valid' : 'invalid',\n    valid: isValid,\n    exitCode: exitCode,\n    errors: errors,\n    output: output,\n    agentskillsCompliant: isValid,\n    recommendations: isValid ? [] : [\n      'Review error messages above',\n      'Check SKILL.md frontmatter format',\n      'Verify required fields: name, description',\n      'Ensure name matches directory name',\n      'See: https://agentskills.io/specification'\n    ]\n  }\n};"
+            },
+            "id": "parse-validation-output",
+            "name": "Parse Validation Output",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                1120,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "boolean": [
+                        {
+                            "value1": "={{ $json.valid }}",
+                            "value2": true
+                        }
+                    ]
+                }
+            },
+            "id": "check-validation-result",
+            "name": "Validation Passed?",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 2,
+            "position": [
+                1340,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "respondWith": "json",
+                "responseBody": "={{ JSON.stringify($json, null, 2) }}",
+                "options": {
+                    "responseCode": 200,
+                    "responseHeaders": {
+                        "entries": [
+                            {
+                                "name": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "name": "X-Validation-Status",
+                                "value": "={{ $json.status }}"
+                            }
+                        ]
+                    }
+                }
+            },
+            "id": "respond-success",
+            "name": "Respond Success",
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1,
+            "position": [
+                1560,
+                180
+            ]
+        },
+        {
+            "parameters": {
+                "respondWith": "json",
+                "responseBody": "={{ JSON.stringify($json, null, 2) }}",
+                "options": {
+                    "responseCode": 422,
+                    "responseHeaders": {
+                        "entries": [
+                            {
+                                "name": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "name": "X-Validation-Status",
+                                "value": "invalid"
+                            }
+                        ]
+                    }
+                }
+            },
+            "id": "respond-failure",
+            "name": "Respond Failure",
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1,
+            "position": [
+                1560,
+                420
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "create",
+                "docType": "validation_log",
+                "docContent": "={{ JSON.stringify($json, null, 2) }}"
+            },
+            "id": "log-to-context7",
+            "name": "Log to Context7",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                1780,
+                300
+            ],
+            "credentials": {
+                "httpBasicAuth": {
+                    "id": "context7-api",
+                    "name": "Context7 API"
+                }
+            },
+            "parameters": {
+                "method": "POST",
+                "url": "https://api.context7.io/docs",
+                "authentication": "predefinedCredentialType",
+                "nodeCredentialType": "httpBasicAuth",
+                "options": {},
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "doc_type",
+                            "value": "agentskills_validation"
+                        },
+                        {
+                            "name": "title",
+                            "value": "={{ $json.skillPath }} - {{ $json.status }}"
+                        },
+                        {
+                            "name": "content",
+                            "value": "={{ JSON.stringify($json, null, 2) }}"
+                        }
+                    ]
+                },
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ]
+                }
+            },
+            "continueOnFail": true
+        }
+    ],
+    "connections": {
+        "Webhook Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "Parse Request",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Parse Request": {
+            "main": [
+                [
+                    {
+                        "node": "Validate All?",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Validate All?": {
+            "main": [
+                [
+                    {
+                        "node": "Validate All Skills",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Validate Single Skill",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Validate All Skills": {
+            "main": [
+                [
+                    {
+                        "node": "Parse Validation Output",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Validate Single Skill": {
+            "main": [
+                [
+                    {
+                        "node": "Parse Validation Output",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Parse Validation Output": {
+            "main": [
+                [
+                    {
+                        "node": "Validation Passed?",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Validation Passed?": {
+            "main": [
+                [
+                    {
+                        "node": "Respond Success",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Respond Failure",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Respond Success": {
+            "main": [
+                [
+                    {
+                        "node": "Log to Context7",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Respond Failure": {
+            "main": [
+                [
+                    {
+                        "node": "Log to Context7",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    },
+    "staticData": null,
+    "tags": [
+        "agentskills",
+        "validation",
+        "automation"
+    ],
+    "triggerCount": 1,
+    "updatedAt": "2026-03-05T00:00:00.000Z",
+    "versionId": "1.0.0"
+}

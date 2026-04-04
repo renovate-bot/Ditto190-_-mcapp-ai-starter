@@ -1,0 +1,161 @@
+# General files to ignore
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.idea/
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+!.vscode/README.md
+*.swp
+*.swo
+
+# VS Code Extension specific
+*.vsix
+.vscode-test/
+.vscode-test-web/
+vsce-*.log
+ovsx-*.log
+
+# Build outputs
+out/
+dist/
+build/
+*.tsbuildinfo
+*.js.map
+*.d.ts.map
+
+# Test outputs
+test-out/
+test-dist/
+lib/dist-test/
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Archives and bundles
+*.tar.gz
+*.zip
+*.7z
+*.rar
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.#*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*_backup.*
+package_broken.json
+package_fixed.json
+
+# Development tools
+
+# Project Folders
+# Ignore all files in carry-overs but keep the folder
+carry-overs/*
+!carry-overs/.gitkeep
+
+# Test repositories and research scratch space
+repo-for-test/
+research/
+
+
+# Temporary development files
+*_SUMMARY.md
+*_GUIDE.md
+*_COMPLETE.md
+*_IMPLEMENTATION_*.md
+!docs/
+debug-*.js
+fix_*.py
+fix_*.js
+patch_*.js
+*_template.txt
+custom_fix.txt
+*.patch
+*.original
+*_fix.txt
+*-example.yml
+*_patch.txt
+
+# Shell scripts for debugging/fixing (keep only essential ones)
+add_metadata_to_tests.sh
+simple_metadata_fix.sh
+debug_*.sh
+fix_*.sh
+temp_*.sh
+
+# Cross-platform alternatives to shell scripts
+post-compile-fixes-cross-platform.js
+
+# Profile files (user-created profiles in workspace)
+/*.json
+!package.json
+!package-lock.json
+!tsconfig*.json
+.c8_output/
+
+# Cache directories
+.cache/
+
+# Claude local settings file
+.claude/settings.local.json

@@ -1,0 +1,6182 @@
+[
+  {
+    "node_type": "n8n-nodes-1shot.oneShot",
+    "package": "n8n-nodes-1shot",
+    "display_name": "1Shot API"
+  },
+  {
+    "node_type": "@2chat/n8n-nodes-twochat.twoChat",
+    "package": "@2chat/n8n-nodes-twochat",
+    "display_name": "2Chat"
+  },
+  {
+    "node_type": "nodes-langchain.agent",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "AI Agent"
+  },
+  {
+    "node_type": "nodes-langchain.agentTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "AI Agent Tool"
+  },
+  {
+    "node_type": "n8n-nodes-aiscraper.aiScraper",
+    "package": "n8n-nodes-aiscraper",
+    "display_name": "AI Scraper"
+  },
+  {
+    "node_type": "nodes-base.aiTransform",
+    "package": "n8n-nodes-base",
+    "display_name": "AI Transform"
+  },
+  {
+    "node_type": "nodes-base.aiTransformTool",
+    "package": "n8n-nodes-base",
+    "display_name": "AI Transform Tool"
+  },
+  {
+    "node_type": "n8n-nodes-aimlapi.aimlApi",
+    "package": "n8n-nodes-aimlapi",
+    "display_name": "AI/ML API"
+  },
+  {
+    "node_type": "n8n-nodes-binalyze-air.air",
+    "package": "n8n-nodes-binalyze-air",
+    "display_name": "AIR"
+  },
+  {
+    "node_type": "nodes-base.amqp",
+    "package": "n8n-nodes-base",
+    "display_name": "AMQP Sender"
+  },
+  {
+    "node_type": "nodes-base.amqpTool",
+    "package": "n8n-nodes-base",
+    "display_name": "AMQP Sender Tool"
+  },
+  {
+    "node_type": "nodes-base.amqpTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "AMQP Trigger"
+  },
+  {
+    "node_type": "nodes-base.apiTemplateIo",
+    "package": "n8n-nodes-base",
+    "display_name": "APITemplate.io"
+  },
+  {
+    "node_type": "nodes-base.apiTemplateIoTool",
+    "package": "n8n-nodes-base",
+    "display_name": "APITemplate.io Tool"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatAwsBedrock",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "AWS Bedrock Chat Model"
+  },
+  {
+    "node_type": "nodes-base.awsCertificateManager",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS Certificate Manager"
+  },
+  {
+    "node_type": "nodes-base.awsCognito",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS Cognito"
+  },
+  {
+    "node_type": "nodes-base.awsComprehend",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS Comprehend"
+  },
+  {
+    "node_type": "nodes-base.awsDynamoDb",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS DynamoDB"
+  },
+  {
+    "node_type": "nodes-base.awsElb",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS ELB"
+  },
+  {
+    "node_type": "nodes-base.awsIam",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS IAM"
+  },
+  {
+    "node_type": "nodes-base.awsLambda",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS Lambda"
+  },
+  {
+    "node_type": "nodes-base.awsLambdaTool",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS Lambda Tool"
+  },
+  {
+    "node_type": "nodes-base.awsRekognition",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS Rekognition"
+  },
+  {
+    "node_type": "nodes-base.awsSes",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS SES"
+  },
+  {
+    "node_type": "nodes-base.awsSesTool",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS SES Tool"
+  },
+  {
+    "node_type": "nodes-base.awsSns",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS SNS"
+  },
+  {
+    "node_type": "nodes-base.awsSnsTool",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS SNS Tool"
+  },
+  {
+    "node_type": "nodes-base.awsSnsTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS SNS Trigger"
+  },
+  {
+    "node_type": "nodes-base.awsSqs",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS SQS"
+  },
+  {
+    "node_type": "nodes-base.awsTextract",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS Textract"
+  },
+  {
+    "node_type": "nodes-base.awsTextractTool",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS Textract Tool"
+  },
+  {
+    "node_type": "nodes-base.awsTranscribe",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS Transcribe"
+  },
+  {
+    "node_type": "nodes-base.awsTranscribeTool",
+    "package": "n8n-nodes-base",
+    "display_name": "AWS Transcribe Tool"
+  },
+  {
+    "node_type": "n8n-nodes-abyssale.abyssale",
+    "package": "n8n-nodes-abyssale",
+    "display_name": "Abyssale"
+  },
+  {
+    "node_type": "@actaport/n8n-nodes-actaport.actaport",
+    "package": "@actaport/n8n-nodes-actaport",
+    "display_name": "Actaport"
+  },
+  {
+    "node_type": "nodes-base.actionNetwork",
+    "package": "n8n-nodes-base",
+    "display_name": "Action Network"
+  },
+  {
+    "node_type": "nodes-base.actionNetworkTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Action Network Tool"
+  },
+  {
+    "node_type": "nodes-base.activeCampaign",
+    "package": "n8n-nodes-base",
+    "display_name": "ActiveCampaign"
+  },
+  {
+    "node_type": "nodes-base.activeCampaignTool",
+    "package": "n8n-nodes-base",
+    "display_name": "ActiveCampaign Tool"
+  },
+  {
+    "node_type": "nodes-base.activeCampaignTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "ActiveCampaign Trigger"
+  },
+  {
+    "node_type": "nodes-base.acuitySchedulingTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Acuity Scheduling Trigger"
+  },
+  {
+    "node_type": "nodes-base.adalo",
+    "package": "n8n-nodes-base",
+    "display_name": "Adalo"
+  },
+  {
+    "node_type": "nodes-base.adaloTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Adalo Tool"
+  },
+  {
+    "node_type": "n8n-nodes-addtowallet.addToWallet",
+    "package": "n8n-nodes-addtowallet",
+    "display_name": "Add To Wallet"
+  },
+  {
+    "node_type": "nodes-base.affinity",
+    "package": "n8n-nodes-base",
+    "display_name": "Affinity"
+  },
+  {
+    "node_type": "nodes-base.affinityTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Affinity Tool"
+  },
+  {
+    "node_type": "nodes-base.affinityTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Affinity Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-agencii.agencii",
+    "package": "n8n-nodes-agencii",
+    "display_name": "Agencii"
+  },
+  {
+    "node_type": "nodes-base.aggregate",
+    "package": "n8n-nodes-base",
+    "display_name": "Aggregate"
+  },
+  {
+    "node_type": "nodes-base.agileCrm",
+    "package": "n8n-nodes-base",
+    "display_name": "Agile CRM"
+  },
+  {
+    "node_type": "nodes-base.agileCrmTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Agile CRM Tool"
+  },
+  {
+    "node_type": "n8n-nodes-aimfox.aimfox",
+    "package": "n8n-nodes-aimfox",
+    "display_name": "Aimfox"
+  },
+  {
+    "node_type": "n8n-nodes-air.air",
+    "package": "n8n-nodes-air",
+    "display_name": "Air"
+  },
+  {
+    "node_type": "n8n-nodes-airparser.airparser",
+    "package": "n8n-nodes-airparser",
+    "display_name": "Airparser"
+  },
+  {
+    "node_type": "nodes-base.airtable",
+    "package": "n8n-nodes-base",
+    "display_name": "Airtable"
+  },
+  {
+    "node_type": "nodes-base.airtableTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Airtable Tool"
+  },
+  {
+    "node_type": "nodes-base.airtableTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Airtable Trigger"
+  },
+  {
+    "node_type": "nodes-base.airtop",
+    "package": "n8n-nodes-base",
+    "display_name": "Airtop"
+  },
+  {
+    "node_type": "nodes-base.airtopTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Airtop Tool"
+  },
+  {
+    "node_type": "n8n-nodes-alive5.alive5",
+    "package": "n8n-nodes-alive5",
+    "display_name": "Alive5"
+  },
+  {
+    "node_type": "n8n-nodes-anchorbrowser.anchorBrowser",
+    "package": "n8n-nodes-anchorbrowser",
+    "display_name": "Anchor Browser"
+  },
+  {
+    "node_type": "n8n-nodes-anny.anny",
+    "package": "n8n-nodes-anny",
+    "display_name": "Anny"
+  },
+  {
+    "node_type": "@datafix/n8n-nodes-anthias.anthias",
+    "package": "@datafix/n8n-nodes-anthias",
+    "display_name": "Anthias"
+  },
+  {
+    "node_type": "nodes-langchain.anthropic",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Anthropic"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatAnthropic",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Anthropic Chat Model"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatAnthropicTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Anthropic Chat Model Tool"
+  },
+  {
+    "node_type": "nodes-langchain.anthropicTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Anthropic Tool"
+  },
+  {
+    "node_type": "@apaleo/n8n-nodes-apaleo-official.apaleo",
+    "package": "@apaleo/n8n-nodes-apaleo-official",
+    "display_name": "Apaleo Official"
+  },
+  {
+    "node_type": "n8n-nodes-apex.apex",
+    "package": "n8n-nodes-apex",
+    "display_name": "Apex"
+  },
+  {
+    "node_type": "@apify/n8n-nodes-apify.apify",
+    "package": "@apify/n8n-nodes-apify",
+    "display_name": "Apify"
+  },
+  {
+    "node_type": "nodes-base.asana",
+    "package": "n8n-nodes-base",
+    "display_name": "Asana"
+  },
+  {
+    "node_type": "nodes-base.asanaTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Asana Tool"
+  },
+  {
+    "node_type": "nodes-base.asanaTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Asana Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-assemblyai.assemblyAi",
+    "package": "n8n-nodes-assemblyai",
+    "display_name": "AssemblyAI"
+  },
+  {
+    "node_type": "@asyncai/n8n-nodes-asyncai.asyncAi",
+    "package": "@asyncai/n8n-nodes-asyncai",
+    "display_name": "Async"
+  },
+  {
+    "node_type": "n8n-nodes-atriomail-email.atriomail",
+    "package": "n8n-nodes-atriomail-email",
+    "display_name": "Atriomail"
+  },
+  {
+    "node_type": "n8n-nodes-authentica.authentica",
+    "package": "n8n-nodes-authentica",
+    "display_name": "Authentica"
+  },
+  {
+    "node_type": "nodes-langchain.outputParserAutofixing",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Auto-fixing Output Parser"
+  },
+  {
+    "node_type": "n8n-nodes-autobound.autobound",
+    "package": "n8n-nodes-autobound",
+    "display_name": "Autobound"
+  },
+  {
+    "node_type": "n8n-nodes-autocalls.autocalls",
+    "package": "n8n-nodes-autocalls",
+    "display_name": "Autocalls"
+  },
+  {
+    "node_type": "nodes-base.autopilot",
+    "package": "n8n-nodes-base",
+    "display_name": "Autopilot"
+  },
+  {
+    "node_type": "nodes-base.autopilotTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Autopilot Tool"
+  },
+  {
+    "node_type": "nodes-base.autopilotTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Autopilot Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-avatartalk.avatarTalk",
+    "package": "n8n-nodes-avatartalk",
+    "display_name": "AvatarTalk"
+  },
+  {
+    "node_type": "nodes-base.awsS3",
+    "package": "n8n-nodes-base",
+    "display_name": "AwsS3"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreAzureAISearch",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Azure AI Search Vector Store"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreAzureAISearchTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Azure AI Search Vector Store Tool"
+  },
+  {
+    "node_type": "nodes-base.azureCosmosDb",
+    "package": "n8n-nodes-base",
+    "display_name": "Azure Cosmos DB"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatAzureOpenAi",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Azure OpenAI Chat Model"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatAzureOpenAiTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Azure OpenAI Chat Model Tool"
+  },
+  {
+    "node_type": "nodes-base.azureStorage",
+    "package": "n8n-nodes-base",
+    "display_name": "Azure Storage"
+  },
+  {
+    "node_type": "nodes-base.bambooHr",
+    "package": "n8n-nodes-base",
+    "display_name": "BambooHR"
+  },
+  {
+    "node_type": "nodes-base.bambooHrTool",
+    "package": "n8n-nodes-base",
+    "display_name": "BambooHR Tool"
+  },
+  {
+    "node_type": "nodes-base.bannerbear",
+    "package": "n8n-nodes-base",
+    "display_name": "Bannerbear"
+  },
+  {
+    "node_type": "@basalt-ai/n8n-nodes-basalt.basalt",
+    "package": "@basalt-ai/n8n-nodes-basalt",
+    "display_name": "Basalt"
+  },
+  {
+    "node_type": "nodes-base.baserow",
+    "package": "n8n-nodes-base",
+    "display_name": "Baserow"
+  },
+  {
+    "node_type": "nodes-base.baserowTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Baserow Tool"
+  },
+  {
+    "node_type": "nodes-langchain.chainLlm",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Basic LLM Chain"
+  },
+  {
+    "node_type": "nodes-langchain.chainLlmTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Basic LLM Chain Tool"
+  },
+  {
+    "node_type": "@bedrijfsdatanl/n8n-nodes-bedrijfsdata.bedrijfsdata",
+    "package": "@bedrijfsdatanl/n8n-nodes-bedrijfsdata",
+    "display_name": "Bedrijfsdata"
+  },
+  {
+    "node_type": "nodes-base.beeminder",
+    "package": "n8n-nodes-base",
+    "display_name": "Beeminder"
+  },
+  {
+    "node_type": "nodes-base.beeminderTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Beeminder Tool"
+  },
+  {
+    "node_type": "n8n-nodes-belakeai.belakeAi",
+    "package": "n8n-nodes-belakeai",
+    "display_name": "Belake.ai"
+  },
+  {
+    "node_type": "n8n-nodes-beyondpresence.beyondPresence",
+    "package": "n8n-nodes-beyondpresence",
+    "display_name": "Beyond Presence"
+  },
+  {
+    "node_type": "nodes-langchain.documentBinaryInputLoader",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Binary Input Loader"
+  },
+  {
+    "node_type": "nodes-base.bitbucketTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Bitbucket Trigger"
+  },
+  {
+    "node_type": "nodes-base.bitly",
+    "package": "n8n-nodes-base",
+    "display_name": "Bitly"
+  },
+  {
+    "node_type": "nodes-base.bitlyTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Bitly Tool"
+  },
+  {
+    "node_type": "nodes-base.bitwarden",
+    "package": "n8n-nodes-base",
+    "display_name": "Bitwarden"
+  },
+  {
+    "node_type": "nodes-base.bitwardenTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Bitwarden Tool"
+  },
+  {
+    "node_type": "n8n-nodes-blooio.blooioMessaging",
+    "package": "n8n-nodes-blooio",
+    "display_name": "Blooio Messaging"
+  },
+  {
+    "node_type": "@blotato/n8n-nodes-blotato.blotato",
+    "package": "@blotato/n8n-nodes-blotato",
+    "display_name": "Blotato"
+  },
+  {
+    "node_type": "n8n-nodes-blue.blue",
+    "package": "n8n-nodes-blue",
+    "display_name": "Blue"
+  },
+  {
+    "node_type": "n8n-nodes-bookstack.bookstack",
+    "package": "n8n-nodes-bookstack",
+    "display_name": "BookStack"
+  },
+  {
+    "node_type": "n8n-nodes-botnoi-voice.botnoitts",
+    "package": "n8n-nodes-botnoi-voice",
+    "display_name": "Botnoi Voice"
+  },
+  {
+    "node_type": "n8n-nodes-bounceban.bounceban",
+    "package": "n8n-nodes-bounceban",
+    "display_name": "BounceBan"
+  },
+  {
+    "node_type": "nodes-base.box",
+    "package": "n8n-nodes-base",
+    "display_name": "Box"
+  },
+  {
+    "node_type": "nodes-base.boxTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Box Trigger"
+  },
+  {
+    "node_type": "nodes-base.Brandfetch",
+    "package": "n8n-nodes-base",
+    "display_name": "Brandfetch"
+  },
+  {
+    "node_type": "nodes-base.BrandfetchTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Brandfetch Tool"
+  },
+  {
+    "node_type": "@brave/n8n-nodes-brave-search.braveSearch",
+    "package": "@brave/n8n-nodes-brave-search",
+    "display_name": "Brave Search"
+  },
+  {
+    "node_type": "nodes-base.sendInBlue",
+    "package": "n8n-nodes-base",
+    "display_name": "Brevo"
+  },
+  {
+    "node_type": "nodes-base.sendInBlueTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Brevo Tool"
+  },
+  {
+    "node_type": "nodes-base.sendInBlueTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Brevo Trigger"
+  },
+  {
+    "node_type": "@brightdata/n8n-nodes-brightdata.brightData",
+    "package": "@brightdata/n8n-nodes-brightdata",
+    "display_name": "BrightData"
+  },
+  {
+    "node_type": "n8n-nodes-browseract.browserAct",
+    "package": "n8n-nodes-browseract",
+    "display_name": "BrowserAct"
+  },
+  {
+    "node_type": "n8n-nodes-browserbase.browserbase",
+    "package": "n8n-nodes-browserbase",
+    "display_name": "Browserbase Agent"
+  },
+  {
+    "node_type": "n8n-nodes-browserflow.browserflow",
+    "package": "n8n-nodes-browserflow",
+    "display_name": "Browserflow for LinkedIn"
+  },
+  {
+    "node_type": "nodes-base.bubble",
+    "package": "n8n-nodes-base",
+    "display_name": "Bubble"
+  },
+  {
+    "node_type": "nodes-base.bubbleTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Bubble Tool"
+  },
+  {
+    "node_type": "n8n-nodes-businessmap.businessmap",
+    "package": "n8n-nodes-businessmap",
+    "display_name": "Businessmap"
+  },
+  {
+    "node_type": "n8n-nodes-csvbox.csvboxTrigger",
+    "package": "n8n-nodes-csvbox",
+    "display_name": "CSVBox Trigger"
+  },
+  {
+    "node_type": "nodes-base.calTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Cal.com Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.toolCalculator",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Calculator"
+  },
+  {
+    "node_type": "nodes-base.calendlyTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Calendly Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.toolWorkflow",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Call n8n Sub-Workflow Tool"
+  },
+  {
+    "node_type": "n8n-nodes-camino.camino",
+    "package": "n8n-nodes-camino",
+    "display_name": "Camino AI"
+  },
+  {
+    "node_type": "n8n-nodes-carbone.carbone",
+    "package": "n8n-nodes-carbone",
+    "display_name": "Carbone"
+  },
+  {
+    "node_type": "n8n-nodes-caspioofficial.caspio",
+    "package": "n8n-nodes-caspioofficial",
+    "display_name": "Caspio"
+  },
+  {
+    "node_type": "n8n-nodes-chainstream.chainstream",
+    "package": "n8n-nodes-chainstream",
+    "display_name": "Chainstream"
+  },
+  {
+    "node_type": "nodes-langchain.textSplitterCharacterTextSplitter",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Character Text Splitter"
+  },
+  {
+    "node_type": "nodes-base.chargebee",
+    "package": "n8n-nodes-base",
+    "display_name": "Chargebee"
+  },
+  {
+    "node_type": "nodes-base.chargebeeTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Chargebee Tool"
+  },
+  {
+    "node_type": "nodes-base.chargebeeTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Chargebee Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-chartmogul.chartmogul",
+    "package": "n8n-nodes-chartmogul",
+    "display_name": "ChartMogul"
+  },
+  {
+    "node_type": "nodes-langchain.chat",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Chat"
+  },
+  {
+    "node_type": "n8n-nodes-chat-data.chatData",
+    "package": "n8n-nodes-chat-data",
+    "display_name": "Chat Data"
+  },
+  {
+    "node_type": "nodes-langchain.memoryManager",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Chat Memory Manager"
+  },
+  {
+    "node_type": "nodes-langchain.memoryChatRetriever",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Chat Messages Retriever"
+  },
+  {
+    "node_type": "nodes-langchain.chatTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Chat Tool"
+  },
+  {
+    "node_type": "nodes-langchain.chatTrigger",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Chat Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-checkmk.checkmk",
+    "package": "n8n-nodes-checkmk",
+    "display_name": "Checkmk"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreChromaDB",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Chroma Vector Store"
+  },
+  {
+    "node_type": "nodes-base.circleCi",
+    "package": "n8n-nodes-base",
+    "display_name": "CircleCI"
+  },
+  {
+    "node_type": "nodes-base.circleCiTool",
+    "package": "n8n-nodes-base",
+    "display_name": "CircleCI Tool"
+  },
+  {
+    "node_type": "nodes-base.clearbit",
+    "package": "n8n-nodes-base",
+    "display_name": "Clearbit"
+  },
+  {
+    "node_type": "nodes-base.clearbitTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Clearbit Tool"
+  },
+  {
+    "node_type": "nodes-base.clickUp",
+    "package": "n8n-nodes-base",
+    "display_name": "ClickUp"
+  },
+  {
+    "node_type": "nodes-base.clickUpTool",
+    "package": "n8n-nodes-base",
+    "display_name": "ClickUp Tool"
+  },
+  {
+    "node_type": "nodes-base.clickUpTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "ClickUp Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-clipboardgenie.clipboardGenie",
+    "package": "n8n-nodes-clipboardgenie",
+    "display_name": "Clipboard Genie"
+  },
+  {
+    "node_type": "nodes-base.clockify",
+    "package": "n8n-nodes-base",
+    "display_name": "Clockify"
+  },
+  {
+    "node_type": "nodes-base.clockifyTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Clockify Tool"
+  },
+  {
+    "node_type": "nodes-base.clockifyTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Clockify Trigger"
+  },
+  {
+    "node_type": "@cloudconvert/n8n-nodes-cloudconvert.cloudConvert",
+    "package": "@cloudconvert/n8n-nodes-cloudconvert",
+    "display_name": "CloudConvert"
+  },
+  {
+    "node_type": "nodes-base.cloudflare",
+    "package": "n8n-nodes-base",
+    "display_name": "Cloudflare"
+  },
+  {
+    "node_type": "nodes-base.cloudflareTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Cloudflare Tool"
+  },
+  {
+    "node_type": "n8n-nodes-cloudinary.cloudinary",
+    "package": "n8n-nodes-cloudinary",
+    "display_name": "Cloudinary"
+  },
+  {
+    "node_type": "nodes-base.cockpit",
+    "package": "n8n-nodes-base",
+    "display_name": "Cockpit"
+  },
+  {
+    "node_type": "nodes-base.cockpitTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Cockpit Tool"
+  },
+  {
+    "node_type": "nodes-base.coda",
+    "package": "n8n-nodes-base",
+    "display_name": "Coda"
+  },
+  {
+    "node_type": "nodes-base.codaTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Coda Tool"
+  },
+  {
+    "node_type": "nodes-base.code",
+    "package": "n8n-nodes-base",
+    "display_name": "Code"
+  },
+  {
+    "node_type": "nodes-langchain.toolCode",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Code Tool"
+  },
+  {
+    "node_type": "@coginiti/n8n-nodes-coginiti.coginiti",
+    "package": "@coginiti/n8n-nodes-coginiti",
+    "display_name": "Coginiti"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatCohere",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Cohere Chat Model"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatCohereTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Cohere Chat Model Tool"
+  },
+  {
+    "node_type": "nodes-langchain.lmCohere",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Cohere Model"
+  },
+  {
+    "node_type": "nodes-langchain.lmCohereTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Cohere Model Tool"
+  },
+  {
+    "node_type": "nodes-base.coinGecko",
+    "package": "n8n-nodes-base",
+    "display_name": "CoinGecko"
+  },
+  {
+    "node_type": "nodes-base.coinGeckoTool",
+    "package": "n8n-nodes-base",
+    "display_name": "CoinGecko Tool"
+  },
+  {
+    "node_type": "@cometapi-dev/n8n-nodes-cometapi.cometApi",
+    "package": "@cometapi-dev/n8n-nodes-cometapi",
+    "display_name": "CometAPI"
+  },
+  {
+    "node_type": "nodes-base.compareDatasets",
+    "package": "n8n-nodes-base",
+    "display_name": "Compare Datasets"
+  },
+  {
+    "node_type": "nodes-base.compression",
+    "package": "n8n-nodes-base",
+    "display_name": "Compression"
+  },
+  {
+    "node_type": "nodes-base.compressionTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Compression Tool"
+  },
+  {
+    "node_type": "n8n-nodes-contentdrips.contentdrips",
+    "package": "n8n-nodes-contentdrips",
+    "display_name": "Contentdrips"
+  },
+  {
+    "node_type": "nodes-base.contentful",
+    "package": "n8n-nodes-base",
+    "display_name": "Contentful"
+  },
+  {
+    "node_type": "nodes-base.contentfulTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Contentful Tool"
+  },
+  {
+    "node_type": "n8n-nodes-contextualai.contextualAi",
+    "package": "n8n-nodes-contextualai",
+    "display_name": "Contextual AI"
+  },
+  {
+    "node_type": "nodes-langchain.retrieverContextualCompression",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Contextual Compression Retriever"
+  },
+  {
+    "node_type": "nodes-base.convertToFile",
+    "package": "n8n-nodes-base",
+    "display_name": "Convert to File"
+  },
+  {
+    "node_type": "nodes-base.moveBinaryData",
+    "package": "n8n-nodes-base",
+    "display_name": "Convert to/from binary data"
+  },
+  {
+    "node_type": "n8n-nodes-converthub.converthub",
+    "package": "n8n-nodes-converthub",
+    "display_name": "ConvertHub"
+  },
+  {
+    "node_type": "nodes-base.convertKit",
+    "package": "n8n-nodes-base",
+    "display_name": "ConvertKit"
+  },
+  {
+    "node_type": "nodes-base.convertKitTool",
+    "package": "n8n-nodes-base",
+    "display_name": "ConvertKit Tool"
+  },
+  {
+    "node_type": "nodes-base.convertKitTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "ConvertKit Trigger"
+  },
+  {
+    "node_type": "@copicake/n8n-nodes-copicake.copicake",
+    "package": "@copicake/n8n-nodes-copicake",
+    "display_name": "Copicake"
+  },
+  {
+    "node_type": "nodes-base.copper",
+    "package": "n8n-nodes-base",
+    "display_name": "Copper"
+  },
+  {
+    "node_type": "nodes-base.copperTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Copper Tool"
+  },
+  {
+    "node_type": "nodes-base.copperTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Copper Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-copyseeker.copyseeker",
+    "package": "n8n-nodes-copyseeker",
+    "display_name": "Copyseeker"
+  },
+  {
+    "node_type": "nodes-base.cortex",
+    "package": "n8n-nodes-base",
+    "display_name": "Cortex"
+  },
+  {
+    "node_type": "n8n-nodes-craft.craft",
+    "package": "n8n-nodes-craft",
+    "display_name": "Craft"
+  },
+  {
+    "node_type": "n8n-nodes-craftmypdf.craftMyPdf",
+    "package": "n8n-nodes-craftmypdf",
+    "display_name": "CraftMyPdf"
+  },
+  {
+    "node_type": "nodes-base.crateDb",
+    "package": "n8n-nodes-base",
+    "display_name": "CrateDB"
+  },
+  {
+    "node_type": "nodes-base.crateDbTool",
+    "package": "n8n-nodes-base",
+    "display_name": "CrateDB Tool"
+  },
+  {
+    "node_type": "n8n-nodes-jsonpost.jsonPostTrigger",
+    "package": "n8n-nodes-jsonpost",
+    "display_name": "CrispForms Trigger"
+  },
+  {
+    "node_type": "nodes-base.cron",
+    "package": "n8n-nodes-base",
+    "display_name": "Cron"
+  },
+  {
+    "node_type": "n8n-nodes-cronlytic.cronlyticTrigger",
+    "package": "n8n-nodes-cronlytic",
+    "display_name": "Cronlytic Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-crossmint.crossmintWallets",
+    "package": "n8n-nodes-crossmint",
+    "display_name": "Crossmint Wallets"
+  },
+  {
+    "node_type": "@crowdin/n8n-nodes-crowdin.crowdinFileBased",
+    "package": "@crowdin/n8n-nodes-crowdin",
+    "display_name": "Crowdin (File-Based)"
+  },
+  {
+    "node_type": "nodes-base.crypto",
+    "package": "n8n-nodes-base",
+    "display_name": "Crypto"
+  },
+  {
+    "node_type": "nodes-base.currents",
+    "package": "n8n-nodes-base",
+    "display_name": "Currents"
+  },
+  {
+    "node_type": "nodes-base.currentsTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Currents Tool"
+  },
+  {
+    "node_type": "nodes-base.currentsTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Currents Trigger"
+  },
+  {
+    "node_type": "@custom-js/n8n-nodes-pdf-toolkit-v2.pdfToolkit",
+    "package": "@custom-js/n8n-nodes-pdf-toolkit-v2",
+    "display_name": "CustomJS (PDF & File Toolkit)"
+  },
+  {
+    "node_type": "nodes-base.n8nTrainingCustomerDatastore",
+    "package": "n8n-nodes-base",
+    "display_name": "Customer Datastore (n8n training)"
+  },
+  {
+    "node_type": "nodes-base.n8nTrainingCustomerDatastoreTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Customer Datastore (n8n training) Tool"
+  },
+  {
+    "node_type": "nodes-base.n8nTrainingCustomerMessenger",
+    "package": "n8n-nodes-base",
+    "display_name": "Customer Messenger (n8n training)"
+  },
+  {
+    "node_type": "nodes-base.n8nTrainingCustomerMessengerTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Customer Messenger (n8n training) Tool"
+  },
+  {
+    "node_type": "nodes-base.customerIo",
+    "package": "n8n-nodes-base",
+    "display_name": "Customer.io"
+  },
+  {
+    "node_type": "nodes-base.customerIoTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Customer.io Tool"
+  },
+  {
+    "node_type": "nodes-base.customerIoTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Customer.io Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-cyberpulse-compliance-dev.cyberPulseCompliance",
+    "package": "n8n-nodes-cyberpulse-compliance-dev",
+    "display_name": "CyberPulse Compliance (Dev)"
+  },
+  {
+    "node_type": "nodes-base.dhl",
+    "package": "n8n-nodes-base",
+    "display_name": "DHL"
+  },
+  {
+    "node_type": "nodes-base.dhlTool",
+    "package": "n8n-nodes-base",
+    "display_name": "DHL Tool"
+  },
+  {
+    "node_type": "n8n-nodes-dalil-ai.dalilAi",
+    "package": "n8n-nodes-dalil-ai",
+    "display_name": "Dalil AI"
+  },
+  {
+    "node_type": "n8n-nodes-dart.dart",
+    "package": "n8n-nodes-dart",
+    "display_name": "Dart"
+  },
+  {
+    "node_type": "n8n-nodes-ada.ada",
+    "package": "n8n-nodes-ada",
+    "display_name": "Data Analysis"
+  },
+  {
+    "node_type": "nodes-base.dataTable",
+    "package": "n8n-nodes-base",
+    "display_name": "Data table"
+  },
+  {
+    "node_type": "nodes-base.dataTableTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Data table Tool"
+  },
+  {
+    "node_type": "n8n-nodes-dataforseo.dataForSeo",
+    "package": "n8n-nodes-dataforseo",
+    "display_name": "DataForSEO"
+  },
+  {
+    "node_type": "nodes-base.dateTime",
+    "package": "n8n-nodes-base",
+    "display_name": "Date & Time"
+  },
+  {
+    "node_type": "nodes-base.debugHelper",
+    "package": "n8n-nodes-base",
+    "display_name": "DebugHelper"
+  },
+  {
+    "node_type": "@decisionrules/n8n-nodes-decisionrules.decisionRules",
+    "package": "@decisionrules/n8n-nodes-decisionrules",
+    "display_name": "DecisionRules"
+  },
+  {
+    "node_type": "@decodo/n8n-nodes-decodo.decodo",
+    "package": "@decodo/n8n-nodes-decodo",
+    "display_name": "Decodo"
+  },
+  {
+    "node_type": "nodes-base.deepL",
+    "package": "n8n-nodes-base",
+    "display_name": "DeepL"
+  },
+  {
+    "node_type": "nodes-base.deepLTool",
+    "package": "n8n-nodes-base",
+    "display_name": "DeepL Tool"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatDeepSeek",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "DeepSeek Chat Model"
+  },
+  {
+    "node_type": "n8n-nodes-deeptagger.deepTagger",
+    "package": "n8n-nodes-deeptagger",
+    "display_name": "DeepTagger"
+  },
+  {
+    "node_type": "nodes-langchain.documentDefaultDataLoader",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Default Data Loader"
+  },
+  {
+    "node_type": "n8n-nodes-deliverect.deliverect",
+    "package": "n8n-nodes-deliverect",
+    "display_name": "Deliverect"
+  },
+  {
+    "node_type": "nodes-base.demio",
+    "package": "n8n-nodes-base",
+    "display_name": "Demio"
+  },
+  {
+    "node_type": "nodes-base.demioTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Demio Tool"
+  },
+  {
+    "node_type": "@deutschlandgpt/n8n-nodes-deutschlandgpt.deutschlandgpt",
+    "package": "@deutschlandgpt/n8n-nodes-deutschlandgpt",
+    "display_name": "DeutschlandGPT"
+  },
+  {
+    "node_type": "n8n-nodes-digital-ocean.digitalOcean",
+    "package": "n8n-nodes-digital-ocean",
+    "display_name": "Digital Ocean"
+  },
+  {
+    "node_type": "@digitalocean/n8n-nodes-digitalocean-gradient-serverless-inference.digitalOceanGradientServerlessInference",
+    "package": "@digitalocean/n8n-nodes-digitalocean-gradient-serverless-inference",
+    "display_name": "DigitalOcean Gradient\u2122 AI Serverless Inference"
+  },
+  {
+    "node_type": "@directus/n8n-nodes-directus.directus",
+    "package": "@directus/n8n-nodes-directus",
+    "display_name": "Directus"
+  },
+  {
+    "node_type": "nodes-base.discord",
+    "package": "n8n-nodes-base",
+    "display_name": "Discord"
+  },
+  {
+    "node_type": "nodes-base.discourse",
+    "package": "n8n-nodes-base",
+    "display_name": "Discourse"
+  },
+  {
+    "node_type": "nodes-base.discourseTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Discourse Tool"
+  },
+  {
+    "node_type": "nodes-base.disqus",
+    "package": "n8n-nodes-base",
+    "display_name": "Disqus"
+  },
+  {
+    "node_type": "n8n-nodes-diviup-connect.diviUpConnect",
+    "package": "n8n-nodes-diviup-connect",
+    "display_name": "DiviUp Connect"
+  },
+  {
+    "node_type": "n8n-nodes-docsautomator.docsAutomator",
+    "package": "n8n-nodes-docsautomator",
+    "display_name": "DocsAutomator"
+  },
+  {
+    "node_type": "n8n-nodes-docugenerate.docuGenerate",
+    "package": "n8n-nodes-docugenerate",
+    "display_name": "DocuGenerate"
+  },
+  {
+    "node_type": "n8n-nodes-docuprox.docuProx",
+    "package": "n8n-nodes-docuprox",
+    "display_name": "DocuProx"
+  },
+  {
+    "node_type": "@docuseal/n8n-nodes-docuseal.docuseal",
+    "package": "@docuseal/n8n-nodes-docuseal",
+    "display_name": "DocuSeal"
+  },
+  {
+    "node_type": "n8n-nodes-docuwriter-ai.docuWriter",
+    "package": "n8n-nodes-docuwriter-ai",
+    "display_name": "DocuWriter.ai"
+  },
+  {
+    "node_type": "n8n-nodes-documentero.documentero",
+    "package": "n8n-nodes-documentero",
+    "display_name": "Documentero"
+  },
+  {
+    "node_type": "n8n-nodes-docutray.docutray",
+    "package": "n8n-nodes-docutray",
+    "display_name": "Docutray"
+  },
+  {
+    "node_type": "@drwally/n8n-nodes-integration.drwally",
+    "package": "@drwally/n8n-nodes-integration",
+    "display_name": "DrWally"
+  },
+  {
+    "node_type": "nodes-base.drift",
+    "package": "n8n-nodes-base",
+    "display_name": "Drift"
+  },
+  {
+    "node_type": "nodes-base.driftTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Drift Tool"
+  },
+  {
+    "node_type": "nodes-base.dropbox",
+    "package": "n8n-nodes-base",
+    "display_name": "Dropbox"
+  },
+  {
+    "node_type": "nodes-base.dropboxTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Dropbox Tool"
+  },
+  {
+    "node_type": "nodes-base.dropcontact",
+    "package": "n8n-nodes-base",
+    "display_name": "Dropcontact"
+  },
+  {
+    "node_type": "nodes-base.dropcontactTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Dropcontact Tool"
+  },
+  {
+    "node_type": "n8n-nodes-dumplingai.dumplingAi",
+    "package": "n8n-nodes-dumplingai",
+    "display_name": "Dumpling AI"
+  },
+  {
+    "node_type": "n8n-nodes-dust.dust",
+    "package": "n8n-nodes-dust",
+    "display_name": "Dust"
+  },
+  {
+    "node_type": "nodes-base.egoi",
+    "package": "n8n-nodes-base",
+    "display_name": "E-goi"
+  },
+  {
+    "node_type": "nodes-base.egoiTool",
+    "package": "n8n-nodes-base",
+    "display_name": "E-goi Tool"
+  },
+  {
+    "node_type": "nodes-base.e2eTest",
+    "package": "n8n-nodes-base",
+    "display_name": "E2E Test"
+  },
+  {
+    "node_type": "nodes-base.e2eTestTool",
+    "package": "n8n-nodes-base",
+    "display_name": "E2E Test Tool"
+  },
+  {
+    "node_type": "nodes-base.erpNext",
+    "package": "n8n-nodes-base",
+    "display_name": "ERPNext"
+  },
+  {
+    "node_type": "nodes-base.erpNextTool",
+    "package": "n8n-nodes-base",
+    "display_name": "ERPNext Tool"
+  },
+  {
+    "node_type": "@easysoftware/n8n-nodes-easy-redmine.easyRedmine",
+    "package": "@easysoftware/n8n-nodes-easy-redmine",
+    "display_name": "Easy Redmine"
+  },
+  {
+    "node_type": "nodes-base.editImage",
+    "package": "n8n-nodes-base",
+    "display_name": "Edit Image"
+  },
+  {
+    "node_type": "nodes-base.elasticSecurity",
+    "package": "n8n-nodes-base",
+    "display_name": "Elastic Security"
+  },
+  {
+    "node_type": "nodes-base.elasticSecurityTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Elastic Security Tool"
+  },
+  {
+    "node_type": "nodes-base.elasticsearch",
+    "package": "n8n-nodes-base",
+    "display_name": "Elasticsearch"
+  },
+  {
+    "node_type": "nodes-base.elasticsearchTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Elasticsearch Tool"
+  },
+  {
+    "node_type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
+    "package": "@elevenlabs/n8n-nodes-elevenlabs",
+    "display_name": "ElevenLabs"
+  },
+  {
+    "node_type": "nodes-base.emailReadImap",
+    "package": "n8n-nodes-base",
+    "display_name": "Email Trigger (IMAP)"
+  },
+  {
+    "node_type": "n8n-nodes-emailvalidation.emailValidation",
+    "package": "n8n-nodes-emailvalidation",
+    "display_name": "EmailValidation"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsAwsBedrock",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings AWS Bedrock"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsAzureOpenAi",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings Azure OpenAI"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsAzureOpenAiTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings Azure OpenAI Tool"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsCohere",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings Cohere"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsCohereTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings Cohere Tool"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsGoogleGemini",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings Google Gemini"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsGoogleVertex",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings Google Vertex"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsHuggingFaceInference",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings Hugging Face Inference"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsHuggingFaceInferenceTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings Hugging Face Inference Tool"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsLemonade",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings Lemonade"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsMistralCloud",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings Mistral Cloud"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsOllama",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings Ollama"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsOpenAi",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings OpenAI"
+  },
+  {
+    "node_type": "nodes-langchain.embeddingsOpenAiTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Embeddings OpenAI Tool"
+  },
+  {
+    "node_type": "nodes-base.emelia",
+    "package": "n8n-nodes-base",
+    "display_name": "Emelia"
+  },
+  {
+    "node_type": "nodes-base.emeliaTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Emelia Tool"
+  },
+  {
+    "node_type": "nodes-base.emeliaTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Emelia Trigger"
+  },
+  {
+    "node_type": "@enginemailer/n8n-nodes-enginemailer.enginemailer",
+    "package": "@enginemailer/n8n-nodes-enginemailer",
+    "display_name": "Enginemailer"
+  },
+  {
+    "node_type": "nodes-base.errorTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Error Trigger"
+  },
+  {
+    "node_type": "nodes-base.evaluation",
+    "package": "n8n-nodes-base",
+    "display_name": "Evaluation"
+  },
+  {
+    "node_type": "nodes-base.eventbriteTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Eventbrite Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-evomi.evomi",
+    "package": "n8n-nodes-evomi",
+    "display_name": "Evomi"
+  },
+  {
+    "node_type": "n8n-nodes-exa-official.exa",
+    "package": "n8n-nodes-exa-official",
+    "display_name": "Exa"
+  },
+  {
+    "node_type": "@datafix/n8n-nodes-exact-online.exactOnline",
+    "package": "@datafix/n8n-nodes-exact-online",
+    "display_name": "Exact Online"
+  },
+  {
+    "node_type": "nodes-base.executeCommand",
+    "package": "n8n-nodes-base",
+    "display_name": "Execute Command"
+  },
+  {
+    "node_type": "nodes-base.executeCommandTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Execute Command Tool"
+  },
+  {
+    "node_type": "nodes-base.executeWorkflow",
+    "package": "n8n-nodes-base",
+    "display_name": "Execute Sub-workflow"
+  },
+  {
+    "node_type": "nodes-base.executeWorkflowTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Execute Workflow Trigger"
+  },
+  {
+    "node_type": "nodes-base.executionData",
+    "package": "n8n-nodes-base",
+    "display_name": "Execution Data"
+  },
+  {
+    "node_type": "@exploriumai/n8n-nodes-explorium-ai.exploriumApiNode",
+    "package": "@exploriumai/n8n-nodes-explorium-ai",
+    "display_name": "Explorium API"
+  },
+  {
+    "node_type": "nodes-base.extractFromFile",
+    "package": "n8n-nodes-base",
+    "display_name": "Extract from File"
+  },
+  {
+    "node_type": "n8n-nodes-extruct.extruct",
+    "package": "n8n-nodes-extruct",
+    "display_name": "Extruct AI"
+  },
+  {
+    "node_type": "nodes-base.ftp",
+    "package": "n8n-nodes-base",
+    "display_name": "FTP"
+  },
+  {
+    "node_type": "nodes-base.facebookGraphApi",
+    "package": "n8n-nodes-base",
+    "display_name": "Facebook Graph API"
+  },
+  {
+    "node_type": "nodes-base.facebookGraphApiTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Facebook Graph API Tool"
+  },
+  {
+    "node_type": "nodes-base.facebookLeadAdsTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Facebook Lead Ads Trigger"
+  },
+  {
+    "node_type": "nodes-base.facebookTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Facebook Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-famulor.famulor",
+    "package": "n8n-nodes-famulor",
+    "display_name": "Famulor"
+  },
+  {
+    "node_type": "n8n-nodes-featherless.featherless",
+    "package": "n8n-nodes-featherless",
+    "display_name": "Featherless"
+  },
+  {
+    "node_type": "@fibery/n8n-nodes-fibery.fibery",
+    "package": "@fibery/n8n-nodes-fibery",
+    "display_name": "Fibery"
+  },
+  {
+    "node_type": "nodes-base.figmaTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Figma Trigger (Beta)"
+  },
+  {
+    "node_type": "nodes-base.filemaker",
+    "package": "n8n-nodes-base",
+    "display_name": "FileMaker"
+  },
+  {
+    "node_type": "nodes-base.filemakerTool",
+    "package": "n8n-nodes-base",
+    "display_name": "FileMaker Tool"
+  },
+  {
+    "node_type": "n8n-nodes-fillout.filloutTrigger",
+    "package": "n8n-nodes-fillout",
+    "display_name": "Fillout Trigger"
+  },
+  {
+    "node_type": "nodes-base.filter",
+    "package": "n8n-nodes-base",
+    "display_name": "Filter"
+  },
+  {
+    "node_type": "@mendable/n8n-nodes-firecrawl.firecrawl",
+    "package": "@mendable/n8n-nodes-firecrawl",
+    "display_name": "Firecrawl"
+  },
+  {
+    "node_type": "@firefliesai/n8n-nodes-fireflies.fireflies",
+    "package": "@firefliesai/n8n-nodes-fireflies",
+    "display_name": "Fireflies"
+  },
+  {
+    "node_type": "@flarelight/n8n-nodes-flarelight.flarelight",
+    "package": "@flarelight/n8n-nodes-flarelight",
+    "display_name": "Flarelight"
+  },
+  {
+    "node_type": "nodes-base.flow",
+    "package": "n8n-nodes-base",
+    "display_name": "Flow"
+  },
+  {
+    "node_type": "nodes-base.flowTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Flow Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-fluentc.fluentCTranslate",
+    "package": "n8n-nodes-fluentc",
+    "display_name": "FluentC Translate"
+  },
+  {
+    "node_type": "nodes-base.formIoTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Form.io Trigger"
+  },
+  {
+    "node_type": "nodes-base.formstackTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Formstack Trigger"
+  },
+  {
+    "node_type": "nodes-base.freshdesk",
+    "package": "n8n-nodes-base",
+    "display_name": "Freshdesk"
+  },
+  {
+    "node_type": "nodes-base.freshdeskTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Freshdesk Tool"
+  },
+  {
+    "node_type": "nodes-base.freshservice",
+    "package": "n8n-nodes-base",
+    "display_name": "Freshservice"
+  },
+  {
+    "node_type": "nodes-base.freshserviceTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Freshservice Tool"
+  },
+  {
+    "node_type": "nodes-base.freshworksCrm",
+    "package": "n8n-nodes-base",
+    "display_name": "Freshworks CRM"
+  },
+  {
+    "node_type": "nodes-base.freshworksCrmTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Freshworks CRM Tool"
+  },
+  {
+    "node_type": "n8n-nodes-fullenrich.fullEnrich",
+    "package": "n8n-nodes-fullenrich",
+    "display_name": "FullEnrich"
+  },
+  {
+    "node_type": "nodes-base.function",
+    "package": "n8n-nodes-base",
+    "display_name": "Function"
+  },
+  {
+    "node_type": "nodes-base.functionItem",
+    "package": "n8n-nodes-base",
+    "display_name": "Function Item"
+  },
+  {
+    "node_type": "n8n-nodes-gainium.Gainium",
+    "package": "n8n-nodes-gainium",
+    "display_name": "Gainium"
+  },
+  {
+    "node_type": "n8n-nodes-gatus-trigger.gatusTrigger",
+    "package": "n8n-nodes-gatus-trigger",
+    "display_name": "Gatus Trigger"
+  },
+  {
+    "node_type": "nodes-base.getResponse",
+    "package": "n8n-nodes-base",
+    "display_name": "GetResponse"
+  },
+  {
+    "node_type": "nodes-base.getResponseTool",
+    "package": "n8n-nodes-base",
+    "display_name": "GetResponse Tool"
+  },
+  {
+    "node_type": "nodes-base.getResponseTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "GetResponse Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-get-transcribe.getTranscribe",
+    "package": "n8n-nodes-get-transcribe",
+    "display_name": "GetTranscribe"
+  },
+  {
+    "node_type": "nodes-base.ghost",
+    "package": "n8n-nodes-base",
+    "display_name": "Ghost"
+  },
+  {
+    "node_type": "nodes-base.ghostTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Ghost Tool"
+  },
+  {
+    "node_type": "nodes-base.git",
+    "package": "n8n-nodes-base",
+    "display_name": "Git"
+  },
+  {
+    "node_type": "nodes-base.gitTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Git Tool"
+  },
+  {
+    "node_type": "nodes-base.github",
+    "package": "n8n-nodes-base",
+    "display_name": "GitHub"
+  },
+  {
+    "node_type": "nodes-langchain.documentGithubLoader",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "GitHub Document Loader"
+  },
+  {
+    "node_type": "nodes-base.githubTool",
+    "package": "n8n-nodes-base",
+    "display_name": "GitHub Tool"
+  },
+  {
+    "node_type": "nodes-base.gitlab",
+    "package": "n8n-nodes-base",
+    "display_name": "GitLab"
+  },
+  {
+    "node_type": "nodes-base.gitlabTool",
+    "package": "n8n-nodes-base",
+    "display_name": "GitLab Tool"
+  },
+  {
+    "node_type": "nodes-base.gitlabTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "GitLab Trigger"
+  },
+  {
+    "node_type": "nodes-base.githubTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Github Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-gleanclient.gleanClient",
+    "package": "n8n-nodes-gleanclient",
+    "display_name": "Glean"
+  },
+  {
+    "node_type": "@globalping/n8n-nodes-globalping.globalping",
+    "package": "@globalping/n8n-nodes-globalping",
+    "display_name": "Globalping"
+  },
+  {
+    "node_type": "nodes-base.gmail",
+    "package": "n8n-nodes-base",
+    "display_name": "Gmail"
+  },
+  {
+    "node_type": "nodes-base.gmailTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Gmail Tool"
+  },
+  {
+    "node_type": "nodes-base.gmailTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Gmail Trigger"
+  },
+  {
+    "node_type": "nodes-base.goToWebinar",
+    "package": "n8n-nodes-base",
+    "display_name": "GoToWebinar"
+  },
+  {
+    "node_type": "nodes-base.goToWebinarTool",
+    "package": "n8n-nodes-base",
+    "display_name": "GoToWebinar Tool"
+  },
+  {
+    "node_type": "nodes-base.gong",
+    "package": "n8n-nodes-base",
+    "display_name": "Gong"
+  },
+  {
+    "node_type": "nodes-base.gongTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Gong Tool"
+  },
+  {
+    "node_type": "nodes-base.googleAds",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Ads"
+  },
+  {
+    "node_type": "nodes-base.googleAdsTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Ads Tool"
+  },
+  {
+    "node_type": "nodes-base.googleAnalytics",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Analytics"
+  },
+  {
+    "node_type": "nodes-base.googleBigQuery",
+    "package": "n8n-nodes-base",
+    "display_name": "Google BigQuery"
+  },
+  {
+    "node_type": "nodes-base.googleBooks",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Books"
+  },
+  {
+    "node_type": "nodes-base.googleBooksTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Books Tool"
+  },
+  {
+    "node_type": "nodes-base.googleBusinessProfile",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Business Profile"
+  },
+  {
+    "node_type": "nodes-base.googleBusinessProfileTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Business Profile Tool"
+  },
+  {
+    "node_type": "nodes-base.googleBusinessProfileTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Business Profile Trigger"
+  },
+  {
+    "node_type": "nodes-base.googleCalendar",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Calendar"
+  },
+  {
+    "node_type": "nodes-base.googleCalendarTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Calendar Tool"
+  },
+  {
+    "node_type": "nodes-base.googleCalendarTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Calendar Trigger"
+  },
+  {
+    "node_type": "nodes-base.googleChat",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Chat"
+  },
+  {
+    "node_type": "nodes-base.googleChatTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Chat Tool"
+  },
+  {
+    "node_type": "nodes-base.googleFirebaseCloudFirestore",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Cloud Firestore"
+  },
+  {
+    "node_type": "nodes-base.googleFirebaseCloudFirestoreTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Cloud Firestore Tool"
+  },
+  {
+    "node_type": "nodes-base.googleCloudNaturalLanguage",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Cloud Natural Language"
+  },
+  {
+    "node_type": "nodes-base.googleCloudNaturalLanguageTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Cloud Natural Language Tool"
+  },
+  {
+    "node_type": "nodes-base.googleFirebaseRealtimeDatabase",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Cloud Realtime Database"
+  },
+  {
+    "node_type": "nodes-base.googleFirebaseRealtimeDatabaseTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Cloud Realtime Database Tool"
+  },
+  {
+    "node_type": "nodes-base.googleCloudStorage",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Cloud Storage"
+  },
+  {
+    "node_type": "nodes-base.googleCloudStorageTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Cloud Storage Tool"
+  },
+  {
+    "node_type": "nodes-base.googleContacts",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Contacts"
+  },
+  {
+    "node_type": "nodes-base.googleContactsTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Contacts Tool"
+  },
+  {
+    "node_type": "nodes-base.googleDocs",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Docs"
+  },
+  {
+    "node_type": "nodes-base.googleDocsTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Docs Tool"
+  },
+  {
+    "node_type": "nodes-base.googleDrive",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Drive"
+  },
+  {
+    "node_type": "nodes-base.googleDriveTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Drive Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.googleGemini",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Google Gemini"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatGoogleGemini",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Google Gemini Chat Model"
+  },
+  {
+    "node_type": "nodes-langchain.googleGeminiTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Google Gemini Tool"
+  },
+  {
+    "node_type": "nodes-base.googlePerspective",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Perspective"
+  },
+  {
+    "node_type": "nodes-base.googlePerspectiveTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Perspective Tool"
+  },
+  {
+    "node_type": "n8n-nodes-google-search-console.googleSearchConsole",
+    "package": "n8n-nodes-google-search-console",
+    "display_name": "Google Search Console"
+  },
+  {
+    "node_type": "nodes-base.googleSheets",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Sheets"
+  },
+  {
+    "node_type": "nodes-base.googleSheetsTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Sheets Trigger"
+  },
+  {
+    "node_type": "nodes-base.googleSlides",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Slides"
+  },
+  {
+    "node_type": "nodes-base.googleSlidesTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Slides Tool"
+  },
+  {
+    "node_type": "nodes-base.googleTasks",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Tasks"
+  },
+  {
+    "node_type": "nodes-base.googleTasksTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Tasks Tool"
+  },
+  {
+    "node_type": "nodes-base.googleTranslate",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Translate"
+  },
+  {
+    "node_type": "nodes-base.googleTranslateTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Translate Tool"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatGoogleVertex",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Google Vertex Chat Model"
+  },
+  {
+    "node_type": "nodes-base.gSuiteAdmin",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Workspace Admin"
+  },
+  {
+    "node_type": "nodes-base.gSuiteAdminTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Google Workspace Admin Tool"
+  },
+  {
+    "node_type": "nodes-base.gotify",
+    "package": "n8n-nodes-base",
+    "display_name": "Gotify"
+  },
+  {
+    "node_type": "nodes-base.gotifyTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Gotify Tool"
+  },
+  {
+    "node_type": "nodes-base.grafana",
+    "package": "n8n-nodes-base",
+    "display_name": "Grafana"
+  },
+  {
+    "node_type": "nodes-base.grafanaTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Grafana Tool"
+  },
+  {
+    "node_type": "nodes-base.graphql",
+    "package": "n8n-nodes-base",
+    "display_name": "GraphQL"
+  },
+  {
+    "node_type": "nodes-base.graphqlTool",
+    "package": "n8n-nodes-base",
+    "display_name": "GraphQL Tool"
+  },
+  {
+    "node_type": "n8n-nodes-greip.greip",
+    "package": "n8n-nodes-greip",
+    "display_name": "Greip"
+  },
+  {
+    "node_type": "nodes-base.grist",
+    "package": "n8n-nodes-base",
+    "display_name": "Grist"
+  },
+  {
+    "node_type": "nodes-base.gristTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Grist Tool"
+  },
+  {
+    "node_type": "n8n-nodes-groner.groner",
+    "package": "n8n-nodes-groner",
+    "display_name": "Groner"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatGroq",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Groq Chat Model"
+  },
+  {
+    "node_type": "nodes-langchain.guardrails",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Guardrails"
+  },
+  {
+    "node_type": "nodes-langchain.guardrailsTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Guardrails Tool"
+  },
+  {
+    "node_type": "nodes-base.gumroadTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Gumroad Trigger"
+  },
+  {
+    "node_type": "@notainc/n8n-nodes-gyazo.gyazo",
+    "package": "@notainc/n8n-nodes-gyazo",
+    "display_name": "Gyazo"
+  },
+  {
+    "node_type": "n8n-nodes-human-in-the-loop.hitlNode",
+    "package": "n8n-nodes-human-in-the-loop",
+    "display_name": "HITL Platform"
+  },
+  {
+    "node_type": "nodes-base.html",
+    "package": "n8n-nodes-base",
+    "display_name": "HTML"
+  },
+  {
+    "node_type": "nodes-base.htmlExtract",
+    "package": "n8n-nodes-base",
+    "display_name": "HTML Extract"
+  },
+  {
+    "node_type": "n8n-nodes-htmlcsstopdf.htmlcsstopdf",
+    "package": "n8n-nodes-htmlcsstopdf",
+    "display_name": "HTML to PDF"
+  },
+  {
+    "node_type": "n8n-nodes-htmlcsstoimage.htmlCssToImage",
+    "package": "n8n-nodes-htmlcsstoimage",
+    "display_name": "HTML/CSS to Image"
+  },
+  {
+    "node_type": "nodes-base.httpRequest",
+    "package": "n8n-nodes-base",
+    "display_name": "HTTP Request"
+  },
+  {
+    "node_type": "nodes-langchain.toolHttpRequest",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "HTTP Request Tool"
+  },
+  {
+    "node_type": "nodes-base.hackerNews",
+    "package": "n8n-nodes-base",
+    "display_name": "Hacker News"
+  },
+  {
+    "node_type": "nodes-base.hackerNewsTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Hacker News Tool"
+  },
+  {
+    "node_type": "nodes-base.haloPSA",
+    "package": "n8n-nodes-base",
+    "display_name": "HaloPSA"
+  },
+  {
+    "node_type": "nodes-base.haloPSATool",
+    "package": "n8n-nodes-base",
+    "display_name": "HaloPSA Tool"
+  },
+  {
+    "node_type": "nodes-base.harvest",
+    "package": "n8n-nodes-base",
+    "display_name": "Harvest"
+  },
+  {
+    "node_type": "nodes-base.harvestTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Harvest Tool"
+  },
+  {
+    "node_type": "n8n-nodes-hedy.hedy",
+    "package": "n8n-nodes-hedy",
+    "display_name": "Hedy"
+  },
+  {
+    "node_type": "nodes-base.helpScout",
+    "package": "n8n-nodes-base",
+    "display_name": "Help Scout"
+  },
+  {
+    "node_type": "nodes-base.helpScoutTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Help Scout Tool"
+  },
+  {
+    "node_type": "nodes-base.helpScoutTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Help Scout Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-heyreach.heyReach",
+    "package": "n8n-nodes-heyreach",
+    "display_name": "HeyReach API"
+  },
+  {
+    "node_type": "nodes-base.highLevel",
+    "package": "n8n-nodes-base",
+    "display_name": "HighLevel"
+  },
+  {
+    "node_type": "nodes-base.homeAssistant",
+    "package": "n8n-nodes-base",
+    "display_name": "Home Assistant"
+  },
+  {
+    "node_type": "nodes-base.homeAssistantTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Home Assistant Tool"
+  },
+  {
+    "node_type": "n8n-nodes-hookdeck.hookdeck",
+    "package": "n8n-nodes-hookdeck",
+    "display_name": "Hookdeck"
+  },
+  {
+    "node_type": "n8n-nodes-hostinger-api.hostingerApi",
+    "package": "n8n-nodes-hostinger-api",
+    "display_name": "Hostinger API"
+  },
+  {
+    "node_type": "nodes-base.hubspot",
+    "package": "n8n-nodes-base",
+    "display_name": "HubSpot"
+  },
+  {
+    "node_type": "nodes-base.hubspotTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "HubSpot Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-hubbi.hubbi",
+    "package": "n8n-nodes-hubbi",
+    "display_name": "Hubbi"
+  },
+  {
+    "node_type": "nodes-langchain.lmOpenHuggingFaceInference",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Hugging Face Inference Model"
+  },
+  {
+    "node_type": "nodes-langchain.lmOpenHuggingFaceInferenceTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Hugging Face Inference Model Tool"
+  },
+  {
+    "node_type": "nodes-base.humanticAi",
+    "package": "n8n-nodes-base",
+    "display_name": "Humantic AI"
+  },
+  {
+    "node_type": "nodes-base.humanticAiTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Humantic AI Tool"
+  },
+  {
+    "node_type": "nodes-base.hunter",
+    "package": "n8n-nodes-base",
+    "display_name": "Hunter"
+  },
+  {
+    "node_type": "nodes-base.hunterTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Hunter Tool"
+  },
+  {
+    "node_type": "n8n-nodes-ikas.ikas",
+    "package": "n8n-nodes-ikas",
+    "display_name": "IKAS"
+  },
+  {
+    "node_type": "n8n-nodes-ipgeolocation.ipgeolocation",
+    "package": "n8n-nodes-ipgeolocation",
+    "display_name": "IPGeolocation"
+  },
+  {
+    "node_type": "n8n-nodes-itglue.iTGlue",
+    "package": "n8n-nodes-itglue",
+    "display_name": "IT Glue"
+  },
+  {
+    "node_type": "nodes-base.if",
+    "package": "n8n-nodes-base",
+    "display_name": "If"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreInMemoryInsert",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "In Memory Vector Store Insert"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreInMemoryLoad",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "In Memory Vector Store Load"
+  },
+  {
+    "node_type": "@itechnotion/n8n-nodes-inboxplus.inboxPlus",
+    "package": "@itechnotion/n8n-nodes-inboxplus",
+    "display_name": "InboxPlus"
+  },
+  {
+    "node_type": "@infobip/n8n-nodes-infobip-api.infobipApi",
+    "package": "@infobip/n8n-nodes-infobip-api",
+    "display_name": "InfobipApi"
+  },
+  {
+    "node_type": "nodes-langchain.informationExtractor",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Information Extractor"
+  },
+  {
+    "node_type": "n8n-nodes-infranodus.infranodus",
+    "package": "n8n-nodes-infranodus",
+    "display_name": "InfraNodus Graph RAG"
+  },
+  {
+    "node_type": "n8n-nodes-inoreader.inoreader",
+    "package": "n8n-nodes-inoreader",
+    "display_name": "Inoreader"
+  },
+  {
+    "node_type": "@mookielianhd/n8n-nodes-instagram.instagram",
+    "package": "@mookielianhd/n8n-nodes-instagram",
+    "display_name": "Instagram"
+  },
+  {
+    "node_type": "n8n-nodes-instantly.instantly",
+    "package": "n8n-nodes-instantly",
+    "display_name": "Instantly"
+  },
+  {
+    "node_type": "nodes-base.intercom",
+    "package": "n8n-nodes-base",
+    "display_name": "Intercom"
+  },
+  {
+    "node_type": "nodes-base.intercomTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Intercom Tool"
+  },
+  {
+    "node_type": "nodes-base.interval",
+    "package": "n8n-nodes-base",
+    "display_name": "Interval"
+  },
+  {
+    "node_type": "nodes-base.invoiceNinja",
+    "package": "n8n-nodes-base",
+    "display_name": "Invoice Ninja"
+  },
+  {
+    "node_type": "nodes-base.invoiceNinjaTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Invoice Ninja Tool"
+  },
+  {
+    "node_type": "nodes-base.invoiceNinjaTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Invoice Ninja Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.outputParserItemList",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Item List Output Parser"
+  },
+  {
+    "node_type": "nodes-base.itemLists",
+    "package": "n8n-nodes-base",
+    "display_name": "Item Lists"
+  },
+  {
+    "node_type": "nodes-base.iterable",
+    "package": "n8n-nodes-base",
+    "display_name": "Iterable"
+  },
+  {
+    "node_type": "nodes-base.iterableTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Iterable Tool"
+  },
+  {
+    "node_type": "nodes-langchain.documentJsonInputLoader",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "JSON Input Loader"
+  },
+  {
+    "node_type": "nodes-base.jwt",
+    "package": "n8n-nodes-base",
+    "display_name": "JWT"
+  },
+  {
+    "node_type": "nodes-base.jwtTool",
+    "package": "n8n-nodes-base",
+    "display_name": "JWT Tool"
+  },
+  {
+    "node_type": "n8n-nodes-jaasai.jaasai",
+    "package": "n8n-nodes-jaasai",
+    "display_name": "JaaS AI"
+  },
+  {
+    "node_type": "nodes-base.jenkins",
+    "package": "n8n-nodes-base",
+    "display_name": "Jenkins"
+  },
+  {
+    "node_type": "nodes-base.jenkinsTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Jenkins Tool"
+  },
+  {
+    "node_type": "n8n-nodes-jetapi.jetapi",
+    "package": "n8n-nodes-jetapi",
+    "display_name": "JetAPI"
+  },
+  {
+    "node_type": "n8n-nodes-jigsawstack.jigsawStack",
+    "package": "n8n-nodes-jigsawstack",
+    "display_name": "JigsawStack"
+  },
+  {
+    "node_type": "nodes-base.jinaAi",
+    "package": "n8n-nodes-base",
+    "display_name": "Jina AI"
+  },
+  {
+    "node_type": "nodes-base.jinaAiTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Jina AI Tool"
+  },
+  {
+    "node_type": "nodes-base.jira",
+    "package": "n8n-nodes-base",
+    "display_name": "Jira Software"
+  },
+  {
+    "node_type": "nodes-base.jiraTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Jira Software Tool"
+  },
+  {
+    "node_type": "nodes-base.jiraTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Jira Trigger"
+  },
+  {
+    "node_type": "@joai/n8n-nodes-joai.joai",
+    "package": "@joai/n8n-nodes-joai",
+    "display_name": "JoAi"
+  },
+  {
+    "node_type": "n8n-nodes-joggai.joggAiNode",
+    "package": "n8n-nodes-joggai",
+    "display_name": "JoggAI"
+  },
+  {
+    "node_type": "nodes-base.jotFormTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Jotform Trigger"
+  },
+  {
+    "node_type": "nodes-base.kafka",
+    "package": "n8n-nodes-base",
+    "display_name": "Kafka"
+  },
+  {
+    "node_type": "nodes-base.kafkaTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Kafka Tool"
+  },
+  {
+    "node_type": "nodes-base.kafkaTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Kafka Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-kargo-entegrator.kargoEntegrator",
+    "package": "n8n-nodes-kargo-entegrator",
+    "display_name": "Kargo Entegrat\u00f6r"
+  },
+  {
+    "node_type": "nodes-base.keap",
+    "package": "n8n-nodes-base",
+    "display_name": "Keap"
+  },
+  {
+    "node_type": "nodes-base.keapTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Keap Tool"
+  },
+  {
+    "node_type": "nodes-base.keapTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Keap Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-keephub.keephub",
+    "package": "n8n-nodes-keephub",
+    "display_name": "Keephub"
+  },
+  {
+    "node_type": "n8n-nodes-kinderpedia.kinderpedia",
+    "package": "n8n-nodes-kinderpedia",
+    "display_name": "Kinderpedia"
+  },
+  {
+    "node_type": "n8n-nodes-kipps.kippsAiChatbot",
+    "package": "n8n-nodes-kipps",
+    "display_name": "Kipps.AI Chatbot"
+  },
+  {
+    "node_type": "@klardaten/n8n-nodes-datevconnect.masterData",
+    "package": "@klardaten/n8n-nodes-datevconnect",
+    "display_name": "Klardaten DATEVconnect: Master Data"
+  },
+  {
+    "node_type": "n8n-nodes-klicktipp.klicktipp",
+    "package": "n8n-nodes-klicktipp",
+    "display_name": "KlickTipp"
+  },
+  {
+    "node_type": "nodes-base.koBoToolbox",
+    "package": "n8n-nodes-base",
+    "display_name": "KoBoToolbox"
+  },
+  {
+    "node_type": "nodes-base.koBoToolboxTool",
+    "package": "n8n-nodes-base",
+    "display_name": "KoBoToolbox Tool"
+  },
+  {
+    "node_type": "nodes-base.koBoToolboxTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "KoBoToolbox Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-krispcall.krispcall",
+    "package": "n8n-nodes-krispcall",
+    "display_name": "KrispCall"
+  },
+  {
+    "node_type": "n8n-nodes-kylas.kylas",
+    "package": "n8n-nodes-kylas",
+    "display_name": "Kylas"
+  },
+  {
+    "node_type": "n8n-nodes-late.late",
+    "package": "n8n-nodes-late",
+    "display_name": "LATE"
+  },
+  {
+    "node_type": "@ledgers/n8n-nodes-ledgers-cloud.ledgers",
+    "package": "@ledgers/n8n-nodes-ledgers-cloud",
+    "display_name": "LEDGERS"
+  },
+  {
+    "node_type": "n8n-nodes-llmlayer.llmLayer",
+    "package": "n8n-nodes-llmlayer",
+    "display_name": "LLMLayer"
+  },
+  {
+    "node_type": "n8n-nodes-unstract.llmWhisperer",
+    "package": "n8n-nodes-unstract",
+    "display_name": "LLMWhisperer"
+  },
+  {
+    "node_type": "nodes-langchain.code",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "LangChain Code"
+  },
+  {
+    "node_type": "@langfuse/n8n-nodes-langfuse.langfuse",
+    "package": "@langfuse/n8n-nodes-langfuse",
+    "display_name": "Langfuse"
+  },
+  {
+    "node_type": "n8n-nodes-lavatop.lavatop",
+    "package": "n8n-nodes-lavatop",
+    "display_name": "LavaTop"
+  },
+  {
+    "node_type": "n8n-nodes-layerre.layerre",
+    "package": "n8n-nodes-layerre",
+    "display_name": "Layerre"
+  },
+  {
+    "node_type": "nodes-base.ldap",
+    "package": "n8n-nodes-base",
+    "display_name": "Ldap"
+  },
+  {
+    "node_type": "nodes-base.ldapTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Ldap Tool"
+  },
+  {
+    "node_type": "nodes-base.lemlist",
+    "package": "n8n-nodes-base",
+    "display_name": "Lemlist"
+  },
+  {
+    "node_type": "nodes-base.lemlistTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Lemlist Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatLemonade",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Lemonade Chat Model"
+  },
+  {
+    "node_type": "nodes-langchain.lmLemonade",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Lemonade Model"
+  },
+  {
+    "node_type": "@levelrmm/n8n-nodes-level.level",
+    "package": "@levelrmm/n8n-nodes-level",
+    "display_name": "Level"
+  },
+  {
+    "node_type": "nodes-base.limit",
+    "package": "n8n-nodes-base",
+    "display_name": "Limit"
+  },
+  {
+    "node_type": "nodes-base.line",
+    "package": "n8n-nodes-base",
+    "display_name": "Line"
+  },
+  {
+    "node_type": "@aotoki/n8n-nodes-line-messaging.lineMessaging",
+    "package": "@aotoki/n8n-nodes-line-messaging",
+    "display_name": "Line Messaging"
+  },
+  {
+    "node_type": "nodes-base.lineTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Line Tool"
+  },
+  {
+    "node_type": "nodes-base.linear",
+    "package": "n8n-nodes-base",
+    "display_name": "Linear"
+  },
+  {
+    "node_type": "nodes-base.linearTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Linear Tool"
+  },
+  {
+    "node_type": "nodes-base.linearTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Linear Trigger"
+  },
+  {
+    "node_type": "nodes-base.lingvaNex",
+    "package": "n8n-nodes-base",
+    "display_name": "LingvaNex"
+  },
+  {
+    "node_type": "nodes-base.lingvaNexTool",
+    "package": "n8n-nodes-base",
+    "display_name": "LingvaNex Tool"
+  },
+  {
+    "node_type": "n8n-nodes-linked-api.linkedApi",
+    "package": "n8n-nodes-linked-api",
+    "display_name": "Linked API"
+  },
+  {
+    "node_type": "nodes-base.linkedIn",
+    "package": "n8n-nodes-base",
+    "display_name": "LinkedIn"
+  },
+  {
+    "node_type": "nodes-base.linkedInTool",
+    "package": "n8n-nodes-base",
+    "display_name": "LinkedIn Tool"
+  },
+  {
+    "node_type": "n8n-nodes-linkupapi.linkup",
+    "package": "n8n-nodes-linkupapi",
+    "display_name": "Linkup API for LinkedIn"
+  },
+  {
+    "node_type": "@lnkbio/n8n-nodes-lnkbio.lnkBio",
+    "package": "@lnkbio/n8n-nodes-lnkbio",
+    "display_name": "Lnk.Bio"
+  },
+  {
+    "node_type": "@local-falcon/n8n-nodes-localfalcon.localFalcon",
+    "package": "@local-falcon/n8n-nodes-localfalcon",
+    "display_name": "Local Falcon"
+  },
+  {
+    "node_type": "nodes-base.localFileTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Local File Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-logsnag.LogSnag",
+    "package": "n8n-nodes-logsnag",
+    "display_name": "LogSnag"
+  },
+  {
+    "node_type": "nodes-base.loneScale",
+    "package": "n8n-nodes-base",
+    "display_name": "LoneScale"
+  },
+  {
+    "node_type": "nodes-base.loneScaleTool",
+    "package": "n8n-nodes-base",
+    "display_name": "LoneScale Tool"
+  },
+  {
+    "node_type": "nodes-base.loneScaleTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "LoneScale Trigger"
+  },
+  {
+    "node_type": "@lusha-org/n8n-nodes-lusha.lusha",
+    "package": "@lusha-org/n8n-nodes-lusha",
+    "display_name": "Lusha"
+  },
+  {
+    "node_type": "nodes-langchain.mcpClient",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "MCP Client"
+  },
+  {
+    "node_type": "nodes-langchain.mcpClientTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "MCP Client Tool"
+  },
+  {
+    "node_type": "nodes-langchain.mcpTrigger",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "MCP Server Trigger"
+  },
+  {
+    "node_type": "nodes-base.misp",
+    "package": "n8n-nodes-base",
+    "display_name": "MISP"
+  },
+  {
+    "node_type": "nodes-base.mispTool",
+    "package": "n8n-nodes-base",
+    "display_name": "MISP Tool"
+  },
+  {
+    "node_type": "nodes-base.mqtt",
+    "package": "n8n-nodes-base",
+    "display_name": "MQTT"
+  },
+  {
+    "node_type": "nodes-base.mqttTool",
+    "package": "n8n-nodes-base",
+    "display_name": "MQTT Tool"
+  },
+  {
+    "node_type": "nodes-base.mqttTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "MQTT Trigger"
+  },
+  {
+    "node_type": "nodes-base.msg91",
+    "package": "n8n-nodes-base",
+    "display_name": "MSG91"
+  },
+  {
+    "node_type": "nodes-base.msg91Tool",
+    "package": "n8n-nodes-base",
+    "display_name": "MSG91 Tool"
+  },
+  {
+    "node_type": "nodes-base.magento2",
+    "package": "n8n-nodes-base",
+    "display_name": "Magento 2"
+  },
+  {
+    "node_type": "nodes-base.magento2Tool",
+    "package": "n8n-nodes-base",
+    "display_name": "Magento 2 Tool"
+  },
+  {
+    "node_type": "n8n-nodes-magnetite.magnetite",
+    "package": "n8n-nodes-magnetite",
+    "display_name": "Magnetite"
+  },
+  {
+    "node_type": "nodes-base.mailcheck",
+    "package": "n8n-nodes-base",
+    "display_name": "Mailcheck"
+  },
+  {
+    "node_type": "nodes-base.mailcheckTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Mailcheck Tool"
+  },
+  {
+    "node_type": "nodes-base.mailchimp",
+    "package": "n8n-nodes-base",
+    "display_name": "Mailchimp"
+  },
+  {
+    "node_type": "nodes-base.mailchimpTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Mailchimp Tool"
+  },
+  {
+    "node_type": "nodes-base.mailchimpTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Mailchimp Trigger"
+  },
+  {
+    "node_type": "nodes-base.mailerLite",
+    "package": "n8n-nodes-base",
+    "display_name": "MailerLite"
+  },
+  {
+    "node_type": "nodes-base.mailerLiteTool",
+    "package": "n8n-nodes-base",
+    "display_name": "MailerLite Tool"
+  },
+  {
+    "node_type": "nodes-base.mailerLiteTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "MailerLite Trigger"
+  },
+  {
+    "node_type": "nodes-base.mailgun",
+    "package": "n8n-nodes-base",
+    "display_name": "Mailgun"
+  },
+  {
+    "node_type": "nodes-base.mailgunTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Mailgun Tool"
+  },
+  {
+    "node_type": "nodes-base.mailjet",
+    "package": "n8n-nodes-base",
+    "display_name": "Mailjet"
+  },
+  {
+    "node_type": "nodes-base.mailjetTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Mailjet Tool"
+  },
+  {
+    "node_type": "nodes-base.mailjetTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Mailjet Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-mailtrap.mailtrap",
+    "package": "n8n-nodes-mailtrap",
+    "display_name": "Mailtrap"
+  },
+  {
+    "node_type": "n8n-nodes-mallabe-barcodes.mallabeBarcodes",
+    "package": "n8n-nodes-mallabe-barcodes",
+    "display_name": "Mallabe Barcodes"
+  },
+  {
+    "node_type": "n8n-nodes-mallabe-images.mallabeImages",
+    "package": "n8n-nodes-mallabe-images",
+    "display_name": "Mallabe Images"
+  },
+  {
+    "node_type": "nodes-base.mandrill",
+    "package": "n8n-nodes-base",
+    "display_name": "Mandrill"
+  },
+  {
+    "node_type": "nodes-base.mandrillTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Mandrill Tool"
+  },
+  {
+    "node_type": "nodes-langchain.manualChatTrigger",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Manual Chat Trigger"
+  },
+  {
+    "node_type": "nodes-base.manualTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Manual Trigger"
+  },
+  {
+    "node_type": "nodes-base.markdown",
+    "package": "n8n-nodes-base",
+    "display_name": "Markdown"
+  },
+  {
+    "node_type": "nodes-base.marketstack",
+    "package": "n8n-nodes-base",
+    "display_name": "Marketstack"
+  },
+  {
+    "node_type": "nodes-base.marketstackTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Marketstack Tool"
+  },
+  {
+    "node_type": "@markupai/n8n-nodes-markupai.markupai",
+    "package": "@markupai/n8n-nodes-markupai",
+    "display_name": "Markup AI"
+  },
+  {
+    "node_type": "nodes-base.matrix",
+    "package": "n8n-nodes-base",
+    "display_name": "Matrix"
+  },
+  {
+    "node_type": "nodes-base.matrixTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Matrix Tool"
+  },
+  {
+    "node_type": "n8n-nodes-matrix42.matrix42",
+    "package": "n8n-nodes-matrix42",
+    "display_name": "Matrix42"
+  },
+  {
+    "node_type": "nodes-base.mattermost",
+    "package": "n8n-nodes-base",
+    "display_name": "Mattermost"
+  },
+  {
+    "node_type": "nodes-base.mautic",
+    "package": "n8n-nodes-base",
+    "display_name": "Mautic"
+  },
+  {
+    "node_type": "nodes-base.mauticTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Mautic Tool"
+  },
+  {
+    "node_type": "nodes-base.mauticTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Mautic Trigger"
+  },
+  {
+    "node_type": "nodes-base.medium",
+    "package": "n8n-nodes-base",
+    "display_name": "Medium"
+  },
+  {
+    "node_type": "nodes-base.mediumTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Medium Tool"
+  },
+  {
+    "node_type": "n8n-nodes-medullar.medullar",
+    "package": "n8n-nodes-medullar",
+    "display_name": "Medullar"
+  },
+  {
+    "node_type": "n8n-nodes-meetgeek.meetGeek",
+    "package": "n8n-nodes-meetgeek",
+    "display_name": "MeetGeek"
+  },
+  {
+    "node_type": "n8n-nodes-memara.memara",
+    "package": "n8n-nodes-memara",
+    "display_name": "Memara"
+  },
+  {
+    "node_type": "nodes-base.merge",
+    "package": "n8n-nodes-base",
+    "display_name": "Merge"
+  },
+  {
+    "node_type": "nodes-base.messageBird",
+    "package": "n8n-nodes-base",
+    "display_name": "MessageBird"
+  },
+  {
+    "node_type": "nodes-base.messageBirdTool",
+    "package": "n8n-nodes-base",
+    "display_name": "MessageBird Tool"
+  },
+  {
+    "node_type": "nodes-base.metabase",
+    "package": "n8n-nodes-base",
+    "display_name": "Metabase"
+  },
+  {
+    "node_type": "nodes-base.metabaseTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Metabase Tool"
+  },
+  {
+    "node_type": "nodes-langchain.microsoftAgent365Trigger",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Microsoft Agent 365 Trigger"
+  },
+  {
+    "node_type": "nodes-base.microsoftDynamicsCrm",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft Dynamics CRM"
+  },
+  {
+    "node_type": "nodes-base.microsoftDynamicsCrmTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft Dynamics CRM Tool"
+  },
+  {
+    "node_type": "nodes-base.microsoftEntra",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft Entra ID"
+  },
+  {
+    "node_type": "nodes-base.microsoftEntraTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft Entra ID Tool"
+  },
+  {
+    "node_type": "nodes-base.microsoftExcel",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft Excel 365"
+  },
+  {
+    "node_type": "nodes-base.microsoftGraphSecurity",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft Graph Security"
+  },
+  {
+    "node_type": "nodes-base.microsoftGraphSecurityTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft Graph Security Tool"
+  },
+  {
+    "node_type": "nodes-base.microsoftOneDrive",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft OneDrive"
+  },
+  {
+    "node_type": "nodes-base.microsoftOneDriveTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft OneDrive Tool"
+  },
+  {
+    "node_type": "nodes-base.microsoftOneDriveTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft OneDrive Trigger"
+  },
+  {
+    "node_type": "nodes-base.microsoftOutlook",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft Outlook"
+  },
+  {
+    "node_type": "nodes-base.microsoftOutlookTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft Outlook Trigger"
+  },
+  {
+    "node_type": "nodes-base.microsoftSql",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft SQL"
+  },
+  {
+    "node_type": "nodes-base.microsoftSqlTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft SQL Tool"
+  },
+  {
+    "node_type": "nodes-base.microsoftSharePoint",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft SharePoint"
+  },
+  {
+    "node_type": "nodes-base.microsoftSharePointTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft SharePoint Tool"
+  },
+  {
+    "node_type": "nodes-base.microsoftTeams",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft Teams"
+  },
+  {
+    "node_type": "nodes-base.microsoftTeamsTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft Teams Trigger"
+  },
+  {
+    "node_type": "nodes-base.microsoftToDo",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft To Do"
+  },
+  {
+    "node_type": "nodes-base.microsoftToDoTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Microsoft To Do Tool"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreMilvus",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Milvus Vector Store"
+  },
+  {
+    "node_type": "nodes-base.mindee",
+    "package": "n8n-nodes-base",
+    "display_name": "Mindee"
+  },
+  {
+    "node_type": "nodes-base.mistralAi",
+    "package": "n8n-nodes-base",
+    "display_name": "Mistral AI"
+  },
+  {
+    "node_type": "nodes-base.mistralAiTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Mistral AI Tool"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatMistralCloud",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Mistral Cloud Chat Model"
+  },
+  {
+    "node_type": "@droidrun/n8n-nodes-droidrun.mobilerun",
+    "package": "@droidrun/n8n-nodes-droidrun",
+    "display_name": "Mobilerun"
+  },
+  {
+    "node_type": "nodes-base.mocean",
+    "package": "n8n-nodes-base",
+    "display_name": "Mocean"
+  },
+  {
+    "node_type": "nodes-base.moceanTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Mocean Tool"
+  },
+  {
+    "node_type": "nodes-langchain.modelSelector",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Model Selector"
+  },
+  {
+    "node_type": "nodes-base.mondayCom",
+    "package": "n8n-nodes-base",
+    "display_name": "Monday.com"
+  },
+  {
+    "node_type": "nodes-base.mondayComTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Monday.com Tool"
+  },
+  {
+    "node_type": "nodes-base.mongoDb",
+    "package": "n8n-nodes-base",
+    "display_name": "MongoDB"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreMongoDBAtlas",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "MongoDB Atlas Vector Store"
+  },
+  {
+    "node_type": "nodes-langchain.memoryMongoDbChat",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "MongoDB Chat Memory"
+  },
+  {
+    "node_type": "nodes-base.mongoDbTool",
+    "package": "n8n-nodes-base",
+    "display_name": "MongoDB Tool"
+  },
+  {
+    "node_type": "nodes-base.monicaCrm",
+    "package": "n8n-nodes-base",
+    "display_name": "Monica CRM"
+  },
+  {
+    "node_type": "nodes-base.monicaCrmTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Monica CRM Tool"
+  },
+  {
+    "node_type": "n8n-nodes-moorcheh.moorcheh",
+    "package": "n8n-nodes-moorcheh",
+    "display_name": "Moorcheh"
+  },
+  {
+    "node_type": "nodes-langchain.memoryMotorhead",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Motorhead"
+  },
+  {
+    "node_type": "n8n-nodes-mrscraper.mrscraper",
+    "package": "n8n-nodes-mrscraper",
+    "display_name": "MrScraper"
+  },
+  {
+    "node_type": "nodes-langchain.retrieverMultiQuery",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "MultiQuery Retriever"
+  },
+  {
+    "node_type": "n8n-nodes-murf.murf",
+    "package": "n8n-nodes-murf",
+    "display_name": "Murf AI"
+  },
+  {
+    "node_type": "@musixmatch/n8n-nodes-musixmatch.musixmatch",
+    "package": "@musixmatch/n8n-nodes-musixmatch",
+    "display_name": "Musixmatch"
+  },
+  {
+    "node_type": "nodes-base.mySql",
+    "package": "n8n-nodes-base",
+    "display_name": "MySQL"
+  },
+  {
+    "node_type": "nodes-base.nasa",
+    "package": "n8n-nodes-base",
+    "display_name": "NASA"
+  },
+  {
+    "node_type": "nodes-base.nasaTool",
+    "package": "n8n-nodes-base",
+    "display_name": "NASA Tool"
+  },
+  {
+    "node_type": "@nalpeiron/n8n-nodes-nalpeiron.nalpeironZentitle2",
+    "package": "@nalpeiron/n8n-nodes-nalpeiron",
+    "display_name": "Nalpeiron Zentitle2"
+  },
+  {
+    "node_type": "n8n-nodes-nedzo.nedzo",
+    "package": "n8n-nodes-nedzo",
+    "display_name": "Nedzo"
+  },
+  {
+    "node_type": "@netgsm/n8n-nodes-netgsm.netgsm",
+    "package": "@netgsm/n8n-nodes-netgsm",
+    "display_name": "Netgsm"
+  },
+  {
+    "node_type": "nodes-base.netlify",
+    "package": "n8n-nodes-base",
+    "display_name": "Netlify"
+  },
+  {
+    "node_type": "nodes-base.netlifyTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Netlify Tool"
+  },
+  {
+    "node_type": "nodes-base.netlifyTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Netlify Trigger"
+  },
+  {
+    "node_type": "nodes-base.citrixAdc",
+    "package": "n8n-nodes-base",
+    "display_name": "Netscaler ADC"
+  },
+  {
+    "node_type": "n8n-nodes-neverbounce-email-verification.nbEmailVerification",
+    "package": "n8n-nodes-neverbounce-email-verification",
+    "display_name": "NeverBounce Email Verification"
+  },
+  {
+    "node_type": "@nexlev/n8n-nodes-nexlev.nexlev",
+    "package": "@nexlev/n8n-nodes-nexlev",
+    "display_name": "Nexlev"
+  },
+  {
+    "node_type": "@nexrender/n8n-nodes-nexrender.nexrender",
+    "package": "@nexrender/n8n-nodes-nexrender",
+    "display_name": "Nexrender"
+  },
+  {
+    "node_type": "nodes-base.nextCloud",
+    "package": "n8n-nodes-base",
+    "display_name": "Nextcloud"
+  },
+  {
+    "node_type": "nodes-base.nextCloudTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Nextcloud Tool"
+  },
+  {
+    "node_type": "n8n-nodes-nimbasms.nimbaSMS",
+    "package": "n8n-nodes-nimbasms",
+    "display_name": "Nimba SMS"
+  },
+  {
+    "node_type": "nodes-base.noOp",
+    "package": "n8n-nodes-base",
+    "display_name": "No Operation, do nothing"
+  },
+  {
+    "node_type": "nodes-base.nocoDb",
+    "package": "n8n-nodes-base",
+    "display_name": "NocoDB"
+  },
+  {
+    "node_type": "nodes-base.nocoDbTool",
+    "package": "n8n-nodes-base",
+    "display_name": "NocoDB Tool"
+  },
+  {
+    "node_type": "nodes-base.notion",
+    "package": "n8n-nodes-base",
+    "display_name": "Notion"
+  },
+  {
+    "node_type": "nodes-base.notionTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Notion Trigger"
+  },
+  {
+    "node_type": "nodes-base.npm",
+    "package": "n8n-nodes-base",
+    "display_name": "Npm"
+  },
+  {
+    "node_type": "nodes-base.npmTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Npm Tool"
+  },
+  {
+    "node_type": "@nuelink/n8n-nodes-nuelink.nuelink",
+    "package": "@nuelink/n8n-nodes-nuelink",
+    "display_name": "Nuelink"
+  },
+  {
+    "node_type": "@nvoip/n8n-nodes-nvoip.nvoip",
+    "package": "@nvoip/n8n-nodes-nvoip",
+    "display_name": "Nvoip"
+  },
+  {
+    "node_type": "n8n-nodes-octagon.octagonAgents",
+    "package": "n8n-nodes-octagon",
+    "display_name": "Octagon"
+  },
+  {
+    "node_type": "n8n-nodes-octavehq.octave",
+    "package": "n8n-nodes-octavehq",
+    "display_name": "Octave"
+  },
+  {
+    "node_type": "nodes-base.odoo",
+    "package": "n8n-nodes-base",
+    "display_name": "Odoo"
+  },
+  {
+    "node_type": "nodes-base.odooTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Odoo Tool"
+  },
+  {
+    "node_type": "nodes-base.okta",
+    "package": "n8n-nodes-base",
+    "display_name": "Okta"
+  },
+  {
+    "node_type": "nodes-base.oktaTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Okta Tool"
+  },
+  {
+    "node_type": "nodes-langchain.ollama",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Ollama"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatOllama",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Ollama Chat Model"
+  },
+  {
+    "node_type": "nodes-langchain.lmOllama",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Ollama Model"
+  },
+  {
+    "node_type": "nodes-langchain.ollamaTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Ollama Tool"
+  },
+  {
+    "node_type": "n8n-nodes-olostep.olostepScrape",
+    "package": "n8n-nodes-olostep",
+    "display_name": "Olostep Web Scraper"
+  },
+  {
+    "node_type": "n8n-nodes-omnara.omnara",
+    "package": "n8n-nodes-omnara",
+    "display_name": "Omnara"
+  },
+  {
+    "node_type": "nodes-base.oneSimpleApi",
+    "package": "n8n-nodes-base",
+    "display_name": "One Simple API"
+  },
+  {
+    "node_type": "nodes-base.oneSimpleApiTool",
+    "package": "n8n-nodes-base",
+    "display_name": "One Simple API Tool"
+  },
+  {
+    "node_type": "n8n-nodes-onenote.onenote",
+    "package": "n8n-nodes-onenote",
+    "display_name": "OneNote"
+  },
+  {
+    "node_type": "nodes-base.onfleet",
+    "package": "n8n-nodes-base",
+    "display_name": "Onfleet"
+  },
+  {
+    "node_type": "nodes-base.onfleetTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Onfleet Tool"
+  },
+  {
+    "node_type": "nodes-base.onfleetTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Onfleet Trigger"
+  },
+  {
+    "node_type": "@onlyfansapi/n8n-nodes-onlyfansapi.onlyFans",
+    "package": "@onlyfansapi/n8n-nodes-onlyfansapi",
+    "display_name": "OnlyFans API"
+  },
+  {
+    "node_type": "nodes-base.openAi",
+    "package": "n8n-nodes-base",
+    "display_name": "OpenAI"
+  },
+  {
+    "node_type": "nodes-langchain.openAi",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "OpenAI"
+  },
+  {
+    "node_type": "nodes-langchain.openAiAssistant",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "OpenAI Assistant"
+  },
+  {
+    "node_type": "nodes-langchain.openAiAssistantTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "OpenAI Assistant Tool"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatOpenAi",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "OpenAI Chat Model"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatOpenAiTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "OpenAI Chat Model Tool"
+  },
+  {
+    "node_type": "nodes-langchain.lmOpenAi",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "OpenAI Model"
+  },
+  {
+    "node_type": "nodes-langchain.lmOpenAiTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "OpenAI Model Tool"
+  },
+  {
+    "node_type": "nodes-base.openAiTool",
+    "package": "n8n-nodes-base",
+    "display_name": "OpenAI Tool"
+  },
+  {
+    "node_type": "nodes-langchain.openAiTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "OpenAI Tool"
+  },
+  {
+    "node_type": "n8n-nodes-openmic.openMicAi",
+    "package": "n8n-nodes-openmic",
+    "display_name": "OpenMicAI"
+  },
+  {
+    "node_type": "@oregister/n8n-nodes-openregister.openRegister",
+    "package": "@oregister/n8n-nodes-openregister",
+    "display_name": "OpenRegister"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatOpenRouter",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "OpenRouter Chat Model"
+  },
+  {
+    "node_type": "nodes-base.openThesaurus",
+    "package": "n8n-nodes-base",
+    "display_name": "OpenThesaurus"
+  },
+  {
+    "node_type": "nodes-base.openThesaurusTool",
+    "package": "n8n-nodes-base",
+    "display_name": "OpenThesaurus Tool"
+  },
+  {
+    "node_type": "nodes-base.openWeatherMap",
+    "package": "n8n-nodes-base",
+    "display_name": "OpenWeatherMap"
+  },
+  {
+    "node_type": "nodes-base.openWeatherMapTool",
+    "package": "n8n-nodes-base",
+    "display_name": "OpenWeatherMap Tool"
+  },
+  {
+    "node_type": "n8n-nodes-opnform.opnformTrigger",
+    "package": "n8n-nodes-opnform",
+    "display_name": "OpnForm Trigger"
+  },
+  {
+    "node_type": "nodes-base.oracleDatabase",
+    "package": "n8n-nodes-base",
+    "display_name": "Oracle Database"
+  },
+  {
+    "node_type": "nodes-base.oracleDatabaseTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Oracle Database Tool"
+  },
+  {
+    "node_type": "nodes-base.orbit",
+    "package": "n8n-nodes-base",
+    "display_name": "Orbit"
+  },
+  {
+    "node_type": "n8n-nodes-orgo.orgo",
+    "package": "n8n-nodes-orgo",
+    "display_name": "Orgo"
+  },
+  {
+    "node_type": "@orq-ai/n8n-nodes-orq.orqDeployment",
+    "package": "@orq-ai/n8n-nodes-orq",
+    "display_name": "Orq Deployment"
+  },
+  {
+    "node_type": "@thelifeofrishi/n8n-nodes-orshot.orshot",
+    "package": "@thelifeofrishi/n8n-nodes-orshot",
+    "display_name": "Orshot"
+  },
+  {
+    "node_type": "nodes-base.oura",
+    "package": "n8n-nodes-base",
+    "display_name": "Oura"
+  },
+  {
+    "node_type": "nodes-base.ouraTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Oura Tool"
+  },
+  {
+    "node_type": "n8n-nodes-outgrow.outgrowTrigger",
+    "package": "n8n-nodes-outgrow",
+    "display_name": "Outgrow Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-outplay.outplay",
+    "package": "n8n-nodes-outplay",
+    "display_name": "Outplay"
+  },
+  {
+    "node_type": "n8n-nodes-outscraper.outscraper",
+    "package": "n8n-nodes-outscraper",
+    "display_name": "Outscraper"
+  },
+  {
+    "node_type": "n8n-nodes-oxylabs-ai-studio.oxylabsAiStudio",
+    "package": "n8n-nodes-oxylabs-ai-studio",
+    "display_name": "Oxylabs AI Studio"
+  },
+  {
+    "node_type": "@pdfgeneratorapi/n8n-nodes-pdf-generator-api.pdfGeneratorApi",
+    "package": "@pdfgeneratorapi/n8n-nodes-pdf-generator-api",
+    "display_name": "PDF Generator API"
+  },
+  {
+    "node_type": "n8n-nodes-pdforge.pdforge",
+    "package": "n8n-nodes-pdforge",
+    "display_name": "PDF Noodle"
+  },
+  {
+    "node_type": "n8n-nodes-pdf-api-hub.pdfSplitMerge",
+    "package": "n8n-nodes-pdf-api-hub",
+    "display_name": "PDF Split and PDF Merge"
+  },
+  {
+    "node_type": "n8n-nodes-pdfvector.pdfVector",
+    "package": "n8n-nodes-pdfvector",
+    "display_name": "PDF Vector"
+  },
+  {
+    "node_type": "n8n-nodes-pdfco.PDFco Api",
+    "package": "n8n-nodes-pdfco",
+    "display_name": "PDF.co Api"
+  },
+  {
+    "node_type": "n8n-nodes-pdf4me.PDF4me",
+    "package": "n8n-nodes-pdf4me",
+    "display_name": "PDF4me"
+  },
+  {
+    "node_type": "n8n-nodes-pdfmonkey.pdfMonkey",
+    "package": "n8n-nodes-pdfmonkey",
+    "display_name": "PDFMonkey"
+  },
+  {
+    "node_type": "nodes-base.paddle",
+    "package": "n8n-nodes-base",
+    "display_name": "Paddle"
+  },
+  {
+    "node_type": "nodes-base.paddleTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Paddle Tool"
+  },
+  {
+    "node_type": "n8n-nodes-pagbank-connect.pagBank",
+    "package": "n8n-nodes-pagbank-connect",
+    "display_name": "PagBank"
+  },
+  {
+    "node_type": "n8n-nodes-pagepixels-screenshots.pagePixelsScreenshots",
+    "package": "n8n-nodes-pagepixels-screenshots",
+    "display_name": "PagePixels Screenshots"
+  },
+  {
+    "node_type": "nodes-base.pagerDuty",
+    "package": "n8n-nodes-base",
+    "display_name": "PagerDuty"
+  },
+  {
+    "node_type": "nodes-base.pagerDutyTool",
+    "package": "n8n-nodes-base",
+    "display_name": "PagerDuty Tool"
+  },
+  {
+    "node_type": "n8n-nodes-parallel.parallel",
+    "package": "n8n-nodes-parallel",
+    "display_name": "Parallel"
+  },
+  {
+    "node_type": "n8n-nodes-parseur.parseur",
+    "package": "n8n-nodes-parseur",
+    "display_name": "Parseur"
+  },
+  {
+    "node_type": "n8n-nodes-parseur.parseurTrigger",
+    "package": "n8n-nodes-parseur",
+    "display_name": "Parseur Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-parsio.parsio",
+    "package": "n8n-nodes-parsio",
+    "display_name": "Parsio"
+  },
+  {
+    "node_type": "nodes-base.payPal",
+    "package": "n8n-nodes-base",
+    "display_name": "PayPal"
+  },
+  {
+    "node_type": "nodes-base.payPalTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "PayPal Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-payfunnels.payfunnels",
+    "package": "n8n-nodes-payfunnels",
+    "display_name": "Payfunnels"
+  },
+  {
+    "node_type": "n8n-nodes-peak-ai.peakAi",
+    "package": "n8n-nodes-peak-ai",
+    "display_name": "Peak AI"
+  },
+  {
+    "node_type": "n8n-nodes-peek-pro.peekPro",
+    "package": "n8n-nodes-peek-pro",
+    "display_name": "Peek Pro"
+  },
+  {
+    "node_type": "nodes-base.peekalink",
+    "package": "n8n-nodes-base",
+    "display_name": "Peekalink"
+  },
+  {
+    "node_type": "nodes-base.peekalinkTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Peekalink Tool"
+  },
+  {
+    "node_type": "n8n-nodes-peliqan.peliqan",
+    "package": "n8n-nodes-peliqan",
+    "display_name": "Peliqan"
+  },
+  {
+    "node_type": "@goperigon/n8n-nodes-perigon.perigon",
+    "package": "@goperigon/n8n-nodes-perigon",
+    "display_name": "Perigon"
+  },
+  {
+    "node_type": "@permitio/n8n-nodes-permitio.permit",
+    "package": "@permitio/n8n-nodes-permitio",
+    "display_name": "Permit"
+  },
+  {
+    "node_type": "nodes-base.perplexity",
+    "package": "n8n-nodes-base",
+    "display_name": "Perplexity"
+  },
+  {
+    "node_type": "nodes-base.perplexityTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Perplexity Tool"
+  },
+  {
+    "node_type": "n8n-nodes-phacet-official.phacet",
+    "package": "n8n-nodes-phacet-official",
+    "display_name": "Phacet"
+  },
+  {
+    "node_type": "nodes-base.phantombuster",
+    "package": "n8n-nodes-base",
+    "display_name": "Phantombuster"
+  },
+  {
+    "node_type": "nodes-base.phantombusterTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Phantombuster Tool"
+  },
+  {
+    "node_type": "nodes-base.philipsHue",
+    "package": "n8n-nodes-base",
+    "display_name": "Philips Hue"
+  },
+  {
+    "node_type": "nodes-base.philipsHueTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Philips Hue Tool"
+  },
+  {
+    "node_type": "@picsart/n8n-nodes-picsart-creative-apis.picsartImage",
+    "package": "@picsart/n8n-nodes-picsart-creative-apis",
+    "display_name": "Picsart"
+  },
+  {
+    "node_type": "@pinecone-database/n8n-nodes-pinecone-assistant.pineconeAssistant",
+    "package": "@pinecone-database/n8n-nodes-pinecone-assistant",
+    "display_name": "Pinecone Assistant"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStorePinecone",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Pinecone Vector Store"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStorePineconeInsert",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Pinecone: Insert"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStorePineconeLoad",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Pinecone: Load"
+  },
+  {
+    "node_type": "nodes-base.pipedrive",
+    "package": "n8n-nodes-base",
+    "display_name": "Pipedrive"
+  },
+  {
+    "node_type": "nodes-base.pipedriveTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Pipedrive Tool"
+  },
+  {
+    "node_type": "nodes-base.pipedriveTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Pipedrive Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-placid.placid",
+    "package": "n8n-nodes-placid",
+    "display_name": "Placid"
+  },
+  {
+    "node_type": "nodes-base.plivo",
+    "package": "n8n-nodes-base",
+    "display_name": "Plivo"
+  },
+  {
+    "node_type": "nodes-base.plivoTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Plivo Tool"
+  },
+  {
+    "node_type": "@port-labs/n8n-nodes-portio-experimental.portApiAi",
+    "package": "@port-labs/n8n-nodes-portio-experimental",
+    "display_name": "Port API AI"
+  },
+  {
+    "node_type": "nodes-base.postBin",
+    "package": "n8n-nodes-base",
+    "display_name": "PostBin"
+  },
+  {
+    "node_type": "nodes-base.postBinTool",
+    "package": "n8n-nodes-base",
+    "display_name": "PostBin Tool"
+  },
+  {
+    "node_type": "n8n-nodes-postfast.postFast",
+    "package": "n8n-nodes-postfast",
+    "display_name": "PostFast - Social Media Management"
+  },
+  {
+    "node_type": "nodes-base.postHog",
+    "package": "n8n-nodes-base",
+    "display_name": "PostHog"
+  },
+  {
+    "node_type": "nodes-base.postHogTool",
+    "package": "n8n-nodes-base",
+    "display_name": "PostHog Tool"
+  },
+  {
+    "node_type": "@postnitro/n8n-nodes-postnitro-ai.postNitro",
+    "package": "@postnitro/n8n-nodes-postnitro-ai",
+    "display_name": "PostNitro"
+  },
+  {
+    "node_type": "@postpulse/n8n-nodes-postpulse.postPulse",
+    "package": "@postpulse/n8n-nodes-postpulse",
+    "display_name": "PostPulse"
+  },
+  {
+    "node_type": "nodes-base.postgres",
+    "package": "n8n-nodes-base",
+    "display_name": "Postgres"
+  },
+  {
+    "node_type": "nodes-langchain.memoryPostgresChat",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Postgres Chat Memory"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStorePGVector",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Postgres PGVector Store"
+  },
+  {
+    "node_type": "nodes-base.postgresTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Postgres Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-postiz.postiz",
+    "package": "n8n-nodes-postiz",
+    "display_name": "Postiz"
+  },
+  {
+    "node_type": "nodes-base.postmarkTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Postmark Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-powerbi.powerBi",
+    "package": "n8n-nodes-powerbi",
+    "display_name": "Power BI"
+  },
+  {
+    "node_type": "@predictleads/n8n-nodes-predictleads.predictLeads",
+    "package": "@predictleads/n8n-nodes-predictleads",
+    "display_name": "PredictLeads"
+  },
+  {
+    "node_type": "n8n-nodes-presenton.presenton",
+    "package": "n8n-nodes-presenton",
+    "display_name": "Presenton"
+  },
+  {
+    "node_type": "@paloaltonetworks/n8n-nodes-prisma-airs.prismaAirs",
+    "package": "@paloaltonetworks/n8n-nodes-prisma-airs",
+    "display_name": "Prisma AIRS"
+  },
+  {
+    "node_type": "nodes-base.profitWell",
+    "package": "n8n-nodes-base",
+    "display_name": "ProfitWell"
+  },
+  {
+    "node_type": "nodes-base.profitWellTool",
+    "package": "n8n-nodes-base",
+    "display_name": "ProfitWell Tool"
+  },
+  {
+    "node_type": "@promptlayer/n8n-nodes-promptlayer-runagent.promptLayerRunAgent",
+    "package": "@promptlayer/n8n-nodes-promptlayer-runagent",
+    "display_name": "PromptLayer Run Agent"
+  },
+  {
+    "node_type": "@bedrijfsdatanl/n8n-nodes-prospectpro.prospectpro",
+    "package": "@bedrijfsdatanl/n8n-nodes-prospectpro",
+    "display_name": "ProspectPro"
+  },
+  {
+    "node_type": "n8n-nodes-pubnub.pubNub",
+    "package": "n8n-nodes-pubnub",
+    "display_name": "PubNub"
+  },
+  {
+    "node_type": "nodes-base.pushbullet",
+    "package": "n8n-nodes-base",
+    "display_name": "Pushbullet"
+  },
+  {
+    "node_type": "nodes-base.pushbulletTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Pushbullet Tool"
+  },
+  {
+    "node_type": "nodes-base.pushcut",
+    "package": "n8n-nodes-base",
+    "display_name": "Pushcut"
+  },
+  {
+    "node_type": "nodes-base.pushcutTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Pushcut Tool"
+  },
+  {
+    "node_type": "nodes-base.pushcutTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Pushcut Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-pushinator.pushinator",
+    "package": "n8n-nodes-pushinator",
+    "display_name": "Pushinator"
+  },
+  {
+    "node_type": "nodes-base.pushover",
+    "package": "n8n-nodes-base",
+    "display_name": "Pushover"
+  },
+  {
+    "node_type": "nodes-base.pushoverTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Pushover Tool"
+  },
+  {
+    "node_type": "n8n-nodes-qdrant.qdrant",
+    "package": "n8n-nodes-qdrant",
+    "display_name": "Qdrant"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreQdrant",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Qdrant Vector Store"
+  },
+  {
+    "node_type": "nodes-base.questDb",
+    "package": "n8n-nodes-base",
+    "display_name": "QuestDB"
+  },
+  {
+    "node_type": "nodes-base.questDbTool",
+    "package": "n8n-nodes-base",
+    "display_name": "QuestDB Tool"
+  },
+  {
+    "node_type": "nodes-langchain.chainRetrievalQa",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Question and Answer Chain"
+  },
+  {
+    "node_type": "nodes-langchain.chainRetrievalQaTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Question and Answer Chain Tool"
+  },
+  {
+    "node_type": "nodes-base.quickbase",
+    "package": "n8n-nodes-base",
+    "display_name": "Quick Base"
+  },
+  {
+    "node_type": "nodes-base.quickbaseTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Quick Base Tool"
+  },
+  {
+    "node_type": "nodes-base.quickbooks",
+    "package": "n8n-nodes-base",
+    "display_name": "QuickBooks Online"
+  },
+  {
+    "node_type": "nodes-base.quickbooksTool",
+    "package": "n8n-nodes-base",
+    "display_name": "QuickBooks Online Tool"
+  },
+  {
+    "node_type": "nodes-base.quickChart",
+    "package": "n8n-nodes-base",
+    "display_name": "QuickChart"
+  },
+  {
+    "node_type": "nodes-base.quickChartTool",
+    "package": "n8n-nodes-base",
+    "display_name": "QuickChart Tool"
+  },
+  {
+    "node_type": "@quire-io/n8n-nodes-quire.quire",
+    "package": "@quire-io/n8n-nodes-quire",
+    "display_name": "Quire"
+  },
+  {
+    "node_type": "nodes-base.rssFeedReadTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "RSS Feed Trigger"
+  },
+  {
+    "node_type": "nodes-base.rssFeedRead",
+    "package": "n8n-nodes-base",
+    "display_name": "RSS Read"
+  },
+  {
+    "node_type": "nodes-base.rssFeedReadTool",
+    "package": "n8n-nodes-base",
+    "display_name": "RSS Read Tool"
+  },
+  {
+    "node_type": "nodes-base.rabbitmq",
+    "package": "n8n-nodes-base",
+    "display_name": "RabbitMQ"
+  },
+  {
+    "node_type": "nodes-base.rabbitmqTool",
+    "package": "n8n-nodes-base",
+    "display_name": "RabbitMQ Tool"
+  },
+  {
+    "node_type": "nodes-base.rabbitmqTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "RabbitMQ Trigger"
+  },
+  {
+    "node_type": "nodes-base.raindrop",
+    "package": "n8n-nodes-base",
+    "display_name": "Raindrop"
+  },
+  {
+    "node_type": "nodes-base.raindropTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Raindrop Tool"
+  },
+  {
+    "node_type": "@razorpay/n8n-nodes-razorpay.razorpay",
+    "package": "@razorpay/n8n-nodes-razorpay",
+    "display_name": "Razorpay"
+  },
+  {
+    "node_type": "n8n-nodes-reachkit.reachkit",
+    "package": "n8n-nodes-reachkit",
+    "display_name": "Reachkit"
+  },
+  {
+    "node_type": "nodes-base.readBinaryFile",
+    "package": "n8n-nodes-base",
+    "display_name": "Read Binary File"
+  },
+  {
+    "node_type": "nodes-base.readBinaryFiles",
+    "package": "n8n-nodes-base",
+    "display_name": "Read Binary Files"
+  },
+  {
+    "node_type": "nodes-base.readPDF",
+    "package": "n8n-nodes-base",
+    "display_name": "Read PDF"
+  },
+  {
+    "node_type": "nodes-base.readWriteFile",
+    "package": "n8n-nodes-base",
+    "display_name": "Read/Write Files from Disk"
+  },
+  {
+    "node_type": "n8n-nodes-realm.realm",
+    "package": "n8n-nodes-realm",
+    "display_name": "Realm"
+  },
+  {
+    "node_type": "nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Recursive Character Text Splitter"
+  },
+  {
+    "node_type": "nodes-base.reddit",
+    "package": "n8n-nodes-base",
+    "display_name": "Reddit"
+  },
+  {
+    "node_type": "nodes-base.redditTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Reddit Tool"
+  },
+  {
+    "node_type": "nodes-base.redis",
+    "package": "n8n-nodes-base",
+    "display_name": "Redis"
+  },
+  {
+    "node_type": "nodes-langchain.memoryRedisChat",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Redis Chat Memory"
+  },
+  {
+    "node_type": "nodes-base.redisTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Redis Tool"
+  },
+  {
+    "node_type": "nodes-base.redisTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Redis Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreRedis",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Redis Vector Store"
+  },
+  {
+    "node_type": "n8n-nodes-referral-factory.referralFactory",
+    "package": "n8n-nodes-referral-factory",
+    "display_name": "Referral Factory"
+  },
+  {
+    "node_type": "@reka-ai/n8n-nodes-reka.rekaVision",
+    "package": "@reka-ai/n8n-nodes-reka",
+    "display_name": "Reka Vision"
+  },
+  {
+    "node_type": "nodes-base.removeDuplicates",
+    "package": "n8n-nodes-base",
+    "display_name": "Remove Duplicates"
+  },
+  {
+    "node_type": "nodes-base.renameKeys",
+    "package": "n8n-nodes-base",
+    "display_name": "Rename Keys"
+  },
+  {
+    "node_type": "@reportei/n8n-nodes-reportei.reportei",
+    "package": "@reportei/n8n-nodes-reportei",
+    "display_name": "Reportei"
+  },
+  {
+    "node_type": "nodes-langchain.rerankerCohere",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Reranker Cohere"
+  },
+  {
+    "node_type": "nodes-langchain.rerankerCohereTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Reranker Cohere Tool"
+  },
+  {
+    "node_type": "n8n-nodes-resend.resend",
+    "package": "n8n-nodes-resend",
+    "display_name": "Resend"
+  },
+  {
+    "node_type": "nodes-base.respondToWebhook",
+    "package": "n8n-nodes-base",
+    "display_name": "Respond to Webhook"
+  },
+  {
+    "node_type": "@respond-io/n8n-nodes-respond-io.respondio",
+    "package": "@respond-io/n8n-nodes-respond-io",
+    "display_name": "Respond.io"
+  },
+  {
+    "node_type": "n8n-nodes-roam.roam",
+    "package": "n8n-nodes-roam",
+    "display_name": "Roam"
+  },
+  {
+    "node_type": "nodes-base.rocketchat",
+    "package": "n8n-nodes-base",
+    "display_name": "RocketChat"
+  },
+  {
+    "node_type": "nodes-base.rocketchatTool",
+    "package": "n8n-nodes-base",
+    "display_name": "RocketChat Tool"
+  },
+  {
+    "node_type": "@rogerrogerio/n8n-nodes-rogerroger.rogerRoger",
+    "package": "@rogerrogerio/n8n-nodes-rogerroger",
+    "display_name": "RogerRoger"
+  },
+  {
+    "node_type": "nodes-base.rundeck",
+    "package": "n8n-nodes-base",
+    "display_name": "Rundeck"
+  },
+  {
+    "node_type": "nodes-base.rundeckTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Rundeck Tool"
+  },
+  {
+    "node_type": "n8n-nodes-rye.rye",
+    "package": "n8n-nodes-rye",
+    "display_name": "Rye"
+  },
+  {
+    "node_type": "nodes-base.s3",
+    "package": "n8n-nodes-base",
+    "display_name": "S3"
+  },
+  {
+    "node_type": "nodes-base.s3Tool",
+    "package": "n8n-nodes-base",
+    "display_name": "S3 Tool"
+  },
+  {
+    "node_type": "@seranking/n8n-nodes-seranking.seRanking",
+    "package": "@seranking/n8n-nodes-seranking",
+    "display_name": "SE Ranking"
+  },
+  {
+    "node_type": "n8n-nodes-seo-content-machine.seoContentMachine",
+    "package": "n8n-nodes-seo-content-machine",
+    "display_name": "SEO Content Machine"
+  },
+  {
+    "node_type": "@serphouse/n8n-nodes-serphouse.serphouse",
+    "package": "@serphouse/n8n-nodes-serphouse",
+    "display_name": "SERPHouse"
+  },
+  {
+    "node_type": "nodes-base.signl4",
+    "package": "n8n-nodes-base",
+    "display_name": "SIGNL4"
+  },
+  {
+    "node_type": "nodes-base.signl4Tool",
+    "package": "n8n-nodes-base",
+    "display_name": "SIGNL4 Tool"
+  },
+  {
+    "node_type": "n8n-nodes-sms-advert.smsAdvert",
+    "package": "n8n-nodes-sms-advert",
+    "display_name": "SMSAdvert"
+  },
+  {
+    "node_type": "@socradar/n8n-nodes-socradar.socradar",
+    "package": "@socradar/n8n-nodes-socradar",
+    "display_name": "SOCRadar"
+  },
+  {
+    "node_type": "nodes-base.sseTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "SSE Trigger"
+  },
+  {
+    "node_type": "nodes-base.ssh",
+    "package": "n8n-nodes-base",
+    "display_name": "SSH"
+  },
+  {
+    "node_type": "nodes-base.salesforce",
+    "package": "n8n-nodes-base",
+    "display_name": "Salesforce"
+  },
+  {
+    "node_type": "nodes-base.salesforceTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Salesforce Tool"
+  },
+  {
+    "node_type": "nodes-base.salesforceTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Salesforce Trigger"
+  },
+  {
+    "node_type": "nodes-base.salesmate",
+    "package": "n8n-nodes-base",
+    "display_name": "Salesmate"
+  },
+  {
+    "node_type": "nodes-base.salesmateTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Salesmate Tool"
+  },
+  {
+    "node_type": "nodes-base.scheduleTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Schedule Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-scrape-creators.scrapeCreators",
+    "package": "n8n-nodes-scrape-creators",
+    "display_name": "Scrape Creators"
+  },
+  {
+    "node_type": "@scrapeops/n8n-nodes-scrapeops.ScrapeOps",
+    "package": "@scrapeops/n8n-nodes-scrapeops",
+    "display_name": "ScrapeOps"
+  },
+  {
+    "node_type": "n8n-nodes-scrapegraphai.scrapegraphAi",
+    "package": "n8n-nodes-scrapegraphai",
+    "display_name": "ScrapegraphAI"
+  },
+  {
+    "node_type": "n8n-nodes-scrapeless.scrapeless",
+    "package": "n8n-nodes-scrapeless",
+    "display_name": "Scrapeless Official"
+  },
+  {
+    "node_type": "n8n-nodes-scraperapi-official.scraperApi",
+    "package": "n8n-nodes-scraperapi-official",
+    "display_name": "ScraperAPI"
+  },
+  {
+    "node_type": "n8n-nodes-scrapfly.Scrapfly",
+    "package": "n8n-nodes-scrapfly",
+    "display_name": "Scrapfly"
+  },
+  {
+    "node_type": "n8n-nodes-scrapingbee.ScrapingBee",
+    "package": "n8n-nodes-scrapingbee",
+    "display_name": "ScrapingBee"
+  },
+  {
+    "node_type": "n8n-nodes-scraping-dog.scrapingDog",
+    "package": "n8n-nodes-scraping-dog",
+    "display_name": "ScrapingDog"
+  },
+  {
+    "node_type": "@nskha/n8n-nodes-scrappey.scrappey",
+    "package": "@nskha/n8n-nodes-scrappey",
+    "display_name": "Scrappey"
+  },
+  {
+    "node_type": "n8n-nodes-screenshotbase.screenshotBase",
+    "package": "n8n-nodes-screenshotbase",
+    "display_name": "ScreenshotBase"
+  },
+  {
+    "node_type": "@urlbox/n8n-nodes-urlbox.urlbox",
+    "package": "@urlbox/n8n-nodes-urlbox",
+    "display_name": "Screenshots by Urlbox"
+  },
+  {
+    "node_type": "nodes-base.seaTable",
+    "package": "n8n-nodes-base",
+    "display_name": "SeaTable"
+  },
+  {
+    "node_type": "nodes-base.seaTableTool",
+    "package": "n8n-nodes-base",
+    "display_name": "SeaTable Tool"
+  },
+  {
+    "node_type": "nodes-base.seaTableTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "SeaTable Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.toolSearXng",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "SearXNG"
+  },
+  {
+    "node_type": "@searchapi/n8n-nodes-searchapi.searchApi",
+    "package": "@searchapi/n8n-nodes-searchapi",
+    "display_name": "SearchApi"
+  },
+  {
+    "node_type": "@seclore/n8n-nodes-seclore.secloreProtect",
+    "package": "@seclore/n8n-nodes-seclore",
+    "display_name": "Seclore"
+  },
+  {
+    "node_type": "@securevector/n8n-nodes-securevector.secureVector",
+    "package": "@securevector/n8n-nodes-securevector",
+    "display_name": "SecureVector"
+  },
+  {
+    "node_type": "nodes-base.securityScorecard",
+    "package": "n8n-nodes-base",
+    "display_name": "SecurityScorecard"
+  },
+  {
+    "node_type": "nodes-base.securityScorecardTool",
+    "package": "n8n-nodes-base",
+    "display_name": "SecurityScorecard Tool"
+  },
+  {
+    "node_type": "nodes-base.segment",
+    "package": "n8n-nodes-base",
+    "display_name": "Segment"
+  },
+  {
+    "node_type": "nodes-base.segmentTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Segment Tool"
+  },
+  {
+    "node_type": "nodes-base.emailSend",
+    "package": "n8n-nodes-base",
+    "display_name": "Send Email"
+  },
+  {
+    "node_type": "nodes-base.emailSendTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Send Email Tool"
+  },
+  {
+    "node_type": "nodes-base.sendGrid",
+    "package": "n8n-nodes-base",
+    "display_name": "SendGrid"
+  },
+  {
+    "node_type": "nodes-base.sendGridTool",
+    "package": "n8n-nodes-base",
+    "display_name": "SendGrid Tool"
+  },
+  {
+    "node_type": "@sendpulse/n8n-nodes-sendpulse.sendPulseA360",
+    "package": "@sendpulse/n8n-nodes-sendpulse",
+    "display_name": "SendPulse Automation360"
+  },
+  {
+    "node_type": "@alipeople/n8n-nodes-sendon.sendon",
+    "package": "@alipeople/n8n-nodes-sendon",
+    "display_name": "Sendon"
+  },
+  {
+    "node_type": "nodes-base.sendy",
+    "package": "n8n-nodes-base",
+    "display_name": "Sendy"
+  },
+  {
+    "node_type": "nodes-base.sendyTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Sendy Tool"
+  },
+  {
+    "node_type": "nodes-langchain.sentimentAnalysis",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Sentiment Analysis"
+  },
+  {
+    "node_type": "nodes-base.sentryIo",
+    "package": "n8n-nodes-base",
+    "display_name": "Sentry.io"
+  },
+  {
+    "node_type": "nodes-base.sentryIoTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Sentry.io Tool"
+  },
+  {
+    "node_type": "nodes-langchain.toolSerpApi",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "SerpApi (Google Search)"
+  },
+  {
+    "node_type": "n8n-nodes-serpapi.serpApi",
+    "package": "n8n-nodes-serpapi",
+    "display_name": "SerpApi Official"
+  },
+  {
+    "node_type": "@servicem8/n8n-nodes-servicem8.serviceM8",
+    "package": "@servicem8/n8n-nodes-servicem8",
+    "display_name": "ServiceM8"
+  },
+  {
+    "node_type": "nodes-base.serviceNow",
+    "package": "n8n-nodes-base",
+    "display_name": "ServiceNow"
+  },
+  {
+    "node_type": "nodes-base.serviceNowTool",
+    "package": "n8n-nodes-base",
+    "display_name": "ServiceNow Tool"
+  },
+  {
+    "node_type": "nodes-base.set",
+    "package": "n8n-nodes-base",
+    "display_name": "Set"
+  },
+  {
+    "node_type": "nodes-base.shopify",
+    "package": "n8n-nodes-base",
+    "display_name": "Shopify"
+  },
+  {
+    "node_type": "nodes-base.shopifyTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Shopify Tool"
+  },
+  {
+    "node_type": "nodes-base.shopifyTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Shopify Trigger"
+  },
+  {
+    "node_type": "@solution25/n8n-nodes-shopware.shopware",
+    "package": "@solution25/n8n-nodes-shopware",
+    "display_name": "Shopware"
+  },
+  {
+    "node_type": "n8n-nodes-shortio.Shortio",
+    "package": "n8n-nodes-shortio",
+    "display_name": "Short.io"
+  },
+  {
+    "node_type": "n8n-nodes-signifycrm.signifyCrm",
+    "package": "n8n-nodes-signifycrm",
+    "display_name": "SignifyCRM"
+  },
+  {
+    "node_type": "n8n-nodes-simla.simlaTrigger",
+    "package": "n8n-nodes-simla",
+    "display_name": "Simla Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.memoryBufferWindow",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Simple Memory"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreInMemory",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Simple Vector Store"
+  },
+  {
+    "node_type": "@simplesat/n8n-nodes-simplesat.simplesat",
+    "package": "@simplesat/n8n-nodes-simplesat",
+    "display_name": "Simplesat"
+  },
+  {
+    "node_type": "n8n-nodes-simplified.simplified",
+    "package": "n8n-nodes-simplified",
+    "display_name": "Simplified"
+  },
+  {
+    "node_type": "nodes-base.simulate",
+    "package": "n8n-nodes-base",
+    "display_name": "Simulate"
+  },
+  {
+    "node_type": "nodes-base.simulateTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Simulate Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-sinergiacrm.sinergiaCrm",
+    "package": "n8n-nodes-sinergiacrm",
+    "display_name": "SinergiaCRM"
+  },
+  {
+    "node_type": "n8n-nodes-skyvern.skyvern",
+    "package": "n8n-nodes-skyvern",
+    "display_name": "Skyvern"
+  },
+  {
+    "node_type": "nodes-base.slack",
+    "package": "n8n-nodes-base",
+    "display_name": "Slack"
+  },
+  {
+    "node_type": "nodes-base.slackTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Slack Trigger"
+  },
+  {
+    "node_type": "@cloudsway-ai/n8n-nodes-cloudsway.smartSearch",
+    "package": "@cloudsway-ai/n8n-nodes-cloudsway",
+    "display_name": "SmartSearch"
+  },
+  {
+    "node_type": "n8n-nodes-smstools.smstools",
+    "package": "n8n-nodes-smstools",
+    "display_name": "Smstools"
+  },
+  {
+    "node_type": "nodes-base.snowflake",
+    "package": "n8n-nodes-base",
+    "display_name": "Snowflake"
+  },
+  {
+    "node_type": "nodes-base.snowflakeTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Snowflake Tool"
+  },
+  {
+    "node_type": "n8n-nodes-softr.softr",
+    "package": "n8n-nodes-softr",
+    "display_name": "Softr"
+  },
+  {
+    "node_type": "n8n-nodes-solapi.solapi",
+    "package": "n8n-nodes-solapi",
+    "display_name": "Solapi"
+  },
+  {
+    "node_type": "nodes-base.sort",
+    "package": "n8n-nodes-base",
+    "display_name": "Sort"
+  },
+  {
+    "node_type": "n8n-nodes-sourcegeek.sourcegeek",
+    "package": "n8n-nodes-sourcegeek",
+    "display_name": "SourceGeek for LinkedIn"
+  },
+  {
+    "node_type": "nodes-base.splitInBatches",
+    "package": "n8n-nodes-base",
+    "display_name": "Split In Batches"
+  },
+  {
+    "node_type": "nodes-base.splitOut",
+    "package": "n8n-nodes-base",
+    "display_name": "Split Out"
+  },
+  {
+    "node_type": "nodes-base.splunk",
+    "package": "n8n-nodes-base",
+    "display_name": "Splunk"
+  },
+  {
+    "node_type": "nodes-base.spotify",
+    "package": "n8n-nodes-base",
+    "display_name": "Spotify"
+  },
+  {
+    "node_type": "nodes-base.spotifyTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Spotify Tool"
+  },
+  {
+    "node_type": "nodes-base.spreadsheetFile",
+    "package": "n8n-nodes-base",
+    "display_name": "Spreadsheet File"
+  },
+  {
+    "node_type": "nodes-base.stackby",
+    "package": "n8n-nodes-base",
+    "display_name": "Stackby"
+  },
+  {
+    "node_type": "nodes-base.stackbyTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Stackby Tool"
+  },
+  {
+    "node_type": "n8n-nodes-starfish.campingCare",
+    "package": "n8n-nodes-starfish",
+    "display_name": "Starfish (CampingCare/HotelCare)"
+  },
+  {
+    "node_type": "@starhunter/n8n-nodes-graphql.starhunter",
+    "package": "@starhunter/n8n-nodes-graphql",
+    "display_name": "Starhunter"
+  },
+  {
+    "node_type": "@steuerboard/n8n-nodes-steuerboard.steuerboard",
+    "package": "@steuerboard/n8n-nodes-steuerboard",
+    "display_name": "Steuerboard"
+  },
+  {
+    "node_type": "nodes-base.stickyNote",
+    "package": "n8n-nodes-base",
+    "display_name": "Sticky Note"
+  },
+  {
+    "node_type": "nodes-base.stopAndError",
+    "package": "n8n-nodes-base",
+    "display_name": "Stop and Error"
+  },
+  {
+    "node_type": "nodes-base.storyblok",
+    "package": "n8n-nodes-base",
+    "display_name": "Storyblok"
+  },
+  {
+    "node_type": "nodes-base.storyblokTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Storyblok Tool"
+  },
+  {
+    "node_type": "n8n-nodes-straico-official.straicoOfficial",
+    "package": "n8n-nodes-straico-official",
+    "display_name": "Straico Official"
+  },
+  {
+    "node_type": "n8n-nodes-straker-verify.strakerVerify",
+    "package": "n8n-nodes-straker-verify",
+    "display_name": "Straker Verify"
+  },
+  {
+    "node_type": "nodes-base.strapi",
+    "package": "n8n-nodes-base",
+    "display_name": "Strapi"
+  },
+  {
+    "node_type": "nodes-base.strapiTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Strapi Tool"
+  },
+  {
+    "node_type": "nodes-base.strava",
+    "package": "n8n-nodes-base",
+    "display_name": "Strava"
+  },
+  {
+    "node_type": "nodes-base.stravaTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Strava Tool"
+  },
+  {
+    "node_type": "nodes-base.stravaTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Strava Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-streak-crm.streak",
+    "package": "n8n-nodes-streak-crm",
+    "display_name": "Streak"
+  },
+  {
+    "node_type": "n8n-nodes-streamline.streamline",
+    "package": "n8n-nodes-streamline",
+    "display_name": "Streamline"
+  },
+  {
+    "node_type": "nodes-base.stripe",
+    "package": "n8n-nodes-base",
+    "display_name": "Stripe"
+  },
+  {
+    "node_type": "nodes-base.stripeTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Stripe Tool"
+  },
+  {
+    "node_type": "nodes-base.stripeTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Stripe Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.outputParserStructured",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Structured Output Parser"
+  },
+  {
+    "node_type": "nodes-langchain.chainSummarization",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Summarization Chain"
+  },
+  {
+    "node_type": "nodes-langchain.chainSummarizationTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Summarization Chain Tool"
+  },
+  {
+    "node_type": "nodes-base.summarize",
+    "package": "n8n-nodes-base",
+    "display_name": "Summarize"
+  },
+  {
+    "node_type": "nodes-base.supabase",
+    "package": "n8n-nodes-base",
+    "display_name": "Supabase"
+  },
+  {
+    "node_type": "nodes-base.supabaseTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Supabase Tool"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreSupabase",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Supabase Vector Store"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreSupabaseInsert",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Supabase: Insert"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreSupabaseLoad",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Supabase: Load"
+  },
+  {
+    "node_type": "n8n-nodes-supadata.supadata",
+    "package": "n8n-nodes-supadata",
+    "display_name": "Supadata"
+  },
+  {
+    "node_type": "n8n-nodes-superchat.superchat",
+    "package": "n8n-nodes-superchat",
+    "display_name": "Superchat"
+  },
+  {
+    "node_type": "nodes-base.surveyMonkeyTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "SurveyMonkey Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-swiftgum-trigger.swiftgumTrigger",
+    "package": "n8n-nodes-swiftgum-trigger",
+    "display_name": "Swiftgum Trigger"
+  },
+  {
+    "node_type": "nodes-base.switch",
+    "package": "n8n-nodes-base",
+    "display_name": "Switch"
+  },
+  {
+    "node_type": "nodes-base.syncroMsp",
+    "package": "n8n-nodes-base",
+    "display_name": "SyncroMSP"
+  },
+  {
+    "node_type": "@tehw0lf/n8n-nodes-toon.toon",
+    "package": "@tehw0lf/n8n-nodes-toon",
+    "display_name": "TOON"
+  },
+  {
+    "node_type": "nodes-base.totp",
+    "package": "n8n-nodes-base",
+    "display_name": "TOTP"
+  },
+  {
+    "node_type": "nodes-base.totpTool",
+    "package": "n8n-nodes-base",
+    "display_name": "TOTP Tool"
+  },
+  {
+    "node_type": "n8n-nodes-taddy.taddyApi",
+    "package": "n8n-nodes-taddy",
+    "display_name": "Taddy API"
+  },
+  {
+    "node_type": "nodes-base.taiga",
+    "package": "n8n-nodes-base",
+    "display_name": "Taiga"
+  },
+  {
+    "node_type": "nodes-base.taigaTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Taiga Tool"
+  },
+  {
+    "node_type": "nodes-base.taigaTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Taiga Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-tallyforms.tallyTrigger",
+    "package": "n8n-nodes-tallyforms",
+    "display_name": "Tally Trigger"
+  },
+  {
+    "node_type": "nodes-base.tapfiliate",
+    "package": "n8n-nodes-base",
+    "display_name": "Tapfiliate"
+  },
+  {
+    "node_type": "nodes-base.tapfiliateTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Tapfiliate Tool"
+  },
+  {
+    "node_type": "n8n-nodes-targetare.targetareRo",
+    "package": "n8n-nodes-targetare",
+    "display_name": "Targetare.ro"
+  },
+  {
+    "node_type": "@tavily/n8n-nodes-tavily.tavily",
+    "package": "@tavily/n8n-nodes-tavily",
+    "display_name": "Tavily"
+  },
+  {
+    "node_type": "@orisma/n8n-nodes-taximail.taximail",
+    "package": "@orisma/n8n-nodes-taximail",
+    "display_name": "Taximail"
+  },
+  {
+    "node_type": "n8n-nodes-tazzoai.tazzoAi",
+    "package": "n8n-nodes-tazzoai",
+    "display_name": "Tazzo.ai"
+  },
+  {
+    "node_type": "n8n-nodes-teamupcalendar.teamup",
+    "package": "n8n-nodes-teamupcalendar",
+    "display_name": "Teamup"
+  },
+  {
+    "node_type": "@meistrari/n8n-nodes-tela.tela",
+    "package": "@meistrari/n8n-nodes-tela",
+    "display_name": "Tela"
+  },
+  {
+    "node_type": "nodes-base.telegram",
+    "package": "n8n-nodes-base",
+    "display_name": "Telegram"
+  },
+  {
+    "node_type": "nodes-base.telegramTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Telegram Tool"
+  },
+  {
+    "node_type": "nodes-base.telegramTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Telegram Trigger"
+  },
+  {
+    "node_type": "@telnyx/n8n-nodes-telnyx-ai.telnyxAi",
+    "package": "@telnyx/n8n-nodes-telnyx-ai",
+    "display_name": "Telnyx AI"
+  },
+  {
+    "node_type": "n8n-nodes-templated.templated",
+    "package": "n8n-nodes-templated",
+    "display_name": "Templated"
+  },
+  {
+    "node_type": "nodes-langchain.textClassifier",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Text Classifier"
+  },
+  {
+    "node_type": "nodes-base.theHive",
+    "package": "n8n-nodes-base",
+    "display_name": "TheHive"
+  },
+  {
+    "node_type": "nodes-base.theHiveProject",
+    "package": "n8n-nodes-base",
+    "display_name": "TheHive 5"
+  },
+  {
+    "node_type": "nodes-base.theHiveProjectTool",
+    "package": "n8n-nodes-base",
+    "display_name": "TheHive 5 Tool"
+  },
+  {
+    "node_type": "nodes-base.theHiveProjectTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "TheHive 5 Trigger"
+  },
+  {
+    "node_type": "nodes-base.theHiveTool",
+    "package": "n8n-nodes-base",
+    "display_name": "TheHive Tool"
+  },
+  {
+    "node_type": "nodes-base.theHiveTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "TheHive Trigger"
+  },
+  {
+    "node_type": "@thingsboard/n8n-nodes-thingsboard.thingsBoard",
+    "package": "@thingsboard/n8n-nodes-thingsboard",
+    "display_name": "ThingsBoard"
+  },
+  {
+    "node_type": "nodes-langchain.toolThink",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Think Tool"
+  },
+  {
+    "node_type": "n8n-nodes-ticktick.tickTick",
+    "package": "n8n-nodes-ticktick",
+    "display_name": "TickTick"
+  },
+  {
+    "node_type": "nodes-base.timescaleDb",
+    "package": "n8n-nodes-base",
+    "display_name": "TimescaleDB"
+  },
+  {
+    "node_type": "nodes-base.timescaleDbTool",
+    "package": "n8n-nodes-base",
+    "display_name": "TimescaleDB Tool"
+  },
+  {
+    "node_type": "n8n-nodes-tmpfiles.tmpfiles",
+    "package": "n8n-nodes-tmpfiles",
+    "display_name": "Tmpfiles"
+  },
+  {
+    "node_type": "nodes-base.todoist",
+    "package": "n8n-nodes-base",
+    "display_name": "Todoist"
+  },
+  {
+    "node_type": "nodes-base.togglTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Toggl Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.textSplitterTokenSplitter",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Token Splitter"
+  },
+  {
+    "node_type": "n8n-nodes-tomba.tomba",
+    "package": "n8n-nodes-tomba",
+    "display_name": "Tomba"
+  },
+  {
+    "node_type": "nodes-langchain.toolExecutor",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Tool Executor"
+  },
+  {
+    "node_type": "nodes-base.timeSaved",
+    "package": "n8n-nodes-base",
+    "display_name": "Track Time Saved"
+  },
+  {
+    "node_type": "nodes-base.travisCi",
+    "package": "n8n-nodes-base",
+    "display_name": "TravisCI"
+  },
+  {
+    "node_type": "nodes-base.travisCiTool",
+    "package": "n8n-nodes-base",
+    "display_name": "TravisCI Tool"
+  },
+  {
+    "node_type": "nodes-base.trello",
+    "package": "n8n-nodes-base",
+    "display_name": "Trello"
+  },
+  {
+    "node_type": "nodes-base.trelloTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Trello Tool"
+  },
+  {
+    "node_type": "nodes-base.trelloTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Trello Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-triggercmd.triggercmd",
+    "package": "n8n-nodes-triggercmd",
+    "display_name": "TriggerCMD"
+  },
+  {
+    "node_type": "n8n-nodes-tubelab.tubeLab",
+    "package": "n8n-nodes-tubelab",
+    "display_name": "TubeLab"
+  },
+  {
+    "node_type": "nodes-base.twake",
+    "package": "n8n-nodes-base",
+    "display_name": "Twake"
+  },
+  {
+    "node_type": "nodes-base.twakeTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Twake Tool"
+  },
+  {
+    "node_type": "nodes-base.twilio",
+    "package": "n8n-nodes-base",
+    "display_name": "Twilio"
+  },
+  {
+    "node_type": "nodes-base.twilioTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Twilio Tool"
+  },
+  {
+    "node_type": "nodes-base.twilioTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Twilio Trigger"
+  },
+  {
+    "node_type": "nodes-base.twist",
+    "package": "n8n-nodes-base",
+    "display_name": "Twist"
+  },
+  {
+    "node_type": "nodes-base.twistTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Twist Tool"
+  },
+  {
+    "node_type": "n8n-nodes-twittershots.twitterShots",
+    "package": "n8n-nodes-twittershots",
+    "display_name": "TwitterShots"
+  },
+  {
+    "node_type": "@neosapience/n8n-nodes-typecast.typecast",
+    "package": "@neosapience/n8n-nodes-typecast",
+    "display_name": "Typecast"
+  },
+  {
+    "node_type": "nodes-base.typeformTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Typeform Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-understandtechchat.understandTechChat",
+    "package": "n8n-nodes-understandtechchat",
+    "display_name": "Understand Tech Chat"
+  },
+  {
+    "node_type": "nodes-base.unleashedSoftware",
+    "package": "n8n-nodes-base",
+    "display_name": "Unleashed Software"
+  },
+  {
+    "node_type": "nodes-base.unleashedSoftwareTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Unleashed Software Tool"
+  },
+  {
+    "node_type": "nodes-base.uplead",
+    "package": "n8n-nodes-base",
+    "display_name": "Uplead"
+  },
+  {
+    "node_type": "nodes-base.upleadTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Uplead Tool"
+  },
+  {
+    "node_type": "n8n-nodes-upload-post.uploadPost",
+    "package": "n8n-nodes-upload-post",
+    "display_name": "Upload Post"
+  },
+  {
+    "node_type": "nodes-base.uptimeRobot",
+    "package": "n8n-nodes-base",
+    "display_name": "UptimeRobot"
+  },
+  {
+    "node_type": "nodes-base.uptimeRobotTool",
+    "package": "n8n-nodes-base",
+    "display_name": "UptimeRobot Tool"
+  },
+  {
+    "node_type": "n8n-nodes-veed.veed",
+    "package": "n8n-nodes-veed",
+    "display_name": "VEED AI Video API"
+  },
+  {
+    "node_type": "@vlm-run/n8n-nodes-vlmrun.vlmRun",
+    "package": "@vlm-run/n8n-nodes-vlmrun",
+    "display_name": "VLM Run"
+  },
+  {
+    "node_type": "nodes-langchain.toolVectorStore",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Vector Store Question Answer Tool"
+  },
+  {
+    "node_type": "nodes-langchain.retrieverVectorStore",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Vector Store Retriever"
+  },
+  {
+    "node_type": "n8n-nodes-velatir.velatir",
+    "package": "n8n-nodes-velatir",
+    "display_name": "Velatir"
+  },
+  {
+    "node_type": "nodes-base.venafiTlsProtectCloud",
+    "package": "n8n-nodes-base",
+    "display_name": "Venafi TLS Protect Cloud"
+  },
+  {
+    "node_type": "nodes-base.venafiTlsProtectCloudTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Venafi TLS Protect Cloud Tool"
+  },
+  {
+    "node_type": "nodes-base.venafiTlsProtectCloudTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Venafi TLS Protect Cloud Trigger"
+  },
+  {
+    "node_type": "nodes-base.venafiTlsProtectDatacenter",
+    "package": "n8n-nodes-base",
+    "display_name": "Venafi TLS Protect Datacenter"
+  },
+  {
+    "node_type": "nodes-base.venafiTlsProtectDatacenterTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Venafi TLS Protect Datacenter Tool"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatVercelAiGateway",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Vercel AI Gateway Chat Model"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatVercelAiGatewayTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Vercel AI Gateway Chat Model Tool"
+  },
+  {
+    "node_type": "n8n-nodes-verifiemail.verifiEmail",
+    "package": "n8n-nodes-verifiemail",
+    "display_name": "Verifi Email"
+  },
+  {
+    "node_type": "nodes-base.vero",
+    "package": "n8n-nodes-base",
+    "display_name": "Vero"
+  },
+  {
+    "node_type": "nodes-base.veroTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Vero Tool"
+  },
+  {
+    "node_type": "@videodb/n8n-nodes-videodb.videoDb",
+    "package": "@videodb/n8n-nodes-videodb",
+    "display_name": "VideoDB"
+  },
+  {
+    "node_type": "n8n-nodes-videotoblog.videoToBlog",
+    "package": "n8n-nodes-videotoblog",
+    "display_name": "VideoToBlog"
+  },
+  {
+    "node_type": "n8n-nodes-vikunja.vikunja",
+    "package": "n8n-nodes-vikunja",
+    "display_name": "Vikunja"
+  },
+  {
+    "node_type": "n8n-nodes-vikunja.vikunjaTrigger",
+    "package": "n8n-nodes-vikunja",
+    "display_name": "Vikunja Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-visualping.visualpingTrigger",
+    "package": "n8n-nodes-visualping",
+    "display_name": "Visualping Trigger"
+  },
+  {
+    "node_type": "nodes-base.vonage",
+    "package": "n8n-nodes-base",
+    "display_name": "Vonage"
+  },
+  {
+    "node_type": "nodes-base.vonageTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Vonage Tool"
+  },
+  {
+    "node_type": "@woztell-sanuker/n8n-nodes-woztell-sanuker.woztellTrigger",
+    "package": "@woztell-sanuker/n8n-nodes-woztell-sanuker",
+    "display_name": "WOZTELL Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-wpforms.wpformsTrigger",
+    "package": "n8n-nodes-wpforms",
+    "display_name": "WPForms Trigger"
+  },
+  {
+    "node_type": "@waapi/n8n-nodes-waalaxy.waalaxy",
+    "package": "@waapi/n8n-nodes-waalaxy",
+    "display_name": "Waalaxy"
+  },
+  {
+    "node_type": "nodes-base.wait",
+    "package": "n8n-nodes-base",
+    "display_name": "Wait"
+  },
+  {
+    "node_type": "nodes-base.waitTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Wait Tool"
+  },
+  {
+    "node_type": "n8n-nodes-weavely.weavelyTrigger",
+    "package": "n8n-nodes-weavely",
+    "display_name": "Weavely Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreWeaviate",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Weaviate Vector Store"
+  },
+  {
+    "node_type": "nodes-base.ciscoWebex",
+    "package": "n8n-nodes-base",
+    "display_name": "Webex by Cisco"
+  },
+  {
+    "node_type": "nodes-base.ciscoWebexTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Webex by Cisco Tool"
+  },
+  {
+    "node_type": "nodes-base.ciscoWebexTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Webex by Cisco Trigger"
+  },
+  {
+    "node_type": "nodes-base.webflow",
+    "package": "n8n-nodes-base",
+    "display_name": "Webflow"
+  },
+  {
+    "node_type": "nodes-base.webflowTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Webflow Trigger"
+  },
+  {
+    "node_type": "nodes-base.webhook",
+    "package": "n8n-nodes-base",
+    "display_name": "Webhook"
+  },
+  {
+    "node_type": "n8n-nodes-webmetic.webmetic",
+    "package": "n8n-nodes-webmetic",
+    "display_name": "Webmetic"
+  },
+  {
+    "node_type": "nodes-base.wekan",
+    "package": "n8n-nodes-base",
+    "display_name": "Wekan"
+  },
+  {
+    "node_type": "nodes-base.wekanTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Wekan Tool"
+  },
+  {
+    "node_type": "n8n-nodes-whatsable.whatsAble",
+    "package": "n8n-nodes-whatsable",
+    "display_name": "WhatsAble"
+  },
+  {
+    "node_type": "nodes-base.whatsApp",
+    "package": "n8n-nodes-base",
+    "display_name": "WhatsApp Business Cloud"
+  },
+  {
+    "node_type": "nodes-base.whatsAppTool",
+    "package": "n8n-nodes-base",
+    "display_name": "WhatsApp Business Cloud Tool"
+  },
+  {
+    "node_type": "n8n-nodes-syncmate.whatsAuto",
+    "package": "n8n-nodes-syncmate",
+    "display_name": "WhatsApp Notifications by SyncMate"
+  },
+  {
+    "node_type": "nodes-base.whatsAppTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "WhatsApp Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.toolWikipedia",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Wikipedia"
+  },
+  {
+    "node_type": "n8n-nodes-winston-ai.winstonAi",
+    "package": "n8n-nodes-winston-ai",
+    "display_name": "Winston AI"
+  },
+  {
+    "node_type": "nodes-base.wise",
+    "package": "n8n-nodes-base",
+    "display_name": "Wise"
+  },
+  {
+    "node_type": "nodes-base.wiseTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Wise Trigger"
+  },
+  {
+    "node_type": "@wix/n8n-nodes-wix.wix",
+    "package": "@wix/n8n-nodes-wix",
+    "display_name": "Wix"
+  },
+  {
+    "node_type": "@wizaco/n8n-nodes-wiza.wiza",
+    "package": "@wizaco/n8n-nodes-wiza",
+    "display_name": "Wiza"
+  },
+  {
+    "node_type": "nodes-langchain.toolWolframAlpha",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Wolfram|Alpha"
+  },
+  {
+    "node_type": "nodes-base.wooCommerce",
+    "package": "n8n-nodes-base",
+    "display_name": "WooCommerce"
+  },
+  {
+    "node_type": "nodes-base.wooCommerceTool",
+    "package": "n8n-nodes-base",
+    "display_name": "WooCommerce Tool"
+  },
+  {
+    "node_type": "nodes-base.wooCommerceTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "WooCommerce Trigger"
+  },
+  {
+    "node_type": "nodes-base.wordpress",
+    "package": "n8n-nodes-base",
+    "display_name": "Wordpress"
+  },
+  {
+    "node_type": "nodes-base.wordpressTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Wordpress Tool"
+  },
+  {
+    "node_type": "nodes-base.workableTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Workable Trigger"
+  },
+  {
+    "node_type": "nodes-langchain.retrieverWorkflow",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Workflow Retriever"
+  },
+  {
+    "node_type": "nodes-base.workflowTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Workflow Trigger"
+  },
+  {
+    "node_type": "nodes-base.writeBinaryFile",
+    "package": "n8n-nodes-base",
+    "display_name": "Write Binary File"
+  },
+  {
+    "node_type": "nodes-base.wufooTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Wufoo Trigger"
+  },
+  {
+    "node_type": "nodes-base.twitter",
+    "package": "n8n-nodes-base",
+    "display_name": "X (Formerly Twitter)"
+  },
+  {
+    "node_type": "nodes-base.xml",
+    "package": "n8n-nodes-base",
+    "display_name": "XML"
+  },
+  {
+    "node_type": "@xano/n8n-nodes-xano.xano",
+    "package": "@xano/n8n-nodes-xano",
+    "display_name": "Xano"
+  },
+  {
+    "node_type": "nodes-langchain.memoryXata",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Xata"
+  },
+  {
+    "node_type": "nodes-base.xero",
+    "package": "n8n-nodes-base",
+    "display_name": "Xero"
+  },
+  {
+    "node_type": "nodes-base.xeroTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Xero Tool"
+  },
+  {
+    "node_type": "n8n-nodes-yepcode.yepCode",
+    "package": "n8n-nodes-yepcode",
+    "display_name": "YepCode"
+  },
+  {
+    "node_type": "@jetbrains/n8n-nodes-youtrack.youtrack",
+    "package": "@jetbrains/n8n-nodes-youtrack",
+    "display_name": "YouTrack"
+  },
+  {
+    "node_type": "nodes-base.youTube",
+    "package": "n8n-nodes-base",
+    "display_name": "YouTube"
+  },
+  {
+    "node_type": "nodes-base.youTubeTool",
+    "package": "n8n-nodes-base",
+    "display_name": "YouTube Tool"
+  },
+  {
+    "node_type": "nodes-base.yourls",
+    "package": "n8n-nodes-base",
+    "display_name": "Yourls"
+  },
+  {
+    "node_type": "nodes-base.yourlsTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Yourls Tool"
+  },
+  {
+    "node_type": "n8n-nodes-yourtextguru.yourtextGuru",
+    "package": "n8n-nodes-yourtextguru",
+    "display_name": "Yourtext.Guru"
+  },
+  {
+    "node_type": "nodes-base.zammad",
+    "package": "n8n-nodes-base",
+    "display_name": "Zammad"
+  },
+  {
+    "node_type": "nodes-base.zammadTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Zammad Tool"
+  },
+  {
+    "node_type": "nodes-base.zendesk",
+    "package": "n8n-nodes-base",
+    "display_name": "Zendesk"
+  },
+  {
+    "node_type": "nodes-base.zendeskTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Zendesk Tool"
+  },
+  {
+    "node_type": "nodes-base.zendeskTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "Zendesk Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-zenlayer.zenlayer",
+    "package": "n8n-nodes-zenlayer",
+    "display_name": "Zenlayer"
+  },
+  {
+    "node_type": "nodes-langchain.memoryZep",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Zep"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreZep",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Zep Vector Store"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreZepInsert",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Zep Vector Store: Insert"
+  },
+  {
+    "node_type": "nodes-langchain.vectorStoreZepLoad",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "Zep Vector Store: Load"
+  },
+  {
+    "node_type": "@zerobounce/n8n-nodes-zerobounce.zeroBounce",
+    "package": "@zerobounce/n8n-nodes-zerobounce",
+    "display_name": "ZeroBounce"
+  },
+  {
+    "node_type": "n8n-nodes-zigpoll.zigpollTrigger",
+    "package": "n8n-nodes-zigpoll",
+    "display_name": "Zigpoll Trigger"
+  },
+  {
+    "node_type": "nodes-base.zohoCrm",
+    "package": "n8n-nodes-base",
+    "display_name": "Zoho CRM"
+  },
+  {
+    "node_type": "nodes-base.zohoCrmTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Zoho CRM Tool"
+  },
+  {
+    "node_type": "@zohomail/n8n-nodes-zohocalendar.zohoCalendar",
+    "package": "@zohomail/n8n-nodes-zohocalendar",
+    "display_name": "Zoho Calendar"
+  },
+  {
+    "node_type": "n8n-nodes-zohoteaminbox.zohoTeamInbox",
+    "package": "n8n-nodes-zohoteaminbox",
+    "display_name": "Zoho TeamInbox"
+  },
+  {
+    "node_type": "n8n-nodes-zohozeptomail.zohoZeptomail",
+    "package": "n8n-nodes-zohozeptomail",
+    "display_name": "Zoho Zeptomail"
+  },
+  {
+    "node_type": "nodes-base.zoom",
+    "package": "n8n-nodes-base",
+    "display_name": "Zoom"
+  },
+  {
+    "node_type": "nodes-base.zoomTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Zoom Tool"
+  },
+  {
+    "node_type": "nodes-base.zulip",
+    "package": "n8n-nodes-base",
+    "display_name": "Zulip"
+  },
+  {
+    "node_type": "nodes-base.zulipTool",
+    "package": "n8n-nodes-base",
+    "display_name": "Zulip Tool"
+  },
+  {
+    "node_type": "n8n-nodes-a2a.a2a",
+    "package": "n8n-nodes-a2a",
+    "display_name": "a2a"
+  },
+  {
+    "node_type": "n8n-nodes-appstore-jwt-generator.appstorejwtgenerator",
+    "package": "n8n-nodes-appstore-jwt-generator",
+    "display_name": "appstorejwtgenerator"
+  },
+  {
+    "node_type": "@asaasbr/n8n-nodes-asaas.asaas",
+    "package": "@asaasbr/n8n-nodes-asaas",
+    "display_name": "asaas"
+  },
+  {
+    "node_type": "n8n-nodes-asaas-v2.asaasv2",
+    "package": "n8n-nodes-asaas-v2",
+    "display_name": "asaasv2"
+  },
+  {
+    "node_type": "n8n-nodes-awork.awork",
+    "package": "n8n-nodes-awork",
+    "display_name": "awork"
+  },
+  {
+    "node_type": "n8n-nodes-better-ai-agent.betteraiagent",
+    "package": "n8n-nodes-better-ai-agent",
+    "display_name": "betteraiagent"
+  },
+  {
+    "node_type": "n8n-nodes-binance.binance",
+    "package": "n8n-nodes-binance",
+    "display_name": "binance"
+  },
+  {
+    "node_type": "n8n-nodes-bookoly.bookoly",
+    "package": "n8n-nodes-bookoly",
+    "display_name": "bookoly"
+  },
+  {
+    "node_type": "n8n-nodes-borges.borges",
+    "package": "n8n-nodes-borges",
+    "display_name": "borges"
+  },
+  {
+    "node_type": "n8n-nodes-browserless.browserless",
+    "package": "n8n-nodes-browserless",
+    "display_name": "browserless"
+  },
+  {
+    "node_type": "n8n-nodes-chatwoot.chatwoot",
+    "package": "n8n-nodes-chatwoot",
+    "display_name": "chatwoot"
+  },
+  {
+    "node_type": "@devlikeapro/n8n-nodes-chatwoot.chatwoot",
+    "package": "@devlikeapro/n8n-nodes-chatwoot",
+    "display_name": "chatwoot"
+  },
+  {
+    "node_type": "@pixelinfinito/n8n-nodes-chatwoot.chatwoot",
+    "package": "@pixelinfinito/n8n-nodes-chatwoot",
+    "display_name": "chatwoot"
+  },
+  {
+    "node_type": "n8n-nodes-cnpj.cnpj",
+    "package": "n8n-nodes-cnpj",
+    "display_name": "cnpj"
+  },
+  {
+    "node_type": "n8n-nodes-convert-image.convertimage",
+    "package": "n8n-nodes-convert-image",
+    "display_name": "convertimage"
+  },
+  {
+    "node_type": "n8n-nodes-deepseek.deepseek",
+    "package": "n8n-nodes-deepseek",
+    "display_name": "deepseek"
+  },
+  {
+    "node_type": "n8n-nodes-deskzap-buffer.deskzapbuffer",
+    "package": "n8n-nodes-deskzap-buffer",
+    "display_name": "deskzapbuffer"
+  },
+  {
+    "node_type": "n8n-nodes-directus.directus",
+    "package": "n8n-nodes-directus",
+    "display_name": "directus"
+  },
+  {
+    "node_type": "n8n-nodes-document-generator.documentgenerator",
+    "package": "n8n-nodes-document-generator",
+    "display_name": "documentgenerator"
+  },
+  {
+    "node_type": "n8n-nodes-neo.neo",
+    "package": "n8n-nodes-neo",
+    "display_name": "docunite\u00ae NEO"
+  },
+  {
+    "node_type": "n8n-nodes-docx-converter.docxconverter",
+    "package": "n8n-nodes-docx-converter",
+    "display_name": "docxconverter"
+  },
+  {
+    "node_type": "@ekyte/n8n-nodes-ekyte.eKyteAction",
+    "package": "@ekyte/n8n-nodes-ekyte",
+    "display_name": "eKyte"
+  },
+  {
+    "node_type": "n8n-nodes-elevenlabs.elevenlabs",
+    "package": "n8n-nodes-elevenlabs",
+    "display_name": "elevenlabs"
+  },
+  {
+    "node_type": "n8n-nodes-evolution.evolution",
+    "package": "n8n-nodes-evolution",
+    "display_name": "evolution"
+  },
+  {
+    "node_type": "n8n-nodes-evolution-api.evolutionapi",
+    "package": "n8n-nodes-evolution-api",
+    "display_name": "evolutionapi"
+  },
+  {
+    "node_type": "n8n-nodes-evolution-api-media-downloader.evolutionapimediadownloader",
+    "package": "n8n-nodes-evolution-api-media-downloader",
+    "display_name": "evolutionapimediadownloader"
+  },
+  {
+    "node_type": "@fal-ai/n8n-nodes-fal.falAi",
+    "package": "@fal-ai/n8n-nodes-fal",
+    "display_name": "fal.ai"
+  },
+  {
+    "node_type": "n8n-nodes-feishu-lite.feishulite",
+    "package": "n8n-nodes-feishu-lite",
+    "display_name": "feishulite"
+  },
+  {
+    "node_type": "n8n-nodes-firebird.firebird",
+    "package": "n8n-nodes-firebird",
+    "display_name": "firebird"
+  },
+  {
+    "node_type": "n8n-nodes-firecrawl.firecrawl",
+    "package": "n8n-nodes-firecrawl",
+    "display_name": "firecrawl"
+  },
+  {
+    "node_type": "n8n-nodes-firecrawl-tool.firecrawltool",
+    "package": "n8n-nodes-firecrawl-tool",
+    "display_name": "firecrawltool"
+  },
+  {
+    "node_type": "n8n-nodes-gemini-ai.geminiai",
+    "package": "n8n-nodes-gemini-ai",
+    "display_name": "geminiai"
+  },
+  {
+    "node_type": "@geocapture/n8n-nodes-geocapture.geocapture",
+    "package": "@geocapture/n8n-nodes-geocapture",
+    "display_name": "geoCapture"
+  },
+  {
+    "node_type": "n8n-nodes-globals.globals",
+    "package": "n8n-nodes-globals",
+    "display_name": "globals"
+  },
+  {
+    "node_type": "n8n-nodes-google-drive-file.googledrivefile",
+    "package": "n8n-nodes-google-drive-file",
+    "display_name": "googledrivefile"
+  },
+  {
+    "node_type": "n8n-nodes-google-drive-tree.googledrivetree",
+    "package": "n8n-nodes-google-drive-tree",
+    "display_name": "googledrivetree"
+  },
+  {
+    "node_type": "@gotohuman/n8n-nodes-gotohuman.gotoHuman",
+    "package": "@gotohuman/n8n-nodes-gotohuman",
+    "display_name": "gotoHuman"
+  },
+  {
+    "node_type": "n8n-nodes-grok.grok",
+    "package": "n8n-nodes-grok",
+    "display_name": "grok"
+  },
+  {
+    "node_type": "@handelsregister/n8n-nodes-handelsregister-ai.handelsregisterAi",
+    "package": "@handelsregister/n8n-nodes-handelsregister-ai",
+    "display_name": "handelsregister.ai"
+  },
+  {
+    "node_type": "n8n-nodes-html-tag-extract.htmltagextract",
+    "package": "n8n-nodes-html-tag-extract",
+    "display_name": "htmltagextract"
+  },
+  {
+    "node_type": "nodes-base.iCal",
+    "package": "n8n-nodes-base",
+    "display_name": "iCalendar"
+  },
+  {
+    "node_type": "n8n-nodes-itop.iTop",
+    "package": "n8n-nodes-itop",
+    "display_name": "iTop"
+  },
+  {
+    "node_type": "n8n-nodes-imap.imap",
+    "package": "n8n-nodes-imap",
+    "display_name": "imap"
+  },
+  {
+    "node_type": "n8n-nodes-instagram-integrations.instagramintegrations",
+    "package": "n8n-nodes-instagram-integrations",
+    "display_name": "instagramintegrations"
+  },
+  {
+    "node_type": "n8n-nodes-kommo.kommo",
+    "package": "n8n-nodes-kommo",
+    "display_name": "kommo"
+  },
+  {
+    "node_type": "@telepilotco/n8n-nodes-kv-storage.kvstorage",
+    "package": "@telepilotco/n8n-nodes-kv-storage",
+    "display_name": "kvstorage"
+  },
+  {
+    "node_type": "n8n-nodes-mcp.mcp",
+    "package": "n8n-nodes-mcp",
+    "display_name": "mcp"
+  },
+  {
+    "node_type": "@lee-jisoo/n8n-nodes-mediafx.mediafx",
+    "package": "@lee-jisoo/n8n-nodes-mediafx",
+    "display_name": "mediafx"
+  },
+  {
+    "node_type": "n8n-nodes-meta-mcp.metamcp",
+    "package": "n8n-nodes-meta-mcp",
+    "display_name": "metamcp"
+  },
+  {
+    "node_type": "n8n-nodes-mfr.mfr",
+    "package": "n8n-nodes-mfr",
+    "display_name": "mfr - Field Service Management"
+  },
+  {
+    "node_type": "n8n-nodes-minio.minio",
+    "package": "n8n-nodes-minio",
+    "display_name": "minio"
+  },
+  {
+    "node_type": "@skriptfabrik/n8n-nodes-moco.moco",
+    "package": "@skriptfabrik/n8n-nodes-moco",
+    "display_name": "moco"
+  },
+  {
+    "node_type": "n8n-nodes-mtai-zalo-test-trial.mtaizalotesttrial",
+    "package": "n8n-nodes-mtai-zalo-test-trial",
+    "display_name": "mtaizalotesttrial"
+  },
+  {
+    "node_type": "nodes-base.n8n",
+    "package": "n8n-nodes-base",
+    "display_name": "n8n"
+  },
+  {
+    "node_type": "nodes-base.form",
+    "package": "n8n-nodes-base",
+    "display_name": "n8n Form"
+  },
+  {
+    "node_type": "nodes-base.formTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "n8n Form Trigger"
+  },
+  {
+    "node_type": "nodes-base.n8nTrigger",
+    "package": "n8n-nodes-base",
+    "display_name": "n8n Trigger"
+  },
+  {
+    "node_type": "n8n-nodes-nele-ai.neleAi",
+    "package": "n8n-nodes-nele-ai",
+    "display_name": "nele.ai"
+  },
+  {
+    "node_type": "n8n-nodes-nocodb-custom.nocodbcustom",
+    "package": "n8n-nodes-nocodb-custom",
+    "display_name": "nocodbcustom"
+  },
+  {
+    "node_type": "n8n-nodes-notificame-hub.notificamehub",
+    "package": "n8n-nodes-notificame-hub",
+    "display_name": "notificamehub"
+  },
+  {
+    "node_type": "n8n-nodes-notionmd.notionmd",
+    "package": "n8n-nodes-notionmd",
+    "display_name": "notionmd"
+  },
+  {
+    "node_type": "n8n-nodes-openpix.openpix",
+    "package": "n8n-nodes-openpix",
+    "display_name": "openpix"
+  },
+  {
+    "node_type": "n8n-nodes-openrouter-selector.openrouterselector",
+    "package": "n8n-nodes-openrouter-selector",
+    "display_name": "openrouterselector"
+  },
+  {
+    "node_type": "n8n-nodes-palatine-speech.palatinespeech",
+    "package": "n8n-nodes-palatine-speech",
+    "display_name": "palatinespeech"
+  },
+  {
+    "node_type": "n8n-nodes-pdf-generation.pdfgeneration",
+    "package": "n8n-nodes-pdf-generation",
+    "display_name": "pdfgeneration"
+  },
+  {
+    "node_type": "n8n-nodes-pdfkit.pdfkit",
+    "package": "n8n-nodes-pdfkit",
+    "display_name": "pdfkit"
+  },
+  {
+    "node_type": "@custom-js/n8n-nodes-pdf-toolkit.pdftoolkit",
+    "package": "@custom-js/n8n-nodes-pdf-toolkit",
+    "display_name": "pdftoolkit"
+  },
+  {
+    "node_type": "@splainez/n8n-nodes-phonenumber-parser.phonenumberparser",
+    "package": "@splainez/n8n-nodes-phonenumber-parser",
+    "display_name": "phonenumberparser"
+  },
+  {
+    "node_type": "n8n-nodes-puppeteer.puppeteer",
+    "package": "n8n-nodes-puppeteer",
+    "display_name": "puppeteer"
+  },
+  {
+    "node_type": "n8n-nodes-quepasa.quepasa",
+    "package": "n8n-nodes-quepasa",
+    "display_name": "quepasa"
+  },
+  {
+    "node_type": "n8n-nodes-raia.raia",
+    "package": "n8n-nodes-raia",
+    "display_name": "raia"
+  },
+  {
+    "node_type": "n8n-nodes-rd-station-crm.rdstationcrm",
+    "package": "n8n-nodes-rd-station-crm",
+    "display_name": "rdstationcrm"
+  },
+  {
+    "node_type": "nodes-base.sms77",
+    "package": "n8n-nodes-base",
+    "display_name": "seven"
+  },
+  {
+    "node_type": "nodes-base.sms77Tool",
+    "package": "n8n-nodes-base",
+    "display_name": "seven Tool"
+  },
+  {
+    "node_type": "n8n-nodes-telli.telli",
+    "package": "n8n-nodes-telli",
+    "display_name": "telli"
+  },
+  {
+    "node_type": "n8n-nodes-tesseractjs.tesseractjs",
+    "package": "n8n-nodes-tesseractjs",
+    "display_name": "tesseractjs"
+  },
+  {
+    "node_type": "n8n-nodes-text-manipulation.textmanipulation",
+    "package": "n8n-nodes-text-manipulation",
+    "display_name": "textmanipulation"
+  },
+  {
+    "node_type": "n8n-nodes-thang-zalo-app.thangzaloapp",
+    "package": "n8n-nodes-thang-zalo-app",
+    "display_name": "thangzaloapp"
+  },
+  {
+    "node_type": "n8n-nodes-thong-zalo-test-trial.thongzalotesttrial",
+    "package": "n8n-nodes-thong-zalo-test-trial",
+    "display_name": "thongzalotesttrial"
+  },
+  {
+    "node_type": "@igabm/n8n-nodes-tiktok.tiktok",
+    "package": "@igabm/n8n-nodes-tiktok",
+    "display_name": "tiktok"
+  },
+  {
+    "node_type": "n8n-nodes-transcript-lol.transcriptlol",
+    "package": "n8n-nodes-transcript-lol",
+    "display_name": "transcriptlol"
+  },
+  {
+    "node_type": "n8n-nodes-trino.trino",
+    "package": "n8n-nodes-trino",
+    "display_name": "trino"
+  },
+  {
+    "node_type": "nodes-base.uproc",
+    "package": "n8n-nodes-base",
+    "display_name": "uProc"
+  },
+  {
+    "node_type": "nodes-base.uprocTool",
+    "package": "n8n-nodes-base",
+    "display_name": "uProc Tool"
+  },
+  {
+    "node_type": "n8n-nodes-uazapi.uazapi",
+    "package": "n8n-nodes-uazapi",
+    "display_name": "uazapi"
+  },
+  {
+    "node_type": "n8n-nodes-upcellapi.upcellApi",
+    "package": "n8n-nodes-upcellapi",
+    "display_name": "upcell API"
+  },
+  {
+    "node_type": "nodes-base.urlScanIo",
+    "package": "n8n-nodes-base",
+    "display_name": "urlscan.io"
+  },
+  {
+    "node_type": "nodes-base.urlScanIoTool",
+    "package": "n8n-nodes-base",
+    "display_name": "urlscan.io Tool"
+  },
+  {
+    "node_type": "n8n-nodes-vercel-ai-sdk-universal-temp.vercelaisdkuniversaltemp",
+    "package": "n8n-nodes-vercel-ai-sdk-universal-temp",
+    "display_name": "vercelaisdkuniversaltemp"
+  },
+  {
+    "node_type": "n8n-nodes-waha.waha",
+    "package": "n8n-nodes-waha",
+    "display_name": "waha"
+  },
+  {
+    "node_type": "@devlikeapro/n8n-nodes-waha.waha",
+    "package": "@devlikeapro/n8n-nodes-waha",
+    "display_name": "waha"
+  },
+  {
+    "node_type": "n8n-nodes-wuzapi.wuzapi",
+    "package": "n8n-nodes-wuzapi",
+    "display_name": "wuzapi"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatXAiGrok",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "xAI Grok Chat Model"
+  },
+  {
+    "node_type": "nodes-langchain.lmChatXAiGrokTool",
+    "package": "@n8n/n8n-nodes-langchain",
+    "display_name": "xAI Grok Chat Model Tool"
+  },
+  {
+    "node_type": "n8n-nodes-youtube-transcript-api.youtubetranscriptapi",
+    "package": "n8n-nodes-youtube-transcript-api",
+    "display_name": "youtubetranscriptapi"
+  },
+  {
+    "node_type": "n8n-nodes-zapi.zapi",
+    "package": "n8n-nodes-zapi",
+    "display_name": "zapi"
+  }
+]

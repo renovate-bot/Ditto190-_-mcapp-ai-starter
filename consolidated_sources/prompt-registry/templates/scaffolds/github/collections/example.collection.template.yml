@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/AmadeusITGroup/prompt-registry/refs/heads/main/schemas/collection.schema.json
+id: { { collectionId } }
+name: { { projectName } }
+description: Example collection for {{projectName}}
+items:
+  - path: prompts/example.prompt.md
+    kind: prompt
+  - path: instructions/example.instructions.md
+    kind: instruction
+  - path: agents/example.agent.md
+    kind: agent
+  - path: skills/example-skill/SKILL.md
+    kind: skill
+display:
+  ordering: manual
+  show_badge: true
+
+# ============================================================================
+# Optional: MCP (Model Context Protocol) Server Configuration
+# ============================================================================
+# Uncomment this section to enable MCP functionality for your collection.
+# MCP servers provide custom tools and context to GitHub Copilot.
+#
+# OPTION 1: Use existing MCP servers with npx (recommended for beginners)
+# ============================================================================
+# mcp:
+#   items:
+#     # Sequential thinking - helps AI break down complex problems
+#     sequential-thinking:
+#       command: npx
+#       args:
+#         - -y
+#         - "@modelcontextprotocol/server-sequential-thinking"
+#
+#     # Filesystem access - allows reading/writing files in a directory
+#     filesystem:
+#       command: npx
+#       args:
+#         - -y
+#         - "@modelcontextprotocol/server-filesystem"
+#         - ${env:HOME}/Documents
+#
+#     # Memory/notes server - persistent key-value storage
+#     memory:
+#       command: npx
+#       args:
+#         - -y
+#         - "@modelcontextprotocol/server-memory"
+#
+# ============================================================================
+# OPTION 2: Remote HTTP/SSE MCP servers
+# ============================================================================
+# Connect to remote MCP servers via HTTP or Server-Sent Events (SSE):
+#
+# mcp:
+#   items:
+#     # HTTP endpoint (request/response)
+#     api-server:
+#       type: http
+#       url: https://api.example.com/mcp
+#       headers:
+#         Authorization: "Bearer ${env:API_TOKEN}"
+#
+#     # SSE endpoint (streaming)
+#     streaming-server:
+#       type: sse
+#       url: https://stream.example.com/mcp/events
+#
+#     # GitHub Copilot's MCP endpoint (requires authentication)
+#     github-copilot:
+#       type: http
+#       url: https://api.githubcopilot.com/mcp/
+#       headers:
+#         Authorization: "Bearer ${env:GITHUB_TOKEN}"
+#
+# ============================================================================
+# OPTION 3: Custom local MCP server (advanced users)
+# ============================================================================
+# Create your own server in mcp-server/server.js, then uncomment:
+#
+# mcp:
+#   items:
+#     custom-server:
+#       command: node
+#       args:
+#         - ${bundlePath}/mcp-server/server.js
+#       env:
+#         LOG_LEVEL: info
+#
+# ============================================================================
+# Available variables for substitution:
+#   ${bundlePath}    - Path where this bundle is installed
+#   ${bundleId}      - This collection's ID ({{collectionId}})
+#   ${bundleVersion} - Bundle version
+#   ${env:VAR_NAME}  - Any environment variable
+#
+# See mcp-server/README.md for detailed documentation.
+# ============================================================================

@@ -1,27 +1,40 @@
-name: Publish Any Commit
+name: Publish Any Commit (Preview Packages)
+
 permissions:
   contents: read
+
 on:
+  # Run pkg-pr-new only for pull requests (preview installs / canary testing).
   pull_request:
-  push:
-    branches:
-      - "**"
-    tags:
-      - "!**"
 
 jobs:
   pkg-publish:
+    name: Build & publish preview packages with pkg-pr-new
     runs-on: ubuntu-latest
+    # Optional safety: only run for PRs whose head repo is this repo (not forks).
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run build
-      - run: npm run examples:build
-      - run: |
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build root package
+        run: npm run build
+
+      - name: Build example workspaces
+        run: npm run examples:build
+
+      - name: Publish preview packages with pkg-pr-new
+        run: |
           npx pkg-pr-new publish \
             . \
             ./examples/basic-server-preact \

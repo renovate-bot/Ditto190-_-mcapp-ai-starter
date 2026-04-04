@@ -1,0 +1,248 @@
+{
+    "name": "AgentSkills Validation Error Handler",
+    "nodes": [
+        {
+            "parameters": {},
+            "id": "error-trigger",
+            "name": "Error Trigger",
+            "type": "n8n-nodes-base.errorTrigger",
+            "typeVersion": 1,
+            "position": [
+                240,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "jsCode": "// Extract error details from Error Trigger\nconst errorData = $input.item.json;\nconst execution = errorData.execution || {};\nconst workflow = errorData.workflow || {};\nconst trigger = errorData.trigger || {};\n\n// Determine error type\nconst isTriggerError = !!trigger.error;\nconst errorInfo = isTriggerError ? trigger.error : execution.error;\n\nreturn {\n  json: {\n    timestamp: new Date().toISOString(),\n    errorType: isTriggerError ? 'trigger_error' : 'execution_error',\n    workflowId: workflow.id,\n    workflowName: workflow.name,\n    executionId: execution.id,\n    executionUrl: execution.url,\n    lastNodeExecuted: execution.lastNodeExecuted,\n    errorMessage: errorInfo?.message || 'Unknown error',\n    errorStack: errorInfo?.stack || '',\n    severity: 'high',\n    category: 'agentskills_validation',\n    actionRequired: true,\n    recommendations: [\n      'Check skills-ref installation: cd agentskills/skills-ref && uv sync',\n      'Verify skill directory path is correct',\n      'Ensure SKILL.md file exists',\n      'Review validation error logs',\n      'See troubleshooting: awesome-copilot/skills/example-full-skill/references/troubleshooting.md'\n    ]\n  }\n};"
+            },
+            "id": "parse-error",
+            "name": "Parse Error",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                460,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "create",
+                "docType": "error_log",
+                "docContent": "={{ JSON.stringify($json, null, 2) }}"
+            },
+            "id": "log-error-context7",
+            "name": "Log Error to Context7",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                680,
+                300
+            ],
+            "credentials": {
+                "httpBasicAuth": {
+                    "id": "context7-api",
+                    "name": "Context7 API"
+                }
+            },
+            "parameters": {
+                "method": "POST",
+                "url": "https://api.context7.io/docs",
+                "authentication": "predefinedCredentialType",
+                "nodeCredentialType": "httpBasicAuth",
+                "options": {},
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "doc_type",
+                            "value": "agentskills_error"
+                        },
+                        {
+                            "name": "title",
+                            "value": "={{ $json.workflowName }} - {{ $json.errorType }}"
+                        },
+                        {
+                            "name": "content",
+                            "value": "={{ JSON.stringify($json, null, 2) }}"
+                        },
+                        {
+                            "name": "tags",
+                            "value": "[\"error\", \"agentskills\", \"validation\", \"{{ $json.severity }}\"]"
+                        }
+                    ]
+                },
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ]
+                }
+            },
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "channel": "#agentskills-alerts",
+                "text": "🚨 AgentSkills Validation Workflow Failed\\n\\n*Workflow:* {{ $json.workflowName }}\\n*Error:* {{ $json.errorMessage }}\\n*Last Node:* {{ $json.lastNodeExecuted }}\\n*Execution:* {{ $json.executionUrl }}\\n\\n*Recommendations:*\\n{{ $json.recommendations.join(\"\\n• \") }}",
+                "attachments": []
+            },
+            "id": "notify-slack",
+            "name": "Notify Slack",
+            "type": "n8n-nodes-base.slack",
+            "typeVersion": 2.2,
+            "position": [
+                900,
+                180
+            ],
+            "credentials": {
+                "slackApi": {
+                    "id": "slack-webhook",
+                    "name": "Slack Webhook"
+                }
+            },
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "fromEmail": "noreply@n8n.local",
+                "toEmail": "admin@example.com",
+                "subject": "=🚨 AgentSkills Validation Error: {{ $json.workflowName }}",
+                "emailFormat": "html",
+                "html": "=<html><body><h2>AgentSkills Validation Workflow Failed</h2><table border=\"1\" cellpadding=\"5\"><tr><th>Field</th><th>Value</th></tr><tr><td>Workflow</td><td>{{ $json.workflowName }}</td></tr><tr><td>Error Type</td><td>{{ $json.errorType }}</td></tr><tr><td>Error Message</td><td>{{ $json.errorMessage }}</td></tr><tr><td>Last Node</td><td>{{ $json.lastNodeExecuted }}</td></tr><tr><td>Execution URL</td><td><a href=\"{{ $json.executionUrl }}\">View Execution</a></td></tr><tr><td>Timestamp</td><td>{{ $json.timestamp }}</td></tr></table><h3>Recommendations:</h3><ul>{{ $json.recommendations.map(r => '<li>' + r + '</li>').join('') }}</ul></body></html>",
+                "options": {}
+            },
+            "id": "send-email-alert",
+            "name": "Send Email Alert",
+            "type": "n8n-nodes-base.emailSend",
+            "typeVersion": 2.1,
+            "position": [
+                900,
+                420
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "operation": "create",
+                "category": "agentskills_validation",
+                "severity": "={{ $json.severity }}",
+                "title": "={{ $json.workflowName }} - {{ $json.errorType }}",
+                "description": "={{ $json.errorMessage }}",
+                "metadata": "={{ JSON.stringify({ executionId: $json.executionId, lastNode: $json.lastNodeExecuted, recommendations: $json.recommendations }) }}"
+            },
+            "id": "create-incident",
+            "name": "Create Incident",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                1120,
+                300
+            ],
+            "parameters": {
+                "method": "POST",
+                "url": "=https://{{ $env.N8N_HOST }}/api/v1/incidents",
+                "authentication": "genericCredentialType",
+                "genericAuthType": "httpHeaderAuth",
+                "options": {},
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "category",
+                            "value": "agentskills_validation"
+                        },
+                        {
+                            "name": "severity",
+                            "value": "={{ $json.severity }}"
+                        },
+                        {
+                            "name": "title",
+                            "value": "={{ $json.workflowName }} validation error"
+                        },
+                        {
+                            "name": "details",
+                            "value": "={{ JSON.stringify($json, null, 2) }}"
+                        }
+                    ]
+                }
+            },
+            "continueOnFail": true
+        }
+    ],
+    "connections": {
+        "Error Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "Parse Error",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Parse Error": {
+            "main": [
+                [
+                    {
+                        "node": "Log Error to Context7",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Log Error to Context7": {
+            "main": [
+                [
+                    {
+                        "node": "Notify Slack",
+                        "type": "main",
+                        "index": 0
+                    },
+                    {
+                        "node": "Send Email Alert",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Notify Slack": {
+            "main": [
+                [
+                    {
+                        "node": "Create Incident",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Send Email Alert": {
+            "main": [
+                [
+                    {
+                        "node": "Create Incident",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    },
+    "staticData": null,
+    "tags": [
+        "error-handling",
+        "agentskills",
+        "monitoring"
+    ],
+    "triggerCount": 1,
+    "updatedAt": "2026-03-05T00:00:00.000Z",
+    "versionId": "1.0.0"
+}

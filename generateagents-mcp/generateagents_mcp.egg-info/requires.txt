@@ -1,0 +1,4 @@
+fastmcp>=3.0.0
+
+[dev]
+pytest>=8.0

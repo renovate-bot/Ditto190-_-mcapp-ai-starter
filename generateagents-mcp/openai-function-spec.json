@@ -1,0 +1,310 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "GenerateAgents MCP Tools API",
+        "description": "Model Context Protocol server exposing GenerateAgents.md CLI as LLM-callable tools via OpenAI Function Calling",
+        "version": "0.1.0",
+        "contact": {
+            "name": "GenerateAgents MCP Team"
+        },
+        "license": {
+            "name": "MIT"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:5000",
+            "description": "Local MCP server (stdio transport via Python subprocess)"
+        },
+        {
+            "url": "https://api.example.com/mcp/generateagents",
+            "description": "Production HTTP endpoint (replace with your deployment)"
+        }
+    ],
+    "paths": {},
+    "components": {
+        "schemas": {
+            "ListModelsResponse": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "provider_count": {
+                        "type": "integer"
+                    },
+                    "models": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "raw_output": {
+                        "type": "string"
+                    }
+                }
+            },
+            "GenerateAgentsResult": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "completed",
+                            "error"
+                        ]
+                    },
+                    "output_path": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "agents_md_content": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "repo_name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "error_message": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                }
+            },
+            "ValidationResult": {
+                "type": "object",
+                "properties": {
+                    "project_name": {
+                        "type": "string"
+                    },
+                    "is_valid": {
+                        "type": "boolean"
+                    },
+                    "file_path": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "file_size_bytes": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "has_agents_section": {
+                        "type": "boolean"
+                    },
+                    "has_architecture_section": {
+                        "type": "boolean"
+                    },
+                    "has_constraints_section": {
+                        "type": "boolean"
+                    },
+                    "issues": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "TestResult": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "total_tests": {
+                        "type": "integer"
+                    },
+                    "passed_tests": {
+                        "type": "integer"
+                    },
+                    "failed_tests": {
+                        "type": "integer"
+                    },
+                    "skipped_tests": {
+                        "type": "integer"
+                    },
+                    "summary": {
+                        "type": "string"
+                    },
+                    "error_message": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "x-openai-functions": [
+        {
+            "name": "generateagents_list_models",
+            "description": "List all available language models supported by GenerateAgents across 100+ providers (OpenAI, Anthropic, Gemini, Ollama, Cohere, Hugging Face, etc.). Returns a dictionary mapping provider names to available model identifiers.",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+                "required": []
+            },
+            "returns": {
+                "$ref": "#/components/schemas/ListModelsResponse"
+            }
+        },
+        {
+            "name": "generateagents_generate_agents",
+            "description": "Generate AGENTS.md documentation from a local repository. Analyzes the codebase using Recursive Language Models (RLM) and produces comprehensive or strict-style agent documentation.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "repo_path": {
+                        "type": "string",
+                        "description": "Absolute path to the local repository to analyze. Must exist and be readable."
+                    },
+                    "style": {
+                        "type": "string",
+                        "enum": [
+                            "comprehensive",
+                            "strict"
+                        ],
+                        "description": "Generation style. 'comprehensive' includes architecture and overviews; 'strict' focuses on constraints and anti-patterns. Default: 'comprehensive'.",
+                        "default": "comprehensive"
+                    },
+                    "model": {
+                        "type": "string",
+                        "description": "LLM model identifier in format 'provider/model-name' (e.g., 'gemini/gemini-2.5-pro', 'openai/gpt-4', 'anthropic/claude-3-opus'). Default: 'gemini/gemini-2.5-pro'.",
+                        "default": "gemini/gemini-2.5-pro"
+                    },
+                    "api_base": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Optional custom API base URL for the model provider (e.g., 'http://localhost:11434' for local Ollama)."
+                    },
+                    "api_key": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Optional API key for the model provider. WARNING: This is passed to the subprocess but never returned in output. Do not log this parameter."
+                    }
+                },
+                "required": [
+                    "repo_path"
+                ]
+            },
+            "returns": {
+                "$ref": "#/components/schemas/GenerateAgentsResult"
+            }
+        },
+        {
+            "name": "generateagents_generate_agents_from_github",
+            "description": "Generate AGENTS.md documentation from a public GitHub repository. Automatically clones the repository and performs the same analysis as generate_agents. Optionally analyzes git history to extract anti-patterns and lessons learned.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "repo_url": {
+                        "type": "string",
+                        "description": "Full GitHub repository URL (e.g., 'https://github.com/owner/repo' or 'https://github.com/owner/repo.git'). Must be a public repository."
+                    },
+                    "style": {
+                        "type": "string",
+                        "enum": [
+                            "comprehensive",
+                            "strict"
+                        ],
+                        "description": "Generation style. Default: 'comprehensive'.",
+                        "default": "comprehensive"
+                    },
+                    "model": {
+                        "type": "string",
+                        "description": "LLM model identifier. Default: 'gemini/gemini-2.5-pro'.",
+                        "default": "gemini/gemini-2.5-pro"
+                    },
+                    "analyze_git_history": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Optional number of recent commits to analyze for anti-patterns (e.g., 500). If provided, will examine git history and extract lessons learned."
+                    },
+                    "api_base": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Optional custom API base URL."
+                    },
+                    "api_key": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Optional API key. WARNING: Never logged or returned in output."
+                    }
+                },
+                "required": [
+                    "repo_url"
+                ]
+            },
+            "returns": {
+                "$ref": "#/components/schemas/GenerateAgentsResult"
+            }
+        },
+        {
+            "name": "generateagents_validate_output",
+            "description": "Validate that AGENTS.md was generated correctly for a project. Checks for file existence, reasonable size, and expected section structure (Agents, Architecture, Constraints).",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "project_name": {
+                        "type": "string",
+                        "description": "Name of the project (corresponds to the repository name, e.g., 'flask', 'dspy', 'fastapi')."
+                    }
+                },
+                "required": [
+                    "project_name"
+                ]
+            },
+            "returns": {
+                "$ref": "#/components/schemas/ValidationResult"
+            }
+        },
+        {
+            "name": "generateagents_run_tests",
+            "description": "Run the GenerateAgents test suite to validate that the tool is functioning correctly. Can optionally include end-to-end tests that require API keys.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "include_e2e": {
+                        "type": "boolean",
+                        "description": "If true, includes end-to-end tests that require valid LLM API keys. If false (default), only runs unit and integration tests.",
+                        "default": false
+                    }
+                },
+                "required": []
+            },
+            "returns": {
+                "$ref": "#/components/schemas/TestResult"
+            }
+        }
+    ]
+}

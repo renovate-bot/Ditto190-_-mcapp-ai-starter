@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "description": "Templates for creating new resources (prompts, instructions, agents, skills)",
+  "templates": {
+    "prompt.template.md": {
+      "path": "prompt.template.md",
+      "description": "Interactive prompt for Copilot",
+      "required": true,
+      "variables": [
+        "RESOURCE_NAME",
+        "RESOURCE_DESCRIPTION",
+        "AUTHOR",
+        "DATE",
+        "VERSION"
+      ]
+    },
+    "instruction.template.md": {
+      "path": "instruction.template.md",
+      "description": "Step-by-step guidance document",
+      "required": true,
+      "variables": [
+        "RESOURCE_NAME",
+        "RESOURCE_DESCRIPTION",
+        "AUTHOR",
+        "DATE",
+        "VERSION"
+      ]
+    },
+    "agent.template.md": {
+      "path": "agent.template.md",
+      "description": "Autonomous AI agent configuration",
+      "required": true,
+      "variables": [
+        "RESOURCE_NAME",
+        "RESOURCE_DESCRIPTION",
+        "AUTHOR",
+        "DATE",
+        "VERSION"
+      ]
+    },
+    "skill.template.md": {
+      "path": "skill.template.md",
+      "description": "Agent skill with domain expertise",
+      "required": true,
+      "variables": [
+        "RESOURCE_NAME",
+        "RESOURCE_DESCRIPTION",
+        "AUTHOR",
+        "DATE",
+        "VERSION"
+      ]
+    }
+  }
+}

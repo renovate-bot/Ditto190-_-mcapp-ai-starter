@@ -1,0 +1,169 @@
+name: Serena Symbol Analysis + Targeted Testing
+
+# Demonstration workflow for integrating Serena symbolic code analysis
+# with GitHub Actions to drive smart, targeted testing on PRs.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - "**/*.py"
+      - "**/*.ts"
+      - "**/*.js"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  analyze-changed-symbols:
+    name: Analyze changed symbols (Serena demo)
+    runs-on: ubuntu-latest
+    outputs:
+      changed_modules: ${{ steps.serena.outputs.modules }}
+      test_targets: ${{ steps.serena.outputs.tests }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history for analysis
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Get changed files
+        id: changed
+        run: |
+          git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.sha }} > changed_files.txt
+          echo "Changed files:"
+          cat changed_files.txt
+
+      # In a production setup, this step would call Serena MCP tools.
+      - name: Analyze symbols with Serena pattern (demo)
+        id: serena
+        run: |
+          echo "In production, this would call Serena MCP tools, for example:"
+          echo "  mcp_oraios_serena_find_symbol() for each changed file"
+          echo "  mcp_oraios_serena_find_referencing_symbols() to map dependencies"
+          echo "  mcp_oraios_serena_search_for_pattern() to find related tests"
+
+          # Simulated output for demonstration purposes:
+          echo 'modules=["cli.py","modules.py"]' >> "$GITHUB_OUTPUT"
+          echo 'tests=["tests/test_cli.py","tests/test_modules.py"]' >> "$GITHUB_OUTPUT"
+
+  run-targeted-tests:
+    name: Run targeted tests for affected components
+    needs: analyze-changed-symbols
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        component:
+          - GenerateAgents.md
+          - generateagents-mcp
+          - prompt-registry
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python (for Python components)
+        if: matrix.component != 'prompt-registry'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Setup Node.js (for TypeScript components)
+        if: matrix.component == 'prompt-registry'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: |
+          if [ "${{ matrix.component }}" = "GenerateAgents.md" ]; then
+            cd GenerateAgents.md && pip install -e ".[dev]"
+          elif [ "${{ matrix.component }}" = "generateagents-mcp" ]; then
+            cd generateagents-mcp && pip install -e .
+          elif [ "${{ matrix.component }}" = "prompt-registry" ]; then
+            cd prompt-registry && npm ci
+          fi
+
+      - name: Run targeted tests
+        run: |
+          echo "Running tests for changed modules: ${{ needs.analyze-changed-symbols.outputs.changed_modules }}"
+
+          if [ "${{ matrix.component }}" = "GenerateAgents.md" ]; then
+            cd GenerateAgents.md && pytest -m 'not e2e' -v
+          elif [ "${{ matrix.component }}" = "generateagents-mcp" ]; then
+            cd generateagents-mcp && python verify.py
+          elif [ "${{ matrix.component }}" = "prompt-registry" ]; then
+            cd prompt-registry && npm test
+          fi
+
+  update-serena-memory:
+    name: Update Serena memory (demo)
+    needs: [analyze-changed-symbols, run-targeted-tests]
+    runs-on: ubuntu-latest
+    if: success()
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update test coverage map (demo)
+        run: |
+          echo "In production, this would:"
+          echo "  mcp_oraios_serena_write_memory('test-coverage-map.md')"
+          echo "  Store new symbol → test mappings discovered"
+          echo "  Cache results for future runs"
+
+          # Ensure Serena memory directory exists before writing
+          mkdir -p .serena/memories
+
+          # For now, just append basic info
+          {
+            echo "## Test Run $(date)"
+            echo "Modules tested: ${{ needs.analyze-changed-symbols.outputs.changed_modules }}"
+            echo "All tests passed ✓"
+            echo
+          } >> .serena/memories/recent-changes.md
+
+  comment-summary:
+    name: Comment PR with Serena analysis summary
+    needs: [analyze-changed-symbols, run-targeted-tests, update-serena-memory]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Comment PR with analysis
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const changedModules = `${{ needs.analyze-changed-symbols.outputs.changed_modules }}`;
+            const testTargets = `${{ needs.analyze-changed-symbols.outputs.test_targets }}`;
+            const testsResult = `${{ needs.run-targeted-tests.result }}`;
+
+            const resultText = testsResult === 'success'
+              ? '✅ All tests passed'
+              : '❌ Tests failed (see logs above)';
+
+            const body = `## 🔍 Serena Symbol Analysis (Demo)
+
+            **Changed Modules:** \`${changedModules}\`
+
+            **Tests Considered:** \`${testTargets}\`
+
+            **Result:** ${resultText}
+
+            ---
+            _Powered by Serena-style symbolic code analysis + GitHub Actions MCP (demo workflow)_`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body
+            });

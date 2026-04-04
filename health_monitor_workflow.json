@@ -1,0 +1,379 @@
+{
+  "name": "VSCode Automation Scripts Health Monitor",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "name": "Run Every 30 Minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        250,
+        300
+      ],
+      "id": "schedule-trigger"
+    },
+    {
+      "parameters": {},
+      "name": "Or Run Manually",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        250,
+        450
+      ],
+      "id": "manual-trigger"
+    },
+    {
+      "parameters": {
+        "command": "pwsh",
+        "arguments": "-NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\dylan.a.thomas\\Projects\\VSCode_March26\\.vscode\\scripts\\mcp-healthcheck.ps1\""
+      },
+      "name": "Check MCP Health",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        450,
+        350
+      ],
+      "id": "check-mcp-health"
+    },
+    {
+      "parameters": {
+        "command": "pwsh",
+        "arguments": "-Command \"Get-Content 'C:\\Users\\dylan.a.thomas\\Projects\\VSCode_March26\\.serena\\memories\\recent-changes.md' -ErrorAction SilentlyContinue | Select-Object -First 10\""
+      },
+      "name": "Get Recent Changes",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        650,
+        350
+      ],
+      "id": "check-recent-changes"
+    },
+    {
+      "parameters": {
+        "command": "pwsh",
+        "arguments": "-Command \"Get-ChildItem -Path 'C:\\Users\\dylan.a.thomas\\Projects\\VSCode_March26\\.vscode\\scripts' -Filter '*.ps1' | Measure-Object | Select-Object -ExpandProperty Count\""
+      },
+      "name": "Verify Scripts Exist",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        850,
+        350
+      ],
+      "id": "check-scripts-exist"
+    },
+    {
+      "parameters": {
+        "command": "pwsh",
+        "arguments": "-Command \"if (Test-Path 'C:\\Users\\dylan.a.thomas\\Projects\\VSCode_March26\\.env') { 'EXISTS' } else { 'MISSING' }\""
+      },
+      "name": "Check .env Variables",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1050,
+        350
+      ],
+      "id": "check-env-file"
+    },
+    {
+      "parameters": {
+        "url": "https://curly-space-spork-v9rg679gpqw3rj6-5678.app.github.dev/api/v1/health",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{$env.N8N_API_KEY}}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 5000,
+          "response": {
+            "response": {
+              "fullResponse": false
+            }
+          }
+        }
+      },
+      "name": "Test Codespace n8n",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1250,
+        350
+      ],
+      "id": "test-codespace-connection",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const timestamp = new Date().toISOString();\nconst mcpHealth = $input.first().json.mcp_stdout || 'UNKNOWN';\nconst scriptsCount = $input.first().json.scripts_count || 0;\nconst envStatus = $input.first().json.env_status || 'UNKNOWN';\nconst codespaceResponse = $input.first().json.codespace_response || {};\nconst codespaceHealthy = codespaceResponse.statusCode === 200;\n\nconst issues = [];\nif (scriptsCount < 7) issues.push(`Only ${scriptsCount}/8 scripts found`);\nif (envStatus === 'MISSING') issues.push('.env file missing');\nif (!codespaceHealthy) issues.push('Codespace n8n unreachable');\n\nconst overallStatus = issues.length === 0 ? '✅ ALL SYSTEMS HEALTHY' : '⚠️ ISSUES DETECTED';\n\nreturn {\n  timestamp,\n  status: overallStatus,\n  mcp_health: mcpHealth,\n  env_status: envStatus,\n  codespace_healthy: codespaceHealthy,\n  scripts_count: scriptsCount,\n  issues: issues.length > 0 ? issues : ['None'],\n  last_check: timestamp\n};"
+      },
+      "name": "Analyze Health Status",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1450,
+        350
+      ],
+      "id": "analyze-results"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "log-entry",
+              "name": "log_content",
+              "type": "string",
+              "value": "## Health Check - {{ $json.timestamp }}\n\n**Status:** {{ $json.status }}\n\n### System Status\n- MCP Health: {{ $json.mcp_health }}\n- .env Status: {{ $json.env_status }}\n- Codespace n8n: {{ $json.codespace_healthy ? '✅ Reachable' : '❌ Unreachable' }}\n- Scripts Count: {{ $json.scripts_count }}/8\n\n### Issues Detected\n{{ $json.issues.join('\\n- ') }}\n\n---\n\n"
+            }
+          ]
+        }
+      },
+      "name": "Format Log Entry",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1650,
+        350
+      ],
+      "id": "format-log-entry"
+    },
+    {
+      "parameters": {
+        "command": "pwsh",
+        "arguments": "-Command \"Add-Content -Path 'C:\\Users\\dylan.a.thomas\\Projects\\VSCode_March26\\Knowledge\\automation\\automation-health-log.md' -Value '{{ $json.log_content }}'\""
+      },
+      "name": "Write Audit Log",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1850,
+        350
+      ],
+      "id": "write-audit-log"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "has-issues",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "⚠️ ISSUES DETECTED",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Any Issues?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2050,
+        350
+      ],
+      "id": "check-if-issues"
+    },
+    {
+      "parameters": {
+        "command": "pwsh",
+        "arguments": "-Command \"Write-Host '[AUTOMATION WARNING] Health check detected issues at $(Get-Date)' -ForegroundColor Yellow; $issues = '{{ $json.issues.join(\", \") }}'; Write-Host \"Issues: $issues\" -ForegroundColor Red\""
+      },
+      "name": "Log Warning",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        2250,
+        250
+      ],
+      "id": "send-notification"
+    },
+    {
+      "parameters": {},
+      "name": "All Good",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2250,
+        450
+      ],
+      "id": "no-action-needed"
+    }
+  ],
+  "connections": {
+    "Run Every 30 Minutes": {
+      "main": [
+        [
+          {
+            "node": "Check MCP Health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Or Run Manually": {
+      "main": [
+        [
+          {
+            "node": "Check MCP Health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check MCP Health": {
+      "main": [
+        [
+          {
+            "node": "Get Recent Changes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Recent Changes": {
+      "main": [
+        [
+          {
+            "node": "Verify Scripts Exist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify Scripts Exist": {
+      "main": [
+        [
+          {
+            "node": "Check .env Variables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check .env Variables": {
+      "main": [
+        [
+          {
+            "node": "Test Codespace n8n",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Test Codespace n8n": {
+      "main": [
+        [
+          {
+            "node": "Analyze Health Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Health Status": {
+      "main": [
+        [
+          {
+            "node": "Format Log Entry",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Log Entry": {
+      "main": [
+        [
+          {
+            "node": "Write Audit Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Audit Log": {
+      "main": [
+        [
+          {
+            "node": "Any Issues?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Any Issues?": {
+      "main": [
+        [
+          {
+            "node": "Log Warning",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "All Good",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "timezone": "America/New_York"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "name": "automation",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z",
+      "id": "1"
+    },
+    {
+      "name": "health-monitor",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z",
+      "id": "2"
+    }
+  ],
+  "pinData": {},
+  "meta": {
+    "instanceId": "local"
+  }
+}

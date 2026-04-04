@@ -1,18 +1,33 @@
-.DS_Store
-dist/
-node_modules/
-yarn.lock
-bun.lockb
-.vscode/
-docs/api/
-tmp/
-intermediate-findings/
+.env
+.env.local
+.env.*.local
 
-# Playwright
-playwright-report/
-test-results/
+# Serena memory cache (workspace-specific)
+.serena/
+
+# Local session preservation snapshots
+.session-state/
+
+# Local agent and MCP state (machine/session specific)
+.contextstream/
+.copilot/
+.claude/
+.mcp.json
+opencode.json
+DRAFTworkspace.json
+skills-lock.json
+
+# Common local noise
+*.log
+.DS_Store
+
+# Secret/certificate artifacts (never commit)
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Python artifacts
 __pycache__/
 *.pyc
-
-# MCPB bundles (built artifacts)
-*.mcpb
+node_modules

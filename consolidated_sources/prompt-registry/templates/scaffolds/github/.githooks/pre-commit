@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Pre-commit hook for validating collections and skills
+# Uses @prompt-registry/collection-scripts from npm
+
+echo "🔍 Running pre-commit validation..."
+
+# Check if node_modules exists
+if [ ! -d "node_modules" ]; then
+  echo "⚠️  node_modules not found. Run 'npm install' first."
+  exit 1
+fi
+
+# Run collection validation
+echo "📦 Validating collections..."
+if ! npm run validate --silent; then
+  echo "❌ Collection validation failed!"
+  exit 1
+fi
+
+# Run skill validation
+echo "🛠️  Validating skills..."
+if ! npm run skill:validate --silent; then
+  echo "❌ Skill validation failed!"
+  exit 1
+fi
+
+echo "✅ All validations passed!"
+exit 0

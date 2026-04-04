@@ -1,0 +1,195 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Default Port",
+      "port": 9229,
+      "smartStep": true,
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**/*.js"],
+      "outFiles": [
+        "${workspaceFolder}/packages/*/dist/**/*.js",
+        "${workspaceFolder}/packages/*/dist-dev/**/*.js"
+      ],
+      "presentation": {
+        "order": 999
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Current Test File",
+      "autoAttachChildProcesses": true,
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+      "program": "${workspaceRoot}/packages/compiler/node_modules/vitest/vitest.mjs",
+      "args": ["run", "${relativeFile}"],
+      "smartStep": true
+    },
+    {
+      "name": "Attach to Language Server",
+      "type": "node",
+      "request": "attach",
+      "port": 4242,
+      "restart": {
+        "delay": 100,
+        "maxAttempts": 10
+      },
+      "continueOnAttach": true,
+      "smartStep": true,
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**/*.js"],
+      "outFiles": [
+        "${workspaceFolder}/packages/*/dist/**/*.js",
+        "${workspaceFolder}/packages/*/dist-dev/**/*.js"
+      ],
+      "timeout": 60000,
+      "presentation": {
+        "order": 999
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Compile Scratch",
+      "program": "${workspaceFolder}/packages/compiler/entrypoints/cli.js",
+      "args": ["compile", "../samples/scratch", "--output-dir=temp/scratch-output"],
+      "smartStep": true,
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**/*.js"],
+      "outFiles": [
+        "${workspaceFolder}/packages/*/dist/**/*.js",
+        "${workspaceFolder}/packages/*/dist-dev/**/*.js"
+      ],
+      "cwd": "${workspaceFolder}/packages/compiler",
+      "presentation": {
+        "order": 2
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Compile Scratch (nostdlib)",
+      "program": "${workspaceFolder}/packages/compiler/entrypoints/cli.js",
+      "args": ["compile", "../samples/scratch", "--output-dir=temp/scratch-output", "--nostdlib"],
+      "smartStep": true,
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**/*.js"],
+      "outFiles": [
+        "${workspaceFolder}/packages/*/dist/**/*.js",
+        "${workspaceFolder}/packages/*/dist-dev/**/*.js"
+      ],
+      "cwd": "${workspaceFolder}/packages/compiler",
+      "presentation": {
+        "order": 2
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug tsp-pack",
+      "program": "${workspaceFolder}/packages/pack/dist/cli.js",
+      "args": ["main.tsp"],
+      "smartStep": true,
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**/*.js"],
+      "outFiles": [
+        "${workspaceFolder}/packages/*/dist/**/*.js",
+        "${workspaceFolder}/packages/*/dist-dev/**/*.js"
+      ],
+      "cwd": "${workspaceFolder}/packages/samples/scratch",
+      "presentation": {
+        "order": 2
+      }
+    },
+    {
+      "name": "Regenerate .tmlanguage",
+      "type": "node",
+      "program": "${workspaceFolder}/packages/typespec-vscode/scripts/generate-tmlanguage.js",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/packages/typespec-vscode",
+      "presentation": {
+        "order": 999
+      }
+    },
+    {
+      "name": "VS Code Extension (Client)",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/packages/typespec-vscode"],
+      "outFiles": ["${workspaceFolder}/packages/typespec-vscode/dist/**/*.cjs"],
+      "env": {
+        // Log elapsed time for each call to server.
+        //"TYPESPEC_SERVER_LOG_TIMING": "true",
+
+        // Save .cpuprofile for last run of each server function here
+        // NOTE: This will add a lot of lag so don't trust logged timing if also enabled above.
+        //"TYPESPEC_SERVER_PROFILE_DIR": "${workspaceRoot}/temp",
+
+        // Use empty node options and don't debug while profiling to get the most accurate timing
+        //"TYPESPEC_SERVER_NODE_OPTIONS": "",
+
+        // Set the telemetry key environment variable to use if you dont want to set it in package.json
+        //"TYPESPEC_VSCODE_TELEMETRY_KEY": "{The instrumentation key of your Application Insights}",
+
+        // Enable debug logging for specific areas using TYPESPEC_DEBUG environment variable
+        // Examples:
+        //   "TYPESPEC_DEBUG": "server.compile"           - Enable server compilation debug logs
+        //   "TYPESPEC_DEBUG": "lm"                       - Enable Language Model debug logs
+        //   "TYPESPEC_DEBUG": "*"                        - Enable all debug logs
+        //   "TYPESPEC_DEBUG": "server.compile,compile.config" - Enable multiple areas
+        //"TYPESPEC_DEBUG": "server.compile,update.manager,compile.config,lm",
+
+        "TYPESPEC_SERVER_NODE_OPTIONS": "--nolazy --inspect-brk=4242",
+        "TYPESPEC_DEVELOPMENT_MODE": "true"
+      },
+      "presentation": {
+        "hidden": true
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug TypeSpec Migrate",
+      "program": "${workspaceFolder}/packages/migrate/dist/src/cli.js",
+      "smartStep": true,
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Docs Generation",
+      "program": "${workspaceFolder}/packages/tspd/dist/src/cli.js",
+      "args": ["--enable-experimental", "doc", "--typekits", "."],
+      "cwd": "${workspaceFolder}/packages/http",
+      "smartStep": true,
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**/*.js"]
+    },
+    {
+      "name": "Run Web Extension in VS Code",
+      "type": "extensionHost",
+      "debugWebWorkerHost": true,
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/packages/typespec-vscode",
+        "--extensionDevelopmentKind=web"
+      ],
+      "outFiles": ["${workspaceFolder}/dist/src/web/**/*.js"]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "VS Code Extension",
+      "configurations": ["VS Code Extension (Client)", "Attach to Language Server"],
+      "presentation": {
+        "order": 1
+      }
+    }
+  ]
+}

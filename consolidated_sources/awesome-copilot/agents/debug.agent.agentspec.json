@@ -1,0 +1,107 @@
+{
+  "version": "1.0.0",
+  "name": "debug-mode-agentspec",
+  "description": "AgentSpec for the Debug Mode Instructions agent",
+  "agents": {
+    "debug_mode": {
+      "type": "specialist",
+      "description": "Debug your application to find and fix a bug",
+      "model": "gpt-5.1-codex-mini",
+      "capabilities": [
+        {
+          "name": "debug-analyze",
+          "description": "Analyze failure logs and tests",
+          "inputs": ["logs"],
+          "outputs": ["diagnosis"]
+        },
+        {
+          "name": "debug-fix",
+          "description": "Apply a minimal fix and run tests",
+          "inputs": ["diagnosis"],
+          "outputs": ["patch"]
+        }
+      ],
+      "tools": [
+        "edit_editfiles",
+        "search",
+        "execute_get_terminal_output",
+        "execute_run_in_terminal",
+        "read_terminal_last_command",
+        "read_terminal_selection",
+        "search_usages",
+        "read_problems",
+        "execute_test_failure",
+        "web_fetch",
+        "web_github_repo"
+      ]
+    }
+  },
+  "tools": {
+    "edit_editfiles": {
+      "id": "edit_editfiles",
+      "name": "Edit Files",
+      "description": "Edit files in workspace",
+      "category": "VS Code"
+    },
+    "search": {
+      "id": "search",
+      "name": "Search",
+      "description": "Search in codebase",
+      "category": "VS Code"
+    },
+    "execute_get_terminal_output": {
+      "id": "execute_get_terminal_output",
+      "name": "Get Terminal Output",
+      "description": "Get terminal output",
+      "category": "CLI"
+    },
+    "execute_run_in_terminal": {
+      "id": "execute_run_in_terminal",
+      "name": "Run In Terminal",
+      "description": "Run commands in terminal",
+      "category": "CLI"
+    },
+    "read_terminal_last_command": {
+      "id": "read_terminal_last_command",
+      "name": "Terminal Last Command",
+      "description": "Read last terminal command",
+      "category": "CLI"
+    },
+    "read_terminal_selection": {
+      "id": "read_terminal_selection",
+      "name": "Terminal Selection",
+      "description": "Read terminal selection",
+      "category": "CLI"
+    },
+    "search_usages": {
+      "id": "search_usages",
+      "name": "Search Usages",
+      "description": "Find symbol usages",
+      "category": "Code"
+    },
+    "read_problems": {
+      "id": "read_problems",
+      "name": "Problems Panel",
+      "description": "Read problems panel",
+      "category": "Code"
+    },
+    "execute_test_failure": {
+      "id": "execute_test_failure",
+      "name": "Test Failure",
+      "description": "Report test failures",
+      "category": "CI"
+    },
+    "web_fetch": {
+      "id": "web_fetch",
+      "name": "Web Fetch",
+      "description": "Fetch web resources",
+      "category": "Web"
+    },
+    "web_github_repo": {
+      "id": "web_github_repo",
+      "name": "GitHub Repo",
+      "description": "Fetch GitHub repo",
+      "category": "Web"
+    }
+  }
+}

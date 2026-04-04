@@ -1,0 +1,188 @@
+From c5ea711556c08428e7d4a74fde2c17e73e8953b3 Mon Sep 17 00:00:00 2001
+From: DT <110319982+Ditto190@users.noreply.github.com>
+Date: Thu, 5 Mar 2026 03:29:24 +1100
+Subject: [PATCH] feat: Add DevContainer configuration for GitHub Codespaces
+ n8n AI setup
+
+---
+ .devcontainer/devcontainer.json | 78 +++++++++++++++++++++++++++++++++
+ .devcontainer/post-create.sh    | 49 +++++++++++++++++++++
+ .env.codespaces                 | 25 +++++++++++
+ 3 files changed, 152 insertions(+)
+ create mode 100644 .devcontainer/devcontainer.json
+ create mode 100644 .devcontainer/post-create.sh
+ create mode 100644 .env.codespaces
+
+diff --git a/.devcontainer/devcontainer.json b/.devcontainer/devcontainer.json
+new file mode 100644
+index 0000000..550e177
+--- /dev/null
++++ b/.devcontainer/devcontainer.json
+@@ -0,0 +1,78 @@
++{
++  "name": "n8n AI Starter Kit - CPU Mode",
++  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
++  "features": {
++    "ghcr.io/devcontainers/features/docker-in-docker:2": {
++      "version": "latest"
++    }
++  },
++  "forwardPorts": [
++    5678,
++    11434,
++    6333,
++    5432
++  ],
++  "portsAttributes": {
++    "5678": {
++      "label": "n8n UI",
++      "onAutoForward": "notify",
++      "visibility": "public",
++      "protocol": "http"
++    },
++    "11434": {
++      "label": "Ollama API",
++      "onAutoForward": "notify",
++      "visibility": "public",
++      "protocol": "http"
++    },
++    "6333": {
++      "label": "Qdrant API",
++      "onAutoForward": "notify",
++      "visibility": "public",
++      "protocol": "http"
++    },
++    "5432": {
++      "label": "PostgreSQL",
++      "onAutoForward": "silent",
++      "visibility": "private"
++    }
++  },
++  "customizations": {
++    "vscode": {
++      "extensions": [
++        "ms-vscode-remote.remote-containers",
++        "ms-docker.docker",
++        "ms-azuretools.vscode-docker",
++        "ms-python.python",
++        "ms-python.debugpy"
++      ],
++      "settings": {
++        "terminal.integrated.defaultProfile.linux": "bash",
++        "files.watcherExclude": {
++          "**/n8n-data/**": true,
++          "**/ollama_storage/**": true,
++          "**/postgres_storage/**": true,
++          "**/qdrant_storage/**": true
++        }
++      }
++    }
++  },
++  "postCreateCommand": "bash .devcontainer/post-create.sh",
++  "remoteEnv": {
++    "DOCKER_BUILDKIT": "1",
++    "COMPOSE_DOCKER_CLI_BUILD": "1",
++    "DB_TYPE": "sqlite",
++    "N8N_PORT": "5678",
++    "N8N_PROTOCOL": "http",
++    "N8N_HOST": "localhost",
++    "OLLAMA_HOST": "ollama:11434",
++    "QDRANT_HOST": "qdrant",
++    "QDRANT_PORT": "6333"
++  },
++  "hostRequirements": {
++    "cpus": 4,
++    "memory": "16gb"
++  },
++  "remoteUser": "root",
++  "privileged": true
++}
+diff --git a/.devcontainer/post-create.sh b/.devcontainer/post-create.sh
+new file mode 100644
+index 0000000..166de20
+--- /dev/null
++++ b/.devcontainer/post-create.sh
+@@ -0,0 +1,49 @@
++#!/bin/bash
++set -e
++
++echo "🚀 n8n AI Starter Kit - Codespaces Setup"
++echo "=========================================="
++
++# Check Docker availability
++echo "✅ Checking Docker..."
++docker --version
++docker compose --version
++
++# Create .env file from template if it doesn't exist
++if [ ! -f .env ]; then
++  echo "📝 Creating .env file..."
++  cp .env.example .env
++  
++  # Generate secure secrets
++  ENCRYPTION_KEY=$(openssl rand -base64 32)
++  JWT_SECRET=$(openssl rand -base64 32)
++  
++  # Update secrets in .env (for non-production use)
++  sed -i "s/N8N_ENCRYPTION_KEY=.*/N8N_ENCRYPTION_KEY=$ENCRYPTION_KEY/" .env
++  sed -i "s/N8N_USER_MANAGEMENT_JWT_SECRET=.*/N8N_USER_MANAGEMENT_JWT_SECRET=$JWT_SECRET/" .env
++  
++  echo "✅ .env file created with secure keys"
++else
++  echo "✅ .env file already exists"
++fi
++
++# Create shared data folder
++mkdir -p shared
++chmod 777 shared
++
++# Pre-pull images to save startup time
++echo "📡 Pre-pulling Docker images (this may take 2-3 minutes)..."
++docker pull n8nio/n8n:latest &
++docker pull postgres:16-alpine &
++docker pull ollama/ollama:latest &
++docker pull qdrant/qdrant &
++wait
++
++echo ""
++echo "✅ Setup Complete!"
++echo "=========================================="
++echo "📋 Next steps:"
++echo "  1. Run: docker compose --profile cpu up -d"
++echo "  2. Wait 60+ seconds for services to start"
++echo "  3. Open n8n: http://localhost:5678"
++echo "=========================================="
+diff --git a/.env.codespaces b/.env.codespaces
+new file mode 100644
+index 0000000..d287451
+--- /dev/null
++++ b/.env.codespaces
+@@ -0,0 +1,25 @@
++# Codespaces-Optimized Environment Variables
++# Copy relevant values from .env.example and customize below
++
++# Database Configuration
++POSTGRES_USER=root
++POSTGRES_PASSWORD=codespaces_dev_password_change_me
++POSTGRES_DB=n8n
++
++# n8n Encryption & Security
++# Generate with: openssl rand -base64 32
++N8N_ENCRYPTION_KEY=generate_with_openssl_rand_base64_32
++N8N_USER_MANAGEMENT_JWT_SECRET=generate_with_openssl_rand_base64_32
++
++# n8n Server Configuration
++N8N_PORT=5678
++N8N_PROTOCOL=http
++N8N_HOST=localhost
++N8N_DEFAULT_BINARY_DATA_MODE=filesystem
++
++# Diagnostics OFF for reduced memory footprint
++N8N_DIAGNOSTICS_ENABLED=false
++N8N_PERSONALIZATION_ENABLED=false
++
++# Ollama Configuration (Docker service name)
++OLLAMA_HOST=ollama:11434
+-- 
+2.51.1
+

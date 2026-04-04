@@ -1,0 +1,19 @@
+# APM Package Manifest
+# See: https://github.com/danielmeppiel/apm
+
+name: {{name}}
+version: 1.0.0
+description: {{description}}
+author: {{author}}
+tags: [{{tags}}]
+
+# Dependencies
+dependencies:
+  # APM packages from GitHub
+  apm: []
+  # MCP servers
+  mcp: []
+
+# Scripts (optional)
+scripts:
+  test: echo "No tests defined"

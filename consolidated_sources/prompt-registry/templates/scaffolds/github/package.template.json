@@ -1,0 +1,43 @@
+{
+  "name": "{{packageName}}",
+  "version": "1.0.0",
+  "description": "Prompt collection for GitHub Copilot",
+  "scripts": {
+    "validate": "validate-collections",
+    "validate:verbose": "validate-collections --verbose",
+    "build-collection-bundle": "build-collection-bundle",
+    "publish-collections": "publish-collections",
+    "list-collections": "list-collections",
+    "compute-collection-version": "compute-collection-version",
+    "install-hooks": "git config core.hooksPath .githooks",
+    "skill:validate": "validate-skills",
+    "skill:create": "create-skill",
+    "build": "build-collection-bundle",
+    "publish": "publish-collections"
+  },
+  "keywords": [
+    "copilot",
+    "instructions",
+    "agents",
+    "skills",
+    "ai",
+    "github-copilot",
+    "prompt-bundle"
+  ],
+  "author": "{{author}}",
+  "license": "SEE LICENSE IN LICENSE",
+  "files": [
+    "agents",
+    "collections",
+    "instructions",
+    "prompts",
+    "deployment-manifest.yml",
+    "*.zip"
+  ],
+  "devDependencies": {
+    "@prompt-registry/collection-scripts": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

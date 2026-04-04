@@ -1,21 +1,28 @@
 name: CI
 
 on:
-  push:
-    branches: [main]
+  # Fast checks that are useful during code review.
   pull_request:
+    branches: [main]
+
+  # Full, heavy CI runs only after code lands on main (including merged PRs).
+  push:
     branches: [main]
 
 permissions:
   contents: read
 
 jobs:
+  # --- PR-focused, relatively fast jobs ---
+
   prettier-fix:
     name: Auto-fix formatting
+    # Only run on pull_request events, and only for branches on this repo (not forks).
     if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - uses: actions/checkout@v6
         with:
@@ -39,7 +46,55 @@ jobs:
           git commit -m "style: auto-fix prettier formatting"
           git push
 
+  # A single, relatively quick build/test pass for PRs (Linux only),
+  # to give reviewers confidence without running the full matrix.
+  pr-build:
+    name: PR Build (Linux x64)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Verify no private URLs in package-lock.json
+        shell: bash
+        run: '! grep -E "\"resolved\": \"https?://" package-lock.json | grep -v registry.npmjs.org'
+
+      - name: Verify example dependency versions
+        shell: bash
+        run: node scripts/check-versions.mjs
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+
+      - run: npm install
+
+      - run: npm run build
+
+      - run: npm run examples:build
+
+      - name: Verify generated schemas are up-to-date
+        shell: bash
+        run: |
+          npm run generate:schemas
+          git diff --exit-code src/generated/ || (echo "Generated schemas are out of date. Run 'npm run generate:schemas' and commit." && exit 1)
+
+      - name: Verify synced snippets are up-to-date
+        shell: bash
+        run: |
+          npm run sync:snippets
+          git diff --exit-code src/ docs/ || (echo "Synced snippets are out of date. Run 'npm run sync:snippets' and commit." && exit 1)
+
+      - run: npm test
+
+      - run: npm run prettier
+
+  # --- Full CI, only on pushes to main (post-merge) ---
+
   build:
+    # Skip this heavy matrix on PRs; only run on push to main.
+    if: github.event_name == 'push'
     strategy:
       fail-fast: false
       matrix:
@@ -101,7 +156,10 @@ jobs:
         working-directory: examples/pdf-server
 
   e2e:
+    # Run Playwright e2e only after merge/push to main.
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v6
 
@@ -133,6 +191,7 @@ jobs:
 
   # Test build in Windows WSL (Ubuntu)
   build-wsl:
+    if: github.event_name == 'push'
     name: Build (Windows WSL)
     runs-on: windows-latest
 
@@ -161,6 +220,7 @@ jobs:
 
   # Test that the package can be installed from git (triggers prepare script)
   test-git-install:
+    if: github.event_name == 'push'
     strategy:
       fail-fast: false
       matrix:
@@ -190,7 +250,7 @@ jobs:
           mkdir test-project
           cd test-project
           npm init -y
-          # Install from the PR branch (use head repo for fork PRs)
+          # Install from the PR branch (use head repo for fork PRs) or current ref on push.
           npm install "git+https://github.com/${{ github.event.pull_request.head.repo.full_name || github.repository }}#${{ github.head_ref || github.ref_name }}"
           # Verify the package is usable (ESM import)
           node --input-type=module -e "import { App } from '@modelcontextprotocol/ext-apps'; console.log('Import successful:', typeof App)"

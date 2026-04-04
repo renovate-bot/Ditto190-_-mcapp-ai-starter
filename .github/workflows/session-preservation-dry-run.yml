@@ -1,0 +1,62 @@
+name: Session Preservation Dry Run
+
+"on":
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/session-preservation-dry-run.yml"
+      - ".gitignore"
+      - "docs/codespace-session-end.md"
+      - "package.json"
+      - "scripts/session-*.sh"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/session-preservation-dry-run.yml"
+      - ".gitignore"
+      - "docs/codespace-session-end.md"
+      - "package.json"
+      - "scripts/session-*.sh"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dry-run:
+    name: Validate session preservation scripts
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run snapshot dry run
+        run: |
+          bash scripts/session-pre-end.sh \
+            --label ci-dry-run \
+            --output-root .session-state/ci \
+            --skip-code \
+            --skip-docker
+
+      - name: Assert expected outputs
+        run: |
+          test -f .session-state/ci/ci-dry-run/summary.md
+          test -f .session-state/ci/ci-dry-run/changelog.md
+          test -f .session-state/ci/ci-dry-run/inventories/npm-global.txt
+          test -f .session-state/ci/ci-dry-run/raw/git-status.txt
+
+      - name: Upload snapshot artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: session-preservation-dry-run
+          path: .session-state/ci/ci-dry-run
+          retention-days: 7

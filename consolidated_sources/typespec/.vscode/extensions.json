@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "streetsidesoftware.code-spell-checker",
+    "astro-build.astro-vscode",
+    "vitest.explorer",
+    "typespec.typespec-vscode"
+  ]
+}

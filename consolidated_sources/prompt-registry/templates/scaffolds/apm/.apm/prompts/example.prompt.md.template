@@ -1,0 +1,27 @@
+---
+description: {{description}}
+mode: agent
+---
+
+# {{name}}
+
+## Purpose
+
+Describe the purpose of this prompt.
+
+## Instructions
+
+1. Step one
+2. Step two
+3. Step three
+
+## Output Format
+
+Describe the expected output format.
+
+## Examples
+
+### Example 1
+
+Input: ...
+Output: ...

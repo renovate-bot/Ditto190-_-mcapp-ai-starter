@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "generateagents-mcp"
+version = "0.1.0"
+description = "Model Context Protocol server exposing GenerateAgents.md CLI as LLM-callable tools"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp>=3.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+generateagents-mcp = "server:main"
+
+[tool.setuptools.packages.find]
+where = ["."]

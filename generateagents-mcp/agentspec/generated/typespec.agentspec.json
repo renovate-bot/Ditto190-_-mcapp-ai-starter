@@ -1,0 +1,131 @@
+{
+  "version": "1.0.0",
+  "name": "typespec-agentspec",
+  "description": "Starter AgentSpec generated for repository 'typespec'.",
+  "domain": "generic",
+  "metadata": {
+    "source_repository": "/workspaces/self-hosted-ai-starter-kit/typespec",
+    "top_extensions": [
+      ".java",
+      ".cs",
+      ".ts",
+      ".md",
+      ".json"
+    ],
+    "file_extension_stats": {
+      ".java": 4990,
+      ".cs": 2663,
+      ".ts": 1669,
+      ".md": 1337,
+      ".json": 718,
+      ".tsp": 330,
+      ".py": 301,
+      ".tsx": 237,
+      ".properties": 144,
+      ".yaml": 92,
+      ".csproj": 91,
+      ".yml": 87,
+      ".sln": 75,
+      "<no_ext>": 74,
+      ".png": 72,
+      ".js": 55,
+      ".astro": 49,
+      ".jinja2": 43,
+      ".txt": 42,
+      ".ps1": 40,
+      ".css": 39,
+      ".mdx": 30,
+      ".tsbuildinfo": 28,
+      ".proto": 27,
+      ".svg": 24,
+      ".xml": 15,
+      ".mu": 12,
+      ".mjs": 9,
+      ".jpg": 6,
+      ".props": 5,
+      ".psm1": 5,
+      ".html": 4,
+      ".ini": 4,
+      ".gif": 3,
+      ".sh": 2,
+      ".pkgdef": 2,
+      ".config": 2,
+      ".mts": 2,
+      ".mockmaker": 2,
+      ".extension": 2,
+      ".mp4": 1,
+      ".vsix": 1,
+      ".rsp": 1,
+      ".targets": 1,
+      ".snk": 1,
+      ".ruleset": 1,
+      ".vsixmanifest": 1,
+      ".imagemanifest": 1,
+      ".blob": 1,
+      ".cjs": 1,
+      ".plist": 1,
+      ".jfc": 1,
+      ".in": 1,
+      ".toml": 1
+    }
+  },
+  "agents": {
+    "CodebaseAnalyst": {
+      "type": "specialist",
+      "description": "Analyzes repository structure and conventions.",
+      "roles": [
+        "analyst",
+        "reviewer"
+      ],
+      "model": "gemini/gemini-2.5-pro",
+      "capabilities": [
+        {
+          "name": "analyze-codebase",
+          "description": "Inspect architecture and coding patterns.",
+          "inputs": [
+            "repository-path"
+          ],
+          "outputs": [
+            "analysis-report"
+          ]
+        },
+        {
+          "name": "suggest-agent-roles",
+          "description": "Recommend specialized agent roles for the codebase.",
+          "inputs": [
+            "analysis-report"
+          ],
+          "outputs": [
+            "agent-role-recommendations"
+          ]
+        }
+      ],
+      "constraints": [
+        "Must not modify source files during analysis.",
+        "Must provide deterministic output for the same input commit."
+      ],
+      "tools": [
+        "repository-scanner",
+        "convention-extractor"
+      ]
+    }
+  },
+  "workflows": [
+    {
+      "name": "AgentSpecBootstrap",
+      "description": "Baseline workflow for generating agent recommendations.",
+      "steps": [
+        {
+          "agent": "CodebaseAnalyst",
+          "outputs": [
+            "analysis-report",
+            "agent-role-recommendations"
+          ]
+        }
+      ],
+      "contracts": [
+        "analysis-report must include architecture summary and anti-pattern hints"
+      ]
+    }
+  ]
+}

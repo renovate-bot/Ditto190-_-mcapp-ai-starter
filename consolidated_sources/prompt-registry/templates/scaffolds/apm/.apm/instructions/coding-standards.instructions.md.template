@@ -1,0 +1,27 @@
+---
+applyTo: "**/*"
+---
+
+# Coding Standards
+
+## General Guidelines
+
+- Write clean, readable code
+- Follow the project's existing style
+- Add comments for complex logic
+- Use meaningful variable names
+
+## Best Practices
+
+- Keep functions small and focused
+- Handle errors appropriately
+- Write tests for new functionality
+- Document public APIs
+
+## Code Review
+
+When reviewing code:
+1. Check for correctness
+2. Verify error handling
+3. Assess readability
+4. Look for security issues

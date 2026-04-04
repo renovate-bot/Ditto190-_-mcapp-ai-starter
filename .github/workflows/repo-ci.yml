@@ -1,0 +1,111 @@
+name: Repository CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  compose-validate:
+    name: Validate Docker Compose
+    runs-on: ubuntu-latest
+    # Only run when Docker-related files change.
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      contains(join(fromJson('["' + join(github.event.pull_request?.paths || github.event.commits.*.modified || []) + '"]')), 'docker-compose') ||
+      contains(join(fromJson('["' + join(github.event.pull_request?.paths || github.event.commits.*.modified || []) + '"]')), '.env.example')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate compose config
+        run: docker compose --env-file .env.example config -q
+
+  generateagents-tests:
+    name: GenerateAgents non-e2e tests
+    runs-on: ubuntu-latest
+    # Run only when GenerateAgents-related files change or on manual dispatch.
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      startsWith(github.ref, 'refs/heads/main') &&
+      (contains(github.event.pull_request?.paths_joined || '', 'GenerateAgents.md') ||
+       contains(github.event.pull_request?.paths_joined || '', 'GenerateAgents/'))
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        working-directory: GenerateAgents.md
+        run: uv sync --extra dev
+
+      - name: Run non-e2e tests
+        working-directory: GenerateAgents.md
+        run: uv run pytest -m 'not e2e' -q
+
+  prompt-registry-build:
+    name: Prompt Registry lint and compile
+    runs-on: ubuntu-latest
+    # Only run when prompt-registry files change or on manual dispatch.
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.pull_request?.paths_joined || '', 'prompt-registry/')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: prompt-registry/package-lock.json
+
+      - name: Install dependencies
+        working-directory: prompt-registry
+        run: npm ci
+
+      - name: Lint
+        working-directory: prompt-registry
+        run: npm run lint
+
+      - name: Compile
+        working-directory: prompt-registry
+        run: npm run compile
+
+  awesome-copilot-build:
+    name: Awesome Copilot build
+    runs-on: ubuntu-latest
+    # Only run when awesome-copilot files change or on manual dispatch.
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.pull_request?.paths_joined || '', 'awesome-copilot/')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: awesome-copilot/package-lock.json
+
+      - name: Install dependencies
+        working-directory: awesome-copilot
+        run: npm ci
+
+      - name: Build
+        working-directory: awesome-copilot
+        run: npm run build

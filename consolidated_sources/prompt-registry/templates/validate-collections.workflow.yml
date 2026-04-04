@@ -1,0 +1,65 @@
+name: Validate Collections
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate Collections
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate collections
+        id: validate
+        run: |
+          if npm run validate -- --output-markdown validation-comment.md; then
+            echo "status=success" >> $GITHUB_OUTPUT
+          else
+            echo "status=failure" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post validation results to PR
+        if: github.event_name == 'pull_request'
+        uses: ./.github/actions/pr-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: validation-comment.md
+          comment-tag: collection-validation
+
+      - name: Fail if validation failed
+        if: steps.validate.outputs.status == 'failure'
+        run: exit 1
+
+      - name: Save PR number
+        if: github.event_name == 'pull_request'
+        run: echo "${{ github.event.pull_request.number }}" > pr-number.txt
+
+      - name: Upload validation results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-results
+          path: |
+            validation-comment.md
+            pr-number.txt
+            collections/
+          if-no-files-found: ignore

@@ -1,0 +1,23 @@
+{
+    "mcpServers": {
+        "generateagents-mcp": {
+            "command": "bash",
+            "args": [
+                "-c",
+                "cd /workspaces/self-hosted-ai-starter-kit/generateagents-mcp && uv run python server.py"
+            ],
+            "env": {
+                "PYTHONPATH": "/workspaces/self-hosted-ai-starter-kit",
+                "LOG_LEVEL": "INFO",
+                "PATH": "/root/.local/bin:/usr/local/bin:/usr/bin:/bin"
+            },
+            "disabled": false,
+            "description": "GenerateAgents.md as MCP tools for AGENTS.md generation"
+        }
+    },
+    "mcpPromptsDirectory": "/workspaces/self-hosted-ai-starter-kit/generateagents-mcp",
+    "logging": {
+        "level": "info",
+        "file": "~/.cline/mcp-server.log"
+    }
+}

@@ -1,0 +1,2290 @@
+{
+  "version": "1.0.0",
+  "name": "awesome-copilot-agentspec",
+  "description": "AgentSpec generated from awesome-copilot agents and skills",
+  "source": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot",
+  "agents": {
+    "declarative-agents-architect.agent": {
+      "name": "Declarative Agents Architect",
+      "description": "",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/declarative-agents-architect.agent.md"
+    },
+    "scientific-paper-research.agent": {
+      "name": "Scientific Paper Research",
+      "description": "Research agent that searches scientific papers and retrieves structured experimental data from full-text studies using the BGPT MCP server.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/scientific-paper-research.agent.md"
+    },
+    "tdd-refactor.agent": {
+      "name": "TDD Refactor Phase - Improve Quality & Security",
+      "description": "Improve code quality, apply security best practices, and enhance design whilst maintaining green tests and GitHub issue compliance.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/tdd-refactor.agent.md"
+    },
+    "CSharpExpert.agent": {
+      "name": "C# Expert",
+      "description": "An agent designed to assist with software development tasks for .NET projects.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/CSharpExpert.agent.md"
+    },
+    "swift-mcp-expert.agent": {
+      "name": "Swift MCP Expert",
+      "description": "Expert assistance for building Model Context Protocol servers in Swift using modern concurrency features and the official MCP Swift SDK.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/swift-mcp-expert.agent.md"
+    },
+    "launchdarkly-flag-cleanup.agent": {
+      "name": "launchdarkly-flag-cleanup",
+      "description": ">",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/launchdarkly-flag-cleanup.agent.md"
+    },
+    "context-architect.agent": {
+      "name": "Context Architect",
+      "description": "An agent that helps plan and execute multi-file changes by identifying relevant context and dependencies",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/context-architect.agent.md"
+    },
+    "wg-code-sentinel.agent": {
+      "name": "WG Code Sentinel",
+      "description": "Ask WG Code Sentinel to review your code for security issues.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/wg-code-sentinel.agent.md"
+    },
+    "custom-agent-foundry.agent": {
+      "name": "Custom Agent Foundry",
+      "description": "Expert at designing and creating VS Code custom agents with optimal configurations",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/custom-agent-foundry.agent.md"
+    },
+    "gem-researcher.agent": {
+      "name": "gem-researcher",
+      "description": "Research specialist: gathers codebase context, identifies relevant files/patterns, returns structured findings",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/gem-researcher.agent.md"
+    },
+    "platform-sre-kubernetes.agent": {
+      "name": "Platform SRE for Kubernetes",
+      "description": "SRE-focused Kubernetes specialist prioritizing reliability, safe rollouts/rollbacks, security defaults, and operational verification for production-grade deployments",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/platform-sre-kubernetes.agent.md"
+    },
+    "arch.agent": {
+      "name": "Senior Cloud Architect",
+      "description": "Expert in modern architecture design patterns, NFR requirements, and creating comprehensive architectural diagrams and documentation",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/arch.agent.md"
+    },
+    "polyglot-test-tester.agent": {
+      "name": "Polyglot Test Tester",
+      "description": "Runs test commands for any language and reports results. Discovers test command from project files if not specified.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/polyglot-test-tester.agent.md"
+    },
+    "postgresql-dba.agent": {
+      "name": "PostgreSQL Database Administrator",
+      "description": "Work with PostgreSQL databases using the PostgreSQL extension.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/postgresql-dba.agent.md"
+    },
+    "refine-issue.agent": {
+      "name": "Refine Requirement or Issue",
+      "description": "Refine the requirement or issue with Acceptance Criteria, Technical Considerations, Edge Cases, and NFRs",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/refine-issue.agent.md"
+    },
+    "diffblue-cover.agent": {
+      "name": "DiffblueCover",
+      "description": "Expert agent for creating unit tests for java applications using Diffblue Cover.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/diffblue-cover.agent.md"
+    },
+    "dotnet-maui.agent": {
+      "name": "MAUI Expert",
+      "description": "Support development of .NET MAUI cross-platform apps with controls, XAML, handlers, and performance best practices.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/dotnet-maui.agent.md"
+    },
+    "bicep-plan.agent": {
+      "name": "Bicep Planning",
+      "description": "Act as implementation planner for your Azure Bicep Infrastructure as Code task.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/bicep-plan.agent.md"
+    },
+    "tech-debt-remediation-plan.agent": {
+      "name": "Technical Debt Remediation Plan",
+      "description": "Generate technical debt remediation plans for code, tests, and documentation.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/tech-debt-remediation-plan.agent.md"
+    },
+    "pagerduty-incident-responder.agent": {
+      "name": "PagerDuty Incident Responder",
+      "description": "Responds to PagerDuty incidents by analyzing incident context, identifying recent code changes, and suggesting fixes via GitHub PRs.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/pagerduty-incident-responder.agent.md"
+    },
+    "se-product-manager-advisor.agent": {
+      "name": "SE: Product Manager",
+      "description": "Product management guidance for creating GitHub issues, aligning business value with user needs, and making data-driven product decisions",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/se-product-manager-advisor.agent.md"
+    },
+    "gpt-5-beast-mode.agent": {
+      "name": "GPT 5 Beast Mode",
+      "description": "Beast Mode 2.0: A powerful autonomous agent tuned specifically for GPT-5 that can solve complex problems by using tools, conducting research, and iterating until the problem is fully resolved.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/gpt-5-beast-mode.agent.md"
+    },
+    "critical-thinking.agent": {
+      "name": "Critical thinking mode instructions",
+      "description": "Challenge assumptions and encourage critical thinking to ensure the best possible solution and outcomes.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/critical-thinking.agent.md"
+    },
+    "microsoft-agent-framework-python.agent": {
+      "name": "Microsoft Agent Framework Python",
+      "description": "Create, update, refactor, explain or work with code using the Python version of Microsoft Agent Framework.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/microsoft-agent-framework-python.agent.md"
+    },
+    "ms-sql-dba.agent": {
+      "name": "MS-SQL Database Administrator",
+      "description": "Work with Microsoft SQL Server databases using the MS SQL extension.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/ms-sql-dba.agent.md"
+    },
+    "principal-software-engineer.agent": {
+      "name": "Principal software engineer",
+      "description": "Provide principal-level software engineering guidance with focus on engineering excellence, technical leadership, and pragmatic implementation.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/principal-software-engineer.agent.md"
+    },
+    "cast-imaging-structural-quality-advisor.agent": {
+      "name": "CAST Imaging Structural Quality Advisor Agent",
+      "description": "Specialized agent for identifying, analyzing, and providing remediation guidance for code quality issues using CAST Imaging",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/cast-imaging-structural-quality-advisor.agent.md"
+    },
+    "azure-saas-architect.agent": {
+      "name": "Azure SaaS Architect mode instructions",
+      "description": "Provide expert Azure SaaS Architect guidance focusing on multitenant applications using Azure Well-Architected SaaS principles and Microsoft best practices.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/azure-saas-architect.agent.md"
+    },
+    "power-bi-performance-expert.agent": {
+      "name": "Power BI Performance Expert Mode",
+      "description": "Expert Power BI performance optimization guidance for troubleshooting, monitoring, and improving the performance of Power BI models, reports, and queries.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/power-bi-performance-expert.agent.md"
+    },
+    "reepl-linkedin.agent": {
+      "name": "reepl-linkedin",
+      "description": "AI-powered LinkedIn content creation, scheduling, and analytics agent. Create posts, carousels, and manage your LinkedIn presence with GitHub Copilot.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/reepl-linkedin.agent.md"
+    },
+    "polyglot-test-linter.agent": {
+      "name": "Polyglot Test Linter",
+      "description": "Runs code formatting/linting for any language. Discovers lint command from project files if not specified.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/polyglot-test-linter.agent.md"
+    },
+    "nuxt-expert.agent": {
+      "name": "Expert Nuxt Developer",
+      "description": "Expert Nuxt developer specializing in Nuxt 3, Nitro, server routes, data fetching strategies, and performance optimization with Vue 3 and TypeScript",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/nuxt-expert.agent.md"
+    },
+    "microsoft_learn_contributor.agent": {
+      "name": "Microsoft Learn Contributor",
+      "description": "Microsoft Learn Contributor chatmode for editing and writing Microsoft Learn documentation following Microsoft Writing Style Guide and authoring best practices.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/microsoft_learn_contributor.agent.md"
+    },
+    "rust-gpt-4.1-beast-mode.agent": {
+      "name": "Rust Beast Mode",
+      "description": "Rust GPT-4.1 Coding Beast Mode for VS Code",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/rust-gpt-4.1-beast-mode.agent.md"
+    },
+    "salesforce-expert.agent": {
+      "name": "Salesforce Expert Agent",
+      "description": "Provide expert Salesforce Platform guidance, including Apex Enterprise Patterns, LWC, integration, and Aura-to-LWC migration.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/salesforce-expert.agent.md"
+    },
+    "vuejs-expert.agent": {
+      "name": "Expert Vue.js Frontend Engineer",
+      "description": "Expert Vue.js frontend engineer specializing in Vue 3 Composition API, reactivity, state management, testing, and performance with TypeScript",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/vuejs-expert.agent.md"
+    },
+    "dynatrace-expert.agent": {
+      "name": "Dynatrace Expert",
+      "description": "The Dynatrace Expert Agent integrates observability and security capabilities directly into GitHub workflows, enabling development teams to investigate incidents, validate deployments, triage errors, detect performance regressions, validate releases, and manage security vulnerabilities by autonomously analysing traces, logs, and Dynatrace findings. This enables targeted and precise remediation of identified issues directly within the repository.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/dynatrace-expert.agent.md"
+    },
+    "devils-advocate.agent": {
+      "name": "Devils Advocate",
+      "description": "I play the devil's advocate to challenge and stress-test your ideas by finding flaws, risks, and edge cases",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/devils-advocate.agent.md"
+    },
+    "aem-frontend-specialist.agent": {
+      "name": "AEM Front-End Specialist",
+      "description": "Expert assistant for developing AEM components using HTL, Tailwind CSS, and Figma-to-code workflows with design system integration",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/aem-frontend-specialist.agent.md"
+    },
+    "terraform.agent": {
+      "name": "Terraform Agent",
+      "description": "Terraform infrastructure specialist with automated HCP Terraform workflows. Leverages Terraform MCP server for registry integration, workspace management, and run orchestration. Generates compliant code using latest provider/module versions, manages private registries, automates variable sets, and orchestrates infrastructure deployments with proper validation and security practices.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/terraform.agent.md"
+    },
+    "neo4j-docker-client-generator.agent": {
+      "name": "neo4j-docker-client-generator",
+      "description": "AI agent that generates simple, high-quality Python Neo4j client libraries from GitHub issues with proper best practices",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/neo4j-docker-client-generator.agent.md"
+    },
+    "azure-verified-modules-bicep.agent": {
+      "name": "Azure AVM Bicep mode",
+      "description": "Create, update, or review Azure IaC in Bicep using Azure Verified Modules (AVM).",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/azure-verified-modules-bicep.agent.md"
+    },
+    "shopify-expert.agent": {
+      "name": "Shopify Expert",
+      "description": "Expert Shopify development assistant specializing in theme development, Liquid templating, app development, and Shopify APIs",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/shopify-expert.agent.md"
+    },
+    "gem-planner.agent": {
+      "name": "gem-planner",
+      "description": "Creates DAG-based plans with pre-mortem analysis and task decomposition from research findings",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/gem-planner.agent.md"
+    },
+    "monday-bug-fixer.agent": {
+      "name": "Monday Bug Context Fixer",
+      "description": "Elite bug-fixing agent that enriches task context from Monday.com platform data. Gathers related items, docs, comments, epics, and requirements to deliver production-quality fixes with comprehensive PRs.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/monday-bug-fixer.agent.md"
+    },
+    "cast-imaging-software-discovery.agent": {
+      "name": "CAST Imaging Software Discovery Agent",
+      "description": "Specialized agent for comprehensive software application discovery and architectural mapping through static code analysis using CAST Imaging",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/cast-imaging-software-discovery.agent.md"
+    },
+    "azure-iac-exporter.agent": {
+      "name": "azure-iac-exporter",
+      "description": "Export existing Azure resources to Infrastructure as Code templates via Azure Resource Graph analysis, Azure Resource Manager API calls, and azure-iac-generator integration. Use this skill when the user asks to export, convert, migrate, or extract existing Azure resources to IaC templates (Bicep, ARM Templates, Terraform, Pulumi).",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/azure-iac-exporter.agent.md"
+    },
+    "modernization.agent": {
+      "name": "Modernization Agent",
+      "description": "Human-in-the-loop modernization assistant for analyzing, documenting, and planning complete project modernization with architectural recommendations.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/modernization.agent.md"
+    },
+    "demonstrate-understanding.agent": {
+      "name": "Demonstrate Understanding mode instructions",
+      "description": "Validate user understanding of code, design patterns, and implementation details through guided questioning.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/demonstrate-understanding.agent.md"
+    },
+    "Ultimate-Transparent-Thinking-Beast-Mode.agent": {
+      "name": "Ultimate Transparent Thinking Beast Mode",
+      "description": "Ultimate Transparent Thinking Beast Mode",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/Ultimate-Transparent-Thinking-Beast-Mode.agent.md"
+    },
+    "microsoft-agent-framework-dotnet.agent": {
+      "name": "Microsoft Agent Framework .NET",
+      "description": "Create, update, refactor, explain or work with code using the .NET version of Microsoft Agent Framework.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/microsoft-agent-framework-dotnet.agent.md"
+    },
+    "hlbpa.agent": {
+      "name": "High-Level Big Picture Architect (HLBPA)",
+      "description": "Your perfect AI chat mode for high-level architectural documentation and review. Perfect for targeted updates after a story or researching that legacy system when nobody remembers what it's supposed to be doing.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/hlbpa.agent.md"
+    },
+    "task-researcher.agent": {
+      "name": "Task Researcher Instructions",
+      "description": "Task research specialist for comprehensive project analysis - Brought to you by microsoft/edge-ai",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/task-researcher.agent.md"
+    },
+    "voidbeast-gpt41enhanced.agent": {
+      "name": "voidBeast_GPT41Enhanced 1.0 - Elite Developer AI Assistant",
+      "description": "4.1 voidBeast_GPT41Enhanced 1.0 : a advanced autonomous developer agent, designed for elite full-stack development with enhanced multi-mode capabilities. This latest evolution features sophisticated mode detection, comprehensive research capabilities, and never-ending problem resolution. Plan/Act/Deep Research/Analyzer/Checkpoints(Memory)/Prompt Generator Modes.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/voidbeast-gpt41enhanced.agent.md"
+    },
+    "apify-integration-expert.agent": {
+      "name": "apify-integration-expert",
+      "description": "Expert agent for integrating Apify Actors into codebases. Handles Actor selection, workflow design, implementation across JavaScript/TypeScript and Python, testing, and production-ready deployment.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/apify-integration-expert.agent.md"
+    },
+    "azure-verified-modules-terraform.agent": {
+      "name": "Azure AVM Terraform mode",
+      "description": "Create, update, or review Azure IaC in Terraform using Azure Verified Modules (AVM).",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/azure-verified-modules-terraform.agent.md"
+    },
+    "prd.agent": {
+      "name": "Create PRD Chat Mode",
+      "description": "Generate a comprehensive Product Requirements Document (PRD) in Markdown, detailing user stories, acceptance criteria, technical considerations, and metrics. Optionally create GitHub issues upon user confirmation.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/prd.agent.md"
+    },
+    "mentor.agent": {
+      "name": "Mentor mode",
+      "description": "Help mentor the engineer by providing guidance and support.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/mentor.agent.md"
+    },
+    "fedora-linux-expert.agent": {
+      "name": "Fedora Linux Expert",
+      "description": "Fedora (Red Hat family) Linux specialist focused on dnf, SELinux, and modern systemd-based workflows.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/fedora-linux-expert.agent.md"
+    },
+    "gilfoyle.agent": {
+      "name": "Gilfoyle Code Review Mode",
+      "description": "Code review and analysis with the sardonic wit and technical elitism of Bertram Gilfoyle from Silicon Valley. Prepare for brutal honesty about your code.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/gilfoyle.agent.md"
+    },
+    "api-architect.agent": {
+      "name": "API Architect",
+      "description": "Your role is that of an API architect. Help mentor the engineer by providing guidance, support, and working code.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/api-architect.agent.md"
+    },
+    "terraform-azure-planning.agent": {
+      "name": "Azure Terraform Infrastructure Planning",
+      "description": "Act as implementation planner for your Azure Terraform Infrastructure as Code task.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/terraform-azure-planning.agent.md"
+    },
+    "atlassian-requirements-to-jira.agent": {
+      "name": "Atlassian Requirements to Jira",
+      "description": "Transform requirements documents into structured Jira epics and user stories with intelligent duplicate detection, change management, and user-approved creation workflow.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/atlassian-requirements-to-jira.agent.md"
+    },
+    "semantic-kernel-dotnet.agent": {
+      "name": "Semantic Kernel .NET",
+      "description": "Create, update, refactor, explain or work with code using the .NET version of Semantic Kernel.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/semantic-kernel-dotnet.agent.md"
+    },
+    "context7.agent": {
+      "name": "Context7-Expert",
+      "description": "Expert in latest library versions, best practices, and correct syntax using up-to-date documentation",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/context7.agent.md"
+    },
+    "search-ai-optimization-expert.agent": {
+      "name": "Search & AI Optimization Expert",
+      "description": "Expert guidance for modern search optimization: SEO, Answer Engine Optimization (AEO), and Generative Engine Optimization (GEO) with AI-ready content strategies",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/search-ai-optimization-expert.agent.md"
+    },
+    "dotnet-upgrade.agent": {
+      "name": ".NET Upgrade",
+      "description": "Perform janitorial tasks on C#/.NET code including cleanup, modernization, and tech debt remediation.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/dotnet-upgrade.agent.md"
+    },
+    "python-mcp-expert.agent": {
+      "name": "Python MCP Server Expert",
+      "description": "Expert assistant for developing Model Context Protocol (MCP) servers in Python",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/python-mcp-expert.agent.md"
+    },
+    "power-bi-visualization-expert.agent": {
+      "name": "Power BI Visualization Expert Mode",
+      "description": "Expert Power BI report design and visualization guidance using Microsoft best practices for creating effective, performant, and user-friendly reports and dashboards.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/power-bi-visualization-expert.agent.md"
+    },
+    "repo-architect.agent": {
+      "name": "Repo Architect Agent",
+      "description": "Bootstraps and validates agentic project structures for GitHub Copilot (VS Code) and OpenCode CLI workflows. Run after `opencode /init` or VS Code Copilot initialization to scaffold proper folder hierarchies, instructions, agents, skills, and prompts.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/repo-architect.agent.md"
+    },
+    "power-bi-data-modeling-expert.agent": {
+      "name": "Power BI Data Modeling Expert Mode",
+      "description": "Expert Power BI data modeling guidance using star schema principles, relationship design, and Microsoft best practices for optimal model performance and usability.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/power-bi-data-modeling-expert.agent.md"
+    },
+    "csharp-mcp-expert.agent": {
+      "name": "C# MCP Server Expert",
+      "description": "Expert assistant for developing Model Context Protocol (MCP) servers in C#",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/csharp-mcp-expert.agent.md"
+    },
+    "se-responsible-ai-code.agent": {
+      "name": "SE: Responsible AI",
+      "description": "Responsible AI specialist ensuring AI works for everyone through bias prevention, accessibility compliance, ethical development, and inclusive design",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/se-responsible-ai-code.agent.md"
+    },
+    "blueprint-mode.agent": {
+      "name": "Blueprint Mode",
+      "description": "Executes structured workflows (Debug, Express, Main, Loop) with strict correctness and maintainability. Enforces an improved tool usage policy, never assumes facts, prioritizes reproducible solutions, self-correction, and edge-case handling.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/blueprint-mode.agent.md"
+    },
+    "technical-content-evaluator.agent": {
+      "name": "technical-content-evaluator",
+      "description": "Elite technical content editor and curriculum architect for evaluating technical training materials, documentation, and educational content. Reviews for technical accuracy, pedagogical excellence, content flow, code validation, and ensures A-grade quality standards.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/technical-content-evaluator.agent.md"
+    },
+    "debian-linux-expert.agent": {
+      "name": "Debian Linux Expert",
+      "description": "Debian Linux specialist focused on stable system administration, apt-based package management, and Debian policy-aligned practices.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/debian-linux-expert.agent.md"
+    },
+    "blueprint-mode-codex.agent": {
+      "name": "Blueprint Mode Codex",
+      "description": "Executes structured workflows with strict correctness and maintainability. Enforces a minimal tool usage policy, never assumes facts, prioritizes reproducible solutions, self-correction, and edge-case handling.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/blueprint-mode-codex.agent.md"
+    },
+    "address-comments.agent": {
+      "name": "Universal PR Comment Addresser",
+      "description": "Address PR comments",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/address-comments.agent.md"
+    },
+    "research-technical-spike.agent": {
+      "name": "Technical spike research mode",
+      "description": "Systematically research and validate technical spike documents through exhaustive investigation and controlled experimentation.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/research-technical-spike.agent.md"
+    },
+    "gem-devops.agent": {
+      "name": "gem-devops",
+      "description": "Manages containers, CI/CD pipelines, and infrastructure deployment",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/gem-devops.agent.md"
+    },
+    "tdd-green.agent": {
+      "name": "TDD Green Phase - Make Tests Pass Quickly",
+      "description": "Implement minimal code to satisfy GitHub issue requirements and make failing tests pass without over-engineering.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/tdd-green.agent.md"
+    },
+    "tdd-red.agent": {
+      "name": "TDD Red Phase - Write Failing Tests First",
+      "description": "Guide test-first development by writing failing tests that describe desired behaviour from GitHub issue context before implementation exists.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/tdd-red.agent.md"
+    },
+    "cast-imaging-impact-analysis.agent": {
+      "name": "CAST Imaging Impact Analysis Agent",
+      "description": "Specialized agent for comprehensive change impact assessment and risk analysis in software systems using CAST Imaging",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/cast-imaging-impact-analysis.agent.md"
+    },
+    "lingodotdev-i18n.agent": {
+      "name": "Lingo.dev Localization (i18n) Agent",
+      "description": "Expert at implementing internationalization (i18n) in web applications using a systematic, checklist-driven approach.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/lingodotdev-i18n.agent.md"
+    },
+    "se-system-architecture-reviewer.agent": {
+      "name": "SE: Architect",
+      "description": "System architecture review specialist with Well-Architected frameworks, design validation, and scalability analysis for AI and distributed systems",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/se-system-architecture-reviewer.agent.md"
+    },
+    "azure-iac-generator.agent": {
+      "name": "azure-iac-generator",
+      "description": "Central hub for generating Infrastructure as Code (Bicep, ARM, Terraform, Pulumi) with format-specific validation and best practices. Use this skill when the user asks to generate, create, write, or build infrastructure code, deployment code, or IaC templates in any format (Bicep, ARM Templates, Terraform, Pulumi).",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/azure-iac-generator.agent.md"
+    },
+    "prompt-engineer.agent": {
+      "name": "Prompt Engineer",
+      "description": "A specialized chat mode for analyzing and improving prompts. Every user input is treated as a prompt to be improved. It first provides a detailed analysis of the original prompt within a <reasoning> tag, evaluating it against a systematic framework based on OpenAI's prompt engineering best practices. Following the analysis, it generates a new, improved prompt.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/prompt-engineer.agent.md"
+    },
+    "java-mcp-expert.agent": {
+      "name": "Java MCP Expert",
+      "description": "Expert assistance for building Model Context Protocol servers in Java using reactive streams, the official MCP Java SDK, and Spring Boot integration.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/java-mcp-expert.agent.md"
+    },
+    "octopus-deploy-release-notes-mcp.agent": {
+      "name": "octopus-release-notes-with-mcp",
+      "description": "Generate release notes for a release in Octopus Deploy. The tools for this MCP server provide access to the Octopus Deploy APIs.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/octopus-deploy-release-notes-mcp.agent.md"
+    },
+    "mcp-m365-agent-expert.agent": {
+      "name": "MCP M365 Agent Expert",
+      "description": "Expert assistant for building MCP-based declarative agents for Microsoft 365 Copilot with Model Context Protocol integration",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/mcp-m365-agent-expert.agent.md"
+    },
+    "mentoring-juniors.agent": {
+      "name": "Sensei - Junior Mentor",
+      "description": "Socratic mentor for junior developers. Guides through questions, never gives direct answers. Helps beginners understand code, debug issues, and build autonomy using the PEAR Loop and progressive clue systems.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/mentoring-juniors.agent.md"
+    },
+    "winui3-expert.agent": {
+      "name": "WinUI 3 Expert",
+      "description": "Expert agent for WinUI 3 and Windows App SDK development. Prevents common UWP-to-WinUI 3 API mistakes, guides XAML controls, MVVM patterns, windowing, threading, app lifecycle, dialogs, and deployment for desktop Windows apps.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/winui3-expert.agent.md"
+    },
+    "gem-implementer.agent": {
+      "name": "gem-implementer",
+      "description": "Executes TDD code changes, ensures verification, maintains quality",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/gem-implementer.agent.md"
+    },
+    "kotlin-mcp-expert.agent": {
+      "name": "Kotlin MCP Server Development Expert",
+      "description": "Expert assistant for building Model Context Protocol (MCP) servers in Kotlin using the official SDK.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/kotlin-mcp-expert.agent.md"
+    },
+    "swe-subagent.agent": {
+      "name": "SWE",
+      "description": "Senior software engineer subagent for implementation tasks: feature development, debugging, refactoring, and testing.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/swe-subagent.agent.md"
+    },
+    "azure-logic-apps-expert.agent": {
+      "name": "Azure Logic Apps Expert Mode",
+      "description": "Expert guidance for Azure Logic Apps development focusing on workflow design, integration patterns, and JSON-based Workflow Definition Language.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/azure-logic-apps-expert.agent.md"
+    },
+    "go-mcp-expert.agent": {
+      "name": "Go MCP Server Development Expert",
+      "description": "Expert assistant for building Model Context Protocol (MCP) servers in Go using the official SDK.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/go-mcp-expert.agent.md"
+    },
+    "wg-code-alchemist.agent": {
+      "name": "WG Code Alchemist",
+      "description": "Ask WG Code Alchemist to transform your code with Clean Code principles and SOLID design",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/wg-code-alchemist.agent.md"
+    },
+    "gem-documentation-writer.agent": {
+      "name": "gem-documentation-writer",
+      "description": "Generates technical docs, diagrams, maintains code-documentation parity",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/gem-documentation-writer.agent.md"
+    },
+    "amplitude-experiment-implementation.agent": {
+      "name": "Amplitude Experiment Implementation",
+      "description": "This custom agent uses Amplitude's\u00a0MCP tools to deploy new experiments inside of Amplitude, enabling seamless variant testing capabilities and rollout of product features.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/amplitude-experiment-implementation.agent.md"
+    },
+    "Thinking-Beast-Mode.agent": {
+      "name": "Thinking Beast Mode",
+      "description": "A transcendent coding agent with quantum cognitive architecture, adversarial intelligence, and unrestricted creative freedom.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/Thinking-Beast-Mode.agent.md"
+    },
+    "polyglot-test-fixer.agent": {
+      "name": "Polyglot Test Fixer",
+      "description": "Fixes compilation errors in source or test files. Analyzes error messages and applies corrections.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/polyglot-test-fixer.agent.md"
+    },
+    "plan.agent": {
+      "name": "Plan Mode - Strategic Planning & Architecture",
+      "description": "Strategic planning and architecture assistant focused on thoughtful analysis before implementation. Helps developers understand codebases, clarify requirements, and develop comprehensive implementation strategies.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/plan.agent.md"
+    },
+    "code-tour.agent": {
+      "name": "VSCode Tour Expert",
+      "description": "Expert agent for creating and maintaining VSCode CodeTour files with comprehensive schema support and best practices",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/code-tour.agent.md"
+    },
+    "power-platform-expert.agent": {
+      "name": "Power Platform Expert",
+      "description": "Power Platform expert providing guidance on Code Apps, canvas apps, Dataverse, connectors, and Power Platform best practices",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/power-platform-expert.agent.md"
+    },
+    "jfrog-sec.agent": {
+      "name": "JFrog Security Agent",
+      "description": "The dedicated Application Security agent for automated security remediation. Verifies package and version compliance, and suggests vulnerability fixes using JFrog security intelligence.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/jfrog-sec.agent.md"
+    },
+    "planner.agent": {
+      "name": "Planning mode instructions",
+      "description": "Generate an implementation plan for new features or refactoring existing code.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/planner.agent.md"
+    },
+    "se-security-reviewer.agent": {
+      "name": "SE: Security",
+      "description": "Security-focused code review specialist with OWASP Top 10, Zero Trust, LLM security, and enterprise security standards",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/se-security-reviewer.agent.md"
+    },
+    "neon-optimization-analyzer.agent": {
+      "name": "Neon Performance Analyzer",
+      "description": "Identify and fix slow Postgres queries automatically using Neon's branching workflow. Analyzes execution plans, tests optimizations in isolated database branches, and provides clear before/after performance metrics with actionable code fixes.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/neon-optimization-analyzer.agent.md"
+    },
+    "stackhawk-security-onboarding.agent": {
+      "name": "stackhawk-security-onboarding",
+      "description": "Automatically set up StackHawk security testing for your repository with generated configuration and GitHub Actions workflow",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/stackhawk-security-onboarding.agent.md"
+    },
+    "github-actions-expert.agent": {
+      "name": "GitHub Actions Expert",
+      "description": "GitHub Actions specialist focused on secure CI/CD workflows, action pinning, OIDC authentication, permissions least privilege, and supply-chain security",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/github-actions-expert.agent.md"
+    },
+    "php-mcp-expert.agent": {
+      "name": "PHP MCP Expert",
+      "description": "Expert assistant for PHP MCP server development using the official PHP SDK with attribute-based discovery",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/php-mcp-expert.agent.md"
+    },
+    "droid.agent": {
+      "name": "droid",
+      "description": "Provides installation guidance, usage examples, and automation patterns for the Droid CLI, with emphasis on droid exec for CI/CD and non-interactive automation",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/droid.agent.md"
+    },
+    "pimcore-expert.agent": {
+      "name": "Pimcore Expert",
+      "description": "Expert Pimcore development assistant specializing in CMS, DAM, PIM, and E-Commerce solutions with Symfony integration",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/pimcore-expert.agent.md"
+    },
+    "playwright-tester.agent": {
+      "name": "Playwright Tester Mode",
+      "description": "Testing mode for Playwright tests",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/playwright-tester.agent.md"
+    },
+    "simple-app-idea-generator.agent": {
+      "name": "Idea Generator",
+      "description": "Brainstorm and develop new application ideas through fun, interactive questioning until ready for specification creation.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/simple-app-idea-generator.agent.md"
+    },
+    "expert-dotnet-software-engineer.agent": {
+      "name": "Expert .NET software engineer mode instructions",
+      "description": "Provide expert .NET software engineering guidance using modern software design patterns.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/expert-dotnet-software-engineer.agent.md"
+    },
+    "WinFormsExpert.agent": {
+      "name": "WinForms Expert",
+      "description": "Support development of .NET (OOP) WinForms Designer compatible Apps.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/WinFormsExpert.agent.md"
+    },
+    "prompt-builder.agent": {
+      "name": "Prompt Builder",
+      "description": "Expert prompt engineering and validation system for creating high-quality prompts - Brought to you by microsoft/edge-ai",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/prompt-builder.agent.md"
+    },
+    "gem-reviewer.agent": {
+      "name": "gem-reviewer",
+      "description": "Security gatekeeper for critical tasks\u2014OWASP, secrets, compliance",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/gem-reviewer.agent.md"
+    },
+    "kusto-assistant.agent": {
+      "name": "Kusto Assistant",
+      "description": "Expert KQL assistant for live Azure Data Explorer analysis via Azure MCP server",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/kusto-assistant.agent.md"
+    },
+    "clojure-interactive-programming.agent": {
+      "name": "Clojure Interactive Programming",
+      "description": "Expert Clojure pair programmer with REPL-first methodology, architectural oversight, and interactive problem-solving. Enforces quality standards, prevents workarounds, and develops solutions incrementally through live REPL evaluation before file modifications.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/clojure-interactive-programming.agent.md"
+    },
+    "task-planner.agent": {
+      "name": "Task Planner Instructions",
+      "description": "Task planner for creating actionable implementation plans - Brought to you by microsoft/edge-ai",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/task-planner.agent.md"
+    },
+    "polyglot-test-implementer.agent": {
+      "name": "Polyglot Test Implementer",
+      "description": "Implements a single phase from the test plan. Writes test files and verifies they compile and pass. Calls builder, tester, and fixer agents as needed.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/polyglot-test-implementer.agent.md"
+    },
+    "terraform-azure-implement.agent": {
+      "name": "Azure Terraform IaC Implementation Specialist",
+      "description": "Act as an Azure Terraform Infrastructure as Code coding specialist that creates and reviews Terraform for Azure resources.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/terraform-azure-implement.agent.md"
+    },
+    "janitor.agent": {
+      "name": "Universal Janitor",
+      "description": "Perform janitorial tasks on any codebase including cleanup, simplification, and tech debt remediation.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/janitor.agent.md"
+    },
+    "power-bi-dax-expert.agent": {
+      "name": "Power BI DAX Expert Mode",
+      "description": "Expert Power BI DAX guidance using Microsoft best practices for performance, readability, and maintainability of DAX formulas and calculations.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/power-bi-dax-expert.agent.md"
+    },
+    "polyglot-test-generator.agent": {
+      "name": "Polyglot Test Generator",
+      "description": "Orchestrates comprehensive test generation using Research-Plan-Implement pipeline. Use when asked to generate tests, write unit tests, improve test coverage, or add tests.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/polyglot-test-generator.agent.md"
+    },
+    "arch-linux-expert.agent": {
+      "name": "Arch Linux Expert",
+      "description": "Arch Linux specialist focused on pacman, rolling-release maintenance, and Arch-centric system administration workflows.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/arch-linux-expert.agent.md"
+    },
+    "accessibility.agent": {
+      "name": "Accessibility Expert",
+      "description": "Expert assistant for web accessibility (WCAG 2.1/2.2), inclusive UX, and a11y testing",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/accessibility.agent.md"
+    },
+    "polyglot-test-planner.agent": {
+      "name": "Polyglot Test Planner",
+      "description": "Creates structured test implementation plans from research findings. Organizes tests into phases by priority and complexity. Works with any language.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/polyglot-test-planner.agent.md"
+    },
+    "typescript-mcp-expert.agent": {
+      "name": "TypeScript MCP Server Expert",
+      "description": "Expert assistant for developing Model Context Protocol (MCP) servers in TypeScript",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/typescript-mcp-expert.agent.md"
+    },
+    "microsoft-study-mode.agent": {
+      "name": "Microsoft Study and Learn",
+      "description": "Activate your personal Microsoft/Azure tutor - learn through guided discovery, not just answers.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/microsoft-study-mode.agent.md"
+    },
+    "neon-migration-specialist.agent": {
+      "name": "Neon Migration Specialist",
+      "description": "Safe Postgres migrations with zero-downtime using Neon's branching workflow. Test schema changes in isolated database branches, validate thoroughly, then apply to production\u2014all automated with support for Prisma, Drizzle, or your favorite ORM.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/neon-migration-specialist.agent.md"
+    },
+    "adr-generator.agent": {
+      "name": "ADR Generator",
+      "description": "Expert agent for creating comprehensive Architectural Decision Records (ADRs) with structured formatting optimized for AI consumption and human readability.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/adr-generator.agent.md"
+    },
+    "software-engineer-agent-v1.agent": {
+      "name": "Software Engineer Agent",
+      "description": "Expert-level software engineering agent. Deliver production-ready, maintainable code. Execute systematically and specification-driven. Document comprehensively. Operate autonomously and adaptively.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/software-engineer-agent-v1.agent.md"
+    },
+    "bicep-implement.agent": {
+      "name": "Bicep Specialist",
+      "description": "Act as an Azure Bicep Infrastructure as Code coding specialist that creates Bicep templates.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/bicep-implement.agent.md"
+    },
+    "terratest-module-testing.agent": {
+      "name": "Terratest Module Testing",
+      "description": "Generate and refactor Go Terratest suites for Terraform modules, including CI-safe patterns, staged tests, and negative-path validation.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/terratest-module-testing.agent.md"
+    },
+    "polyglot-test-researcher.agent": {
+      "name": "Polyglot Test Researcher",
+      "description": "Analyzes codebases to understand structure, testing patterns, and testability. Identifies source files, existing tests, build commands, and testing framework. Works with any language.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/polyglot-test-researcher.agent.md"
+    },
+    "se-gitops-ci-specialist.agent": {
+      "name": "SE: DevOps/CI",
+      "description": "DevOps specialist for CI/CD pipelines, deployment debugging, and GitOps workflows focused on making deployments boring and reliable",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/se-gitops-ci-specialist.agent.md"
+    },
+    "specification.agent": {
+      "name": "Specification",
+      "description": "Generate or update specification documents for new or existing functionality.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/specification.agent.md"
+    },
+    "expert-nextjs-developer.agent": {
+      "name": "Next.js Expert",
+      "description": "Expert Next.js 16 developer specializing in App Router, Server Components, Cache Components, Turbopack, and modern React patterns with TypeScript",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/expert-nextjs-developer.agent.md"
+    },
+    "rust-mcp-expert.agent": {
+      "name": "Rust MCP Expert",
+      "description": "Expert assistant for Rust MCP server development using the rmcp SDK with tokio async runtime",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/rust-mcp-expert.agent.md"
+    },
+    "electron-angular-native.agent": {
+      "name": "Electron Code Review Mode Instructions",
+      "description": "Code Review Mode tailored for Electron app with Node.js backend (main), Angular frontend (render), and native integration layer (e.g., AppleScript, shell, or native tooling). Services in other repos are not reviewed here.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/electron-angular-native.agent.md"
+    },
+    "agent-governance-reviewer.agent": {
+      "name": "Agent Governance Reviewer",
+      "description": "AI agent governance expert that reviews code for safety issues, missing governance controls, and helps implement policy enforcement, trust scoring, and audit trails in agent systems.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/agent-governance-reviewer.agent.md"
+    },
+    "expert-react-frontend-engineer.agent": {
+      "name": "Expert React Frontend Engineer",
+      "description": "Expert React 19.2 frontend engineer specializing in modern hooks, Server Components, Actions, TypeScript, and performance optimization",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/expert-react-frontend-engineer.agent.md"
+    },
+    "csharp-dotnet-janitor.agent": {
+      "name": "C#/.NET Janitor",
+      "description": "Perform janitorial tasks on C#/.NET code including cleanup, modernization, and tech debt remediation.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/csharp-dotnet-janitor.agent.md"
+    },
+    "azure-principal-architect.agent": {
+      "name": "Azure Principal Architect mode instructions",
+      "description": "Provide expert Azure Principal Architect guidance using Azure Well-Architected Framework principles and Microsoft best practices.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/azure-principal-architect.agent.md"
+    },
+    "gem-browser-tester.agent": {
+      "name": "gem-browser-tester",
+      "description": "Automates browser testing, UI/UX validation using browser automation tools and visual verification techniques",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/gem-browser-tester.agent.md"
+    },
+    "devops-expert.agent": {
+      "name": "DevOps Expert",
+      "description": "DevOps specialist following the infinity loop principle (Plan \u2192 Code \u2192 Build \u2192 Test \u2192 Release \u2192 Deploy \u2192 Operate \u2192 Monitor) with focus on automation, collaboration, and continuous improvement",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/devops-expert.agent.md"
+    },
+    "elasticsearch-observability.agent": {
+      "name": "elasticsearch-agent",
+      "description": "Our expert AI assistant for debugging code (O11y), optimizing vector search (RAG), and remediating security threats using live Elastic data.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/elasticsearch-observability.agent.md"
+    },
+    "expert-cpp-software-engineer.agent": {
+      "name": "C++ Expert",
+      "description": "Provide expert C++ software engineering guidance using modern C++ and industry best practices.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/expert-cpp-software-engineer.agent.md"
+    },
+    "gem-orchestrator.agent": {
+      "name": "gem-orchestrator",
+      "description": "Coordinates multi-agent workflows, delegates tasks, synthesizes results via runSubagent",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/gem-orchestrator.agent.md"
+    },
+    "terraform-iac-reviewer.agent": {
+      "name": "Terraform IaC Reviewer",
+      "description": "Terraform-focused agent that reviews and creates safer IaC changes with emphasis on state safety, least privilege, module patterns, drift detection, and plan/apply discipline",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/terraform-iac-reviewer.agent.md"
+    },
+    "meta-agentic-project-scaffold.agent": {
+      "name": "Meta Agentic Project Scaffold",
+      "description": "Meta agentic project creation assistant to help users create and manage project workflows effectively.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/meta-agentic-project-scaffold.agent.md"
+    },
+    "laravel-expert-agent.agent": {
+      "name": "Laravel Expert Agent",
+      "description": "Expert Laravel development assistant specializing in modern Laravel 12+ applications with Eloquent, Artisan, testing, and best practices",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/laravel-expert-agent.agent.md"
+    },
+    "qa-subagent.agent": {
+      "name": "QA",
+      "description": "Meticulous QA subagent for test planning, bug hunting, edge-case analysis, and implementation verification.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/qa-subagent.agent.md"
+    },
+    "4.1-Beast.agent": {
+      "name": "4.1 Beast Mode v3.1",
+      "description": "GPT 4.1 as a top-notch coding agent.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/4.1-Beast.agent.md"
+    },
+    "semantic-kernel-python.agent": {
+      "name": "Semantic Kernel Python",
+      "description": "Create, update, refactor, explain or work with code using the Python version of Semantic Kernel.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/semantic-kernel-python.agent.md"
+    },
+    "se-technical-writer.agent": {
+      "name": "SE: Tech Writer",
+      "description": "Technical writing specialist for creating developer documentation, technical blogs, tutorials, and educational content",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/se-technical-writer.agent.md"
+    },
+    "comet-opik.agent": {
+      "name": "Comet Opik",
+      "description": "Unified Comet Opik agent for instrumenting LLM apps, managing prompts/projects, auditing prompts, and investigating traces/metrics via the latest Opik MCP server.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/comet-opik.agent.md"
+    },
+    "debug.agent": {
+      "name": "Debug Mode Instructions",
+      "description": "Debug your application to find and fix a bug",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/debug.agent.md"
+    },
+    "mongodb-performance-advisor.agent": {
+      "name": "mongodb-performance-advisor",
+      "description": "Analyze MongoDB database performance, offer query and index optimization insights and provide actionable recommendations to improve overall usage of the database.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/mongodb-performance-advisor.agent.md"
+    },
+    "ruby-mcp-expert.agent": {
+      "name": "Ruby MCP Expert",
+      "description": "Expert assistance for building Model Context Protocol servers in Ruby using the official MCP Ruby SDK gem with Rails integration.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/ruby-mcp-expert.agent.md"
+    },
+    "arm-migration.agent": {
+      "name": "arm-migration-agent",
+      "description": "Arm Cloud Migration Assistant accelerates moving x86 workloads to Arm infrastructure. It scans the repository for architecture assumptions, portability issues, container base image and dependency incompatibilities, and recommends Arm-optimized changes. It can drive multi-arch container builds, validate performance, and guide optimization, enabling smooth cross-platform deployment directly inside GitHub.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/arm-migration.agent.md"
+    },
+    "centos-linux-expert.agent": {
+      "name": "CentOS Linux Expert",
+      "description": "CentOS (Stream/Legacy) Linux specialist focused on RHEL-compatible administration, yum/dnf workflows, and enterprise hardening.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/centos-linux-expert.agent.md"
+    },
+    "polyglot-test-builder.agent": {
+      "name": "Polyglot Test Builder",
+      "description": "Runs build/compile commands for any language and reports results. Discovers build command from project files if not specified.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/polyglot-test-builder.agent.md"
+    },
+    "power-platform-mcp-integration-expert.agent": {
+      "name": "Power Platform MCP Integration Expert",
+      "description": "Expert in Power Platform custom connector development with MCP integration for Copilot Studio - comprehensive knowledge of schemas, protocols, and integration patterns",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/power-platform-mcp-integration-expert.agent.md"
+    },
+    "openapi-to-application.agent": {
+      "name": "OpenAPI to Application Generator",
+      "description": "Expert assistant for generating working applications from OpenAPI specifications",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/openapi-to-application.agent.md"
+    },
+    "se-ux-ui-designer.agent": {
+      "name": "SE: UX Designer",
+      "description": "Jobs-to-be-Done analysis, user journey mapping, and UX research artifacts for Figma and design workflows",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/se-ux-ui-designer.agent.md"
+    },
+    "insiders-a11y-tracker.agent": {
+      "name": "VS Code Insiders Accessibility Tracker",
+      "description": "Specialized agent for tracking and analyzing accessibility improvements in VS Code Insiders builds",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/insiders-a11y-tracker.agent.md"
+    },
+    "drupal-expert.agent": {
+      "name": "Drupal Expert",
+      "description": "Expert assistant for Drupal development, architecture, and best practices using PHP 8.3+ and modern Drupal patterns",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/drupal-expert.agent.md"
+    },
+    "implementation-plan.agent": {
+      "name": "Implementation Plan Generation Mode",
+      "description": "Generate an implementation plan for new features or refactoring existing code.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/implementation-plan.agent.md"
+    },
+    "rug-orchestrator.agent": {
+      "name": "RUG",
+      "description": "Pure orchestration agent that decomposes requests, delegates all work to subagents, validates outcomes, and repeats until complete.",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/rug-orchestrator.agent.md"
+    },
+    "markdown-accessibility-assistant.agent": {
+      "name": "Markdown Accessibility Assistant",
+      "description": "Improves the accessibility of markdown files using five GitHub best practices",
+      "type": "agent",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/agents/markdown-accessibility-assistant.agent.md"
+    }
+  },
+  "tools": {
+    "playwright-automation-fill-in-form": {
+      "name": "playwright-automation-fill-in-form",
+      "description": "Automate filling in a form using Playwright MCP",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/playwright-automation-fill-in-form/SKILL.md"
+    },
+    "nuget-manager": {
+      "name": "nuget-manager",
+      "description": "Manage NuGet packages in .NET projects/solutions. Use this skill when adding, removing, or updating NuGet package versions. It enforces using `dotnet` CLI for package management and provides strict procedures for direct file edits only when updating versions.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/nuget-manager/SKILL.md"
+    },
+    "sponsor-finder": {
+      "name": "sponsor-finder",
+      "description": "Find which of a GitHub repository's dependencies are sponsorable via GitHub Sponsors. Uses deps.dev API for dependency resolution across npm, PyPI, Cargo, Go, RubyGems, Maven, and NuGet. Checks npm funding metadata, FUNDING.yml files, and web search. Verifies every link. Shows direct and transitive dependencies with OSSF Scorecard health data. Invoke with /sponsor followed by a GitHub owner/repo (e.g. \"/sponsor expressjs/express\").",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/sponsor-finder/SKILL.md"
+    },
+    "plantuml-ascii": {
+      "name": "plantuml-ascii",
+      "description": "Generate ASCII art diagrams using PlantUML text mode. Use when user asks to create ASCII diagrams, text-based diagrams, terminal-friendly diagrams, or mentions plantuml ascii, text diagram, ascii art diagram. Supports: Converting PlantUML diagrams to ASCII art, Creating sequence diagrams, class diagrams, flowcharts in ASCII format, Generating Unicode-enhanced ASCII art with -utxt flag",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/plantuml-ascii/SKILL.md"
+    },
+    "prd": {
+      "name": "prd",
+      "description": "Generate high-quality Product Requirements Documents (PRDs) for software systems and AI-powered features. Includes executive summaries, user stories, technical specifications, and risk analysis.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/prd/SKILL.md"
+    },
+    "create-llms": {
+      "name": "create-llms",
+      "description": "Create an llms.txt file from scratch based on repository structure following the llms.txt specification at https://llmstxt.org/",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-llms/SKILL.md"
+    },
+    "fluentui-blazor": {
+      "name": "fluentui-blazor",
+      "description": ">",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/fluentui-blazor/SKILL.md"
+    },
+    "suggest-awesome-github-copilot-instructions": {
+      "name": "suggest-awesome-github-copilot-instructions",
+      "description": "Suggest relevant GitHub Copilot instruction files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing instructions in this repository, and identifying outdated instructions that need updates.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/suggest-awesome-github-copilot-instructions/SKILL.md"
+    },
+    "context-map": {
+      "name": "context-map",
+      "description": "Generate a map of all files relevant to a task before making changes",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/context-map/SKILL.md"
+    },
+    "model-recommendation": {
+      "name": "model-recommendation",
+      "description": "Analyze chatmode or prompt files and recommend optimal AI models based on task complexity, required capabilities, and cost-efficiency",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/model-recommendation/SKILL.md"
+    },
+    "conventional-commit": {
+      "name": "conventional-commit",
+      "description": "Prompt and workflow for generating conventional commit messages using a structured XML format. Guides users to create standardized, descriptive commit messages in line with the Conventional Commits specification, including instructions, examples, and validation.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/conventional-commit/SKILL.md"
+    },
+    "kotlin-springboot": {
+      "name": "kotlin-springboot",
+      "description": "Get best practices for developing applications with Spring Boot and Kotlin.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/kotlin-springboot/SKILL.md"
+    },
+    "what-context-needed": {
+      "name": "what-context-needed",
+      "description": "Ask Copilot what files it needs to see before answering a question",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/what-context-needed/SKILL.md"
+    },
+    "create-technical-spike": {
+      "name": "create-technical-spike",
+      "description": "Create time-boxed technical spike documents for researching and resolving critical development decisions before implementation.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-technical-spike/SKILL.md"
+    },
+    "java-junit": {
+      "name": "java-junit",
+      "description": "Get best practices for JUnit 5 unit testing, including data-driven tests",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/java-junit/SKILL.md"
+    },
+    "create-specification": {
+      "name": "create-specification",
+      "description": "Create a new specification file for the solution, optimized for Generative AI consumption.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-specification/SKILL.md"
+    },
+    "first-ask": {
+      "name": "first-ask",
+      "description": "Interactive, input-tool powered, task refinement workflow: interrogates scope, deliverables, constraints before carrying out the task; Requires the Joyride extension.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/first-ask/SKILL.md"
+    },
+    "update-llms": {
+      "name": "update-llms",
+      "description": "Update the llms.txt file in the root folder to reflect changes in documentation or specifications following the llms.txt specification at https://llmstxt.org/",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/update-llms/SKILL.md"
+    },
+    "fedora-linux-triage": {
+      "name": "fedora-linux-triage",
+      "description": "Triage and resolve Fedora issues with dnf, systemd, and SELinux-aware guidance.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/fedora-linux-triage/SKILL.md"
+    },
+    "polyglot-test-agent": {
+      "name": "polyglot-test-agent",
+      "description": "Generates comprehensive, workable unit tests for any programming language using a multi-agent pipeline. Use when asked to generate tests, write unit tests, improve test coverage, add test coverage, create test files, or test a codebase. Supports C#, TypeScript, JavaScript, Python, Go, Rust, Java, and more. Orchestrates research, planning, and implementation phases to produce tests that compile, pass, and follow project conventions.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/polyglot-test-agent/SKILL.md"
+    },
+    "java-add-graalvm-native-image-support": {
+      "name": "java-add-graalvm-native-image-support",
+      "description": "GraalVM Native Image expert that adds native image support to Java applications, builds the project, analyzes build errors, applies fixes, and iterates until successful compilation using Oracle best practices.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/java-add-graalvm-native-image-support/SKILL.md"
+    },
+    "workiq-copilot": {
+      "name": "workiq-copilot",
+      "description": "Guides the Copilot CLI on how to use the WorkIQ CLI/MCP server to query Microsoft 365 Copilot data (emails, meetings, docs, Teams, people) for live context, summaries, and recommendations.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/workiq-copilot/SKILL.md"
+    },
+    "shuffle-json-data": {
+      "name": "shuffle-json-data",
+      "description": "Shuffle repetitive JSON objects safely by validating schema consistency before randomising entries.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/shuffle-json-data/SKILL.md"
+    },
+    "mcp-copilot-studio-server-generator": {
+      "name": "mcp-copilot-studio-server-generator",
+      "description": "Generate a complete MCP server implementation optimized for Copilot Studio integration with proper schema constraints and streamable HTTP support",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/mcp-copilot-studio-server-generator/SKILL.md"
+    },
+    "structured-autonomy-implement": {
+      "name": "structured-autonomy-implement",
+      "description": "Structured Autonomy Implementation Prompt",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/structured-autonomy-implement/SKILL.md"
+    },
+    "suggest-awesome-github-copilot-skills": {
+      "name": "suggest-awesome-github-copilot-skills",
+      "description": "Suggest relevant GitHub Copilot skills from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing skills in this repository, and identifying outdated skills that need updates.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/suggest-awesome-github-copilot-skills/SKILL.md"
+    },
+    "quasi-coder": {
+      "name": "quasi-coder",
+      "description": "Expert 10x engineer skill for interpreting and implementing code from shorthand, quasi-code, and natural language descriptions. Use when collaborators provide incomplete code snippets, pseudo-code, or descriptions with potential typos or incorrect terminology. Excels at translating non-technical or semi-technical descriptions into production-quality code.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/quasi-coder/SKILL.md"
+    },
+    "folder-structure-blueprint-generator": {
+      "name": "folder-structure-blueprint-generator",
+      "description": "Comprehensive technology-agnostic prompt for analyzing and documenting project folder structures. Auto-detects project types (.NET, Java, React, Angular, Python, Node.js, Flutter), generates detailed blueprints with visualization options, naming conventions, file placement patterns, and extension templates for maintaining consistent code organization across diverse technology stacks.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/folder-structure-blueprint-generator/SKILL.md"
+    },
+    "ruby-mcp-server-generator": {
+      "name": "ruby-mcp-server-generator",
+      "description": "Generate a complete Model Context Protocol server project in Ruby using the official MCP Ruby SDK gem.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/ruby-mcp-server-generator/SKILL.md"
+    },
+    "csharp-mstest": {
+      "name": "csharp-mstest",
+      "description": "Get best practices for MSTest 3.x/4.x unit testing, including modern assertion APIs and data-driven tests",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/csharp-mstest/SKILL.md"
+    },
+    "dataverse-python-production-code": {
+      "name": "dataverse-python-production-code",
+      "description": "Generate production-ready Python code using Dataverse SDK with error handling, optimization, and best practices",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/dataverse-python-production-code/SKILL.md"
+    },
+    "my-issues": {
+      "name": "my-issues",
+      "description": "List my issues in the current repository",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/my-issues/SKILL.md"
+    },
+    "sql-optimization": {
+      "name": "sql-optimization",
+      "description": "Universal SQL performance optimization assistant for comprehensive query tuning, indexing strategies, and database performance analysis across all SQL databases (MySQL, PostgreSQL, SQL Server, Oracle). Provides execution plan analysis, pagination optimization, batch operations, and performance monitoring guidance.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/sql-optimization/SKILL.md"
+    },
+    "copilot-sdk": {
+      "name": "copilot-sdk",
+      "description": "Build agentic applications with GitHub Copilot SDK. Use when embedding AI agents in apps, creating custom tools, implementing streaming responses, managing sessions, connecting to MCP servers, or creating custom agents. Triggers on Copilot SDK, GitHub SDK, agentic app, embed Copilot, programmable agent, MCP server, custom agent.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/copilot-sdk/SKILL.md"
+    },
+    "devops-rollout-plan": {
+      "name": "devops-rollout-plan",
+      "description": "Generate comprehensive rollout plans with preflight checks, step-by-step deployment, verification signals, rollback procedures, and communication plans for infrastructure and application changes",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/devops-rollout-plan/SKILL.md"
+    },
+    "noob-mode": {
+      "name": "noob-mode",
+      "description": "Plain-English translation layer for non-technical Copilot CLI users. Translates every approval prompt, error message, and technical output into clear, jargon-free English with color-coded risk indicators.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/noob-mode/SKILL.md"
+    },
+    "csharp-xunit": {
+      "name": "csharp-xunit",
+      "description": "Get best practices for XUnit unit testing, including data-driven tests",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/csharp-xunit/SKILL.md"
+    },
+    "next-intl-add-language": {
+      "name": "next-intl-add-language",
+      "description": "Add new language to a Next.js + next-intl application",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/next-intl-add-language/SKILL.md"
+    },
+    "swift-mcp-server-generator": {
+      "name": "swift-mcp-server-generator",
+      "description": "Generate a complete Model Context Protocol server project in Swift using the official MCP Swift SDK package.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/swift-mcp-server-generator/SKILL.md"
+    },
+    "generate-custom-instructions-from-codebase": {
+      "name": "generate-custom-instructions-from-codebase",
+      "description": "Migration and code evolution instructions generator for GitHub Copilot. Analyzes differences between two project versions (branches, commits, or releases) to create precise instructions allowing Copilot to maintain consistency during technology migrations, major refactoring, or framework version upgrades.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/generate-custom-instructions-from-codebase/SKILL.md"
+    },
+    "git-flow-branch-creator": {
+      "name": "git-flow-branch-creator",
+      "description": "Intelligent Git Flow branch creator that analyzes git status/diff and creates appropriate branches following the nvie Git Flow branching model.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/git-flow-branch-creator/SKILL.md"
+    },
+    "postgresql-code-review": {
+      "name": "postgresql-code-review",
+      "description": "PostgreSQL-specific code review assistant focusing on PostgreSQL best practices, anti-patterns, and unique quality standards. Covers JSONB operations, array usage, custom types, schema design, function optimization, and PostgreSQL-exclusive security features like Row Level Security (RLS).",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/postgresql-code-review/SKILL.md"
+    },
+    "create-spring-boot-java-project": {
+      "name": "create-spring-boot-java-project",
+      "description": "Create Spring Boot Java Project Skeleton",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-spring-boot-java-project/SKILL.md"
+    },
+    "arch-linux-triage": {
+      "name": "arch-linux-triage",
+      "description": "Triage and resolve Arch Linux issues with pacman, systemd, and rolling-release best practices.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/arch-linux-triage/SKILL.md"
+    },
+    "penpot-uiux-design": {
+      "name": "penpot-uiux-design",
+      "description": "Comprehensive guide for creating professional UI/UX designs in Penpot using MCP tools. Use this skill when: (1) Creating new UI/UX designs for web, mobile, or desktop applications, (2) Building design systems with components and tokens, (3) Designing dashboards, forms, navigation, or landing pages, (4) Applying accessibility standards and best practices, (5) Following platform guidelines (iOS, Android, Material Design), (6) Reviewing or improving existing Penpot designs for usability. Triggers: \"design a UI\", \"create interface\", \"build layout\", \"design dashboard\", \"create form\", \"design landing page\", \"make it accessible\", \"design system\", \"component library\".",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/penpot-uiux-design/SKILL.md"
+    },
+    "azure-resource-health-diagnose": {
+      "name": "azure-resource-health-diagnose",
+      "description": "Analyze Azure resource health, diagnose issues from logs and telemetry, and create a remediation plan for identified problems.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/azure-resource-health-diagnose/SKILL.md"
+    },
+    "power-apps-code-app-scaffold": {
+      "name": "power-apps-code-app-scaffold",
+      "description": "Scaffold a complete Power Apps Code App project with PAC CLI setup, SDK integration, and connector configuration",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/power-apps-code-app-scaffold/SKILL.md"
+    },
+    "vscode-ext-commands": {
+      "name": "vscode-ext-commands",
+      "description": "Guidelines for contributing commands in VS Code extensions. Indicates naming convention, visibility, localization and other relevant attributes, following VS Code extension development guidelines, libraries and good practices",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/vscode-ext-commands/SKILL.md"
+    },
+    "snowflake-semanticview": {
+      "name": "snowflake-semanticview",
+      "description": "Create, alter, and validate Snowflake semantic views using Snowflake CLI (snow). Use when asked to build or troubleshoot semantic views/semantic layer definitions with CREATE/ALTER SEMANTIC VIEW, to validate semantic-view DDL against Snowflake via CLI, or to guide Snowflake CLI installation and connection setup.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/snowflake-semanticview/SKILL.md"
+    },
+    "convert-plaintext-to-md": {
+      "name": "convert-plaintext-to-md",
+      "description": "Convert a text-based document to markdown following instructions from prompt, or if a documented option is passed, follow the instructions for that option.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/convert-plaintext-to-md/SKILL.md"
+    },
+    "ef-core": {
+      "name": "ef-core",
+      "description": "Get best practices for Entity Framework Core",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/ef-core/SKILL.md"
+    },
+    "mcp-cli": {
+      "name": "mcp-cli",
+      "description": "Interface for MCP (Model Context Protocol) servers via CLI. Use when you need to interact with external tools, APIs, or data sources through MCP servers, list available MCP servers/tools, or call MCP tools from command line.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/mcp-cli/SKILL.md"
+    },
+    "prompt-builder": {
+      "name": "prompt-builder",
+      "description": "Guide users through creating high-quality GitHub Copilot prompts with proper structure, tools, and best practices.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/prompt-builder/SKILL.md"
+    },
+    "editorconfig": {
+      "name": "editorconfig",
+      "description": "Generates a comprehensive and best-practice-oriented .editorconfig file based on project analysis and user preferences.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/editorconfig/SKILL.md"
+    },
+    "structured-autonomy-generate": {
+      "name": "structured-autonomy-generate",
+      "description": "Structured Autonomy Implementation Generator Prompt",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/structured-autonomy-generate/SKILL.md"
+    },
+    "power-platform-mcp-connector-suite": {
+      "name": "power-platform-mcp-connector-suite",
+      "description": "Generate complete Power Platform custom connector with MCP integration for Copilot Studio - includes schema generation, troubleshooting, and validation",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/power-platform-mcp-connector-suite/SKILL.md"
+    },
+    "multi-stage-dockerfile": {
+      "name": "multi-stage-dockerfile",
+      "description": "Create optimized multi-stage Dockerfiles for any language or framework",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/multi-stage-dockerfile/SKILL.md"
+    },
+    "vscode-ext-localization": {
+      "name": "vscode-ext-localization",
+      "description": "Guidelines for proper localization of VS Code extensions, following VS Code extension development guidelines, libraries and good practices",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/vscode-ext-localization/SKILL.md"
+    },
+    "power-bi-model-design-review": {
+      "name": "power-bi-model-design-review",
+      "description": "Comprehensive Power BI data model design review prompt for evaluating model architecture, relationships, and optimization opportunities.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/power-bi-model-design-review/SKILL.md"
+    },
+    "containerize-aspnet-framework": {
+      "name": "containerize-aspnet-framework",
+      "description": "Containerize an ASP.NET .NET Framework project by creating Dockerfile and .dockerfile files customized for the project.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/containerize-aspnet-framework/SKILL.md"
+    },
+    "csharp-async": {
+      "name": "csharp-async",
+      "description": "Get best practices for C# async programming",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/csharp-async/SKILL.md"
+    },
+    "winapp-cli": {
+      "name": "winapp-cli",
+      "description": "Windows App Development CLI (winapp) for building, packaging, and deploying Windows applications. Use when asked to initialize Windows app projects, create MSIX packages, generate AppxManifest.xml, manage development certificates, add package identity for debugging, sign packages, publish to the Microsoft Store, create external catalogs, or access Windows SDK build tools. Supports .NET (csproj), C++, Electron, Rust, Tauri, and cross-platform frameworks targeting Windows.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/winapp-cli/SKILL.md"
+    },
+    "readme-blueprint-generator": {
+      "name": "readme-blueprint-generator",
+      "description": "Intelligent README.md generation prompt that analyzes project documentation structure and creates comprehensive repository documentation. Scans .github/copilot directory files and copilot-instructions.md to extract project information, technology stack, architecture, development workflow, coding standards, and testing approaches while generating well-structured markdown documentation with proper formatting, cross-references, and developer-focused content.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/readme-blueprint-generator/SKILL.md"
+    },
+    "breakdown-epic-arch": {
+      "name": "breakdown-epic-arch",
+      "description": "Prompt for creating the high-level technical architecture for an Epic, based on a Product Requirements Document.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/breakdown-epic-arch/SKILL.md"
+    },
+    "update-implementation-plan": {
+      "name": "update-implementation-plan",
+      "description": "Update an existing implementation plan file with new or update requirements to provide new features, refactoring existing code or upgrading packages, design, architecture or infrastructure.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/update-implementation-plan/SKILL.md"
+    },
+    "web-design-reviewer": {
+      "name": "web-design-reviewer",
+      "description": "This skill enables visual inspection of websites running locally or remotely to identify and fix design issues. Triggers on requests like \"review website design\", \"check the UI\", \"fix the layout\", \"find design problems\". Detects issues with responsive design, accessibility, visual consistency, and layout breakage, then performs fixes at the source code level.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/web-design-reviewer/SKILL.md"
+    },
+    "create-readme": {
+      "name": "create-readme",
+      "description": "Create a README.md file for the project",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-readme/SKILL.md"
+    },
+    "create-oo-component-documentation": {
+      "name": "create-oo-component-documentation",
+      "description": "Create comprehensive, standardized documentation for object-oriented components following industry best practices and architectural documentation standards.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-oo-component-documentation/SKILL.md"
+    },
+    "power-bi-report-design-consultation": {
+      "name": "power-bi-report-design-consultation",
+      "description": "Power BI report visualization design prompt for creating effective, user-friendly, and accessible reports with optimal chart selection and layout design.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/power-bi-report-design-consultation/SKILL.md"
+    },
+    "javascript-typescript-jest": {
+      "name": "javascript-typescript-jest",
+      "description": "Best practices for writing JavaScript/TypeScript tests using Jest, including mocking strategies, test structure, and common patterns.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/javascript-typescript-jest/SKILL.md"
+    },
+    "gen-specs-as-issues": {
+      "name": "gen-specs-as-issues",
+      "description": "This workflow guides you through a systematic approach to identify missing features, prioritize them, and create detailed specifications for implementation.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/gen-specs-as-issues/SKILL.md"
+    },
+    "suggest-awesome-github-copilot-agents": {
+      "name": "suggest-awesome-github-copilot-agents",
+      "description": "Suggest relevant GitHub Copilot Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom agents in this repository, and identifying outdated agents that need updates.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/suggest-awesome-github-copilot-agents/SKILL.md"
+    },
+    "excalidraw-diagram-generator": {
+      "name": "excalidraw-diagram-generator",
+      "description": "Generate Excalidraw diagrams from natural language descriptions. Use when asked to \"create a diagram\", \"make a flowchart\", \"visualize a process\", \"draw a system architecture\", \"create a mind map\", or \"generate an Excalidraw file\". Supports flowcharts, relationship diagrams, mind maps, and system architecture diagrams. Outputs .excalidraw JSON files that can be opened directly in Excalidraw.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/excalidraw-diagram-generator/SKILL.md"
+    },
+    "microsoft-skill-creator": {
+      "name": "microsoft-skill-creator",
+      "description": "Create agent skills for Microsoft technologies using Learn MCP tools. Use when users want to create a skill that teaches agents about any Microsoft technology, library, framework, or service (Azure, .NET, M365, VS Code, Bicep, etc.). Investigates topics deeply, then generates a hybrid skill storing essential knowledge locally while enabling dynamic deeper investigation.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/microsoft-skill-creator/SKILL.md"
+    },
+    "microsoft-docs": {
+      "name": "microsoft-docs",
+      "description": "Query official Microsoft documentation to find concepts, tutorials, and code examples across Azure, .NET, Agent Framework, Aspire, VS Code, GitHub, and more. Uses Microsoft Learn MCP as the default, with Context7 and Aspire MCP for content that lives outside learn.microsoft.com.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/microsoft-docs/SKILL.md"
+    },
+    "debian-linux-triage": {
+      "name": "debian-linux-triage",
+      "description": "Triage and resolve Debian Linux issues with apt, systemd, and AppArmor-aware guidance.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/debian-linux-triage/SKILL.md"
+    },
+    "documentation-writer": {
+      "name": "documentation-writer",
+      "description": "Di\u00e1taxis Documentation Expert. An expert technical writer specializing in creating high-quality software documentation, guided by the principles and structure of the Di\u00e1taxis technical documentation authoring framework.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/documentation-writer/SKILL.md"
+    },
+    "webapp-testing": {
+      "name": "webapp-testing",
+      "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/webapp-testing/SKILL.md"
+    },
+    "breakdown-test": {
+      "name": "breakdown-test",
+      "description": "Test Planning and Quality Assurance prompt that generates comprehensive test strategies, task breakdowns, and quality validation plans for GitHub projects.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/breakdown-test/SKILL.md"
+    },
+    "architecture-blueprint-generator": {
+      "name": "architecture-blueprint-generator",
+      "description": "Comprehensive project architecture blueprint generator that analyzes codebases to create detailed architectural documentation. Automatically detects technology stacks and architectural patterns, generates visual diagrams, documents implementation patterns, and provides extensible blueprints for maintaining architectural consistency and guiding new development.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/architecture-blueprint-generator/SKILL.md"
+    },
+    "create-web-form": {
+      "name": "create-web-form",
+      "description": "Create robust, accessible web forms with best practices for HTML structure, CSS styling, JavaScript interactivity, form validation, and server-side processing. Use when asked to \"create a form\", \"build a web form\", \"add a contact form\", \"make a signup form\", or when building any HTML form with data handling. Covers PHP and Python backends, MySQL database integration, REST APIs, XML data exchange, accessibility (ARIA), and progressive web apps.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-web-form/SKILL.md"
+    },
+    "git-commit": {
+      "name": "git-commit",
+      "description": "Execute git commit with conventional commit message analysis, intelligent staging, and message generation. Use when user asks to commit changes, create a git commit, or mentions \"/commit\". Supports: (1) Auto-detecting type and scope from changes, (2) Generating conventional commit messages from diff, (3) Interactive commit with optional type/scope/description overrides, (4) Intelligent file staging for logical grouping",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/git-commit/SKILL.md"
+    },
+    "image-manipulation-image-magick": {
+      "name": "image-manipulation-image-magick",
+      "description": "Process and manipulate images using ImageMagick. Supports resizing, format conversion, batch processing, and retrieving image metadata. Use when working with images, creating thumbnails, resizing wallpapers, or performing batch image operations.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/image-manipulation-image-magick/SKILL.md"
+    },
+    "meeting-minutes": {
+      "name": "meeting-minutes",
+      "description": "Generate concise, actionable meeting minutes for internal meetings. Includes metadata, attendees, agenda, decisions, action items (owner + due date), and follow-up steps.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/meeting-minutes/SKILL.md"
+    },
+    "containerize-aspnetcore": {
+      "name": "containerize-aspnetcore",
+      "description": "Containerize an ASP.NET Core project by creating Dockerfile and .dockerfile files customized for the project.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/containerize-aspnetcore/SKILL.md"
+    },
+    "update-avm-modules-in-bicep": {
+      "name": "update-avm-modules-in-bicep",
+      "description": "Update Azure Verified Modules (AVM) to latest versions in Bicep files.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/update-avm-modules-in-bicep/SKILL.md"
+    },
+    "kotlin-mcp-server-generator": {
+      "name": "kotlin-mcp-server-generator",
+      "description": "Generate a complete Kotlin MCP server project with proper structure, dependencies, and implementation using the official io.modelcontextprotocol:kotlin-sdk library.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/kotlin-mcp-server-generator/SKILL.md"
+    },
+    "mkdocs-translations": {
+      "name": "mkdocs-translations",
+      "description": "Generate a language translation for a mkdocs documentation stack.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/mkdocs-translations/SKILL.md"
+    },
+    "my-pull-requests": {
+      "name": "my-pull-requests",
+      "description": "List my pull requests in the current repository",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/my-pull-requests/SKILL.md"
+    },
+    "playwright-generate-test": {
+      "name": "playwright-generate-test",
+      "description": "Generate a Playwright test based on a scenario using Playwright MCP",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/playwright-generate-test/SKILL.md"
+    },
+    "tldr-prompt": {
+      "name": "tldr-prompt",
+      "description": "Create tldr summaries for GitHub Copilot files (prompts, agents, instructions, collections), MCP servers, or documentation from URLs and queries.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/tldr-prompt/SKILL.md"
+    },
+    "agent-governance": {
+      "name": "agent-governance",
+      "description": "|",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/agent-governance/SKILL.md"
+    },
+    "terraform-azurerm-set-diff-analyzer": {
+      "name": "terraform-azurerm-set-diff-analyzer",
+      "description": "Analyze Terraform plan JSON output for AzureRM Provider to distinguish between false-positive diffs (order-only changes in Set-type attributes) and actual resource changes. Use when reviewing terraform plan output for Azure resources like Application Gateway, Load Balancer, Firewall, Front Door, NSG, and other resources with Set-type attributes that cause spurious diffs due to internal ordering changes.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/terraform-azurerm-set-diff-analyzer/SKILL.md"
+    },
+    "apple-appstore-reviewer": {
+      "name": "apple-appstore-reviewer",
+      "description": "Serves as a reviewer of the codebase with instructions on looking for Apple App Store optimizations or rejection reasons.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/apple-appstore-reviewer/SKILL.md"
+    },
+    "centos-linux-triage": {
+      "name": "centos-linux-triage",
+      "description": "Triage and resolve CentOS issues using RHEL-compatible tooling, SELinux-aware practices, and firewalld.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/centos-linux-triage/SKILL.md"
+    },
+    "winmd-api-search": {
+      "name": "winmd-api-search",
+      "description": "Find and explore Windows desktop APIs. Use when building features that need platform capabilities \u2014 camera, file access, notifications, UI controls, AI/ML, sensors, networking, etc. Discovers the right API for a task and retrieves full type details (methods, properties, events, enumeration values).",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/winmd-api-search/SKILL.md"
+    },
+    "breakdown-feature-implementation": {
+      "name": "breakdown-feature-implementation",
+      "description": "Prompt for creating detailed feature implementation plans, following Epoch monorepo structure.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/breakdown-feature-implementation/SKILL.md"
+    },
+    "write-coding-standards-from-file": {
+      "name": "write-coding-standards-from-file",
+      "description": "Write a coding standards document for a project using the coding styles from the file(s) and/or folder(s) passed as arguments in the prompt.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/write-coding-standards-from-file/SKILL.md"
+    },
+    "postgresql-optimization": {
+      "name": "postgresql-optimization",
+      "description": "PostgreSQL-specific development assistant focusing on unique PostgreSQL features, advanced data types, and PostgreSQL-exclusive capabilities. Covers JSONB operations, array types, custom types, range/geometric types, full-text search, window functions, and PostgreSQL extensions ecosystem.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/postgresql-optimization/SKILL.md"
+    },
+    "structured-autonomy-plan": {
+      "name": "structured-autonomy-plan",
+      "description": "Structured Autonomy Planning Prompt",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/structured-autonomy-plan/SKILL.md"
+    },
+    "comment-code-generate-a-tutorial": {
+      "name": "comment-code-generate-a-tutorial",
+      "description": "Transform this Python script into a polished, beginner-friendly project by refactoring the code, adding clear instructional comments, and generating a complete markdown tutorial.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/comment-code-generate-a-tutorial/SKILL.md"
+    },
+    "fabric-lakehouse": {
+      "name": "fabric-lakehouse",
+      "description": "Use this skill to get context about Fabric Lakehouse and its features for software systems and AI-powered functions. It offers descriptions of Lakehouse data components, organization with schemas and shortcuts, access control, and code examples. This skill supports users in designing, building, and optimizing Lakehouse solutions using best practices.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/fabric-lakehouse/SKILL.md"
+    },
+    "update-oo-component-documentation": {
+      "name": "update-oo-component-documentation",
+      "description": "Update existing object-oriented component documentation following industry best practices and architectural documentation standards.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/update-oo-component-documentation/SKILL.md"
+    },
+    "typescript-mcp-server-generator": {
+      "name": "typescript-mcp-server-generator",
+      "description": "Generate a complete MCP server project in TypeScript with tools, resources, and proper configuration",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/typescript-mcp-server-generator/SKILL.md"
+    },
+    "azure-resource-visualizer": {
+      "name": "azure-resource-visualizer",
+      "description": "Analyze Azure resource groups and generate detailed Mermaid architecture diagrams showing the relationships between individual resources. Use this skill when the user asks for a diagram of their Azure resources or help in understanding how the resources relate to each other.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/azure-resource-visualizer/SKILL.md"
+    },
+    "create-tldr-page": {
+      "name": "create-tldr-page",
+      "description": "Create a tldr page from documentation URLs and command examples, requiring both URL and command name.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-tldr-page/SKILL.md"
+    },
+    "typespec-create-agent": {
+      "name": "typespec-create-agent",
+      "description": "Generate a complete TypeSpec declarative agent with instructions, capabilities, and conversation starters for Microsoft 365 Copilot",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/typespec-create-agent/SKILL.md"
+    },
+    "copilot-usage-metrics": {
+      "name": "copilot-usage-metrics",
+      "description": "Retrieve and display GitHub Copilot usage metrics for organizations and enterprises using the GitHub CLI and REST API.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/copilot-usage-metrics/SKILL.md"
+    },
+    "create-github-issue-feature-from-specification": {
+      "name": "create-github-issue-feature-from-specification",
+      "description": "Create GitHub Issue for feature request from specification file using feature_request.yml template.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-github-issue-feature-from-specification/SKILL.md"
+    },
+    "dotnet-design-pattern-review": {
+      "name": "dotnet-design-pattern-review",
+      "description": "Review the C#/.NET code for design pattern implementation and suggest improvements.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/dotnet-design-pattern-review/SKILL.md"
+    },
+    "transloadit-media-processing": {
+      "name": "transloadit-media-processing",
+      "description": "Process media files (video, audio, images, documents) using Transloadit. Use when asked to encode video to HLS/MP4, generate thumbnails, resize or watermark images, extract audio, concatenate clips, add subtitles, OCR documents, or run any media processing pipeline. Covers 86+ processing robots for file transformation at scale.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/transloadit-media-processing/SKILL.md"
+    },
+    "github-issues": {
+      "name": "github-issues",
+      "description": "Create, update, and manage GitHub issues using MCP tools. Use this skill when users want to create bug reports, feature requests, or task issues, update existing issues, add labels/assignees/milestones, or manage issue workflows. Triggers on requests like \"create an issue\", \"file a bug\", \"request a feature\", \"update issue X\", or any GitHub issue management task.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/github-issues/SKILL.md"
+    },
+    "project-workflow-analysis-blueprint-generator": {
+      "name": "project-workflow-analysis-blueprint-generator",
+      "description": "Comprehensive technology-agnostic prompt generator for documenting end-to-end application workflows. Automatically detects project architecture patterns, technology stacks, and data flow patterns to generate detailed implementation blueprints covering entry points, service layers, data access, error handling, and testing approaches across multiple technologies including .NET, Java/Spring, React, and microservices architectures.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/project-workflow-analysis-blueprint-generator/SKILL.md"
+    },
+    "create-github-pull-request-from-specification": {
+      "name": "create-github-pull-request-from-specification",
+      "description": "Create GitHub Pull Request for feature request from specification file using pull_request_template.md template.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-github-pull-request-from-specification/SKILL.md"
+    },
+    "create-github-issues-feature-from-implementation-plan": {
+      "name": "create-github-issues-feature-from-implementation-plan",
+      "description": "Create GitHub Issues from implementation plan phases using feature_request.yml or chore_request.yml templates.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-github-issues-feature-from-implementation-plan/SKILL.md"
+    },
+    "azure-devops-cli": {
+      "name": "azure-devops-cli",
+      "description": "Manage Azure DevOps resources via CLI including projects, repos, pipelines, builds, pull requests, work items, artifacts, and service endpoints. Use when working with Azure DevOps, az commands, devops automation, CI/CD, or when user mentions Azure DevOps CLI.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/azure-devops-cli/SKILL.md"
+    },
+    "github-copilot-starter": {
+      "name": "github-copilot-starter",
+      "description": "Set up complete GitHub Copilot configuration for a new project based on technology stack",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/github-copilot-starter/SKILL.md"
+    },
+    "add-educational-comments": {
+      "name": "add-educational-comments",
+      "description": "Add educational comments to the file specified, or prompt asking for file to comment if one is not provided.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/add-educational-comments/SKILL.md"
+    },
+    "gh-cli": {
+      "name": "gh-cli",
+      "description": "GitHub CLI (gh) comprehensive reference for repositories, issues, pull requests, Actions, projects, releases, gists, codespaces, organizations, extensions, and all GitHub operations from the command line.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/gh-cli/SKILL.md"
+    },
+    "update-markdown-file-index": {
+      "name": "update-markdown-file-index",
+      "description": "Update a markdown file section with an index/table of files from a specified folder.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/update-markdown-file-index/SKILL.md"
+    },
+    "remember": {
+      "name": "remember",
+      "description": "Transforms lessons learned into domain-organized memory instructions (global or workspace). Syntax: `/remember [>domain [scope]] lesson clue` where scope is `global` (default), `user`, `workspace`, or `ws`.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/remember/SKILL.md"
+    },
+    "create-architectural-decision-record": {
+      "name": "create-architectural-decision-record",
+      "description": "Create an Architectural Decision Record (ADR) document for AI-optimized decision documentation.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-architectural-decision-record/SKILL.md"
+    },
+    "playwright-explore-website": {
+      "name": "playwright-explore-website",
+      "description": "Website exploration for testing using Playwright MCP",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/playwright-explore-website/SKILL.md"
+    },
+    "create-github-issues-for-unmet-specification-requirements": {
+      "name": "create-github-issues-for-unmet-specification-requirements",
+      "description": "Create GitHub Issues for unimplemented requirements from specification files using feature_request.yml template.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-github-issues-for-unmet-specification-requirements/SKILL.md"
+    },
+    "powerbi-modeling": {
+      "name": "powerbi-modeling",
+      "description": "Power BI semantic modeling assistant for building optimized data models. Use when working with Power BI semantic models, creating measures, designing star schemas, configuring relationships, implementing RLS, or optimizing model performance. Triggers on queries about DAX calculations, table relationships, dimension/fact table design, naming conventions, model documentation, cardinality, cross-filter direction, calculation groups, and data model best practices. Always connects to the active model first using power-bi-modeling MCP tools to understand the data structure before providing guidance.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/powerbi-modeling/SKILL.md"
+    },
+    "mcp-deploy-manage-agents": {
+      "name": "mcp-deploy-manage-agents",
+      "description": "Skill converted from mcp-deploy-manage-agents.prompt.md",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/mcp-deploy-manage-agents/SKILL.md"
+    },
+    "csharp-tunit": {
+      "name": "csharp-tunit",
+      "description": "Get best practices for TUnit unit testing, including data-driven tests",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/csharp-tunit/SKILL.md"
+    },
+    "copilot-instructions-blueprint-generator": {
+      "name": "copilot-instructions-blueprint-generator",
+      "description": "Technology-agnostic blueprint generator for creating comprehensive copilot-instructions.md files that guide GitHub Copilot to produce code consistent with project standards, architecture patterns, and exact technology versions by analyzing existing codebase patterns and avoiding assumptions.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/copilot-instructions-blueprint-generator/SKILL.md"
+    },
+    "az-cost-optimize": {
+      "name": "az-cost-optimize",
+      "description": "Analyze Azure resources used in the app (IaC files and/or resources in a target rg) and optimize costs - creating GitHub issues for identified optimizations.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/az-cost-optimize/SKILL.md"
+    },
+    "refactor": {
+      "name": "refactor",
+      "description": "Surgical code refactoring to improve maintainability without changing behavior. Covers extracting functions, renaming variables, breaking down god functions, improving type safety, eliminating code smells, and applying design patterns. Less drastic than repo-rebuilder; use for gradual improvements.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/refactor/SKILL.md"
+    },
+    "dataverse-python-quickstart": {
+      "name": "dataverse-python-quickstart",
+      "description": "Generate Python SDK setup + CRUD + bulk + paging snippets using official patterns.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/dataverse-python-quickstart/SKILL.md"
+    },
+    "review-and-refactor": {
+      "name": "review-and-refactor",
+      "description": "Review and refactor code in your project according to defined instructions",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/review-and-refactor/SKILL.md"
+    },
+    "suggest-awesome-github-copilot-prompts": {
+      "name": "suggest-awesome-github-copilot-prompts",
+      "description": "Suggest relevant GitHub Copilot prompt files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing prompts in this repository, and identifying outdated prompts that need updates.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/suggest-awesome-github-copilot-prompts/SKILL.md"
+    },
+    "agentic-eval": {
+      "name": "agentic-eval",
+      "description": "|",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/agentic-eval/SKILL.md"
+    },
+    "import-infrastructure-as-code": {
+      "name": "import-infrastructure-as-code",
+      "description": "Import existing Azure resources into Terraform using Azure CLI discovery and Azure Verified Modules (AVM). Use when asked to reverse-engineer live Azure infrastructure, generate Infrastructure as Code from existing subscriptions/resource groups/resource IDs, map dependencies, derive exact import addresses from downloaded module source, prevent configuration drift, and produce AVM-based Terraform files ready for validation and planning across any Azure resource type.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/import-infrastructure-as-code/SKILL.md"
+    },
+    "memory-merger": {
+      "name": "memory-merger",
+      "description": "Merges mature lessons from a domain memory file into its instruction file. Syntax: `/memory-merger >domain [scope]` where scope is `global` (default), `user`, `workspace`, or `ws`.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/memory-merger/SKILL.md"
+    },
+    "nano-banana-pro-openrouter": {
+      "name": "nano-banana-pro-openrouter",
+      "description": "Generate or edit images via OpenRouter with the Gemini 3 Pro Image model. Use for prompt-only image generation, image edits, and multi-image compositing; supports 1K/2K/4K output.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/nano-banana-pro-openrouter/SKILL.md"
+    },
+    "typespec-create-api-plugin": {
+      "name": "typespec-create-api-plugin",
+      "description": "Generate a TypeSpec API plugin with REST operations, authentication, and Adaptive Cards for Microsoft 365 Copilot",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/typespec-create-api-plugin/SKILL.md"
+    },
+    "datanalysis-credit-risk": {
+      "name": "datanalysis-credit-risk",
+      "description": "Credit risk data cleaning and variable screening pipeline for pre-loan modeling. Use when working with raw credit data that needs quality assessment,  missing value analysis, or variable selection before modeling. it covers data loading and formatting, abnormal period filtering, missing rate calculation, high-missing variable removal,low-IV variable filtering, high-PSI variable removal, Null Importance denoising, high-correlation variable removal, and cleaning report generation. Applicable scenarios arecredit risk data cleaning, variable screening, pre-loan modeling preprocessing.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/datanalysis-credit-risk/SKILL.md"
+    },
+    "markdown-to-html": {
+      "name": "markdown-to-html",
+      "description": "Convert Markdown files to HTML similar to `marked.js`, `pandoc`, `gomarkdown/markdown`, or similar tools; or writing custom script to convert markdown to html and/or working on web template systems like `jekyll/jekyll`, `gohugoio/hugo`, or similar web templating systems that utilize markdown documents, converting them to html. Use when asked to \"convert markdown to html\", \"transform md to html\", \"render markdown\", \"generate html from markdown\", or when working with .md files and/or web a templating system that converts markdown to HTML output. Supports CLI and Node.js workflows with GFM, CommonMark, and standard Markdown flavors.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/markdown-to-html/SKILL.md"
+    },
+    "csharp-nunit": {
+      "name": "csharp-nunit",
+      "description": "Get best practices for NUnit unit testing, including data-driven tests",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/csharp-nunit/SKILL.md"
+    },
+    "csharp-docs": {
+      "name": "csharp-docs",
+      "description": "Ensure that C# types are documented with XML comments and follow best practices for documentation.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/csharp-docs/SKILL.md"
+    },
+    "aspire": {
+      "name": "aspire",
+      "description": "Aspire skill covering the Aspire CLI, AppHost orchestration, service discovery, integrations, MCP server, VS Code extension, Dev Containers, GitHub Codespaces, templates, dashboard, and deployment. Use when the user asks to create, run, debug, configure, deploy, or troubleshoot an Aspire distributed application.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/aspire/SKILL.md"
+    },
+    "typespec-api-operations": {
+      "name": "typespec-api-operations",
+      "description": "Add GET, POST, PATCH, and DELETE operations to a TypeSpec API plugin with proper routing, parameters, and adaptive cards",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/typespec-api-operations/SKILL.md"
+    },
+    "openapi-to-application-code": {
+      "name": "openapi-to-application-code",
+      "description": "Generate a complete, production-ready application from an OpenAPI specification",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/openapi-to-application-code/SKILL.md"
+    },
+    "power-bi-performance-troubleshooting": {
+      "name": "power-bi-performance-troubleshooting",
+      "description": "Systematic Power BI performance troubleshooting prompt for identifying, diagnosing, and resolving performance issues in Power BI models, reports, and queries.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/power-bi-performance-troubleshooting/SKILL.md"
+    },
+    "mcp-configure": {
+      "name": "mcp-configure",
+      "description": "Configure an MCP server for GitHub Copilot with your Dataverse environment.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/mcp-configure/SKILL.md"
+    },
+    "msstore-cli": {
+      "name": "msstore-cli",
+      "description": "Microsoft Store Developer CLI (msstore) for publishing Windows applications to the Microsoft Store. Use when asked to configure Store credentials, list Store apps, check submission status, publish submissions, manage package flights, set up CI/CD for Store publishing, or integrate with Partner Center. Supports Windows App SDK/WinUI, UWP, .NET MAUI, Flutter, Electron, React Native, and PWA applications.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/msstore-cli/SKILL.md"
+    },
+    "entra-agent-user": {
+      "name": "entra-agent-user",
+      "description": "Create Agent Users in Microsoft Entra ID from Agent Identities, enabling AI agents to act as digital workers with user identity capabilities in Microsoft 365 and Azure environments.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/entra-agent-user/SKILL.md"
+    },
+    "appinsights-instrumentation": {
+      "name": "appinsights-instrumentation",
+      "description": "Instrument a webapp to send useful telemetry data to Azure App Insights",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/appinsights-instrumentation/SKILL.md"
+    },
+    "update-specification": {
+      "name": "update-specification",
+      "description": "Update an existing specification file for the solution, optimized for Generative AI consumption based on new requirements or updates to any existing code.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/update-specification/SKILL.md"
+    },
+    "legacy-circuit-mockups": {
+      "name": "legacy-circuit-mockups",
+      "description": "Generate breadboard circuit mockups and visual diagrams using HTML5 Canvas drawing techniques. Use when asked to create circuit layouts, visualize electronic component placements, draw breadboard diagrams, mockup 6502 builds, generate retro computer schematics, or design vintage electronics projects. Supports 555 timers, W65C02S microprocessors, 28C256 EEPROMs, W65C22 VIA chips, 7400-series logic gates, LEDs, resistors, capacitors, switches, buttons, crystals, and wires.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/legacy-circuit-mockups/SKILL.md"
+    },
+    "rust-mcp-server-generator": {
+      "name": "rust-mcp-server-generator",
+      "description": "Generate a complete Rust Model Context Protocol server project with tools, prompts, resources, and tests using the official rmcp SDK",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/rust-mcp-server-generator/SKILL.md"
+    },
+    "microsoft-code-reference": {
+      "name": "microsoft-code-reference",
+      "description": "Look up Microsoft API references, find working code samples, and verify SDK code is correct. Use when working with Azure SDKs, .NET libraries, or Microsoft APIs\u2014to find the right method, check parameters, get working examples, or troubleshoot errors. Catches hallucinated methods, wrong signatures, and deprecated patterns by querying official docs.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/microsoft-code-reference/SKILL.md"
+    },
+    "dotnet-upgrade": {
+      "name": "dotnet-upgrade",
+      "description": "Ready-to-use prompts for comprehensive .NET framework upgrade analysis and execution",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/dotnet-upgrade/SKILL.md"
+    },
+    "create-spring-boot-kotlin-project": {
+      "name": "create-spring-boot-kotlin-project",
+      "description": "Create Spring Boot Kotlin Project Skeleton",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-spring-boot-kotlin-project/SKILL.md"
+    },
+    "refactor-plan": {
+      "name": "refactor-plan",
+      "description": "Plan a multi-file refactor with proper sequencing and rollback steps",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/refactor-plan/SKILL.md"
+    },
+    "make-skill-template": {
+      "name": "make-skill-template",
+      "description": "Create new Agent Skills for GitHub Copilot from prompts or by duplicating this template. Use when asked to \"create a skill\", \"make a new skill\", \"scaffold a skill\", or when building specialized AI capabilities with bundled resources. Generates SKILL.md files with proper frontmatter, directory structure, and optional scripts/references/assets folders.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/make-skill-template/SKILL.md"
+    },
+    "repo-story-time": {
+      "name": "repo-story-time",
+      "description": "Generate a comprehensive repository summary and narrative story from commit history",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/repo-story-time/SKILL.md"
+    },
+    "java-refactoring-remove-parameter": {
+      "name": "java-refactoring-remove-parameter",
+      "description": "Refactoring using Remove Parameter in Java Language",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/java-refactoring-remove-parameter/SKILL.md"
+    },
+    "breakdown-feature-prd": {
+      "name": "breakdown-feature-prd",
+      "description": "Prompt for creating Product Requirements Documents (PRDs) for new features, based on an Epic.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/breakdown-feature-prd/SKILL.md"
+    },
+    "create-implementation-plan": {
+      "name": "create-implementation-plan",
+      "description": "Create a new implementation plan file for new features, refactoring existing code or upgrading packages, design, architecture or infrastructure.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-implementation-plan/SKILL.md"
+    },
+    "csharp-mcp-server-generator": {
+      "name": "csharp-mcp-server-generator",
+      "description": "Generate a complete MCP server project in C# with tools, prompts, and proper configuration",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/csharp-mcp-server-generator/SKILL.md"
+    },
+    "java-springboot": {
+      "name": "java-springboot",
+      "description": "Get best practices for developing applications with Spring Boot.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/java-springboot/SKILL.md"
+    },
+    "python-mcp-server-generator": {
+      "name": "python-mcp-server-generator",
+      "description": "Generate a complete MCP server project in Python with tools, resources, and proper configuration",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/python-mcp-server-generator/SKILL.md"
+    },
+    "winui3-migration-guide": {
+      "name": "winui3-migration-guide",
+      "description": "UWP-to-WinUI 3 migration reference. Maps legacy UWP APIs to correct Windows App SDK equivalents with before/after code snippets. Covers namespace changes, threading (CoreDispatcher to DispatcherQueue), windowing (CoreWindow to AppWindow), dialogs, pickers, sharing, printing, background tasks, and the most common Copilot code generation mistakes.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/winui3-migration-guide/SKILL.md"
+    },
+    "dotnet-best-practices": {
+      "name": "dotnet-best-practices",
+      "description": "Ensure .NET/C# code meets best practices for the solution/project.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/dotnet-best-practices/SKILL.md"
+    },
+    "code-exemplars-blueprint-generator": {
+      "name": "code-exemplars-blueprint-generator",
+      "description": "Technology-agnostic prompt generator that creates customizable AI prompts for scanning codebases and identifying high-quality code exemplars. Supports multiple programming languages (.NET, Java, JavaScript, TypeScript, React, Angular, Python) with configurable analysis depth, categorization methods, and documentation formats to establish coding standards and maintain consistency across development teams.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/code-exemplars-blueprint-generator/SKILL.md"
+    },
+    "technology-stack-blueprint-generator": {
+      "name": "technology-stack-blueprint-generator",
+      "description": "Comprehensive technology stack blueprint generator that analyzes codebases to create detailed architectural documentation. Automatically detects technology stacks, programming languages, and implementation patterns across multiple platforms (.NET, Java, JavaScript, React, Python). Generates configurable blueprints with version information, licensing details, usage patterns, coding conventions, and visual diagrams. Provides implementation-ready templates and maintains architectural consistency for guided development.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/technology-stack-blueprint-generator/SKILL.md"
+    },
+    "chrome-devtools": {
+      "name": "chrome-devtools",
+      "description": "Expert-level browser automation, debugging, and performance analysis using Chrome DevTools MCP. Use for interacting with web pages, capturing screenshots, analyzing network traffic, and profiling performance.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/chrome-devtools/SKILL.md"
+    },
+    "java-refactoring-extract-method": {
+      "name": "java-refactoring-extract-method",
+      "description": "Refactoring using Extract Methods in Java Language",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/java-refactoring-extract-method/SKILL.md"
+    },
+    "pytest-coverage": {
+      "name": "pytest-coverage",
+      "description": "Run pytest tests with coverage, discover lines missing coverage, and increase coverage to 100%.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/pytest-coverage/SKILL.md"
+    },
+    "java-docs": {
+      "name": "java-docs",
+      "description": "Ensure that Java types are documented with Javadoc comments and follow best practices for documentation.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/java-docs/SKILL.md"
+    },
+    "scoutqa-test": {
+      "name": "scoutqa-test",
+      "description": "|",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/scoutqa-test/SKILL.md"
+    },
+    "aspnet-minimal-api-openapi": {
+      "name": "aspnet-minimal-api-openapi",
+      "description": "Create ASP.NET Minimal API endpoints with proper OpenAPI documentation",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/aspnet-minimal-api-openapi/SKILL.md"
+    },
+    "make-repo-contribution": {
+      "name": "make-repo-contribution",
+      "description": "All changes to code must follow the guidance documented in the repository. Before any issue is filed, branch is made, commits generated, or pull request (or PR) created, a search must be done to ensure the right steps are followed. Whenever asked to create an issue, commit messages, to push code, or create a PR, use this skill so everything is done correctly.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/make-repo-contribution/SKILL.md"
+    },
+    "breakdown-epic-pm": {
+      "name": "breakdown-epic-pm",
+      "description": "Prompt for creating an Epic Product Requirements Document (PRD) for a new epic. This PRD will be used as input for generating a technical architecture specification.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/breakdown-epic-pm/SKILL.md"
+    },
+    "remember-interactive-programming": {
+      "name": "remember-interactive-programming",
+      "description": "A micro-prompt that reminds the agent that it is an interactive programmer. Works great in Clojure when Copilot has access to the REPL (probably via Backseat Driver). Will work with any system that has a live REPL that the agent can use. Adapt the prompt with any specific reminders in your workflow and/or workspace.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/remember-interactive-programming/SKILL.md"
+    },
+    "php-mcp-server-generator": {
+      "name": "php-mcp-server-generator",
+      "description": "Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/php-mcp-server-generator/SKILL.md"
+    },
+    "breakdown-plan": {
+      "name": "breakdown-plan",
+      "description": "Issue Planning and Automation prompt that generates comprehensive project plans with Epic > Feature > Story/Enabler > Test hierarchy, dependencies, priorities, and automated tracking.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/breakdown-plan/SKILL.md"
+    },
+    "java-mcp-server-generator": {
+      "name": "java-mcp-server-generator",
+      "description": "Generate a complete Model Context Protocol server project in Java using the official MCP Java SDK with reactive streams and optional Spring Boot integration.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/java-mcp-server-generator/SKILL.md"
+    },
+    "pdftk-server": {
+      "name": "pdftk-server",
+      "description": "Skill for using the command-line tool pdftk (PDFtk Server) for working with PDF files. Use when asked to merge PDFs, split PDFs, rotate pages, encrypt or decrypt PDFs, fill PDF forms, apply watermarks, stamp overlays, extract metadata, burst documents into pages, repair corrupted PDFs, attach or extract files, or perform any PDF manipulation from the command line.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/pdftk-server/SKILL.md"
+    },
+    "copilot-cli-quickstart": {
+      "name": "copilot-cli-quickstart",
+      "description": ">",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/copilot-cli-quickstart/SKILL.md"
+    },
+    "mcp-create-adaptive-cards": {
+      "name": "mcp-create-adaptive-cards",
+      "description": "Skill converted from mcp-create-adaptive-cards.prompt.md",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/mcp-create-adaptive-cards/SKILL.md"
+    },
+    "mcp-create-declarative-agent": {
+      "name": "mcp-create-declarative-agent",
+      "description": "Skill converted from mcp-create-declarative-agent.prompt.md",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/mcp-create-declarative-agent/SKILL.md"
+    },
+    "refactor-method-complexity-reduce": {
+      "name": "refactor-method-complexity-reduce",
+      "description": "Refactor given method `${input:methodName}` to reduce its cognitive complexity to `${input:complexityThreshold}` or below, by extracting helper methods.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/refactor-method-complexity-reduce/SKILL.md"
+    },
+    "create-agentsmd": {
+      "name": "create-agentsmd",
+      "description": "Prompt for generating an AGENTS.md file for a repository",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-agentsmd/SKILL.md"
+    },
+    "dataverse-python-usecase-builder": {
+      "name": "dataverse-python-usecase-builder",
+      "description": "Generate complete solutions for specific Dataverse SDK use cases with architecture recommendations",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/dataverse-python-usecase-builder/SKILL.md"
+    },
+    "azure-role-selector": {
+      "name": "azure-role-selector",
+      "description": "When user is asking for guidance for which role to assign to an identity given desired permissions, this agent helps them understand the role that will meet the requirements with least privilege access and how to apply that role.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/azure-role-selector/SKILL.md"
+    },
+    "azure-static-web-apps": {
+      "name": "azure-static-web-apps",
+      "description": "Helps create, configure, and deploy Azure Static Web Apps using the SWA CLI. Use when deploying static sites to Azure, setting up SWA local development, configuring staticwebapp.config.json, adding Azure Functions APIs to SWA, or setting up GitHub Actions CI/CD for Static Web Apps.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/azure-static-web-apps/SKILL.md"
+    },
+    "mentoring-juniors": {
+      "name": "mentoring-juniors",
+      "description": "Socratic mentoring for junior developers and AI newcomers. Guides through questions, never answers. Triggers: \"help me understand\", \"explain this code\", \"I''m stuck\", \"Im stuck\", \"I''m confused\", \"Im confused\", \"I don''t understand\", \"I dont understand\", \"can you teach me\", \"teach me\", \"mentor me\", \"guide me\", \"what does this error mean\", \"why doesn''t this work\", \"why does not this work\", \"I''m a beginner\", \"Im a beginner\", \"I''m learning\", \"Im learning\", \"I''m new to this\", \"Im new to this\", \"walk me through\", \"how does this work\", \"what''s wrong with my code\", \"what''s wrong\", \"can you break this down\", \"ELI5\", \"step by step\", \"where do I start\", \"what am I missing\", \"newbie here\", \"junior dev\", \"first time using\", \"how do I\", \"what is\", \"is this right\", \"not sure\", \"need help\", \"struggling\", \"show me\", \"help me debug\", \"best practice\", \"too complex\", \"overwhelmed\", \"lost\", \"debug this\", \"/socratic\", \"/hint\", \"/concept\", \"/pseudocode\". Progressive clue systems, teaching techniques, and success metrics.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/mentoring-juniors/SKILL.md"
+    },
+    "azure-deployment-preflight": {
+      "name": "azure-deployment-preflight",
+      "description": "Performs comprehensive preflight validation of Bicep deployments to Azure, including template syntax validation, what-if analysis, and permission checks. Use this skill before any deployment to Azure to preview changes, identify potential issues, and ensure the deployment will succeed. Activate when users mention deploying to Azure, validating Bicep files, checking deployment permissions, previewing infrastructure changes, running what-if, or preparing for azd provision.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/azure-deployment-preflight/SKILL.md"
+    },
+    "sql-code-review": {
+      "name": "sql-code-review",
+      "description": "Universal SQL code review assistant that performs comprehensive security, maintainability, and code quality analysis across all SQL databases (MySQL, PostgreSQL, SQL Server, Oracle). Focuses on SQL injection prevention, access control, code standards, and anti-pattern detection. Complements SQL optimization prompt for complete development coverage.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/sql-code-review/SKILL.md"
+    },
+    "bigquery-pipeline-audit": {
+      "name": "bigquery-pipeline-audit",
+      "description": "Audits Python + BigQuery pipelines for cost safety, idempotency, and production readiness. Returns a structured report with exact patch locations.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/bigquery-pipeline-audit/SKILL.md"
+    },
+    "create-github-action-workflow-specification": {
+      "name": "create-github-action-workflow-specification",
+      "description": "Create a formal specification for an existing GitHub Actions CI/CD workflow, optimized for AI consumption and workflow maintenance.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/create-github-action-workflow-specification/SKILL.md"
+    },
+    "finnish-humanizer": {
+      "name": "finnish-humanizer",
+      "description": "Detect and remove AI-generated markers from Finnish text, making it sound like a native Finnish speaker wrote it. Use when asked to \"humanize\", \"naturalize\", or \"remove AI feel\" from Finnish text, or when editing .md/.txt files containing Finnish content. Identifies 26 patterns (12 Finnish-specific + 14 universal) and 4 style markers.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/finnish-humanizer/SKILL.md"
+    },
+    "power-bi-dax-optimization": {
+      "name": "power-bi-dax-optimization",
+      "description": "Comprehensive Power BI DAX formula optimization prompt for improving performance, readability, and maintainability of DAX calculations.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/power-bi-dax-optimization/SKILL.md"
+    },
+    "cosmosdb-datamodeling": {
+      "name": "cosmosdb-datamodeling",
+      "description": "Step-by-step guide for capturing key application requirements for NoSQL use-case and produce Azure Cosmos DB Data NoSQL Model design using best practices and common patterns, artifacts_produced: \"cosmosdb_requirements.md\" file and \"cosmosdb_data_model.md\" file",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/cosmosdb-datamodeling/SKILL.md"
+    },
+    "declarative-agents": {
+      "name": "declarative-agents",
+      "description": "Complete development kit for Microsoft 365 Copilot declarative agents with three comprehensive workflows (basic, advanced, validation), TypeSpec support, and Microsoft 365 Agents Toolkit integration",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/declarative-agents/SKILL.md"
+    },
+    "game-engine": {
+      "name": "game-engine",
+      "description": "Expert skill for building web-based game engines and games using HTML5, Canvas, WebGL, and JavaScript. Use when asked to create games, build game engines, implement game physics, handle collision detection, set up game loops, manage sprites, add game controls, or work with 2D/3D rendering. Covers techniques for platformers, breakout-style games, maze games, tilemaps, audio, multiplayer via WebRTC, and publishing games.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/game-engine/SKILL.md"
+    },
+    "finalize-agent-prompt": {
+      "name": "finalize-agent-prompt",
+      "description": "Finalize prompt file using the role of an AI agent to polish the prompt for the end user.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/finalize-agent-prompt/SKILL.md"
+    },
+    "dataverse-python-advanced-patterns": {
+      "name": "dataverse-python-advanced-patterns",
+      "description": "Generate production code for Dataverse SDK using advanced patterns, error handling, and optimization techniques.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/dataverse-python-advanced-patterns/SKILL.md"
+    },
+    "go-mcp-server-generator": {
+      "name": "go-mcp-server-generator",
+      "description": "Generate a complete Go MCP server project with proper structure, dependencies, and implementation using the official github.com/modelcontextprotocol/go-sdk.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/go-mcp-server-generator/SKILL.md"
+    },
+    "boost-prompt": {
+      "name": "boost-prompt",
+      "description": "Interactive prompt refinement workflow: interrogates scope, deliverables, constraints; copies final markdown to clipboard; never writes code. Requires the Joyride extension.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/boost-prompt/SKILL.md"
+    },
+    "ai-prompt-engineering-safety-review": {
+      "name": "ai-prompt-engineering-safety-review",
+      "description": "Comprehensive AI prompt engineering safety review and improvement prompt. Analyzes prompts for safety, bias, security vulnerabilities, and effectiveness while providing detailed improvement recommendations with extensive frameworks, testing methodologies, and educational content.",
+      "type": "skill",
+      "source_file": "/workspaces/self-hosted-ai-starter-kit/awesome-copilot/skills/ai-prompt-engineering-safety-review/SKILL.md"
+    }
+  }
+}

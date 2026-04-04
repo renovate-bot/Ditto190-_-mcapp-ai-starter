@@ -1,0 +1,10 @@
+{
+    "name": "n8n-dev-local",
+    "version": "0.0.0",
+    "private": true,
+    "description": "Local dev environment to test n8n nodes (n8n-nodes-langchain)",
+    "license": "MIT",
+    "dependencies": {
+        "@n8n/n8n-nodes-langchain": "2.10.1"
+    }
+}

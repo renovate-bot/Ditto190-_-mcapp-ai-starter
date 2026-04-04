@@ -1,0 +1,100 @@
+{
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.env.linux": {
+    "MEMORY_GUARD": "enabled"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "files.watcherExclude": {
+    "**/n8n-data/**": true,
+    "**/ollama_storage/**": true,
+    "**/postgres_storage/**": true,
+    "**/qdrant_storage/**": true,
+    "**/.venv/**": true,
+    "**/node_modules/**": true
+  },
+  "files.exclude": {
+    "**/.venv": true,
+    "**/node_modules": true,
+    "**/__pycache__": true
+  },
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "copilot.advanced": {
+    "debug.testingEnabled": true
+  },
+  "typespec.disable": true,
+  // Plan Agent - Architecture + Symbolic Analysis + GitHub Actions
+  "github.copilot.chat.planAgent.additionalTools": [
+    "memory",
+    "context7",
+    "github",
+    "contextstream"
+  ],
+  // Ask Agent - Quick lookups + Symbol queries
+  "github.copilot.chat.askAgent.additionalTools": [
+    "memory",
+    "time",
+    "contextstream"
+  ],
+  "[copilot].mcp": {
+    "servers": [
+      {
+        "name": "generateagents-mcp",
+        "description": "GenerateAgents.md MCP Server - Expose AGENTS.md generation as LLM-callable tools",
+        "command": "bash",
+        "args": [
+          "-c",
+          "cd generateagents-mcp && uv run python server.py"
+        ],
+        "env": {
+          "PYTHONPATH": "/workspaces/mcapp-ai-starter",
+          "LOG_LEVEL": "INFO",
+          "PATH": "/root/.local/bin:/usr/local/bin:/usr/bin:/bin"
+        }
+      },
+      {
+        "name": "contextstream",
+        "description": "ContextStream MCP Server - Code/doc search, lessons, hybrid search (see docs/CONTEXTSTREAM_SETUP_GUIDE.md)",
+        "type": "http",
+        "url": "https://mcp.contextstream.io/mcp?default_context_mode=fast"
+      }
+    ]
+  },
+  "markdown.validate.enabled": true,
+  "chat.useClaudeHooks": true,
+  "chat.useCustomAgentHooks": true,
+  "files.autoSave": "afterDelay",
+  "chat.agent.enabled": true,
+  "github.copilot.chat.allowTerminalAccess": true,
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "/bin/bash",
+      "args": []
+    }
+  },
+  "terminal.integrated.developerMode": true,
+  "git.rememberPostCommitCommand": true,
+  "gitlab.duoAgentPlatform.defaultNamespace": "Modifyme_glabs",
+  "fastapi.telemetry.enabled": false,
+  "containers.environment": {
+    "containers.environment": "{ \"PATH\": \"/usr/local/share/nvm/versions/node/v20.20.2/bin:/root/.local/bin:/usr/local/bin:${env:PATH}\", \"NVM_DIR\": \"/usr/local/share/nvm\", \"PYTHONPATH\": \"${containerEnv:PYTHONPATH:-/workspaces/mcapp-ai-starter}\", \"PIP_USER\": \"1\" }"
+  },
+  "github.copilot.chat.cli.planExitMode.enabled": true,
+  "github.copilot.chat.githubMcpServer.toolsets": [
+    "all"
+  ],
+  "github.copilot.chat.cli.branchSupport.enabled": true,
+  "github.copilot.chat.cli.sessionController.enabled": true,
+  "chat.tools.terminal.autoApprove": {
+    "/^bash -lc 'set -e\nprintf \"\\\\n--- GIT STATUS ---\\\\n\"\ngit status --porcelain --untracked-files=all \\|\\| true\nprintf \"\\\\n--- CURRENT BRANCH ---\\\\n\"\ngit branch --show-current \\|\\| true\nprintf \"\\\\nStaging all changes\\.\\.\\.\\\\n\"\ngit add -A\nprintf \"\\\\nAttempting commit with message: fixed contextstream mcp\\\\n\"\nif git commit -m \"fixed contextstream mcp\"; then\n  echo \"Commit created\"\nelse\n  echo \"No commit created \\(maybe no changes or commit failed\\)\"\nfi\nBRANCH=\\$\\(git rev-parse --abbrev-ref HEAD 2>/dev/null \\|\\| echo \"\"\\)\nif \\[ -n \"\\$BRANCH\" \\]; then\n  echo \"Pushing branch: \\$BRANCH\"\n  if git push --set-upstream origin \"\\$BRANCH\"; then\n    echo \"Push successful\"\n  else\n    echo \"Push failed; attempting simple git push\"\n    git push \\|\\| echo \"Push ultimately failed\"\n  fi\nelse\n  echo \"Could not determine branch name; skipping push\"\nfi\n'$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "{{packageName}}",
+  "version": "1.0.0",
+  "description": "APM Prompt Package",
+  "scripts": {
+    "validate": "node validate-apm.js"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "keywords": ["apm", "prompts", "ai"],
+  "author": "{{author}}",
+  "license": "MIT"
+}

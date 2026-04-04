@@ -62,3 +62,8 @@ Changes from 0.1.x to 0.2.2.
 - **Fixed non-UI tool registration** — Use `server.registerTool` for tools without UI and fix missing imports across examples by @ochafik in [#173](https://github.com/modelcontextprotocol/ext-apps/pull/173)
 
 **Full Changelog**: https://github.com/modelcontextprotocol/ext-apps/compare/v0.1.1...v0.2.2
+
+## 2026-04-03 - Copilot MCP integration
+- Merged .vscode/mcp.json into .copilot/mcp.json; sanitized API keys to use env placeholders.
+- Created .github/copilot-instructions.md and docs/CI-SECRETS.md.
+- Started and stopped n8n-mcp for verification.

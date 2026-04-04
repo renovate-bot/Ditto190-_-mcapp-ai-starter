@@ -1,0 +1,12 @@
+{
+  "name": "@typespec/e2e-test-basic-latest",
+  "dependencies": {
+    "@typespec/compiler": "latest",
+    "@typespec/rest": "latest",
+    "@typespec/http": "latest",
+    "@typespec/versioning": "latest",
+    "@typespec/openapi": "latest",
+    "@typespec/openapi3": "latest"
+  },
+  "private": true
+}

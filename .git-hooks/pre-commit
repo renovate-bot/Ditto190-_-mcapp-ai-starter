@@ -1,0 +1,111 @@
+#!/bin/bash
+#
+# AgentSkills Pre-commit Hook
+#
+# This hook validates AgentSkills before allowing commits.
+# It only validates skills that have been modified in the current commit.
+#
+# Installation:
+#   cp .git-hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x .git/hooks/pre-commit
+#
+# To bypass (for emergencies only):
+#   git commit --no-verify
+
+set -e
+
+# Color codes
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo "🔍 Validating AgentSkills..."
+
+# Check if skills-ref is installed
+SKILLS_REF_DIR="agentskills/skills-ref"
+
+# Ensure the skills-ref directory itself exists before proceeding
+if [ ! -d "$SKILLS_REF_DIR" ]; then
+    echo -e "${YELLOW}⚠️  skills-ref directory not found at '${SKILLS_REF_DIR}'.${NC}"
+    echo "To initialize it (e.g., as a git submodule), run:"
+    echo "  git submodule update --init --recursive"
+    echo "Skipping AgentSkills validation because the validator source is unavailable."
+    exit 0
+fi
+
+if [ ! -d "$SKILLS_REF_DIR/.venv" ]; then
+    echo -e "${YELLOW}⚠️  skills-ref not installed, installing now...${NC}"
+    cd "$SKILLS_REF_DIR"
+    if ! command -v uv &> /dev/null; then
+        echo -e "${RED}❌ Error: uv package manager not found${NC}"
+        echo "Install uv: curl -LsSf https://astral.sh/uv/install.sh | sh"
+        exit 1
+    fi
+    uv sync
+    cd - > /dev/null
+fi
+
+# Get list of modified skill directories
+MODIFIED_SKILLS=$(git diff --cached --name-only --diff-filter=ACM | grep '^awesome-copilot/skills/' | cut -d'/' -f1-3 | sort -u)
+
+if [ -z "$MODIFIED_SKILLS" ]; then
+    echo -e "${GREEN}✅ No AgentSkills modified, skipping validation${NC}"
+    exit 0
+fi
+
+echo "Modified skills:"
+echo "$MODIFIED_SKILLS" | while read -r skill; do
+    echo "  - $(basename "$skill")"
+done
+echo ""
+
+# Validate each modified skill
+FAILED=0
+FAILED_SKILLS=""
+
+for skill_path in $MODIFIED_SKILLS; do
+    if [ -d "$skill_path" ]; then
+        skill_name=$(basename "$skill_path")
+        echo -n "Validating $skill_name... "
+        
+        if "$SKILLS_REF_DIR/.venv/bin/skills-ref" validate "$skill_path" > /dev/null 2>&1; then
+            echo -e "${GREEN}✅${NC}"
+        else
+            echo -e "${RED}❌${NC}"
+            FAILED=$((FAILED + 1))
+            FAILED_SKILLS="$FAILED_SKILLS\n  - $skill_name"
+            
+            # Show detailed error
+            echo -e "${YELLOW}Validation errors for $skill_name:${NC}"
+            "$SKILLS_REF_DIR/.venv/bin/skills-ref" validate "$skill_path" 2>&1 | sed 's/^/    /'
+            echo ""
+        fi
+    fi
+done
+
+# Result
+if [ $FAILED -gt 0 ]; then
+    echo ""
+    echo -e "${RED}❌ $FAILED skill(s) failed AgentSkills validation${NC}"
+    echo -e "${YELLOW}Failed skills:${NC}"
+    echo -e "$FAILED_SKILLS"
+    echo ""
+    echo "Fix the validation errors or use --no-verify to skip (not recommended)"
+    echo ""
+    echo "Common fixes:"
+    echo "  - Convert flow-style lists ['a','b'] to block style:"
+    echo "    allowed-tools:"
+    echo "      - tool1"
+    echo "      - tool2"
+    echo "  - Move custom fields to metadata:"
+    echo "    metadata:"
+    echo "      custom_field: value"
+    echo "  - See: https://agentskills.io/specification"
+    echo ""
+    exit 1
+fi
+
+echo ""
+echo -e "${GREEN}✅ All modified skills passed AgentSkills validation${NC}"
+exit 0

@@ -1,0 +1,142 @@
+{
+  "name": "AI Starter Kit - Codespace",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12",
+      "installTools": true
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+  "forwardPorts": [
+    5678,
+    11434,
+    6333,
+    5432,
+    8080
+  ],
+  "portsAttributes": {
+    "5678": {
+      "label": "n8n UI",
+      "onAutoForward": "notify",
+      "visibility": "public",
+      "protocol": "http"
+    },
+    "11434": {
+      "label": "Ollama API",
+      "onAutoForward": "notify",
+      "visibility": "public",
+      "protocol": "http"
+    },
+    "6333": {
+      "label": "Qdrant API",
+      "onAutoForward": "notify",
+      "visibility": "public",
+      "protocol": "http"
+    },
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "silent",
+      "visibility": "private"
+    },
+    "8080": {
+      "label": "Dev Server",
+      "onAutoForward": "silent",
+      "visibility": "private"
+    }
+  },
+  "initializeCommand": "npm install -g @contextstream/mcp-server@latest",
+  "onCreateCommand": "bash .devcontainer/pre-install.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff",
+        "dbaeumer.vscode-eslint",
+        "davidanson.vscode-markdownlint",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "foxundermoon.shell-format",
+        "github.copilot",
+        "github.copilot-chat",
+        "github.vscode-github-actions",
+        "humao.rest-client",
+        "mhutchie.git-graph",
+        "mikestead.dotenv",
+        "ms-azuretools.vscode-docker",
+        "ms-python.black-formatter",
+        "ms-python.debugpy",
+        "ms-python.pylint",
+        "ms-python.python",
+        "ms-vscode-remote.remote-containers",
+        "redhat.vscode-yaml",
+        "streetsidesoftware.code-spell-checker",
+        "timonwong.shellcheck",
+        "usernamehw.errorlens",
+        "yzhang.markdown-all-in-one",
+        "digitarald.agent-memory",
+        "blackbox.blackbox"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.env.linux": {
+          "MEMORY_GUARD": "enabled"
+        },
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter"
+        },
+        "python.defaultInterpreterPath": "/usr/bin/python3",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "files.watcherExclude": {
+          "**/n8n-data/**": true,
+          "**/ollama_storage/**": true,
+          "**/postgres_storage/**": true,
+          "**/qdrant_storage/**": true,
+          "**/.venv/**": true,
+          "**/node_modules/**": true
+        },
+        "files.exclude": {
+          "**/.venv": true,
+          "**/node_modules": true,
+          "**/__pycache__": true
+        },
+        "git.autofetch": true,
+        "git.enableSmartCommit": true
+      }
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "remoteEnv": {
+    "DOCKER_BUILDKIT": "1",
+    "COMPOSE_DOCKER_CLI_BUILD": "1",
+    "N8N_PORT": "5678",
+    "N8N_PROTOCOL": "http",
+    "N8N_HOST": "localhost",
+    "OLLAMA_HOST": "ollama:11434",
+    "QDRANT_HOST": "qdrant",
+    "QDRANT_PORT": "6333",
+    "UV_SYSTEM_PYTHON": "1",
+    "NIX_CONFIG": "experimental-features = nix-command flakes"
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "16gb",
+    "storage": "32gb"
+  },
+  "remoteUser": "root",
+  "privileged": true,
+  "containerEnv": {
+    "PATH": "/usr/local/share/nvm/versions/node/v20/bin:/root/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "NVM_DIR": "/usr/local/share/nvm"
+  }
+}

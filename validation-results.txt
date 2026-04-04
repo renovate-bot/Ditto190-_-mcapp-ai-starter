@@ -1,0 +1,852 @@
+
+Validating: add-educational-comments/
+Valid skill: add-educational-comments
+✅ PASS
+---
+Validating: agent-governance/
+Valid skill: agent-governance
+✅ PASS
+---
+Validating: agentic-eval/
+Valid skill: agentic-eval
+✅ PASS
+---
+Validating: ai-prompt-engineering-safety-review/
+Valid skill: ai-prompt-engineering-safety-review
+✅ PASS
+---
+Validating: appinsights-instrumentation/
+Valid skill: appinsights-instrumentation
+✅ PASS
+---
+Validating: apple-appstore-reviewer/
+Valid skill: apple-appstore-reviewer
+✅ PASS
+---
+Validating: architecture-blueprint-generator/
+Valid skill: architecture-blueprint-generator
+✅ PASS
+---
+Validating: arch-linux-triage/
+Valid skill: arch-linux-triage
+✅ PASS
+---
+Validating: aspire/
+Valid skill: aspire
+✅ PASS
+---
+Validating: aspnet-minimal-api-openapi/
+Valid skill: aspnet-minimal-api-openapi
+✅ PASS
+---
+Validating: az-cost-optimize/
+Valid skill: az-cost-optimize
+✅ PASS
+---
+Validating: azure-deployment-preflight/
+Valid skill: azure-deployment-preflight
+✅ PASS
+---
+Validating: azure-devops-cli/
+Valid skill: azure-devops-cli
+✅ PASS
+---
+Validating: azure-resource-health-diagnose/
+Valid skill: azure-resource-health-diagnose
+✅ PASS
+---
+Validating: azure-resource-visualizer/
+Valid skill: azure-resource-visualizer
+✅ PASS
+---
+Validating: azure-role-selector/
+Validation failed for azure-role-selector:
+  - Invalid YAML in frontmatter: While scanning
+  in "<unicode string>", line 4, column 16:
+    allowed-tools: ['Azure MCP/documentation', 'Azu ... 
+                   ^ (line: 4)
+Found ugly disallowed JSONesque flow mapping (surround with ' and ' to make text appear literally)
+  in "<unicode string>", line 4, column 17:
+    allowed-tools: ['Azure MCP/documentation', 'Azur ... 
+                    ^ (line: 4)
+✅ PASS
+---
+Validating: azure-static-web-apps/
+Valid skill: azure-static-web-apps
+✅ PASS
+---
+Validating: bigquery-pipeline-audit/
+Valid skill: bigquery-pipeline-audit
+✅ PASS
+---
+Validating: boost-prompt/
+Valid skill: boost-prompt
+✅ PASS
+---
+Validating: breakdown-epic-arch/
+Valid skill: breakdown-epic-arch
+✅ PASS
+---
+Validating: breakdown-epic-pm/
+Valid skill: breakdown-epic-pm
+✅ PASS
+---
+Validating: breakdown-feature-implementation/
+Valid skill: breakdown-feature-implementation
+✅ PASS
+---
+Validating: breakdown-feature-prd/
+Valid skill: breakdown-feature-prd
+✅ PASS
+---
+Validating: breakdown-plan/
+Valid skill: breakdown-plan
+✅ PASS
+---
+Validating: breakdown-test/
+Valid skill: breakdown-test
+✅ PASS
+---
+Validating: centos-linux-triage/
+Valid skill: centos-linux-triage
+✅ PASS
+---
+Validating: chrome-devtools/
+Valid skill: chrome-devtools
+✅ PASS
+---
+Validating: code-exemplars-blueprint-generator/
+Valid skill: code-exemplars-blueprint-generator
+✅ PASS
+---
+Validating: comment-code-generate-a-tutorial/
+Valid skill: comment-code-generate-a-tutorial
+✅ PASS
+---
+Validating: containerize-aspnetcore/
+Valid skill: containerize-aspnetcore
+✅ PASS
+---
+Validating: containerize-aspnet-framework/
+Valid skill: containerize-aspnet-framework
+✅ PASS
+---
+Validating: context-map/
+Valid skill: context-map
+✅ PASS
+---
+Validating: conventional-commit/
+Valid skill: conventional-commit
+✅ PASS
+---
+Validating: convert-plaintext-to-md/
+Valid skill: convert-plaintext-to-md
+✅ PASS
+---
+Validating: copilot-cli-quickstart/
+Valid skill: copilot-cli-quickstart
+✅ PASS
+---
+Validating: copilot-instructions-blueprint-generator/
+Valid skill: copilot-instructions-blueprint-generator
+✅ PASS
+---
+Validating: copilot-sdk/
+Valid skill: copilot-sdk
+✅ PASS
+---
+Validating: copilot-usage-metrics/
+Valid skill: copilot-usage-metrics
+✅ PASS
+---
+Validating: cosmosdb-datamodeling/
+Valid skill: cosmosdb-datamodeling
+✅ PASS
+---
+Validating: create-agentsmd/
+Valid skill: create-agentsmd
+✅ PASS
+---
+Validating: create-architectural-decision-record/
+Valid skill: create-architectural-decision-record
+✅ PASS
+---
+Validating: create-github-action-workflow-specification/
+Valid skill: create-github-action-workflow-specification
+✅ PASS
+---
+Validating: create-github-issue-feature-from-specification/
+Valid skill: create-github-issue-feature-from-specification
+✅ PASS
+---
+Validating: create-github-issues-feature-from-implementation-plan/
+Valid skill: create-github-issues-feature-from-implementation-plan
+✅ PASS
+---
+Validating: create-github-issues-for-unmet-specification-requirements/
+Valid skill: create-github-issues-for-unmet-specification-requirements
+✅ PASS
+---
+Validating: create-github-pull-request-from-specification/
+Valid skill: create-github-pull-request-from-specification
+✅ PASS
+---
+Validating: create-implementation-plan/
+Valid skill: create-implementation-plan
+✅ PASS
+---
+Validating: create-llms/
+Valid skill: create-llms
+✅ PASS
+---
+Validating: create-oo-component-documentation/
+Valid skill: create-oo-component-documentation
+✅ PASS
+---
+Validating: create-readme/
+Valid skill: create-readme
+✅ PASS
+---
+Validating: create-specification/
+Valid skill: create-specification
+✅ PASS
+---
+Validating: create-spring-boot-java-project/
+Valid skill: create-spring-boot-java-project
+✅ PASS
+---
+Validating: create-spring-boot-kotlin-project/
+Valid skill: create-spring-boot-kotlin-project
+✅ PASS
+---
+Validating: create-technical-spike/
+Valid skill: create-technical-spike
+✅ PASS
+---
+Validating: create-tldr-page/
+Valid skill: create-tldr-page
+✅ PASS
+---
+Validating: create-web-form/
+Valid skill: create-web-form
+✅ PASS
+---
+Validating: csharp-async/
+Valid skill: csharp-async
+✅ PASS
+---
+Validating: csharp-docs/
+Valid skill: csharp-docs
+✅ PASS
+---
+Validating: csharp-mcp-server-generator/
+Valid skill: csharp-mcp-server-generator
+✅ PASS
+---
+Validating: csharp-mstest/
+Valid skill: csharp-mstest
+✅ PASS
+---
+Validating: csharp-nunit/
+Valid skill: csharp-nunit
+✅ PASS
+---
+Validating: csharp-tunit/
+Valid skill: csharp-tunit
+✅ PASS
+---
+Validating: csharp-xunit/
+Valid skill: csharp-xunit
+✅ PASS
+---
+Validating: datanalysis-credit-risk/
+Valid skill: datanalysis-credit-risk
+✅ PASS
+---
+Validating: dataverse-python-advanced-patterns/
+Valid skill: dataverse-python-advanced-patterns
+✅ PASS
+---
+Validating: dataverse-python-production-code/
+Valid skill: dataverse-python-production-code
+✅ PASS
+---
+Validating: dataverse-python-quickstart/
+Valid skill: dataverse-python-quickstart
+✅ PASS
+---
+Validating: dataverse-python-usecase-builder/
+Valid skill: dataverse-python-usecase-builder
+✅ PASS
+---
+Validating: debian-linux-triage/
+Valid skill: debian-linux-triage
+✅ PASS
+---
+Validating: declarative-agents/
+Valid skill: declarative-agents
+✅ PASS
+---
+Validating: devops-rollout-plan/
+Valid skill: devops-rollout-plan
+✅ PASS
+---
+Validating: documentation-writer/
+Valid skill: documentation-writer
+✅ PASS
+---
+Validating: dotnet-best-practices/
+Valid skill: dotnet-best-practices
+✅ PASS
+---
+Validating: dotnet-design-pattern-review/
+Valid skill: dotnet-design-pattern-review
+✅ PASS
+---
+Validating: dotnet-upgrade/
+Valid skill: dotnet-upgrade
+✅ PASS
+---
+Validating: editorconfig/
+Valid skill: editorconfig
+✅ PASS
+---
+Validating: ef-core/
+Valid skill: ef-core
+✅ PASS
+---
+Validating: entra-agent-user/
+Valid skill: entra-agent-user
+✅ PASS
+---
+Validating: example-full-skill/
+Validation failed for example-full-skill:
+  - Invalid YAML in frontmatter: While scanning
+  in "<unicode string>", line 6, column 16:
+    allowed-tools: ['read_file', 'write_file', 'run ... 
+                   ^ (line: 6)
+Found ugly disallowed JSONesque flow mapping (surround with ' and ' to make text appear literally)
+  in "<unicode string>", line 6, column 17:
+    allowed-tools: ['read_file', 'write_file', 'run_ ... 
+                    ^ (line: 6)
+✅ PASS
+---
+Validating: example-minimal-skill/
+Valid skill: example-minimal-skill
+✅ PASS
+---
+Validating: excalidraw-diagram-generator/
+Valid skill: excalidraw-diagram-generator
+✅ PASS
+---
+Validating: fabric-lakehouse/
+Valid skill: fabric-lakehouse
+✅ PASS
+---
+Validating: fedora-linux-triage/
+Valid skill: fedora-linux-triage
+✅ PASS
+---
+Validating: finalize-agent-prompt/
+Valid skill: finalize-agent-prompt
+✅ PASS
+---
+Validating: finnish-humanizer/
+Valid skill: finnish-humanizer
+✅ PASS
+---
+Validating: first-ask/
+Valid skill: first-ask
+✅ PASS
+---
+Validating: fluentui-blazor/
+Valid skill: fluentui-blazor
+✅ PASS
+---
+Validating: folder-structure-blueprint-generator/
+Valid skill: folder-structure-blueprint-generator
+✅ PASS
+---
+Validating: game-engine/
+Valid skill: game-engine
+✅ PASS
+---
+Validating: generate-custom-instructions-from-codebase/
+Valid skill: generate-custom-instructions-from-codebase
+✅ PASS
+---
+Validating: gen-specs-as-issues/
+Valid skill: gen-specs-as-issues
+✅ PASS
+---
+Validating: gh-cli/
+Valid skill: gh-cli
+✅ PASS
+---
+Validating: git-commit/
+Valid skill: git-commit
+✅ PASS
+---
+Validating: git-flow-branch-creator/
+Valid skill: git-flow-branch-creator
+✅ PASS
+---
+Validating: github-copilot-starter/
+Valid skill: github-copilot-starter
+✅ PASS
+---
+Validating: github-issues/
+Valid skill: github-issues
+✅ PASS
+---
+Validating: go-mcp-server-generator/
+Valid skill: go-mcp-server-generator
+✅ PASS
+---
+Validating: image-manipulation-image-magick/
+Valid skill: image-manipulation-image-magick
+✅ PASS
+---
+Validating: import-infrastructure-as-code/
+Valid skill: import-infrastructure-as-code
+✅ PASS
+---
+Validating: java-add-graalvm-native-image-support/
+Valid skill: java-add-graalvm-native-image-support
+✅ PASS
+---
+Validating: java-docs/
+Valid skill: java-docs
+✅ PASS
+---
+Validating: java-junit/
+Valid skill: java-junit
+✅ PASS
+---
+Validating: java-mcp-server-generator/
+Valid skill: java-mcp-server-generator
+✅ PASS
+---
+Validating: java-refactoring-extract-method/
+Valid skill: java-refactoring-extract-method
+✅ PASS
+---
+Validating: java-refactoring-remove-parameter/
+Valid skill: java-refactoring-remove-parameter
+✅ PASS
+---
+Validating: javascript-typescript-jest/
+Valid skill: javascript-typescript-jest
+✅ PASS
+---
+Validating: java-springboot/
+Valid skill: java-springboot
+✅ PASS
+---
+Validating: kotlin-mcp-server-generator/
+Valid skill: kotlin-mcp-server-generator
+✅ PASS
+---
+Validating: kotlin-springboot/
+Valid skill: kotlin-springboot
+✅ PASS
+---
+Validating: legacy-circuit-mockups/
+Valid skill: legacy-circuit-mockups
+✅ PASS
+---
+Validating: make-repo-contribution/
+Valid skill: make-repo-contribution
+✅ PASS
+---
+Validating: make-skill-template/
+Valid skill: make-skill-template
+✅ PASS
+---
+Validating: markdown-to-html/
+Valid skill: markdown-to-html
+✅ PASS
+---
+Validating: mcp-cli/
+Valid skill: mcp-cli
+✅ PASS
+---
+Validating: mcp-configure/
+Valid skill: mcp-configure
+✅ PASS
+---
+Validating: mcp-copilot-studio-server-generator/
+Valid skill: mcp-copilot-studio-server-generator
+✅ PASS
+---
+Validating: mcp-create-adaptive-cards/
+Valid skill: mcp-create-adaptive-cards
+✅ PASS
+---
+Validating: mcp-create-declarative-agent/
+Valid skill: mcp-create-declarative-agent
+✅ PASS
+---
+Validating: mcp-deploy-manage-agents/
+Valid skill: mcp-deploy-manage-agents
+✅ PASS
+---
+Validating: meeting-minutes/
+Valid skill: meeting-minutes
+✅ PASS
+---
+Validating: memory-merger/
+Valid skill: memory-merger
+✅ PASS
+---
+Validating: mentoring-juniors/
+Validation failed for mentoring-juniors:
+  - Unexpected fields in frontmatter: authors. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+✅ PASS
+---
+Validating: microsoft-code-reference/
+Valid skill: microsoft-code-reference
+✅ PASS
+---
+Validating: microsoft-docs/
+Valid skill: microsoft-docs
+✅ PASS
+---
+Validating: microsoft-skill-creator/
+Validation failed for microsoft-skill-creator:
+  - Unexpected fields in frontmatter: context. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+✅ PASS
+---
+Validating: mkdocs-translations/
+Valid skill: mkdocs-translations
+✅ PASS
+---
+Validating: model-recommendation/
+Valid skill: model-recommendation
+✅ PASS
+---
+Validating: msstore-cli/
+Valid skill: msstore-cli
+✅ PASS
+---
+Validating: multi-stage-dockerfile/
+Valid skill: multi-stage-dockerfile
+✅ PASS
+---
+Validating: my-issues/
+Valid skill: my-issues
+✅ PASS
+---
+Validating: my-pull-requests/
+Valid skill: my-pull-requests
+✅ PASS
+---
+Validating: nano-banana-pro-openrouter/
+Valid skill: nano-banana-pro-openrouter
+✅ PASS
+---
+Validating: next-intl-add-language/
+Valid skill: next-intl-add-language
+✅ PASS
+---
+Validating: noob-mode/
+Valid skill: noob-mode
+✅ PASS
+---
+Validating: nuget-manager/
+Valid skill: nuget-manager
+✅ PASS
+---
+Validating: openapi-to-application-code/
+Valid skill: openapi-to-application-code
+✅ PASS
+---
+Validating: pdftk-server/
+Valid skill: pdftk-server
+✅ PASS
+---
+Validating: penpot-uiux-design/
+Valid skill: penpot-uiux-design
+✅ PASS
+---
+Validating: php-mcp-server-generator/
+Valid skill: php-mcp-server-generator
+✅ PASS
+---
+Validating: plantuml-ascii/
+Valid skill: plantuml-ascii
+✅ PASS
+---
+Validating: playwright-automation-fill-in-form/
+Valid skill: playwright-automation-fill-in-form
+✅ PASS
+---
+Validating: playwright-explore-website/
+Valid skill: playwright-explore-website
+✅ PASS
+---
+Validating: playwright-generate-test/
+Valid skill: playwright-generate-test
+✅ PASS
+---
+Validating: polyglot-test-agent/
+Valid skill: polyglot-test-agent
+✅ PASS
+---
+Validating: postgresql-code-review/
+Valid skill: postgresql-code-review
+✅ PASS
+---
+Validating: postgresql-optimization/
+Valid skill: postgresql-optimization
+✅ PASS
+---
+Validating: power-apps-code-app-scaffold/
+Valid skill: power-apps-code-app-scaffold
+✅ PASS
+---
+Validating: power-bi-dax-optimization/
+Valid skill: power-bi-dax-optimization
+✅ PASS
+---
+Validating: power-bi-model-design-review/
+Valid skill: power-bi-model-design-review
+✅ PASS
+---
+Validating: powerbi-modeling/
+Valid skill: powerbi-modeling
+✅ PASS
+---
+Validating: power-bi-performance-troubleshooting/
+Valid skill: power-bi-performance-troubleshooting
+✅ PASS
+---
+Validating: power-bi-report-design-consultation/
+Valid skill: power-bi-report-design-consultation
+✅ PASS
+---
+Validating: power-platform-mcp-connector-suite/
+Valid skill: power-platform-mcp-connector-suite
+✅ PASS
+---
+Validating: prd/
+Valid skill: prd
+✅ PASS
+---
+Validating: project-workflow-analysis-blueprint-generator/
+Valid skill: project-workflow-analysis-blueprint-generator
+✅ PASS
+---
+Validating: prompt-builder/
+Valid skill: prompt-builder
+✅ PASS
+---
+Validating: pytest-coverage/
+Valid skill: pytest-coverage
+✅ PASS
+---
+Validating: python-mcp-server-generator/
+Valid skill: python-mcp-server-generator
+✅ PASS
+---
+Validating: quasi-coder/
+Valid skill: quasi-coder
+✅ PASS
+---
+Validating: readme-blueprint-generator/
+Valid skill: readme-blueprint-generator
+✅ PASS
+---
+Validating: refactor/
+Valid skill: refactor
+✅ PASS
+---
+Validating: refactor-method-complexity-reduce/
+Valid skill: refactor-method-complexity-reduce
+✅ PASS
+---
+Validating: refactor-plan/
+Valid skill: refactor-plan
+✅ PASS
+---
+Validating: remember/
+Valid skill: remember
+✅ PASS
+---
+Validating: remember-interactive-programming/
+Valid skill: remember-interactive-programming
+✅ PASS
+---
+Validating: repo-story-time/
+Valid skill: repo-story-time
+✅ PASS
+---
+Validating: review-and-refactor/
+Valid skill: review-and-refactor
+✅ PASS
+---
+Validating: ruby-mcp-server-generator/
+Valid skill: ruby-mcp-server-generator
+✅ PASS
+---
+Validating: rust-mcp-server-generator/
+Valid skill: rust-mcp-server-generator
+✅ PASS
+---
+Validating: scoutqa-test/
+Valid skill: scoutqa-test
+✅ PASS
+---
+Validating: shuffle-json-data/
+Valid skill: shuffle-json-data
+✅ PASS
+---
+Validating: snowflake-semanticview/
+Valid skill: snowflake-semanticview
+✅ PASS
+---
+Validating: sponsor-finder/
+Valid skill: sponsor-finder
+✅ PASS
+---
+Validating: sql-code-review/
+Valid skill: sql-code-review
+✅ PASS
+---
+Validating: sql-optimization/
+Valid skill: sql-optimization
+✅ PASS
+---
+Validating: structured-autonomy-generate/
+Valid skill: structured-autonomy-generate
+✅ PASS
+---
+Validating: structured-autonomy-implement/
+Valid skill: structured-autonomy-implement
+✅ PASS
+---
+Validating: structured-autonomy-plan/
+Valid skill: structured-autonomy-plan
+✅ PASS
+---
+Validating: suggest-awesome-github-copilot-agents/
+Valid skill: suggest-awesome-github-copilot-agents
+✅ PASS
+---
+Validating: suggest-awesome-github-copilot-instructions/
+Valid skill: suggest-awesome-github-copilot-instructions
+✅ PASS
+---
+Validating: suggest-awesome-github-copilot-prompts/
+Valid skill: suggest-awesome-github-copilot-prompts
+✅ PASS
+---
+Validating: suggest-awesome-github-copilot-skills/
+Valid skill: suggest-awesome-github-copilot-skills
+✅ PASS
+---
+Validating: swift-mcp-server-generator/
+Valid skill: swift-mcp-server-generator
+✅ PASS
+---
+Validating: technology-stack-blueprint-generator/
+Valid skill: technology-stack-blueprint-generator
+✅ PASS
+---
+Validating: terraform-azurerm-set-diff-analyzer/
+Valid skill: terraform-azurerm-set-diff-analyzer
+✅ PASS
+---
+Validating: tldr-prompt/
+Valid skill: tldr-prompt
+✅ PASS
+---
+Validating: transloadit-media-processing/
+Valid skill: transloadit-media-processing
+✅ PASS
+---
+Validating: typescript-mcp-server-generator/
+Valid skill: typescript-mcp-server-generator
+✅ PASS
+---
+Validating: typespec-api-operations/
+Valid skill: typespec-api-operations
+✅ PASS
+---
+Validating: typespec-create-agent/
+Valid skill: typespec-create-agent
+✅ PASS
+---
+Validating: typespec-create-api-plugin/
+Valid skill: typespec-create-api-plugin
+✅ PASS
+---
+Validating: update-avm-modules-in-bicep/
+Valid skill: update-avm-modules-in-bicep
+✅ PASS
+---
+Validating: update-implementation-plan/
+Valid skill: update-implementation-plan
+✅ PASS
+---
+Validating: update-llms/
+Valid skill: update-llms
+✅ PASS
+---
+Validating: update-markdown-file-index/
+Valid skill: update-markdown-file-index
+✅ PASS
+---
+Validating: update-oo-component-documentation/
+Valid skill: update-oo-component-documentation
+✅ PASS
+---
+Validating: update-specification/
+Valid skill: update-specification
+✅ PASS
+---
+Validating: vscode-ext-commands/
+Valid skill: vscode-ext-commands
+✅ PASS
+---
+Validating: vscode-ext-localization/
+Valid skill: vscode-ext-localization
+✅ PASS
+---
+Validating: webapp-testing/
+Valid skill: webapp-testing
+✅ PASS
+---
+Validating: web-design-reviewer/
+Valid skill: web-design-reviewer
+✅ PASS
+---
+Validating: what-context-needed/
+Valid skill: what-context-needed
+✅ PASS
+---
+Validating: winapp-cli/
+Valid skill: winapp-cli
+✅ PASS
+---
+Validating: winmd-api-search/
+Valid skill: winmd-api-search
+✅ PASS
+---
+Validating: winui3-migration-guide/
+Valid skill: winui3-migration-guide
+✅ PASS
+---
+Validating: workiq-copilot/
+Valid skill: workiq-copilot
+✅ PASS
+---
+Validating: write-coding-standards-from-file/
+Valid skill: write-coding-standards-from-file
+✅ PASS
+---
+
+=== VALIDATION SUMMARY ===
+Valid skills: 207
+Invalid skills: 0
+Total: 207
