@@ -4,6 +4,17 @@ set -euo pipefail
 echo "🚀 AI Starter Kit - Codespace Setup"
 echo "======================================"
 
+# ── 0. GitHub token — prefer full PAT over limited Codespaces token ───────────
+# Codespaces auto-injects GITHUB_TOKEN (ghu_* limited scope) which overrides gh
+# CLI stored credentials. If a full PAT is available, use it instead.
+if [[ -n "${GITHUB_PERSONAL_ACCESS_TOKEN:-}" ]]; then
+  unset GITHUB_TOKEN
+  export GH_TOKEN="$GITHUB_PERSONAL_ACCESS_TOKEN"
+  echo "✅ Using GITHUB_PERSONAL_ACCESS_TOKEN for gh CLI (full scopes)"
+else
+  echo "⚠️ GITHUB_PERSONAL_ACCESS_TOKEN not set; gh CLI will use limited Codespaces token"
+fi
+
 # ── 1. Docker ─────────────────────────────────────────────────────────────────
 echo "✅ Checking Docker..."
 if command -v docker &>/dev/null; then
