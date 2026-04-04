@@ -182,7 +182,16 @@ echo "  (images pulling in background — run 'docker images' to check progress)
 
 # ── 10. Final summary ─────────────────────────────────────────────────────────
 echo ""
-echo "✅ Codespace Setup Complete! (with pip deps, ContextStream MCP, CodeQL)"
+echo "⚫ Installing Blackbox CLI..."
+bash scripts/install-blackbox.sh
+echo 'export PATH="$HOME/.blackboxai/bin:$PATH"' >> ~/.bashrc
+export PATH="$HOME/.blackboxai/bin:$PATH"
+if command -v blackbox >/dev/null 2>&1; then
+  echo "✅ Blackbox CLI ready (v$(blackbox --version | cut -d' ' -f2))"
+else
+  echo "⚠️ Blackbox CLI installed but not in PATH - restart terminal or source ~/.bashrc"
+fi
+echo "✅ Codespace Setup Complete! (with pip deps, ContextStream MCP, CodeQL, Blackbox)"
 echo "======================================"
 echo ""
 echo "📋 Quick-start commands:"

@@ -81,7 +81,8 @@
         "timonwong.shellcheck",
         "usernamehw.errorlens",
         "yzhang.markdown-all-in-one",
-        "digitarald.agent-memory"
+        "digitarald.agent-memory",
+        "blackbox.blackbox"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",

@@ -6,9 +6,10 @@
       "args": ["--prefer-online", "-y", "@contextstream/mcp-server@latest"],
       "env": {
         "CONTEXTSTREAM_API_URL": "https://api.contextstream.io",
-        "CONTEXTSTREAM_API_KEY": "cbiq_sWeB1_-Oj3cx-7nbKhAq3WcLQJQzm3rNd7Bh4coDpX0",
+        "CONTEXTSTREAM_API_KEY": "${env:CONTEXTSTREAM_API_KEY}",
         "CONTEXTSTREAM_CONTEXT_PACK": "true"
-      }
+      },
+      "envFile": "${workspaceFolder}/.env"
     },
     "n8n-docs": {
       "type": "http",
