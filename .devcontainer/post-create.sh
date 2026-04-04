@@ -6,8 +6,12 @@ echo "======================================"
 
 # ── 1. Docker ─────────────────────────────────────────────────────────────────
 echo "✅ Checking Docker..."
-docker --version
-docker compose --version
+if command -v docker &>/dev/null; then
+  docker --version
+  docker compose --version || true
+else
+  echo "⚠️ Docker not found; skipping Docker checks"
+fi
 
 # ── 2. .env file ─────────────────────────────────────────────────────────────
 if [ ! -f .env ]; then
@@ -123,7 +127,7 @@ if [ ! -d ~/codeql ]; then
   unzip -q codeql-linux64.zip
   rm codeql-linux64.zip
   mv codeql ~/codeql
-  echo 'export PATH=\"$HOME/codeql:$PATH\"' >> \"$HOME/.bashrc\"
+  echo 'export PATH="$HOME/codeql:$PATH"' >> "$HOME/.bashrc"
   export PATH=\"$HOME/codeql:$PATH\"
 fi
 echo 'alias codeql-analyze=\"codeql database create --overwrite --source-root=. codeql-db && codeql database analyze codeql-db --format=sarif-latest --output=results.sarif security-and-quality\"' >> ~/.bashrc
