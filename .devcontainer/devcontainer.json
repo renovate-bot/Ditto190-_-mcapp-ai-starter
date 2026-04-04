@@ -80,7 +80,8 @@
         "streetsidesoftware.code-spell-checker",
         "timonwong.shellcheck",
         "usernamehw.errorlens",
-        "yzhang.markdown-all-in-one"
+        "yzhang.markdown-all-in-one",
+        "digitarald.agent-memory"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",

@@ -19,6 +19,9 @@ else
   echo "⚠️ No GH_PAT or GITHUB_PERSONAL_ACCESS_TOKEN set; gh CLI will use Codespaces-injected token if available"
 fi
 
+# Configure git safe.directory for this workspace
+git config --global --add safe.directory /workspaces/mcapp-ai-starter || true
+
 # ── 1. Docker ─────────────────────────────────────────────────────────────────
 echo "✅ Checking Docker..."
 if command -v docker &>/dev/null; then
@@ -110,9 +113,17 @@ fi
 # ── NEW: ContextStream MCP setup ──────────────────────────────────────────────
 echo ""
 echo "🧠 Setting up ContextStream MCP..."
-# Use npx to run the setup and init commands to avoid relying on a global binary
-npx @contextstream/mcp-server@latest setup || true
-npx @contextstream/mcp-server@latest init --folder-path="$(pwd)" || true
+# Extract API key from .vscode/mcp.json if available, or use env var if provided
+if [ -f ".vscode/mcp.json" ] && command -v jq &>/dev/null; then
+  CONTEXTSTREAM_API_KEY=$(jq -r '.servers.contextstream.env.CONTEXTSTREAM_API_KEY // empty' .vscode/mcp.json)
+fi
+if [[ -n "${CONTEXTSTREAM_API_KEY:-}" ]]; then
+  export CONTEXTSTREAM_API_KEY
+  export CONTEXTSTREAM_API_URL="${CONTEXTSTREAM_API_URL:-https://api.contextstream.io}"
+  echo "  ✓ API key configured"
+fi
+# Initialize ContextStream for this workspace (non-interactive)
+npx @contextstream/mcp-server@latest init --folder-path="$(pwd)" 2>/dev/null || true
 echo "✅ ContextStream MCP ready"
 
 # ── 5. Git hooks ──────────────────────────────────────────────────────────────
