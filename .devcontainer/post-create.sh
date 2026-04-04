@@ -64,7 +64,10 @@ echo "✅ Node.js ready"
 echo ""
 echo "❄️ Setting up Nix..."
 if ! command -v nix &>/dev/null; then
-  curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
+  # || true: Determinate installer fails on systemd-tmpfiles in Codespaces/Docker;
+  # nix binary still installs successfully — don't abort the script.
+  curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm || \
+    echo "⚠️ Nix installer exited with errors (expected in Codespaces — nix may still work)"
 fi
 
 # Ensure nix profile is loaded in current shell (installer can require this)
