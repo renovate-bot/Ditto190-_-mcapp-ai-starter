@@ -4,11 +4,7 @@
   "title": "Hub Configuration Schema",
   "description": "JSON Schema for Prompt Registry hub configuration files",
   "type": "object",
-  "required": [
-    "version",
-    "metadata",
-    "sources"
-  ],
+  "required": ["version", "metadata", "sources"],
   "additionalProperties": false,
   "properties": {
     "version": {
@@ -19,12 +15,7 @@
     "metadata": {
       "type": "object",
       "description": "Hub metadata and descriptive information",
-      "required": [
-        "name",
-        "description",
-        "maintainer",
-        "updatedAt"
-      ],
+      "required": ["name", "description", "maintainer", "updatedAt"],
       "additionalProperties": false,
       "properties": {
         "name": {
@@ -62,12 +53,7 @@
       "description": "List of bundle sources available in this hub",
       "items": {
         "type": "object",
-        "required": [
-          "id",
-          "type",
-          "enabled",
-          "priority"
-        ],
+        "required": ["id", "type", "enabled", "priority"],
         "additionalProperties": true,
         "properties": {
           "id": {
@@ -166,12 +152,7 @@
       "default": [],
       "items": {
         "type": "object",
-        "required": [
-          "id",
-          "name",
-          "description",
-          "bundles"
-        ],
+        "required": ["id", "name", "description", "bundles"],
         "additionalProperties": true,
         "properties": {
           "id": {
@@ -217,12 +198,7 @@
             "minItems": 1,
             "items": {
               "type": "object",
-              "required": [
-                "id",
-                "version",
-                "source",
-                "required"
-              ],
+              "required": ["id", "version", "source", "required"],
               "additionalProperties": false,
               "properties": {
                 "id": {

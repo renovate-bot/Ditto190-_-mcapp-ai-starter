@@ -45,7 +45,8 @@ The `form` role should be used to identify a **region of the page** containing f
     name="username"
     autocomplete="nickname"
     autocorrect="off"
-    type="text" />
+    type="text"
+  />
 
   <label for="email">Email</label>
   <input
@@ -55,7 +56,8 @@ The `form` role should be used to identify a **region of the page** containing f
     autocapitalize="off"
     autocorrect="off"
     spellcheck="false"
-    type="text" />
+    type="text"
+  />
 
   <label for="comment">Comment</label>
   <textarea id="comment" name="comment"></textarea>

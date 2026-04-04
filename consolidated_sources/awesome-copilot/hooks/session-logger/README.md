@@ -1,7 +1,7 @@
 ---
-name: 'Session Logger'
-description: 'Logs all Copilot coding agent session activity for audit and analysis'
-tags: ['logging', 'audit', 'analytics']
+name: "Session Logger"
+description: "Logs all Copilot coding agent session activity for audit and analysis"
+tags: ["logging", "audit", "analytics"]
 ---
 
 # Session Logger Hook
@@ -11,6 +11,7 @@ Comprehensive logging for GitHub Copilot coding agent sessions, tracking session
 ## Overview
 
 This hook provides detailed logging of Copilot coding agent activity:
+
 - Session start/end times with working directory context
 - User prompt submission events
 - Configurable log levels
@@ -25,16 +26,19 @@ This hook provides detailed logging of Copilot coding agent activity:
 ## Installation
 
 1. Copy this hook folder to your repository's `.github/hooks/` directory:
+
    ```bash
    cp -r hooks/session-logger .github/hooks/
    ```
 
 2. Create the logs directory:
+
    ```bash
    mkdir -p logs/copilot
    ```
 
 3. Ensure scripts are executable:
+
    ```bash
    chmod +x .github/hooks/session-logger/*.sh
    ```

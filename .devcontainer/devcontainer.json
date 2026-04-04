@@ -5,6 +5,9 @@
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "version": "latest"
     },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    },
     "ghcr.io/devcontainers/features/python:1": {
       "version": "3.12",
       "installTools": true
@@ -13,7 +16,13 @@
       "version": "20"
     }
   },
-  "forwardPorts": [5678, 11434, 6333, 5432, 8080],
+  "forwardPorts": [
+    5678,
+    11434,
+    6333,
+    5432,
+    8080
+  ],
   "portsAttributes": {
     "5678": {
       "label": "n8n UI",
@@ -44,43 +53,36 @@
       "visibility": "private"
     }
   },
+  "initializeCommand": "npm install -g @contextstream/mcp-server@latest",
+  "onCreateCommand": "bash .devcontainer/pre-install.sh",
   "customizations": {
     "vscode": {
       "extensions": [
-        // --- Containers & Docker ---
-        "ms-vscode-remote.remote-containers",
-        "ms-azuretools.vscode-docker",
-        // --- Python ---
-        "ms-python.python",
-        "ms-python.debugpy",
-        "ms-python.pylint",
-        "ms-python.black-formatter",
         "charliermarsh.ruff",
-        // --- Node / JS / TS ---
-        "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
-        // --- AI & Copilot ---
+        "davidanson.vscode-markdownlint",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "foxundermoon.shell-format",
         "github.copilot",
         "github.copilot-chat",
-        // --- YAML & JSON ---
-        "redhat.vscode-yaml",
-        // --- Git & versioning ---
         "github.vscode-github-actions",
-        "eamodio.gitlens",
-        "mhutchie.git-graph",
-        // --- Env & secrets ---
-        "mikestead.dotenv",
-        // --- Shell scripting ---
-        "timonwong.shellcheck",
-        "foxundermoon.shell-format",
-        // --- REST & API testing ---
         "humao.rest-client",
-        // --- Markdown ---
-        "yzhang.markdown-all-in-one",
-        "davidanson.vscode-markdownlint",
-        // --- Productivity ---
+        "mhutchie.git-graph",
+        "mikestead.dotenv",
+        "ms-azuretools.vscode-docker",
+        "ms-python.black-formatter",
+        "ms-python.debugpy",
+        "ms-python.pylint",
+        "ms-python.python",
+        "ms-vscode-remote.remote-containers",
+        "redhat.vscode-yaml",
         "streetsidesoftware.code-spell-checker",
-        "usernamehw.errorlens"
+        "timonwong.shellcheck",
+        "usernamehw.errorlens",
+        "yzhang.markdown-all-in-one",
+        "digitarald.agent-memory",
+        "blackbox.blackbox"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
@@ -92,7 +94,7 @@
         "[python]": {
           "editor.defaultFormatter": "ms-python.black-formatter"
         },
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.defaultInterpreterPath": "/usr/bin/python3",
         "python.linting.enabled": true,
         "python.linting.pylintEnabled": true,
         "files.watcherExclude": {
@@ -123,7 +125,8 @@
     "OLLAMA_HOST": "ollama:11434",
     "QDRANT_HOST": "qdrant",
     "QDRANT_PORT": "6333",
-    "UV_SYSTEM_PYTHON": "1"
+    "UV_SYSTEM_PYTHON": "1",
+    "NIX_CONFIG": "experimental-features = nix-command flakes"
   },
   "hostRequirements": {
     "cpus": 4,
@@ -131,5 +134,9 @@
     "storage": "32gb"
   },
   "remoteUser": "root",
-  "privileged": true
+  "privileged": true,
+  "containerEnv": {
+    "PATH": "/usr/local/share/nvm/versions/node/v20/bin:/root/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "NVM_DIR": "/usr/local/share/nvm"
+  }
 }

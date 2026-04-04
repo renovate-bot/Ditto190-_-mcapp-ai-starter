@@ -8,14 +8,14 @@ A technical Markdown specification for **emulating the AS6C62256 / 62256-family 
 
 This document specifies functional behavior for emulating:
 
-* Alliance Memory **AS6C62256**
-* Compatible **62256 (32K x 8) SRAM** devices
+- Alliance Memory **AS6C62256**
+- Compatible **62256 (32K x 8) SRAM** devices
 
 Out of scope:
 
-* Analog electrical timing margins
-* Bus contention and signal rise/fall times
-* Power consumption characteristics
+- Analog electrical timing margins
+- Bus contention and signal rise/fall times
+- Power consumption characteristics
 
 ---
 
@@ -50,8 +50,8 @@ Out of scope:
 
 ## 4. Address Space Mapping
 
-* Address range: `0x0000-0x7FFF`
-* Address lines select one byte per address
+- Address range: `0x0000-0x7FFF`
+- Address lines select one byte per address
 
 ### Typical 6502 System Mapping Example
 
@@ -68,9 +68,9 @@ Out of scope:
 
 Conditions:
 
-* `CE# = 0`
-* `OE# = 0`
-* `WE# = 1`
+- `CE# = 0`
+- `OE# = 0`
+- `WE# = 1`
 
 Behavior:
 
@@ -86,8 +86,8 @@ If `OE# = 1` or `CE# = 1`, data bus is **high-impedance**.
 
 Conditions:
 
-* `CE# = 0`
-* `WE# = 0`
+- `CE# = 0`
+- `WE# = 0`
 
 Behavior:
 
@@ -95,8 +95,8 @@ Behavior:
 memory[A]  D[7:0]
 ```
 
-* `OE#` is ignored during writes
-* Write occurs on active WE#
+- `OE#` is ignored during writes
+- Write occurs on active WE#
 
 ---
 
@@ -150,13 +150,13 @@ For most systems, **functional emulation** is sufficient.
 
 ## 9. Power and Data Retention
 
-* SRAM contents persist as long as power is applied
-* Emulator shall retain contents until explicitly reset
+- SRAM contents persist as long as power is applied
+- Emulator shall retain contents until explicitly reset
 
 ### Reset Behavior
 
-* **No automatic clearing** on reset
-* Memory contents undefined unless initialized
+- **No automatic clearing** on reset
+- Memory contents undefined unless initialized
 
 ---
 
@@ -164,8 +164,8 @@ For most systems, **functional emulation** is sufficient.
 
 Optional advanced behavior:
 
-* Track when SRAM drives the data bus
-* Detect illegal simultaneous writes
+- Track when SRAM drives the data bus
+- Detect illegal simultaneous writes
 
 Most emulators may ignore Hi-Z state.
 
@@ -190,8 +190,8 @@ CPU memory access
       AS6C62256.read/write
 ```
 
-* SRAM access is typically single-cycle
-* No wait states required
+- SRAM access is typically single-cycle
+- No wait states required
 
 ---
 
@@ -199,15 +199,15 @@ CPU memory access
 
 ### Basic Tests
 
-* Write/read patterns
-* Boundary addresses ($0000, $7FFF)
-* Randomized memory tests
+- Write/read patterns
+- Boundary addresses ($0000, $7FFF)
+- Randomized memory tests
 
 ### Validation Checklist
 
-* Writes persist
-* Reads return correct values
-* Address wrapping correct
+- Writes persist
+- Reads return correct values
+- Address wrapping correct
 
 ---
 
@@ -223,8 +223,8 @@ CPU memory access
 
 ## 15. Reference Links
 
-* [Alliance Memory AS6C62256 Datasheet](https://www.alliancememory.com/wp-content/uploads/AS6C62256-23-March-2016-rev1.2.pdf)
-* [https://en.wikipedia.org/wiki/Static_random-access_memory](https://en.wikipedia.org/wiki/Static_random-access_memory)
+- [Alliance Memory AS6C62256 Datasheet](https://www.alliancememory.com/wp-content/uploads/AS6C62256-23-March-2016-rev1.2.pdf)
+- [https://en.wikipedia.org/wiki/Static_random-access_memory](https://en.wikipedia.org/wiki/Static_random-access_memory)
 
 ---
 

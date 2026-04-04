@@ -8,35 +8,41 @@ Professional financial ratio analysis for evaluating company performance, profit
 
 **Source**: Anthropic Claude Cookbooks  
 **License**: MIT  
-**Repository**: anthropics/claude-cookbooks  
+**Repository**: anthropics/claude-cookbooks
 
 ## Capabilities
 
 ### Profitability Analysis
+
 - Return on Equity (ROE) and Return on Assets (ROA)
 - Gross Margin, Operating Margin, Net Margin
 - EBITDA Margin calculations
 
 ### Liquidity Assessment
+
 - Current Ratio, Quick Ratio, Cash Ratio
 - Working Capital analysis
 
 ### Leverage & Solvency
+
 - Debt-to-Equity and Debt-to-Assets ratios
 - Interest Coverage Ratio
 - Debt Service Coverage
 
 ### Efficiency Metrics
+
 - Asset Turnover, Inventory Turnover
 - Receivables Turnover
 - Days Sales Outstanding (DSO)
 
 ### Valuation Metrics
+
 - Price-to-Earnings (P/E), Price-to-Book (P/B)
 - Price-to-Sales (P/S)
 - EV/EBITDA, PEG Ratio
 
 ### Trend Analysis
+
 - Multi-period ratio trends
 - Year-over-year comparisons
 - Trajectory identification
@@ -44,7 +50,9 @@ Professional financial ratio analysis for evaluating company performance, profit
 ## Key Components
 
 ### SKILL.md
+
 Comprehensive skill documentation including:
+
 - Financial ratio definitions and formulas
 - Input format specifications
 - Output format options
@@ -54,13 +62,16 @@ Comprehensive skill documentation including:
 ### Scripts
 
 #### calculate_ratios.py
+
 Main ratio calculation engine with:
+
 - `FinancialRatios` dataclass for structured results
 - `calculate_ratios()` function accepting income statement and balance sheet data
 - Support for stock price and historical data for trend analysis
 - Handles optional data gracefully
 
 **Usage**:
+
 ```python
 from calculate_ratios import calculate_ratios
 
@@ -80,6 +91,7 @@ print(f"ROA: {ratios.profitability['roa']:.2%}")
 ```
 
 **Test Output**:
+
 ```
 Financial Ratios Summary
 ==================================================
@@ -117,6 +129,7 @@ Valuation Ratios:
 ### Required Data
 
 **Income Statement**
+
 - Revenue
 - Cost of Goods Sold (COGS)
 - Gross Profit
@@ -127,6 +140,7 @@ Valuation Ratios:
 - Earnings Per Share (optional)
 
 **Balance Sheet**
+
 - Current Assets (Cash, A/R, Inventory, etc.)
 - Total Assets
 - Current Liabilities
@@ -137,6 +151,7 @@ Valuation Ratios:
 - Shares Outstanding (optional)
 
 ### Optional Data
+
 - Stock price (for valuation ratios)
 - Prior period financials (for trend analysis)
 - Industry benchmarks (for context)
@@ -144,7 +159,9 @@ Valuation Ratios:
 ## Output Formats
 
 ### Structured Results
+
 Python dataclass with nested dictionaries:
+
 - `profitability`: ROA, ROE, margins
 - `liquidity`: Current, Quick, Cash ratios
 - `leverage`: Debt ratios, coverage ratios
@@ -153,6 +170,7 @@ Python dataclass with nested dictionaries:
 - `trends`: Multi-period trend arrays
 
 ### Presentation Formats
+
 - **Ratio Summary**: Calculated values with descriptions
 - **Industry Comparison**: Peer benchmarking
 - **Trend Report**: Multi-year progression
@@ -161,6 +179,7 @@ Python dataclass with nested dictionaries:
 ## Integration Points
 
 ### With GitHub Copilot
+
 ```
 "Analyze these Q3 financials and calculate all key ratios"
 "Generate a 3-year trend analysis for these companies"
@@ -168,12 +187,14 @@ Python dataclass with nested dictionaries:
 ```
 
 ### With n8n Workflows
+
 - Read financial data from PostgreSQL
 - Calculate ratios in transformation nodes
 - Generate analysis reports
 - Create comparison tables
 
 ### With Claude
+
 - Financial statement analysis
 - Investment recommendation support
 - Merger & acquisition valuation
@@ -190,6 +211,7 @@ Python dataclass with nested dictionaries:
 ## Validation
 
 All scripts pass:
+
 - ✓ Type checking (mypy)
 - ✓ Linting (pylint/ruff)
 - ✓ Execution validation
@@ -203,6 +225,7 @@ Python 3.12+
 
 No external dependencies required for basic functionality.
 Optional for extended features:
+
 - pandas: Data manipulation
 - numpy: Numerical calculations
 - matplotlib: Visualization
@@ -216,6 +239,7 @@ Optional for extended features:
 ## Contributing
 
 This skill is maintained as part of the awesome-copilot library. Contributions should:
+
 - Follow the existing code structure
 - Include comprehensive docstrings
 - Add type hints to all functions

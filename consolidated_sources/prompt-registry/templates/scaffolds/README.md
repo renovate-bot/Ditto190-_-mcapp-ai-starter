@@ -31,12 +31,13 @@ The `github` scaffold type creates a complete project structure for sharing Copi
 - Comprehensive README with documentation
 
 **Usage:**
+
 ```typescript
-import { ScaffoldCommand, ScaffoldType } from './commands/ScaffoldCommand';
+import { ScaffoldCommand, ScaffoldType } from "./commands/ScaffoldCommand";
 
 const command = new ScaffoldCommand(undefined, ScaffoldType.GitHub);
-await command.execute('/path/to/new-project', {
-    projectName: 'My Awesome Project'
+await command.execute("/path/to/new-project", {
+  projectName: "My Awesome Project",
 });
 ```
 

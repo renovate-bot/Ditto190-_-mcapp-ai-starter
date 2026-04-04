@@ -1,180 +1,185 @@
 {
-    "version": "2.0.0",
-    "description": "GitHub Workflow Bundle Scaffold (uses @prompt-registry/collection-scripts npm package)",
-    "templates": {
-        "package-json": {
-            "path": "package.template.json",
-            "description": "Node.js package config with collection management scripts via npm package",
-            "required": true,
-            "variables": ["projectName", "author"]
-        },
-        "readme": {
-            "path": "README.template.md",
-            "description": "Project documentation with setup and usage instructions",
-            "required": true,
-            "variables": ["projectName"]
-        },
-        "gitignore": {
-            "path": ".gitignore.template",
-            "description": "Git ignore file for Node.js projects",
-            "required": true,
-            "variables": []
-        },
-        "publish-workflow": {
-            "path": "workflows/publish.template.yml",
-            "description": "GitHub Actions workflow for publishing collections",
-            "required": true,
-            "variables": ["githubRunner"]
-        },
-        "post-pr-comment-workflow": {
-            "path": "workflows/post-pr-comment.template.yml",
-            "description": "GitHub Actions workflow to post PR comments (supports fork PRs)",
-            "required": true,
-            "variables": ["githubRunner"]
-        },
-        "publish-common-action": {
-            "path": "actions/publish-common/action.yml",
-            "description": "Composite action for common publish setup",
-            "required": true,
-            "variables": []
-        },
-        "pr-comment-action": {
-            "path": "actions/pr-comment/action.yml",
-            "description": "Composite action to create or update PR comments",
-            "required": true,
-            "variables": []
-        },
-        "scripts-readme": {
-            "path": "scripts/README.md",
-            "description": "Documentation for scripts directory",
-            "required": true,
-            "variables": []
-        },
-        "example-collection": {
-            "path": "collections/example.collection.template.yml",
-            "description": "Example collection file",
-            "required": true,
-            "variables": ["collectionId", "projectName"]
-        },
-        "example-prompt": {
-            "path": "prompts/example.prompt.template.md",
-            "description": "Example prompt file",
-            "required": true,
-            "variables": ["projectName"]
-        },
-        "example-instruction": {
-            "path": "instructions/example.instructions.template.md",
-            "description": "Example instruction file",
-            "required": true,
-            "variables": []
-        },
-        "example-agent": {
-            "path": "agents/example.agent.template.md",
-            "description": "Example agent file",
-            "required": true,
-            "variables": ["projectName"]
-        },
-        "example-skill": {
-            "path": "skills/example-skill/SKILL.md",
-            "description": "Example agent skill (Code Review) following Agent Skills specification",
-            "required": true,
-            "variables": ["author"]
-        },
-        "example-skill-script": {
-            "path": "skills/example-skill/scripts/review-helper.sh",
-            "description": "Helper script for the code review skill",
-            "required": true,
-            "variables": []
-        },
-        "example-skill-checklist": {
-            "path": "skills/example-skill/references/CHECKLIST.md",
-            "description": "Code review checklist reference",
-            "required": true,
-            "variables": []
-        },
-        "example-skill-feedback": {
-            "path": "skills/example-skill/references/FEEDBACK.md",
-            "description": "Feedback guidelines reference",
-            "required": true,
-            "variables": []
-        },
-        "example-skill-templates": {
-            "path": "skills/example-skill/assets/comment-templates.md",
-            "description": "Comment templates for code reviews",
-            "required": true,
-            "variables": []
-        },
-        "vscode-settings": {
-            "path": ".vscode/settings.json",
-            "description": "VS Code workspace settings",
-            "required": true,
-            "variables": []
-        },
-        "vscode-extensions": {
-            "path": ".vscode/extensions.json",
-            "description": "VS Code recommended extensions",
-            "required": true,
-            "variables": []
-        },
-        "pre-commit-hook": {
-            "path": ".githooks/pre-commit",
-            "description": "Pre-commit hook for validation",
-            "required": true,
-            "variables": []
-        },
-        "contributing": {
-            "path": "CONTRIBUTING.template.md",
-            "description": "Contribution guidelines and process",
-            "required": true,
-            "variables": ["projectName", "githubOrg"]
-        },
-        "communication": {
-            "path": "COMMUNICATION.template.md",
-            "description": "Communication channels and guidelines",
-            "required": true,
-            "variables": ["projectName", "githubOrg", "internalContact"]
-        },
-        "code-of-conduct": {
-            "path": "CODE_OF_CONDUCT.template.md",
-            "description": "Community code of conduct",
-            "required": true,
-            "variables": ["projectName"]
-        },
-        "security": {
-            "path": "SECURITY.template.md",
-            "description": "Security policy and vulnerability reporting",
-            "required": true,
-            "variables": ["projectName", "internalContact"]
-        },
-        "license": {
-            "path": "LICENSE",
-            "description": "Internal Use License for InnerSource projects",
-            "required": true,
-            "variables": ["organizationName", "internalContact", "legalContact", "organizationPolicyLink"]
-        },
-        "issue-template-bug": {
-            "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
-            "description": "GitHub Issue template for bug reports",
-            "required": true,
-            "variables": []
-        },
-        "issue-template-feature": {
-            "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
-            "description": "GitHub Issue template for feature requests",
-            "required": true,
-            "variables": []
-        },
-        "issue-template-config": {
-            "path": ".github/ISSUE_TEMPLATE/config.yml",
-            "description": "GitHub Issue template configuration",
-            "required": true,
-            "variables": ["githubOrg", "projectName"]
-        },
-        "pr-template": {
-            "path": ".github/pull_request_template.md",
-            "description": "GitHub Pull Request template",
-            "required": true,
-            "variables": []
-        }
+  "version": "2.0.0",
+  "description": "GitHub Workflow Bundle Scaffold (uses @prompt-registry/collection-scripts npm package)",
+  "templates": {
+    "package-json": {
+      "path": "package.template.json",
+      "description": "Node.js package config with collection management scripts via npm package",
+      "required": true,
+      "variables": ["projectName", "author"]
+    },
+    "readme": {
+      "path": "README.template.md",
+      "description": "Project documentation with setup and usage instructions",
+      "required": true,
+      "variables": ["projectName"]
+    },
+    "gitignore": {
+      "path": ".gitignore.template",
+      "description": "Git ignore file for Node.js projects",
+      "required": true,
+      "variables": []
+    },
+    "publish-workflow": {
+      "path": "workflows/publish.template.yml",
+      "description": "GitHub Actions workflow for publishing collections",
+      "required": true,
+      "variables": ["githubRunner"]
+    },
+    "post-pr-comment-workflow": {
+      "path": "workflows/post-pr-comment.template.yml",
+      "description": "GitHub Actions workflow to post PR comments (supports fork PRs)",
+      "required": true,
+      "variables": ["githubRunner"]
+    },
+    "publish-common-action": {
+      "path": "actions/publish-common/action.yml",
+      "description": "Composite action for common publish setup",
+      "required": true,
+      "variables": []
+    },
+    "pr-comment-action": {
+      "path": "actions/pr-comment/action.yml",
+      "description": "Composite action to create or update PR comments",
+      "required": true,
+      "variables": []
+    },
+    "scripts-readme": {
+      "path": "scripts/README.md",
+      "description": "Documentation for scripts directory",
+      "required": true,
+      "variables": []
+    },
+    "example-collection": {
+      "path": "collections/example.collection.template.yml",
+      "description": "Example collection file",
+      "required": true,
+      "variables": ["collectionId", "projectName"]
+    },
+    "example-prompt": {
+      "path": "prompts/example.prompt.template.md",
+      "description": "Example prompt file",
+      "required": true,
+      "variables": ["projectName"]
+    },
+    "example-instruction": {
+      "path": "instructions/example.instructions.template.md",
+      "description": "Example instruction file",
+      "required": true,
+      "variables": []
+    },
+    "example-agent": {
+      "path": "agents/example.agent.template.md",
+      "description": "Example agent file",
+      "required": true,
+      "variables": ["projectName"]
+    },
+    "example-skill": {
+      "path": "skills/example-skill/SKILL.md",
+      "description": "Example agent skill (Code Review) following Agent Skills specification",
+      "required": true,
+      "variables": ["author"]
+    },
+    "example-skill-script": {
+      "path": "skills/example-skill/scripts/review-helper.sh",
+      "description": "Helper script for the code review skill",
+      "required": true,
+      "variables": []
+    },
+    "example-skill-checklist": {
+      "path": "skills/example-skill/references/CHECKLIST.md",
+      "description": "Code review checklist reference",
+      "required": true,
+      "variables": []
+    },
+    "example-skill-feedback": {
+      "path": "skills/example-skill/references/FEEDBACK.md",
+      "description": "Feedback guidelines reference",
+      "required": true,
+      "variables": []
+    },
+    "example-skill-templates": {
+      "path": "skills/example-skill/assets/comment-templates.md",
+      "description": "Comment templates for code reviews",
+      "required": true,
+      "variables": []
+    },
+    "vscode-settings": {
+      "path": ".vscode/settings.json",
+      "description": "VS Code workspace settings",
+      "required": true,
+      "variables": []
+    },
+    "vscode-extensions": {
+      "path": ".vscode/extensions.json",
+      "description": "VS Code recommended extensions",
+      "required": true,
+      "variables": []
+    },
+    "pre-commit-hook": {
+      "path": ".githooks/pre-commit",
+      "description": "Pre-commit hook for validation",
+      "required": true,
+      "variables": []
+    },
+    "contributing": {
+      "path": "CONTRIBUTING.template.md",
+      "description": "Contribution guidelines and process",
+      "required": true,
+      "variables": ["projectName", "githubOrg"]
+    },
+    "communication": {
+      "path": "COMMUNICATION.template.md",
+      "description": "Communication channels and guidelines",
+      "required": true,
+      "variables": ["projectName", "githubOrg", "internalContact"]
+    },
+    "code-of-conduct": {
+      "path": "CODE_OF_CONDUCT.template.md",
+      "description": "Community code of conduct",
+      "required": true,
+      "variables": ["projectName"]
+    },
+    "security": {
+      "path": "SECURITY.template.md",
+      "description": "Security policy and vulnerability reporting",
+      "required": true,
+      "variables": ["projectName", "internalContact"]
+    },
+    "license": {
+      "path": "LICENSE",
+      "description": "Internal Use License for InnerSource projects",
+      "required": true,
+      "variables": [
+        "organizationName",
+        "internalContact",
+        "legalContact",
+        "organizationPolicyLink"
+      ]
+    },
+    "issue-template-bug": {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "description": "GitHub Issue template for bug reports",
+      "required": true,
+      "variables": []
+    },
+    "issue-template-feature": {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "description": "GitHub Issue template for feature requests",
+      "required": true,
+      "variables": []
+    },
+    "issue-template-config": {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "description": "GitHub Issue template configuration",
+      "required": true,
+      "variables": ["githubOrg", "projectName"]
+    },
+    "pr-template": {
+      "path": ".github/pull_request_template.md",
+      "description": "GitHub Pull Request template",
+      "required": true,
+      "variables": []
     }
+  }
 }

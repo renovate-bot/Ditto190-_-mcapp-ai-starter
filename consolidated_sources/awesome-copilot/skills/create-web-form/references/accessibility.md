@@ -40,15 +40,15 @@ Key points:
 
 ### Beginner Tutorial Modules (MDN Learn Web Development)
 
-| Module | Description |
-|--------|-------------|
-| What is Accessibility? | Groups to consider, tools users rely on, workflow integration |
-| Accessibility Tooling and Assistive Technology | Tools for solving accessibility issues |
-| HTML: A Good Basis for Accessibility | Semantic markup and correct element usage |
-| CSS and JavaScript Best Practices | Accessible implementation of CSS and JS |
-| WAI-ARIA Basics | Adding semantics for complex UI controls and dynamic content |
-| Accessible Multimedia | Text alternatives for video, audio, and images |
-| Mobile Accessibility | iOS/Android tools and mobile-specific considerations |
+| Module                                         | Description                                                   |
+| ---------------------------------------------- | ------------------------------------------------------------- |
+| What is Accessibility?                         | Groups to consider, tools users rely on, workflow integration |
+| Accessibility Tooling and Assistive Technology | Tools for solving accessibility issues                        |
+| HTML: A Good Basis for Accessibility           | Semantic markup and correct element usage                     |
+| CSS and JavaScript Best Practices              | Accessible implementation of CSS and JS                       |
+| WAI-ARIA Basics                                | Adding semantics for complex UI controls and dynamic content  |
+| Accessible Multimedia                          | Text alternatives for video, audio, and images                |
+| Mobile Accessibility                           | iOS/Android tools and mobile-specific considerations          |
 
 ### Key Standards and Frameworks
 
@@ -86,31 +86,31 @@ Key points:
 
 ### How-to Guides
 
-| Guide | Provider | URL |
-|-------|----------|-----|
-| Accessibility for Teams | U.S. General Services Administration | https://digital.gov/guides/accessibility-for-teams/ |
-| Accessible Web Page Authoring | IBM | https://www.ibm.com/able/requirements/requirements/ |
+| Guide                         | Provider                             | URL                                                 |
+| ----------------------------- | ------------------------------------ | --------------------------------------------------- |
+| Accessibility for Teams       | U.S. General Services Administration | https://digital.gov/guides/accessibility-for-teams/ |
+| Accessible Web Page Authoring | IBM                                  | https://www.ibm.com/able/requirements/requirements/ |
 
 ### Automated Checking and Repair Tools
 
 #### Browser Extensions
 
-| Tool | URL |
-|------|-----|
-| HTML CodeSniffer | https://squizlabs.github.io/HTML_CodeSniffer/ |
-| aXe DevTools | Built into browser DevTools |
-| Lighthouse Accessibility Audit | Chrome DevTools integrated |
-| Accessibility Insights | https://accessibilityinsights.io/ |
-| WAVE | https://wave.webaim.org/extension/ |
+| Tool                           | URL                                           |
+| ------------------------------ | --------------------------------------------- |
+| HTML CodeSniffer               | https://squizlabs.github.io/HTML_CodeSniffer/ |
+| aXe DevTools                   | Built into browser DevTools                   |
+| Lighthouse Accessibility Audit | Chrome DevTools integrated                    |
+| Accessibility Insights         | https://accessibilityinsights.io/             |
+| WAVE                           | https://wave.webaim.org/extension/            |
 
 #### Build-Process / Programmatic Testing
 
-| Tool | Description |
-|------|-------------|
-| axe-core | Accessibility engine for automated testing (dequelabs/axe-core) |
-| eslint-plugin-jsx-a11y | ESLint plugin for JSX accessibility rules |
-| Lighthouse Audits | Programmable audit runner (GoogleChrome/lighthouse) |
-| AccessLint.js | Automated a11y linting library |
+| Tool                   | Description                                                     |
+| ---------------------- | --------------------------------------------------------------- |
+| axe-core               | Accessibility engine for automated testing (dequelabs/axe-core) |
+| eslint-plugin-jsx-a11y | ESLint plugin for JSX accessibility rules                       |
+| Lighthouse Audits      | Programmable audit runner (GoogleChrome/lighthouse)             |
+| AccessLint.js          | Automated a11y linting library                                  |
 
 #### Continuous Integration
 
@@ -140,12 +140,12 @@ Best practice: **Test with real users whenever possible.**
 
 ### Conditions Addressed
 
-| Condition | Common Triggers |
-|-----------|-----------------|
-| Vestibular Disorders | Motion, animations, parallax effects |
-| Seizure Disorders | Flashing (3+ per second), flickering, high-contrast color changes |
-| Photosensitivity | Color intensity, flashing, high contrast |
-| Traumatic Brain Injury (TBI) | High cognitive load from color processing |
+| Condition                    | Common Triggers                                                   |
+| ---------------------------- | ----------------------------------------------------------------- |
+| Vestibular Disorders         | Motion, animations, parallax effects                              |
+| Seizure Disorders            | Flashing (3+ per second), flickering, high-contrast color changes |
+| Photosensitivity             | Color intensity, flashing, high contrast                          |
+| Traumatic Brain Injury (TBI) | High cognitive load from color processing                         |
 
 ### CSS Media Feature: `prefers-reduced-motion`
 
@@ -169,19 +169,19 @@ CSS transition events that developers can listen to:
 
 ### Platform-Level Browser Controls
 
-| Platform | Setting | Notes |
-|----------|---------|-------|
-| Safari Desktop (10.1+) | Disable Auto-Play | Does not affect animated GIFs |
-| iOS Safari (10.3+) | Reduce Motion (OS Accessibility settings) | GIFs unaffected |
-| Firefox | `image.animation_mode` set to `"none"` | Disables all animated GIFs |
-| Reader Mode (various) | Content Blockers, text-to-speech, font/zoom | Reduces distractions |
+| Platform               | Setting                                     | Notes                         |
+| ---------------------- | ------------------------------------------- | ----------------------------- |
+| Safari Desktop (10.1+) | Disable Auto-Play                           | Does not affect animated GIFs |
+| iOS Safari (10.3+)     | Reduce Motion (OS Accessibility settings)   | GIFs unaffected               |
+| Firefox                | `image.animation_mode` set to `"none"`      | Disables all animated GIFs    |
+| Reader Mode (various)  | Content Blockers, text-to-speech, font/zoom | Reduces distractions          |
 
 ### Useful Browser Extensions
 
-| Extension | Purpose | Browser |
-|-----------|---------|---------|
-| Gif Blocker | Blocks all GIFs | Chrome |
-| Gif Scrubber | Pause/play/scrub GIFs like a video | Chrome |
+| Extension      | Purpose                                           | Browser               |
+| -------------- | ------------------------------------------------- | --------------------- |
+| Gif Blocker    | Blocks all GIFs                                   | Chrome                |
+| Gif Scrubber   | Pause/play/scrub GIFs like a video                | Chrome                |
 | Beeline Reader | Grayscale mode, dyslexia-friendly fonts, contrast | Chrome, Edge, Firefox |
 
 ### Operating System Accessibility Features
@@ -296,14 +296,14 @@ progressive enhancement for dynamic components.
 
 ### Common ARIA State Attributes
 
-| Attribute | Purpose |
-|-----------|---------|
-| `aria-checked` | State of checkbox or radio button |
-| `aria-disabled` | Visible but not editable/operable |
-| `aria-grabbed` | "Grabbed" state in drag-and-drop |
-| `aria-selected` | Selected state of an element |
+| Attribute       | Purpose                            |
+| --------------- | ---------------------------------- |
+| `aria-checked`  | State of checkbox or radio button  |
+| `aria-disabled` | Visible but not editable/operable  |
+| `aria-grabbed`  | "Grabbed" state in drag-and-drop   |
+| `aria-selected` | Selected state of an element       |
 | `aria-expanded` | Whether expandable content is open |
-| `aria-pressed` | Pressed state of a toggle button |
+| `aria-pressed`  | Pressed state of a toggle button   |
 
 Use ARIA states to indicate UI state and CSS attribute selectors to style
 accordingly.
@@ -344,13 +344,13 @@ entirely:
 
 ### Keyboard Navigation Best Practices
 
-| Key | Expected Behavior |
-|-----|-------------------|
-| Tab / Shift+Tab | Move focus into and out of the widget |
-| Arrow Keys | Navigate between items within the widget |
-| Enter / Spacebar | Activate the focused control |
-| Escape | Close menus or dialogs |
-| Home / End | Jump to first or last item |
+| Key              | Expected Behavior                        |
+| ---------------- | ---------------------------------------- |
+| Tab / Shift+Tab  | Move focus into and out of the widget    |
+| Arrow Keys       | Navigate between items within the widget |
+| Enter / Spacebar | Activate the focused control             |
+| Escape           | Close menus or dialogs                   |
+| Home / End       | Jump to first or last item               |
 
 Focus management considerations:
 
@@ -364,30 +364,30 @@ Focus management considerations:
 
 **Labeling and Description:**
 
-| Attribute | Usage |
-|-----------|-------|
-| `aria-label` | Direct text label |
-| `aria-labelledby` | References the element that labels this one |
-| `aria-describedby` | References additional descriptive text |
-| `aria-description` | Inline description text |
+| Attribute          | Usage                                       |
+| ------------------ | ------------------------------------------- |
+| `aria-label`       | Direct text label                           |
+| `aria-labelledby`  | References the element that labels this one |
+| `aria-describedby` | References additional descriptive text      |
+| `aria-description` | Inline description text                     |
 
 **Relationships:**
 
-| Attribute | Usage |
-|-----------|-------|
-| `aria-controls` | This element controls another element |
-| `aria-owns` | Establishes parent-child relationships |
-| `aria-flowto` | Defines logical reading order |
+| Attribute       | Usage                                  |
+| --------------- | -------------------------------------- |
+| `aria-controls` | This element controls another element  |
+| `aria-owns`     | Establishes parent-child relationships |
+| `aria-flowto`   | Defines logical reading order          |
 
 **Widget Behavior:**
 
-| Attribute | Usage |
-|-----------|-------|
-| `aria-haspopup` | Has a popup (menu, listbox, dialog, grid, tree) |
-| `aria-expanded` | Expandable content state (true/false) |
-| `aria-modal` | Modal dialog (true) |
-| `aria-live` | Live region announcements (polite, assertive, off) |
-| `aria-busy` | Loading or processing state (true/false) |
+| Attribute       | Usage                                              |
+| --------------- | -------------------------------------------------- |
+| `aria-haspopup` | Has a popup (menu, listbox, dialog, grid, tree)    |
+| `aria-expanded` | Expandable content state (true/false)              |
+| `aria-modal`    | Modal dialog (true)                                |
+| `aria-live`     | Live region announcements (polite, assertive, off) |
+| `aria-busy`     | Loading or processing state (true/false)           |
 
 ### Live Regions for Dynamic Content
 
@@ -467,9 +467,9 @@ WCAG 2.2 AA compliance.
 
 ```html
 <h1>Top level heading</h1>
-  <h2>Secondary heading</h2>
-  <h2>Another secondary heading</h2>
-    <h3>Low level heading</h3>
+<h2>Secondary heading</h2>
+<h2>Another secondary heading</h2>
+<h3>Low level heading</h3>
 ```
 
 **ARIA Landmark Roles:**
@@ -500,13 +500,13 @@ Use landmarks to describe app or document structure:
 
 ## Additional Resources
 
-| Resource | URL |
-|----------|-----|
-| W3C Accessibility Standards | https://www.w3.org/standards/webdesign/accessibility |
-| WAI Interest Group | https://www.w3.org/WAI/about/groups/waiig/ |
-| ARIA Specification | https://w3c.github.io/aria/ |
-| WAI-ARIA Authoring Practices | https://www.w3.org/WAI/ARIA/apg/ |
-| WCAG 2.1 Understanding Docs | https://www.w3.org/WAI/WCAG21/Understanding/ |
-| IBM Accessibility Requirements | https://www.ibm.com/able/requirements/requirements/ |
-| Accessibility Insights | https://accessibilityinsights.io/ |
-| WAVE Evaluation Tool | https://wave.webaim.org/extension/ |
+| Resource                       | URL                                                  |
+| ------------------------------ | ---------------------------------------------------- |
+| W3C Accessibility Standards    | https://www.w3.org/standards/webdesign/accessibility |
+| WAI Interest Group             | https://www.w3.org/WAI/about/groups/waiig/           |
+| ARIA Specification             | https://w3c.github.io/aria/                          |
+| WAI-ARIA Authoring Practices   | https://www.w3.org/WAI/ARIA/apg/                     |
+| WCAG 2.1 Understanding Docs    | https://www.w3.org/WAI/WCAG21/Understanding/         |
+| IBM Accessibility Requirements | https://www.ibm.com/able/requirements/requirements/  |
+| Accessibility Insights         | https://accessibilityinsights.io/                    |
+| WAVE Evaluation Tool           | https://wave.webaim.org/extension/                   |

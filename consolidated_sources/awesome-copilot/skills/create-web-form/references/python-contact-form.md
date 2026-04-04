@@ -61,44 +61,44 @@ if __name__ == '__main__':
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Contact Us</h1>
     <form method="POST" action="/contact">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required />
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-        </div>
-        <div>
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" required />
-        </div>
-        <div>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit">Send Message</button>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required />
+      </div>
+      <div>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit">Send Message</button>
     </form>
-</body>
+  </body>
 </html>
 ```
 
 ### Key HTML Form Attributes
 
-| Attribute  | Description |
-|------------|-------------|
+| Attribute  | Description                                                             |
+| ---------- | ----------------------------------------------------------------------- |
 | `method`   | HTTP method -- use `POST` for contact forms to keep data out of the URL |
-| `action`   | The server endpoint that processes the form data |
-| `required` | HTML5 attribute that enforces client-side validation |
-| `name`     | Identifies each field in the submitted form data |
+| `action`   | The server endpoint that processes the form data                        |
+| `required` | HTML5 attribute that enforces client-side validation                    |
+| `name`     | Identifies each field in the submitted form data                        |
 
 ---
 
@@ -138,10 +138,10 @@ def contact():
 
 Flask provides `request.form` to access submitted form data:
 
-| Method | Description |
-|--------|-------------|
-| `request.form['key']` | Raises `KeyError` if the key is missing |
-| `request.form.get('key')` | Returns `None` if the key is missing (safer) |
+| Method                               | Description                                   |
+| ------------------------------------ | --------------------------------------------- |
+| `request.form['key']`                | Raises `KeyError` if the key is missing       |
+| `request.form.get('key')`            | Returns `None` if the key is missing (safer)  |
 | `request.form.get('key', 'default')` | Returns a default value if the key is missing |
 
 ---
@@ -190,12 +190,12 @@ def send_email(name, email, subject, message):
 
 ### Common SMTP Server Settings
 
-| Provider | SMTP Server | Port (TLS) | Port (SSL) |
-|----------|-------------|------------|------------|
-| Gmail | `smtp.gmail.com` | 587 | 465 |
-| Outlook | `smtp-mail.outlook.com` | 587 | -- |
-| Yahoo | `smtp.mail.yahoo.com` | 587 | 465 |
-| Mailtrap (testing) | `sandbox.smtp.mailtrap.io` | 587 | 465 |
+| Provider           | SMTP Server                | Port (TLS) | Port (SSL) |
+| ------------------ | -------------------------- | ---------- | ---------- |
+| Gmail              | `smtp.gmail.com`           | 587        | 465        |
+| Outlook            | `smtp-mail.outlook.com`    | 587        | --         |
+| Yahoo              | `smtp.mail.yahoo.com`      | 587        | 465        |
+| Mailtrap (testing) | `sandbox.smtp.mailtrap.io` | 587        | 465        |
 
 ### Using Environment Variables for Credentials
 
@@ -372,8 +372,8 @@ In the template, include the CSRF token:
 
 ```html
 <form method="POST" action="/contact">
-    {{ form.hidden_tag() }}
-    <!-- form fields here -->
+  {{ form.hidden_tag() }}
+  <!-- form fields here -->
 </form>
 ```
 

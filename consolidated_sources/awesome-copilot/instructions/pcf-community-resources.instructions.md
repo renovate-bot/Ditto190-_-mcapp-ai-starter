@@ -1,6 +1,6 @@
 ---
-description: 'PCF community resources including gallery, videos, blogs, and development tools'
-applyTo: '**'
+description: "PCF community resources including gallery, videos, blogs, and development tools"
+applyTo: "**"
 ---
 
 # PCF Community Resources
@@ -14,6 +14,7 @@ The Power Apps Component Framework has a vibrant community that creates and shar
 The PCF Gallery is the central hub for discovering, sharing, and learning about PCF components.
 
 **What You'll Find:**
+
 - Community-created components
 - Component demonstrations and screenshots
 - Source code links
@@ -22,6 +23,7 @@ The PCF Gallery is the central hub for discovering, sharing, and learning about 
 - Search and filtering capabilities
 
 **How to Use:**
+
 - Browse components by category
 - Search for specific functionality
 - Download components for your projects
@@ -33,28 +35,34 @@ The PCF Gallery is the central hub for discovering, sharing, and learning about 
 Learn from expert developers through these comprehensive video tutorials:
 
 ### Getting Started
+
 - **Getting started with code components with OOB React and Fluent UI by PowerfulDevs** - Introduction to building components with React and Fluent UI
 - **Getting Started With Power Apps Component Framework by April Dunnam** - Beginner-friendly introduction to PCF
 
 ### Deep Dives
+
 - **Power Apps Component Framework Manifest File Explained by April Dunnam** - Detailed explanation of the manifest structure
 - **Easier Development with React Controls and Platform Libraries by Scott Durow** - Using React and platform-provided libraries
 - **Understanding the Power Apps Component Framework by PowerfulDevs** - Comprehensive overview of the framework
 
 ### Debugging & Development
+
 - **How to Debug Power Apps Component Framework Components by April Dunnam** - Debugging techniques and tools
 - **Using React and the Fluent UI in Power Apps Component Framework by Microsoft** - Official guidance on React/Fluent UI integration
 
 ### Advanced Topics
+
 - **Power Apps Component Framework: Datasets with React and Azure Maps by Nishant Rana** - Working with datasets and external APIs
 - **How to Upload and Display Images with Power Apps Component Framework by April Dunnam** - Image handling in components
 - **Deep Dive: Power Apps Component Framework API by PowerfulDevs** - Comprehensive API exploration
 
 ### Styling & Theming
+
 - **Using Fluent UI Components in Power Apps Component Framework by Sancho Harker** - Styling with Fluent UI
 - **Power Apps Component Framework: Styling and Theming by Microsoft** - Official theming guidance
 
 ### Additional Resources
+
 - **Power Apps Component Framework End to End Series by April Dunnam** - Complete walkthrough series
 - More videos available through community channels and Microsoft's official documentation
 
@@ -74,6 +82,7 @@ Stay updated with these excellent community blogs:
 10. **Ulrikke Akerbæk** - Canvas apps and PCF integration
 
 **Topics Covered:**
+
 - Component development tutorials
 - Best practices and patterns
 - Performance optimization
@@ -87,12 +96,14 @@ Stay updated with these excellent community blogs:
 ### PCF Builder for XrmToolBox
 
 **What It Does:**
+
 - Simplifies PCF component creation
 - Provides visual manifest editor
 - Generates boilerplate code
 - Streamlines component testing
 
 **Key Features:**
+
 - Visual manifest designer
 - Property configuration UI
 - Resource management
@@ -100,6 +111,7 @@ Stay updated with these excellent community blogs:
 - Integration with XrmToolBox ecosystem
 
 **Best For:**
+
 - Rapid prototyping
 - Learning PCF structure
 - Quick component setup
@@ -108,11 +120,13 @@ Stay updated with these excellent community blogs:
 ### PCF Builder for VS Code
 
 **What It Does:**
+
 - Integrates PCF development into Visual Studio Code
 - Provides IntelliSense and code completion
 - Simplifies workflow without leaving the editor
 
 **Key Features:**
+
 - VS Code extension
 - Command palette integration
 - Manifest schema validation
@@ -120,6 +134,7 @@ Stay updated with these excellent community blogs:
 - Integrated terminal commands
 
 **Best For:**
+
 - Developers who prefer VS Code
 - Streamlined workflow
 - Modern development experience
@@ -128,22 +143,26 @@ Stay updated with these excellent community blogs:
 ## How to Engage with the Community
 
 ### Contribute Components
+
 - Share your components on PCF Gallery
 - Publish source code on GitHub
 - Write blog posts about your implementation
 
 ### Learn from Others
+
 - Browse PCF Gallery for inspiration
 - Watch community videos for tutorials
 - Read blogs for best practices and tips
 
 ### Get Help
+
 - Microsoft Learn Q&A forums
 - Power Apps Community forums
 - GitHub repository issues and discussions
 - Twitter/LinkedIn Power Platform community
 
 ### Stay Updated
+
 - Follow community bloggers
 - Subscribe to YouTube channels
 - Join Power Platform user groups

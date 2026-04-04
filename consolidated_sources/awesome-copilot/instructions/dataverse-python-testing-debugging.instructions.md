@@ -1,5 +1,5 @@
 ---
-applyTo: '**'
+applyTo: "**"
 ---
 
 # Dataverse SDK for Python — Testing & Debugging Strategies
@@ -46,14 +46,14 @@ def mock_client():
 
 def test_create_account(mock_client):
     """Test account creation with mocked client."""
-    
+
     # Setup mock response
     mock_client.create.return_value = ["id-123"]
-    
+
     # Call function
     from my_app import create_account
     result = create_account(mock_client, {"name": "Acme"})
-    
+
     # Verify
     assert result == "id-123"
     mock_client.create.assert_called_once_with("account", {"name": "Acme"})
@@ -61,14 +61,14 @@ def test_create_account(mock_client):
 def test_create_account_error(mock_client):
     """Test error handling in account creation."""
     from PowerPlatform.Dataverse.core.errors import DataverseError
-    
+
     # Setup mock to raise error
     mock_client.create.side_effect = DataverseError(
         message="Account exists",
         code="validation_error",
         status_code=400
     )
-    
+
     # Verify error is raised
     from my_app import create_account
     with pytest.raises(DataverseError):
@@ -116,16 +116,16 @@ def test_process_accounts(mock_client, sample_accounts):
 ```python
 def test_pagination(mock_client, sample_accounts):
     """Test handling paginated results."""
-    
+
     # Mock returns generator with pages
     mock_client.get.return_value = iter([
         sample_accounts[:2],  # Page 1
         sample_accounts[2:]   # Page 2
     ])
-    
+
     from my_app import process_all_accounts
     result = process_all_accounts(mock_client)
-    
+
     assert len(result) == 3  # All pages processed
 ```
 
@@ -134,18 +134,18 @@ def test_pagination(mock_client, sample_accounts):
 ```python
 def test_bulk_create(mock_client):
     """Test bulk account creation."""
-    
+
     payloads = [
         {"name": "Account 1"},
         {"name": "Account 2"},
     ]
-    
+
     # Mock returns list of IDs
     mock_client.create.return_value = ["id-1", "id-2"]
-    
+
     from my_app import create_accounts
     ids = create_accounts(mock_client, payloads)
-    
+
     assert len(ids) == 2
     mock_client.create.assert_called_once_with("account", payloads)
 ```
@@ -156,7 +156,7 @@ def test_bulk_create(mock_client):
 def test_rate_limiting_retry(mock_client):
     """Test retry logic on rate limiting."""
     from PowerPlatform.Dataverse.core.errors import DataverseError
-    
+
     # Mock fails then succeeds
     error = DataverseError(
         message="Too many requests",
@@ -165,10 +165,10 @@ def test_rate_limiting_retry(mock_client):
         is_transient=True
     )
     mock_client.create.side_effect = [error, ["id-123"]]
-    
+
     from my_app import create_with_retry
     result = create_with_retry(mock_client, "account", {})
-    
+
     assert result == "id-123"
     assert mock_client.create.call_count == 2  # Retried
 ```
@@ -197,18 +197,18 @@ def dataverse_client():
 @pytest.mark.integration
 def test_create_and_retrieve_account(dataverse_client):
     """Test creating and retrieving account (against real Dataverse)."""
-    
+
     # Create
     account_id = dataverse_client.create("account", {
         "name": "Test Account"
     })[0]
-    
+
     # Retrieve
     account = dataverse_client.get("account", account_id)
-    
+
     # Verify
     assert account["name"] == "Test Account"
-    
+
     # Cleanup
     dataverse_client.delete("account", account_id)
 ```
@@ -222,13 +222,13 @@ import pytest
 @pytest.fixture(scope="function")
 def test_account(dataverse_client):
     """Create test account, cleanup after test."""
-    
+
     account_id = dataverse_client.create("account", {
         "name": "Test Account"
     })[0]
-    
+
     yield account_id
-    
+
     # Cleanup
     try:
         dataverse_client.delete("account", account_id)
@@ -239,7 +239,7 @@ def test_account(dataverse_client):
 def test_update_account(dataverse_client, test_account):
     """Test updating account."""
     dataverse_client.update("account", test_account, {"telephone1": "555-0100"})
-    
+
     account = dataverse_client.get("account", test_account)
     assert account["telephone1"] == "555-0100"
 ```
@@ -345,9 +345,9 @@ logging.getLogger('azure').setLevel(logging.DEBUG)
 def test_with_logging(mock_client):
     logger = logging.getLogger(__name__)
     logger.debug("Starting test")
-    
+
     result = my_function(mock_client)
-    
+
     logger.debug(f"Result: {result}")
 ```
 
@@ -373,16 +373,16 @@ import time
 
 def test_bulk_create_performance(dataverse_client):
     """Test bulk create performance."""
-    
+
     payloads = [{"name": f"Account {i}"} for i in range(1000)]
-    
+
     start = time.time()
     ids = dataverse_client.create("account", payloads)
     duration = time.time() - start
-    
+
     assert len(ids) == 1000
     assert duration < 10  # Should complete in under 10 seconds
-    
+
     print(f"Created 1000 records in {duration:.2f}s ({1000/duration:.0f} records/s)")
 ```
 
@@ -395,10 +395,10 @@ pip install pytest-benchmark
 ```python
 def test_query_performance(benchmark, dataverse_client):
     """Benchmark query performance."""
-    
+
     def get_accounts():
         return list(dataverse_client.get("account", top=100))
-    
+
     result = benchmark(get_accounts)
     assert len(result) <= 100
 ```
@@ -413,20 +413,20 @@ def test_query_performance(benchmark, dataverse_client):
 def test_retry_on_transient_error(mock_client):
     """Test retry on transient error."""
     from PowerPlatform.Dataverse.core.errors import DataverseError
-    
+
     error = DataverseError(
         message="Timeout",
         code="http_error",
         status_code=408,
         is_transient=True
     )
-    
+
     # Fail then succeed
     mock_client.create.side_effect = [error, ["id-123"]]
-    
+
     from my_app import create_with_retry
     result = create_with_retry(mock_client, "account", {})
-    
+
     assert result == "id-123"
 ```
 
@@ -436,7 +436,7 @@ def test_retry_on_transient_error(mock_client):
 def test_filter_builder():
     """Test OData filter generation."""
     from my_app import build_account_filter
-    
+
     # Test cases
     assert build_account_filter(status="active") == "statecode eq 0"
     assert build_account_filter(name="Acme") == "contains(name, 'Acme')"
@@ -450,16 +450,16 @@ def test_filter_builder():
 def test_handles_missing_record(mock_client):
     """Test handling 404 errors."""
     from PowerPlatform.Dataverse.core.errors import DataverseError
-    
+
     mock_client.get.side_effect = DataverseError(
         message="Not found",
         code="http_error",
         status_code=404
     )
-    
+
     from my_app import get_account_safe
     result = get_account_safe(mock_client, "invalid-id")
-    
+
     assert result is None  # Returns None instead of raising
 ```
 
@@ -467,14 +467,14 @@ def test_handles_missing_record(mock_client):
 
 ## 10. Debugging Checklist
 
-| Issue | Debug Steps |
-|-------|-------------|
-| Test fails unexpectedly | Add `-s` flag to see print output |
-| Mock not called | Check method name/parameters match exactly |
-| Real API failing | Check credentials, URL, permissions |
-| Rate limiting in tests | Add delays or use smaller batches |
-| Data not found | Verify record created and not cleaned up |
-| Assertion errors | Print actual vs expected values |
+| Issue                   | Debug Steps                                |
+| ----------------------- | ------------------------------------------ |
+| Test fails unexpectedly | Add `-s` flag to see print output          |
+| Mock not called         | Check method name/parameters match exactly |
+| Real API failing        | Check credentials, URL, permissions        |
+| Rate limiting in tests  | Add delays or use smaller batches          |
+| Data not found          | Verify record created and not cleaned up   |
+| Assertion errors        | Print actual vs expected values            |
 
 ---
 

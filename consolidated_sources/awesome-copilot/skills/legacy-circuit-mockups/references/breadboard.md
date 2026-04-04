@@ -10,17 +10,17 @@ A **solderless breadboard** is a reusable prototyping platform that allows elect
 
 ### Typical Uses
 
-* Rapid circuit prototyping
-* Educational labs
-* Logic and microcontroller experiments
-* Low-power analog and digital circuits
+- Rapid circuit prototyping
+- Educational labs
+- Logic and microcontroller experiments
+- Low-power analog and digital circuits
 
 ### Not Suitable For
 
-* High current (>1A)
-* High voltage (>36V)
-* RF / high-frequency designs
-* Vibration-prone or permanent installations
+- High current (>1A)
+- High voltage (>36V)
+- RF / high-frequency designs
+- Vibration-prone or permanent installations
 
 ---
 
@@ -28,13 +28,13 @@ A **solderless breadboard** is a reusable prototyping platform that allows elect
 
 ### Materials
 
-* ABS or polystyrene body
-* Phosphor bronze or nickel-plated spring contacts
-* Adhesive backing (optional)
+- ABS or polystyrene body
+- Phosphor bronze or nickel-plated spring contacts
+- Adhesive backing (optional)
 
 ### Standard Hole Pitch
 
-* **2.54 mm (0.1 in)** - compatible with DIP ICs and standard headers
+- **2.54 mm (0.1 in)** - compatible with DIP ICs and standard headers
 
 ### Contact Characteristics
 
@@ -50,9 +50,9 @@ A **solderless breadboard** is a reusable prototyping platform that allows elect
 
 ### Terminal Strips (Main Area)
 
-* Rows of **5 interconnected holes**
-* Horizontal connectivity
-* Center trench isolates left and right halves
+- Rows of **5 interconnected holes**
+- Horizontal connectivity
+- Center trench isolates left and right halves
 
 ```
 A B C D E | F G H I J
@@ -62,9 +62,9 @@ Connected | Connected
 
 ### Power Rails
 
-* Vertical buses on each side
-* Often **split in the middle** (not always continuous)
-* Usually marked **red (+)** and **blue (-)**
+- Vertical buses on each side
+- Often **split in the middle** (not always continuous)
+- Usually marked **red (+)** and **blue (-)**
 
 ```
 +  +  +  +  +   (may be split)
@@ -90,12 +90,12 @@ Connected | Connected
 
 ### Compatible Components
 
-* DIP ICs (300 mil, 600 mil)
-* Axial resistors and diodes
-* LEDs
-* Tactile switches
-* Jumper wires
-* Pin headers
+- DIP ICs (300 mil, 600 mil)
+- Axial resistors and diodes
+- LEDs
+- Tactile switches
+- Jumper wires
+- Pin headers
 
 ### Problematic Components
 
@@ -131,23 +131,22 @@ Connected | Connected
 
 ### Power Distribution
 
-* Run **ground and Vcc** to both sides
-* Bridge split power rails if needed
-* Decouple ICs with **0.1µF ceramic capacitors**
+- Run **ground and Vcc** to both sides
+- Bridge split power rails if needed
+- Decouple ICs with **0.1µF ceramic capacitors**
 
 ### Wiring
 
-* Keep wires short and tidy
-* Use color coding:
-
-  * Red: Vcc
-  * Black/Blue: GND
-  * Yellow/White: Signals
+- Keep wires short and tidy
+- Use color coding:
+  - Red: Vcc
+  - Black/Blue: GND
+  - Yellow/White: Signals
 
 ### IC Placement
 
-* Place DIP ICs **straddling the center trench**
-* Avoid forcing pins
+- Place DIP ICs **straddling the center trench**
+- Avoid forcing pins
 
 ---
 
@@ -166,14 +165,13 @@ Connected | Connected
 
 ### Continuity Check
 
-* Verify rails and rows using a multimeter
+- Verify rails and rows using a multimeter
 
 ### Signal Integrity Tips
 
-* Avoid breadboards for:
-
-  * High-speed clocks
-  * ADC precision circuits
+- Avoid breadboards for:
+  - High-speed clocks
+  - ADC precision circuits
 
 ---
 
@@ -203,9 +201,9 @@ Connected | Connected
 
 ## 12. Reference Links
 
-* [https://en.wikipedia.org/wiki/Breadboard](https://en.wikipedia.org/wiki/Breadboard)
-* [https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard)
-* [https://www.allaboutcircuits.com/technical-articles/using-a-breadboard/](https://www.allaboutcircuits.com/technical-articles/using-a-breadboard/)
+- [https://en.wikipedia.org/wiki/Breadboard](https://en.wikipedia.org/wiki/Breadboard)
+- [https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard)
+- [https://www.allaboutcircuits.com/technical-articles/using-a-breadboard/](https://www.allaboutcircuits.com/technical-articles/using-a-breadboard/)
 
 ---
 

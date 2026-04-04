@@ -10,7 +10,7 @@ sources:
     type: "local"
     location: "../../../../etc/passwd"
     enabled: true
-    
+
   - id: "malicious-url"
     type: "url"
     repository: "ftp://malicious.com/exploit.yml"

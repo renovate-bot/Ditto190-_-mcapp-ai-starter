@@ -1,6 +1,6 @@
 ---
-description: 'Guidelines for building Spring Boot base applications'
-applyTo: '**/*.java, **/*.kt'
+description: "Guidelines for building Spring Boot base applications"
+applyTo: "**/*.java, **/*.kt"
 ---
 
 # Spring Boot Development
@@ -59,10 +59,10 @@ applyTo: '**/*.java, **/*.kt'
 
 ## Useful Commands
 
-| Gradle Command            | Maven Command                     | Description                                   |
-|:--------------------------|:----------------------------------|:----------------------------------------------|
-| `./gradlew bootRun`       |`./mvnw spring-boot:run`           | Run the application.                          |
-| `./gradlew build`         |`./mvnw package`                   | Build the application.                        |
-| `./gradlew test`          |`./mvnw test`                      | Run tests.                                    |
-| `./gradlew bootJar`       |`./mvnw spring-boot:repackage`     | Package the application as a JAR.             |
-| `./gradlew bootBuildImage`|`./mvnw spring-boot:build-image`   | Package the application as a container image. |
+| Gradle Command             | Maven Command                    | Description                                   |
+| :------------------------- | :------------------------------- | :-------------------------------------------- |
+| `./gradlew bootRun`        | `./mvnw spring-boot:run`         | Run the application.                          |
+| `./gradlew build`          | `./mvnw package`                 | Build the application.                        |
+| `./gradlew test`           | `./mvnw test`                    | Run tests.                                    |
+| `./gradlew bootJar`        | `./mvnw spring-boot:repackage`   | Package the application as a JAR.             |
+| `./gradlew bootBuildImage` | `./mvnw spring-boot:build-image` | Package the application as a container image. |

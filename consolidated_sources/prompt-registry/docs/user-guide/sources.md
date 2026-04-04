@@ -10,16 +10,16 @@ If you select a hub during first-run setup, all sources defined in that hub are 
 
 ## Source Types
 
-| Type | Use Case | Status |
-|------|----------|--------|
-| `awesome-copilot` | Community collections (GitHub-hosted) | Active |
-| `local-awesome-copilot` | Local collection development/testing | Active |
-| `github` | GitHub repository releases | Active |
-| `local` | File system directories | Active |
-| `apm` | APM package repositories | Active |
-| `local-apm` | Local APM packages | Active |
-| `gitlab` | GitLab repository releases | ⚠️ Deprecated |
-| `http` | HTTP/HTTPS bundle URLs | ⚠️ Deprecated |
+| Type                    | Use Case                              | Status        |
+| ----------------------- | ------------------------------------- | ------------- |
+| `awesome-copilot`       | Community collections (GitHub-hosted) | Active        |
+| `local-awesome-copilot` | Local collection development/testing  | Active        |
+| `github`                | GitHub repository releases            | Active        |
+| `local`                 | File system directories               | Active        |
+| `apm`                   | APM package repositories              | Active        |
+| `local-apm`             | Local APM packages                    | Active        |
+| `gitlab`                | GitLab repository releases            | ⚠️ Deprecated |
+| `http`                  | HTTP/HTTPS bundle URLs                | ⚠️ Deprecated |
 
 > **Deprecation Notice:** The `gitlab` and `http` source types are deprecated and will be removed in a future release. Migrate to `github` or `awesome-copilot` sources.
 
@@ -30,6 +30,7 @@ If you select a hub during first-run setup, all sources defined in that hub are 
 ## Managing Sources
 
 In Registry Explorer:
+
 - **Sync** — Right-click → Sync Source
 - **Edit** — Right-click → Edit Source
 - **Toggle** — Right-click → Toggle Enabled/Disabled
@@ -37,6 +38,7 @@ In Registry Explorer:
 - **Open Repository** — Right-click → Open Repository
 
 Command Palette:
+
 - **Sync All Sources** — `Ctrl+Shift+P` → "Prompt Registry: Sync All Sources"
 
 ## Skill Update Detection
@@ -49,6 +51,7 @@ Command Palette:
 ## Private Repositories
 
 Authentication tries in order:
+
 1. **VS Code GitHub Auth** — Check bottom-left for GitHub avatar
 2. **GitHub CLI** — Run `gh auth login`
 3. **Explicit Token** — Add when editing source (needs `repo` scope)

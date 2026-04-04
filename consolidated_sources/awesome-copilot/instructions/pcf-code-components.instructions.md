@@ -1,6 +1,6 @@
 ---
-description: 'Understanding code components structure and implementation'
-applyTo: '**/*.{ts,tsx,js,json,xml,pcfproj,csproj}'
+description: "Understanding code components structure and implementation"
+applyTo: "**/*.{ts,tsx,js,json,xml,pcfproj,csproj}"
 ---
 
 # Code Components
@@ -56,6 +56,7 @@ var obj = new <"namespace on manifest">.<"constructor on manifest">();
 ```
 
 Example:
+
 ```typescript
 var controlObj = new SampleNameSpace.LinearInputComponent();
 ```
@@ -68,12 +69,12 @@ controlObj.init(context, notifyOutputChanged, state, container);
 
 **Init Parameters:**
 
-| Parameter | Description |
-|-----------|-------------|
-| `context` | Contains all information about how the component is configured and all parameters. Access input properties via `context.parameters.<property name from manifest>`. Includes Power Apps component framework APIs. |
-| `notifyOutputChanged` | Alerts the framework whenever the component has new outputs ready to be retrieved asynchronously. |
-| `state` | Contains component data from the previous page load if explicitly stored using `setControlState` method. |
-| `container` | An HTML div element to which developers can append HTML elements for the UI. |
+| Parameter             | Description                                                                                                                                                                                                      |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `context`             | Contains all information about how the component is configured and all parameters. Access input properties via `context.parameters.<property name from manifest>`. Includes Power Apps component framework APIs. |
+| `notifyOutputChanged` | Alerts the framework whenever the component has new outputs ready to be retrieved asynchronously.                                                                                                                |
+| `state`               | Contains component data from the previous page load if explicitly stored using `setControlState` method.                                                                                                         |
+| `container`           | An HTML div element to which developers can append HTML elements for the UI.                                                                                                                                     |
 
 #### User Changes Data
 
@@ -88,6 +89,7 @@ If the platform changes the data, it calls the `updateView` method of the compon
 When a user navigates away from the page, the code component loses scope and all memory allocated for objects is cleared. However, some methods (like event handlers) may stay and consume memory based on browser implementation.
 
 **Best Practices:**
+
 - Implement the `setControlState` method to store information for the next time within the same session
 - Implement the `destroy` method to remove cleanup code such as event handlers when the page closes
 

@@ -10,48 +10,50 @@ These are the coding and design guidelines and instructions for WinForms Expert 
 When customer asks/requests will require the creation of new projects
 
 **New Projects:**
-* Prefer .NET 10+. Note: MVVM Binding requires .NET 8+.
-* Prefer `Application.SetColorMode(SystemColorMode.System);` in `Program.cs` at application startup for DarkMode support (.NET 9+).
-* Make Windows API projection available by default. Assume 10.0.22000.0 as minimum Windows version requirement.
+
+- Prefer .NET 10+. Note: MVVM Binding requires .NET 8+.
+- Prefer `Application.SetColorMode(SystemColorMode.System);` in `Program.cs` at application startup for DarkMode support (.NET 9+).
+- Make Windows API projection available by default. Assume 10.0.22000.0 as minimum Windows version requirement.
+
 ```xml
     <TargetFramework>net10.0-windows10.0.22000.0</TargetFramework>
 ```
 
 **Critical:**
 
-**📦 NUGET:** New projects or supporting class libraries often need special NuGet packages. 
+**📦 NUGET:** New projects or supporting class libraries often need special NuGet packages.
 Follow these rules strictly:
- 
-* Prefer well-known, stable, and widely adopted NuGet packages - compatible with the project's TFM.
-* Define the versions to the latest STABLE major version, e.g.: `[2.*,)`
 
-**⚙️ Configuration and App-wide HighDPI settings:** *app.config* files are discouraged for configuration for .NET.
-For setting the HighDpiMode, use e.g. `Application.SetHighDpiMode(HighDpiMode.SystemAware)` at application startup, not *app.config* nor *manifest* files.
+- Prefer well-known, stable, and widely adopted NuGet packages - compatible with the project's TFM.
+- Define the versions to the latest STABLE major version, e.g.: `[2.*,)`
+
+**⚙️ Configuration and App-wide HighDPI settings:** _app.config_ files are discouraged for configuration for .NET.
+For setting the HighDpiMode, use e.g. `Application.SetHighDpiMode(HighDpiMode.SystemAware)` at application startup, not _app.config_ nor _manifest_ files.
 
 Note: `SystemAware` is standard for .NET, use `PerMonitorV2` when explicitly requested.
 
 **VB Specifics:**
-- In VB, do NOT create a *Program.vb* - rather use the VB App Framework.
-- For the specific settings, make sure the VB code file *ApplicationEvents.vb* is available. 
+
+- In VB, do NOT create a _Program.vb_ - rather use the VB App Framework.
+- For the specific settings, make sure the VB code file _ApplicationEvents.vb_ is available.
   Handle the `ApplyApplicationDefaults` event there and use the passed EventArgs to set the App defaults via its properties.
 
-| Property | Type | Purpose | 
-|----------|------|---------|
-| ColorMode | `SystemColorMode` | DarkMode setting for the application. Prefer `System`. Other options: `Dark`, `Classic`. |
-| Font | `Font` | Default Font for the whole Application. |	
-| HighDpiMode | `HighDpiMode` | `SystemAware` is default. `PerMonitorV2` only when asked for HighDPI Multi-Monitor scenarios. |
+| Property    | Type              | Purpose                                                                                       |
+| ----------- | ----------------- | --------------------------------------------------------------------------------------------- |
+| ColorMode   | `SystemColorMode` | DarkMode setting for the application. Prefer `System`. Other options: `Dark`, `Classic`.      |
+| Font        | `Font`            | Default Font for the whole Application.                                                       |
+| HighDpiMode | `HighDpiMode`     | `SystemAware` is default. `PerMonitorV2` only when asked for HighDPI Multi-Monitor scenarios. |
 
 ---
 
-
 ## 🎯 Critical Generic WinForms Issue: Dealing with Two Code Contexts
 
-| Context | Files/Location | Language Level | Key Rule |
-|---------|----------------|----------------|----------|
-| **Designer Code** | *.designer.cs*, inside `InitializeComponent` | Serialization-centric (assume C# 2.0 language features) | Simple, predictable, parsable |
-| **Regular Code** | *.cs* files, event handlers, business logic | Modern C# 11-14 | Use ALL modern features aggressively |
+| Context           | Files/Location                               | Language Level                                          | Key Rule                             |
+| ----------------- | -------------------------------------------- | ------------------------------------------------------- | ------------------------------------ |
+| **Designer Code** | _.designer.cs_, inside `InitializeComponent` | Serialization-centric (assume C# 2.0 language features) | Simple, predictable, parsable        |
+| **Regular Code**  | _.cs_ files, event handlers, business logic  | Modern C# 11-14                                         | Use ALL modern features aggressively |
 
-**Decision:** In *.designer.cs* or `InitializeComponent` → Designer rules. Otherwise → Modern C# rules.
+**Decision:** In _.designer.cs_ or `InitializeComponent` → Designer rules. Otherwise → Modern C# rules.
 
 ---
 
@@ -61,16 +63,16 @@ Note: `SystemAware` is standard for .NET, use `PerMonitorV2` when explicitly req
 
 ### ❌ Prohibited in InitializeComponent
 
-| Category | Prohibited | Why |
-|----------|-----------|-----|
-| Control Flow | `if`, `for`, `foreach`, `while`, `goto`, `switch`, `try`/`catch`, `lock`, `await`, VB: `On Error`/`Resume` | Designer cannot parse |
-| Operators | `? :` (ternary), `??`/`?.`/`?[]` (null coalescing/conditional), `nameof()` | Not in serialization format |
-| Functions | Lambdas, local functions, collection expressions (`...=[]` or `...=[1,2,3]`) | Breaks Designer parser |
-| Backing fields | Only add variables with class field scope to ControlCollections, never local variables! | Designer cannot parse |
+| Category       | Prohibited                                                                                                 | Why                         |
+| -------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------- |
+| Control Flow   | `if`, `for`, `foreach`, `while`, `goto`, `switch`, `try`/`catch`, `lock`, `await`, VB: `On Error`/`Resume` | Designer cannot parse       |
+| Operators      | `? :` (ternary), `??`/`?.`/`?[]` (null coalescing/conditional), `nameof()`                                 | Not in serialization format |
+| Functions      | Lambdas, local functions, collection expressions (`...=[]` or `...=[1,2,3]`)                               | Breaks Designer parser      |
+| Backing fields | Only add variables with class field scope to ControlCollections, never local variables!                    | Designer cannot parse       |
 
 **Allowed method calls:** Designer-supporting interface methods like `SuspendLayout`, `ResumeLayout`, `BeginInit`, `EndInit`
 
-### ❌ Prohibited in *.designer.cs* File
+### ❌ Prohibited in _.designer.cs_ File
 
 ❌ Method definitions (except `InitializeComponent`, `Dispose`, preserve existing additional constructors)  
 ❌ Properties  
@@ -85,15 +87,15 @@ Note: `SystemAware` is standard for .NET, use `PerMonitorV2` when explicitly req
 
 ### 📋 Required Structure of InitializeComponent Method
 
-| Order | Step | Example |
-|-------|------|---------|
-| 1 | Instantiate controls | `button1 = new Button();` |
-| 2 | Create components container | `components = new Container();` |
-| 3 | Suspend layout for container(s) | `SuspendLayout();` |
-| 4 | Configure controls | Set properties for each control |
-| 5 | Configure Form/UserControl LAST | `ClientSize`, `Controls.Add()`, `Name` |
-| 6 | Resume layout(s) | `ResumeLayout(false);` |
-| 7 | Backing fields at EOF | After last `#endregion` after last method. | `_btnOK`, `_txtFirstname` - C# scope is `private`, VB scope is `Friend WithEvents` |
+| Order | Step                            | Example                                    |
+| ----- | ------------------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------- |
+| 1     | Instantiate controls            | `button1 = new Button();`                  |
+| 2     | Create components container     | `components = new Container();`            |
+| 3     | Suspend layout for container(s) | `SuspendLayout();`                         |
+| 4     | Configure controls              | Set properties for each control            |
+| 5     | Configure Form/UserControl LAST | `ClientSize`, `Controls.Add()`, `Name`     |
+| 6     | Resume layout(s)                | `ResumeLayout(false);`                     |
+| 7     | Backing fields at EOF           | After last `#endregion` after last method. | `_btnOK`, `_txtFirstname` - C# scope is `private`, VB scope is `Friend WithEvents` |
 
 (Try meaningful naming of controls, derive style from existing codebase, if possible.)
 
@@ -105,27 +107,27 @@ private void InitializeComponent()
     _lblDogographerCredit = new Label();
     _btnAdopt = new Button();
     _btnMaybeLater = new Button();
-    
+
     // 2. Components
     components = new Container();
-    
+
     // 3. Suspend
     ((ISupportInitialize)_picDogPhoto).BeginInit();
     SuspendLayout();
-    
+
     // 4. Configure controls
     _picDogPhoto.Location = new Point(12, 12);
     _picDogPhoto.Name = "_picDogPhoto";
     _picDogPhoto.Size = new Size(380, 285);
     _picDogPhoto.SizeMode = PictureBoxSizeMode.Zoom;
     _picDogPhoto.TabStop = false;
-    
+
     _lblDogographerCredit.AutoSize = true;
     _lblDogographerCredit.Location = new Point(12, 300);
     _lblDogographerCredit.Name = "_lblDogographerCredit";
     _lblDogographerCredit.Size = new Size(200, 25);
     _lblDogographerCredit.Text = "Photo by: Professional Dogographer";
-    
+
     _btnAdopt.Location = new Point(93, 340);
     _btnAdopt.Name = "_btnAdopt";
     _btnAdopt.Size = new Size(114, 68);
@@ -133,10 +135,10 @@ private void InitializeComponent()
 
     // OK, if BtnAdopt_Click is defined in main .cs file
     _btnAdopt.Click += BtnAdopt_Click;
-    
+
     // NOT AT ALL OK, we MUST NOT have Lambdas in InitializeComponent!
     _btnAdopt.Click += (s, e) => Close();
-    
+
     // 5. Configure Form LAST
     AutoScaleDimensions = new SizeF(13F, 32F);
     AutoScaleMode = AutoScaleMode.Font;
@@ -147,7 +149,7 @@ private void InitializeComponent()
     Name = "DogAdoptionDialog";
     Text = "Find Your Perfect Companion!";
     ((ISupportInitialize)_picDogPhoto).EndInit();
-    
+
     // 6. Resume
     ResumeLayout(false);
     PerformLayout();
@@ -162,7 +164,7 @@ private Label _lblDogographerCredit;
 private Button _btnAdopt;
 ```
 
-**Remember:** Complex UI configuration logic goes in main *.cs* file, NOT *.designer.cs*.
+**Remember:** Complex UI configuration logic goes in main _.cs_ file, NOT _.designer.cs_.
 
 ---
 
@@ -174,26 +176,26 @@ private Button _btnAdopt;
 
 ### Style Guidelines
 
-| Category | Rule | Example |
-|----------|------|---------|
-| Using directives | Assume global | `System.Windows.Forms`, `System.Drawing`, `System.ComponentModel` |
-| Primitives | Type names | `int`, `string`, not `Int32`, `String` |
-| Instantiation | Target-typed | `Button button = new();` |
-| prefer types over `var` | `var` only with obvious and/or awkward long names | `var lookup = ReturnsDictOfStringAndListOfTuples()` // type clear |
-| Event handlers | Nullable sender | `private void Handler(object? sender, EventArgs e)` |
-| Events | Nullable | `public event EventHandler? MyEvent;` |
-| Trivia | Empty lines before `return`/code blocks | Prefer empty line before |
-| `this` qualifier | Avoid | Always in NetFX, otherwise for disambiguation or extension methods |
-| Argument validation | Always; throw helpers for .NET 8+ | `ArgumentNullException.ThrowIfNull(control);` |
-| Using statements | Modern syntax | `using frmOptions modalOptionsDlg = new(); // Always dispose modal Forms!` |
+| Category                | Rule                                              | Example                                                                    |
+| ----------------------- | ------------------------------------------------- | -------------------------------------------------------------------------- |
+| Using directives        | Assume global                                     | `System.Windows.Forms`, `System.Drawing`, `System.ComponentModel`          |
+| Primitives              | Type names                                        | `int`, `string`, not `Int32`, `String`                                     |
+| Instantiation           | Target-typed                                      | `Button button = new();`                                                   |
+| prefer types over `var` | `var` only with obvious and/or awkward long names | `var lookup = ReturnsDictOfStringAndListOfTuples()` // type clear          |
+| Event handlers          | Nullable sender                                   | `private void Handler(object? sender, EventArgs e)`                        |
+| Events                  | Nullable                                          | `public event EventHandler? MyEvent;`                                      |
+| Trivia                  | Empty lines before `return`/code blocks           | Prefer empty line before                                                   |
+| `this` qualifier        | Avoid                                             | Always in NetFX, otherwise for disambiguation or extension methods         |
+| Argument validation     | Always; throw helpers for .NET 8+                 | `ArgumentNullException.ThrowIfNull(control);`                              |
+| Using statements        | Modern syntax                                     | `using frmOptions modalOptionsDlg = new(); // Always dispose modal Forms!` |
 
 ### Property Patterns (⚠️ CRITICAL - Common Bug Source!)
 
-| Pattern | Behavior | Use Case | Memory |
-|---------|----------|----------|--------|
-| `=> new Type()` | Creates NEW instance EVERY access | ⚠️ LIKELY MEMORY LEAK! | Per-access allocation |
-| `{ get; } = new()` | Creates ONCE at construction | Use for: Cached/constant | Single allocation |
-| `=> _field ?? Default` | Computed/dynamic value | Use for: Calculated property | Varies |
+| Pattern                | Behavior                          | Use Case                     | Memory                |
+| ---------------------- | --------------------------------- | ---------------------------- | --------------------- |
+| `=> new Type()`        | Creates NEW instance EVERY access | ⚠️ LIKELY MEMORY LEAK!       | Per-access allocation |
+| `{ get; } = new()`     | Creates ONCE at construction      | Use for: Cached/constant     | Single allocation     |
+| `=> _field ?? Default` | Computed/dynamic value            | Use for: Calculated property | Varies                |
 
 ```csharp
 // ❌ WRONG - Memory leak
@@ -229,7 +231,7 @@ private void Button_Click(object? sender, EventArgs e)
 {
     if (sender is not Button button || button.Tag is null)
         return;
-    
+
     // Use button here
 }
 ```
@@ -238,10 +240,10 @@ private void Button_Click(object? sender, EventArgs e)
 
 ### File Structure
 
-| Language | Files | Inheritance |
-|----------|-------|-------------|
-| C# | `FormName.cs` + `FormName.Designer.cs` | `Form` or `UserControl` |
-| VB.NET | `FormName.vb` + `FormName.Designer.vb` | `Form` or `UserControl` |
+| Language | Files                                  | Inheritance             |
+| -------- | -------------------------------------- | ----------------------- |
+| C#       | `FormName.cs` + `FormName.Designer.cs` | `Form` or `UserControl` |
+| VB.NET   | `FormName.vb` + `FormName.Designer.vb` | `Form` or `UserControl` |
 
 **Main file:** Logic and event handlers  
 **Designer file:** Infrastructure, constructors, `Dispose`, `InitializeComponent`, control definitions
@@ -256,11 +258,11 @@ private void Button_Click(object? sender, EventArgs e)
 
 ### VB.NET Conventions
 
-- Use Application Framework. There is no `Program.vb`. 
+- Use Application Framework. There is no `Program.vb`.
 - Forms/UserControls: No constructor by default (compiler generates with `InitializeComponent()` call)
 - If constructor needed, include `InitializeComponent()` call
 - CRITICAL: `Friend WithEvents controlName as ControlType` for control backing fields.
-- Strongly prefer event handlers `Sub`s with `Handles` clause in main code over `AddHandler` in  file`InitializeComponent`
+- Strongly prefer event handlers `Sub`s with `Handles` clause in main code over `AddHandler` in file`InitializeComponent`
 
 ---
 
@@ -268,11 +270,11 @@ private void Button_Click(object? sender, EventArgs e)
 
 ### Breaking Changes: .NET Framework vs .NET 8+
 
-| Feature | .NET Framework <= 4.8.1 | .NET 8+ |
-|---------|----------------------|---------|
-| Typed DataSets | Designer supported | Code-only (not recommended) |
-| Object Binding | Supported | Enhanced UI, fully supported |
-| Data Sources Window | Available | Not available |
+| Feature             | .NET Framework <= 4.8.1 | .NET 8+                      |
+| ------------------- | ----------------------- | ---------------------------- |
+| Typed DataSets      | Designer supported      | Code-only (not recommended)  |
+| Object Binding      | Supported               | Enhanced UI, fully supported |
+| Data Sources Window | Available               | Not available                |
 
 ### Data Binding Rules
 
@@ -286,7 +288,7 @@ To make types as DataSource accessible for the Designer, create `.datasource` fi
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<GenericObjectDataSource DisplayName="MainViewModel" Version="1.0" 
+<GenericObjectDataSource DisplayName="MainViewModel" Version="1.0"
     xmlns="urn:schemas-microsoft-com:xml-msdatasource">
   <TypeInfo>MyApp.ViewModels.MainViewModel, MyApp.ViewModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>
@@ -296,12 +298,12 @@ Subsequently, use BindingSource components in Forms/UserControls to bind to the 
 
 ### New MVVM Command Binding APIs in .NET 8+
 
-| API | Description | Cascading |
-|-----|-------------|-----------|
-| `Control.DataContext` | Ambient property for MVVM | Yes (down hierarchy) |
-| `ButtonBase.Command` | ICommand binding | No |
-| `ToolStripItem.Command` | ICommand binding | No |
-| `*.CommandParameter` | Auto-passed to command | No |
+| API                     | Description               | Cascading            |
+| ----------------------- | ------------------------- | -------------------- |
+| `Control.DataContext`   | Ambient property for MVVM | Yes (down hierarchy) |
+| `ButtonBase.Command`    | ICommand binding          | No                   |
+| `ToolStripItem.Command` | ICommand binding          | No                   |
+| `*.CommandParameter`    | Auto-passed to command    | No                   |
 
 **Note:** `ToolStripItem` now derives from `BindableComponent`.
 
@@ -318,7 +320,7 @@ Subsequently, use BindingSource components in Forms/UserControls to bind to the 
 ```csharp
 private void PrincipleApproachForIValueConverterWorkaround()
 {
-   // We assume the Binding was done in InitializeComponent and look up 
+   // We assume the Binding was done in InitializeComponent and look up
    // the bound property like so:
    Binding b = text1.DataBindings["Text"];
 
@@ -327,8 +329,10 @@ private void PrincipleApproachForIValueConverterWorkaround()
    b.Parse += new ConvertEventHandler(CurrencyStringToDecimal);
 }
 ```
+
 - Bind property as usual.
 - Bind commands the same way - ViewModels are Data SOurces! Do it like so:
+
 ```csharp
 // Create BindingSource
 components = new Container();
@@ -351,12 +355,12 @@ _tsmFile.CommandParameter = "File";
 
 ### Control.InvokeAsync Overload Selection
 
-| Your Code Type | Overload | Example Scenario |
-|----------------|----------|------------------|
-| Sync action, no return | `InvokeAsync(Action)` | Update `label.Text` |
-| Async operation, no return | `InvokeAsync(Func<CT, ValueTask>)` | Load data + update UI |
-| Sync function, returns T | `InvokeAsync<T>(Func<T>)` | Get control value |
-| Async operation, returns T | `InvokeAsync<T>(Func<CT, ValueTask<T>>)` | Async work + result |
+| Your Code Type             | Overload                                 | Example Scenario      |
+| -------------------------- | ---------------------------------------- | --------------------- |
+| Sync action, no return     | `InvokeAsync(Action)`                    | Update `label.Text`   |
+| Async operation, no return | `InvokeAsync(Func<CT, ValueTask>)`       | Load data + update UI |
+| Sync function, returns T   | `InvokeAsync<T>(Func<T>)`                | Get control value     |
+| Async operation, returns T | `InvokeAsync<T>(Func<CT, ValueTask<T>>)` | Async work + result   |
 
 ### ⚠️ Fire-and-Forget Trap
 
@@ -370,14 +374,14 @@ await InvokeAsync<string>(async (ct) => await LoadDataAsync(ct), outerCancellati
 
 ### Form Async Methods (.NET 9+)
 
-- `ShowAsync()`: Completes when form closes. 
+- `ShowAsync()`: Completes when form closes.
   Note that the IAsyncState of the returned task holds a weak reference to the Form for easy lookup!
 - `ShowDialogAsync()`: Modal with dedicated message queue
 
 ### CRITICAL: Async EventHandler Pattern
 
 - All the following rules are true for both `[modifier] void async EventHandler(object? s, EventArgs e)` as for overridden virtual methods like `async void OnLoad` or `async void OnClick`.
-- `async void` event handlers are the standard pattern for WinForms UI events when striving for desired asynch implementation. 
+- `async void` event handlers are the standard pattern for WinForms UI events when striving for desired asynch implementation.
 - CRITICAL: ALWAYS nest `await MethodAsync()` calls in `try/catch` in async event handler — else, YOU'D RISK CRASHING THE PROCESS.
 
 ## Exception Handling in WinForms
@@ -387,11 +391,13 @@ await InvokeAsync<string>(async (ct) => await LoadDataAsync(ct), outerCancellati
 WinForms provides two primary mechanisms for handling unhandled exceptions:
 
 **AppDomain.CurrentDomain.UnhandledException:**
+
 - Catches exceptions from any thread in the AppDomain
 - Cannot prevent application termination
 - Use for logging critical errors before shutdown
 
 **Application.ThreadException:**
+
 - Catches exceptions on the UI thread only
 - Can prevent application crash by handling the exception
 - Use for graceful error recovery in UI operations
@@ -419,7 +425,8 @@ catch (Exception ex)
 ```
 
 **Important Notes:**
-- `Application.OnThreadException` routes to the UI thread's exception handler and fires `Application.ThreadException`. 
+
+- `Application.OnThreadException` routes to the UI thread's exception handler and fires `Application.ThreadException`.
 - Never call it from background threads — marshal to UI thread first.
 - For process termination on unhandled exceptions, use `Application.SetUnhandledExceptionMode(UnhandledExceptionMode.ThrowException)` at startup.
 - **VB Limitation:** VB cannot await in catch block. Avoid, or work around with state machine pattern.
@@ -428,35 +435,35 @@ catch (Exception ex)
 
 Code-generation rule for properties of types derived from `Component` or `Control`:
 
-| Approach | Attribute | Use Case | Example |
-|----------|-----------|----------|---------|
-| Default value | `[DefaultValue]` | Simple types, no serialization if matches default | `[DefaultValue(typeof(Color), "Yellow")]` |
-| Hidden | `[DesignerSerializationVisibility.Hidden]` | Runtime-only data | Collections, calculated properties |
-| Conditional | `ShouldSerialize*()` + `Reset*()` | Complex conditions | Custom fonts, optional settings |
+| Approach      | Attribute                                  | Use Case                                          | Example                                   |
+| ------------- | ------------------------------------------ | ------------------------------------------------- | ----------------------------------------- |
+| Default value | `[DefaultValue]`                           | Simple types, no serialization if matches default | `[DefaultValue(typeof(Color), "Yellow")]` |
+| Hidden        | `[DesignerSerializationVisibility.Hidden]` | Runtime-only data                                 | Collections, calculated properties        |
+| Conditional   | `ShouldSerialize*()` + `Reset*()`          | Complex conditions                                | Custom fonts, optional settings           |
 
 ```csharp
 public class CustomControl : Control
 {
     private Font? _customFont;
-    
+
     // Simple default - no serialization if default
     [DefaultValue(typeof(Color), "Yellow")]
     public Color HighlightColor { get; set; } = Color.Yellow;
-    
+
     // Hidden - never serialize
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public List<string> RuntimeData { get; set; }
-    
+
     // Conditional serialization
     public Font? CustomFont
     {
         get => _customFont ?? Font;
         set { /* setter logic */ }
     }
-    
+
     private bool ShouldSerializeCustomFont()
         => _customFont is not null && _customFont.Size != 9.0f;
-    
+
     private void ResetCustomFont()
         => _customFont = null;
 }
@@ -471,61 +478,69 @@ public class CustomControl : Control
 ### Core Rules
 
 **Scaling and DPI:**
+
 - Use adequate margins/padding; prefer TableLayoutPanel (TLP)/FlowLayoutPanel (FLP) over absolute positioning of controls.
 - The layout cell-sizing approach priority for TLPs is:
-  * Rows: AutoSize > Percent > Absolute
-  * Columns: AutoSize > Percent > Absolute
+  - Rows: AutoSize > Percent > Absolute
+  - Columns: AutoSize > Percent > Absolute
 
 - For newly added Forms/UserControls: Assume 96 DPI/100% for `AutoScaleMode` and scaling
 - For existing Forms: Leave AutoScaleMode setting as-is, but take scaling for coordinate-related properties into account
 
 - Be DarkMode-aware in .NET 9+ - Query current DarkMode status: `Application.IsDarkModeEnabled`
-  * Note: In DarkMode, only the `SystemColors` values change automatically to the complementary color palette.
+  - Note: In DarkMode, only the `SystemColors` values change automatically to the complementary color palette.
 
 - Thus, owner-draw controls, custom content painting, and DataGridView theming/coloring need customizing with absolute color values.
 
 ### Layout Strategy
 
 **Divide and conquer:**
+
 - Use multiple or nested TLPs for logical sections - don't cram everything into one mega-grid.
 - Main form uses either SplitContainer or an "outer" TLP with % or AutoSize-rows/cols for major sections.
 - Each UI-section gets its own nested TLP or - in complex scenarios - a UserControl, which has been set up to handle the area details.
 
 **Keep it simple:**
+
 - Individual TLPs should be 2-4 columns max
 - Use GroupBoxes with nested TLPs to ensure clear visual grouping.
 - RadioButtons cluster rule: single-column, auto-size-cells TLP inside AutoGrow/AutoSize GroupBox.
 - Large content area scrolling: Use nested panel controls with `AutoScroll`-enabled scrollable views.
 
 **Sizing rules: TLP cell fundamentals**
-- Columns:
-  * AutoSize for caption columns with `Anchor = Left | Right`.
-  * Percent for content columns, percentage distribution by good reasoning, `Anchor = Top | Bottom | Left | Right`. 
-    Never dock cells, always anchor!
-  * Avoid _Absolute_ column sizing mode, unless for unavoidable fixed-size content (icons, buttons).
-- Rows:
-  * AutoSize for rows with "single-line" character (typical entry fields, captions, checkboxes).
-  * Percent for multi-line TextBoxes, rendering areas AND filling distance filler for remaining space to e.g., a bottom button row (OK|Cancel).
-  * Avoid _Absolute_ row sizing mode even more.
 
-- Margins matter: Set `Margin` on controls (min. default 3px). 
+- Columns:
+  - AutoSize for caption columns with `Anchor = Left | Right`.
+  - Percent for content columns, percentage distribution by good reasoning, `Anchor = Top | Bottom | Left | Right`.
+    Never dock cells, always anchor!
+  - Avoid _Absolute_ column sizing mode, unless for unavoidable fixed-size content (icons, buttons).
+- Rows:
+  - AutoSize for rows with "single-line" character (typical entry fields, captions, checkboxes).
+  - Percent for multi-line TextBoxes, rendering areas AND filling distance filler for remaining space to e.g., a bottom button row (OK|Cancel).
+  - Avoid _Absolute_ row sizing mode even more.
+
+- Margins matter: Set `Margin` on controls (min. default 3px).
 - Note: `Padding` does not have an effect in TLP cells.
 
 ### Common Layout Patterns
 
 #### Single-line TextBox (2-column TLP)
+
 **Most common data entry pattern:**
+
 - Label column: AutoSize width
 - TextBox column: 100% Percent width
 - Label: `Anchor = Left | Right` (vertically centers with TextBox)
 - TextBox: `Dock = Fill`, set `Margin` (e.g., 3px all sides)
 
 #### Multi-line TextBox or Larger Custom Content - Option A (2-column TLP)
+
 - Label in same row, `Anchor = Top | Left`
 - TextBox: `Dock = Fill`, set `Margin`
 - Row height: AutoSize or Percent to size the cell (cell sizes the TextBox)
 
 #### Multi-line TextBox or Larger Custom Content - Option B (1-column TLP, separate rows)
+
 - Label in dedicated row above TextBox
 - Label: `Dock = Fill` or `Anchor = Left`
 - TextBox in next row: `Dock = Fill`, set `Margin`
@@ -536,6 +551,7 @@ public class CustomControl : Control
 ### Container Sizing (CRITICAL - Prevents Clipping)
 
 **For GroupBox/Panel inside TLP cells:**
+
 - MUST set `AutoSize = true` and `AutoSizeMode = GrowOnly`
 - Should `Dock = Fill` in their cell
 - Parent TLP row should be AutoSize
@@ -546,12 +562,14 @@ public class CustomControl : Control
 ### Modal Dialog Button Placement
 
 **Pattern A - Bottom-right buttons (standard for OK/Cancel):**
+
 - Place buttons in FlowLayoutPanel: `FlowDirection = RightToLeft`
 - Keep additional Percentage Filler-Row between buttons and content.
 - FLP goes in bottom row of main TLP
 - Visual order of buttons: [OK] (left) [Cancel] (right)
 
 **Pattern B - Top-right stacked buttons (wizards/browsers):**
+
 - Place buttons in FlowLayoutPanel: `FlowDirection = TopDown`
 - FLP in dedicated rightmost column of main TLP
 - Column: AutoSize
@@ -559,6 +577,7 @@ public class CustomControl : Control
 - Order: [OK] above [Cancel]
 
 **When to use:**
+
 - Pattern A: Data entry dialogs, settings, confirmations
 - Pattern B: Multi-step wizards, navigation-heavy dialogs
 
@@ -570,21 +589,21 @@ public class CustomControl : Control
 
 ### Modal Dialogs
 
-| Aspect | Rule |
-|--------|------|
+| Aspect         | Rule                                                                                                                     |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | Dialog buttons | Order -> Primary (OK): `AcceptButton`, `DialogResult = OK` / Secondary (Cancel): `CancelButton`, `DialogResult = Cancel` |
-| Close strategy | `DialogResult` gets applied by DialogResult implicitly, no need for additional code |
-| Validation | Perform on _Form_, not on Field scope. Never block focus-change with `CancelEventArgs.Cancel = true` |
+| Close strategy | `DialogResult` gets applied by DialogResult implicitly, no need for additional code                                      |
+| Validation     | Perform on _Form_, not on Field scope. Never block focus-change with `CancelEventArgs.Cancel = true`                     |
 
 Use `DataContext` property (.NET 8+) of Form to pass and return modal data objects.
 
 ### Layout Recipes
 
-| Form Type | Structure |
-|-----------|-----------|
-| MainForm | MenuStrip, optional ToolStrip, content area, StatusStrip |
+| Form Type         | Structure                                                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------- |
+| MainForm          | MenuStrip, optional ToolStrip, content area, StatusStrip                                                             |
 | Simple Entry Form | Data entry fields on largely left side, just a buttons column on right. Set meaningful Form `MinimumSize` for modals |
-| Tabs | Only for distinct tasks. Keep minimal count, short tab labels |
+| Tabs              | Only for distinct tasks. Keep minimal count, short tab labels                                                        |
 
 ### Accessibility
 
@@ -594,13 +613,13 @@ Use `DataContext` property (.NET 8+) of Form to pass and return modal data objec
 
 ### TreeView and ListView
 
-| Control | Rules |
-|---------|-------|
-| TreeView | Must have visible, default-expanded root node |
-| ListView | Prefer over DataGridView for small lists with fewer columns |
-| Content setup | Generate in code, NOT in designer code-behind |
+| Control          | Rules                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------ |
+| TreeView         | Must have visible, default-expanded root node                                        |
+| ListView         | Prefer over DataGridView for small lists with fewer columns                          |
+| Content setup    | Generate in code, NOT in designer code-behind                                        |
 | ListView columns | Set to `-1` (size to longest content) or `-2` (size to header name) after populating |
-| SplitContainer | Use for resizable panes with TreeView/ListView |
+| SplitContainer   | Use for resizable panes with TreeView/ListView                                       |
 
 ### DataGridView
 
@@ -611,18 +630,18 @@ Use `DataContext` property (.NET 8+) of Form to pass and return modal data objec
 ### Resources and Localization
 
 - String literal constants for UI display NEED to be in resource files.
-- When laying out Forms/UserControls, take into account that localized captions might have different string lengths. 
-- Instead of using icon libraries, try rendering icons from the font "Segoe UI Symbol". 
+- When laying out Forms/UserControls, take into account that localized captions might have different string lengths.
+- Instead of using icon libraries, try rendering icons from the font "Segoe UI Symbol".
 - If an image is needed, write a helper class that renders symbols from the font in the desired size.
 
 ## Critical Reminders
 
-| # | Rule |
-|---|------|
-| 1 | `InitializeComponent` code serves as serialization format - more like XML, not C# |
-| 2 | Two contexts, two rule sets - designer code-behind vs regular code |
-| 3 | Validate form/control names before generating code |
-| 4 | Stick to coding style rules for `InitializeComponent` |
-| 5 | Designer files never use NRT annotations |
-| 6 | Modern C# features for regular code ONLY |
-| 7 | Data binding: Treat ViewModels as DataSources, remember `Command` and `CommandParameter` properties |
+| #   | Rule                                                                                                |
+| --- | --------------------------------------------------------------------------------------------------- |
+| 1   | `InitializeComponent` code serves as serialization format - more like XML, not C#                   |
+| 2   | Two contexts, two rule sets - designer code-behind vs regular code                                  |
+| 3   | Validate form/control names before generating code                                                  |
+| 4   | Stick to coding style rules for `InitializeComponent`                                               |
+| 5   | Designer files never use NRT annotations                                                            |
+| 6   | Modern C# features for regular code ONLY                                                            |
+| 7   | Data binding: Treat ViewModels as DataSources, remember `Command` and `CommandParameter` properties |

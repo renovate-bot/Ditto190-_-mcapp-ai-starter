@@ -39,10 +39,10 @@ After a reader clicks <svg version="1.1" width="16" height="16" viewBox="0 0 16 
 Optionally, to make the section display as open by default, add the `open` attribute to the `<details>` tag:
 
 ```html
-<details open>
+<details open></details>
 ```
 
 ## Further reading
 
-* [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
-* [Basic writing and formatting syntax](https://docs.github.com/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+- [Basic writing and formatting syntax](https://docs.github.com/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)

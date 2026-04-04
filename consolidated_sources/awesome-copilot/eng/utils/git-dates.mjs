@@ -92,7 +92,7 @@ export function getGitFileDate(filePath, rootDir) {
         encoding: "utf8",
         cwd: rootDir,
         stdio: ["pipe", "pipe", "pipe"],
-      }
+      },
     );
 
     const date = output.trim();

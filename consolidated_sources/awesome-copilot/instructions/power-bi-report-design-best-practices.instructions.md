@@ -1,22 +1,26 @@
 ---
-description: 'Comprehensive Power BI report design and visualization best practices based on Microsoft guidance for creating effective, accessible, and performant reports and dashboards.'
-applyTo: '**/*.{pbix,md,json,txt}'
+description: "Comprehensive Power BI report design and visualization best practices based on Microsoft guidance for creating effective, accessible, and performant reports and dashboards."
+applyTo: "**/*.{pbix,md,json,txt}"
 ---
 
 # Power BI Report Design and Visualization Best Practices
 
 ## Overview
+
 This document provides comprehensive instructions for designing effective, accessible, and performant Power BI reports and dashboards following Microsoft's official guidance and user experience best practices.
 
 ## Fundamental Design Principles
 
 ### 1. Information Architecture
+
 **Visual Hierarchy** - Organize information by importance:
+
 - **Primary**: Key metrics, KPIs, most critical insights (top-left, header area)
 - **Secondary**: Supporting details, trends, comparisons (main body)
 - **Tertiary**: Filters, controls, navigation elements (sidebars, footers)
 
 **Content Structure**:
+
 ```
 Report Page Layout:
 ┌─────────────────────────────────────┐
@@ -33,6 +37,7 @@ Report Page Layout:
 ```
 
 ### 2. User Experience Principles
+
 **Clarity**: Every element should have a clear purpose and meaning
 **Consistency**: Use consistent styling, colors, and interactions across all reports
 **Context**: Provide sufficient context for users to interpret data correctly
@@ -41,6 +46,7 @@ Report Page Layout:
 ## Chart Type Selection Guidelines
 
 ### 1. Comparison Visualizations
+
 ```
 Bar/Column Charts:
 ✅ Comparing categories or entities
@@ -56,7 +62,7 @@ Best Practices:
 
 Example Use Cases:
 - Sales by product category
-- Revenue by region  
+- Revenue by region
 - Employee count by department
 - Customer satisfaction by service type
 ```
@@ -82,6 +88,7 @@ Example Use Cases:
 ```
 
 ### 2. Composition Visualizations
+
 ```
 Pie/Donut Charts:
 ✅ Parts-of-whole relationships
@@ -121,6 +128,7 @@ Example Use Cases:
 ```
 
 ### 3. Relationship and Distribution Visualizations
+
 ```
 Scatter Plots:
 ✅ Correlation between two continuous variables
@@ -163,6 +171,7 @@ Example Use Cases:
 ## Report Layout and Navigation Design
 
 ### 1. Page Layout Strategies
+
 ```
 Single Page Dashboard:
 ✅ Executive summaries
@@ -192,6 +201,7 @@ Page 4: Appendix (methodology, definitions)
 ```
 
 ### 2. Navigation Patterns
+
 ```
 Tab Navigation:
 ✅ Related content areas
@@ -237,6 +247,7 @@ Button Design:
 ## Interactive Features Implementation
 
 ### 1. Tooltip Design Strategy
+
 ```
 Default Tooltips:
 ✅ Additional context information
@@ -252,7 +263,7 @@ Configuration:
 
 Example:
 Visual: Sales by Product Category
-Tooltip: 
+Tooltip:
 - Product Category: Electronics
 - Total Sales: $2.3M (↑15% vs last year)
 - Order Count: 1,247 orders
@@ -281,6 +292,7 @@ Implementation:
 ```
 
 ### 2. Drillthrough Implementation
+
 ```
 Drillthrough Scenarios:
 
@@ -310,6 +322,7 @@ Implementation Steps:
 ```
 
 ### 3. Cross-Filtering Strategy
+
 ```
 When to Enable Cross-Filtering:
 ✅ Related visuals showing different perspectives
@@ -334,6 +347,7 @@ Configuration Best Practices:
 ## Visual Design and Formatting
 
 ### 1. Color Strategy
+
 ```
 Color Usage Hierarchy:
 
@@ -375,6 +389,7 @@ Implementation:
 ```
 
 ### 2. Typography and Readability
+
 ```
 Font Hierarchy:
 
@@ -418,6 +433,7 @@ Data Storytelling:
 ```
 
 ### 3. Layout and Spacing
+
 ```
 Visual Spacing:
 Grid System: Use consistent spacing multiples (8px, 16px, 24px)
@@ -435,6 +451,7 @@ Balance: Distribute visual weight evenly across the page
 ## Performance Optimization for Reports
 
 ### 1. Visual Performance Guidelines
+
 ```
 Visual Count Management:
 ✅ Maximum 6-8 visuals per page for optimal performance
@@ -457,6 +474,7 @@ Performance Testing:
 ```
 
 ### 2. Loading Performance Optimization
+
 ```
 Initial Page Load:
 ✅ Minimize visuals on landing page
@@ -480,6 +498,7 @@ Slowest: Matrix, Table with many columns (detailed data)
 ## Mobile and Responsive Design
 
 ### 1. Mobile Layout Strategy
+
 ```
 Mobile-First Design Principles:
 ✅ Portrait orientation as primary layout
@@ -497,6 +516,7 @@ Visual Selection: Prefer simple chart types for mobile
 ```
 
 ### 2. Responsive Design Implementation
+
 ```
 Power BI Mobile Layout:
 1. Switch to Mobile layout view in Power BI Desktop
@@ -522,6 +542,7 @@ Testing Strategy:
 ## Accessibility and Inclusive Design
 
 ### 1. Universal Design Principles
+
 ```
 Visual Accessibility:
 ✅ High contrast ratios (minimum 4.5:1)
@@ -545,6 +566,7 @@ Content Accessibility:
 ```
 
 ### 2. Inclusive Design Implementation
+
 ```
 Multi-Sensory Design:
 ✅ Don't rely solely on color to convey information
@@ -570,6 +592,7 @@ Testing for Accessibility:
 ## Advanced Visualization Techniques
 
 ### 1. Conditional Formatting
+
 ```
 Dynamic Visual Enhancement:
 
@@ -594,12 +617,13 @@ Font Formatting:
 Implementation Examples:
 Sales Performance Table:
 - Green background: >110% of target
-- Yellow background: 90-110% of target  
+- Yellow background: 90-110% of target
 - Red background: <90% of target
 - Data bars: Relative performance within each category
 ```
 
 ### 2. Custom Visuals Integration
+
 ```
 Custom Visual Selection Criteria:
 
@@ -628,11 +652,12 @@ Governance:
 ## Report Testing and Quality Assurance
 
 ### 1. Functional Testing Checklist
+
 ```
 Visual Functionality:
 □ All charts display data correctly
 □ Filters work as intended
-□ Cross-filtering behaves appropriately  
+□ Cross-filtering behaves appropriately
 □ Drill-through functions correctly
 □ Tooltips show relevant information
 □ Bookmarks restore correct state
@@ -656,6 +681,7 @@ Data Accuracy:
 ```
 
 ### 2. User Experience Testing
+
 ```
 Usability Testing:
 ✅ Test with actual business users
@@ -680,6 +706,7 @@ Cross-Platform Testing:
 ```
 
 ### 3. Quality Assurance Framework
+
 ```
 Review Process:
 1. Developer Testing: Initial functionality verification
@@ -708,6 +735,7 @@ Continuous Improvement:
 ## Common Anti-Patterns to Avoid
 
 ### 1. Design Anti-Patterns
+
 ```
 ❌ Chart Junk:
 - Unnecessary 3D effects
@@ -729,6 +757,7 @@ Continuous Improvement:
 ```
 
 ### 2. Interaction Anti-Patterns
+
 ```
 ❌ Navigation Confusion:
 - Inconsistent navigation patterns

@@ -44,8 +44,8 @@ puts "Hello World"
 
 #### Notes:
 
-* Markdown **inside `<details>`** is still parsed normally.
-* Syntax highlighting is preserved via `class="language-ruby"`.
+- Markdown **inside `<details>`** is still parsed normally.
+- Syntax highlighting is preserved via `class="language-ruby"`.
 
 ---
 
@@ -91,10 +91,10 @@ puts "Hello World"
 
 ## Key Rules
 
-* `<details>` and `<summary>` are **raw HTML**, not Markdown syntax
-* Markdown inside `<details>` **is still parsed**
-* Syntax highlighting works normally inside collapsed sections
-* Use `<summary>` as the **clickable label**
+- `<details>` and `<summary>` are **raw HTML**, not Markdown syntax
+- Markdown inside `<details>` **is still parsed**
+- Syntax highlighting works normally inside collapsed sections
+- Use `<summary>` as the **clickable label**
 
 ## Paragraphs with Inline HTML & SVG
 
@@ -108,7 +108,8 @@ You can streamline your Markdown by creating a collapsed section with the `<deta
 
 ```html
 <p>
-  You can streamline your Markdown by creating a collapsed section with the <code>&lt;details&gt;</code> tag.
+  You can streamline your Markdown by creating a collapsed section with the
+  <code>&lt;details&gt;</code> tag.
 </p>
 ```
 
@@ -124,12 +125,20 @@ Any Markdown within the `<details>` block will be collapsed until the reader cli
 
 ```html
 <p>
-  Any Markdown within the <code>&lt;details&gt;</code> block will be collapsed until the reader clicks
-  <svg version="1.1" width="16" height="16" viewBox="0 0 16 16"
-       class="octicon octicon-triangle-right"
-       aria-label="The right triangle icon"
-       role="img">
-    <path d="m6.427 4.427 3.396 3.396a.25.25 0 0 1 0 .354l-3.396 3.396A.25.25 0 0 1 6 11.396V4.604a.25.25 0 0 1 .427-.177Z"></path>
+  Any Markdown within the <code>&lt;details&gt;</code> block will be collapsed
+  until the reader clicks
+  <svg
+    version="1.1"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    class="octicon octicon-triangle-right"
+    aria-label="The right triangle icon"
+    role="img"
+  >
+    <path
+      d="m6.427 4.427 3.396 3.396a.25.25 0 0 1 0 .354l-3.396 3.396A.25.25 0 0 1 6 11.396V4.604a.25.25 0 0 1 .427-.177Z"
+    ></path>
   </svg>
   to expand the details.
 </p>

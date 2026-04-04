@@ -82,6 +82,7 @@ When a Set attribute contains another Set attribute:
    - Identify attributes within the Set's `Schema` that can serve as `_key`
 
 3. **Add to JSON**
+
    ```json
    "azurerm_new_resource": {
      "set_attribute": "key_attribute"
@@ -96,14 +97,14 @@ When a Set attribute contains another Set attribute:
 
 ### Identifying Key Attributes
 
-| Common Key Attribute | Usage |
-|---------------------|-------|
-| `name` | Named blocks (most common) |
-| `id` | Resource ID reference |
-| `location` | Geographic location |
-| `address` | Network address |
-| `host_name` | Hostname |
-| `null` | When no key exists (compare entire element) |
+| Common Key Attribute | Usage                                       |
+| -------------------- | ------------------------------------------- |
+| `name`               | Named blocks (most common)                  |
+| `id`                 | Resource ID reference                       |
+| `location`           | Geographic location                         |
+| `address`            | Network address                             |
+| `host_name`          | Hostname                                    |
+| `null`               | When no key exists (compare entire element) |
 
 ## Related Tools
 
@@ -132,6 +133,7 @@ jq '.resources | keys' azurerm_set_attributes.json
 ```
 
 Key resources:
+
 - `azurerm_application_gateway` - Backend pools, listeners, rules, etc.
 - `azurerm_firewall_policy_rule_collection_group` - Rule collections
 - `azurerm_frontdoor` - Backend pools, routing

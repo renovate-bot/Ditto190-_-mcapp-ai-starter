@@ -21,47 +21,54 @@ You are an expert .NET MAUI developer specializing in high-quality, performant, 
 ## Control Reference
 
 ### Status Indicators
-| Control | Purpose | Key Properties |
-|---------|---------|----------------|
-| ActivityIndicator | Indeterminate busy state | `IsRunning`, `Color` |
-| ProgressBar | Known progress (0.0-1.0) | `Progress`, `ProgressColor` |
+
+| Control           | Purpose                  | Key Properties              |
+| ----------------- | ------------------------ | --------------------------- |
+| ActivityIndicator | Indeterminate busy state | `IsRunning`, `Color`        |
+| ProgressBar       | Known progress (0.0-1.0) | `Progress`, `ProgressColor` |
 
 ### Layout Controls
-| Control | Purpose | Notes |
-|---------|---------|-------|
-| **Border** | Container with border | **Prefer over Frame** |
-| ContentView | Reusable custom controls | Encapsulates UI components |
-| ScrollView | Scrollable content | Single child; **never in StackLayout** |
-| Frame | Legacy container | Only for shadows |
+
+| Control     | Purpose                  | Notes                                  |
+| ----------- | ------------------------ | -------------------------------------- |
+| **Border**  | Container with border    | **Prefer over Frame**                  |
+| ContentView | Reusable custom controls | Encapsulates UI components             |
+| ScrollView  | Scrollable content       | Single child; **never in StackLayout** |
+| Frame       | Legacy container         | Only for shadows                       |
 
 ### Shapes
+
 BoxView, Ellipse, Line, Path, Polygon, Polyline, Rectangle, RoundRectangle - all support `Fill`, `Stroke`, `StrokeThickness`.
 
 ### Input Controls
-| Control | Purpose |
-|---------|---------|
-| Button/ImageButton | Clickable actions |
-| CheckBox/Switch | Boolean selection |
-| RadioButton | Mutually exclusive options |
-| Entry | Single-line text |
-| Editor | Multi-line text (`AutoSize="TextChanges"`) |
-| Picker | Drop-down selection |
-| DatePicker/TimePicker | Date/time selection |
-| Slider/Stepper | Numeric value selection |
-| SearchBar | Search input with icon |
+
+| Control               | Purpose                                    |
+| --------------------- | ------------------------------------------ |
+| Button/ImageButton    | Clickable actions                          |
+| CheckBox/Switch       | Boolean selection                          |
+| RadioButton           | Mutually exclusive options                 |
+| Entry                 | Single-line text                           |
+| Editor                | Multi-line text (`AutoSize="TextChanges"`) |
+| Picker                | Drop-down selection                        |
+| DatePicker/TimePicker | Date/time selection                        |
+| Slider/Stepper        | Numeric value selection                    |
+| SearchBar             | Search input with icon                     |
 
 ### List & Data Display
-| Control | When to Use |
-|---------|-------------|
-| **CollectionView** | Lists >20 items (virtualized); **never in StackLayout** |
-| BindableLayout | Small lists ≤20 items (no virtualization) |
-| CarouselView + IndicatorView | Galleries, onboarding, image sliders |
+
+| Control                      | When to Use                                             |
+| ---------------------------- | ------------------------------------------------------- |
+| **CollectionView**           | Lists >20 items (virtualized); **never in StackLayout** |
+| BindableLayout               | Small lists ≤20 items (no virtualization)               |
+| CarouselView + IndicatorView | Galleries, onboarding, image sliders                    |
 
 ### Interactive Controls
+
 - **RefreshView**: Pull-to-refresh wrapper
 - **SwipeView**: Swipe gestures for contextual actions
 
 ### Display Controls
+
 - **Image**: Use PNG references (even for SVG sources)
 - **Label**: Text with formatting, spans, hyperlinks
 - **WebView**: Web content/HTML
@@ -71,6 +78,7 @@ BoxView, Ellipse, Line, Path, Polygon, Polyline, Rectangle, RoundRectangle - all
 ## Best Practices
 
 ### Layouts
+
 ```xml
 <!-- DO: Use Grid for complex layouts -->
 <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,*">
@@ -83,6 +91,7 @@ BoxView, Ellipse, Line, Path, Polygon, Polyline, Rectangle, RoundRectangle - all
 ```
 
 ### Compiled Bindings (Critical for Performance)
+
 ```xml
 <!-- Always use x:DataType for 8-20x performance improvement -->
 <ContentPage x:DataType="vm:MainViewModel">
@@ -99,12 +108,14 @@ label.SetBinding(Label.TextProperty, "FullName.FirstName");
 ```
 
 ### Binding Modes
+
 - `OneTime` - data won't change
 - `OneWay` - default, read-only
 - `TwoWay` - only when needed (editable)
 - Don't bind static values - set directly
 
 ### Handler Customization
+
 ```csharp
 // In MauiProgram.cs ConfigureMauiHandlers
 Microsoft.Maui.Handlers.ButtonHandler.Mapper.AppendToMapping("Custom", (handler, view) =>
@@ -118,14 +129,17 @@ Microsoft.Maui.Handlers.ButtonHandler.Mapper.AppendToMapping("Custom", (handler,
 ```
 
 ### Shell Navigation (Recommended)
+
 ```csharp
 Routing.RegisterRoute("details", typeof(DetailPage));
 await Shell.Current.GoToAsync("details?id=123");
 ```
+
 - Set `MainPage` once at startup
 - Don't nest tabs
 
 ### Platform Code
+
 ```csharp
 #if ANDROID
 #elif IOS
@@ -133,22 +147,27 @@ await Shell.Current.GoToAsync("details?id=123");
 #elif MACCATALYST
 #endif
 ```
+
 - Prefer `BindableObject.Dispatcher` or inject `IDispatcher` via DI for UI updates from background threads; use `MainThread.BeginInvokeOnMainThread()` as a fallback
 
 ### Performance
+
 1. Use compiled bindings (`x:DataType`)
 2. Use Grid > StackLayout, CollectionView > ListView, Border > Frame
 
 ### Security
+
 ```csharp
 await SecureStorage.SetAsync("oauth_token", token);
 string token = await SecureStorage.GetAsync("oauth_token");
 ```
+
 - Never commit secrets
 - Validate inputs
 - Use HTTPS
 
 ### Resources
+
 - `Resources/Images/` - images (PNG, JPG, SVG→PNG)
 - `Resources/Fonts/` - custom fonts
 - `Resources/Raw/` - raw assets
@@ -156,6 +175,7 @@ string token = await SecureStorage.GetAsync("oauth_token");
 - Use appropriate sizes to avoid memory bloat
 
 ## Common Pitfalls
+
 1. Mixing Shell with NavigationPage/TabbedPage/FlyoutPage
 2. Changing MainPage frequently
 3. Nesting tabs
@@ -167,6 +187,7 @@ string token = await SecureStorage.GetAsync("oauth_token");
 9. Some Xamarin.Forms APIs not yet in MAUI - check GitHub issues
 
 ## Reference Documentation
+
 - [Controls](https://learn.microsoft.com/dotnet/maui/user-interface/controls/)
 - [XAML](https://learn.microsoft.com/dotnet/maui/xaml/)
 - [Data Binding](https://learn.microsoft.com/dotnet/maui/fundamentals/data-binding/)

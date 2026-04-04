@@ -41,7 +41,7 @@ export function getBasePath(): string {
  * Fetch JSON data from the data directory
  */
 export async function fetchData<T = unknown>(
-  filename: string
+  filename: string,
 ): Promise<T | null> {
   try {
     const basePath = getBasePath();
@@ -58,7 +58,7 @@ export async function fetchData<T = unknown>(
  * Fetch raw file content from GitHub
  */
 export async function fetchFileContent(
-  filePath: string
+  filePath: string,
 ): Promise<string | null> {
   try {
     const response = await fetch(`${REPO_BASE_URL}/${filePath}`);
@@ -100,7 +100,7 @@ export async function copyToClipboard(text: string): Promise<boolean> {
 export function getVSCodeInstallUrl(
   type: string,
   filePath: string,
-  insiders = false
+  insiders = false,
 ): string | null {
   const config = VSCODE_INSTALL_CONFIG[type];
   if (!config) return null;
@@ -172,7 +172,7 @@ export async function shareFile(filePath: string): Promise<boolean> {
  */
 export function showToast(
   message: string,
-  type: "success" | "error" = "success"
+  type: "success" | "error" = "success",
 ): void {
   const existing = document.querySelector(".toast");
   if (existing) existing.remove();
@@ -192,7 +192,7 @@ export function showToast(
  */
 export function debounce<T extends (...args: unknown[]) => void>(
   func: T,
-  wait: number
+  wait: number,
 ): (...args: Parameters<T>) => void {
   let timeout: ReturnType<typeof setTimeout>;
   return function executedFunction(...args: Parameters<T>) {
@@ -277,7 +277,7 @@ export function getResourceIcon(type: string): string {
 export function getInstallDropdownHtml(
   type: string,
   filePath: string,
-  small = false
+  small = false,
 ): string {
   const vscodeUrl = getVSCodeInstallUrl(type, filePath, false);
   const insidersUrl = getVSCodeInstallUrl(type, filePath, true);
@@ -290,8 +290,8 @@ export function getInstallDropdownHtml(
   return `
     <div class="install-dropdown ${sizeClass}" id="${uniqueId}" data-install-scope="list">
       <a href="${vscodeUrl}" class="btn btn-primary ${
-    small ? "btn-small" : ""
-  } install-btn-main" target="_blank" rel="noopener">
+        small ? "btn-small" : ""
+      } install-btn-main" target="_blank" rel="noopener">
         Install
       </a>
       <button type="button" class="btn btn-primary ${
@@ -325,13 +325,13 @@ export function setupDropdownCloseHandlers(): void {
     (e) => {
       const target = e.target as HTMLElement;
       const dropdown = target.closest(
-        '.install-dropdown[data-install-scope="list"]'
+        '.install-dropdown[data-install-scope="list"]',
       );
       const toggle = target.closest(
-        ".install-btn-toggle"
+        ".install-btn-toggle",
       ) as HTMLButtonElement | null;
       const menuLink = target.closest(
-        ".install-dropdown-menu a"
+        ".install-dropdown-menu a",
       ) as HTMLAnchorElement | null;
 
       if (dropdown) {
@@ -347,7 +347,7 @@ export function setupDropdownCloseHandlers(): void {
         if (menuLink) {
           dropdown.classList.remove("open");
           const toggleBtn = dropdown.querySelector<HTMLButtonElement>(
-            ".install-btn-toggle"
+            ".install-btn-toggle",
           );
           toggleBtn?.setAttribute("aria-expanded", "false");
           return;
@@ -361,12 +361,12 @@ export function setupDropdownCloseHandlers(): void {
         .forEach((openDropdown) => {
           openDropdown.classList.remove("open");
           const toggleBtn = openDropdown.querySelector<HTMLButtonElement>(
-            ".install-btn-toggle"
+            ".install-btn-toggle",
           );
           toggleBtn?.setAttribute("aria-expanded", "false");
         });
     },
-    true
+    true,
   );
 }
 
@@ -379,15 +379,15 @@ export function getActionButtonsHtml(filePath: string, small = false): string {
 
   return `
     <button class="btn btn-secondary ${btnClass} action-download" data-path="${escapeHtml(
-    filePath
-  )}" title="Download file">
+      filePath,
+    )}" title="Download file">
       <svg viewBox="0 0 16 16" width="${iconSize}" height="${iconSize}" fill="currentColor">
         <path d="M7.47 10.78a.75.75 0 0 0 1.06 0l3.75-3.75a.75.75 0 0 0-1.06-1.06L8.75 8.44V1.75a.75.75 0 0 0-1.5 0v6.69L4.78 5.97a.75.75 0 0 0-1.06 1.06l3.75 3.75ZM3.75 13a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Z"/>
       </svg>
     </button>
     <button class="btn btn-secondary ${btnClass} action-share" data-path="${escapeHtml(
-    filePath
-  )}" title="Copy link">
+      filePath,
+    )}" title="Copy link">
       <svg viewBox="0 0 16 16" width="${iconSize}" height="${iconSize}" fill="currentColor">
         <path d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25zm-.025 5.45a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 1 1-2.83-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25z"/>
       </svg>
@@ -406,7 +406,7 @@ export function setupActionHandlers(): void {
     "click",
     async (e) => {
       const target = (e.target as HTMLElement).closest(
-        ".action-download, .action-share"
+        ".action-download, .action-share",
       ) as HTMLElement | null;
       if (!target) return;
 
@@ -420,7 +420,7 @@ export function setupActionHandlers(): void {
         const success = await downloadFile(path);
         showToast(
           success ? "Download started!" : "Download failed",
-          success ? "success" : "error"
+          success ? "success" : "error",
         );
         return;
       }
@@ -428,10 +428,10 @@ export function setupActionHandlers(): void {
       const success = await shareFile(path);
       showToast(
         success ? "Link copied!" : "Failed to copy link",
-        success ? "success" : "error"
+        success ? "success" : "error",
       );
     },
-    true
+    true,
   );
 }
 
@@ -508,6 +508,6 @@ export function getLastUpdatedHtml(isoDate: string | null | undefined): string {
   }
 
   return `<span class="last-updated" title="${escapeHtml(
-    fullDate
+    fullDate,
   )}">Updated ${relativeTime}</span>`;
 }

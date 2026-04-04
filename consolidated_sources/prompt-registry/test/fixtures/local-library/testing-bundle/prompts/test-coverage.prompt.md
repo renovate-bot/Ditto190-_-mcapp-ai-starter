@@ -28,36 +28,36 @@ npm test -- --coverage
 // Identify untested branches
 function processPayment(amount, method) {
   if (amount <= 0) {
-    throw new Error('Invalid amount'); // ⚠️ Test this
+    throw new Error("Invalid amount"); // ⚠️ Test this
   }
-  
-  if (method === 'credit') {
-    return processCreditCard(amount);  // ⚠️ Test this
-  } else if (method === 'debit') {
-    return processDebit(amount);       // ⚠️ Test this
+
+  if (method === "credit") {
+    return processCreditCard(amount); // ⚠️ Test this
+  } else if (method === "debit") {
+    return processDebit(amount); // ⚠️ Test this
   } else {
-    throw new Error('Invalid method'); // ⚠️ Test this
+    throw new Error("Invalid method"); // ⚠️ Test this
   }
 }
 
 // Add tests for each branch
-describe('processPayment', () => {
-  it('should throw on negative amount', () => {
-    expect(() => processPayment(-10, 'credit')).toThrow('Invalid amount');
+describe("processPayment", () => {
+  it("should throw on negative amount", () => {
+    expect(() => processPayment(-10, "credit")).toThrow("Invalid amount");
   });
-  
-  it('should process credit card payment', () => {
-    const result = processPayment(100, 'credit');
-    expect(result.method).toBe('credit');
+
+  it("should process credit card payment", () => {
+    const result = processPayment(100, "credit");
+    expect(result.method).toBe("credit");
   });
-  
-  it('should process debit payment', () => {
-    const result = processPayment(100, 'debit');
-    expect(result.method).toBe('debit');
+
+  it("should process debit payment", () => {
+    const result = processPayment(100, "debit");
+    expect(result.method).toBe("debit");
   });
-  
-  it('should throw on invalid method', () => {
-    expect(() => processPayment(100, 'invalid')).toThrow('Invalid method');
+
+  it("should throw on invalid method", () => {
+    expect(() => processPayment(100, "invalid")).toThrow("Invalid method");
   });
 });
 ```

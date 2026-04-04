@@ -16,15 +16,13 @@ The PHP superglobals `$_GET` and `$_POST` are used to collect form data. When a 
 
 ```html
 <html>
-<body>
-
-<form action="welcome.php" method="post">
-  Name: <input type="text" name="name"><br>
-  E-mail: <input type="text" name="email"><br>
-  <input type="submit">
-</form>
-
-</body>
+  <body>
+    <form action="welcome.php" method="post">
+      Name: <input type="text" name="name" /><br />
+      E-mail: <input type="text" name="email" /><br />
+      <input type="submit" />
+    </form>
+  </body>
 </html>
 ```
 
@@ -45,9 +43,9 @@ Your email address is: <?php echo $_POST["email"]; ?>
 
 ```html
 <form action="welcome_get.php" method="get">
-  Name: <input type="text" name="name"><br>
-  E-mail: <input type="text" name="email"><br>
-  <input type="submit">
+  Name: <input type="text" name="name" /><br />
+  E-mail: <input type="text" name="email" /><br />
+  <input type="submit" />
 </form>
 ```
 
@@ -64,15 +62,15 @@ Your email address is: <?php echo $_GET["email"]; ?>
 
 ### GET vs. POST
 
-| Feature | GET | POST |
-|---------|-----|------|
-| Visibility | Data is visible in the URL (as query string parameters) | Data is NOT displayed in the URL |
-| Bookmarking | Pages can be bookmarked with query string values | Pages cannot be bookmarked with submitted data |
-| Data length | Limited (max URL length is approximately 2048 characters) | No limitations on data size |
-| Security | Should NEVER be used for sending sensitive data (passwords, etc.) | More secure than GET for sensitive data |
-| Caching | Requests can be cached | Requests are not cached |
-| Browser history | Parameters remain in browser history | Parameters are not saved in browser history |
-| Use case | Non-sensitive data, search queries, filter parameters | Sensitive data, form submissions that change data |
+| Feature         | GET                                                               | POST                                              |
+| --------------- | ----------------------------------------------------------------- | ------------------------------------------------- |
+| Visibility      | Data is visible in the URL (as query string parameters)           | Data is NOT displayed in the URL                  |
+| Bookmarking     | Pages can be bookmarked with query string values                  | Pages cannot be bookmarked with submitted data    |
+| Data length     | Limited (max URL length is approximately 2048 characters)         | No limitations on data size                       |
+| Security        | Should NEVER be used for sending sensitive data (passwords, etc.) | More secure than GET for sensitive data           |
+| Caching         | Requests can be cached                                            | Requests are not cached                           |
+| Browser history | Parameters remain in browser history                              | Parameters are not saved in browser history       |
+| Use case        | Non-sensitive data, search queries, filter parameters             | Sensitive data, form submissions that change data |
 
 **Important:** Both `$_GET` and `$_POST` are superglobal arrays. They are always accessible regardless of scope, and you can access them from any function, class, or file without having to do anything special.
 
@@ -93,13 +91,13 @@ The form used throughout this tutorial:
 - **Fields:** Name, E-mail, Website, Comment, Gender
 - **Validation rules:**
 
-| Field   | Validation Rules |
-|---------|-----------------|
-| Name    | Required. Must only contain letters and whitespace |
+| Field   | Validation Rules                                                |
+| ------- | --------------------------------------------------------------- |
+| Name    | Required. Must only contain letters and whitespace              |
 | E-mail  | Required. Must contain a valid email address (with `@` and `.`) |
-| Website | Optional. If present, must contain a valid URL |
-| Comment | Optional. Multi-line input field (textarea) |
-| Gender  | Required. Must select one |
+| Website | Optional. If present, must contain a valid URL                  |
+| Comment | Optional. Multi-line input field (textarea)                     |
+| Gender  | Required. Must select one                                       |
 
 ### The Form Element
 
@@ -126,7 +124,11 @@ http://www.example.com/test_form.php/%22%3E%3Cscript%3Ealert('hacked')%3C/script
 This translates to:
 
 ```html
-<form method="post" action="test_form.php/"><script>alert('hacked')</script>
+<form method="post" action="test_form.php/">
+  <script>
+    alert("hacked");
+  </script>
+</form>
 ```
 
 The `<script>` tag is added and the `alert` command is executed. This is just a simple example. Any JavaScript code can be added inside `<script>` tags, and a hacker could redirect the user to a file on another server that holds malicious code that can alter global variables or submit the form to another address.
@@ -142,7 +144,10 @@ Use `htmlspecialchars()`:
 The `htmlspecialchars()` function converts special characters to HTML entities. Now if a user tries to exploit `PHP_SELF`, the output is safely rendered as:
 
 ```html
-<form method="post" action="test_form.php/&quot;&gt;&lt;script&gt;alert('hacked')&lt;/script&gt;">
+<form
+  method="post"
+  action="test_form.php/&quot;&gt;&lt;script&gt;alert('hacked')&lt;/script&gt;"
+></form>
 ```
 
 The exploit attempt fails because the code is escaped and treated as plain text.
@@ -285,7 +290,7 @@ Use CSS to make error messages stand out:
 
 ```css
 .error {
-    color: #FF0000;
+  color: #ff0000;
 }
 ```
 
@@ -398,12 +403,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ### PHP Validation Functions Reference
 
-| Function | Purpose |
-|----------|---------|
-| `preg_match(pattern, string)` | Tests whether a string matches a regular expression pattern. Returns `1` if matched, `0` if not. |
-| `filter_var(value, filter)` | Filters a variable with a specified filter constant. Returns the filtered data on success, or `false` on failure. |
-| `FILTER_VALIDATE_EMAIL` | Filter constant that validates an email address format. |
-| `FILTER_VALIDATE_URL` | Filter constant that validates a URL format. |
+| Function                      | Purpose                                                                                                           |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `preg_match(pattern, string)` | Tests whether a string matches a regular expression pattern. Returns `1` if matched, `0` if not.                  |
+| `filter_var(value, filter)`   | Filters a variable with a specified filter constant. Returns the filtered data on success, or `false` on failure. |
+| `FILTER_VALIDATE_EMAIL`       | Filter constant that validates an email address format.                                                           |
+| `FILTER_VALIDATE_URL`         | Filter constant that validates a URL format.                                                                      |
 
 ---
 
@@ -418,13 +423,14 @@ To show the values in the input fields after the user hits the submit button, ad
 Use `<?php echo $variable; ?>` to output the value:
 
 ```html
-Name: <input type="text" name="name" value="<?php echo $name; ?>">
+Name: <input type="text" name="name" value="<?php echo $name; ?>" />
 
-E-mail: <input type="text" name="email" value="<?php echo $email; ?>">
+E-mail: <input type="text" name="email" value="<?php echo $email; ?>" />
 
-Website: <input type="text" name="website" value="<?php echo $website; ?>">
+Website: <input type="text" name="website" value="<?php echo $website; ?>" />
 
-Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment; ?></textarea>
+Comment:
+<textarea name="comment" rows="5" cols="40"><?php echo $comment; ?></textarea>
 ```
 
 ### Retaining Radio Button Selection
@@ -575,19 +581,19 @@ echo $gender;
 
 ### Summary of Key Functions
 
-| Function | Purpose |
-|----------|---------|
-| `htmlspecialchars()` | Converts special characters (`<`, `>`, `&`, `"`, `'`) to HTML entities to prevent XSS |
-| `trim()` | Strips whitespace (or other characters) from the beginning and end of a string |
-| `stripslashes()` | Removes backslashes from a string |
-| `empty()` | Checks whether a variable is empty, null, or falsy |
-| `isset()` | Checks whether a variable is set and is not null |
-| `preg_match()` | Performs a regular expression match on a string |
-| `filter_var()` | Filters a variable with a specified filter |
-| `$_POST` | Superglobal array that collects form data sent with the POST method |
-| `$_GET` | Superglobal array that collects form data sent with the GET method |
-| `$_SERVER["PHP_SELF"]` | Returns the filename of the currently executing script |
-| `$_SERVER["REQUEST_METHOD"]` | Returns the request method used to access the page (e.g., `POST`, `GET`) |
+| Function                     | Purpose                                                                               |
+| ---------------------------- | ------------------------------------------------------------------------------------- |
+| `htmlspecialchars()`         | Converts special characters (`<`, `>`, `&`, `"`, `'`) to HTML entities to prevent XSS |
+| `trim()`                     | Strips whitespace (or other characters) from the beginning and end of a string        |
+| `stripslashes()`             | Removes backslashes from a string                                                     |
+| `empty()`                    | Checks whether a variable is empty, null, or falsy                                    |
+| `isset()`                    | Checks whether a variable is set and is not null                                      |
+| `preg_match()`               | Performs a regular expression match on a string                                       |
+| `filter_var()`               | Filters a variable with a specified filter                                            |
+| `$_POST`                     | Superglobal array that collects form data sent with the POST method                   |
+| `$_GET`                      | Superglobal array that collects form data sent with the GET method                    |
+| `$_SERVER["PHP_SELF"]`       | Returns the filename of the currently executing script                                |
+| `$_SERVER["REQUEST_METHOD"]` | Returns the request method used to access the page (e.g., `POST`, `GET`)              |
 
 ### Key Takeaways
 

@@ -13,14 +13,14 @@ copilot plugin install go-mcp-development@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                       | Description                                                                                                                                                  |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `/go-mcp-development:go-mcp-server-generator` | Generate a complete Go MCP server project with proper structure, dependencies, and implementation using the official github.com/modelcontextprotocol/go-sdk. |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent           | Description                                                                                      |
+| --------------- | ------------------------------------------------------------------------------------------------ |
 | `go-mcp-expert` | Expert assistant for building Model Context Protocol (MCP) servers in Go using the official SDK. |
 
 ## Source

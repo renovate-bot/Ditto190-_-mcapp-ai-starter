@@ -1,6 +1,7 @@
 # Workflows, Best Practices & Scripting Patterns
 
 ## Table of Contents
+
 - [Common Workflows](#common-workflows)
 - [Best Practices](#best-practices)
 - [Error Handling & Retry Patterns](#error-handling--retry-patterns)

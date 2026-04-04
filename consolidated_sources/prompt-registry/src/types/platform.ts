@@ -2,11 +2,11 @@
  * Supported VSCode platforms and their detection signatures
  */
 export enum Platform {
-  VSCODE = 'vscode',
-  WINDSURF = 'windsurf',
-  KIRO = 'kiro',
-  CURSOR = 'cursor',
-  UNKNOWN = 'unknown'
+  VSCODE = "vscode",
+  WINDSURF = "windsurf",
+  KIRO = "kiro",
+  CURSOR = "cursor",
+  UNKNOWN = "unknown",
 }
 
 /**
@@ -39,7 +39,7 @@ export interface PlatformConfig {
  * Installation scope options
  */
 export enum InstallationScope {
-  USER = 'user',
-  WORKSPACE = 'workspace',
-  PROJECT = 'project'
+  USER = "user",
+  WORKSPACE = "workspace",
+  PROJECT = "project",
 }

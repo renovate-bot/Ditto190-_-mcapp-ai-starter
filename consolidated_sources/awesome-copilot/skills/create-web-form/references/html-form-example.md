@@ -22,13 +22,13 @@ The `<form>` element is used to create an HTML form for user input. It acts as a
 
 The `<input>` element is the most used form element. It can be displayed in many ways depending on the `type` attribute.
 
-| Type | Description |
-|------|-------------|
-| `<input type="text">` | Displays a single-line text input field |
-| `<input type="radio">` | Displays a radio button (for selecting one of many choices) |
+| Type                      | Description                                                      |
+| ------------------------- | ---------------------------------------------------------------- |
+| `<input type="text">`     | Displays a single-line text input field                          |
+| `<input type="radio">`    | Displays a radio button (for selecting one of many choices)      |
 | `<input type="checkbox">` | Displays a checkbox (for selecting zero or more of many choices) |
-| `<input type="submit">` | Displays a submit button (for submitting the form) |
-| `<input type="button">` | Displays a clickable button |
+| `<input type="submit">`   | Displays a submit button (for submitting the form)               |
+| `<input type="button">`   | Displays a clickable button                                      |
 
 ### Text Fields
 
@@ -36,10 +36,10 @@ The `<input type="text">` defines a single-line input field for text input.
 
 ```html
 <form>
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname">
+  <label for="fname">First name:</label><br />
+  <input type="text" id="fname" name="fname" /><br />
+  <label for="lname">Last name:</label><br />
+  <input type="text" id="lname" name="lname" />
 </form>
 ```
 
@@ -58,11 +58,11 @@ The `<input type="radio">` defines a radio button. Radio buttons let a user sele
 ```html
 <form>
   <p>Choose your favorite Web language:</p>
-  <input type="radio" id="html" name="fav_language" value="HTML">
-  <label for="html">HTML</label><br>
-  <input type="radio" id="css" name="fav_language" value="CSS">
-  <label for="css">CSS</label><br>
-  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+  <input type="radio" id="html" name="fav_language" value="HTML" />
+  <label for="html">HTML</label><br />
+  <input type="radio" id="css" name="fav_language" value="CSS" />
+  <label for="css">CSS</label><br />
+  <input type="radio" id="javascript" name="fav_language" value="JavaScript" />
   <label for="javascript">JavaScript</label>
 </form>
 ```
@@ -73,11 +73,11 @@ The `<input type="checkbox">` defines a checkbox. Checkboxes let a user select Z
 
 ```html
 <form>
-  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-  <label for="vehicle1"> I have a bike</label><br>
-  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-  <label for="vehicle2"> I have a car</label><br>
-  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+  <label for="vehicle1"> I have a bike</label><br />
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
+  <label for="vehicle2"> I have a car</label><br />
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" />
   <label for="vehicle3"> I have a boat</label>
 </form>
 ```
@@ -88,11 +88,11 @@ The `<input type="submit">` defines a button for submitting the form data to a f
 
 ```html
 <form action="/action_page.php">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
-  <input type="submit" value="Submit">
+  <label for="fname">First name:</label><br />
+  <input type="text" id="fname" name="fname" value="John" /><br />
+  <label for="lname">Last name:</label><br />
+  <input type="text" id="lname" name="lname" value="Doe" /><br /><br />
+  <input type="submit" value="Submit" />
 </form>
 ```
 
@@ -112,11 +112,11 @@ The `action` attribute defines the action to be performed when the form is submi
 
 ```html
 <form action="/action_page.php">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
-  <input type="submit" value="Submit">
+  <label for="fname">First name:</label><br />
+  <input type="text" id="fname" name="fname" value="John" /><br />
+  <label for="lname">Last name:</label><br />
+  <input type="text" id="lname" name="lname" value="Doe" /><br /><br />
+  <input type="submit" value="Submit" />
 </form>
 ```
 
@@ -126,16 +126,16 @@ The `action` attribute defines the action to be performed when the form is submi
 
 The `target` attribute specifies where to display the response that is received after submitting the form.
 
-| Value | Description |
-|-------|-------------|
-| `_blank` | The response is displayed in a new window or tab |
-| `_self` | The response is displayed in the current window (default) |
-| `_parent` | The response is displayed in the parent frame |
-| `_top` | The response is displayed in the full body of the window |
-| `framename` | The response is displayed in a named iframe |
+| Value       | Description                                               |
+| ----------- | --------------------------------------------------------- |
+| `_blank`    | The response is displayed in a new window or tab          |
+| `_self`     | The response is displayed in the current window (default) |
+| `_parent`   | The response is displayed in the parent frame             |
+| `_top`      | The response is displayed in the full body of the window  |
+| `framename` | The response is displayed in a named iframe               |
 
 ```html
-<form action="/action_page.php" target="_blank">
+<form action="/action_page.php" target="_blank"></form>
 ```
 
 ### The `method` Attribute
@@ -145,9 +145,9 @@ The `method` attribute specifies the HTTP method to be used when submitting the 
 ```html
 <!-- Using GET -->
 <form action="/action_page.php" method="get">
-
-<!-- Using POST -->
-<form action="/action_page.php" method="post">
+  <!-- Using POST -->
+  <form action="/action_page.php" method="post"></form>
+</form>
 ```
 
 **When to use GET:**
@@ -171,7 +171,7 @@ The `method` attribute specifies the HTTP method to be used when submitting the 
 The `autocomplete` attribute specifies whether a form should have autocomplete on or off. When autocomplete is on, the browser automatically completes values based on values that the user has entered before.
 
 ```html
-<form action="/action_page.php" autocomplete="on">
+<form action="/action_page.php" autocomplete="on"></form>
 ```
 
 ### The `novalidate` Attribute
@@ -179,21 +179,25 @@ The `autocomplete` attribute specifies whether a form should have autocomplete o
 The `novalidate` attribute is a boolean attribute. When present, it specifies that the form data should not be validated when submitted.
 
 ```html
-<form action="/action_page.php" novalidate>
+<form action="/action_page.php" novalidate></form>
 ```
 
 ### The `enctype` Attribute
 
 The `enctype` attribute specifies how the form data should be encoded when submitting it to the server. This attribute can only be used with `method="post"`.
 
-| Value | Description |
-|-------|-------------|
-| `application/x-www-form-urlencoded` | Default. All characters are encoded before sent |
-| `multipart/form-data` | Required when the form includes file upload controls (`<input type="file">`) |
-| `text/plain` | Sends data without any encoding (not recommended) |
+| Value                               | Description                                                                  |
+| ----------------------------------- | ---------------------------------------------------------------------------- |
+| `application/x-www-form-urlencoded` | Default. All characters are encoded before sent                              |
+| `multipart/form-data`               | Required when the form includes file upload controls (`<input type="file">`) |
+| `text/plain`                        | Sends data without any encoding (not recommended)                            |
 
 ```html
-<form action="/action_page.php" method="post" enctype="multipart/form-data">
+<form
+  action="/action_page.php"
+  method="post"
+  enctype="multipart/form-data"
+></form>
 ```
 
 ### The `name` Attribute
@@ -206,17 +210,17 @@ The `accept-charset` attribute specifies the character encodings used for the fo
 
 ### All `<form>` Attributes Summary
 
-| Attribute | Description |
-|-----------|-------------|
-| `accept-charset` | Specifies the character encodings for form submission |
-| `action` | Specifies where to send the form data when submitted |
-| `autocomplete` | Specifies whether the form should have autocomplete on or off |
-| `enctype` | Specifies how the form data should be encoded when submitting (for `method="post"`) |
-| `method` | Specifies the HTTP method to use when sending form data |
-| `name` | Specifies the name of the form |
-| `novalidate` | Specifies that the form should not be validated when submitted |
-| `rel` | Specifies the relationship between a linked resource and the current document |
-| `target` | Specifies where to display the response after submitting the form |
+| Attribute        | Description                                                                         |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| `accept-charset` | Specifies the character encodings for form submission                               |
+| `action`         | Specifies where to send the form data when submitted                                |
+| `autocomplete`   | Specifies whether the form should have autocomplete on or off                       |
+| `enctype`        | Specifies how the form data should be encoded when submitting (for `method="post"`) |
+| `method`         | Specifies the HTTP method to use when sending form data                             |
+| `name`           | Specifies the name of the form                                                      |
+| `novalidate`     | Specifies that the form should not be validated when submitted                      |
+| `rel`            | Specifies the relationship between a linked resource and the current document       |
+| `target`         | Specifies where to display the response after submitting the form                   |
 
 ---
 
@@ -255,9 +259,9 @@ The `<select>` element defines a drop-down list.
 ```html
 <!-- Visible values -->
 <select id="cars" name="cars" size="3">
-
-<!-- Allow multiple selections -->
-<select id="cars" name="cars" size="4" multiple>
+  <!-- Allow multiple selections -->
+  <select id="cars" name="cars" size="4" multiple></select>
+</select>
 ```
 
 ### The `<textarea>` Element
@@ -299,11 +303,11 @@ The `<fieldset>` element groups related data in a form. The `<legend>` element d
 <form action="/action_page.php">
   <fieldset>
     <legend>Personalia:</legend>
-    <label for="fname">First name:</label><br>
-    <input type="text" id="fname" name="fname" value="John"><br>
-    <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lname" value="Doe"><br><br>
-    <input type="submit" value="Submit">
+    <label for="fname">First name:</label><br />
+    <input type="text" id="fname" name="fname" value="John" /><br />
+    <label for="lname">Last name:</label><br />
+    <input type="text" id="lname" name="lname" value="Doe" /><br /><br />
+    <input type="submit" value="Submit" />
   </fieldset>
 </form>
 ```
@@ -314,15 +318,15 @@ The `<datalist>` element specifies a list of pre-defined options for an `<input>
 
 ```html
 <form action="/action_page.php">
-  <input list="browsers" name="browser">
+  <input list="browsers" name="browser" />
   <datalist id="browsers">
-    <option value="Edge">
-    <option value="Firefox">
-    <option value="Chrome">
-    <option value="Opera">
-    <option value="Safari">
+    <option value="Edge"></option>
+    <option value="Firefox"></option>
+    <option value="Chrome"></option>
+    <option value="Opera"></option>
+    <option value="Safari"></option>
   </datalist>
-  <input type="submit">
+  <input type="submit" />
 </form>
 ```
 
@@ -331,16 +335,18 @@ The `<datalist>` element specifies a list of pre-defined options for an `<input>
 The `<output>` element represents the result of a calculation (typically performed using JavaScript).
 
 ```html
-<form action="/action_page.php"
-  oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+<form
+  action="/action_page.php"
+  oninput="x.value=parseInt(a.value)+parseInt(b.value)"
+>
   0
-  <input type="range" id="a" name="a" value="50">
+  <input type="range" id="a" name="a" value="50" />
   100 +
-  <input type="number" id="b" name="b" value="50">
+  <input type="number" id="b" name="b" value="50" />
   =
   <output name="x" for="a b"></output>
-  <br><br>
-  <input type="submit">
+  <br /><br />
+  <input type="submit" />
 </form>
 ```
 
@@ -364,20 +370,20 @@ The `<optgroup>` element is used to group related options in a `<select>` elemen
 
 ### Form Elements Summary
 
-| Element | Description |
-|---------|-------------|
-| `<form>` | Defines an HTML form for user input |
-| `<input>` | Defines an input control |
-| `<textarea>` | Defines a multiline input control (text area) |
-| `<label>` | Defines a label for an `<input>` element |
-| `<fieldset>` | Groups related elements in a form |
-| `<legend>` | Defines a caption for a `<fieldset>` element |
-| `<select>` | Defines a drop-down list |
-| `<optgroup>` | Defines a group of related options in a drop-down list |
-| `<option>` | Defines an option in a drop-down list |
-| `<button>` | Defines a clickable button |
+| Element      | Description                                                |
+| ------------ | ---------------------------------------------------------- |
+| `<form>`     | Defines an HTML form for user input                        |
+| `<input>`    | Defines an input control                                   |
+| `<textarea>` | Defines a multiline input control (text area)              |
+| `<label>`    | Defines a label for an `<input>` element                   |
+| `<fieldset>` | Groups related elements in a form                          |
+| `<legend>`   | Defines a caption for a `<fieldset>` element               |
+| `<select>`   | Defines a drop-down list                                   |
+| `<optgroup>` | Defines a group of related options in a drop-down list     |
+| `<option>`   | Defines an option in a drop-down list                      |
+| `<button>`   | Defines a clickable button                                 |
 | `<datalist>` | Specifies a list of pre-defined options for input controls |
-| `<output>` | Defines the result of a calculation |
+| `<output>`   | Defines the result of a calculation                        |
 
 ---
 
@@ -391,10 +397,10 @@ The `<optgroup>` element is used to group related options in a `<select>` elemen
 
 ```html
 <form>
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname">
+  <label for="fname">First name:</label><br />
+  <input type="text" id="fname" name="fname" /><br />
+  <label for="lname">Last name:</label><br />
+  <input type="text" id="lname" name="lname" />
 </form>
 ```
 
@@ -404,10 +410,10 @@ The `<optgroup>` element is used to group related options in a `<select>` elemen
 
 ```html
 <form>
-  <label for="username">Username:</label><br>
-  <input type="text" id="username" name="username"><br>
-  <label for="pwd">Password:</label><br>
-  <input type="password" id="pwd" name="pwd">
+  <label for="username">Username:</label><br />
+  <input type="text" id="username" name="username" /><br />
+  <label for="pwd">Password:</label><br />
+  <input type="password" id="pwd" name="pwd" />
 </form>
 ```
 
@@ -417,11 +423,11 @@ The `<optgroup>` element is used to group related options in a `<select>` elemen
 
 ```html
 <form action="/action_page.php">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
-  <input type="submit" value="Submit">
+  <label for="fname">First name:</label><br />
+  <input type="text" id="fname" name="fname" value="John" /><br />
+  <label for="lname">Last name:</label><br />
+  <input type="text" id="lname" name="lname" value="Doe" /><br /><br />
+  <input type="submit" value="Submit" />
 </form>
 ```
 
@@ -433,12 +439,12 @@ If you omit the submit button's `value` attribute, the button will get a default
 
 ```html
 <form action="/action_page.php">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
-  <input type="submit" value="Submit">
-  <input type="reset">
+  <label for="fname">First name:</label><br />
+  <input type="text" id="fname" name="fname" value="John" /><br />
+  <label for="lname">Last name:</label><br />
+  <input type="text" id="lname" name="lname" value="Doe" /><br /><br />
+  <input type="submit" value="Submit" />
+  <input type="reset" />
 </form>
 ```
 
@@ -448,11 +454,11 @@ If you omit the submit button's `value` attribute, the button will get a default
 
 ```html
 <form>
-  <input type="radio" id="html" name="fav_language" value="HTML">
-  <label for="html">HTML</label><br>
-  <input type="radio" id="css" name="fav_language" value="CSS">
-  <label for="css">CSS</label><br>
-  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+  <input type="radio" id="html" name="fav_language" value="HTML" />
+  <label for="html">HTML</label><br />
+  <input type="radio" id="css" name="fav_language" value="CSS" />
+  <label for="css">CSS</label><br />
+  <input type="radio" id="javascript" name="fav_language" value="JavaScript" />
   <label for="javascript">JavaScript</label>
 </form>
 ```
@@ -463,11 +469,11 @@ If you omit the submit button's `value` attribute, the button will get a default
 
 ```html
 <form>
-  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-  <label for="vehicle1"> I have a bike</label><br>
-  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-  <label for="vehicle2"> I have a car</label><br>
-  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+  <label for="vehicle1"> I have a bike</label><br />
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
+  <label for="vehicle2"> I have a car</label><br />
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" />
   <label for="vehicle3"> I have a boat</label>
 </form>
 ```
@@ -477,7 +483,7 @@ If you omit the submit button's `value` attribute, the button will get a default
 `<input type="button">` defines a button.
 
 ```html
-<input type="button" onclick="alert('Hello World!')" value="Click Me!">
+<input type="button" onclick="alert('Hello World!')" value="Click Me!" />
 ```
 
 ### Input Type: color
@@ -487,7 +493,7 @@ If you omit the submit button's `value` attribute, the button will get a default
 ```html
 <form>
   <label for="favcolor">Select your favorite color:</label>
-  <input type="color" id="favcolor" name="favcolor" value="#ff0000">
+  <input type="color" id="favcolor" name="favcolor" value="#ff0000" />
 </form>
 ```
 
@@ -498,15 +504,15 @@ If you omit the submit button's `value` attribute, the button will get a default
 ```html
 <form>
   <label for="birthday">Birthday:</label>
-  <input type="date" id="birthday" name="birthday">
+  <input type="date" id="birthday" name="birthday" />
 </form>
 ```
 
 You can use the `min` and `max` attributes to add restrictions:
 
 ```html
-<input type="date" id="datemin" name="datemin" min="2000-01-02">
-<input type="date" id="datemax" name="datemax" max="1979-12-31">
+<input type="date" id="datemin" name="datemin" min="2000-01-02" />
+<input type="date" id="datemax" name="datemax" max="1979-12-31" />
 ```
 
 ### Input Type: datetime-local
@@ -516,7 +522,7 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="birthdaytime">Birthday (date and time):</label>
-  <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+  <input type="datetime-local" id="birthdaytime" name="birthdaytime" />
 </form>
 ```
 
@@ -527,7 +533,7 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="email">Enter your email:</label>
-  <input type="email" id="email" name="email">
+  <input type="email" id="email" name="email" />
 </form>
 ```
 
@@ -538,7 +544,7 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="myfile">Select a file:</label>
-  <input type="file" id="myfile" name="myfile">
+  <input type="file" id="myfile" name="myfile" />
 </form>
 ```
 
@@ -549,9 +555,9 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <input type="hidden" id="custId" name="custId" value="3487">
-  <input type="submit" value="Submit">
+  <input type="text" id="fname" name="fname" /><br /><br />
+  <input type="hidden" id="custId" name="custId" value="3487" />
+  <input type="submit" value="Submit" />
 </form>
 ```
 
@@ -561,7 +567,13 @@ You can use the `min` and `max` attributes to add restrictions:
 
 ```html
 <form>
-  <input type="image" src="img_submit.gif" alt="Submit" width="48" height="48">
+  <input
+    type="image"
+    src="img_submit.gif"
+    alt="Submit"
+    width="48"
+    height="48"
+  />
 </form>
 ```
 
@@ -572,7 +584,7 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="bdaymonth">Birthday (month and year):</label>
-  <input type="month" id="bdaymonth" name="bdaymonth">
+  <input type="month" id="bdaymonth" name="bdaymonth" />
 </form>
 ```
 
@@ -583,24 +595,24 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="quantity">Quantity (between 1 and 5):</label>
-  <input type="number" id="quantity" name="quantity" min="1" max="5">
+  <input type="number" id="quantity" name="quantity" min="1" max="5" />
 </form>
 ```
 
 **Input restrictions:**
 
-| Attribute | Description |
-|-----------|-------------|
-| `disabled` | Specifies that an input field should be disabled |
-| `max` | Specifies the maximum value for an input field |
-| `maxlength` | Specifies the maximum number of characters for an input field |
-| `min` | Specifies the minimum value for an input field |
-| `pattern` | Specifies a regular expression to check the input value against |
-| `readonly` | Specifies that an input field is read only (cannot be changed) |
-| `required` | Specifies that an input field is required (must be filled out) |
-| `size` | Specifies the width (in characters) of an input field |
-| `step` | Specifies the legal number intervals for an input field |
-| `value` | Specifies the default value for an input field |
+| Attribute   | Description                                                     |
+| ----------- | --------------------------------------------------------------- |
+| `disabled`  | Specifies that an input field should be disabled                |
+| `max`       | Specifies the maximum value for an input field                  |
+| `maxlength` | Specifies the maximum number of characters for an input field   |
+| `min`       | Specifies the minimum value for an input field                  |
+| `pattern`   | Specifies a regular expression to check the input value against |
+| `readonly`  | Specifies that an input field is read only (cannot be changed)  |
+| `required`  | Specifies that an input field is required (must be filled out)  |
+| `size`      | Specifies the width (in characters) of an input field           |
+| `step`      | Specifies the legal number intervals for an input field         |
+| `value`     | Specifies the default value for an input field                  |
 
 ### Input Type: range
 
@@ -609,7 +621,7 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="vol">Volume (between 0 and 50):</label>
-  <input type="range" id="vol" name="vol" min="0" max="50">
+  <input type="range" id="vol" name="vol" min="0" max="50" />
 </form>
 ```
 
@@ -620,7 +632,7 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="gsearch">Search Google:</label>
-  <input type="search" id="gsearch" name="gsearch">
+  <input type="search" id="gsearch" name="gsearch" />
 </form>
 ```
 
@@ -631,8 +643,12 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="phone">Enter your phone number:</label>
-  <input type="tel" id="phone" name="phone"
-    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+  <input
+    type="tel"
+    id="phone"
+    name="phone"
+    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+  />
 </form>
 ```
 
@@ -643,7 +659,7 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="appt">Select a time:</label>
-  <input type="time" id="appt" name="appt">
+  <input type="time" id="appt" name="appt" />
 </form>
 ```
 
@@ -654,7 +670,7 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="homepage">Add your homepage:</label>
-  <input type="url" id="homepage" name="homepage">
+  <input type="url" id="homepage" name="homepage" />
 </form>
 ```
 
@@ -665,36 +681,36 @@ You can use the `min` and `max` attributes to add restrictions:
 ```html
 <form>
   <label for="week">Select a week:</label>
-  <input type="week" id="week" name="week">
+  <input type="week" id="week" name="week" />
 </form>
 ```
 
 ### Input Types Summary
 
-| Input Type | Description |
-|------------|-------------|
-| `text` | Default. Single-line text input |
-| `password` | Password field (characters are masked) |
-| `submit` | Submit button |
-| `reset` | Reset button |
-| `radio` | Radio button |
-| `checkbox` | Checkbox |
-| `button` | Clickable button |
-| `color` | Color picker |
-| `date` | Date control (year, month, day) |
-| `datetime-local` | Date and time control (no timezone) |
-| `email` | Field for an e-mail address |
-| `file` | File-select field and a "Browse" button |
-| `hidden` | Hidden input field |
-| `image` | Image as a submit button |
-| `month` | Month and year control |
-| `number` | Field for entering a number |
-| `range` | Slider control for entering a number in a range |
-| `search` | Text field for searching |
-| `tel` | Field for entering a telephone number |
-| `time` | Control for entering a time |
-| `url` | Field for entering a URL |
-| `week` | Week and year control |
+| Input Type       | Description                                     |
+| ---------------- | ----------------------------------------------- |
+| `text`           | Default. Single-line text input                 |
+| `password`       | Password field (characters are masked)          |
+| `submit`         | Submit button                                   |
+| `reset`          | Reset button                                    |
+| `radio`          | Radio button                                    |
+| `checkbox`       | Checkbox                                        |
+| `button`         | Clickable button                                |
+| `color`          | Color picker                                    |
+| `date`           | Date control (year, month, day)                 |
+| `datetime-local` | Date and time control (no timezone)             |
+| `email`          | Field for an e-mail address                     |
+| `file`           | File-select field and a "Browse" button         |
+| `hidden`         | Hidden input field                              |
+| `image`          | Image as a submit button                        |
+| `month`          | Month and year control                          |
+| `number`         | Field for entering a number                     |
+| `range`          | Slider control for entering a number in a range |
+| `search`         | Text field for searching                        |
+| `tel`            | Field for entering a telephone number           |
+| `time`           | Control for entering a time                     |
+| `url`            | Field for entering a URL                        |
+| `week`           | Week and year control                           |
 
 ---
 
@@ -708,10 +724,10 @@ The `value` attribute specifies an initial value for an input field.
 
 ```html
 <form>
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe">
+  <label for="fname">First name:</label><br />
+  <input type="text" id="fname" name="fname" value="John" /><br />
+  <label for="lname">Last name:</label><br />
+  <input type="text" id="lname" name="lname" value="Doe" />
 </form>
 ```
 
@@ -720,7 +736,7 @@ The `value` attribute specifies an initial value for an input field.
 The `readonly` attribute specifies that an input field is read-only. A read-only input field cannot be modified but can be tabbed to, highlighted, and copied. The value of a read-only field will be sent when submitting the form.
 
 ```html
-<input type="text" id="fname" name="fname" value="John" readonly>
+<input type="text" id="fname" name="fname" value="John" readonly />
 ```
 
 ### The `disabled` Attribute
@@ -728,7 +744,7 @@ The `readonly` attribute specifies that an input field is read-only. A read-only
 The `disabled` attribute specifies that an input field should be disabled. A disabled field is unusable and un-clickable. The value of a disabled field will **not** be sent when submitting the form.
 
 ```html
-<input type="text" id="fname" name="fname" value="John" disabled>
+<input type="text" id="fname" name="fname" value="John" disabled />
 ```
 
 ### The `size` Attribute
@@ -736,7 +752,7 @@ The `disabled` attribute specifies that an input field should be disabled. A dis
 The `size` attribute specifies the visible width, in characters, of an input field. The default value for `size` is 20. Works with: text, search, tel, url, email, and password.
 
 ```html
-<input type="text" id="fname" name="fname" size="50">
+<input type="text" id="fname" name="fname" size="50" />
 ```
 
 ### The `maxlength` Attribute
@@ -744,7 +760,7 @@ The `size` attribute specifies the visible width, in characters, of an input fie
 The `maxlength` attribute specifies the maximum number of characters allowed in an input field. When a `maxlength` is set, the input field will not accept more than the specified number of characters.
 
 ```html
-<input type="text" id="fname" name="fname" maxlength="10">
+<input type="text" id="fname" name="fname" maxlength="10" />
 ```
 
 ### The `min` and `max` Attributes
@@ -752,9 +768,9 @@ The `maxlength` attribute specifies the maximum number of characters allowed in 
 The `min` and `max` attributes specify the minimum and maximum values for an input field. Work with: number, range, date, datetime-local, month, time, and week.
 
 ```html
-<input type="date" id="datemin" name="datemin" min="2000-01-02">
-<input type="date" id="datemax" name="datemax" max="1979-12-31">
-<input type="number" id="quantity" name="quantity" min="1" max="5">
+<input type="date" id="datemin" name="datemin" min="2000-01-02" />
+<input type="date" id="datemax" name="datemax" max="1979-12-31" />
+<input type="number" id="quantity" name="quantity" min="1" max="5" />
 ```
 
 ### The `multiple` Attribute
@@ -762,7 +778,7 @@ The `min` and `max` attributes specify the minimum and maximum values for an inp
 The `multiple` attribute specifies that the user is allowed to enter more than one value in an input field. Works with email and file.
 
 ```html
-<input type="file" id="files" name="files" multiple>
+<input type="file" id="files" name="files" multiple />
 ```
 
 ### The `pattern` Attribute
@@ -770,8 +786,13 @@ The `multiple` attribute specifies that the user is allowed to enter more than o
 The `pattern` attribute specifies a regular expression that the input field's value is checked against when the form is submitted. Works with: text, date, search, url, tel, email, and password.
 
 ```html
-<input type="text" id="country_code" name="country_code"
-  pattern="[A-Za-z]{3}" title="Three letter country code">
+<input
+  type="text"
+  id="country_code"
+  name="country_code"
+  pattern="[A-Za-z]{3}"
+  title="Three letter country code"
+/>
 ```
 
 **Tip:** Use the global `title` attribute to describe the pattern to help the user.
@@ -781,8 +802,7 @@ The `pattern` attribute specifies a regular expression that the input field's va
 The `placeholder` attribute specifies a short hint that describes the expected value of an input field. The hint is displayed in the input field before the user enters a value. Works with: text, search, url, tel, email, and password.
 
 ```html
-<input type="tel" id="phone" name="phone"
-  placeholder="123-45-678">
+<input type="tel" id="phone" name="phone" placeholder="123-45-678" />
 ```
 
 ### The `required` Attribute
@@ -790,7 +810,7 @@ The `placeholder` attribute specifies a short hint that describes the expected v
 The `required` attribute specifies that an input field must be filled out before submitting the form.
 
 ```html
-<input type="text" id="username" name="username" required>
+<input type="text" id="username" name="username" required />
 ```
 
 ### The `step` Attribute
@@ -799,7 +819,7 @@ The `step` attribute specifies the legal number intervals for an input field. Wo
 
 ```html
 <!-- Accept values at intervals of 3 -->
-<input type="number" id="points" name="points" step="3">
+<input type="number" id="points" name="points" step="3" />
 ```
 
 **Note:** Input restrictions are not foolproof. JavaScript provides additional ways to restrict illegal input. Server-side validation is always required.
@@ -809,7 +829,7 @@ The `step` attribute specifies the legal number intervals for an input field. Wo
 The `autofocus` attribute specifies that an input field should automatically get focus when the page loads.
 
 ```html
-<input type="text" id="fname" name="fname" autofocus>
+<input type="text" id="fname" name="fname" autofocus />
 ```
 
 ### The `height` and `width` Attributes
@@ -817,7 +837,7 @@ The `autofocus` attribute specifies that an input field should automatically get
 The `height` and `width` attributes specify the height and width of an `<input type="image">` element. Always specify the size of images to prevent page flickering during load.
 
 ```html
-<input type="image" src="img_submit.gif" alt="Submit" width="48" height="48">
+<input type="image" src="img_submit.gif" alt="Submit" width="48" height="48" />
 ```
 
 ### The `list` Attribute
@@ -825,13 +845,13 @@ The `height` and `width` attributes specify the height and width of an `<input t
 The `list` attribute refers to a `<datalist>` element that contains pre-defined options for an `<input>` element.
 
 ```html
-<input list="browsers">
+<input list="browsers" />
 <datalist id="browsers">
-  <option value="Edge">
-  <option value="Firefox">
-  <option value="Chrome">
-  <option value="Opera">
-  <option value="Safari">
+  <option value="Edge"></option>
+  <option value="Firefox"></option>
+  <option value="Chrome"></option>
+  <option value="Opera"></option>
+  <option value="Safari"></option>
 </datalist>
 ```
 
@@ -842,10 +862,10 @@ The `autocomplete` attribute specifies whether a form or an input field should h
 ```html
 <form action="/action_page.php" autocomplete="on">
   <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
+  <input type="text" id="fname" name="fname" /><br /><br />
   <label for="email">Email:</label>
-  <input type="email" id="email" name="email" autocomplete="off"><br><br>
-  <input type="submit">
+  <input type="email" id="email" name="email" autocomplete="off" /><br /><br />
+  <input type="submit" />
 </form>
 ```
 
@@ -853,29 +873,29 @@ The `autocomplete` attribute specifies whether a form or an input field should h
 
 ### Input Attributes Summary
 
-| Attribute | Description |
-|-----------|-------------|
-| `value` | Specifies the default value of an input element |
-| `readonly` | Specifies that an input field is read-only |
-| `disabled` | Specifies that an input field is disabled |
-| `size` | Specifies the visible width of an input field |
-| `maxlength` | Specifies the maximum number of characters in an input field |
-| `min` | Specifies the minimum value for an input field |
-| `max` | Specifies the maximum value for an input field |
-| `multiple` | Specifies that a user can enter more than one value |
-| `pattern` | Specifies a regular expression to check the value against |
-| `placeholder` | Specifies a short hint describing the expected value |
-| `required` | Specifies that an input field must be filled out |
-| `step` | Specifies the legal number intervals |
-| `autofocus` | Specifies that an input field should get focus on page load |
-| `height` | Specifies the height of an `<input type="image">` |
-| `width` | Specifies the width of an `<input type="image">` |
-| `list` | Refers to a `<datalist>` element with pre-defined options |
-| `autocomplete` | Specifies whether autocomplete is on or off |
+| Attribute      | Description                                                  |
+| -------------- | ------------------------------------------------------------ |
+| `value`        | Specifies the default value of an input element              |
+| `readonly`     | Specifies that an input field is read-only                   |
+| `disabled`     | Specifies that an input field is disabled                    |
+| `size`         | Specifies the visible width of an input field                |
+| `maxlength`    | Specifies the maximum number of characters in an input field |
+| `min`          | Specifies the minimum value for an input field               |
+| `max`          | Specifies the maximum value for an input field               |
+| `multiple`     | Specifies that a user can enter more than one value          |
+| `pattern`      | Specifies a regular expression to check the value against    |
+| `placeholder`  | Specifies a short hint describing the expected value         |
+| `required`     | Specifies that an input field must be filled out             |
+| `step`         | Specifies the legal number intervals                         |
+| `autofocus`    | Specifies that an input field should get focus on page load  |
+| `height`       | Specifies the height of an `<input type="image">`            |
+| `width`        | Specifies the width of an `<input type="image">`             |
+| `list`         | Refers to a `<datalist>` element with pre-defined options    |
+| `autocomplete` | Specifies whether autocomplete is on or off                  |
 
 ---
 
-## HTML Input form* Attributes
+## HTML Input form\* Attributes
 
 > **Source:** https://www.w3schools.com/html/html_form_attributes_form.asp
 
@@ -886,13 +906,13 @@ The input `form` attribute specifies the form the `<input>` element belongs to. 
 ```html
 <form action="/action_page.php" id="form1">
   <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <input type="submit" value="Submit">
+  <input type="text" id="fname" name="fname" /><br /><br />
+  <input type="submit" value="Submit" />
 </form>
 
 <!-- This input is outside the form but still part of it -->
 <label for="lname">Last name:</label>
-<input type="text" id="lname" name="lname" form="form1">
+<input type="text" id="lname" name="lname" form="form1" />
 ```
 
 ### The `formaction` Attribute
@@ -902,9 +922,9 @@ The input `formaction` attribute specifies the URL of the file that will process
 ```html
 <form action="/action_page.php">
   <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <input type="submit" value="Submit">
-  <input type="submit" formaction="/action_page2.php" value="Submit as Admin">
+  <input type="text" id="fname" name="fname" /><br /><br />
+  <input type="submit" value="Submit" />
+  <input type="submit" formaction="/action_page2.php" value="Submit as Admin" />
 </form>
 ```
 
@@ -915,10 +935,13 @@ The input `formenctype` attribute specifies how the form data should be encoded 
 ```html
 <form action="/action_page_binary.asp" method="post">
   <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <input type="submit" value="Submit">
-  <input type="submit" formenctype="multipart/form-data"
-    value="Submit as Multipart/form-data">
+  <input type="text" id="fname" name="fname" /><br /><br />
+  <input type="submit" value="Submit" />
+  <input
+    type="submit"
+    formenctype="multipart/form-data"
+    value="Submit as Multipart/form-data"
+  />
 </form>
 ```
 
@@ -929,11 +952,11 @@ The input `formmethod` attribute defines the HTTP method for sending form data t
 ```html
 <form action="/action_page.php" method="get">
   <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
+  <input type="text" id="fname" name="fname" /><br /><br />
   <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname"><br><br>
-  <input type="submit" value="Submit using GET">
-  <input type="submit" formmethod="post" value="Submit using POST">
+  <input type="text" id="lname" name="lname" /><br /><br />
+  <input type="submit" value="Submit using GET" />
+  <input type="submit" formmethod="post" value="Submit using POST" />
 </form>
 ```
 
@@ -944,11 +967,11 @@ The input `formtarget` attribute specifies a name or keyword that indicates wher
 ```html
 <form action="/action_page.php">
   <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
+  <input type="text" id="fname" name="fname" /><br /><br />
   <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname"><br><br>
-  <input type="submit" value="Submit">
-  <input type="submit" formtarget="_blank" value="Submit to a new window/tab">
+  <input type="text" id="lname" name="lname" /><br /><br />
+  <input type="submit" value="Submit" />
+  <input type="submit" formtarget="_blank" value="Submit to a new window/tab" />
 </form>
 ```
 
@@ -959,10 +982,13 @@ The input `formnovalidate` attribute specifies that an `<input>` element should 
 ```html
 <form action="/action_page.php">
   <label for="email">Enter your email:</label>
-  <input type="email" id="email" name="email"><br><br>
-  <input type="submit" value="Submit">
-  <input type="submit" formnovalidate="formnovalidate"
-    value="Submit without validation">
+  <input type="email" id="email" name="email" /><br /><br />
+  <input type="submit" value="Submit" />
+  <input
+    type="submit"
+    formnovalidate="formnovalidate"
+    value="Submit without validation"
+  />
 </form>
 ```
 
@@ -973,18 +999,18 @@ The `novalidate` attribute is a `<form>` attribute. When present, it specifies t
 ```html
 <form action="/action_page.php" novalidate>
   <label for="email">Enter your email:</label>
-  <input type="email" id="email" name="email"><br><br>
-  <input type="submit" value="Submit">
+  <input type="email" id="email" name="email" /><br /><br />
+  <input type="submit" value="Submit" />
 </form>
 ```
 
-### form* Attributes Summary
+### form\* Attributes Summary
 
-| Attribute | Description |
-|-----------|-------------|
-| `form` | Specifies the form the input element belongs to |
-| `formaction` | Specifies the URL for form submission (overrides form's `action`) |
-| `formenctype` | Specifies how form data should be encoded (overrides form's `enctype`) |
-| `formmethod` | Specifies the HTTP method for sending data (overrides form's `method`) |
+| Attribute        | Description                                                                      |
+| ---------------- | -------------------------------------------------------------------------------- |
+| `form`           | Specifies the form the input element belongs to                                  |
+| `formaction`     | Specifies the URL for form submission (overrides form's `action`)                |
+| `formenctype`    | Specifies how form data should be encoded (overrides form's `enctype`)           |
+| `formmethod`     | Specifies the HTTP method for sending data (overrides form's `method`)           |
 | `formnovalidate` | Specifies that the input should not be validated (overrides form's `novalidate`) |
-| `formtarget` | Specifies where to display the response (overrides form's `target`) |
+| `formtarget`     | Specifies where to display the response (overrides form's `target`)              |

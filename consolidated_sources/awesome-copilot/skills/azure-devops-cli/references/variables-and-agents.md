@@ -1,6 +1,7 @@
 # Pipeline Variables, Variable Groups & Agents
 
 ## Table of Contents
+
 - [Pipeline Variables](#pipeline-variables)
 - [Variable Groups](#variable-groups)
 - [Pipeline Folders](#pipeline-folders)

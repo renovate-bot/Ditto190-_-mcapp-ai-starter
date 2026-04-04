@@ -13,14 +13,14 @@ copilot plugin install kotlin-mcp-development@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                               | Description                                                                                                                                                          |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/kotlin-mcp-development:kotlin-mcp-server-generator` | Generate a complete Kotlin MCP server project with proper structure, dependencies, and implementation using the official io.modelcontextprotocol:kotlin-sdk library. |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent               | Description                                                                                          |
+| ------------------- | ---------------------------------------------------------------------------------------------------- |
 | `kotlin-mcp-expert` | Expert assistant for building Model Context Protocol (MCP) servers in Kotlin using the official SDK. |
 
 ## Source

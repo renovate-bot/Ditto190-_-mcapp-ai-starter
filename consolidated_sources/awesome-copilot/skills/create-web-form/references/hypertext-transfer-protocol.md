@@ -227,16 +227,19 @@ The **start-line** and **headers** are collectively called the **head**. The con
 **Request-Target (URL)** -- four types depending on context:
 
 1. **Origin Form** (most common): Absolute path with Host header.
+
    ```http
    GET /en-US/docs/Web/HTTP/Guides/Messages HTTP/1.1
    ```
 
 2. **Absolute Form**: Complete URL; used with proxies.
+
    ```http
    GET https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages HTTP/1.1
    ```
 
 3. **Authority Form**: Authority and port with colon; used with `CONNECT`.
+
    ```http
    CONNECT developer.mozilla.org:443 HTTP/1.1
    ```
@@ -259,6 +262,7 @@ Content-Length: 49
 ```
 
 **Categories**:
+
 - **Request Headers**: Provide additional context (e.g., conditional requests).
 - **Representation Headers**: Describe the original form of message data and encoding applied.
 
@@ -267,11 +271,13 @@ Content-Length: 49
 Only for `PATCH`, `POST`, and `PUT` methods. Examples:
 
 **Form data**:
+
 ```
 name=FirstName+LastName&email=bsmth%40example.com
 ```
 
 **JSON**:
+
 ```json
 {
   "firstName": "Brian",
@@ -281,6 +287,7 @@ name=FirstName+LastName&email=bsmth%40example.com
 ```
 
 **Multipart form data**:
+
 ```http
 --delimiter123
 Content-Disposition: form-data; name="field1"
@@ -325,6 +332,7 @@ Date: Fri, 13 Sep 2024 12:56:07 GMT
 #### Response Body
 
 Included in most messages. May be:
+
 - **Single-Resource Body**: Defined by `Content-Type` and `Content-Length` headers, or chunked with `Transfer-Encoding: chunked`.
 - **Multiple-Resource Body**: Multiple parts with different information, associated with HTML forms and range requests.
 
@@ -342,6 +350,7 @@ Key differences from HTTP/1.x:
 HTTP/2 uses **pseudo-header fields** beginning with `:` instead of a start-line:
 
 **Request pseudo-headers**:
+
 ```
 :method: GET
 :scheme: https
@@ -350,6 +359,7 @@ HTTP/2 uses **pseudo-header fields** beginning with `:` instead of a start-line:
 ```
 
 **Response pseudo-header**:
+
 ```
 :status: 200
 ```
@@ -480,11 +490,11 @@ Set-Cookie: id=a3fWa; Expires=Thu, 21 Oct 2021 07:28:00 GMT; Secure; HttpOnly
 
 Controls whether cookies are sent with cross-site requests:
 
-| Value | Behavior |
-|-------|----------|
+| Value      | Behavior                                                                                                                 |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------ |
 | **Strict** | Only sent in requests originating from the cookie's origin site. Use for sensitive functionality (authentication, cart). |
-| **Lax** | Sent with site navigation but not with other cross-site requests. Default if `SameSite` is not set. |
-| **None** | Sent with both originating and cross-site requests. Requires `Secure` attribute. |
+| **Lax**    | Sent with site navigation but not with other cross-site requests. Default if `SameSite` is not set.                      |
+| **None**   | Sent with both originating and cross-site requests. Requires `Secure` attribute.                                         |
 
 ### Cookie Prefixes (Defense-in-Depth)
 
@@ -573,26 +583,26 @@ Uses separate headers and status codes:
 
 ### Access Control Response Codes
 
-| Status | Meaning | Usage |
-|--------|---------|-------|
-| **401** | Unauthorized | Invalid credentials; user may retry |
-| **403** | Forbidden | Valid credentials but inadequate permissions; no retry |
-| **404** | Not Found | Sometimes preferred to hide resource existence from unauthorized users |
-| **407** | Proxy Authentication Required | Proxy authentication failed |
+| Status  | Meaning                       | Usage                                                                  |
+| ------- | ----------------------------- | ---------------------------------------------------------------------- |
+| **401** | Unauthorized                  | Invalid credentials; user may retry                                    |
+| **403** | Forbidden                     | Valid credentials but inadequate permissions; no retry                 |
+| **404** | Not Found                     | Sometimes preferred to hide resource existence from unauthorized users |
+| **407** | Proxy Authentication Required | Proxy authentication failed                                            |
 
 ### Authentication Schemes
 
-| Scheme | Reference | Description |
-|--------|-----------|-------------|
-| **Basic** | RFC 7617 | Base64-encoded username:password (requires HTTPS) |
-| **Bearer** | RFC 6750 | OAuth 2.0 bearer tokens |
-| **Digest** | RFC 7616 | MD5 or SHA-256 hashing |
-| **HOBA** | RFC 7486 | HTTP Origin-Bound Authentication (digital signature) |
-| **Mutual** | RFC 8120 | Mutual authentication |
-| **Negotiate/NTLM** | RFC 4559 | Windows integrated authentication |
-| **VAPID** | RFC 8292 | Voluntary Application Server Identification |
-| **SCRAM** | RFC 7804 | Salted Challenge Response Authentication Mechanism |
-| **AWS4-HMAC-SHA256** | AWS Docs | AWS Signature Version 4 |
+| Scheme               | Reference | Description                                          |
+| -------------------- | --------- | ---------------------------------------------------- |
+| **Basic**            | RFC 7617  | Base64-encoded username:password (requires HTTPS)    |
+| **Bearer**           | RFC 6750  | OAuth 2.0 bearer tokens                              |
+| **Digest**           | RFC 7616  | MD5 or SHA-256 hashing                               |
+| **HOBA**             | RFC 7486  | HTTP Origin-Bound Authentication (digital signature) |
+| **Mutual**           | RFC 8120  | Mutual authentication                                |
+| **Negotiate/NTLM**   | RFC 4559  | Windows integrated authentication                    |
+| **VAPID**            | RFC 8292  | Voluntary Application Server Identification          |
+| **SCRAM**            | RFC 7804  | Salted Challenge Response Authentication Mechanism   |
+| **AWS4-HMAC-SHA256** | AWS Docs  | AWS Signature Version 4                              |
 
 Full list maintained by IANA: <https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml>
 
@@ -603,6 +613,7 @@ Full list maintained by IANA: <https://www.iana.org/assignments/http-authschemes
 - **Charset**: UTF-8.
 
 **Security Concerns**:
+
 - Base64 is reversible; credentials appear as clear text.
 - Always use HTTPS/TLS with Basic Auth.
 - Vulnerable to CSRF; credentials sent in all requests regardless of origin.
@@ -694,10 +705,10 @@ name=Joe%20User&request=Send%20me%20one%20of%20your%20catalogue
 
 #### Common Request Methods
 
-| Method | Purpose |
-|--------|---------|
-| **GET** | Requests a data representation of the specified resource; should only retrieve data |
-| **POST** | Sends data to the server to change its state; commonly used for HTML Forms |
+| Method   | Purpose                                                                             |
+| -------- | ----------------------------------------------------------------------------------- |
+| **GET**  | Requests a data representation of the specified resource; should only retrieve data |
+| **POST** | Sends data to the server to change its state; commonly used for HTML Forms          |
 
 ### Phase 3: Structure of Server Response
 
@@ -781,181 +792,181 @@ HTTP headers allow clients and servers to pass additional information with HTTP 
 
 ### Authentication Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `WWW-Authenticate` | Response | Defines the authentication method to access a resource |
-| `Authorization` | Request | Contains credentials to authenticate a user-agent with a server |
-| `Proxy-Authenticate` | Response | Defines authentication method for proxy server access |
-| `Proxy-Authorization` | Request | Contains credentials to authenticate with a proxy server |
+| Header                | Type     | Description                                                     |
+| --------------------- | -------- | --------------------------------------------------------------- |
+| `WWW-Authenticate`    | Response | Defines the authentication method to access a resource          |
+| `Authorization`       | Request  | Contains credentials to authenticate a user-agent with a server |
+| `Proxy-Authenticate`  | Response | Defines authentication method for proxy server access           |
+| `Proxy-Authorization` | Request  | Contains credentials to authenticate with a proxy server        |
 
 ### Caching Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Age` | Response | Time in seconds the object has been in a proxy cache |
-| `Cache-Control` | Both | Directives for caching mechanisms in requests and responses |
-| `Clear-Site-Data` | Response | Clears browsing data (cookies, storage, cache) |
-| `Expires` | Response | Date/time after which response is considered stale |
+| Header            | Type     | Description                                                 |
+| ----------------- | -------- | ----------------------------------------------------------- |
+| `Age`             | Response | Time in seconds the object has been in a proxy cache        |
+| `Cache-Control`   | Both     | Directives for caching mechanisms in requests and responses |
+| `Clear-Site-Data` | Response | Clears browsing data (cookies, storage, cache)              |
+| `Expires`         | Response | Date/time after which response is considered stale          |
 
 ### Conditional Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Last-Modified` | Response | Last modification date of the resource |
-| `ETag` | Response | Unique string identifying the resource version |
-| `If-Match` | Request | Applies method only if resource matches given ETags |
-| `If-None-Match` | Request | Applies method if resource does not match given ETags |
-| `If-Modified-Since` | Request | Transmits resource only if modified after given date |
-| `If-Unmodified-Since` | Request | Transmits resource only if not modified after date |
-| `Vary` | Response | Determines how to match headers for cache decisions |
+| Header                | Type     | Description                                           |
+| --------------------- | -------- | ----------------------------------------------------- |
+| `Last-Modified`       | Response | Last modification date of the resource                |
+| `ETag`                | Response | Unique string identifying the resource version        |
+| `If-Match`            | Request  | Applies method only if resource matches given ETags   |
+| `If-None-Match`       | Request  | Applies method if resource does not match given ETags |
+| `If-Modified-Since`   | Request  | Transmits resource only if modified after given date  |
+| `If-Unmodified-Since` | Request  | Transmits resource only if not modified after date    |
+| `Vary`                | Response | Determines how to match headers for cache decisions   |
 
 ### Connection Management Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Connection` | Both | Controls whether network connection stays open |
+| Header       | Type | Description                                          |
+| ------------ | ---- | ---------------------------------------------------- |
+| `Connection` | Both | Controls whether network connection stays open       |
 | `Keep-Alive` | Both | Controls how long a persistent connection stays open |
 
 ### Content Negotiation Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Accept` | Request | Informs server about acceptable data types |
-| `Accept-Encoding` | Request | Specifies acceptable compression algorithms |
-| `Accept-Language` | Request | Informs server about preferred human language |
-| `Accept-Patch` | Response | Advertises media types acceptable in PATCH requests |
-| `Accept-Post` | Response | Advertises media types acceptable in POST requests |
+| Header            | Type     | Description                                         |
+| ----------------- | -------- | --------------------------------------------------- |
+| `Accept`          | Request  | Informs server about acceptable data types          |
+| `Accept-Encoding` | Request  | Specifies acceptable compression algorithms         |
+| `Accept-Language` | Request  | Informs server about preferred human language       |
+| `Accept-Patch`    | Response | Advertises media types acceptable in PATCH requests |
+| `Accept-Post`     | Response | Advertises media types acceptable in POST requests  |
 
 ### Cookie Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Cookie` | Request | Contains HTTP cookies previously set by server |
-| `Set-Cookie` | Response | Sends cookies from server to user-agent |
+| Header       | Type     | Description                                    |
+| ------------ | -------- | ---------------------------------------------- |
+| `Cookie`     | Request  | Contains HTTP cookies previously set by server |
+| `Set-Cookie` | Response | Sends cookies from server to user-agent        |
 
 ### CORS (Cross-Origin Resource Sharing) Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Access-Control-Allow-Credentials` | Response | Indicates if response can be exposed with credentials |
-| `Access-Control-Allow-Headers` | Response | Lists HTTP headers usable in cross-origin requests |
-| `Access-Control-Allow-Methods` | Response | Specifies allowed methods for cross-origin requests |
-| `Access-Control-Allow-Origin` | Response | Indicates if response can be shared |
-| `Access-Control-Expose-Headers` | Response | Lists headers exposed in cross-origin responses |
-| `Access-Control-Max-Age` | Response | How long preflight request results can be cached |
-| `Access-Control-Request-Headers` | Request | Lists headers used in actual request (preflight) |
-| `Access-Control-Request-Method` | Request | Lists HTTP method used in actual request (preflight) |
-| `Origin` | Request | Indicates where a fetch originates from |
-| `Timing-Allow-Origin` | Response | Specifies origins allowed to see Resource Timing API values |
+| Header                             | Type     | Description                                                 |
+| ---------------------------------- | -------- | ----------------------------------------------------------- |
+| `Access-Control-Allow-Credentials` | Response | Indicates if response can be exposed with credentials       |
+| `Access-Control-Allow-Headers`     | Response | Lists HTTP headers usable in cross-origin requests          |
+| `Access-Control-Allow-Methods`     | Response | Specifies allowed methods for cross-origin requests         |
+| `Access-Control-Allow-Origin`      | Response | Indicates if response can be shared                         |
+| `Access-Control-Expose-Headers`    | Response | Lists headers exposed in cross-origin responses             |
+| `Access-Control-Max-Age`           | Response | How long preflight request results can be cached            |
+| `Access-Control-Request-Headers`   | Request  | Lists headers used in actual request (preflight)            |
+| `Access-Control-Request-Method`    | Request  | Lists HTTP method used in actual request (preflight)        |
+| `Origin`                           | Request  | Indicates where a fetch originates from                     |
+| `Timing-Allow-Origin`              | Response | Specifies origins allowed to see Resource Timing API values |
 
 ### Message Body Information Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Content-Length` | Both | Size of resource in decimal bytes |
-| `Content-Type` | Both | Indicates the media type of the resource |
-| `Content-Encoding` | Response | Specifies compression algorithm used |
-| `Content-Language` | Response | Describes intended human language(s) |
-| `Content-Location` | Response | Indicates alternate location for returned data |
+| Header                | Type     | Description                                                  |
+| --------------------- | -------- | ------------------------------------------------------------ |
+| `Content-Length`      | Both     | Size of resource in decimal bytes                            |
+| `Content-Type`        | Both     | Indicates the media type of the resource                     |
+| `Content-Encoding`    | Response | Specifies compression algorithm used                         |
+| `Content-Language`    | Response | Describes intended human language(s)                         |
+| `Content-Location`    | Response | Indicates alternate location for returned data               |
 | `Content-Disposition` | Response | Indicates if resource should display inline or be downloaded |
 
 ### Range Request Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Accept-Ranges` | Response | Indicates if server supports range requests |
-| `Range` | Request | Indicates which part of document server should return |
-| `If-Range` | Request | Creates conditional range request |
-| `Content-Range` | Response | Indicates partial message position in full body |
+| Header          | Type     | Description                                           |
+| --------------- | -------- | ----------------------------------------------------- |
+| `Accept-Ranges` | Response | Indicates if server supports range requests           |
+| `Range`         | Request  | Indicates which part of document server should return |
+| `If-Range`      | Request  | Creates conditional range request                     |
+| `Content-Range` | Response | Indicates partial message position in full body       |
 
 ### Redirect Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Location` | Response | Indicates URL to redirect page to |
-| `Refresh` | Response | Directs browser to reload page or redirect |
+| Header     | Type     | Description                                |
+| ---------- | -------- | ------------------------------------------ |
+| `Location` | Response | Indicates URL to redirect page to          |
+| `Refresh`  | Response | Directs browser to reload page or redirect |
 
 ### Request Context Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `From` | Request | Contains email address of user controlling request |
-| `Host` | Request | Specifies domain name and optional port of server |
-| `Referer` | Request | Address of previous web page |
-| `Referrer-Policy` | Response | Governs referrer information in Referer header |
-| `User-Agent` | Request | Identifies application type and software version |
+| Header            | Type     | Description                                        |
+| ----------------- | -------- | -------------------------------------------------- |
+| `From`            | Request  | Contains email address of user controlling request |
+| `Host`            | Request  | Specifies domain name and optional port of server  |
+| `Referer`         | Request  | Address of previous web page                       |
+| `Referrer-Policy` | Response | Governs referrer information in Referer header     |
+| `User-Agent`      | Request  | Identifies application type and software version   |
 
 ### Response Context Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Allow` | Response | Lists supported HTTP request methods |
+| Header   | Type     | Description                              |
+| -------- | -------- | ---------------------------------------- |
+| `Allow`  | Response | Lists supported HTTP request methods     |
 | `Server` | Response | Contains software info for origin server |
 
 ### Security Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Cross-Origin-Embedder-Policy` (COEP) | Response | Allows server to declare embedder policy |
-| `Cross-Origin-Opener-Policy` (COOP) | Response | Prevents other domains from opening/controlling window |
-| `Cross-Origin-Resource-Policy` (CORP) | Response | Prevents other domains from reading response |
-| `Content-Security-Policy` (CSP) | Response | Controls resources user agent can load |
-| `Content-Security-Policy-Report-Only` | Response | Monitors CSP without enforcement |
-| `Permissions-Policy` | Response | Allows/denies browser features in frames or iframes |
-| `Strict-Transport-Security` (HSTS) | Response | Forces HTTPS communication |
-| `Upgrade-Insecure-Requests` | Request | Signals preference for encrypted response |
-| `X-Content-Type-Options` | Response | Disables MIME sniffing |
-| `X-Frame-Options` (XFO) | Response | Indicates if page can be rendered in frame/iframe |
-| `X-XSS-Protection` | Response | Enables cross-site scripting filtering |
+| Header                                | Type     | Description                                            |
+| ------------------------------------- | -------- | ------------------------------------------------------ |
+| `Cross-Origin-Embedder-Policy` (COEP) | Response | Allows server to declare embedder policy               |
+| `Cross-Origin-Opener-Policy` (COOP)   | Response | Prevents other domains from opening/controlling window |
+| `Cross-Origin-Resource-Policy` (CORP) | Response | Prevents other domains from reading response           |
+| `Content-Security-Policy` (CSP)       | Response | Controls resources user agent can load                 |
+| `Content-Security-Policy-Report-Only` | Response | Monitors CSP without enforcement                       |
+| `Permissions-Policy`                  | Response | Allows/denies browser features in frames or iframes    |
+| `Strict-Transport-Security` (HSTS)    | Response | Forces HTTPS communication                             |
+| `Upgrade-Insecure-Requests`           | Request  | Signals preference for encrypted response              |
+| `X-Content-Type-Options`              | Response | Disables MIME sniffing                                 |
+| `X-Frame-Options` (XFO)               | Response | Indicates if page can be rendered in frame/iframe      |
+| `X-XSS-Protection`                    | Response | Enables cross-site scripting filtering                 |
 
 ### Fetch Metadata Request Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Sec-Fetch-Site` | Request | Relationship between initiator and target origin |
+| Header           | Type    | Description                                                    |
+| ---------------- | ------- | -------------------------------------------------------------- |
+| `Sec-Fetch-Site` | Request | Relationship between initiator and target origin               |
 | `Sec-Fetch-Mode` | Request | Request mode (cors, navigate, no-cors, same-origin, websocket) |
-| `Sec-Fetch-User` | Request | Whether navigation was triggered by user activation |
-| `Sec-Fetch-Dest` | Request | Request destination (audio, document, script, style, etc.) |
+| `Sec-Fetch-User` | Request | Whether navigation was triggered by user activation            |
+| `Sec-Fetch-Dest` | Request | Request destination (audio, document, script, style, etc.)     |
 
 ### Transfer Coding Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
+| Header              | Type     | Description                                        |
+| ------------------- | -------- | -------------------------------------------------- |
 | `Transfer-Encoding` | Response | Specifies encoding form for safe resource transfer |
-| `TE` | Request | Specifies acceptable transfer encodings |
-| `Trailer` | Response | Allows additional fields at end of chunked message |
+| `TE`                | Request  | Specifies acceptable transfer encodings            |
+| `Trailer`           | Response | Allows additional fields at end of chunked message |
 
 ### WebSocket Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Sec-WebSocket-Accept` | Response | Indicates willingness to upgrade to WebSocket |
-| `Sec-WebSocket-Extensions` | Both | Indicates WebSocket extensions supported |
-| `Sec-WebSocket-Key` | Request | Contains key verifying client intent for WebSocket |
-| `Sec-WebSocket-Protocol` | Both | Indicates WebSocket sub-protocols supported |
-| `Sec-WebSocket-Version` | Both | Indicates WebSocket protocol version |
+| Header                     | Type     | Description                                        |
+| -------------------------- | -------- | -------------------------------------------------- |
+| `Sec-WebSocket-Accept`     | Response | Indicates willingness to upgrade to WebSocket      |
+| `Sec-WebSocket-Extensions` | Both     | Indicates WebSocket extensions supported           |
+| `Sec-WebSocket-Key`        | Request  | Contains key verifying client intent for WebSocket |
+| `Sec-WebSocket-Protocol`   | Both     | Indicates WebSocket sub-protocols supported        |
+| `Sec-WebSocket-Version`    | Both     | Indicates WebSocket protocol version               |
 
 ### Proxy Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Forwarded` | Both | Contains information from client-facing side of proxy servers |
-| `Via` | Both | Added by proxies; appears in request and response headers |
-| `X-Forwarded-For` | Request | Identifies originating IP addresses through proxy (non-standard) |
-| `X-Forwarded-Host` | Request | Identifies original host requested through proxy (non-standard) |
-| `X-Forwarded-Proto` | Request | Identifies protocol used through proxy (non-standard) |
+| Header              | Type    | Description                                                      |
+| ------------------- | ------- | ---------------------------------------------------------------- |
+| `Forwarded`         | Both    | Contains information from client-facing side of proxy servers    |
+| `Via`               | Both    | Added by proxies; appears in request and response headers        |
+| `X-Forwarded-For`   | Request | Identifies originating IP addresses through proxy (non-standard) |
+| `X-Forwarded-Host`  | Request | Identifies original host requested through proxy (non-standard)  |
+| `X-Forwarded-Proto` | Request | Identifies protocol used through proxy (non-standard)            |
 
 ### Other Notable Headers
 
-| Header | Type | Description |
-|--------|------|-------------|
-| `Alt-Svc` | Response | Lists alternate ways to reach this service |
-| `Date` | Response | Date/time message originated |
-| `Link` | Response | Serializes one or more links in HTTP headers |
-| `Retry-After` | Response | Indicates wait time before follow-up request |
+| Header          | Type     | Description                                     |
+| --------------- | -------- | ----------------------------------------------- |
+| `Alt-Svc`       | Response | Lists alternate ways to reach this service      |
+| `Date`          | Response | Date/time message originated                    |
+| `Link`          | Response | Serializes one or more links in HTTP headers    |
+| `Retry-After`   | Response | Indicates wait time before follow-up request    |
 | `Server-Timing` | Response | Communicates metrics for request-response cycle |
-| `Upgrade` | Request | Used to upgrade to different protocol |
-| `Priority` | Both | Provides hint about resource request priority |
+| `Upgrade`       | Request  | Used to upgrade to different protocol           |
+| `Priority`      | Both     | Provides hint about resource request priority   |
 
 ---
 
@@ -1012,17 +1023,17 @@ HTTP defines a set of request methods to indicate the purpose of the request and
 
 ### Method Characteristics Summary
 
-| Method | Safe | Idempotent | Cacheable |
-|--------|------|------------|-----------|
-| GET | Yes | Yes | Yes |
-| HEAD | Yes | Yes | Yes |
-| POST | No | No | Conditional |
-| PUT | No | Yes | No |
-| DELETE | No | Yes | No |
-| CONNECT | No | No | No |
-| OPTIONS | Yes | Yes | No |
-| TRACE | Yes | Yes | No |
-| PATCH | No | No | Conditional |
+| Method  | Safe | Idempotent | Cacheable   |
+| ------- | ---- | ---------- | ----------- |
+| GET     | Yes  | Yes        | Yes         |
+| HEAD    | Yes  | Yes        | Yes         |
+| POST    | No   | No         | Conditional |
+| PUT     | No   | Yes        | No          |
+| DELETE  | No   | Yes        | No          |
+| CONNECT | No   | No         | No          |
+| OPTIONS | Yes  | Yes        | No          |
+| TRACE   | Yes  | Yes        | No          |
+| PATCH   | No   | No         | Conditional |
 
 **Safe Methods**: Methods that do not modify server state -- GET, HEAD, OPTIONS, TRACE.
 
@@ -1040,89 +1051,89 @@ HTTP response status codes indicate whether an HTTP request has been successfull
 
 ### 1xx: Informational Responses (100-199)
 
-| Code | Status | Description |
-|------|--------|-------------|
-| **100** | Continue | Interim response indicating the client should continue the request or ignore if already finished |
-| **101** | Switching Protocols | Sent in response to an `Upgrade` request header; indicates the protocol the server is switching to |
-| **102** | Processing | (Deprecated) Used in WebDAV contexts to indicate a request was received but no status was available |
-| **103** | Early Hints | Primarily used with the `Link` header to allow the user agent to start preloading resources |
+| Code    | Status              | Description                                                                                         |
+| ------- | ------------------- | --------------------------------------------------------------------------------------------------- |
+| **100** | Continue            | Interim response indicating the client should continue the request or ignore if already finished    |
+| **101** | Switching Protocols | Sent in response to an `Upgrade` request header; indicates the protocol the server is switching to  |
+| **102** | Processing          | (Deprecated) Used in WebDAV contexts to indicate a request was received but no status was available |
+| **103** | Early Hints         | Primarily used with the `Link` header to allow the user agent to start preloading resources         |
 
 ### 2xx: Successful Responses (200-299)
 
-| Code | Status | Description |
-|------|--------|-------------|
-| **200** | OK | Request succeeded; meaning depends on HTTP method used |
-| **201** | Created | Request succeeded and a new resource was created (typically after POST or PUT) |
-| **202** | Accepted | Request received but not yet acted upon; intended for async or batch operations |
-| **203** | Non-Authoritative Information | Returned metadata is from a local or third-party copy, not the origin server |
-| **204** | No Content | No content to send, but headers may be useful; user agent may update cached headers |
-| **205** | Reset Content | Tells the user agent to reset the document that sent this request |
-| **206** | Partial Content | Used in response to a range request for part(s) of a resource |
-| **207** | Multi-Status | (WebDAV) Conveys information about multiple resources with multiple status codes |
-| **208** | Already Reported | (WebDAV) Used to avoid repeatedly enumerating internal members |
-| **226** | IM Used | Server fulfilled a GET request with instance-manipulations applied |
+| Code    | Status                        | Description                                                                         |
+| ------- | ----------------------------- | ----------------------------------------------------------------------------------- |
+| **200** | OK                            | Request succeeded; meaning depends on HTTP method used                              |
+| **201** | Created                       | Request succeeded and a new resource was created (typically after POST or PUT)      |
+| **202** | Accepted                      | Request received but not yet acted upon; intended for async or batch operations     |
+| **203** | Non-Authoritative Information | Returned metadata is from a local or third-party copy, not the origin server        |
+| **204** | No Content                    | No content to send, but headers may be useful; user agent may update cached headers |
+| **205** | Reset Content                 | Tells the user agent to reset the document that sent this request                   |
+| **206** | Partial Content               | Used in response to a range request for part(s) of a resource                       |
+| **207** | Multi-Status                  | (WebDAV) Conveys information about multiple resources with multiple status codes    |
+| **208** | Already Reported              | (WebDAV) Used to avoid repeatedly enumerating internal members                      |
+| **226** | IM Used                       | Server fulfilled a GET request with instance-manipulations applied                  |
 
 ### 3xx: Redirection Messages (300-399)
 
-| Code | Status | Description |
-|------|--------|-------------|
-| **300** | Multiple Choices | Request has multiple possible responses; requires agent-driven content negotiation |
-| **301** | Moved Permanently | URL of requested resource has been permanently changed; new URL given in response |
-| **302** | Found | URI of requested resource changed temporarily; future requests should still use the same URI |
-| **303** | See Other | Server directs client to get the resource at another URI using a GET request |
-| **304** | Not Modified | Used for caching; tells client response has not been modified, continue using cached version |
-| **307** | Temporary Redirect | Server directs client to another URI with the same HTTP method as the original request |
+| Code    | Status             | Description                                                                                     |
+| ------- | ------------------ | ----------------------------------------------------------------------------------------------- |
+| **300** | Multiple Choices   | Request has multiple possible responses; requires agent-driven content negotiation              |
+| **301** | Moved Permanently  | URL of requested resource has been permanently changed; new URL given in response               |
+| **302** | Found              | URI of requested resource changed temporarily; future requests should still use the same URI    |
+| **303** | See Other          | Server directs client to get the resource at another URI using a GET request                    |
+| **304** | Not Modified       | Used for caching; tells client response has not been modified, continue using cached version    |
+| **307** | Temporary Redirect | Server directs client to another URI with the same HTTP method as the original request          |
 | **308** | Permanent Redirect | Resource is permanently at another URI; must not change the HTTP method (like 301 but stricter) |
 
 ### 4xx: Client Error Responses (400-499)
 
-| Code | Status | Description |
-|------|--------|-------------|
-| **400** | Bad Request | Server cannot process request due to client error (malformed syntax, invalid framing) |
-| **401** | Unauthorized | Client must authenticate itself to get the requested response |
-| **402** | Payment Required | Originally for digital payment systems; rarely used with no standard convention |
-| **403** | Forbidden | Client lacks access rights; server refuses (unlike 401, client identity is known) |
-| **404** | Not Found | Server cannot find requested resource |
-| **405** | Method Not Allowed | Request method known but not supported by target resource |
-| **406** | Not Acceptable | Server cannot find content matching criteria given by user agent |
-| **407** | Proxy Authentication Required | Similar to 401 but authentication needed by proxy |
-| **408** | Request Timeout | Sent on idle connection; server wants to shut down unused connection |
-| **409** | Conflict | Request conflicts with server's current state |
-| **410** | Gone | Requested content permanently deleted from server with no forwarding address |
-| **411** | Length Required | Server rejected request because `Content-Length` header not defined |
-| **412** | Precondition Failed | Client's preconditions in headers not met by server |
-| **413** | Content Too Large | Request body larger than limits defined by server |
-| **414** | URI Too Long | URI requested by client longer than server willing to interpret |
-| **415** | Unsupported Media Type | Media format of requested data not supported by server |
-| **416** | Range Not Satisfiable | Ranges specified by `Range` header cannot be fulfilled |
-| **417** | Expectation Failed | Expectation indicated by `Expect` request header cannot be met |
-| **418** | I'm a teapot | Server refuses attempt to brew coffee with a teapot (April Fools' RFC 2324) |
-| **421** | Misdirected Request | Request directed at server unable to produce response |
-| **422** | Unprocessable Content | (WebDAV) Well-formed but unable to process due to semantic errors |
-| **423** | Locked | (WebDAV) Resource being accessed is locked |
-| **424** | Failed Dependency | (WebDAV) Request failed due to failure of a previous request |
-| **425** | Too Early | (Experimental) Server unwilling to risk processing request that might be replayed |
-| **426** | Upgrade Required | Server refuses current protocol but willing after client upgrades |
-| **428** | Precondition Required | Origin server requires request to be conditional |
-| **429** | Too Many Requests | User sent too many requests in given time (rate limiting) |
-| **431** | Request Header Fields Too Large | Server unwilling to process because header fields too large |
-| **451** | Unavailable For Legal Reasons | Resource cannot legally be provided |
+| Code    | Status                          | Description                                                                           |
+| ------- | ------------------------------- | ------------------------------------------------------------------------------------- |
+| **400** | Bad Request                     | Server cannot process request due to client error (malformed syntax, invalid framing) |
+| **401** | Unauthorized                    | Client must authenticate itself to get the requested response                         |
+| **402** | Payment Required                | Originally for digital payment systems; rarely used with no standard convention       |
+| **403** | Forbidden                       | Client lacks access rights; server refuses (unlike 401, client identity is known)     |
+| **404** | Not Found                       | Server cannot find requested resource                                                 |
+| **405** | Method Not Allowed              | Request method known but not supported by target resource                             |
+| **406** | Not Acceptable                  | Server cannot find content matching criteria given by user agent                      |
+| **407** | Proxy Authentication Required   | Similar to 401 but authentication needed by proxy                                     |
+| **408** | Request Timeout                 | Sent on idle connection; server wants to shut down unused connection                  |
+| **409** | Conflict                        | Request conflicts with server's current state                                         |
+| **410** | Gone                            | Requested content permanently deleted from server with no forwarding address          |
+| **411** | Length Required                 | Server rejected request because `Content-Length` header not defined                   |
+| **412** | Precondition Failed             | Client's preconditions in headers not met by server                                   |
+| **413** | Content Too Large               | Request body larger than limits defined by server                                     |
+| **414** | URI Too Long                    | URI requested by client longer than server willing to interpret                       |
+| **415** | Unsupported Media Type          | Media format of requested data not supported by server                                |
+| **416** | Range Not Satisfiable           | Ranges specified by `Range` header cannot be fulfilled                                |
+| **417** | Expectation Failed              | Expectation indicated by `Expect` request header cannot be met                        |
+| **418** | I'm a teapot                    | Server refuses attempt to brew coffee with a teapot (April Fools' RFC 2324)           |
+| **421** | Misdirected Request             | Request directed at server unable to produce response                                 |
+| **422** | Unprocessable Content           | (WebDAV) Well-formed but unable to process due to semantic errors                     |
+| **423** | Locked                          | (WebDAV) Resource being accessed is locked                                            |
+| **424** | Failed Dependency               | (WebDAV) Request failed due to failure of a previous request                          |
+| **425** | Too Early                       | (Experimental) Server unwilling to risk processing request that might be replayed     |
+| **426** | Upgrade Required                | Server refuses current protocol but willing after client upgrades                     |
+| **428** | Precondition Required           | Origin server requires request to be conditional                                      |
+| **429** | Too Many Requests               | User sent too many requests in given time (rate limiting)                             |
+| **431** | Request Header Fields Too Large | Server unwilling to process because header fields too large                           |
+| **451** | Unavailable For Legal Reasons   | Resource cannot legally be provided                                                   |
 
 ### 5xx: Server Error Responses (500-599)
 
-| Code | Status | Description |
-|------|--------|-------------|
-| **500** | Internal Server Error | Server encountered situation it does not know how to handle |
-| **501** | Not Implemented | Request method not supported by server |
-| **502** | Bad Gateway | Server (acting as gateway) got invalid response from upstream server |
-| **503** | Service Unavailable | Server not ready to handle request (maintenance, overloaded) |
-| **504** | Gateway Timeout | Server (acting as gateway) cannot get response in time |
-| **505** | HTTP Version Not Supported | HTTP version used in request not supported by server |
-| **506** | Variant Also Negotiates | Server has internal configuration error in content negotiation |
-| **507** | Insufficient Storage | (WebDAV) Method could not be performed; server unable to store representation |
-| **508** | Loop Detected | (WebDAV) Server detected infinite loop while processing request |
-| **510** | Not Extended | Client request declares HTTP Extension that is not supported |
-| **511** | Network Authentication Required | Client needs to authenticate to gain network access |
+| Code    | Status                          | Description                                                                   |
+| ------- | ------------------------------- | ----------------------------------------------------------------------------- |
+| **500** | Internal Server Error           | Server encountered situation it does not know how to handle                   |
+| **501** | Not Implemented                 | Request method not supported by server                                        |
+| **502** | Bad Gateway                     | Server (acting as gateway) got invalid response from upstream server          |
+| **503** | Service Unavailable             | Server not ready to handle request (maintenance, overloaded)                  |
+| **504** | Gateway Timeout                 | Server (acting as gateway) cannot get response in time                        |
+| **505** | HTTP Version Not Supported      | HTTP version used in request not supported by server                          |
+| **506** | Variant Also Negotiates         | Server has internal configuration error in content negotiation                |
+| **507** | Insufficient Storage            | (WebDAV) Method could not be performed; server unable to store representation |
+| **508** | Loop Detected                   | (WebDAV) Server detected infinite loop while processing request               |
+| **510** | Not Extended                    | Client request declares HTTP Extension that is not supported                  |
+| **511** | Network Authentication Required | Client needs to authenticate to gain network access                           |
 
 **Specification**: Status codes defined by RFC 9110.
 
@@ -1134,90 +1145,90 @@ HTTP response status codes indicate whether an HTTP request has been successfull
 
 ### Core HTTP Specifications
 
-| RFC | Title | Status |
-|-----|-------|--------|
+| RFC      | Title          | Status            |
+| -------- | -------------- | ----------------- |
 | RFC 9110 | HTTP Semantics | Internet Standard |
-| RFC 9111 | HTTP Caching | Internet Standard |
-| RFC 9112 | HTTP/1.1 | Internet Standard |
-| RFC 9113 | HTTP/2 | Proposed Standard |
-| RFC 9114 | HTTP/3 | Proposed Standard |
+| RFC 9111 | HTTP Caching   | Internet Standard |
+| RFC 9112 | HTTP/1.1       | Internet Standard |
+| RFC 9113 | HTTP/2         | Proposed Standard |
+| RFC 9114 | HTTP/3         | Proposed Standard |
 
 ### HTTP Extensions and Features
 
-| Resource | Title | Status |
-|----------|-------|--------|
-| RFC 5861 | HTTP Cache-Control Extensions for Stale Content | Informational |
-| RFC 8246 | HTTP Immutable Responses | Proposed Standard |
-| RFC 6265 | HTTP State Management Mechanism (Cookies) | Proposed Standard |
-| RFC 2145 | Use and Interpretation of HTTP Version Numbers | Informational |
-| RFC 6585 | Additional HTTP Status Codes | Proposed Standard |
-| RFC 7725 | An HTTP Status Code to Report Legal Obstacles | On Standard Track |
+| Resource | Title                                           | Status            |
+| -------- | ----------------------------------------------- | ----------------- |
+| RFC 5861 | HTTP Cache-Control Extensions for Stale Content | Informational     |
+| RFC 8246 | HTTP Immutable Responses                        | Proposed Standard |
+| RFC 6265 | HTTP State Management Mechanism (Cookies)       | Proposed Standard |
+| RFC 2145 | Use and Interpretation of HTTP Version Numbers  | Informational     |
+| RFC 6585 | Additional HTTP Status Codes                    | Proposed Standard |
+| RFC 7725 | An HTTP Status Code to Report Legal Obstacles   | On Standard Track |
 
 ### Cookie-Related Specifications
 
-| Resource | Title | Status |
-|----------|-------|--------|
-| Draft Spec | Cookie Prefixes | IETF Draft |
-| Draft Spec | Same-Site Cookies | IETF Draft |
+| Resource   | Title                                                              | Status     |
+| ---------- | ------------------------------------------------------------------ | ---------- |
+| Draft Spec | Cookie Prefixes                                                    | IETF Draft |
+| Draft Spec | Same-Site Cookies                                                  | IETF Draft |
 | Draft Spec | Deprecate modification of 'secure' cookies from non-secure origins | IETF Draft |
 
 ### URI and Web Linking
 
-| RFC | Title | Status |
-|-----|-------|--------|
-| RFC 2397 | The "data" URL scheme | Proposed Standard |
+| RFC      | Title                                             | Status            |
+| -------- | ------------------------------------------------- | ----------------- |
+| RFC 2397 | The "data" URL scheme                             | Proposed Standard |
 | RFC 3986 | Uniform Resource Identifier (URI): Generic Syntax | Internet Standard |
-| RFC 5988 | Web Linking (Defines Link header) | Proposed Standard |
+| RFC 5988 | Web Linking (Defines Link header)                 | Proposed Standard |
 
 ### Content and Data Handling
 
-| RFC | Title | Status |
-|-----|-------|--------|
-| RFC 7578 | Returning Values from Forms: multipart/form-data | Proposed Standard |
-| RFC 6266 | Use of the Content-Disposition Header Field in HTTP | Proposed Standard |
+| RFC      | Title                                                                    | Status            |
+| -------- | ------------------------------------------------------------------------ | ----------------- |
+| RFC 7578 | Returning Values from Forms: multipart/form-data                         | Proposed Standard |
+| RFC 6266 | Use of the Content-Disposition Header Field in HTTP                      | Proposed Standard |
 | RFC 2183 | Communicating Presentation Information: Content-Disposition Header Field | Proposed Standard |
 
 ### Network and Protocol Extensions
 
-| RFC | Title | Status |
-|-----|-------|--------|
+| RFC      | Title                    | Status            |
+| -------- | ------------------------ | ----------------- |
 | RFC 7239 | Forwarded HTTP Extension | Proposed Standard |
-| RFC 6455 | The WebSocket Protocol | Proposed Standard |
+| RFC 6455 | The WebSocket Protocol   | Proposed Standard |
 
 ### Transport Layer Security (TLS/HTTPS)
 
-| RFC | Title | Status |
-|-----|-------|--------|
-| RFC 5246 | TLS Protocol Version 1.2 | Proposed Standard |
+| RFC      | Title                                     | Status            |
+| -------- | ----------------------------------------- | ----------------- |
+| RFC 5246 | TLS Protocol Version 1.2                  | Proposed Standard |
 | RFC 8446 | TLS Protocol Version 1.3 (Supersedes 1.2) | Proposed Standard |
-| RFC 2817 | Upgrading to TLS Within HTTP/1.1 | Proposed Standard |
+| RFC 2817 | Upgrading to TLS Within HTTP/1.1          | Proposed Standard |
 
 ### HTTP/2 and HTTP/3 Support
 
-| RFC | Title | Status |
-|-----|-------|--------|
-| RFC 7541 | HPACK: Header Compression for HTTP/2 | On Standard Track |
-| RFC 7838 | HTTP Alternative Services | On Standard Track |
+| RFC      | Title                                                | Status            |
+| -------- | ---------------------------------------------------- | ----------------- |
+| RFC 7541 | HPACK: Header Compression for HTTP/2                 | On Standard Track |
+| RFC 7838 | HTTP Alternative Services                            | On Standard Track |
 | RFC 7301 | TLS Application-Layer Protocol Negotiation Extension | Proposed Standard |
 
 ### Security and Privacy
 
-| Resource | Title | Status |
-|----------|-------|--------|
-| RFC 6454 | The Web Origin Concept | Proposed Standard |
-| Fetch Spec | Cross-Origin Resource Sharing (CORS) | Living Standard |
-| RFC 7034 | HTTP Header Field X-Frame-Options | Informational |
-| RFC 6797 | HTTP Strict Transport Security (HSTS) | Proposed Standard |
-| W3C Spec | Upgrade Insecure Requests | Candidate Recommendation |
-| W3C Spec | Content Security Policy Level 3 | Working Draft |
+| Resource   | Title                                 | Status                   |
+| ---------- | ------------------------------------- | ------------------------ |
+| RFC 6454   | The Web Origin Concept                | Proposed Standard        |
+| Fetch Spec | Cross-Origin Resource Sharing (CORS)  | Living Standard          |
+| RFC 7034   | HTTP Header Field X-Frame-Options     | Informational            |
+| RFC 6797   | HTTP Strict Transport Security (HSTS) | Proposed Standard        |
+| W3C Spec   | Upgrade Insecure Requests             | Candidate Recommendation |
+| W3C Spec   | Content Security Policy Level 3       | Working Draft            |
 
 ### Additional and Experimental
 
-| RFC | Title | Status |
-|-----|-------|--------|
-| RFC 5689 | HTTP Extensions for WebDAV | Proposed Standard |
-| RFC 7240 | Prefer Header for HTTP | Proposed Standard |
-| RFC 7486 | HTTP Origin-Bound Auth (HOBA) | Experimental |
+| RFC      | Title                         | Status            |
+| -------- | ----------------------------- | ----------------- |
+| RFC 5689 | HTTP Extensions for WebDAV    | Proposed Standard |
+| RFC 7240 | Prefer Header for HTTP        | Proposed Standard |
+| RFC 7486 | HTTP Origin-Bound Auth (HOBA) | Experimental      |
 
 ### Key Standards Bodies
 

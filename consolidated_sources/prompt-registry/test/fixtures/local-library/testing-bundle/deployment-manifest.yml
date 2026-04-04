@@ -16,28 +16,28 @@ prompts:
     file: prompts/write-unit-tests.prompt.md
     type: prompt
     tags: [testing, unit-tests, jest]
-  
+
   - id: e2e-tests
     name: Create E2E Tests
     description: Generate end-to-end tests with Playwright/Cypress
     file: prompts/e2e-tests.prompt.md
     type: prompt
     tags: [testing, e2e, playwright]
-  
+
   - id: test-coverage
     name: Improve Test Coverage
     description: Analyze and improve test coverage systematically
     file: prompts/test-coverage.prompt.md
     type: prompt
     tags: [testing, coverage, quality]
-  
+
   - id: tdd-standards
     name: TDD Best Practices
     description: Test-driven development standards and patterns
     file: prompts/tdd-standards.instructions.md
     type: instructions
     tags: [testing, tdd, standards]
-  
+
   - id: qa-engineer
     name: QA Engineer Agent
     description: Expert QA engineer for test planning and automation

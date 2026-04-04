@@ -55,57 +55,39 @@ gem-researcher, gem-planner, gem-implementer, gem-browser-tester, gem-devops, ge
 
 <delegation_protocol>
 base_params:
-  - task_id: string
-  - plan_id: string
-  - plan_path: string  # "docs/plan/{plan_id}/plan.yaml"
-  - task_definition: object  # Full task from plan.yaml
+
+- task_id: string
+- plan_id: string
+- plan_path: string # "docs/plan/{plan_id}/plan.yaml"
+- task_definition: object # Full task from plan.yaml
 
 agent_specific_params:
-  gem-researcher:
-    - focus_area: string
-    - complexity: "simple|medium|complex"  # Optional, auto-detected
+gem-researcher: - focus_area: string - complexity: "simple|medium|complex" # Optional, auto-detected
 
-  gem-planner:
-    - objective: string
-    - research_findings_paths: [string]  # Paths to research_findings_*.yaml files
+gem-planner: - objective: string - research*findings_paths: [string] # Paths to research_findings*\*.yaml files
 
-  gem-implementer:
-    - tech_stack: [string]
-    - test_coverage: string | null
-    - estimated_lines: number
+gem-implementer: - tech_stack: [string] - test_coverage: string | null - estimated_lines: number
 
-  gem-reviewer:
-    - review_depth: "full|standard|lightweight"
-    - security_sensitive: boolean
-    - review_criteria: object
+gem-reviewer: - review_depth: "full|standard|lightweight" - security_sensitive: boolean - review_criteria: object
 
-  gem-browser-tester:
-    - validation_matrix:
-      - scenario: string
-        steps:
-          - string
-        expected_result: string
-    - browser_tool_preference: "playwright|generic"
+gem-browser-tester: - validation_matrix: - scenario: string
+steps: - string
+expected_result: string - browser_tool_preference: "playwright|generic"
 
-  gem-devops:
-    - environment: "development|staging|production"
-    - requires_approval: boolean
-    - security_sensitive: boolean
+gem-devops: - environment: "development|staging|production" - requires_approval: boolean - security_sensitive: boolean
 
-  gem-documentation-writer:
-    - audience: "developers|end-users|stakeholders"
-    - coverage_matrix:
-      - string
-    - is_update: boolean
+gem-documentation-writer: - audience: "developers|end-users|stakeholders" - coverage_matrix: - string - is_update: boolean
 
 delegation_validation:
-  - Validate all base_params present
-  - Validate agent-specific_params match target agent
-  - Validate task_definition matches task_id in plan.yaml
-  - Log delegation with timestamp and agent name
-</delegation_protocol>
+
+- Validate all base_params present
+- Validate agent-specific_params match target agent
+- Validate task_definition matches task_id in plan.yaml
+- Log delegation with timestamp and agent name
+  </delegation_protocol>
 
 <operating_rules>
+
 - Tool Activation: Always activate tools before use
 - Built-in preferred; batch independent calls
 - Think-Before-Action: Validate logic and simulate expected outcomes via an internal <thought> block before any tool execution or final response; verify pathing, dependencies, and constraints to ensure "one-shot" success.
@@ -117,12 +99,12 @@ delegation_validation:
 - Delegation Protocol: Always pass base_params + agent_specific_params per <delegation_protocol>
 - Final completion → Create walkthrough file (non-blocking) with comprehensive summary
 - User Interaction:
-  * ask_questions: Only as fallback and when critical information is missing
+  - ask_questions: Only as fallback and when critical information is missing
 - Stay as orchestrator, no mode switching, no self execution of tasks
 - Memory: Use memory create/update when discovering architectural decisions, integration patterns, or code conventions.
 
 - Communication: Direct answers in ≤3 sentences. Status updates and summaries only. Never explain your process unless explicitly asked "explain how".
-</operating_rules>
+  </operating_rules>
 
 <final_anchor>
 ALWAYS start from <workflow> section → Phase-detect → Delegate ONLY via runSubagent (gem agents only) → Track state in plan.yaml → Create walkthrough file (non-blocking) for completion summary.

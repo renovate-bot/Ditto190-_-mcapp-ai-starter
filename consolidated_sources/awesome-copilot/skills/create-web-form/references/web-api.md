@@ -110,42 +110,42 @@ Web APIs are programming interfaces available to developers for web applications
 ### Core DOM Interfaces
 
 ```javascript
-Document, Element, HTMLElement
-Node, NodeList
-DocumentFragment
-Attr, NamedNodeMap
+(Document, Element, HTMLElement);
+(Node, NodeList);
+DocumentFragment;
+(Attr, NamedNodeMap);
 ```
 
 ### Event Handling
 
 ```javascript
-Event, EventTarget, CustomEvent
-MouseEvent, KeyboardEvent, TouchEvent
-PointerEvent, DragEvent
+(Event, EventTarget, CustomEvent);
+(MouseEvent, KeyboardEvent, TouchEvent);
+(PointerEvent, DragEvent);
 ```
 
 ### Async Operations
 
 ```javascript
 // Promise-based APIs
-AbortController, AbortSignal
-Fetch, Request, Response
+(AbortController, AbortSignal);
+(Fetch, Request, Response);
 ```
 
 ### Media and Graphics
 
 ```javascript
-HTMLMediaElement, AudioContext
-Canvas, CanvasRenderingContext2D
-WebGL2RenderingContext, GPU
+(HTMLMediaElement, AudioContext);
+(Canvas, CanvasRenderingContext2D);
+(WebGL2RenderingContext, GPU);
 ```
 
 ### Storage and Databases
 
 ```javascript
-Storage             // localStorage, sessionStorage
-IndexedDB           // IDBDatabase, IDBTransaction
-CacheStorage        // Service Worker caching
+Storage; // localStorage, sessionStorage
+IndexedDB; // IDBDatabase, IDBTransaction
+CacheStorage; // Service Worker caching
 ```
 
 ## Key Concepts

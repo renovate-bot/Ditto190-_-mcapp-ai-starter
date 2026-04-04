@@ -15,10 +15,6 @@
     "desktop",
     "windows"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/winui3-migration-guide"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/winui3-migration-guide"]
 }

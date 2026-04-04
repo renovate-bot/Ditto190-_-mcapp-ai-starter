@@ -237,7 +237,7 @@ function generateWorkflowsData(gitDates) {
   }
 
   const sortedWorkflows = workflows.sort((a, b) =>
-    a.title.localeCompare(b.title)
+    a.title.localeCompare(b.title),
   );
 
   return {
@@ -342,7 +342,7 @@ function generateInstructionsData(gitDates) {
   }
 
   const sortedInstructions = instructions.sort((a, b) =>
-    a.title.localeCompare(b.title)
+    a.title.localeCompare(b.title),
   );
 
   return {
@@ -621,7 +621,7 @@ function generateSearchIndex(
   hooks,
   workflows,
   skills,
-  plugins
+  plugins,
 ) {
   const index = [];
 
@@ -634,7 +634,7 @@ function generateSearchIndex(
       path: agent.path,
       lastUpdated: agent.lastUpdated,
       searchText: `${agent.title} ${agent.description} ${agent.tools.join(
-        " "
+        " ",
       )}`.toLowerCase(),
     });
   }
@@ -662,7 +662,7 @@ function generateSearchIndex(
       path: hook.readmeFile,
       lastUpdated: hook.lastUpdated,
       searchText: `${hook.title} ${hook.description} ${hook.hooks.join(
-        " "
+        " ",
       )} ${hook.tags.join(" ")}`.toLowerCase(),
     });
   }
@@ -717,7 +717,7 @@ function generateSamplesData() {
 
   if (!fs.existsSync(cookbookYamlPath)) {
     console.warn(
-      "Warning: cookbook/cookbook.yml not found, skipping samples generation"
+      "Warning: cookbook/cookbook.yml not found, skipping samples generation",
     );
     return {
       cookbooks: [],
@@ -748,7 +748,6 @@ function generateSamplesData() {
   });
 
   const cookbooks = cookbookManifest.cookbooks.map((cookbook) => {
-
     // Process recipes and add file paths
     const recipes = cookbook.recipes.map((recipe) => {
       // Collect tags
@@ -764,14 +763,20 @@ function generateSamplesData() {
           try {
             new URL(recipe.url);
           } catch {
-            console.warn(`Warning: Invalid URL for external recipe "${recipe.id}": ${recipe.url}`);
+            console.warn(
+              `Warning: Invalid URL for external recipe "${recipe.id}": ${recipe.url}`,
+            );
           }
         } else {
-          console.warn(`Warning: External recipe "${recipe.id}" is missing a url`);
+          console.warn(
+            `Warning: External recipe "${recipe.id}" is missing a url`,
+          );
         }
 
         // Derive languages from tags that match known language IDs
-        const recipeLanguages = (recipe.tags || []).filter((tag) => allLanguages.has(tag));
+        const recipeLanguages = (recipe.tags || []).filter((tag) =>
+          allLanguages.has(tag),
+        );
 
         return {
           id: recipe.id,
@@ -848,7 +853,7 @@ async function main() {
   console.log("Loading git history for last updated dates...");
   const gitDates = getGitFileDates(
     ["agents/", "instructions/", "hooks/", "workflows/", "skills/", "plugins/"],
-    ROOT_FOLDER
+    ROOT_FOLDER,
   );
   console.log(`✓ Loaded dates for ${gitDates.size} files\n`);
 
@@ -856,48 +861,48 @@ async function main() {
   const agentsData = generateAgentsData(gitDates);
   const agents = agentsData.items;
   console.log(
-    `✓ Generated ${agents.length} agents (${agentsData.filters.models.length} models, ${agentsData.filters.tools.length} tools)`
+    `✓ Generated ${agents.length} agents (${agentsData.filters.models.length} models, ${agentsData.filters.tools.length} tools)`,
   );
 
   const hooksData = generateHooksData(gitDates);
   const hooks = hooksData.items;
   console.log(
-    `✓ Generated ${hooks.length} hooks (${hooksData.filters.hooks.length} hook types, ${hooksData.filters.tags.length} tags)`
+    `✓ Generated ${hooks.length} hooks (${hooksData.filters.hooks.length} hook types, ${hooksData.filters.tags.length} tags)`,
   );
 
   const workflowsData = generateWorkflowsData(gitDates);
   const workflows = workflowsData.items;
   console.log(
-    `✓ Generated ${workflows.length} workflows (${workflowsData.filters.triggers.length} triggers)`
+    `✓ Generated ${workflows.length} workflows (${workflowsData.filters.triggers.length} triggers)`,
   );
 
   const instructionsData = generateInstructionsData(gitDates);
   const instructions = instructionsData.items;
   console.log(
-    `✓ Generated ${instructions.length} instructions (${instructionsData.filters.extensions.length} extensions)`
+    `✓ Generated ${instructions.length} instructions (${instructionsData.filters.extensions.length} extensions)`,
   );
 
   const skillsData = generateSkillsData(gitDates);
   const skills = skillsData.items;
   console.log(
-    `✓ Generated ${skills.length} skills (${skillsData.filters.categories.length} categories)`
+    `✓ Generated ${skills.length} skills (${skillsData.filters.categories.length} categories)`,
   );
 
   const pluginsData = generatePluginsData(gitDates);
   const plugins = pluginsData.items;
   console.log(
-    `✓ Generated ${plugins.length} plugins (${pluginsData.filters.tags.length} tags)`
+    `✓ Generated ${plugins.length} plugins (${pluginsData.filters.tags.length} tags)`,
   );
 
   const toolsData = generateToolsData();
   const tools = toolsData.items;
   console.log(
-    `✓ Generated ${tools.length} tools (${toolsData.filters.categories.length} categories)`
+    `✓ Generated ${tools.length} tools (${toolsData.filters.categories.length} categories)`,
   );
 
   const samplesData = generateSamplesData();
   console.log(
-    `✓ Generated ${samplesData.totalRecipes} recipes in ${samplesData.totalCookbooks} cookbooks (${samplesData.filters.languages.length} languages, ${samplesData.filters.tags.length} tags)`
+    `✓ Generated ${samplesData.totalRecipes} recipes in ${samplesData.totalCookbooks} cookbooks (${samplesData.filters.languages.length} languages, ${samplesData.filters.tags.length} tags)`,
   );
 
   const searchIndex = generateSearchIndex(
@@ -906,54 +911,54 @@ async function main() {
     hooks,
     workflows,
     skills,
-    plugins
+    plugins,
   );
   console.log(`✓ Generated search index with ${searchIndex.length} items`);
 
   // Write JSON files
   fs.writeFileSync(
     path.join(WEBSITE_DATA_DIR, "agents.json"),
-    JSON.stringify(agentsData, null, 2)
+    JSON.stringify(agentsData, null, 2),
   );
 
   fs.writeFileSync(
     path.join(WEBSITE_DATA_DIR, "hooks.json"),
-    JSON.stringify(hooksData, null, 2)
+    JSON.stringify(hooksData, null, 2),
   );
 
   fs.writeFileSync(
     path.join(WEBSITE_DATA_DIR, "workflows.json"),
-    JSON.stringify(workflowsData, null, 2)
+    JSON.stringify(workflowsData, null, 2),
   );
 
   fs.writeFileSync(
     path.join(WEBSITE_DATA_DIR, "instructions.json"),
-    JSON.stringify(instructionsData, null, 2)
+    JSON.stringify(instructionsData, null, 2),
   );
 
   fs.writeFileSync(
     path.join(WEBSITE_DATA_DIR, "skills.json"),
-    JSON.stringify(skillsData, null, 2)
+    JSON.stringify(skillsData, null, 2),
   );
 
   fs.writeFileSync(
     path.join(WEBSITE_DATA_DIR, "plugins.json"),
-    JSON.stringify(pluginsData, null, 2)
+    JSON.stringify(pluginsData, null, 2),
   );
 
   fs.writeFileSync(
     path.join(WEBSITE_DATA_DIR, "tools.json"),
-    JSON.stringify(toolsData, null, 2)
+    JSON.stringify(toolsData, null, 2),
   );
 
   fs.writeFileSync(
     path.join(WEBSITE_DATA_DIR, "samples.json"),
-    JSON.stringify(samplesData, null, 2)
+    JSON.stringify(samplesData, null, 2),
   );
 
   fs.writeFileSync(
     path.join(WEBSITE_DATA_DIR, "search-index.json"),
-    JSON.stringify(searchIndex, null, 2)
+    JSON.stringify(searchIndex, null, 2),
   );
 
   // Generate a manifest with counts and timestamps
@@ -974,7 +979,7 @@ async function main() {
 
   fs.writeFileSync(
     path.join(WEBSITE_DATA_DIR, "manifest.json"),
-    JSON.stringify(manifest, null, 2)
+    JSON.stringify(manifest, null, 2),
   );
 
   console.log(`\n✓ All data written to website/public/data/`);

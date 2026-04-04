@@ -27,9 +27,9 @@ Relates to #
 
 <!-- Provide a detailed list of changes -->
 
-- 
-- 
-- 
+-
+-
+-
 
 ## Testing
 
@@ -44,9 +44,9 @@ Relates to #
 
 ### Manual Testing Steps
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ### Tested On
 
@@ -92,8 +92,8 @@ Relates to #
 
 Please pay special attention to:
 
-- 
-- 
+-
+-
 
 ---
 

@@ -159,6 +159,7 @@ def test_predict_initialization():
 The most common and critical pattern in DSPy is the **Standard Workflow**, which strictly separates concerns:
 
 1.  **Decompose and Declare with `dspy.Signature`**: ALWAYS start by defining the input/output behavior of a task declaratively. This is the "what".
+
     ```python
     class Summarize(dspy.Signature):
         """Summarize the given text."""
@@ -167,6 +168,7 @@ The most common and critical pattern in DSPy is the **Standard Workflow**, which
     ```
 
 2.  **Compose with `dspy.Module`**: Assemble signatures into a program that defines the control flow. This is the "how".
+
     ```python
     class MyProgram(dspy.Module):
         def __init__(self):
@@ -203,6 +205,7 @@ When assigned a task, follow this Standard Operating Procedure (SOP):
 ## Few-Shot Examples
 
 ### Good: Using `Signature` and `Module`
+
 This example correctly separates the task definition (`EmailClassifier` signature) from the program logic (`SpamClassifier` module), allowing a `Teleprompter` to optimize the underlying prompt.
 
 ```python
@@ -230,6 +233,7 @@ class SpamClassifier(dspy.Module):
 ```
 
 ### Bad: Hardcoding Prompts in an F-String
+
 This example violates the core DSPy philosophy by embedding a complex, hardcoded prompt directly into the program logic. This makes it impossible for a `Teleprompter` to automatically optimize the prompt, turning the code into a rigid, non-learnable script.
 
 ```python
@@ -246,8 +250,9 @@ def classify_email_badly(email_body: str):
     Classification:
     Reason:
     """
-    
+
     # This is an ad-hoc call to the LM, not part of a learnable DSPy module.
-    # response = dspy.settings.lm(prompt) 
+    # response = dspy.settings.lm(prompt)
     # This code is brittle, hard to maintain, and cannot be optimized.
     return "This approach is incorrect"
+```

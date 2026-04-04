@@ -11,10 +11,10 @@
 
 ## Resource Inventory
 
-| Resource Name | Type | Tier/SKU | Location | Notes |
-|--------------|------|----------|----------|-------|
-| app-prod-001 | App Service | P1v2 | East US | Production web app |
-| func-prod-001 | Function App | Y1 | East US | Consumption plan |
+| Resource Name | Type         | Tier/SKU | Location | Notes              |
+| ------------- | ------------ | -------- | -------- | ------------------ |
+| app-prod-001  | App Service  | P1v2     | East US  | Production web app |
+| func-prod-001 | Function App | Y1       | East US  | Consumption plan   |
 
 ## Architecture Diagram
 
@@ -25,15 +25,19 @@
 ## Relationship Details
 
 ### Network Architecture
+
 [Describe VNets, subnets, network security]
 
 ### Data Flow
+
 [Describe how data moves between components]
 
 ### Identity & Access
+
 [Describe managed identities, key vault access, RBAC]
 
 ### Dependencies
+
 [Describe critical dependencies and their order]
 
 ## Notes & Recommendations

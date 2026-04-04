@@ -19,33 +19,29 @@ Generate secure, well-structured REST API endpoints with proper error handling a
  * @desc    Create new resource
  * @access  Private
  */
-router.post('/', 
-  auth,
-  validateRequest,
-  async (req, res) => {
-    try {
-      const { field1, field2 } = req.body;
-      
-      // Business logic
-      const resource = await ResourceService.create({
-        field1,
-        field2,
-        userId: req.user.id
-      });
-      
-      res.status(201).json({
-        success: true,
-        data: resource
-      });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({
-        success: false,
-        error: 'Server error'
-      });
-    }
+router.post("/", auth, validateRequest, async (req, res) => {
+  try {
+    const { field1, field2 } = req.body;
+
+    // Business logic
+    const resource = await ResourceService.create({
+      field1,
+      field2,
+      userId: req.user.id,
+    });
+
+    res.status(201).json({
+      success: true,
+      data: resource,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      error: "Server error",
+    });
   }
-);
+});
 ```
 
 Create production-ready API endpoints\!

@@ -3,6 +3,7 @@
 ## Versioning
 
 [Semantic Versioning](https://semver.org/):
+
 - **MAJOR** — Breaking changes
 - **MINOR** — New features (backward compatible)
 - **PATCH** — Bug fixes (backward compatible)
@@ -22,11 +23,13 @@ These scripts update `package.json` and version references in `README.md`.
 ## Release Checklist
 
 1. **Update version**:
+
    ```bash
    npm run version:bump:patch  # or minor/major
    ```
 
 2. **Run tests**:
+
    ```bash
    npm run lint
    npm run compile
@@ -34,6 +37,7 @@ These scripts update `package.json` and version references in `README.md`.
    ```
 
 3. **Commit and push**:
+
    ```bash
    git add -A
    git commit -m "chore: bump version to X.Y.Z"
@@ -41,19 +45,20 @@ These scripts update `package.json` and version references in `README.md`.
    ```
 
 4. **Create GitHub Release** (triggers publishing):
-   
+
    **Option A: GitHub CLI (recommended)**:
+
    ```bash
    gh release create v0.0.3 *.vsix --title "Release v0.0.3" --generate-notes
    ```
-   
+
    **Option B: GitHub Web UI**:
    - Go to GitHub → Releases → "Create a new release"
    - Create tag `vX.Y.Z` (e.g., `v0.0.3`)
    - Upload the `.vsix` file
    - Add release notes
    - Publish release
-   
+
    **⚠️ Important:** Publishing the release triggers the CI workflow to publish to VS Code Marketplace
 
 ## Pre-release Testing

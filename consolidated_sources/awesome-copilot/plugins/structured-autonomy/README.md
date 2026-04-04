@@ -13,10 +13,10 @@ copilot plugin install github/awesome-copilot/plugins/structured-autonomy
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
-| `/structured-autonomy:structured-autonomy-plan` | Structured Autonomy Plan |
-| `/structured-autonomy:structured-autonomy-generate` | Structured Autonomy Generate |
+| Command                                              | Description                   |
+| ---------------------------------------------------- | ----------------------------- |
+| `/structured-autonomy:structured-autonomy-plan`      | Structured Autonomy Plan      |
+| `/structured-autonomy:structured-autonomy-generate`  | Structured Autonomy Generate  |
 | `/structured-autonomy:structured-autonomy-implement` | Structured Autonomy Implement |
 
 ## Source

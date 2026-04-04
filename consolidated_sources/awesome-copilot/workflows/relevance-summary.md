@@ -32,12 +32,14 @@ Search all **open** issues and pull requests in this repository.
 For each one, read its comments and look for a comment that contains a **"Relevance Assessment"** section — this is the output of the `/relevance-check` slash command.
 
 A relevance-check response contains these markers:
+
 - A heading or bold text with **"Relevance Assessment:"** followed by one of: `Still Relevant`, `Likely Outdated`, or `Needs Discussion`
 - A **Recommendation** section with one of: ✅ **Keep open**, 🗄️ **Consider closing**, or 💬 **Needs maintainer input**
 
 ### 2. Extract Information
 
 For each issue or PR that has a relevance-check response, extract:
+
 - The issue/PR number and title
 - Whether it is an issue or a pull request
 - The relevance assessment verdict (Still Relevant / Likely Outdated / Needs Discussion)

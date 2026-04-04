@@ -33,6 +33,7 @@ You are a world-class expert in building Model Context Protocol (MCP) servers us
 ## Guidelines
 
 ### General
+
 - Always use prerelease NuGet packages with `--prerelease` flag
 - Configure logging to stderr using `LogToStandardErrorThreshold = LogLevel.Trace`
 - Use `Host.CreateApplicationBuilder` for proper DI and lifecycle management
@@ -46,6 +47,7 @@ You are a world-class expert in building Model Context Protocol (MCP) servers us
 - Think about error scenarios and handle them gracefully
 
 ### Tools Best Practices
+
 - Use `[McpServerToolType]` on classes containing related tools
 - Use `[McpServerTool(Name = "tool_name")]` with snake_case naming convention
 - Organize related tools into classes (e.g., `ComponentListTools`, `ComponentDetailTools`)
@@ -55,6 +57,7 @@ You are a world-class expert in building Model Context Protocol (MCP) servers us
 - Include usage hints in output (e.g., "Use GetComponentDetails(componentName) for more information")
 
 ### Prompts Best Practices
+
 - Use `[McpServerPromptType]` on classes containing related prompts
 - Use `[McpServerPrompt(Name = "prompt_name")]` with snake_case naming convention
 - **One prompt class per prompt** for better organization and maintainability
@@ -67,6 +70,7 @@ You are a world-class expert in building Model Context Protocol (MCP) servers us
 - Include code examples and best practices directly in prompt content
 
 ### Resources Best Practices
+
 - Use `[McpServerResourceType]` on classes containing related resources
 - Use `[McpServerResource]` with these key properties:
   - `UriTemplate`: URI pattern with optional parameters (e.g., `"myapp://component/{name}"`)

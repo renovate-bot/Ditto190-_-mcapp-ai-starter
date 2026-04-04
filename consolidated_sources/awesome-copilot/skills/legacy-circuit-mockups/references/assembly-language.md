@@ -8,11 +8,11 @@ A practical specification for writing **6502/65C02 assembly language programs** 
 
 This document assumes:
 
-* A **6502-family CPU** (6502, 65C02, or compatible)
-* Program code stored in an **AT28C256 (32K x 8) EEPROM**
-* Memory-mapped I/O (e.g., 6522 VIA)
-* Reset and interrupt vectors located in EEPROM
-* External RAM mapped elsewhere (e.g., 62256 SRAM)
+- A **6502-family CPU** (6502, 65C02, or compatible)
+- Program code stored in an **AT28C256 (32K x 8) EEPROM**
+- Memory-mapped I/O (e.g., 6522 VIA)
+- Reset and interrupt vectors located in EEPROM
+- External RAM mapped elsewhere (e.g., 62256 SRAM)
 
 ---
 
@@ -128,10 +128,10 @@ main:
 
 ### Key Considerations
 
-* Code is **read-only at runtime**
-* Self-modifying code not recommended
-* Place jump tables and constants in EEPROM
-* Use RAM for variables and stack
+- Code is **read-only at runtime**
+- Self-modifying code not recommended
+- Place jump tables and constants in EEPROM
+- Use RAM for variables and stack
 
 ### Zero Page Variable Example
 
@@ -146,9 +146,9 @@ counter = $00
 
 ## 9. Timing and Performance
 
-* EEPROM access time must meet CPU clock requirements
-* AT28C256 supports ~1 MHz comfortably
-* Faster clocks may require wait states or ROM shadowing
+- EEPROM access time must meet CPU clock requirements
+- AT28C256 supports ~1 MHz comfortably
+- Faster clocks may require wait states or ROM shadowing
 
 ---
 
@@ -214,10 +214,10 @@ loop:
 
 ## 14. Reference Links
 
-* [https://www.masswerk.at/6502/6502_instruction_set.html](https://www.masswerk.at/6502/6502_instruction_set.html)
-* [https://www.nesdev.org/wiki/6502](https://www.nesdev.org/wiki/6502)
-* [https://www.westerndesigncenter.com/wdc/documentation](https://www.westerndesigncenter.com/wdc/documentation)
-* [https://en.wikipedia.org/wiki/MOS_Technology_6502](https://en.wikipedia.org/wiki/MOS_Technology_6502)
+- [https://www.masswerk.at/6502/6502_instruction_set.html](https://www.masswerk.at/6502/6502_instruction_set.html)
+- [https://www.nesdev.org/wiki/6502](https://www.nesdev.org/wiki/6502)
+- [https://www.westerndesigncenter.com/wdc/documentation](https://www.westerndesigncenter.com/wdc/documentation)
+- [https://en.wikipedia.org/wiki/MOS_Technology_6502](https://en.wikipedia.org/wiki/MOS_Technology_6502)
 
 ---
 

@@ -34,17 +34,17 @@ The `<form>` element represents a document section containing interactive contro
 
 ### Key Attributes
 
-| Attribute | Description |
-|-----------|-------------|
-| `action` | URL that processes the form submission. Can be overridden by `formaction` on submit buttons. |
-| `method` | HTTP method: `get` (default), `post`, or `dialog`. Defines how data is sent. |
-| `enctype` | MIME type for POST submissions: `application/x-www-form-urlencoded` (default), `multipart/form-data` (for files), `text/plain`. |
-| `novalidate` | Boolean attribute that disables form validation on submission. |
-| `autocomplete` | Controls auto-completion: `on` (default) or `off`. |
-| `accept-charset` | Character encoding accepted (typically `UTF-8`). |
-| `name` | Form identifier; must be unique. Becomes a property of `window`, `document`, and `document.forms`. |
-| `target` | Where to display the response: `_self` (default), `_blank`, `_parent`, `_top`. |
-| `rel` | Link relationship types: `external`, `nofollow`, `noopener`, `noreferrer`, etc. |
+| Attribute        | Description                                                                                                                     |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `action`         | URL that processes the form submission. Can be overridden by `formaction` on submit buttons.                                    |
+| `method`         | HTTP method: `get` (default), `post`, or `dialog`. Defines how data is sent.                                                    |
+| `enctype`        | MIME type for POST submissions: `application/x-www-form-urlencoded` (default), `multipart/form-data` (for files), `text/plain`. |
+| `novalidate`     | Boolean attribute that disables form validation on submission.                                                                  |
+| `autocomplete`   | Controls auto-completion: `on` (default) or `off`.                                                                              |
+| `accept-charset` | Character encoding accepted (typically `UTF-8`).                                                                                |
+| `name`           | Form identifier; must be unique. Becomes a property of `window`, `document`, and `document.forms`.                              |
+| `target`         | Where to display the response: `_self` (default), `_blank`, `_parent`, `_top`.                                                  |
+| `rel`            | Link relationship types: `external`, `nofollow`, `noopener`, `noreferrer`, etc.                                                 |
 
 ### Usage Notes
 
@@ -105,8 +105,8 @@ The collection includes:
 ```javascript
 // Access form controls
 const inputs = document.getElementById("my-form").elements;
-const firstControl = inputs[0];           // By index
-const byName = inputs["username"];        // By name attribute
+const firstControl = inputs[0]; // By index
+const byName = inputs["username"]; // By name attribute
 
 // Iterate over controls
 for (const control of inputs) {
@@ -131,18 +131,18 @@ The `<button>` element is an interactive element activated by a user (via mouse,
 
 ### Key Attributes
 
-| Attribute | Description |
-|-----------|-------------|
-| `type` | Specifies behavior: `submit` (default for forms), `reset` (clears form), `button` (no default behavior). |
-| `disabled` | Boolean; prevents user interaction. |
-| `name` | Button name for form submission. |
-| `value` | Value submitted with form data. |
-| `form` | Associates button with a form by ID. |
-| `formaction` | Overrides form's `action` URL. |
-| `formmethod` | Overrides form's HTTP method (`post`/`get`). |
-| `autofocus` | Gives button focus on page load. |
-| `popovertarget` | Controls a popover element by ID. |
-| `popovertargetaction` | Popover action: `show`, `hide`, or `toggle`. |
+| Attribute             | Description                                                                                              |
+| --------------------- | -------------------------------------------------------------------------------------------------------- |
+| `type`                | Specifies behavior: `submit` (default for forms), `reset` (clears form), `button` (no default behavior). |
+| `disabled`            | Boolean; prevents user interaction.                                                                      |
+| `name`                | Button name for form submission.                                                                         |
+| `value`               | Value submitted with form data.                                                                          |
+| `form`                | Associates button with a form by ID.                                                                     |
+| `formaction`          | Overrides form's `action` URL.                                                                           |
+| `formmethod`          | Overrides form's HTTP method (`post`/`get`).                                                             |
+| `autofocus`           | Gives button focus on page load.                                                                         |
+| `popovertarget`       | Controls a popover element by ID.                                                                        |
+| `popovertargetaction` | Popover action: `show`, `hide`, or `toggle`.                                                             |
 
 ### Usage Notes
 
@@ -251,17 +251,17 @@ The `<fieldset>` element is used to group several form controls and labels toget
 
 ### Key Attributes
 
-| Attribute | Description |
-|-----------|-------------|
+| Attribute  | Description                                                                                                                                              |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `disabled` | Boolean attribute that disables all form controls inside the fieldset (except those in `<legend>`). Disabled controls will not be editable or submitted. |
-| `form` | Links the fieldset to a `<form>` by referencing the form's `id`, even if the fieldset is not nested inside it. |
-| `name` | Specifies the name associated with the group. |
+| `form`     | Links the fieldset to a `<form>` by referencing the form's `id`, even if the fieldset is not nested inside it.                                           |
+| `name`     | Specifies the name associated with the group.                                                                                                            |
 
 ### Usage Notes
 
 - The first `<legend>` element nested in the fieldset provides its caption and should be the first child.
 - Displays as `block` by default with a 2px groove border and padding.
-- When disabled, all descendant form controls become disabled *except* those inside the `<legend>` element.
+- When disabled, all descendant form controls become disabled _except_ those inside the `<legend>` element.
 - Implicit ARIA role: `group`.
 - DOM Interface: `HTMLFieldSetElement`.
 
@@ -296,51 +296,51 @@ The `<input>` element creates interactive controls for web-based forms to accept
 
 ### Input Types (24 total)
 
-| Type | Purpose |
-|------|---------|
-| `button` | Push button with no default behavior |
-| `checkbox` | Single value selection/deselection |
-| `color` | Color picker control |
-| `date` | Date input (year, month, day) |
-| `datetime-local` | Date and time without timezone |
-| `email` | Email address field |
-| `file` | File upload control |
-| `hidden` | Non-displayed value submitted to server |
-| `image` | Graphical submit button |
-| `month` | Month and year input |
-| `number` | Numeric input with validation |
-| `password` | Obscured text field |
-| `radio` | Single choice from multiple options |
-| `range` | Numeric value selector (slider) |
-| `reset` | Form reset button |
-| `search` | Search string input |
-| `submit` | Form submission button |
-| `tel` | Telephone number field |
-| `text` | Single-line text (default) |
-| `time` | Time input |
-| `url` | URL field with validation |
-| `week` | Week and year input |
+| Type             | Purpose                                 |
+| ---------------- | --------------------------------------- |
+| `button`         | Push button with no default behavior    |
+| `checkbox`       | Single value selection/deselection      |
+| `color`          | Color picker control                    |
+| `date`           | Date input (year, month, day)           |
+| `datetime-local` | Date and time without timezone          |
+| `email`          | Email address field                     |
+| `file`           | File upload control                     |
+| `hidden`         | Non-displayed value submitted to server |
+| `image`          | Graphical submit button                 |
+| `month`          | Month and year input                    |
+| `number`         | Numeric input with validation           |
+| `password`       | Obscured text field                     |
+| `radio`          | Single choice from multiple options     |
+| `range`          | Numeric value selector (slider)         |
+| `reset`          | Form reset button                       |
+| `search`         | Search string input                     |
+| `submit`         | Form submission button                  |
+| `tel`            | Telephone number field                  |
+| `text`           | Single-line text (default)              |
+| `time`           | Time input                              |
+| `url`            | URL field with validation               |
+| `week`           | Week and year input                     |
 
 ### Key Attributes
 
-| Attribute | Applicable Types | Purpose |
-|-----------|-----------------|---------|
-| `type` | All | Specifies the input control type |
-| `name` | All | Form control identifier for submission |
-| `value` | All | Control's initial/current value |
-| `id` | All | Unique element identifier |
-| `required` | Most | Makes input mandatory |
-| `disabled` | All | Disables user interaction |
-| `readonly` | Text-like | Prevents value editing |
-| `placeholder` | Text-like | Hint text when empty |
-| `min` / `max` | Numeric/date | Value range limits |
-| `minlength` / `maxlength` | Text-like | Character count limits |
-| `pattern` | Text-like | Regex validation pattern |
-| `step` | Numeric/date | Incremental value steps |
-| `autocomplete` | Most | Form autofill hint |
-| `list` | Most | Associates with `<datalist>` |
-| `checked` | Checkbox/radio | Pre-selected state |
-| `multiple` | Email/file | Allow multiple values |
+| Attribute                 | Applicable Types | Purpose                                |
+| ------------------------- | ---------------- | -------------------------------------- |
+| `type`                    | All              | Specifies the input control type       |
+| `name`                    | All              | Form control identifier for submission |
+| `value`                   | All              | Control's initial/current value        |
+| `id`                      | All              | Unique element identifier              |
+| `required`                | Most             | Makes input mandatory                  |
+| `disabled`                | All              | Disables user interaction              |
+| `readonly`                | Text-like        | Prevents value editing                 |
+| `placeholder`             | Text-like        | Hint text when empty                   |
+| `min` / `max`             | Numeric/date     | Value range limits                     |
+| `minlength` / `maxlength` | Text-like        | Character count limits                 |
+| `pattern`                 | Text-like        | Regex validation pattern               |
+| `step`                    | Numeric/date     | Incremental value steps                |
+| `autocomplete`            | Most             | Form autofill hint                     |
+| `list`                    | Most             | Associates with `<datalist>`           |
+| `checked`                 | Checkbox/radio   | Pre-selected state                     |
+| `multiple`                | Email/file       | Allow multiple values                  |
 
 ### Usage Notes
 
@@ -362,7 +362,8 @@ The `<input>` element creates interactive controls for web-based forms to accept
   required
   minlength="4"
   maxlength="8"
-  size="10" />
+  size="10"
+/>
 ```
 
 ---
@@ -377,9 +378,9 @@ The `<label>` element represents a caption for an item in a user interface. It a
 
 ### Key Attributes
 
-| Attribute | Description |
-|-----------|-------------|
-| `for` | The `id` of the labelable form control to associate with this label. JavaScript reflection: `htmlFor`. |
+| Attribute | Description                                                                                            |
+| --------- | ------------------------------------------------------------------------------------------------------ |
+| `for`     | The `id` of the labelable form control to associate with this label. JavaScript reflection: `htmlFor`. |
 
 ### Associating Labels with Controls
 
@@ -415,11 +416,13 @@ Labels can be associated with: `<button>`, `<input>` (except `type="hidden"`), `
 ### Accessibility Guidelines
 
 **Do:**
+
 - Use explicit association with the `for` attribute for broad tool compatibility.
-- Place context (like links to terms) *before* the form control.
+- Place context (like links to terms) _before_ the form control.
 - Use `<legend>` within `<fieldset>` for form section titles.
 
 **Do not:**
+
 - Place interactive elements (links, buttons) inside labels -- it makes form controls difficult to activate.
 - Use heading elements inside labels -- it interferes with assistive technology navigation.
 - Add labels to `<input type="button">` or `<button>` elements (they have built-in labels via their content/value).
@@ -476,14 +479,14 @@ The `<meter>` element represents a scalar value within a known range or a fracti
 
 ### Key Attributes
 
-| Attribute | Default | Description |
-|-----------|---------|-------------|
-| `value` | `0` | Current numeric value (must be between `min` and `max`). |
-| `min` | `0` | Lower bound of the measured range. |
-| `max` | `1` | Upper bound of the measured range. |
-| `low` | `min` value | Upper bound of the "low" end of the range. |
-| `high` | `max` value | Lower bound of the "high" end of the range. |
-| `optimum` | -- | Optimal numeric value; indicates the preferred range section. |
+| Attribute | Default     | Description                                                   |
+| --------- | ----------- | ------------------------------------------------------------- |
+| `value`   | `0`         | Current numeric value (must be between `min` and `max`).      |
+| `min`     | `0`         | Lower bound of the measured range.                            |
+| `max`     | `1`         | Upper bound of the measured range.                            |
+| `low`     | `min` value | Upper bound of the "low" end of the range.                    |
+| `high`    | `max` value | Lower bound of the "high" end of the range.                   |
+| `optimum` | --          | Optimal numeric value; indicates the preferred range section. |
 
 ### Usage Notes
 
@@ -528,10 +531,10 @@ The `<optgroup>` element creates a grouping of options within a `<select>` eleme
 
 ### Key Attributes
 
-| Attribute | Description |
-|-----------|-------------|
-| `label` | The name of the option group (**mandatory**). Browsers display this as a non-selectable label in the UI. |
-| `disabled` | Boolean attribute. When set, all options in this group become non-selectable and appear greyed out. |
+| Attribute  | Description                                                                                              |
+| ---------- | -------------------------------------------------------------------------------------------------------- |
+| `label`    | The name of the option group (**mandatory**). Browsers display this as a non-selectable label in the UI. |
+| `disabled` | Boolean attribute. When set, all options in this group become non-selectable and appear greyed out.      |
 
 ### Usage Notes
 
@@ -574,12 +577,12 @@ The `<option>` element defines items contained within `<select>`, `<optgroup>`, 
 
 ### Key Attributes
 
-| Attribute | Description |
-|-----------|-------------|
-| `value` | The value submitted with the form if the option is selected. If omitted, the element's text content is used. |
+| Attribute  | Description                                                                                                                                     |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`    | The value submitted with the form if the option is selected. If omitted, the element's text content is used.                                    |
 | `selected` | Boolean attribute that marks the option as initially selected. Only one `<option>` per `<select>` (without `multiple`) can have this attribute. |
-| `disabled` | Boolean attribute that disables the option (greyed out, no interaction). Options are also disabled if their `<optgroup>` ancestor is disabled. |
-| `label` | Text label for the option. If not defined, the element's text content is used. |
+| `disabled` | Boolean attribute that disables the option (greyed out, no interaction). Options are also disabled if their `<optgroup>` ancestor is disabled.  |
+| `label`    | Text label for the option. If not defined, the element's text content is used.                                                                  |
 
 ### Context of Use
 
@@ -617,11 +620,11 @@ The `<output>` element is a container element that displays the results of a cal
 
 ### Key Attributes
 
-| Attribute | Description |
-|-----------|-------------|
-| `for` | Space-separated list of element `id`s that contributed to the calculation. |
-| `form` | Associates the output with a specific `<form>` by its `id` (overrides ancestor forms). |
-| `name` | The element's name; used in `form.elements` API. |
+| Attribute | Description                                                                            |
+| --------- | -------------------------------------------------------------------------------------- |
+| `for`     | Space-separated list of element `id`s that contributed to the calculation.             |
+| `form`    | Associates the output with a specific `<form>` by its `id` (overrides ancestor forms). |
+| `name`    | The element's name; used in `form.elements` API.                                       |
 
 ### Usage Notes
 
@@ -641,8 +644,8 @@ The `<output>` element is a container element that displays the results of a cal
 <script>
   const form = document.getElementById("example-form");
   form.addEventListener("input", () => {
-    const result = form.elements["a"].valueAsNumber +
-                   form.elements["b"].valueAsNumber;
+    const result =
+      form.elements["a"].valueAsNumber + form.elements["b"].valueAsNumber;
     form.elements["result"].value = result;
   });
 </script>
@@ -660,10 +663,10 @@ The `<progress>` element displays a progress indicator showing the completion of
 
 ### Key Attributes
 
-| Attribute | Description |
-|-----------|-------------|
-| `max` | Total amount of work required. Must be greater than 0 and a valid floating-point number. Default: `1`. |
-| `value` | Completed amount (0 to `max`, or 0 to 1 if `max` is omitted). If omitted, shows an indeterminate progress bar. |
+| Attribute | Description                                                                                                    |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| `max`     | Total amount of work required. Must be greater than 0 and a valid floating-point number. Default: `1`.         |
+| `value`   | Completed amount (0 to `max`, or 0 to 1 if `max` is omitted). If omitted, shows an indeterminate progress bar. |
 
 ### Difference from `<meter>`
 
@@ -711,16 +714,16 @@ The `<select>` element represents a control that provides a menu of options, all
 
 ### Key Attributes
 
-| Attribute | Description |
-|-----------|-------------|
-| `name` | Specifies the name of the control for form submission. |
-| `multiple` | Boolean attribute allowing selection of multiple options. |
-| `size` | Number of visible rows in a scrolling list box (default: `0`). |
-| `required` | Boolean attribute requiring a non-empty option selection. |
-| `disabled` | Boolean attribute preventing user interaction. |
-| `autofocus` | Boolean attribute giving focus to the control on page load. |
-| `form` | Associates the select with a specific form by ID. |
-| `autocomplete` | Provides hints for autocomplete behavior. |
+| Attribute      | Description                                                    |
+| -------------- | -------------------------------------------------------------- |
+| `name`         | Specifies the name of the control for form submission.         |
+| `multiple`     | Boolean attribute allowing selection of multiple options.      |
+| `size`         | Number of visible rows in a scrolling list box (default: `0`). |
+| `required`     | Boolean attribute requiring a non-empty option selection.      |
+| `disabled`     | Boolean attribute preventing user interaction.                 |
+| `autofocus`    | Boolean attribute giving focus to the control on page load.    |
+| `form`         | Associates the select with a specific form by ID.              |
+| `autocomplete` | Provides hints for autocomplete behavior.                      |
 
 ### Usage Notes
 
@@ -762,22 +765,22 @@ The `<textarea>` element represents a multi-line plain-text editing control for 
 
 ### Key Attributes
 
-| Attribute | Description |
-|-----------|-------------|
-| `rows` | Number of visible text lines (default: `2`). |
-| `cols` | Visible width in average character widths (default: `20`). |
-| `name` | Control name for form submission. |
-| `id` | For associating with `<label>` elements. |
-| `placeholder` | Hint text displayed to the user. |
-| `maxlength` | Maximum string length (UTF-16 code units). |
-| `minlength` | Minimum string length (UTF-16 code units). |
-| `wrap` | Line wrapping behavior: `soft` (default), `hard`, or `off`. |
-| `disabled` | Boolean; disables user interaction. |
-| `readonly` | Boolean; user cannot modify content but it remains focusable and submittable. |
-| `required` | Boolean; user must fill in a value. |
-| `autocomplete` | `on` or `off` for browser auto-completion. |
-| `spellcheck` | `true`, `false`, or `default` for spell-checking behavior. |
-| `autofocus` | Boolean; receives focus on page load. |
+| Attribute      | Description                                                                   |
+| -------------- | ----------------------------------------------------------------------------- |
+| `rows`         | Number of visible text lines (default: `2`).                                  |
+| `cols`         | Visible width in average character widths (default: `20`).                    |
+| `name`         | Control name for form submission.                                             |
+| `id`           | For associating with `<label>` elements.                                      |
+| `placeholder`  | Hint text displayed to the user.                                              |
+| `maxlength`    | Maximum string length (UTF-16 code units).                                    |
+| `minlength`    | Minimum string length (UTF-16 code units).                                    |
+| `wrap`         | Line wrapping behavior: `soft` (default), `hard`, or `off`.                   |
+| `disabled`     | Boolean; disables user interaction.                                           |
+| `readonly`     | Boolean; user cannot modify content but it remains focusable and submittable. |
+| `required`     | Boolean; user must fill in a value.                                           |
+| `autocomplete` | `on` or `off` for browser auto-completion.                                    |
+| `spellcheck`   | `true`, `false`, or `default` for spell-checking behavior.                    |
+| `autofocus`    | Boolean; receives focus on page load.                                         |
 
 ### Usage Notes
 
@@ -798,7 +801,8 @@ The `<textarea>` element represents a multi-line plain-text editing control for 
   cols="33"
   placeholder="Enter your feedback here..."
   maxlength="500"
-  required>
+  required
+>
 It was a dark and stormy night...
 </textarea>
 ```

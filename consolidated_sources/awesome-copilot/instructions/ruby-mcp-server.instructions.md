@@ -1,5 +1,5 @@
 ---
-description: 'Best practices and patterns for building Model Context Protocol (MCP) servers in Ruby using the official MCP Ruby SDK gem.'
+description: "Best practices and patterns for building Model Context Protocol (MCP) servers in Ruby using the official MCP Ruby SDK gem."
 applyTo: "**/*.rb, **/Gemfile, **/*.gemspec, **/Rakefile"
 ---
 
@@ -44,14 +44,14 @@ Define tools using classes or blocks:
 class GreetTool < MCP::Tool
   tool_name 'greet'
   description 'Generate a greeting message'
-  
+
   input_schema(
     properties: {
       name: { type: 'string', description: 'Name to greet' }
     },
     required: ['name']
   )
-  
+
   output_schema(
     properties: {
       message: { type: 'string' },
@@ -59,12 +59,12 @@ class GreetTool < MCP::Tool
     },
     required: ['message']
   )
-  
+
   annotations(
     read_only_hint: true,
     idempotent_hint: true
   )
-  
+
   def self.call(name:, server_context:)
     MCP::Tool::Response.new([{
       type: 'text',
@@ -104,7 +104,7 @@ server.define_tool(
   operation = args['operation']
   a = args['a']
   b = args['b']
-  
+
   result = case operation
   when 'add' then a + b
   when 'subtract' then a - b
@@ -115,7 +115,7 @@ server.define_tool(
   else
     return MCP::Tool::Response.new([{ type: 'text', text: "Unknown operation: #{operation}" }], is_error: true)
   end
-  
+
   MCP::Tool::Response.new([{ type: 'text', text: "Result: #{result}" }])
 end
 ```
@@ -163,7 +163,7 @@ Define prompt templates:
 class CodeReviewPrompt < MCP::Prompt
   prompt_name 'code_review'
   description 'Generate a code review prompt'
-  
+
   arguments [
     MCP::Prompt::Argument.new(
       name: 'language',
@@ -176,11 +176,11 @@ class CodeReviewPrompt < MCP::Prompt
       required: false
     )
   ]
-  
+
   def self.template(args, server_context:)
     language = args['language'] || 'Ruby'
     focus = args['focus'] || 'general quality'
-    
+
     MCP::Prompt::Result.new(
       description: "Code review for #{language} with focus on #{focus}",
       messages: [
@@ -216,7 +216,7 @@ server.define_prompt(
 ) do |args, server_context:|
   topic = args['topic']
   depth = args['depth'] || 'basic'
-  
+
   MCP::Prompt::Result.new(
     description: "Analysis of #{topic} at #{depth} level",
     messages: [
@@ -265,7 +265,7 @@ class McpController < ApplicationController
       prompts: [MyPrompt],
       server_context: { user_id: current_user.id }
     )
-    
+
     render json: server.handle_json(request.body.read)
   end
 end
@@ -304,7 +304,7 @@ class AuthenticatedTool < MCP::Tool
   def self.call(query:, server_context:)
     user_id = server_context[:user_id]
     # Use user_id for authorization
-    
+
     MCP::Tool::Response.new([{ type: 'text', text: 'Authorized' }])
   end
 end
@@ -336,7 +336,7 @@ MCP.configure do |config|
   config.instrumentation_callback = ->(data) {
     # Log instrumentation data
     Rails.logger.info("MCP: #{data.inspect}")
-    
+
     # Or send to metrics service
     StatsD.timing("mcp.#{data[:method]}.duration", data[:duration])
     StatsD.increment("mcp.#{data[:method]}.count")
@@ -345,6 +345,7 @@ end
 ```
 
 The instrumentation data includes:
+
 - `method`: Protocol method called (e.g., "tools/call")
 - `tool_name`: Name of tool called
 - `prompt_name`: Name of prompt called
@@ -373,7 +374,7 @@ class DataTool < MCP::Tool
     idempotent_hint: true,     # Same input = same output
     open_world_hint: false     # Tool operates in closed context
   )
-  
+
   def self.call(**args, server_context:)
     # Implementation
   end
@@ -394,17 +395,17 @@ class WeatherTool < MCP::Tool
     },
     required: ['temperature', 'condition']
   )
-  
+
   def self.call(location:, server_context:)
     weather_data = {
       temperature: 72.5,
       condition: 'sunny',
       humidity: 45
     }
-    
+
     # Validate against schema
     output_schema.validate_result(weather_data)
-    
+
     MCP::Tool::Response.new(
       [{ type: 'text', text: weather_data.to_json }],
       structured_content: weather_data
@@ -421,7 +422,7 @@ Return structured data with text:
 class APITool < MCP::Tool
   def self.call(endpoint:, server_context:)
     api_data = call_api(endpoint)
-    
+
     MCP::Tool::Response.new(
       [{ type: 'text', text: api_data.to_json }],
       structured_content: api_data
@@ -522,15 +523,15 @@ require 'mcp'
 class MyToolTest < Minitest::Test
   def test_greet_tool
     response = GreetTool.call(name: 'Ruby', server_context: {})
-    
+
     assert_equal 1, response.content.length
     assert_match(/Ruby/, response.content.first[:text])
     refute response.is_error
   end
-  
+
   def test_invalid_input
     response = CalculateTool.call(operation: 'divide', a: 10, b: 0, server_context: {})
-    
+
     assert response.is_error
   end
 end
@@ -588,7 +589,7 @@ class AuthenticatedTool < MCP::Tool
   def self.call(**args, server_context:)
     user_id = server_context[:user_id]
     raise 'Unauthorized' unless user_id
-    
+
     # Process authenticated request
     MCP::Tool::Response.new([{ type: 'text', text: 'Success' }])
   end
@@ -601,9 +602,9 @@ end
 server.resources_read_handler do |params|
   uri = params[:uri]
   page = params[:page] || 1
-  
+
   data = fetch_paginated_data(page)
-  
+
   [{
     uri: uri,
     mimeType: 'application/json',
@@ -619,7 +620,7 @@ class DynamicPrompt < MCP::Prompt
   def self.template(args, server_context:)
     user_id = server_context[:user_id]
     user_data = User.find(user_id)
-    
+
     MCP::Prompt::Result.new(
       description: "Personalized prompt for #{user_data.name}",
       messages: generate_messages_for(user_data)

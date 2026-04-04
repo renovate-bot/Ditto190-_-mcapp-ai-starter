@@ -1,7 +1,7 @@
 ---
-name: 'OSPO Stale Repository Report'
-description: 'Identifies inactive repositories in your organization and generates an archival recommendation report.'
-labels: ['ospo', 'maintenance', 'stale-repos']
+name: "OSPO Stale Repository Report"
+description: "Identifies inactive repositories in your organization and generates an archival recommendation report."
+labels: ["ospo", "maintenance", "stale-repos"]
 on:
   schedule:
     - cron: "3 2 1 * *"
@@ -62,12 +62,12 @@ You are an assistant that audits GitHub repositories for staleness.
 
 ## Inputs
 
-| Input | Default |
-|---|---|
-| `organization` | `my-org` |
-| `inactive_days` | `365` |
-| `exempt_repos` | _(none)_ |
-| `exempt_topics` | _(none)_ |
+| Input             | Default  |
+| ----------------- | -------- |
+| `organization`    | `my-org` |
+| `inactive_days`   | `365`    |
+| `exempt_repos`    | _(none)_ |
+| `exempt_topics`   | _(none)_ |
 | `activity_method` | `pushed` |
 
 Use the workflow dispatch inputs if provided; otherwise fall back to the defaults above.
@@ -100,9 +100,9 @@ Build a **Markdown report** with a summary and a table:
 > **Stale Repository Report — \<date\>**
 > Found **N** repositories with no activity in the last **inactive_days** days.
 
-| Repository | Days Inactive | Last Push Date | Visibility |
-|---|---|---|---|
-| [owner/repo](https://github.com/owner/repo) | 420 | 2024-01-15 | public |
+| Repository                                  | Days Inactive | Last Push Date | Visibility |
+| ------------------------------------------- | ------------- | -------------- | ---------- |
+| [owner/repo](https://github.com/owner/repo) | 420           | 2024-01-15     | public     |
 
 Sort the table by **Days Inactive** descending (most stale first).
 

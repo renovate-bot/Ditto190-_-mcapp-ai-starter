@@ -1,10 +1,10 @@
 ---
-title: 'Understanding MCP Servers'
-description: 'Learn how Model Context Protocol servers extend GitHub Copilot with access to external tools, databases, and APIs.'
+title: "Understanding MCP Servers"
+description: "Learn how Model Context Protocol servers extend GitHub Copilot with access to external tools, databases, and APIs."
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: '2026-02-26'
-estimatedReadingTime: '8 minutes'
+lastUpdated: "2026-02-26"
+estimatedReadingTime: "8 minutes"
 tags:
   - mcp
   - tools
@@ -32,6 +32,7 @@ GitHub Copilot  ←→  MCP Server  ←→  External System
 ```
 
 **Key characteristics**:
+
 - MCP is an open protocol, not specific to GitHub Copilot—it works across AI tools
 - Servers run locally on your machine or in a container
 - Each server exposes one or more tools with defined inputs and outputs
@@ -41,23 +42,23 @@ GitHub Copilot  ←→  MCP Server  ←→  External System
 
 GitHub Copilot provides several **built-in tools** that are always available:
 
-| Built-in Tool | What It Does |
-|--------------|--------------|
-| `codebase` | Search and analyze code across the repository |
-| `terminal` | Run shell commands in the integrated terminal |
-| `edit` | Create and modify files in the workspace |
-| `fetch` | Make HTTP requests to URLs |
-| `search` | Search across workspace files |
-| `github` | Interact with GitHub APIs |
+| Built-in Tool | What It Does                                  |
+| ------------- | --------------------------------------------- |
+| `codebase`    | Search and analyze code across the repository |
+| `terminal`    | Run shell commands in the integrated terminal |
+| `edit`        | Create and modify files in the workspace      |
+| `fetch`       | Make HTTP requests to URLs                    |
+| `search`      | Search across workspace files                 |
+| `github`      | Interact with GitHub APIs                     |
 
 **MCP tools** extend this with external capabilities:
 
-| MCP Server Example | What It Adds |
-|-------------------|--------------|
-| PostgreSQL server | Query databases, inspect schemas, analyze query plans |
-| Docker server | Manage containers, inspect logs, deploy services |
-| Sentry server | Fetch error reports, analyze crash data |
-| Figma server | Read design tokens, component specs |
+| MCP Server Example | What It Adds                                          |
+| ------------------ | ----------------------------------------------------- |
+| PostgreSQL server  | Query databases, inspect schemas, analyze query plans |
+| Docker server      | Manage containers, inspect logs, deploy services      |
+| Sentry server      | Fetch error reports, analyze crash data               |
+| Figma server       | Read design tokens, component specs                   |
 
 ## Configuring MCP Servers
 
@@ -92,6 +93,7 @@ MCP servers are configured per-workspace in `.vscode/mcp.json`:
 ### Common MCP Server Configurations
 
 **PostgreSQL** — Query databases and inspect schemas:
+
 ```json
 {
   "postgres": {
@@ -105,6 +107,7 @@ MCP servers are configured per-workspace in `.vscode/mcp.json`:
 ```
 
 **GitHub** — Extended GitHub API access:
+
 ```json
 {
   "github": {
@@ -118,11 +121,17 @@ MCP servers are configured per-workspace in `.vscode/mcp.json`:
 ```
 
 **Filesystem** — Controlled access to specific directories:
+
 ```json
 {
   "filesystem": {
     "command": "npx",
-    "args": ["-y", "@modelcontextprotocol/server-filesystem", "./data", "./config"]
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-filesystem",
+      "./data",
+      "./config"
+    ]
   }
 }
 ```
@@ -135,13 +144,14 @@ When an agent declares an MCP server in its `tools` array, Copilot can invoke th
 
 ```yaml
 ---
-name: 'Database Administrator'
-description: 'Expert DBA for PostgreSQL performance tuning and schema design'
-tools: ['codebase', 'terminal', 'postgres']
+name: "Database Administrator"
+description: "Expert DBA for PostgreSQL performance tuning and schema design"
+tools: ["codebase", "terminal", "postgres"]
 ---
 ```
 
 With this configuration, the agent can:
+
 - Run SQL queries to inspect table structures
 - Analyze query execution plans
 - Suggest index optimizations based on actual data
@@ -180,11 +190,11 @@ The MCP ecosystem is growing rapidly. Here are key resources:
 
 If your team has internal tools or proprietary APIs, you can build custom MCP servers. The protocol supports three main capability types:
 
-| Capability | Description | Example |
-|-----------|-------------|---------|
-| **Tools** | Functions the AI can invoke | `query_database`, `deploy_service` |
-| **Resources** | Data the AI can read | Database schemas, API docs |
-| **Prompts** | Pre-built conversation templates | Common troubleshooting flows |
+| Capability    | Description                      | Example                            |
+| ------------- | -------------------------------- | ---------------------------------- |
+| **Tools**     | Functions the AI can invoke      | `query_database`, `deploy_service` |
+| **Resources** | Data the AI can read             | Database schemas, API docs         |
+| **Prompts**   | Pre-built conversation templates | Common troubleshooting flows       |
 
 MCP server SDKs are available in [Python](https://github.com/modelcontextprotocol/python-sdk), [TypeScript](https://github.com/modelcontextprotocol/typescript-sdk), and other languages. Browse the [Agents Directory](../../agents/) for examples of agents built around MCP server expertise.
 

@@ -18,7 +18,5 @@
     "ai",
     "github-copilot"
   ],
-  "skills": [
-    "./skills/copilot-sdk"
-  ]
+  "skills": ["./skills/copilot-sdk"]
 }

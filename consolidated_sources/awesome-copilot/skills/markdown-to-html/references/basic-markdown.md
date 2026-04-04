@@ -8,7 +8,9 @@ To create a heading, add one to six <kbd>#</kbd> symbols before your heading tex
 
 ```markdown
 # A first-level heading
+
 ## A second-level heading
+
 ### A third-level heading
 ```
 
@@ -25,10 +27,10 @@ You can indicate emphasis with bold, italic, strikethrough, subscript, or supers
 | Style                  | Syntax              | Keyboard shortcut                                                                     | Example                                  | Output                                 |                                                   |
 | ---------------------- | ------------------- | ------------------------------------------------------------------------------------- | ---------------------------------------- | -------------------------------------- | ------------------------------------------------- |
 | Bold                   | `** **` or `__ __`  | <kbd>Command</kbd>+<kbd>B</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>B</kbd> (Windows/Linux) | `**This is bold text**`                  | **This is bold text**                  |                                                   |
-| Italic                 | `* *` or `_ _`      | <kbd>Command</kbd>+<kbd>I</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>I</kbd> (Windows/Linux) | `_This text is italicized_`              | *This text is italicized*              |                                                   |
+| Italic                 | `* *` or `_ _`      | <kbd>Command</kbd>+<kbd>I</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>I</kbd> (Windows/Linux) | `_This text is italicized_`              | _This text is italicized_              |                                                   |
 | Strikethrough          | `~~ ~~` or `~ ~`    | None                                                                                  | `~~This was mistaken text~~`             | ~~This was mistaken text~~             |                                                   |
-| Bold and nested italic | `** **` and `_ _`   | None                                                                                  | `**This text is _extremely_ important**` | **This text is *extremely* important** |                                                   |
-| All bold and italic    | `*** ***`           | None                                                                                  | `***All this text is important***`       | ***All this text is important***       | <!-- markdownlint-disable-line emphasis-style --> |
+| Bold and nested italic | `** **` and `_ _`   | None                                                                                  | `**This text is _extremely_ important**` | **This text is _extremely_ important** |                                                   |
+| All bold and italic    | `*** ***`           | None                                                                                  | `***All this text is important***`       | **_All this text is important_**       | <!-- markdownlint-disable-line emphasis-style --> |
 | Subscript              | `<sub> </sub>`      | None                                                                                  | `This is a <sub>subscript</sub> text`    | This is a <sub>subscript</sub> text    |                                                   |
 | Superscript            | `<sup> </sup>`      | None                                                                                  | `This is a <sup>superscript</sup> text`  | This is a <sup>superscript</sup> text  |                                                   |
 | Underline              | `<ins> </ins>`      | None                                                                                  | `This is an <ins>underlined</ins> text`  | This is an <ins>underlined</ins> text  |                                                   |
@@ -64,6 +66,7 @@ To format code or text into its own distinct block, use triple backticks.
 
 ````markdown
 Some basic Git commands are:
+
 ```
 git status
 git add
@@ -89,16 +92,16 @@ The background color is `#ffffff` for light mode and `#000000` for dark mode.
 
 Here are the currently supported color models.
 
-| Color | Syntax                      | Example                             | Output                                                                                                                                                                         |
-| ----- | --------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Color | Syntax                      | Example                             | Output                                                                                                                                                                                                |
+| ----- | --------------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | HEX   | <code>\`#RRGGBB\`</code>    | <code>\`#0969DA\`</code>            | ![Screenshot of rendered GitHub Markdown showing how HEX value #0969DA appears with a blue circle.](https://docs.github.com/assets/images/help/writing/supported-color-models-hex-rendered.png)       |
 | RGB   | <code>\`rgb(R,G,B)\`</code> | <code>\`rgb(9, 105, 218)\`</code>   | ![Screenshot of rendered GitHub Markdown showing how RGB value 9, 105, 218 appears with a blue circle.](https://docs.github.com/assets/images/help/writing/supported-color-models-rgb-rendered.png)   |
 | HSL   | <code>\`hsl(H,S,L)\`</code> | <code>\`hsl(212, 92%, 45%)\`</code> | ![Screenshot of rendered GitHub Markdown showing how HSL value 212, 92%, 45% appears with a blue circle.](https://docs.github.com/assets/images/help/writing/supported-color-models-hsl-rendered.png) |
 
 > \[!NOTE]
 >
-> * A supported color model cannot have any leading or trailing spaces within the backticks.
-> * The visualization of the color is only supported in issues, pull requests, and discussions.
+> - A supported color model cannot have any leading or trailing spaces within the backticks.
+> - The visualization of the color is only supported in issues, pull requests, and discussions.
 
 ## Links
 
@@ -121,11 +124,11 @@ You can link directly to any section that has a heading. To view the automatical
 
 If you need to determine the anchor for a heading in a file you are editing, you can use the following basic rules:
 
-* Letters are converted to lower-case.
-* Spaces are replaced by hyphens (`-`). Any other whitespace or punctuation characters are removed.
-* Leading and trailing whitespace are removed.
-* Markup formatting is removed, leaving only the contents (for example, `_italics_` becomes `italics`).
-* If the automatically generated anchor for a heading is identical to an earlier anchor in the same document, a unique identifier is generated by appending a hyphen and an auto-incrementing integer.
+- Letters are converted to lower-case.
+- Spaces are replaced by hyphens (`-`). Any other whitespace or punctuation characters are removed.
+- Leading and trailing whitespace are removed.
+- Markup formatting is removed, leaving only the contents (for example, `_italics_` becomes `italics`).
+- If the automatically generated anchor for a heading is identical to an earlier anchor in the same document, a unique identifier is generated by appending a hyphen and an auto-incrementing integer.
 
 For more detailed information on the requirements of URI fragments, see [RFC 3986: Uniform Resource Identifier (URI): Generic Syntax, Section 3.5](https://www.rfc-editor.org/rfc/rfc3986#section-3.5).
 
@@ -137,6 +140,7 @@ The code block below demonstrates the basic rules used to generate anchors from 
 ## Sample Section
 
 ## This'll be a _Helpful_ Section About the Greek Letter Θ!
+
 A heading containing characters not allowed in fragments, UTF-8 characters, two consecutive spaces between the first and second words, and formatting.
 
 ## This heading is not unique in the file
@@ -165,7 +169,7 @@ Link to the second non-unique section: [Link Text](#this-heading-is-not-unique-i
 
 You can define relative links and image paths in your rendered files to help readers navigate to other files in your repository.
 
-A relative link is a link that is relative to the current file. For example, if you have a README file in root of your repository, and you have another file in *docs/CONTRIBUTING.md*, the relative link to *CONTRIBUTING.md* in your README might look like this:
+A relative link is a link that is relative to the current file. For example, if you have a README file in root of your repository, and you have another file in _docs/CONTRIBUTING.md_, the relative link to _CONTRIBUTING.md_ in your README might look like this:
 
 ```text
 [Contribution guidelines for this project](docs/CONTRIBUTING.md)
@@ -220,20 +224,20 @@ Will span two lines
 
 However, if you are writing in an .md file, the example above would render on one line without a line break. To create a line break in an .md file, you will need to include one of the following:
 
-* Include two spaces at the end of the first line.
+- Include two spaces at the end of the first line.
   <pre>
   This example&nbsp;&nbsp;
   Will span two lines
   </pre>
 
-* Include a backslash at the end of the first line.
+- Include a backslash at the end of the first line.
 
   ```markdown
   This example\
   Will span two lines
   ```
 
-* Include an HTML single line break tag at the end of the first line.
+- Include an HTML single line break tag at the end of the first line.
 
   ```markdown
   This example<br/>
@@ -286,8 +290,10 @@ You can make an unordered list by preceding one or more lines of text with <kbd>
 
 ```markdown
 - George Washington
+
 * John Adams
-+ Thomas Jefferson
+
+- Thomas Jefferson
 ```
 
 ![Screenshot of rendered GitHub Markdown showing a bulleted list of the names of the first three American presidents.](https://docs.github.com/assets/images/help/writing/unordered-list-rendered.png)
@@ -419,7 +425,7 @@ Here is a simple footnote[^1].
 A footnote can also have multiple lines[^2].
 
 [^1]: My reference.
-[^2]: To add line breaks within a footnote, add 2 spaces to the end of a line.  
+[^2]: To add line breaks within a footnote, add 2 spaces to the end of a line.
 This is a second line.
 ```
 
@@ -490,7 +496,7 @@ Disabling Markdown rendering enables you to use source view features, such as li
 
 ## Further reading
 
-*[GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
-*[About writing and formatting on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github)
-*[Working with advanced formatting](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting)
-*[Quickstart for writing on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github)
+_[GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+_[About writing and formatting on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github)
+_[Working with advanced formatting](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting)
+_[Quickstart for writing on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github)

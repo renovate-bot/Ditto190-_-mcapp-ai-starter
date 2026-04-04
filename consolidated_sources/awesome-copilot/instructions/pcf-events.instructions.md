@@ -1,6 +1,6 @@
 ---
-description: 'Define and handle custom events in PCF components'
-applyTo: '**/*.{ts,tsx,js,json,xml,pcfproj,csproj}'
+description: "Define and handle custom events in PCF components"
+applyTo: "**/*.{ts,tsx,js,json,xml,pcfproj,csproj}"
 ---
 
 # Define Events (Preview)
@@ -63,9 +63,15 @@ this.onLoad = function (executionContext) {
   const formContext = executionContext.getFormContext();
 
   const sampleControl1 = formContext.getControl(controlName1);
-  sampleControl1.addEventHandler("customEvent1", this.onSampleControl1CustomEvent1);
-  sampleControl1.addEventHandler("customEvent2", this.onSampleControl1CustomEvent2);
-}
+  sampleControl1.addEventHandler(
+    "customEvent1",
+    this.onSampleControl1CustomEvent1,
+  );
+  sampleControl1.addEventHandler(
+    "customEvent2",
+    this.onSampleControl1CustomEvent2,
+  );
+};
 ```
 
 > **Note**: These events occur separately for each instance of the code component in the app.
@@ -78,15 +84,15 @@ For model-driven apps you can pass a payload with the event allowing for more co
 
 ```javascript
 this.onSampleControl1CustomEvent1 = function (params) {
-   //alert(`SampleControl1 Custom Event 1: ${params}`);
-   alert(`SampleControl1 Custom Event 1`);
+  //alert(`SampleControl1 Custom Event 1: ${params}`);
+  alert(`SampleControl1 Custom Event 1`);
 }.bind(this);
 
 this.onSampleControl2CustomEvent2 = function (params) {
   alert(`SampleControl2 Custom Event 2: ${params.message}`);
   // prevent the default action for the event
   params.callBackFunction();
-}
+};
 ```
 
 ## Defining an Event for Canvas Apps

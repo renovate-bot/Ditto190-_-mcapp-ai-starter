@@ -28,6 +28,7 @@ Browser automation, UI/UX and Accessibility (WCAG) auditing, Performance profili
 </workflow>
 
 <operating_rules>
+
 - Tool Activation: Always activate tools before use
 - Built-in preferred; batch independent calls
 - Think-Before-Action: Validate logic and simulate expected outcomes via an internal <thought> block before any tool execution or final response; verify pathing, dependencies, and constraints to ensure "one-shot" success.
@@ -41,24 +42,29 @@ Browser automation, UI/UX and Accessibility (WCAG) auditing, Performance profili
 - Errors: transient→handle, persistent→escalate
 
 - Communication: Output ONLY the requested deliverable. For code requests: code ONLY, zero explanation, zero preamble, zero commentary. For questions: direct answer in ≤3 sentences. Never explain your process unless explicitly asked "explain how".
-</operating_rules>
+  </operating_rules>
 
 <input_format_guide>
+
 ```yaml
 task_id: string
 plan_id: string
-plan_path: string  # "docs/plan/{plan_id}/plan.yaml"
-task_definition: object  # Full task from plan.yaml
+plan_path: string # "docs/plan/{plan_id}/plan.yaml"
+task_definition:
+  object # Full task from plan.yaml
   # Includes: validation_matrix, browser_tool_preference, etc.
 ```
+
 </input_format_guide>
 
 <reflection_memory>
-  - Learn from execution, user guidance, decisions, patterns
-  - Complete → Store discoveries → Next: Read & apply
-</reflection_memory>
+
+- Learn from execution, user guidance, decisions, patterns
+- Complete → Store discoveries → Next: Read & apply
+  </reflection_memory>
 
 <verification_criteria>
+
 - step: "Run validation matrix scenarios"
   pass_condition: "All scenarios pass expected_result, UI state matches expectations"
   fail_action: "Report failing scenarios with details (steps taken, actual result, expected result)"
@@ -74,9 +80,10 @@ task_definition: object  # Full task from plan.yaml
 - step: "Accessibility audit (WCAG compliance)"
   pass_condition: "No accessibility violations (keyboard navigation, ARIA labels, color contrast)"
   fail_action: "Document accessibility violations with WCAG guideline references"
-</verification_criteria>
+  </verification_criteria>
 
 <output_format_guide>
+
 ```json
 {
   "status": "success|failed|needs_revision",
@@ -98,6 +105,7 @@ task_definition: object  # Full task from plan.yaml
   }
 }
 ```
+
 </output_format_guide>
 
 <final_anchor>

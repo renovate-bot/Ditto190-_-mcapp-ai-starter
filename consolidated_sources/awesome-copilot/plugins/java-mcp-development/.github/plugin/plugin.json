@@ -17,10 +17,6 @@
     "spring-boot",
     "reactor"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/java-mcp-server-generator"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/java-mcp-server-generator"]
 }

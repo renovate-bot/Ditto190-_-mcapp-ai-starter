@@ -36,7 +36,7 @@ export interface GitHubRelease {
  */
 export interface VersionInfo {
   version: string;
-  tagName?: string;     // Original tag name from GitHub (e.g., "v1.0.0" or "1.0.0")
+  tagName?: string; // Original tag name from GitHub (e.g., "v1.0.0" or "1.0.0")
   major: number;
   minor: number;
   patch: number;

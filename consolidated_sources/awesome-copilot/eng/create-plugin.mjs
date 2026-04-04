@@ -70,7 +70,7 @@ async function createPlugin() {
 
     if (!/^[a-z0-9-]+$/.test(pluginId)) {
       console.error(
-        "❌ Plugin ID must contain only lowercase letters, numbers, and hyphens"
+        "❌ Plugin ID must contain only lowercase letters, numbers, and hyphens",
       );
       process.exit(1);
     }
@@ -79,10 +79,10 @@ async function createPlugin() {
 
     // Check if plugin already exists
     if (fs.existsSync(pluginDir)) {
+      console.log(`⚠️  Plugin ${pluginId} already exists at ${pluginDir}`);
       console.log(
-        `⚠️  Plugin ${pluginId} already exists at ${pluginDir}`
+        "💡 Please edit that plugin instead or choose a different ID.",
       );
-      console.log("💡 Please edit that plugin instead or choose a different ID.");
       process.exit(1);
     }
 
@@ -93,7 +93,7 @@ async function createPlugin() {
       .join(" ");
 
     let displayName = await prompt(
-      `Display name (default: ${defaultDisplayName}): `
+      `Display name (default: ${defaultDisplayName}): `,
     );
     if (!displayName.trim()) {
       displayName = defaultDisplayName;
@@ -102,7 +102,7 @@ async function createPlugin() {
     // Get description
     const defaultDescription = `A plugin for ${displayName.toLowerCase()}.`;
     let description = await prompt(
-      `Description (default: ${defaultDescription}): `
+      `Description (default: ${defaultDescription}): `,
     );
     if (!description.trim()) {
       description = defaultDescription;
@@ -113,7 +113,7 @@ async function createPlugin() {
     let keywordInput = parsed.keywords;
     if (!keywordInput) {
       keywordInput = await prompt(
-        "Keywords (comma-separated, or press Enter for defaults): "
+        "Keywords (comma-separated, or press Enter for defaults): ",
       );
     }
 
@@ -144,7 +144,7 @@ async function createPlugin() {
 
     fs.writeFileSync(
       path.join(githubPluginDir, "plugin.json"),
-      JSON.stringify(pluginJson, null, 2) + "\n"
+      JSON.stringify(pluginJson, null, 2) + "\n",
     );
 
     // Generate README.md
@@ -175,9 +175,15 @@ MIT
 
     console.log(`\n✅ Created plugin: ${pluginDir}`);
     console.log("\n📝 Next steps:");
-    console.log(`1. Add agents, prompts, or instructions to plugins/${pluginId}/`);
-    console.log(`2. Update plugins/${pluginId}/.github/plugin/plugin.json with your metadata`);
-    console.log(`3. Edit plugins/${pluginId}/README.md to describe your plugin`);
+    console.log(
+      `1. Add agents, prompts, or instructions to plugins/${pluginId}/`,
+    );
+    console.log(
+      `2. Update plugins/${pluginId}/.github/plugin/plugin.json with your metadata`,
+    );
+    console.log(
+      `3. Edit plugins/${pluginId}/README.md to describe your plugin`,
+    );
     console.log("4. Run 'npm run build' to regenerate documentation");
   } catch (error) {
     console.error(`❌ Error creating plugin: ${error.message}`);

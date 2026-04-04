@@ -1,8 +1,17 @@
 ---
-description: 'Expert Pimcore development assistant specializing in CMS, DAM, PIM, and E-Commerce solutions with Symfony integration'
-name: 'Pimcore Expert'
+description: "Expert Pimcore development assistant specializing in CMS, DAM, PIM, and E-Commerce solutions with Symfony integration"
+name: "Pimcore Expert"
 model: GPT-4.1 | 'gpt-5' | 'Claude Sonnet 4.5'
-tools: ['codebase', 'terminalCommand', 'edit/editFiles', 'web/fetch', 'githubRepo', 'runTests', 'problems']
+tools:
+  [
+    "codebase",
+    "terminalCommand",
+    "edit/editFiles",
+    "web/fetch",
+    "githubRepo",
+    "runTests",
+    "problems",
+  ]
 ---
 
 # Pimcore Expert
@@ -253,7 +262,7 @@ class Car extends CarGenerated
      */
     public function getOSName(): ?string
     {
-        return ($this->getManufacturer() ? ($this->getManufacturer()->getName() . ' ') : null) 
+        return ($this->getManufacturer() ? ($this->getManufacturer()->getName() . ' ') : null)
             . $this->getName();
     }
 
@@ -272,7 +281,7 @@ class Car extends CarGenerated
 
     /**
      * Get all additional product images
-     * 
+     *
      * @return Hotspotimage[]
      */
     public function getAdditionalImages(): array
@@ -307,7 +316,7 @@ class Car extends CarGenerated
 
     /**
      * Get color variants for this product
-     * 
+     *
      * @return self[]
      */
     public function getColorVariants(): array
@@ -320,7 +329,7 @@ class Car extends CarGenerated
         $variants = [];
 
         foreach ($parent->getChildren() as $sibling) {
-            if ($sibling instanceof self && 
+            if ($sibling instanceof self &&
                 $sibling->getObjectType() === self::OBJECT_TYPE_ACTUAL_CAR) {
                 $variants[] = $sibling;
             }
@@ -412,7 +421,7 @@ class ProductController extends FrontendController
         ProductLinkGenerator $productLinkGenerator
     ): Response {
         $term = trim(strip_tags($request->query->get('term', '')));
-        
+
         if (empty($term)) {
             return $this->json([]);
         }
@@ -492,19 +501,19 @@ class ProductGrid extends AbstractTemplateAreabrick
     public function action(Info $info): ?Response
     {
         $editable = $info->getEditable();
-        
+
         // Get configuration from brick
         $category = $editable->getElement('category');
         $limit = $editable->getElement('limit')?->getData() ?? 12;
-        
+
         // Load products (simplified - use proper service in production)
         $products = [];
         if ($category) {
             // Load products from category
         }
-        
+
         $info->setParam('products', $products);
-        
+
         return null;
     }
 }
@@ -528,13 +537,13 @@ class ProductGrid extends AbstractTemplateAreabrick
                     ],
                     'width': 200
                 }) }}
-                
+
                 {{ pimcore_numeric('limit', {
                     'width': 100,
                     'minValue': 1,
                     'maxValue': 24
                 }) }}
-                
+
                 {{ pimcore_manyToManyObjectRelation('category', {
                     'types': ['object'],
                     'classes': ['Category'],
@@ -550,17 +559,17 @@ class ProductGrid extends AbstractTemplateAreabrick
                 <div class="product-item">
                     {% if product.mainImage %}
                         <a href="{{ pimcore_url({'product': product.id}, 'shop_detail') }}">
-                            <img src="{{ product.mainImage.getThumbnail('product-grid')|raw }}" 
+                            <img src="{{ product.mainImage.getThumbnail('product-grid')|raw }}"
                                  alt="{{ product.OSName }}">
                         </a>
                     {% endif %}
-                    
+
                     <h3>
                         <a href="{{ pimcore_url({'product': product.id}, 'shop_detail') }}">
                             {{ product.OSName }}
                         </a>
                     </h3>
-                    
+
                     <div class="product-price">
                         {{ product.OSPrice|number_format(2, '.', ',') }} EUR
                     </div>
@@ -691,48 +700,48 @@ class ProductEventListener
 ```yaml
 # config/ecommerce/base-ecommerce.yaml
 pimcore_ecommerce_framework:
-    environment:
-        default:
-            # Product index configuration
-            index_service:
-                tenant_config:
-                    default:
-                        enabled: true
-                        config_id: default_mysql
-                        worker_id: default
-                        
-            # Pricing configuration
-            pricing_manager:
-                enabled: true
-                pricing_manager_id: default
-                
-            # Cart configuration
-            cart:
-                factory_type: Pimcore\Bundle\EcommerceFrameworkBundle\CartManager\CartFactory
-                
-            # Checkout configuration
-            checkout_manager:
-                factory_type: Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\CheckoutManagerFactory
-                tenants:
-                    default:
-                        payment:
-                            provider: Datatrans
-                        
-            # Order manager
-            order_manager:
-                enabled: true
-                
-    # Price systems
-    price_systems:
-        default:
-            price_system:
-                id: Pimcore\Bundle\EcommerceFrameworkBundle\PriceSystem\AttributePriceSystem
-                
-    # Availability systems
-    availability_systems:
-        default:
-            availability_system:
-                id: Pimcore\Bundle\EcommerceFrameworkBundle\AvailabilitySystem\AttributeAvailabilitySystem
+  environment:
+    default:
+      # Product index configuration
+      index_service:
+        tenant_config:
+          default:
+            enabled: true
+            config_id: default_mysql
+            worker_id: default
+
+      # Pricing configuration
+      pricing_manager:
+        enabled: true
+        pricing_manager_id: default
+
+      # Cart configuration
+      cart:
+        factory_type: Pimcore\Bundle\EcommerceFrameworkBundle\CartManager\CartFactory
+
+      # Checkout configuration
+      checkout_manager:
+        factory_type: Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\CheckoutManagerFactory
+        tenants:
+          default:
+            payment:
+              provider: Datatrans
+
+      # Order manager
+      order_manager:
+        enabled: true
+
+  # Price systems
+  price_systems:
+    default:
+      price_system:
+        id: Pimcore\Bundle\EcommerceFrameworkBundle\PriceSystem\AttributePriceSystem
+
+  # Availability systems
+  availability_systems:
+    default:
+      availability_system:
+        id: Pimcore\Bundle\EcommerceFrameworkBundle\AvailabilitySystem\AttributeAvailabilitySystem
 ```
 
 ### Console Command
@@ -766,7 +775,7 @@ class ImportProductsCommand extends AbstractCommand
 
         // Load data from source
         $products = $this->loadProductData();
-        
+
         $progressBar = $io->createProgressBar(count($products));
         $progressBar->start();
 
@@ -795,7 +804,7 @@ class ImportProductsCommand extends AbstractCommand
     private function importProduct(array $data): void
     {
         $product = Car::getByPath('/products/' . $data['sku']);
-        
+
         if (!$product) {
             $product = new Car();
             $product->setParent(Car::getByPath('/products'));

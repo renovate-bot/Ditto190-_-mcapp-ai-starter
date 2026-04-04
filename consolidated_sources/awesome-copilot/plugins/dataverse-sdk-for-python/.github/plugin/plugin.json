@@ -7,12 +7,7 @@
   },
   "repository": "https://github.com/github/awesome-copilot",
   "license": "MIT",
-  "keywords": [
-    "dataverse",
-    "python",
-    "integration",
-    "sdk"
-  ],
+  "keywords": ["dataverse", "python", "integration", "sdk"],
   "skills": [
     "./skills/dataverse-python-quickstart",
     "./skills/dataverse-python-advanced-patterns",

@@ -8,14 +8,14 @@ A technical Markdown specification for **emulating the MOS Technology 6502 CPU f
 
 This specification describes the functional requirements for emulating:
 
-* MOS 6502
-* WDC 65C02 (where noted)
+- MOS 6502
+- WDC 65C02 (where noted)
 
 Out of scope:
 
-* Cycle-exact analog behavior
-* Physical bus contention
-* Undocumented silicon defects (unless explicitly implemented)
+- Cycle-exact analog behavior
+- Physical bus contention
+- Undocumented silicon defects (unless explicitly implemented)
 
 ---
 
@@ -63,8 +63,8 @@ Out of scope:
 
 ### Addressing
 
-* 16-bit address bus (`$0000-$FFFF`)
-* Byte-addressable
+- 16-bit address bus (`$0000-$FFFF`)
+- Byte-addressable
 
 ### Required Emulator Interfaces
 
@@ -75,9 +75,9 @@ write(address, byte)
 
 ### Stack Behavior
 
-* Stack base: `$0100`
-* Push: `write($0100 + SP, value); SP--`
-* Pull: `SP++; value = read($0100 + SP)`
+- Stack base: `$0100`
+- Push: `write($0100 + SP, value); SP--`
+- Pull: `SP++; value = read($0100 + SP)`
 
 ---
 
@@ -133,18 +133,18 @@ increment cycles
 
 ### Categories
 
-* Load/Store
-* Arithmetic (ADC, SBC)
-* Logic (AND, ORA, EOR)
-* Shifts & Rotates
-* Branches
-* Stack operations
-* System control
+- Load/Store
+- Arithmetic (ADC, SBC)
+- Logic (AND, ORA, EOR)
+- Shifts & Rotates
+- Branches
+- Stack operations
+- System control
 
 ### Decimal Mode (NMOS 6502)
 
-* Applies to `ADC` and `SBC`
-* Uses BCD arithmetic when `D = 1`
+- Applies to `ADC` and `SBC`
+- Uses BCD arithmetic when `D = 1`
 
 ---
 
@@ -172,9 +172,9 @@ increment cycles
 
 ### Page Boundary Penalties
 
-* Branch taken: +1 cycle
-* Branch crosses page: +2 cycles
-* Indexed load crosses page: +1 cycle
+- Branch taken: +1 cycle
+- Branch crosses page: +2 cycles
+- Indexed load crosses page: +1 cycle
 
 ---
 
@@ -190,17 +190,17 @@ increment cycles
 
 ## 12. Illegal / Undocumented Opcodes (Optional)
 
-* Many opcodes perform composite operations
-* Behavior varies by silicon revision
-* Should be disabled or explicitly enabled
+- Many opcodes perform composite operations
+- Behavior varies by silicon revision
+- Should be disabled or explicitly enabled
 
 ---
 
 ## 13. Timing and Clocking
 
-* One instruction executed per multiple clock cycles
-* Emulator may execute instructions per host tick
-* Cycle counter required for I/O timing
+- One instruction executed per multiple clock cycles
+- Emulator may execute instructions per host tick
+- Cycle counter required for I/O timing
 
 ---
 
@@ -215,9 +215,9 @@ if address in IO range:
 
 Examples:
 
-* 6522 VIA
-* UART
-* Video hardware
+- 6522 VIA
+- UART
+- Video hardware
 
 ---
 
@@ -225,24 +225,24 @@ Examples:
 
 ### Recommended Test ROMs
 
-* Klaus Dormann 6502 functional tests
-* Interrupt and decimal mode tests
+- Klaus Dormann 6502 functional tests
+- Interrupt and decimal mode tests
 
 ### Validation Checklist
 
-* All instructions execute correctly
-* Flags match reference behavior
-* Vectors handled properly
-* Stack operations correct
+- All instructions execute correctly
+- Flags match reference behavior
+- Vectors handled properly
+- Stack operations correct
 
 ---
 
 ## 16. Reference Links
 
-* [https://www.masswerk.at/6502/6502_instruction_set.html](https://www.masswerk.at/6502/6502_instruction_set.html)
-* [https://www.nesdev.org/wiki/6502](https://www.nesdev.org/wiki/6502)
-* [https://github.com/Klaus2m5/6502_65C02_functional_tests](https://github.com/Klaus2m5/6502_65C02_functional_tests)
-* [https://en.wikipedia.org/wiki/MOS_Technology_6502](https://en.wikipedia.org/wiki/MOS_Technology_6502)
+- [https://www.masswerk.at/6502/6502_instruction_set.html](https://www.masswerk.at/6502/6502_instruction_set.html)
+- [https://www.nesdev.org/wiki/6502](https://www.nesdev.org/wiki/6502)
+- [https://github.com/Klaus2m5/6502_65C02_functional_tests](https://github.com/Klaus2m5/6502_65C02_functional_tests)
+- [https://en.wikipedia.org/wiki/MOS_Technology_6502](https://en.wikipedia.org/wiki/MOS_Technology_6502)
 
 ---
 

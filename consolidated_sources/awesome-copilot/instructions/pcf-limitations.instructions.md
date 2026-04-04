@@ -1,6 +1,6 @@
 ---
-description: 'Limitations and restrictions of Power Apps Component Framework'
-applyTo: '**/*.{ts,tsx,js,json,xml,pcfproj,csproj}'
+description: "Limitations and restrictions of Power Apps Component Framework"
+applyTo: "**/*.{ts,tsx,js,json,xml,pcfproj,csproj}"
 ---
 
 # Limitations
@@ -13,7 +13,7 @@ Microsoft Dataverse dependent APIs, including WebAPI, are not available for Powe
 
 ## 2. Bundle External Libraries or Use Platform Libraries
 
-Code components should either use [React controls & platform libraries](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/react-controls-platform-libraries) or bundle all the code including external library content into the primary code bundle. 
+Code components should either use [React controls & platform libraries](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/react-controls-platform-libraries) or bundle all the code including external library content into the primary code bundle.
 
 To see an example of how the Power Apps command line interface can help with bundling your external library content into a component-specific bundle, see [Angular flip component](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/sample-controls/angular-flip-control) example.
 

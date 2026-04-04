@@ -31,7 +31,7 @@ Enhance web applications with comprehensive accessibility features following WCA
 
 <\!-- Form labels -->
 <label for="email">Email</label>
-<input id="email" type="email" aria-required="true">
+<input id="email" type="email" aria-required="true" />
 
 <\!-- Focus management -->
 <div role="dialog" aria-labelledby="dialog-title">

@@ -15,7 +15,9 @@ function cleanPlugin(pluginPath) {
       const count = countFiles(target);
       fs.rmSync(target, { recursive: true, force: true });
       removed += count;
-      console.log(`  Removed ${path.basename(pluginPath)}/${subdir}/ (${count} files)`);
+      console.log(
+        `  Removed ${path.basename(pluginPath)}/${subdir}/ (${count} files)`,
+      );
     }
   }
   return removed;
@@ -41,9 +43,10 @@ function main() {
     process.exit(1);
   }
 
-  const pluginDirs = fs.readdirSync(PLUGINS_DIR, { withFileTypes: true })
-    .filter(entry => entry.isDirectory())
-    .map(entry => entry.name)
+  const pluginDirs = fs
+    .readdirSync(PLUGINS_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
     .sort();
 
   let total = 0;

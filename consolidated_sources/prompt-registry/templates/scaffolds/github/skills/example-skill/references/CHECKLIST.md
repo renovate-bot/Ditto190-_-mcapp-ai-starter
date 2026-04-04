@@ -13,18 +13,21 @@ Use this checklist to ensure consistent and thorough code reviews.
 ## Code Quality
 
 ### Readability
+
 - [ ] Code is self-documenting with clear variable/function names
 - [ ] Complex logic has explanatory comments
 - [ ] Functions are focused and do one thing well
 - [ ] No unnecessary complexity or over-engineering
 
 ### Maintainability
+
 - [ ] Code follows project coding standards
 - [ ] No code duplication (DRY principle)
 - [ ] Proper separation of concerns
 - [ ] Dependencies are appropriate and minimal
 
 ### Correctness
+
 - [ ] Logic is correct and handles edge cases
 - [ ] Error handling is appropriate
 - [ ] Null/undefined checks where needed
@@ -73,10 +76,10 @@ Use this checklist to ensure consistent and thorough code reviews.
 
 ## Quick Reference: Severity Levels
 
-| Level | Description | Action |
-|-------|-------------|--------|
-| 🔴 **Blocker** | Security issue, data loss risk, or critical bug | Must fix before merge |
-| 🟠 **Major** | Significant issue affecting functionality | Should fix before merge |
-| 🟡 **Minor** | Code quality issue, minor bug | Fix recommended |
-| 🟢 **Suggestion** | Style preference, optimization | Optional improvement |
-| 💬 **Question** | Seeking clarification | Response needed |
+| Level             | Description                                     | Action                  |
+| ----------------- | ----------------------------------------------- | ----------------------- |
+| 🔴 **Blocker**    | Security issue, data loss risk, or critical bug | Must fix before merge   |
+| 🟠 **Major**      | Significant issue affecting functionality       | Should fix before merge |
+| 🟡 **Minor**      | Code quality issue, minor bug                   | Fix recommended         |
+| 🟢 **Suggestion** | Style preference, optimization                  | Optional improvement    |
+| 💬 **Question**   | Seeking clarification                           | Response needed         |

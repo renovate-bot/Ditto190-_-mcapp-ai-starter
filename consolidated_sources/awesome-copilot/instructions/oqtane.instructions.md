@@ -1,6 +1,6 @@
 ---
-description: 'Oqtane Module patterns'
-applyTo: '**/*.razor, **/*.razor.cs, **/*.razor.css'
+description: "Oqtane Module patterns"
+applyTo: "**/*.razor, **/*.razor.cs, **/*.razor.css"
 ---
 
 ## Blazor Code Style and Structure
@@ -11,7 +11,6 @@ applyTo: '**/*.razor, **/*.razor.cs, **/*.razor.css'
 - Use Blazor Components appropriately for component-based UI development.
 - Prefer inline functions for smaller components but separate complex logic into code-behind or service classes.
 - Async/await should be used where applicable to ensure non-blocking UI operations.
-
 
 ## Naming Conventions
 
@@ -28,14 +27,15 @@ applyTo: '**/*.razor, **/*.razor.cs, **/*.razor.css'
 - Always use the latest version C#, currently C# 13 features like record types, pattern matching, and global usings.
 
 ## Oqtane specific Guidelines
+
 - See base classes and patterns in the [Main Oqtane repo](https://github.com/oqtane/oqtane.framework)
 - Follow client server patterns for module development.
 - The Client project has various modules in the modules folder.
 - Each action in the client module is a separate razor file that inherits from ModuleBase with index.razor being the default action.
-- For complex client processing like getting data, create a service class that inherits from ServiceBase and lives in the services folder. One service class for each module. 
+- For complex client processing like getting data, create a service class that inherits from ServiceBase and lives in the services folder. One service class for each module.
 - Client service should call server endpoint using ServiceBase methods
-- Server project contains MVC Controllers, one for each module that match the client service calls.  Each controller will call server-side services or repositories managed by DI
-- Server projects use repository patterns for modules, one repository class per module to match the controllers. 
+- Server project contains MVC Controllers, one for each module that match the client service calls. Each controller will call server-side services or repositories managed by DI
+- Server projects use repository patterns for modules, one repository class per module to match the controllers.
 
 ## Error Handling and Validation
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { listCollectionFiles, readCollection } = require('../dist');
+const { listCollectionFiles, readCollection } = require("../dist");
 
 const repoRoot = process.cwd();
 const files = listCollectionFiles(repoRoot);
@@ -13,4 +13,4 @@ const collections = files.map((file) => {
   };
 });
 
-process.stdout.write(JSON.stringify(collections, null, 2) + '\n');
+process.stdout.write(JSON.stringify(collections, null, 2) + "\n");

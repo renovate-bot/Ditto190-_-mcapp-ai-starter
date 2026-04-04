@@ -25,6 +25,7 @@ description: What this collection does
 ```bash
 Ctrl+Shift+P → "Add Source" → Collection from Github repository → Name of the source → Link to your repository you just published → remaining can remain as default
 ```
+
 - Once source is added refresh your marketplace and search for your bundles you can install them
 
 ## Updating

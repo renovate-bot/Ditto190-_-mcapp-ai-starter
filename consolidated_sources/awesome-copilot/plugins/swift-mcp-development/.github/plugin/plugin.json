@@ -19,10 +19,6 @@
     "actor",
     "async-await"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/swift-mcp-server-generator"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/swift-mcp-server-generator"]
 }

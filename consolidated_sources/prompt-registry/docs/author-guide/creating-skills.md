@@ -59,19 +59,19 @@ Example interactions demonstrating the skill...
 
 ### Required Frontmatter Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `name` | string | Unique identifier for the skill |
+| Field         | Type   | Description                              |
+| ------------- | ------ | ---------------------------------------- |
+| `name`        | string | Unique identifier for the skill          |
 | `description` | string | Short description of the skill's purpose |
 
 ### Optional Frontmatter Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `metadata.license` | string | License identifier (e.g., MIT, Apache-2.0) |
-| `metadata.version` | string | Skill version (semver) |
-| `metadata.author` | string | Author name or contact |
-| `allowed-tools` | string[] | List of tools the skill can use |
+| Field              | Type     | Description                                |
+| ------------------ | -------- | ------------------------------------------ |
+| `metadata.license` | string   | License identifier (e.g., MIT, Apache-2.0) |
+| `metadata.version` | string   | Skill version (semver)                     |
+| `metadata.author`  | string   | Author name or contact                     |
+| `allowed-tools`    | string[] | List of tools the skill can use            |
 
 ## Creating a Skill with Scaffolding
 
@@ -123,15 +123,15 @@ items:
 
 Skills can restrict which tools they use via the `allowed-tools` field. Common tools include:
 
-| Tool | Description |
-|------|-------------|
-| `run_in_terminal` | Execute shell commands |
-| `read_file` | Read file contents |
-| `grep_search` | Search for patterns |
-| `semantic_search` | Semantic code search |
-| `list_dir` | List directory contents |
-| `create_file` | Create new files |
-| `replace_string_in_file` | Edit existing files |
+| Tool                     | Description             |
+| ------------------------ | ----------------------- |
+| `run_in_terminal`        | Execute shell commands  |
+| `read_file`              | Read file contents      |
+| `grep_search`            | Search for patterns     |
+| `semantic_search`        | Semantic code search    |
+| `list_dir`               | List directory contents |
+| `create_file`            | Create new files        |
+| `replace_string_in_file` | Edit existing files     |
 
 ## Best Practices
 

@@ -19,7 +19,5 @@
     "migration",
     "performance"
   ],
-  "agents": [
-    "./agents"
-  ]
+  "agents": ["./agents"]
 }

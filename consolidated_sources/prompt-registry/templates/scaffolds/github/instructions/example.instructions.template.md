@@ -64,6 +64,7 @@ function calculateTotal(price: number, taxRate: number): number {
 ## Git Conventions
 
 Use conventional commit messages:
+
 ```
 feat: add user authentication
 fix: resolve memory leak in cache
@@ -75,6 +76,7 @@ refactor: simplify validation logic
 ## Code Review Focus
 
 During review, prioritize:
+
 1. Logic correctness and edge cases
 2. Type safety and null checks
 3. Test coverage and clarity

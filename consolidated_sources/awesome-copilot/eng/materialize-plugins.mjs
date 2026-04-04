@@ -49,9 +49,10 @@ function materializePlugins() {
     process.exit(1);
   }
 
-  const pluginDirs = fs.readdirSync(PLUGINS_DIR, { withFileTypes: true })
-    .filter(entry => entry.isDirectory())
-    .map(entry => entry.name)
+  const pluginDirs = fs
+    .readdirSync(PLUGINS_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
     .sort();
 
   let totalAgents = 0;
@@ -61,7 +62,11 @@ function materializePlugins() {
 
   for (const dirName of pluginDirs) {
     const pluginPath = path.join(PLUGINS_DIR, dirName);
-    const pluginJsonPath = path.join(pluginPath, ".github/plugin", "plugin.json");
+    const pluginJsonPath = path.join(
+      pluginPath,
+      ".github/plugin",
+      "plugin.json",
+    );
 
     if (!fs.existsSync(pluginJsonPath)) {
       continue;
@@ -113,7 +118,10 @@ function materializePlugins() {
           warnings++;
           continue;
         }
-        const dest = path.join(pluginPath, relPath.replace(/^\.\//, "").replace(/\/$/, ""));
+        const dest = path.join(
+          pluginPath,
+          relPath.replace(/^\.\//, "").replace(/\/$/, ""),
+        );
         copyDirRecursive(src, dest);
         totalSkills++;
       }
@@ -127,7 +135,7 @@ function materializePlugins() {
 
     for (const field of ["agents", "commands"]) {
       if (Array.isArray(rewritten[field]) && rewritten[field].length > 0) {
-        const dirs = [...new Set(rewritten[field].map(p => path.dirname(p)))];
+        const dirs = [...new Set(rewritten[field].map((p) => path.dirname(p)))];
         rewritten[field] = dirs;
         changed = true;
       }
@@ -135,17 +143,23 @@ function materializePlugins() {
 
     if (Array.isArray(rewritten.skills) && rewritten.skills.length > 0) {
       // Skills are already folder refs (./skills/name/); strip trailing slash
-      rewritten.skills = rewritten.skills.map(p => p.replace(/\/$/, ""));
+      rewritten.skills = rewritten.skills.map((p) => p.replace(/\/$/, ""));
       changed = true;
     }
 
     if (changed) {
-      fs.writeFileSync(pluginJsonPath, JSON.stringify(rewritten, null, 2) + "\n", "utf8");
+      fs.writeFileSync(
+        pluginJsonPath,
+        JSON.stringify(rewritten, null, 2) + "\n",
+        "utf8",
+      );
     }
 
     const counts = [];
-    if (metadata.agents?.length) counts.push(`${metadata.agents.length} agents`);
-    if (metadata.skills?.length) counts.push(`${metadata.skills.length} skills`);
+    if (metadata.agents?.length)
+      counts.push(`${metadata.agents.length} agents`);
+    if (metadata.skills?.length)
+      counts.push(`${metadata.skills.length} skills`);
     if (counts.length) {
       console.log(`✓ ${pluginName}: ${counts.join(", ")}`);
     }

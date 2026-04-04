@@ -42,12 +42,12 @@ Resistors limit current, divide voltage, and set bias points.
 
 ### Formulas
 
-* **Ohm's Law:** `V = I x R`
-* **Power:** `P = V × I = I² × R = V² / R`
+- **Ohm's Law:** `V = I x R`
+- **Power:** `P = V × I = I² × R = V² / R`
 
 ### Reference
 
-* [https://en.wikipedia.org/wiki/Resistor](https://en.wikipedia.org/wiki/Resistor)
+- [https://en.wikipedia.org/wiki/Resistor](https://en.wikipedia.org/wiki/Resistor)
 
 ---
 
@@ -80,12 +80,12 @@ Capacitors store electrical energy and block DC while passing AC.
 
 ### Formulas
 
-* **Capacitive Reactance:** `Xc = 1 / (2πfC)`
-* **Energy Stored:** `E = ½ C V²`
+- **Capacitive Reactance:** `Xc = 1 / (2πfC)`
+- **Energy Stored:** `E = ½ C V²`
 
 ### Reference
 
-* [https://en.wikipedia.org/wiki/Capacitor](https://en.wikipedia.org/wiki/Capacitor)
+- [https://en.wikipedia.org/wiki/Capacitor](https://en.wikipedia.org/wiki/Capacitor)
 
 ---
 
@@ -105,11 +105,11 @@ Inductors store energy in a magnetic field and resist changes in current.
 
 ### Formula
 
-* **Inductive Reactance:** `XL = 2πfL`
+- **Inductive Reactance:** `XL = 2πfL`
 
 ### Reference
 
-* [https://en.wikipedia.org/wiki/Inductor](https://en.wikipedia.org/wiki/Inductor)
+- [https://en.wikipedia.org/wiki/Inductor](https://en.wikipedia.org/wiki/Inductor)
 
 ---
 
@@ -137,7 +137,7 @@ Diodes allow current flow in one direction only.
 
 ### Reference
 
-* [https://en.wikipedia.org/wiki/Diode](https://en.wikipedia.org/wiki/Diode)
+- [https://en.wikipedia.org/wiki/Diode](https://en.wikipedia.org/wiki/Diode)
 
 ---
 
@@ -161,7 +161,7 @@ LEDs emit light when forward biased.
 
 ### Reference
 
-* [https://en.wikipedia.org/wiki/Light-emitting_diode](https://en.wikipedia.org/wiki/Light-emitting_diode)
+- [https://en.wikipedia.org/wiki/Light-emitting_diode](https://en.wikipedia.org/wiki/Light-emitting_diode)
 
 ---
 
@@ -176,7 +176,7 @@ LEDs emit light when forward biased.
 
 **Key Formula:**
 
-* `Ic ≈ β × Ib`
+- `Ic ≈ β × Ib`
 
 ### MOSFET
 
@@ -187,7 +187,7 @@ LEDs emit light when forward biased.
 
 ### Reference
 
-* [https://en.wikipedia.org/wiki/Transistor](https://en.wikipedia.org/wiki/Transistor)
+- [https://en.wikipedia.org/wiki/Transistor](https://en.wikipedia.org/wiki/Transistor)
 
 ---
 
@@ -206,7 +206,7 @@ LEDs emit light when forward biased.
 
 ### Reference
 
-* [https://en.wikipedia.org/wiki/Integrated_circuit](https://en.wikipedia.org/wiki/Integrated_circuit)
+- [https://en.wikipedia.org/wiki/Integrated_circuit](https://en.wikipedia.org/wiki/Integrated_circuit)
 
 ---
 
@@ -220,7 +220,7 @@ LEDs emit light when forward biased.
 
 ### Debounce (RC Approximation)
 
-* Typical: `10kΩ + 100nF`
+- Typical: `10kΩ + 100nF`
 
 ---
 
@@ -232,16 +232,16 @@ Solderless prototyping boards with internal bus connections.
 
 ### Internal Wiring
 
-* Rows: connected horizontally (5 holes)
-* Rails: connected vertically (power)
+- Rows: connected horizontally (5 holes)
+- Rails: connected vertically (power)
 
 ### Limitations
 
-* Not suitable for high-frequency or high-current circuits
+- Not suitable for high-frequency or high-current circuits
 
 ### Reference
 
-* [https://en.wikipedia.org/wiki/Breadboard](https://en.wikipedia.org/wiki/Breadboard)
+- [https://en.wikipedia.org/wiki/Breadboard](https://en.wikipedia.org/wiki/Breadboard)
 
 ---
 
@@ -270,10 +270,10 @@ Solderless prototyping boards with internal bus connections.
 
 ## 12. Learning Resources
 
-* [https://learn.sparkfun.com](https://learn.sparkfun.com)
-* [https://www.allaboutcircuits.com](https://www.allaboutcircuits.com)
-* [https://www.electronics-tutorials.ws](https://www.electronics-tutorials.ws)
-* [https://en.wikipedia.org/wiki/Electronics](https://en.wikipedia.org/wiki/Electronics)
+- [https://learn.sparkfun.com](https://learn.sparkfun.com)
+- [https://www.allaboutcircuits.com](https://www.allaboutcircuits.com)
+- [https://www.electronics-tutorials.ws](https://www.electronics-tutorials.ws)
+- [https://en.wikipedia.org/wiki/Electronics](https://en.wikipedia.org/wiki/Electronics)
 
 ---
 

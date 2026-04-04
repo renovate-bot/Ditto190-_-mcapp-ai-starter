@@ -1,6 +1,6 @@
 ---
-description: 'How to use and run PCF sample components from the PowerApps-Samples repository'
-applyTo: '**/*.{ts,tsx,js,json,xml,pcfproj,csproj}'
+description: "How to use and run PCF sample components from the PowerApps-Samples repository"
+applyTo: "**/*.{ts,tsx,js,json,xml,pcfproj,csproj}"
 ---
 
 # How to Use the Sample Components
@@ -35,52 +35,64 @@ Use the following steps to import and try the sample components in your model-dr
 
 3. **Install dependencies**
    - Navigate to the component you want to try, for example `IncrementControl`, and run:
+
    ```bash
    npm install
    ```
 
 4. **Restore project**
    - After the command has completed, run:
+
    ```bash
    msbuild /t:restore
    ```
 
 5. **Create solution folder**
    - Create a new folder inside the sample component folder:
+
    ```bash
    mkdir IncrementControlSolution
    ```
 
 6. **Navigate to solution folder**
+
    ```bash
    cd IncrementControlSolution
    ```
 
 7. **Initialize solution**
    - Inside the folder you created, run the `pac solution init` command:
+
    ```bash
    pac solution init --publisher-name powerapps_samples --publisher-prefix sample
    ```
+
    > **Note**: This command creates a new file named `IncrementControlSolution.cdsproj` in the folder.
 
 8. **Add component reference**
    - Run the `pac solution add-reference` command with the `path` set to the location of the `.pcfproj` file:
+
    ```bash
    pac solution add-reference --path ../../IncrementControl
    ```
+
    or
+
    ```bash
    pac solution add-reference --path ../../IncrementControl/IncrementControl.pcfproj
    ```
+
    > **Important**: Reference the folder that contains the `.pcfproj` file for the control you want to add.
 
 9. **Build the solution**
    - To generate a zip file from your solution project, run the following three commands:
+
    ```bash
    msbuild /t:restore
    msbuild /t:rebuild /restore /p:Configuration=Release
    msbuild
    ```
+
    - The generated solution zip file becomes in the `IncrementControlSolution\bin\debug` folder.
 
 10. **Import the solution**

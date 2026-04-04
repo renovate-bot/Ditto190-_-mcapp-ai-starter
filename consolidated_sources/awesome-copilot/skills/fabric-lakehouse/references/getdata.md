@@ -10,16 +10,16 @@ Microsoft Fabric includes Data Factory for ETL/ELT orchestration:
 
 ### Pipeline Activities
 
-| Activity | Description |
-|----------|-------------|
-| Copy Data | Move data between sources and Lakehouse |
-| Notebook | Execute Spark notebooks |
-| Dataflow | Run Dataflow Gen2 transformations |
-| Stored Procedure | Execute SQL procedures |
-| ForEach | Loop over items |
-| If Condition | Conditional branching |
-| Get Metadata | Retrieve file/folder metadata |
-| Lakehouse Maintenance | Optimize and vacuum Delta tables |
+| Activity              | Description                             |
+| --------------------- | --------------------------------------- |
+| Copy Data             | Move data between sources and Lakehouse |
+| Notebook              | Execute Spark notebooks                 |
+| Dataflow              | Run Dataflow Gen2 transformations       |
+| Stored Procedure      | Execute SQL procedures                  |
+| ForEach               | Loop over items                         |
+| If Condition          | Conditional branching                   |
+| Get Metadata          | Retrieve file/folder metadata           |
+| Lakehouse Maintenance | Optimize and vacuum Delta tables        |
 
 ### Orchestration Patterns
 
