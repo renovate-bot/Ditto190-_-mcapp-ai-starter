@@ -28,6 +28,13 @@ from agentspec_mvp import (
 
 # Path to awesome-copilot in the workspace
 AWESOME_COPILOT_PATH = Path(__file__).resolve().parents[2] / "awesome-copilot"
+# If the canonical dataset isn't present at the repository root, try the
+# consolidated_sources location as a non-invasive fallback so CI/tests can
+# run without moving large datasets.
+if not AWESOME_COPILOT_PATH.exists():
+    _fallback = Path(__file__).resolve().parents[2] / "consolidated_sources" / "awesome-copilot"
+    if _fallback.exists():
+        AWESOME_COPILOT_PATH = _fallback
 
 
 def test_parse_agents_from_awesome_copilot():
