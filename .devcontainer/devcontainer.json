@@ -88,7 +88,8 @@
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
         "terminal.integrated.env.linux": {
-          "MEMORY_GUARD": "enabled"
+          "MEMORY_GUARD": "enabled",
+          "MCAPP_NO_VENV": "1"
         },
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -127,6 +128,7 @@
     "QDRANT_HOST": "qdrant",
     "QDRANT_PORT": "6333",
     "UV_SYSTEM_PYTHON": "1",
+    "MCAPP_NO_VENV": "1",
     "NIX_CONFIG": "experimental-features = nix-command flakes"
   },
   "hostRequirements": {
