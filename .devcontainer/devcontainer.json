@@ -134,7 +134,7 @@
   "remoteUser": "root",
   "privileged": true,
   "containerEnv": {
-    "PATH": "/usr/local/share/nvm/versions/node/v20/bin:${HOME}/.local/bin:/usr/local/bin:${containerEnv:PATH}",
+    "PATH": "/usr/local/share/nvm/versions/node/v20/bin:/root/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
     "NVM_DIR": "/usr/local/share/nvm"
   }
 }

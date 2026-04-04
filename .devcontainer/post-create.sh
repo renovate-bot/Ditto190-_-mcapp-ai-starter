@@ -44,7 +44,13 @@ echo "✅ Python toolchain ready"
 # ── NEW: Install Python deps from requirements.txt ────────────────────────────
 echo ""
 echo "📦 Installing Python dependencies from requirements.txt..."
-pip install -r requirements.txt
+if command -v pip3 &>/dev/null; then
+  pip3 install -r requirements.txt
+elif command -v pip &>/dev/null; then
+  pip install -r requirements.txt
+else
+  echo "⚠️ pip not available; skipping Python deps"
+fi
 echo "✅ Python deps installed"
 
 # ── 4. Node / npm ─────────────────────────────────────────────────────────────
@@ -128,7 +134,7 @@ if [ ! -d ~/codeql ]; then
   rm codeql-linux64.zip
   mv codeql ~/codeql
   echo 'export PATH="$HOME/codeql:$PATH"' >> "$HOME/.bashrc"
-  export PATH=\"$HOME/codeql:$PATH\"
+  export PATH="$HOME/codeql:$PATH"
 fi
 echo 'alias codeql-analyze=\"codeql database create --overwrite --source-root=. codeql-db && codeql database analyze codeql-db --format=sarif-latest --output=results.sarif security-and-quality\"' >> ~/.bashrc
 echo "✅ CodeQL CLI ready (run 'codeql-analyze' or source ~/.bashrc)"
