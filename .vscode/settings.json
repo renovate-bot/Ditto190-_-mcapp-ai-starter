@@ -48,7 +48,10 @@
         "name": "generateagents-mcp",
         "description": "GenerateAgents.md MCP Server - Expose AGENTS.md generation as LLM-callable tools",
         "command": "bash",
-        "args": ["-c", "cd generateagents-mcp && uv run python server.py"],
+        "args": [
+          "-c",
+          "cd generateagents-mcp && uv run python server.py"
+        ],
         "env": {
           "PYTHONPATH": "/workspaces/mcapp-ai-starter",
           "LOG_LEVEL": "INFO",
@@ -83,5 +86,9 @@
     "containers.environment": "{ \"PATH\": \"/usr/local/share/nvm/versions/node/v20.20.2/bin:/root/.local/bin:/usr/local/bin:${env:PATH}\", \"NVM_DIR\": \"/usr/local/share/nvm\", \"PYTHONPATH\": \"${containerEnv:PYTHONPATH:-/workspaces/mcapp-ai-starter}\", \"PIP_USER\": \"1\" }"
   },
   "github.copilot.chat.cli.planExitMode.enabled": true,
-  "github.copilot.chat.githubMcpServer.toolsets": ["all"]
+  "github.copilot.chat.githubMcpServer.toolsets": [
+    "all"
+  ],
+  "github.copilot.chat.cli.branchSupport.enabled": true,
+  "github.copilot.chat.cli.sessionController.enabled": true
 }
