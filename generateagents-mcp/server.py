@@ -25,6 +25,7 @@ from agentspec_mvp import (
     generate_agentspec_from_awesome_copilot,
     validate_agentspec_file,
 )
+from agentspec_integration import emit_agentspec_artifacts
 
 try:
     from fastmcp import FastMCP
@@ -34,8 +35,7 @@ except ImportError:
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
 
@@ -55,9 +55,11 @@ if not GA_REPO_ROOT.exists():
 # Response Models (Pydantic-compatible dataclasses for structured output)
 # ============================================================================
 
+
 @dataclass
 class ModelInfo:
     """Information about a supported LLM model."""
+
     provider: str
     model_name: str
     description: str = ""
@@ -66,6 +68,7 @@ class ModelInfo:
 @dataclass
 class GenerateAgentsResult:
     """Result of AGENTS.md generation."""
+
     success: bool
     status: str
     output_path: Optional[str] = None
@@ -77,6 +80,7 @@ class GenerateAgentsResult:
 @dataclass
 class ValidationResult:
     """Result of AGENTS.md validation."""
+
     project_name: str
     is_valid: bool
     file_path: Optional[str] = None
@@ -91,6 +95,7 @@ class ValidationResult:
 @dataclass
 class TestResult:
     """Result of running the test suite."""
+
     success: bool
     total_tests: int
     passed_tests: int
@@ -112,6 +117,7 @@ mcp = FastMCP(
 # Helper Functions
 # ============================================================================
 
+
 def run_command(
     cmd: list,
     cwd: Optional[Path] = None,
@@ -120,12 +126,12 @@ def run_command(
 ) -> tuple[int, str, str]:
     """
     Execute a shell command and return exit code, stdout, stderr.
-    
+
     Args:
         cmd: List of command arguments
         cwd: Working directory
         timeout: Timeout in seconds (default 5 minutes)
-    
+
     Returns:
         (exit_code, stdout, stderr)
     """
@@ -158,7 +164,7 @@ def get_env_with_keys(
 ) -> dict:
     """
     Build environment dict for subprocess, filtering out secrets from main .env.
-    
+
     Only includes the necessary API key if provided; never returns secrets to caller.
     """
     env = os.environ.copy()
@@ -190,15 +196,16 @@ def get_env_with_keys(
 # MCP Tools
 # ============================================================================
 
+
 @mcp.tool()
 def list_models() -> dict:
     """
     List all available language models supported by GenerateAgents.
-    
+
     Queries the GenerateAgents CLI to return a comprehensive list of models
     across 100+ providers (OpenAI, Anthropic, Gemini, Ollama, Cohere, etc.)
     and their configurations.
-    
+
     Returns:
         dict: Keys are provider names, values are lists of available models
         Example: {
@@ -208,27 +215,27 @@ def list_models() -> dict:
         }
     """
     logger.info("Executing: list_models()")
-    
+
     exit_code, stdout, stderr = run_command(["uv", "run", "autogenerateagentsmd", "--list-models"])
-    
+
     if exit_code != 0:
         logger.error(f"Failed to list models: {stderr}")
         return {"error": f"Failed to retrieve models: {stderr}"}
-    
+
     # Parse the output (format varies, attempt to extract key data)
     models = {
         "openai": ["gpt-4", "gpt-4-turbo-preview", "gpt-3.5-turbo"],
         "anthropic": ["claude-3-opus", "claude-3-sonnet-4.6", "claude-3-haiku"],
         "gemini": ["gemini-2.5-pro", "gemini-2.0-flash", "gemini-pro"],
         "ollama": ["llama3.2", "mistral", "neural-chat"],
-        "note": "See stdout for complete list"
+        "note": "See stdout for complete list",
     }
-    
+
     return {
         "success": True,
         "provider_count": len(models) - 1,
         "models": models,
-        "raw_output": stdout[:500]  # First 500 chars of raw output
+        "raw_output": stdout[:500],  # First 500 chars of raw output
     }
 
 
@@ -238,11 +245,11 @@ def generate_agents(
     style: str = "comprehensive",
     model: str = "gemini/gemini-2.5-pro",
     api_base: Optional[str] = None,
-    api_key: Optional[str] = None
+    api_key: Optional[str] = None,
 ) -> dict:
     """
     Generate AGENTS.md from a local repository.
-    
+
     Args:
         repo_path: Absolute path to the local repository to analyze
         style: Generation style ("comprehensive" or "strict")
@@ -252,7 +259,7 @@ def generate_agents(
                (default: "gemini/gemini-2.5-pro")
         api_base: Optional custom API base URL for the model provider
         api_key: Optional API key (will NOT be returned in output)
-    
+
     Returns:
         dict: {
             "success": bool,
@@ -264,71 +271,69 @@ def generate_agents(
         }
     """
     logger.info(f"Executing: generate_agents(repo_path={repo_path}, style={style}, model={model})")
-    
+
     # Validate inputs
     repo_path_obj = Path(repo_path).resolve()
     if not repo_path_obj.exists():
         return {
             "success": False,
             "status": "error",
-            "error_message": f"Repository path not found: {repo_path}"
+            "error_message": f"Repository path not found: {repo_path}",
         }
-    
+
     if style not in ["comprehensive", "strict"]:
         return {
             "success": False,
             "status": "error",
-            "error_message": f"Invalid style: {style}. Must be 'comprehensive' or 'strict'"
+            "error_message": f"Invalid style: {style}. Must be 'comprehensive' or 'strict'",
         }
-    
+
     # Build command
     cmd = [
-        "uv", "run", "autogenerateagentsmd",
+        "uv",
+        "run",
+        "autogenerateagentsmd",
         str(repo_path_obj),
         f"--style={style}",
-        f"--model={model}"
+        f"--model={model}",
     ]
-    
+
     if api_base:
         cmd.append(f"--api-base={api_base}")
-    
+
     env = get_env_with_keys(api_key=api_key, api_base=api_base, model=model)
-    
+
     try:
         exit_code, stdout, stderr = run_command(cmd, cwd=GA_REPO_ROOT, timeout=600, env=env)
-        
+
         if exit_code != 0:
             return {
                 "success": False,
                 "status": "error",
                 "error_message": f"Generation failed: {stderr}",
-                "stdout_tail": stdout[-500:] if stdout else ""
+                "stdout_tail": stdout[-500:] if stdout else "",
             }
-        
+
         # Try to locate the generated AGENTS.md
         # Convention: should be in projects/<repo_name>/AGENTS.md
         repo_name = repo_path_obj.name
         expected_path = GA_REPO_ROOT / "projects" / repo_name / "AGENTS.md"
-        
+
         agents_content = ""
         if expected_path.exists():
             agents_content = expected_path.read_text()
-        
+
         return {
             "success": True,
             "status": "completed",
             "output_path": str(expected_path) if expected_path.exists() else None,
             "agents_md_content": agents_content[:1000],  # First 1000 chars
-            "repo_name": repo_name
+            "repo_name": repo_name,
         }
-    
+
     except Exception as e:
         logger.error(f"Exception in generate_agents: {e}")
-        return {
-            "success": False,
-            "status": "error",
-            "error_message": str(e)
-        }
+        return {"success": False, "status": "error", "error_message": str(e)}
 
 
 @mcp.tool()
@@ -338,13 +343,13 @@ def generate_agents_from_github(
     model: str = "gemini/gemini-2.5-pro",
     analyze_git_history: Optional[int] = None,
     api_base: Optional[str] = None,
-    api_key: Optional[str] = None
+    api_key: Optional[str] = None,
 ) -> dict:
     """
     Generate AGENTS.md from a public GitHub repository.
-    
+
     Clones the repository to a temporary directory, analyzes it, and generates AGENTS.md.
-    
+
     Args:
         repo_url: Full GitHub repository URL (e.g., "https://github.com/owner/repo")
         style: Generation style ("comprehensive" or "strict")
@@ -353,7 +358,7 @@ def generate_agents_from_github(
                              (e.g., 500 to analyze last 500 commits)
         api_base: Optional custom API base URL
         api_key: Optional API key (will NOT be returned in output)
-    
+
     Returns:
         dict: {
             "success": bool,
@@ -366,82 +371,80 @@ def generate_agents_from_github(
         }
     """
     logger.info(f"Executing: generate_agents_from_github(repo_url={repo_url}, style={style})")
-    
+
     # Validate URL
     if not repo_url.startswith(("http://", "https://")):
         return {
             "success": False,
             "status": "error",
-            "error_message": "repo_url must be a full HTTP(S) URL"
+            "error_message": "repo_url must be a full HTTP(S) URL",
         }
-    
+
     # Extract repo name from URL
     repo_name = repo_url.rstrip("/").split("/")[-1].replace(".git", "")
-    
+
     # Build command
     cmd = [
-        "uv", "run", "autogenerateagentsmd",
+        "uv",
+        "run",
+        "autogenerateagentsmd",
         f"--github-repository={repo_url}",
         f"--style={style}",
-        f"--model={model}"
+        f"--model={model}",
     ]
-    
+
     if analyze_git_history is not None:
         cmd.append(f"--analyze-git-history={analyze_git_history}")
-    
+
     if api_base:
         cmd.append(f"--api-base={api_base}")
-    
+
     env = get_env_with_keys(api_key=api_key, api_base=api_base, model=model)
-    
+
     try:
         # Longer timeout for GitHub cloning
         exit_code, stdout, stderr = run_command(cmd, cwd=GA_REPO_ROOT, timeout=900, env=env)
-        
+
         if exit_code != 0:
             return {
                 "success": False,
                 "status": "error",
                 "error_message": f"GitHub generation failed: {stderr}",
-                "stdout_tail": stdout[-500:] if stdout else ""
+                "stdout_tail": stdout[-500:] if stdout else "",
             }
-        
+
         # Locate generated AGENTS.md
         expected_path = GA_REPO_ROOT / "projects" / repo_name / "AGENTS.md"
         agents_content = ""
         if expected_path.exists():
             agents_content = expected_path.read_text()
-        
+
         return {
             "success": True,
             "status": "completed",
             "output_path": str(expected_path) if expected_path.exists() else None,
             "agents_md_content": agents_content[:1000],
             "repo_name": repo_name,
-            "analyzed_commits": analyze_git_history
+            "analyzed_commits": analyze_git_history,
         }
-    
+
     except Exception as e:
         logger.error(f"Exception in generate_agents_from_github: {e}")
-        return {
-            "success": False,
-            "status": "error",
-            "error_message": str(e)
-        }
+        return {"success": False, "status": "error", "error_message": str(e)}
 
 
 @mcp.tool()
 def validate_output(project_name: str) -> dict:
     """
     Validate the AGENTS.md generated for a project.
-    
+
     Checks that the AGENTS.md file exists, has reasonable structure and size,
     and contains expected sections.
-    
+
     Args:
         project_name: Name of the project previously generated
                       (corresponds to repo name)
-    
+
     Returns:
         dict: {
             "project_name": str,
@@ -455,9 +458,9 @@ def validate_output(project_name: str) -> dict:
         }
     """
     logger.info(f"Executing: validate_output(project_name={project_name})")
-    
+
     file_path = GA_REPO_ROOT / "projects" / project_name / "AGENTS.md"
-    
+
     result = {
         "project_name": project_name,
         "is_valid": False,
@@ -466,34 +469,34 @@ def validate_output(project_name: str) -> dict:
         "has_agents_section": False,
         "has_architecture_section": False,
         "has_constraints_section": False,
-        "issues": []
+        "issues": [],
     }
-    
+
     if not file_path.exists():
         result["issues"].append(f"AGENTS.md not found at {file_path}")
         return result
-    
+
     try:
         content = file_path.read_text()
         result["file_size_bytes"] = len(content)
-        
+
         # Check for expected sections
         result["has_agents_section"] = "# Agents" in content or "## Agents" in content
         result["has_architecture_section"] = "Architecture" in content
         result["has_constraints_section"] = "Constraints" in content or "Anti-Patterns" in content
-        
+
         # Minimum viable validation: file exists and has some content
         if result["file_size_bytes"] > 500:
             result["is_valid"] = True
         else:
             result["issues"].append("AGENTS.md is too small (< 500 bytes)")
-        
+
         # Check for reasonable structure
         if not (result["has_agents_section"] or result["has_architecture_section"]):
             result["issues"].append("Missing expected sections (Agents or Architecture)")
-        
+
         return result
-    
+
     except Exception as e:
         logger.error(f"Exception in validate_output: {e}")
         result["issues"].append(f"Error reading file: {str(e)}")
@@ -504,14 +507,14 @@ def validate_output(project_name: str) -> dict:
 def run_tests(include_e2e: bool = False) -> dict:
     """
     Run the GenerateAgents test suite.
-    
+
     Executes pytest on the GenerateAgents.md project to validate
     that the tool is working correctly.
-    
+
     Args:
         include_e2e: If True, includes end-to-end tests that require API keys.
                      If False (default), only runs unit/integration tests.
-    
+
     Returns:
         dict: {
             "success": bool,
@@ -524,22 +527,22 @@ def run_tests(include_e2e: bool = False) -> dict:
         }
     """
     logger.info(f"Executing: run_tests(include_e2e={include_e2e})")
-    
+
     # Build pytest command
     cmd = ["uv", "run", "pytest", "tests/", "-v", "--tb=short"]
-    
+
     if not include_e2e:
         cmd.extend(["-m", "not e2e"])
-    
+
     exit_code, stdout, stderr = run_command(cmd, cwd=GA_REPO_ROOT, timeout=600)
-    
+
     # Parse pytest output for summary
     # Look for lines like: "passed", "failed", "skipped"
     passed = stdout.count(" PASSED")
     failed = stdout.count(" FAILED")
     skipped = stdout.count(" SKIPPED")
     total = passed + failed + skipped
-    
+
     # Try to find the summary line
     summary_line = ""
     for line in stdout.split("\n"):
@@ -547,7 +550,7 @@ def run_tests(include_e2e: bool = False) -> dict:
             if "==" in line:
                 summary_line = line
                 break
-    
+
     return {
         "success": exit_code == 0,
         "total_tests": total,
@@ -555,7 +558,7 @@ def run_tests(include_e2e: bool = False) -> dict:
         "failed_tests": failed,
         "skipped_tests": skipped,
         "summary": summary_line or f"Exit code: {exit_code}",
-        "error_message": stderr if exit_code != 0 else None
+        "error_message": stderr if exit_code != 0 else None,
     }
 
 
@@ -565,8 +568,8 @@ def generate_agentspec(
     output_name: Optional[str] = None,
 ) -> dict:
     """Generate AgentSpec from real awesome-copilot agents and skills.
-    
-    Parses .agent.md files from awesome-copilot/agents/ and SKILL.md files from 
+
+    Parses .agent.md files from awesome-copilot/agents/ and SKILL.md files from
     awesome-copilot/skills/ to create a complete schema.
 
     Args:
@@ -577,13 +580,13 @@ def generate_agentspec(
         dict with success status, agent/skill counts, and output path.
     """
     logger.info(f"Executing: generate_agentspec(awesome_copilot_path={awesome_copilot_path})")
-    
+
     # Resolve path relative to server
     if not os.path.isabs(awesome_copilot_path):
         awesome_copilot_path = str(Path(__file__).parent / awesome_copilot_path)
-    
+
     output_file = AGENTSPEC_OUTPUT_ROOT / (output_name or "awesome-copilot.agentspec.json")
-    
+
     return generate_agentspec_from_awesome_copilot(
         awesome_copilot_path=awesome_copilot_path,
         output_path=str(output_file),
@@ -593,15 +596,15 @@ def generate_agentspec(
 @mcp.tool()
 def validate_agentspec(agentspec_path: str) -> dict:
     """Validate an AgentSpec JSON file against required schema fields.
-    
+
     Validates:
     - Required top-level fields (version, name, agents, tools)
     - Agent structure (name, description, type, source_file)
     - Tool structure (name, description, type, source_file)
-    
+
     Args:
         agentspec_path: Path to AgentSpec JSON file.
-    
+
     Returns:
         dict with success, is_valid, errors list, and error_count.
     """
@@ -609,25 +612,133 @@ def validate_agentspec(agentspec_path: str) -> dict:
     return validate_agentspec_file(agentspec_path)
 
 
+@mcp.tool()
+def emit_agents(
+    agentspec_path: str,
+    targets: Optional[str] = None,
+    output_dir: Optional[str] = None,
+) -> dict:
+    """Emit AGENTS.md and/or n8n workflow artifacts from a validated AgentSpec JSON file.
+
+    Args:
+        agentspec_path: Path to the .agentspec.json file
+        targets: Comma-separated list of targets: agents-md, n8n-workflow (default: both)
+        output_dir: Directory to write artifacts (default: same dir as agentspec)
+
+    Returns:
+        dict with success, emitted paths, and any unsupported targets
+    """
+    target_list = [t.strip() for t in (targets or "agents-md,n8n-workflow").split(",")]
+    out_dir = output_dir or str(Path(agentspec_path).parent)
+    logger.info(f"Executing: emit_agents(agentspec_path={agentspec_path}, targets={target_list})")
+    return emit_agentspec_artifacts(agentspec_path, target_list, out_dir)
+
+
+@mcp.tool()
+def catalog_marketplace(
+    awesome_copilot_path: Optional[str] = None,
+    output_path: Optional[str] = None,
+) -> dict:
+    """Generate a growing marketplace.json catalogue from all agents and skills in awesome-copilot.
+
+    Parses agent and skill definitions, generates the agentspec, validates it,
+    and writes a marketplace catalogue JSON that can be used for dynamic agent composition.
+
+    Args:
+        awesome_copilot_path: Path to awesome-copilot directory (default: consolidated_sources/awesome-copilot)
+        output_path: Path to write marketplace catalogue (default: agentspec/generated/marketplace-catalogue.json)
+
+    Returns:
+        dict with success, agent_count, skill_count, output_path, and sample entries
+    """
+    import json
+    import datetime
+
+    ac_path = awesome_copilot_path or str(
+        Path(__file__).parent.parent / "consolidated_sources" / "awesome-copilot"
+    )
+    out_path = output_path or str(AGENTSPEC_OUTPUT_ROOT / "marketplace-catalogue.json")
+
+    logger.info(f"Executing: catalog_marketplace(awesome_copilot_path={ac_path})")
+
+    agentspec_result = generate_agentspec_from_awesome_copilot(
+        awesome_copilot_path=ac_path,
+        output_path=str(AGENTSPEC_OUTPUT_ROOT / "awesome-copilot.agentspec.json"),
+    )
+
+    if not agentspec_result.get("success"):
+        return agentspec_result
+
+    agents = agentspec_result.get("agents", {})
+    tools = agentspec_result.get("tools", {})
+
+    catalogue = {
+        "version": "1.0.0",
+        "generated_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "source": ac_path,
+        "stats": {
+            "agent_count": len(agents),
+            "skill_count": len(tools),
+        },
+        "agents": [
+            {
+                "id": k,
+                "name": v.get("name", k),
+                "description": v.get("description", ""),
+                "type": v.get("type", "agent"),
+                "source_file": v.get("source_file", ""),
+            }
+            for k, v in agents.items()
+        ],
+        "skills": [
+            {
+                "id": k,
+                "name": v.get("name", k),
+                "description": v.get("description", ""),
+                "type": v.get("type", "skill"),
+                "source_file": v.get("source_file", ""),
+            }
+            for k, v in tools.items()
+        ],
+    }
+
+    Path(out_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(out_path).write_text(json.dumps(catalogue, indent=2), encoding="utf-8")
+
+    return {
+        "success": True,
+        "agent_count": len(agents),
+        "skill_count": len(tools),
+        "output_path": out_path,
+        "sample_agents": catalogue["agents"][:3],
+        "sample_skills": catalogue["skills"][:3],
+    }
+
+
 # ============================================================================
 # Main Entry Point
 # ============================================================================
 
+
 def main() -> None:
     logger.info("Starting GenerateAgents MCP Server")
-    
+
     if not ensure_ga_installed():
         logger.warning("GenerateAgents CLI may not be properly installed")
-    
+
     logger.info(f"GenerateAgents repo: {GA_REPO_ROOT}")
     logger.info("Available tools:")
     logger.info("  - list_models()")
     logger.info("  - generate_agents(repo_path, style, model, api_base?, api_key?)")
-    logger.info("  - generate_agents_from_github(repo_url, style, model, analyze_git_history?, api_base?, api_key?)")
+    logger.info(
+        "  - generate_agents_from_github(repo_url, style, model, analyze_git_history?, api_base?, api_key?)"
+    )
     logger.info("  - validate_output(project_name)")
     logger.info("  - run_tests(include_e2e?)")
     logger.info("  - generate_agentspec(awesome_copilot_path?, output_name?)")
     logger.info("  - validate_agentspec(agentspec_path)")
+    logger.info("  - emit_agents(agentspec_path, targets?, output_dir?)")
+    logger.info("  - catalog_marketplace(awesome_copilot_path?, output_path?)")
     logger.info("\nStarting stdio transport (for VS Code Copilot)...")
 
     mcp.run()

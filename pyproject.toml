@@ -1,0 +1,47 @@
+[tool.uv.workspace]
+# UV workspace configuration for multi-project management
+# Enables project-aware dependency resolution without per-project venvs
+members = ["generateagents-mcp", "GenerateAgents.md"]
+
+[tool.uv]
+# UV cache and tool settings
+python-preference = "managed"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcapp-ai-starter"
+version = "1.0.0"
+description = "Multi-agent AI development workspace with awesome-copilot, MCP servers, and reproducible environments"
+authors = [{name = "AI Starter Kit Contributors"}]
+
+# Shared Python dependencies for root scripts
+dependencies = [
+    "pyyaml>=6.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+select = ["E", "F", "W", "I", "B", "PIE", "SIM", "T20"]
+
+[tool.mypy]
+python_version = "3.12"
+check_untyped_defs = true
+disallow_incomplete_defs = true
+warn_unused_configs = true

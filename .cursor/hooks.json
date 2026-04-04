@@ -3,131 +3,131 @@
   "hooks": {
     "preToolUse": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook pre-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook pre-tool-use",
         "type": "command",
         "timeout": 5
       }
     ],
     "beforeSubmitPrompt": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook user-prompt-submit",
+        "command": "npx -y @contextstream/mcp-server@latest hook user-prompt-submit",
         "type": "command",
         "timeout": 5
       },
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook on-save-intent",
+        "command": "npx -y @contextstream/mcp-server@latest hook on-save-intent",
         "type": "command",
         "timeout": 5
       }
     ],
     "beforeMCPExecution": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook pre-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook pre-tool-use",
         "type": "command",
         "timeout": 5
       }
     ],
     "afterMCPExecution": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook post-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook post-tool-use",
         "type": "command",
         "timeout": 10
       }
     ],
     "beforeShellExecution": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook pre-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook pre-tool-use",
         "type": "command",
         "timeout": 5
       }
     ],
     "afterShellExecution": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook post-tool-use-failure",
+        "command": "npx -y @contextstream/mcp-server@latest hook post-tool-use-failure",
         "type": "command",
         "timeout": 10
       }
     ],
     "beforeReadFile": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook pre-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook pre-tool-use",
         "type": "command",
         "timeout": 5
       }
     ],
     "afterFileEdit": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook post-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook post-tool-use",
         "type": "command",
         "timeout": 10
       }
     ],
     "preCompact": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook pre-compact",
+        "command": "npx -y @contextstream/mcp-server@latest hook pre-compact",
         "type": "command",
         "timeout": 15
       }
     ],
     "sessionStart": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook session-start",
+        "command": "npx -y @contextstream/mcp-server@latest hook session-start",
         "type": "command",
         "timeout": 15
       }
     ],
     "sessionEnd": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook session-end",
+        "command": "npx -y @contextstream/mcp-server@latest hook session-end",
         "type": "command",
         "timeout": 10
       }
     ],
     "stop": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook stop",
+        "command": "npx -y @contextstream/mcp-server@latest hook stop",
         "type": "command",
         "timeout": 15
       }
     ],
     "subagentStart": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook subagent-start",
+        "command": "npx -y @contextstream/mcp-server@latest hook subagent-start",
         "type": "command",
         "timeout": 10
       }
     ],
     "subagentStop": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook subagent-stop",
+        "command": "npx -y @contextstream/mcp-server@latest hook subagent-stop",
         "type": "command",
         "timeout": 10
       }
     ],
     "taskCompleted": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook task-completed",
+        "command": "npx -y @contextstream/mcp-server@latest hook task-completed",
         "type": "command",
         "timeout": 10
       }
     ],
     "teammateIdle": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook teammate-idle",
+        "command": "npx -y @contextstream/mcp-server@latest hook teammate-idle",
         "type": "command",
         "timeout": 10
       }
     ],
     "notification": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook notification",
+        "command": "npx -y @contextstream/mcp-server@latest hook notification",
         "type": "command",
         "timeout": 10
       }
     ],
     "permissionRequest": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook permission-request",
+        "command": "npx -y @contextstream/mcp-server@latest hook permission-request",
         "type": "command",
         "timeout": 10
       }

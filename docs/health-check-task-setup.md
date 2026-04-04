@@ -51,3 +51,58 @@ A foundation has been added for an incremental migration to Direnv + Nix (with a
 
 - **Implementation plan document:** `docs/dev-environment-migration-plan-direnv-nix-asdf.md`
 - **Symlink-style reference (for agent workflows):** `./AGENTS.md -> ./docs/dev-environment-migration-plan-direnv-nix-asdf.md` (logical reference tag for planned rollout)
+
+# fff MCP Tools and Instructions
+
+"Use the fff MCP tools for all file search operations instead of default tools."
+
+[text](https://github.com/dmtrKovalenko/fff.nvim?tab=readme-ov-file#mcp)
+
+# Install method
+
+You can install FFF as a dependency for your AI agent using a simple bash script:
+
+"curl -L <https://dmtrkovalenko.dev/install-fff-mcp.sh> | bash"
+
+## `ContextStream` custom agent instructions
+
+## `ContextStream` Workflow Skill
+
+### Session Lifecycle
+
+#### 2. Plan multi-step work
+
+`/workspaces/mcapp-ai-starter/.github/skills/contextstream-workflow/SKILL.md`
+
+# contextstream terminal commands
+
+init            → Loads your workspace context instantly
+context         → Delivers relevant context every single message
+search          → Semantic, hybrid, keyword—find anything by meaning
+session         → Captures decisions, preferences, lessons automatically
+memory          → Builds a knowledge graph of your project
+graph           → Maps dependencies and analyzes impact
+project         → Indexes your codebase for semantic understanding
+media           → Index and search video, audio, images (great for Remotion)
+integration     → Queries GitHub, Slack, Notion directly
+
+# Implementation Tips for ContextStream
+
+VS Code + Copilot Tips
+Run setup once and keep both config files:
+~/.copilot/mcp-config.json
+.vscode/mcp.json
+Rust install: use contextstream-mcp as the command.
+Node install: use npx --prefer-online -y @contextstream/mcp-server@latest as the command.
+Force local VS Code/Copilot setup with CONTEXTSTREAM_VSCODE_MCP_MODE=local.
+Force hosted remote VS Code/Copilot setup with CONTEXTSTREAM_VSCODE_MCP_MODE=remote.
+Use mcpServers in Copilot CLI config and servers in VS Code config.
+Quick Troubleshooting
+Remove duplicate ContextStream entries across Workspace/User config scopes.
+Check CONTEXTSTREAM_API_URL and CONTEXTSTREAM_API_KEY are set.
+Remove stale version pins like @contextstream/mcp-server@0.3.xx.
+Restart VS Code/Copilot after config changes.
+Marketplace Note
+The MCP marketplace entry now targets the hosted remote MCP at https://mcp.contextstream.io/mcp?default_context_mode=fast so VS Code can use the native OAuth flow instead of writing a local npm-based stdio config.
+
+Use the Rust or Node local runtime configs above only when you explicitly want local execution, custom/self-hosted endpoints, or editor environments that do not support the hosted remote flow.

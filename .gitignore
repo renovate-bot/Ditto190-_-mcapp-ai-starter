@@ -9,7 +9,6 @@
 .session-state/
 
 # Local agent and MCP state (machine/session specific)
-.contextstream/
 .copilot/
 .claude/
 .mcp.json

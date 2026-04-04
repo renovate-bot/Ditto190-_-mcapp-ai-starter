@@ -2,48 +2,48 @@
   "hooks": {
     "pre_mcp_tool_use": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook pre-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook pre-tool-use",
         "show_output": true
       }
     ],
     "pre_user_prompt": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook user-prompt-submit"
+        "command": "npx -y @contextstream/mcp-server@latest hook user-prompt-submit"
       }
     ],
     "pre_read_code": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook pre-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook pre-tool-use",
         "show_output": true
       }
     ],
     "pre_write_code": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook pre-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook pre-tool-use",
         "show_output": true
       }
     ],
     "pre_run_command": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook pre-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook pre-tool-use",
         "show_output": true
       }
     ],
     "post_write_code": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook post-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook post-tool-use",
         "show_output": false
       }
     ],
     "post_mcp_tool_use": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook post-tool-use",
+        "command": "npx -y @contextstream/mcp-server@latest hook post-tool-use",
         "show_output": false
       }
     ],
     "post_cascade_response_with_transcript": [
       {
-        "command": "node \"/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js\" hook session-end"
+        "command": "npx -y @contextstream/mcp-server@latest hook session-end"
       }
     ]
   }

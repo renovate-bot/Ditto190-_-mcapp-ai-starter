@@ -82,7 +82,8 @@
         "usernamehw.errorlens",
         "yzhang.markdown-all-in-one",
         "digitarald.agent-memory",
-        "blackbox.blackbox"
+        "blackbox.blackbox",
+        "vscodevim.vim"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
