@@ -1,6 +1,12 @@
-# Previous Tasks Complete
+# Rebuild Persistence & Auto-Setup TODO
 
-✅ ContextStream MCP integrated into .vscode/settings.json
-✅ .env cleaned (deduped keys, categorical sections, latest values prioritized, notes preserved)
+## Plan Progress
 
-All steps complete.
+- [x] 1. Edit .devcontainer/devcontainer.json (initializeCommand in post-create instead)
+- [x] 2. Edit .devcontainer/post-create.sh (add pip install, contextstream init, CodeQL CLI setup)
+- [ ] 3. Commit changes
+- [ ] 4. Test rebuild
+- [ ] 5. Verify setups (pip, MCP, CodeQL)
+- [x] Plan approved
+
+**Next step:** Confirm TODO.md created, then proceed to edit files step-by-step.

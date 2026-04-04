@@ -50,41 +50,31 @@
       "visibility": "private"
     }
   },
+  "initializeCommand": "npm install -g @contextstream/mcp-server@latest",
   "customizations": {
     "vscode": {
       "extensions": [
-        // --- Containers & Docker ---
-        "ms-vscode-remote.remote-containers",
+        \"ms-vscode-remote.remote-containers",
         "ms-azuretools.vscode-docker",
-        // --- Python ---
         "ms-python.python",
         "ms-python.debugpy",
         "ms-python.pylint",
         "ms-python.black-formatter",
         "charliermarsh.ruff",
-        // --- Node / JS / TS ---
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
-        // --- AI & Copilot ---
         "github.copilot",
         "github.copilot-chat",
-        // --- YAML & JSON ---
         "redhat.vscode-yaml",
-        // --- Git & versioning ---
         "github.vscode-github-actions",
         "eamodio.gitlens",
         "mhutchie.git-graph",
-        // --- Env & secrets ---
         "mikestead.dotenv",
-        // --- Shell scripting ---
         "timonwong.shellcheck",
         "foxundermoon.shell-format",
-        // --- REST & API testing ---
         "humao.rest-client",
-        // --- Markdown ---
         "yzhang.markdown-all-in-one",
         "davidanson.vscode-markdownlint",
-        // --- Productivity ---
         "streetsidesoftware.code-spell-checker",
         "usernamehw.errorlens"
       ],

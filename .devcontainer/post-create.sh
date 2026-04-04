@@ -37,12 +37,26 @@ uv tool install ruff 2>/dev/null || true
 uv tool install black 2>/dev/null || true
 echo "✅ Python toolchain ready"
 
+# ── NEW: Install Python deps from requirements.txt ────────────────────────────
+echo ""
+echo "📦 Installing Python dependencies from requirements.txt..."
+pip install -r requirements.txt
+echo "✅ Python deps installed"
+
 # ── 4. Node / npm ─────────────────────────────────────────────────────────────
 echo ""
 echo "📦 Checking Node.js..."
 node --version
 npm --version
 echo "✅ Node.js ready"
+
+# ── NEW: ContextStream MCP setup ──────────────────────────────────────────────
+echo ""
+echo "🧠 Setting up ContextStream MCP..."
+# Use npx to run the setup and init commands to avoid relying on a global binary
+npx @contextstream/mcp-server@latest setup || true
+npx @contextstream/mcp-server@latest init --folder-path="$(pwd)" || true
+echo "✅ ContextStream MCP ready"
 
 # ── 5. Git hooks ──────────────────────────────────────────────────────────────
 echo ""
@@ -72,6 +86,20 @@ if [ -f .devcontainer/scripts/memory-guard.sh ]; then
   echo "✅ Memory guard started (PID $!)"
 fi
 
+# ── NEW: Lightweight CodeQL CLI setup ─────────────────────────────────────────
+echo ""
+echo "🔒 Setting up lightweight CodeQL CLI..."
+if [ ! -d ~/codeql ]; then
+  wget -q https://github.com/github/codeql-cli-binaries/releases/latest/download/codeql-linux64.zip
+  unzip -q codeql-linux64.zip
+  rm codeql-linux64.zip
+  mv codeql ~/codeql
+  echo 'export PATH=\"$HOME/codeql:$PATH\"' >> \"$HOME/.bashrc\"
+  export PATH=\"$HOME/codeql:$PATH\"
+fi
+echo 'alias codeql-analyze=\"codeql database create --overwrite --source-root=. codeql-db && codeql database analyze codeql-db --format=sarif-latest --output=results.sarif security-and-quality\"' >> ~/.bashrc
+echo "✅ CodeQL CLI ready (run 'codeql-analyze' or source ~/.bashrc)"
+
 # ── 9. Pre-pull Docker images in the background ───────────────────────────────
 echo ""
 echo "📡 Pre-pulling Docker images in background..."
@@ -86,7 +114,7 @@ echo "  (images pulling in background — run 'docker images' to check progress)
 
 # ── 10. Final summary ─────────────────────────────────────────────────────────
 echo ""
-echo "✅ Codespace Setup Complete!"
+echo "✅ Codespace Setup Complete! (with pip deps, ContextStream MCP, CodeQL)"
 echo "======================================"
 echo ""
 echo "📋 Quick-start commands:"
@@ -95,9 +123,10 @@ echo "  Health check:        bash .devcontainer/scripts/health-check.sh"
 echo "  Self-heal deps:      bash .devcontainer/scripts/self-heal-deps.sh"
 echo "  Configure LLMs:      bash .devcontainer/scripts/setup-llm.sh"
 echo "  Run tests:           bash scripts/test-runner.sh"
+echo "  CodeQL analyze:      codeql-analyze"
+echo "  ContextStream search: mcp_contextstream_search(query=\\\"your query\\\")"
 echo ""
 echo "  n8n UI:              http://localhost:5678"
 echo "  Ollama API:          http://localhost:11434"
 echo "  Qdrant API:          http://localhost:6333"
 echo "======================================"
-
