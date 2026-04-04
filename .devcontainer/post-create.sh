@@ -50,6 +50,35 @@ node --version
 npm --version
 echo "✅ Node.js ready"
 
+# ── 4.5 Nix (Determinate installer) ───────────────────────────────────────────
+echo ""
+echo "❄️ Setting up Nix..."
+if ! command -v nix &>/dev/null; then
+  curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
+fi
+
+# Ensure nix profile is loaded in current shell (installer can require this)
+if [ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]; then
+  # shellcheck disable=SC1091
+  . "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+elif [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  # shellcheck disable=SC1090
+  . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
+if command -v nix &>/dev/null; then
+  echo "  nix: $(nix --version)"
+  mkdir -p "$HOME/.config/nix"
+  if [ ! -f "$HOME/.config/nix/nix.conf" ] || ! grep -q "^experimental-features = .*flakes" "$HOME/.config/nix/nix.conf"; then
+    {
+      echo "experimental-features = nix-command flakes"
+    } >> "$HOME/.config/nix/nix.conf"
+  fi
+  echo "✅ Nix ready"
+else
+  echo "⚠️ Nix install did not complete in this shell; restart terminal after rebuild."
+fi
+
 # ── NEW: ContextStream MCP setup ──────────────────────────────────────────────
 echo ""
 echo "🧠 Setting up ContextStream MCP..."

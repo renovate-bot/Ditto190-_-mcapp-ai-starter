@@ -13,7 +13,13 @@
       "version": "20"
     }
   },
-  "forwardPorts": [5678, 11434, 6333, 5432, 8080],
+  "forwardPorts": [
+    5678,
+    11434,
+    6333,
+    5432,
+    8080
+  ],
   "portsAttributes": {
     "5678": {
       "label": "n8n UI",
@@ -113,7 +119,8 @@
     "OLLAMA_HOST": "ollama:11434",
     "QDRANT_HOST": "qdrant",
     "QDRANT_PORT": "6333",
-    "UV_SYSTEM_PYTHON": "1"
+    "UV_SYSTEM_PYTHON": "1",
+    "NIX_CONFIG": "experimental-features = nix-command flakes"
   },
   "hostRequirements": {
     "cpus": 4,

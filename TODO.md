@@ -1,30 +1,13 @@
-# Health Check Task - COMPLETE ✅
+# TODO - Direnv + Nix Foundation + Devcontainer Nix Preinstall
 
-The repeatable VSCode task \"Health Check\" is created in `.vscode/tasks.json`.
+- [x] Create foundation config files (`.envrc`, `flake.nix`) with non-breaking defaults
+- [x] Create implementation planning document with in-depth analysis and source links
+- [x] Add AGENTS.md planned-feature note + symlink-style reference entry
+- [x] Update TODO statuses after each completed step
 
-**Run it:**
+## Nix Preinstall on Rebuild (Current Pass)
 
-- `Ctrl+Shift+P` → \"Tasks: Run Task\" → \"Health Check\"
-
-Executes `bash .devcontainer/scripts/health-check.sh` with clean output.
-
-## Task Progress
-
-- [x] Created `.vscode/tasks.json` (valid JSON).
-- [x] Tested structure matches original script output.
-- [ ] User test step.
-
-## Other TODOs
-
-### Rebuild Persistence
-
-- [x] devcontainer.json edited.
-- [x] post-create.sh edited.
-- [ ] Commit.
-- [ ] Test rebuild.
-- [ ] Verify setups.
-
-### Blackbox CLI
-
-- [ ] `npm run install:blackbox`
-- [ ] `blackbox --version`
+- [ ] Update `.devcontainer/post-create.sh` to install Nix (Determinate installer) if missing
+- [ ] Update `.devcontainer/devcontainer.json` with Nix flakes config in `remoteEnv`
+- [ ] Pin `flake.nix` nixpkgs input to `9576c24a0ca1746d83d84bb40eaa0839f38d440b`
+- [ ] Run syntax/validation checks for changed files
