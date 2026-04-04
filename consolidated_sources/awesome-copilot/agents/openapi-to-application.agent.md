@@ -1,8 +1,8 @@
 ---
-description: 'Expert assistant for generating working applications from OpenAPI specifications'
-name: 'OpenAPI to Application Generator'
-model: 'GPT-4.1'
-tools: ['codebase', 'edit/editFiles', 'search/codebase']
+description: "Expert assistant for generating working applications from OpenAPI specifications"
+name: "OpenAPI to Application Generator"
+model: "GPT-4.1"
+tools: ["codebase", "edit/editFiles", "search/codebase"]
 ---
 
 # OpenAPI to Application Generator

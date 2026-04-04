@@ -1,59 +1,59 @@
 {
-    "recommendations": [
-        // --- Containers & Docker ---
-        "ms-vscode-remote.remote-containers",
-        "ms-azuretools.vscode-docker",
-        // --- AI & Copilot ---
-        "github.copilot",
-        "github.copilot-chat",
-        "anthropic.claude-code",
-        "timheuer.awesome-copilot",
-        "digitarald.agent-memory",
-        // --- Python ---
-        "ms-python.python",
-        "ms-python.debugpy",
-        "ms-python.pylint",
-        "ms-python.black-formatter",
-        "charliermarsh.ruff",
-        "ms-python.vscode-pylance",
-        "ms-pyright.pyright",
-        "donjayamanne.python-environment-manager",
-        "ms-python.vscode-python-envs",
-        // --- Jupyter ---
-        "ms-toolsai.jupyter",
-        "ms-toolsai.jupyter-keymap",
-        "ms-toolsai.jupyter-renderers",
-        // --- Node / JS / TS ---
-        "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint",
-        // --- YAML & JSON ---
-        "redhat.vscode-yaml",
-        // --- Git & versioning ---
-        "github.vscode-github-actions",
-        "eamodio.gitlens",
-        "mhutchie.git-graph",
-        "donjayamanne.githistory",
-        "github.vscode-pull-request-github",
-        // --- Prompt / MCP tooling ---
-        "amadeusitgroup.prompt-registry",
-        "pimzino.spec-workflow-mcp",
-        // --- Env & Secrets ---
-        "mikestead.dotenv",
-        // --- Shell scripting ---
-        "timonwong.shellcheck",
-        "foxundermoon.shell-format",
-        // --- REST & API testing ---
-        "humao.rest-client",
-        // --- Databases & utilities ---
-        "mongodb.mongodb-vscode",
-        "mechatroner.rainbow-csv",
-        "tamasfe.even-better-toml",
-        "pkief.material-icon-theme",
-        // --- Markdown ---
-        "yzhang.markdown-all-in-one",
-        "davidanson.vscode-markdownlint",
-        // --- Productivity ---
-        "streetsidesoftware.code-spell-checker",
-        "usernamehw.errorlens"
-    ]
+  "recommendations": [
+    // --- Containers & Docker ---
+    "ms-vscode-remote.remote-containers",
+    "ms-azuretools.vscode-docker",
+    // --- AI & Copilot ---
+    "github.copilot",
+    "github.copilot-chat",
+    "anthropic.claude-code",
+    "timheuer.awesome-copilot",
+    "digitarald.agent-memory",
+    // --- Python ---
+    "ms-python.python",
+    "ms-python.debugpy",
+    "ms-python.pylint",
+    "ms-python.black-formatter",
+    "charliermarsh.ruff",
+    "ms-python.vscode-pylance",
+    "ms-pyright.pyright",
+    "donjayamanne.python-environment-manager",
+    "ms-python.vscode-python-envs",
+    // --- Jupyter ---
+    "ms-toolsai.jupyter",
+    "ms-toolsai.jupyter-keymap",
+    "ms-toolsai.jupyter-renderers",
+    // --- Node / JS / TS ---
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    // --- YAML & JSON ---
+    "redhat.vscode-yaml",
+    // --- Git & versioning ---
+    "github.vscode-github-actions",
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "donjayamanne.githistory",
+    "github.vscode-pull-request-github",
+    // --- Prompt / MCP tooling ---
+    "amadeusitgroup.prompt-registry",
+    "pimzino.spec-workflow-mcp",
+    // --- Env & Secrets ---
+    "mikestead.dotenv",
+    // --- Shell scripting ---
+    "timonwong.shellcheck",
+    "foxundermoon.shell-format",
+    // --- REST & API testing ---
+    "humao.rest-client",
+    // --- Databases & utilities ---
+    "mongodb.mongodb-vscode",
+    "mechatroner.rainbow-csv",
+    "tamasfe.even-better-toml",
+    "pkief.material-icon-theme",
+    // --- Markdown ---
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    // --- Productivity ---
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens"
+  ]
 }

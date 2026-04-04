@@ -13,14 +13,14 @@ copilot plugin install swift-mcp-development@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                             | Description                                                                                                  |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | `/swift-mcp-development:swift-mcp-server-generator` | Generate a complete Model Context Protocol server project in Swift using the official MCP Swift SDK package. |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent              | Description                                                                                                                              |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | `swift-mcp-expert` | Expert assistance for building Model Context Protocol servers in Swift using modern concurrency features and the official MCP Swift SDK. |
 
 ## Source

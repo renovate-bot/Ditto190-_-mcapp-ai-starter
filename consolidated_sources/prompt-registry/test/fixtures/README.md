@@ -20,27 +20,33 @@ fixtures/
 ## Local Library Examples
 
 ### Example Bundle (v1.0.0)
+
 **Path:** `local-library/example-bundle/`
 
 A comprehensive code quality bundle containing:
+
 - **Code Review Assistant** - Provides structured code review feedback
 - **Bug Analyzer** - Identifies potential bugs and issues systematically
 - **Refactoring Guide** - Guides refactoring with best practices
 
 **Use Cases:**
+
 - Testing local adapter functionality
 - Demonstrating prompt structure
 - Integration testing with real manifests
 
 ### Testing Bundle (v2.1.0)
+
 **Path:** `local-library/testing-bundle/`
 
 A testing-focused bundle containing:
+
 - **Unit Test Generator** - Creates unit tests with edge cases
 - **Test Coverage Analyzer** - Identifies coverage gaps
 - **E2E Scenario Designer** - Designs end-to-end test scenarios
 
 **Use Cases:**
+
 - Testing multi-bundle scenarios
 - Demonstrating version handling
 - Testing dependency resolution
@@ -50,12 +56,14 @@ A testing-focused bundle containing:
 ### GitHub Releases (`github/releases-response.json`)
 
 Simulates GitHub Releases API responses with:
+
 - Multiple releases (v1.0.0, v2.1.0, v0.5.0-beta)
 - Complete release metadata
 - Asset information (manifest + bundle)
 - Release notes and descriptions
 
 **Used for:**
+
 - Testing GitHubAdapter without real API calls
 - Testing release filtering and parsing
 - Testing authentication scenarios
@@ -63,11 +71,13 @@ Simulates GitHub Releases API responses with:
 ### GitLab Releases (`gitlab/releases-response.json`)
 
 Simulates GitLab Releases API responses with:
+
 - Release metadata in GitLab format
 - Asset links structure
 - Tag and version information
 
 **Used for:**
+
 - Testing GitLabAdapter without real API calls
 - Testing GitLab-specific asset handling
 - Testing self-hosted GitLab scenarios
@@ -75,11 +85,13 @@ Simulates GitLab Releases API responses with:
 ### HTTP Registry Index (`http/index.json`)
 
 Simulates HTTP-based registry index with:
+
 - Bundle catalog with metadata
 - Category organization
 - Version and download information
 
 **Used for:**
+
 - Testing HttpAdapter functionality
 - Testing registry index parsing
 - Testing bundle discovery
@@ -89,27 +101,30 @@ Simulates HTTP-based registry index with:
 ### In Unit Tests
 
 ```typescript
-import * as path from 'path';
-import * as fs from 'fs';
+import * as path from "path";
+import * as fs from "fs";
 
 // Load local bundle manifest
-const manifestPath = path.join(__dirname, 'fixtures/local-library/example-bundle/deployment-manifest.yml');
-const manifest = fs.readFileSync(manifestPath, 'utf8');
+const manifestPath = path.join(
+  __dirname,
+  "fixtures/local-library/example-bundle/deployment-manifest.yml",
+);
+const manifest = fs.readFileSync(manifestPath, "utf8");
 
 // Load GitHub API mock
-const githubResponse = require('./fixtures/github/releases-response.json');
+const githubResponse = require("./fixtures/github/releases-response.json");
 ```
 
 ### In Integration Tests
 
 ```typescript
-import { LocalAdapter } from '../adapters/LocalAdapter';
+import { LocalAdapter } from "../adapters/LocalAdapter";
 
 const source = {
-    id: 'test-local',
-    type: 'local',
-    url: path.join(__dirname, 'fixtures/local-library'),
-    // ... other source properties
+  id: "test-local",
+  type: "local",
+  url: path.join(__dirname, "fixtures/local-library"),
+  // ... other source properties
 };
 
 const adapter = new LocalAdapter(source);
@@ -119,12 +134,12 @@ const bundles = await adapter.fetchBundles();
 ### With Mocking Libraries (nock)
 
 ```typescript
-import nock from 'nock';
+import nock from "nock";
 
 // Mock GitHub API
-nock('https://api.github.com')
-    .get('/repos/example/example-bundle/releases')
-    .reply(200, require('./fixtures/github/releases-response.json'));
+nock("https://api.github.com")
+  .get("/repos/example/example-bundle/releases")
+  .reply(200, require("./fixtures/github/releases-response.json"));
 ```
 
 ### With Repository Fixture Helpers (E2E Tests)
@@ -133,25 +148,25 @@ For E2E tests involving GitHub releases, use the shared repository fixture helpe
 
 ```typescript
 import {
-    setupReleaseMocks,
-    createMockGitHubSource,
-    cleanupReleaseMocks
-} from '../helpers/repositoryFixtureHelpers';
+  setupReleaseMocks,
+  createMockGitHubSource,
+  cleanupReleaseMocks,
+} from "../helpers/repositoryFixtureHelpers";
 
 // Set up complete GitHub release mocks
 setupReleaseMocks(
-    { owner: 'test-owner', repo: 'test-repo', manifestId: 'test-bundle' },
-    [
-        { tag: 'v1.0.0', version: '1.0.0', content: 'initial' },
-        { tag: 'v2.0.0', version: '2.0.0', content: 'updated' }
-    ]
+  { owner: "test-owner", repo: "test-repo", manifestId: "test-bundle" },
+  [
+    { tag: "v1.0.0", version: "1.0.0", content: "initial" },
+    { tag: "v2.0.0", version: "2.0.0", content: "updated" },
+  ],
 );
 
 // Create matching source
-const source = createMockGitHubSource('test-source', {
-    owner: 'test-owner',
-    repo: 'test-repo',
-    manifestId: 'test-bundle'
+const source = createMockGitHubSource("test-source", {
+  owner: "test-owner",
+  repo: "test-repo",
+  manifestId: "test-bundle",
 });
 
 // Clean up after test
@@ -195,6 +210,7 @@ dependencies: []
 ### API Response Mocks
 
 Follow the structure of existing mocks:
+
 - Include all required fields
 - Use realistic data
 - Add variety for testing edge cases

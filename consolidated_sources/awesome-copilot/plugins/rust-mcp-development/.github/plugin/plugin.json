@@ -18,10 +18,6 @@
     "macros",
     "rmcp"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/rust-mcp-server-generator"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/rust-mcp-server-generator"]
 }

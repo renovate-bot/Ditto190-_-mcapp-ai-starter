@@ -23,6 +23,7 @@ This repository is part of the **Prompt Registry** ecosystem - a VS Code extensi
 ### What is Prompt Registry?
 
 Prompt Registry is a comprehensive platform that enables:
+
 - **Discovery**: Browse and install prompt collections from various sources
 - **Management**: Organize prompts, instructions, agents, and skills in one place
 - **Collaboration**: Share collections within your team or organization
@@ -62,6 +63,7 @@ npm run validate
 ```
 
 Checks:
+
 - ✅ Required fields (id, name, description)
 - ✅ ID format (lowercase, hyphens only)
 - ✅ File references exist
@@ -74,6 +76,7 @@ npm run skill:validate
 ```
 
 Checks:
+
 - ✅ SKILL.md frontmatter (name, description)
 - ✅ Name matches folder name
 - ✅ No duplicate skill names
@@ -84,9 +87,11 @@ Checks:
 The scaffold includes VS Code configuration:
 
 **Recommended Extensions** (auto-prompted on first open):
+
 - `redhat.vscode-yaml` - YAML language support with schema validation
 
 **Auto-configured Features**:
+
 - YAML schema validation for `.collection.yml` files
 - IntelliSense for collection properties
 - Real-time validation errors
@@ -103,6 +108,7 @@ The scaffold includes VS Code configuration:
 **What is MCP?** Model Context Protocol allows your collection to provide custom tools and context to GitHub Copilot.
 
 **Quick Setup:**
+
 1. Edit your `collections/*.collection.yml` file
 2. Uncomment the `mcp` section
 3. Choose from pre-built servers (time, filesystem, memory) or create your own
@@ -126,6 +132,7 @@ git push -u origin main
 ### 9. Use with Prompt Registry Extension
 
 **Option A: Add as Source**
+
 1. Open VS Code Command Palette (`Ctrl+Shift+P`)
 2. Run: "Prompt Registry: Add Source"
 3. Select "Github Releases" or "Collection from GitHub repository"
@@ -139,11 +146,13 @@ The Prompt Registry extension automatically includes the official [github/awesom
 ### What are Hubs and Profiles?
 
 **Hubs** are centralized configurations that group related prompt sources. They provide:
+
 - **Curated Content**: Pre-selected collections for specific teams or domains
 - **Easy Access**: One-click installation of entire content sets
 - **Organization**: Logical grouping by department, technology, or purpose
 
 **Profiles** are subsets of hub content that users can activate:
+
 - **Shared Profiles**: Curated by hub maintainers for common use cases
 - **Favorites**: Personal selections for daily work
 - **Context Switching**: Quick activation based on current task
@@ -153,6 +162,7 @@ The Prompt Registry extension automatically includes the official [github/awesom
 #### Step 1: Prepare Your Collection
 
 Ensure your collection is ready for sharing:
+
 ```bash
 # Validate everything
 npm run validate
@@ -171,6 +181,7 @@ npm run skill:validate
 #### Step 3: Hub Integration Process
 
 Hub maintainers will:
+
 - **Review Content**: Check quality, relevance, and compliance
 - **Test Integration**: Verify installation and functionality
 - **Add to Hub**: Include your collection in the hub configuration
@@ -179,6 +190,7 @@ Hub maintainers will:
 #### Step 4: User Access
 
 Once published, users can:
+
 1. **Install the Hub**: Add the hub to their Prompt Registry
 2. **Browse Collections**: Find your content in the hub catalog
 3. **Install Collections**: One-click install to their Copilot environment
@@ -202,20 +214,20 @@ When creating content for your collection, it's important to choose the right ty
 ### Quick Decision Guide
 
 - **🎯 Single Task?** → Use a **Prompt** for specific, reusable instructions
-- **📚 Team Standards?** → Use **Instructions** for sharing best practices  
+- **📚 Team Standards?** → Use **Instructions** for sharing best practices
 - **🤖 Specialized Expertise?** → Use an **Agent** for consistent AI personas
 - **🛠️ Complex Workflows?** → Use a **Skill** for multi-file functionality
 - **📦 Related Content?** → Use a **Collection** to organize primitives
 
 ### Detailed Comparison
 
-| Primitive | Best For | Complexity | Example |
-|-----------|-----------|------------|---------|
-| **Prompt** | Quick, specific tasks | Low | "Generate unit tests" |
-| **Instruction** | Team standards & guidelines | Medium | "React coding standards" |
-| **Agent** | Specialized AI roles | Medium-High | "Security auditor persona" |
-| **Skill** | Complex capabilities with assets | High | "API documentation generator" |
-| **Collection** | Organizing related content | Variable | "React development kit" |
+| Primitive       | Best For                         | Complexity  | Example                       |
+| --------------- | -------------------------------- | ----------- | ----------------------------- |
+| **Prompt**      | Quick, specific tasks            | Low         | "Generate unit tests"         |
+| **Instruction** | Team standards & guidelines      | Medium      | "React coding standards"      |
+| **Agent**       | Specialized AI roles             | Medium-High | "Security auditor persona"    |
+| **Skill**       | Complex capabilities with assets | High        | "API documentation generator" |
+| **Collection**  | Organizing related content       | Variable    | "React development kit"       |
 
 ### Interactive Decision Tree
 
@@ -224,13 +236,13 @@ flowchart TD
     A[What do you want to create?] --> B{Specific task or general knowledge?}
     B -->|Specific task| C{Reusable behavior needed?}
     B -->|General knowledge| D{Team standards or best practices?}
-    
+
     C -->|Yes| E{Multiple files/assets required?}
     C -->|No| F[Create Prompt]
-    
+
     E -->|Yes| G[Create Skill]
     E -->|No| H[Create Agent]
-    
+
     D -->|Yes| I[Create Instruction]
     D -->|No| J[Create Collection]
 ```
@@ -312,6 +324,7 @@ npm run skill:create
 ```
 
 This runs an interactive wizard that prompts for:
+
 - **Name**: lowercase letters, numbers, and hyphens (e.g., `code-review`)
 - **Description**: 10-1024 characters explaining what the skill does
 
@@ -347,6 +360,7 @@ When and how Copilot should apply this skill.
 ```
 
 **Bundled Assets:**
+
 - Include supporting files (templates, schemas, examples) alongside SKILL.md
 - Maximum 5MB per file
 - Referenced in the markdown body
@@ -378,6 +392,7 @@ items:
 ```
 
 **Validation Rules**:
+
 - `id`: lowercase, hyphens/numbers only
 - `name`: 1-100 characters
 - `description`: 1-500 characters
@@ -398,7 +413,7 @@ mcp:
       args:
         - -y
         - "@modelcontextprotocol/server-sequential-thinking"
-    
+
     # Custom server (advanced)
     custom:
       command: node

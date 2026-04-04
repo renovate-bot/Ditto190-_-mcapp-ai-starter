@@ -7,13 +7,6 @@
     "declarationMap": false,
     "types": ["node", "mocha"]
   },
-  "include": [
-    "src/**/*",
-    "test/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    ".vscode-test",
-    "out"
-  ]
+  "include": ["src/**/*", "test/**/*"],
+  "exclude": ["node_modules", ".vscode-test", "out"]
 }

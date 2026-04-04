@@ -6,24 +6,25 @@ Services contain business logic, separated from UI and commands.
 
 ## Key Services
 
-| Service | Responsibility |
-|---------|----------------|
-| `RegistryManager` | Orchestrates sources, bundles, installations |
-| `BundleInstaller` | Extraction, validation, installation |
-| `UserScopeService` | Syncs to Copilot directories (user/workspace scope) |
-| `RepositoryScopeService` | Syncs to `.github/` directories (repository scope) |
-| `LockfileManager` | Manages `prompt-registry.lock.json` for repository scope |
-| `ScopeConflictResolver` | Prevents same bundle at both user and repository scope |
-| `RepositoryActivationService` | Handles lockfile detection on workspace open |
-| `MigrationRegistry` | Tracks completed data migrations via `context.globalState` |
-| `LocalModificationWarningService` | Detects local file changes before updates |
-| `HubManager` | Hub configurations and profiles |
-| `McpServerManager` | MCP server lifecycle |
-| `UpdateChecker` | Detects bundle updates |
+| Service                           | Responsibility                                             |
+| --------------------------------- | ---------------------------------------------------------- |
+| `RegistryManager`                 | Orchestrates sources, bundles, installations               |
+| `BundleInstaller`                 | Extraction, validation, installation                       |
+| `UserScopeService`                | Syncs to Copilot directories (user/workspace scope)        |
+| `RepositoryScopeService`          | Syncs to `.github/` directories (repository scope)         |
+| `LockfileManager`                 | Manages `prompt-registry.lock.json` for repository scope   |
+| `ScopeConflictResolver`           | Prevents same bundle at both user and repository scope     |
+| `RepositoryActivationService`     | Handles lockfile detection on workspace open               |
+| `MigrationRegistry`               | Tracks completed data migrations via `context.globalState` |
+| `LocalModificationWarningService` | Detects local file changes before updates                  |
+| `HubManager`                      | Hub configurations and profiles                            |
+| `McpServerManager`                | MCP server lifecycle                                       |
+| `UpdateChecker`                   | Detects bundle updates                                     |
 
 ## Patterns
 
 ### Singleton Pattern
+
 ```typescript
 private static instance: MyService;
 static getInstance(context?: vscode.ExtensionContext): MyService {
@@ -36,6 +37,7 @@ static getInstance(context?: vscode.ExtensionContext): MyService {
 ```
 
 ### Event-Driven
+
 ```typescript
 private _onBundleInstalled = new vscode.EventEmitter<InstalledBundle>();
 readonly onBundleInstalled = this._onBundleInstalled.event;

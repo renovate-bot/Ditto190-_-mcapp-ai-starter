@@ -19,10 +19,6 @@
     "python",
     "go"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/polyglot-test-agent"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/polyglot-test-agent"]
 }

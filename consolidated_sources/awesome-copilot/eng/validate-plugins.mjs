@@ -17,7 +17,9 @@ function validateName(name, folderName) {
     errors.push("name must be between 1 and 50 characters");
   }
   if (!/^[a-z0-9-]+$/.test(name)) {
-    errors.push("name must contain only lowercase letters, numbers, and hyphens");
+    errors.push(
+      "name must contain only lowercase letters, numbers, and hyphens",
+    );
   }
   if (name !== folderName) {
     errors.push(`name "${name}" must match folder name "${folderName}"`);
@@ -67,8 +69,18 @@ function validateKeywords(keywords) {
 function validateSpecPaths(plugin) {
   const errors = [];
   const specs = {
-    agents: { prefix: "./agents/", suffix: ".md", repoDir: "agents", repoSuffix: ".agent.md" },
-    skills: { prefix: "./skills/", suffix: "/", repoDir: "skills", repoFile: "SKILL.md" },
+    agents: {
+      prefix: "./agents/",
+      suffix: ".md",
+      repoDir: "agents",
+      repoSuffix: ".agent.md",
+    },
+    skills: {
+      prefix: "./skills/",
+      suffix: "/",
+      repoDir: "skills",
+      repoFile: "SKILL.md",
+    },
   };
 
   for (const [field, spec] of Object.entries(specs)) {
@@ -97,17 +109,28 @@ function validateSpecPaths(plugin) {
         continue;
       }
       // Validate the source file exists at repo root
-      const basename = p.slice(spec.prefix.length, p.length - spec.suffix.length);
+      const basename = p.slice(
+        spec.prefix.length,
+        p.length - spec.suffix.length,
+      );
       if (field === "skills") {
         const skillDir = path.join(ROOT_FOLDER, spec.repoDir, basename);
         const skillFile = path.join(skillDir, spec.repoFile);
         if (!fs.existsSync(skillFile)) {
-          errors.push(`${field}[${i}] source not found: ${spec.repoDir}/${basename}/SKILL.md`);
+          errors.push(
+            `${field}[${i}] source not found: ${spec.repoDir}/${basename}/SKILL.md`,
+          );
         }
       } else {
-        const srcFile = path.join(ROOT_FOLDER, spec.repoDir, basename + spec.repoSuffix);
+        const srcFile = path.join(
+          ROOT_FOLDER,
+          spec.repoDir,
+          basename + spec.repoSuffix,
+        );
         if (!fs.existsSync(srcFile)) {
-          errors.push(`${field}[${i}] source not found: ${spec.repoDir}/${basename}${spec.repoSuffix}`);
+          errors.push(
+            `${field}[${i}] source not found: ${spec.repoDir}/${basename}${spec.repoSuffix}`,
+          );
         }
       }
     }

@@ -1,14 +1,17 @@
 ---
-applyTo: '**'
+applyTo: "**"
 ---
+
 # Dataverse SDK for Python — API Reference Guide
 
 ## DataverseClient Class
+
 Main client for interacting with Dataverse. Initialize with base URL and Azure credentials.
 
 ### Key Methods
 
 #### create(table_schema_name, records)
+
 Create single or bulk records. Returns list of GUIDs.
 
 ```python
@@ -21,6 +24,7 @@ ids = client.create("account", [{"name": "Contoso"}, {"name": "Fabrikam"}])
 ```
 
 #### get(table_schema_name, record_id=None, select, filter, orderby, top, expand, page_size)
+
 Fetch single record or query multiple with OData options.
 
 ```python
@@ -41,6 +45,7 @@ for batch in client.get(
 ```
 
 #### update(table_schema_name, ids, changes)
+
 Update single or bulk records.
 
 ```python
@@ -55,6 +60,7 @@ client.update("account", [id1, id2], [{"name": "A"}, {"name": "B"}])
 ```
 
 #### delete(table_schema_name, ids, use_bulk_delete=True)
+
 Delete single or bulk records.
 
 ```python
@@ -66,6 +72,7 @@ job_id = client.delete("account", [id1, id2, id3])
 ```
 
 #### create_table(table_schema_name, columns, solution_unique_name=None, primary_column_schema_name=None)
+
 Create custom table.
 
 ```python
@@ -89,6 +96,7 @@ print(info["entity_logical_name"])
 ```
 
 #### create_columns(table_schema_name, columns)
+
 Add columns to existing table.
 
 ```python
@@ -99,6 +107,7 @@ created = client.create_columns("new_MyTable", {
 ```
 
 #### delete_columns(table_schema_name, columns)
+
 Remove columns from table.
 
 ```python
@@ -106,6 +115,7 @@ removed = client.delete_columns("new_MyTable", ["new_Notes", "new_Count"])
 ```
 
 #### delete_table(table_schema_name)
+
 Delete custom table (irreversible).
 
 ```python
@@ -113,6 +123,7 @@ client.delete_table("new_MyTable")
 ```
 
 #### get_table_info(table_schema_name)
+
 Retrieve table metadata.
 
 ```python
@@ -123,6 +134,7 @@ if info:
 ```
 
 #### list_tables()
+
 List all custom tables.
 
 ```python
@@ -132,6 +144,7 @@ for table in tables:
 ```
 
 #### flush_cache(kind)
+
 Clear SDK caches (e.g., picklist labels).
 
 ```python
@@ -139,6 +152,7 @@ removed = client.flush_cache("picklist")
 ```
 
 ## DataverseConfig Class
+
 Configure client behavior (timeouts, retries, language).
 
 ```python
@@ -154,6 +168,7 @@ client = DataverseClient(base_url=url, credential=cred, config=cfg)
 ```
 
 ## Error Handling
+
 Catch `DataverseError` for SDK-specific exceptions. Check `is_transient` to decide retry.
 
 ```python
@@ -169,11 +184,13 @@ except DataverseError as e:
 ```
 
 ## OData Filter Tips
+
 - Use exact logical names (lowercase) in filter expressions
 - Column names in `select` are auto-lowercased
 - Navigation property names in `expand` are case-sensitive
 
 ## References
+
 - API docs: https://learn.microsoft.com/en-us/python/api/powerplatform-dataverse-client/powerplatform.dataverse.client.dataverseclient
 - Config docs: https://learn.microsoft.com/en-us/python/api/powerplatform-dataverse-client/powerplatform.dataverse.core.config.dataverseconfig
 - Errors: https://learn.microsoft.com/en-us/python/api/powerplatform-dataverse-client/powerplatform.dataverse.core.errors

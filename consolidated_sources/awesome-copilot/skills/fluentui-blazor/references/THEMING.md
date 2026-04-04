@@ -12,16 +12,16 @@ The primary theming component. Place it at the root of your app.
 
 ### Parameters
 
-| Parameter | Type | Default | Description |
-|---|---|---|---|
-| `Mode` | `DesignThemeModes` | `System` | `Light`, `Dark`, or `System` (follows OS) |
-| `CustomColor` | `string?` | null | Hex accent color (e.g. `"#0078D4"`) |
-| `OfficeColor` | `OfficeColor?` | null | Preset accent: `Teams`, `Word`, `Excel`, `PowerPoint`, `Outlook`, `OneNote` |
-| `NeutralBaseColor` | `string?` | null | Neutral palette base hex color |
-| `StorageName` | `string?` | null | Persist theme to localStorage under this key |
-| `Direction` | `LocalizationDirection?` | null | `Ltr` or `Rtl` |
-| `OnLuminanceChanged` | `EventCallback<LuminanceChangedEventArgs>` | | Fired when dark/light mode changes |
-| `OnLoaded` | `EventCallback<LoadedEventArgs>` | | Fired when theme is loaded from storage |
+| Parameter            | Type                                       | Default  | Description                                                                 |
+| -------------------- | ------------------------------------------ | -------- | --------------------------------------------------------------------------- |
+| `Mode`               | `DesignThemeModes`                         | `System` | `Light`, `Dark`, or `System` (follows OS)                                   |
+| `CustomColor`        | `string?`                                  | null     | Hex accent color (e.g. `"#0078D4"`)                                         |
+| `OfficeColor`        | `OfficeColor?`                             | null     | Preset accent: `Teams`, `Word`, `Excel`, `PowerPoint`, `Outlook`, `OneNote` |
+| `NeutralBaseColor`   | `string?`                                  | null     | Neutral palette base hex color                                              |
+| `StorageName`        | `string?`                                  | null     | Persist theme to localStorage under this key                                |
+| `Direction`          | `LocalizationDirection?`                   | null     | `Ltr` or `Rtl`                                                              |
+| `OnLuminanceChanged` | `EventCallback<LuminanceChangedEventArgs>` |          | Fired when dark/light mode changes                                          |
+| `OnLoaded`           | `EventCallback<LoadedEventArgs>`           |          | Fired when theme is loaded from storage                                     |
 
 ### Two-way binding
 

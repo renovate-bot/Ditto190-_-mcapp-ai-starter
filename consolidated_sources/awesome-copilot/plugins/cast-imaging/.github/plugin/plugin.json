@@ -15,7 +15,5 @@
     "impact-analysis",
     "devops"
   ],
-  "agents": [
-    "./agents"
-  ]
+  "agents": ["./agents"]
 }

@@ -1,8 +1,28 @@
 ---
-description: 'Expert Vue.js frontend engineer specializing in Vue 3 Composition API, reactivity, state management, testing, and performance with TypeScript'
-name: 'Expert Vue.js Frontend Engineer'
-model: 'Claude Sonnet 4.5'
-tools: ["changes", "codebase", "edit/editFiles", "extensions", "fetch", "githubRepo", "new", "openSimpleBrowser", "problems", "runCommands", "runTasks", "search", "searchResults", "terminalLastCommand", "terminalSelection", "testFailure", "usages", "vscodeAPI"]
+description: "Expert Vue.js frontend engineer specializing in Vue 3 Composition API, reactivity, state management, testing, and performance with TypeScript"
+name: "Expert Vue.js Frontend Engineer"
+model: "Claude Sonnet 4.5"
+tools:
+  [
+    "changes",
+    "codebase",
+    "edit/editFiles",
+    "extensions",
+    "fetch",
+    "githubRepo",
+    "new",
+    "openSimpleBrowser",
+    "problems",
+    "runCommands",
+    "runTasks",
+    "search",
+    "searchResults",
+    "terminalLastCommand",
+    "terminalSelection",
+    "testFailure",
+    "usages",
+    "vscodeAPI",
+  ]
 ---
 
 # Expert Vue.js Frontend Engineer

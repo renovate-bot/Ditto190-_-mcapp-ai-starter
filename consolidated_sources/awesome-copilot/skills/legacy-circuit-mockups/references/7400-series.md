@@ -104,8 +104,8 @@ The **7400-series** is a large family of **digital logic integrated circuits** o
 
 ## 6. Pin Numbering Convention
 
-* DIP packages use **counter-clockwise numbering**
-* Pin 1 identified by notch or dot
+- DIP packages use **counter-clockwise numbering**
+- Pin 1 identified by notch or dot
 
 ```text
        ________
@@ -141,20 +141,20 @@ The **7400-series** is a large family of **digital logic integrated circuits** o
 
 ## 9. Interfacing Notes
 
-* TTL outputs reliably drive TTL inputs
-* CMOS inputs must not float
-* Use **74HCT** when interfacing CMOS with TTL signals
-* Decoupling capacitors (0.1 µF) required per IC
+- TTL outputs reliably drive TTL inputs
+- CMOS inputs must not float
+- Use **74HCT** when interfacing CMOS with TTL signals
+- Decoupling capacitors (0.1 µF) required per IC
 
 ---
 
 ## 10. Typical Retrocomputer Applications
 
-* Address decoding
-* Chip-select generation
-* Bus buffering
-* Clock gating and control
-* State machines
+- Address decoding
+- Chip-select generation
+- Bus buffering
+- Clock gating and control
+- State machines
 
 ---
 
@@ -170,8 +170,8 @@ The **7400-series** is a large family of **digital logic integrated circuits** o
 
 ## 12. References
 
-* <https://www.ti.com/lit/ds/symlink/sn74ls00.pdf>
-* <https://archive.org/details/TTLCookBook>
-* <https://digilent.com/reference/test-and-measurement/analog-discovery-2/hardware-design-guide>
+- <https://www.ti.com/lit/ds/symlink/sn74ls00.pdf>
+- <https://archive.org/details/TTLCookBook>
+- <https://digilent.com/reference/test-and-measurement/analog-discovery-2/hardware-design-guide>
 
 ---

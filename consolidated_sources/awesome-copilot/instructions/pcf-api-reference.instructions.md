@@ -1,6 +1,6 @@
 ---
-description: 'Complete PCF API reference with all interfaces and their availability in model-driven and canvas apps'
-applyTo: '**/*.{ts,tsx,js}'
+description: "Complete PCF API reference with all interfaces and their availability in model-driven and canvas apps"
+applyTo: "**/*.{ts,tsx,js}"
 ---
 
 # Power Apps Component Framework API Reference
@@ -11,35 +11,35 @@ The Power Apps component framework provides a rich set of APIs that enable you t
 
 The following table shows all API interfaces available in the Power Apps component framework, along with their availability in model-driven apps and canvas apps.
 
-| API | Model-driven apps | Canvas apps |
-|-----|------------------|-------------|
-| AttributeMetadata | Yes | No |
-| Client | Yes | Yes |
-| Column | Yes | Yes |
-| ConditionExpression | Yes | Yes |
-| Context | Yes | Yes |
-| DataSet | Yes | Yes |
-| Device | Yes | Yes |
-| Entity | Yes | Yes |
-| Events | Yes | Yes |
-| Factory | Yes | Yes |
-| Filtering | Yes | Yes |
-| Formatting | Yes | Yes |
-| ImageObject | Yes | Yes |
-| Linking | Yes | Yes |
-| Mode | Yes | Yes |
-| Navigation | Yes | Yes |
-| NumberFormattingInfo | Yes | Yes |
-| Paging | Yes | Yes |
-| Popup | Yes | Yes |
-| PopupService | Yes | Yes |
-| PropertyHelper | Yes | Yes |
-| Resources | Yes | Yes |
-| SortStatus | Yes | Yes |
-| StandardControl | Yes | Yes |
-| UserSettings | Yes | Yes |
-| Utility | Yes | Yes |
-| WebApi | Yes | Yes |
+| API                  | Model-driven apps | Canvas apps |
+| -------------------- | ----------------- | ----------- |
+| AttributeMetadata    | Yes               | No          |
+| Client               | Yes               | Yes         |
+| Column               | Yes               | Yes         |
+| ConditionExpression  | Yes               | Yes         |
+| Context              | Yes               | Yes         |
+| DataSet              | Yes               | Yes         |
+| Device               | Yes               | Yes         |
+| Entity               | Yes               | Yes         |
+| Events               | Yes               | Yes         |
+| Factory              | Yes               | Yes         |
+| Filtering            | Yes               | Yes         |
+| Formatting           | Yes               | Yes         |
+| ImageObject          | Yes               | Yes         |
+| Linking              | Yes               | Yes         |
+| Mode                 | Yes               | Yes         |
+| Navigation           | Yes               | Yes         |
+| NumberFormattingInfo | Yes               | Yes         |
+| Paging               | Yes               | Yes         |
+| Popup                | Yes               | Yes         |
+| PopupService         | Yes               | Yes         |
+| PropertyHelper       | Yes               | Yes         |
+| Resources            | Yes               | Yes         |
+| SortStatus           | Yes               | Yes         |
+| StandardControl      | Yes               | Yes         |
+| UserSettings         | Yes               | Yes         |
+| Utility              | Yes               | Yes         |
+| WebApi               | Yes               | Yes         |
 
 ## Key API Namespaces
 
@@ -105,6 +105,7 @@ Some APIs are only available in model-driven apps due to platform differences:
 ### Common Patterns
 
 1. **Accessing Context APIs**
+
    ```typescript
    // In init or updateView
    const userLocale = context.userSettings.locale;
@@ -112,37 +113,41 @@ Some APIs are only available in model-driven apps due to platform differences:
    ```
 
 2. **Working with DataSet**
+
    ```typescript
    // Access dataset records
    const records = context.parameters.dataset.records;
-   
+
    // Get sorted columns
    const sortedColumns = context.parameters.dataset.sorting;
    ```
 
 3. **Using WebApi**
+
    ```typescript
    // Retrieve records
    context.webAPI.retrieveMultipleRecords("account", "?$select=name");
-   
+
    // Create record
    context.webAPI.createRecord("contact", data);
    ```
 
 4. **Device Capabilities**
+
    ```typescript
    // Capture image
    context.device.captureImage();
-   
+
    // Get current position
    context.device.getCurrentPosition();
    ```
 
 5. **Formatting**
+
    ```typescript
    // Format date
    context.formatting.formatDateLong(date);
-   
+
    // Format number
    context.formatting.formatDecimal(value);
    ```

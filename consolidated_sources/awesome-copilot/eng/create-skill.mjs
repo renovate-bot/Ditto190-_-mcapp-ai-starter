@@ -44,7 +44,7 @@ async function createSkillTemplate() {
   try {
     console.log("🎯 Agent Skills Creator");
     console.log(
-      "This tool will help you create a new skill following the Agent Skills specification.\n"
+      "This tool will help you create a new skill following the Agent Skills specification.\n",
     );
 
     const parsed = parseArgs();
@@ -63,7 +63,7 @@ async function createSkillTemplate() {
 
     if (!/^[a-z0-9-]+$/.test(skillName)) {
       console.error(
-        "❌ Skill name must contain only lowercase letters, numbers, and hyphens"
+        "❌ Skill name must contain only lowercase letters, numbers, and hyphens",
       );
       process.exit(1);
     }
@@ -72,8 +72,12 @@ async function createSkillTemplate() {
 
     // Check if folder already exists
     if (fs.existsSync(skillFolder)) {
-      console.log(`⚠️  Skill folder ${skillName} already exists at ${skillFolder}`);
-      console.log("💡 Please choose a different name or edit the existing skill.");
+      console.log(
+        `⚠️  Skill folder ${skillName} already exists at ${skillFolder}`,
+      );
+      console.log(
+        "💡 Please choose a different name or edit the existing skill.",
+      );
       process.exit(1);
     }
 
@@ -81,13 +85,13 @@ async function createSkillTemplate() {
     let description = parsed.description;
     if (!description) {
       description = await prompt(
-        "Description (what this skill does and when to use it): "
+        "Description (what this skill does and when to use it): ",
       );
     }
 
     if (!description || description.trim().length < 10) {
       console.error(
-        "❌ Description is required and must be at least 10 characters (max 1024)"
+        "❌ Description is required and must be at least 10 characters (max 1024)",
       );
       process.exit(1);
     }
@@ -181,31 +185,33 @@ Use this skill when you need to:
 
     // Ask if they want to add bundled assets
     const addAssets = await prompt(
-      "\nWould you like to add bundled assets? (helper scripts, templates, etc.) [y/N]: "
+      "\nWould you like to add bundled assets? (helper scripts, templates, etc.) [y/N]: ",
     );
 
     if (addAssets.toLowerCase() === "y" || addAssets.toLowerCase() === "yes") {
       console.log(
-        "\n📁 You can now add files to the skill folder manually or using your editor."
+        "\n📁 You can now add files to the skill folder manually or using your editor.",
       );
       console.log(
-        "   Common bundled assets: helper scripts, code templates, reference data"
+        "   Common bundled assets: helper scripts, code templates, reference data",
       );
       console.log(`   Skill folder location: ${skillFolder}`);
     }
 
     console.log("\n📝 Next steps:");
     console.log("1. Edit SKILL.md to complete the skill instructions");
-    console.log("2. Add any bundled assets (scripts, templates, data) to the skill folder");
+    console.log(
+      "2. Add any bundled assets (scripts, templates, data) to the skill folder",
+    );
     console.log("3. Run 'npm run skill:validate' to validate the skill");
     console.log("4. Run 'npm run build' to generate documentation");
 
     console.log("\n📖 Resources:");
     console.log(
-      "   - Anthropic Skills Spec: https://agentskills.io/specification"
+      "   - Anthropic Skills Spec: https://agentskills.io/specification",
     );
     console.log(
-      "   - Project Documentation: AGENTS.md (section on Agent Skills)"
+      "   - Project Documentation: AGENTS.md (section on Agent Skills)",
     );
   } catch (error) {
     console.error(`❌ Error creating skill template: ${error.message}`);

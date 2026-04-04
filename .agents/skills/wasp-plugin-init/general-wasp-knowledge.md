@@ -5,12 +5,14 @@ This project uses Wasp, a batteries-included framework for building full-stack w
 ### Start a Wasp Development Session with Full Debugging Visibility
 
 Run the plugin's `start-dev-server` skill with the recommended options to give Claude full debugging visibility:
-  - Start the Wasp development server as a background task to give Claude direct access to server logs and build errors.
-  - Select the Chrome DevTools MCP server to give Claude visibility into browser console logs, UI functionality, network requests, and runtime errors.
+
+- Start the Wasp development server as a background task to give Claude direct access to server logs and build errors.
+- Select the Chrome DevTools MCP server to give Claude visibility into browser console logs, UI functionality, network requests, and runtime errors.
 
 ### Documentation
 
 Always fetch and verify your knowledge against the current Wasp documentation before taking on tasks, answering questions, or doing any development work in a Wasp project as your Wasp knowledge may be outdated:
+
 1. Run `wasp version` to get the current Wasp CLI version.
 2. Find and fetch the correct version of the Wasp documentation maps from the [LLMs.txt index](https://wasp.sh/llms.txt). The map contains raw markdown file GitHub URLs of all documentation sections.
 3. Fetch the guides relevant to the current task or query from those raw.githubusercontent.com URLs directly - do NOT use HTML page URLs.
@@ -18,11 +20,12 @@ Always fetch and verify your knowledge against the current Wasp documentation be
 ### Database Schema and Migrations
 
 Always run database migrations with the `--name` flag:
+
 ```bash
 wasp db migrate-dev --name <descriptive-name>
 ```
 
-Changes to `schema.prisma` are not applied until database migrations are run. 
+Changes to `schema.prisma` are not applied until database migrations are run.
 
 **Track pending migrations:** The dev server warns about this, but users may miss it if Wasp is running as a background task. Continue coding freely but inform users of pending migrations before testing/viewing the app and offer to run migrations when the user wants to.
 
@@ -57,6 +60,7 @@ src/
 ### Starter Templates
 
 Highly recommend that the user chose one of the following templates when scaffolding a new Wasp app:
+
 ```bash
 wasp new my-basic-app -t basic # creates a basic starter app with core Wasp features like auth, operations, pages, etc.
 wasp new my-saas-app -t saas # creates a full-featured SaaS starter app with auth, payments, demo app, AWS S3, and more (OpenSaaS.sh)
@@ -71,6 +75,7 @@ See the **Starter Templates** section in the Wasp documentation for more templat
 ### Advanced Features
 
 Wasp provides **advanced features**:
+
 - custom HTTP API endpoints
 - background (cron) jobs
 - type-safe links
@@ -83,7 +88,9 @@ See the **Advanced Features** section in the Wasp docs for more details.
 ### Wasp Conventions
 
 #### Imports
+
 **In TypeScript files:**
+
 - ✅ `import type { User } from 'wasp/entities'`
 - ✅ `import type { GetTasks } from 'wasp/server/operations'`
 - ✅ `import { getTasks, createTask, useQuery } from 'wasp/client/operations'`
@@ -91,6 +98,7 @@ See the **Advanced Features** section in the Wasp docs for more details.
 - ✅ Local code: relative paths `import { X } from './X'`
 
 **In main.wasp:**
+
 - ✅ `fn: import { getTasks } from "@src/tasks/operations"`
 - ❌ Never relative paths
 
@@ -98,6 +106,7 @@ See the **Advanced Features** section in the Wasp docs for more details.
 See the **TypeScript Config** section in the Wasp docs for more details.
 
 #### Operations
+
 - ⚠️ Call actions directly using `async/await`. DO NOT use Wasp's `useAction` hook unless optimistic updates are needed.
 
 ## Troubleshooting
@@ -107,16 +116,17 @@ See the **TypeScript Config** section in the Wasp docs for more details.
 Always ground your knowledge against the [Wasp documentation](#documentation).
 
 If you don't have full debugging visibility as described in the [Start a Wasp Development Session with Full Debugging Visibility](#start-a-wasp-development-session-with-full-debugging-visibility) section, do the following:
-  1. Insist that the user run the `start-dev-server` skill as described in the [Start a Wasp Development Session with Full Debugging Visibility](#start-a-wasp-development-session-with-full-debugging-visibility) section.
-  2. If the user refuses, ask them to share the output of the `wasp start` command and the browser console logs.
+
+1. Insist that the user run the `start-dev-server` skill as described in the [Start a Wasp Development Session with Full Debugging Visibility](#start-a-wasp-development-session-with-full-debugging-visibility) section.
+2. If the user refuses, ask them to share the output of the `wasp start` command and the browser console logs.
 
 ### Common Mistakes
 
-| Symptom | Fix |
-|---------|-----|
-| `context.entities.X undefined` | Add entity to `entities: [...]` in main.wasp |
-| Schema changes not applying | Run `wasp db migrate-dev --name <descriptive-name>` |
-| Can't login after email signup with `Dummy` email provider | Check the server logs for the verification link or set SKIP_EMAIL_VERIFICATION_IN_DEV=true in .env.server |
-| Types stale/IDE errors after changes | Restart TS server `Cmd+Shift+P`|
-| Wasp not recognizing changes | **WAIT PATIENTLY** as Wasp recompiles the project. Re-run `wasp start` if necessary.|
-| Persistent weirdness after waiting patiently and restarting. | Run `wasp clean` && `wasp start` |
+| Symptom                                                      | Fix                                                                                                       |
+| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| `context.entities.X undefined`                               | Add entity to `entities: [...]` in main.wasp                                                              |
+| Schema changes not applying                                  | Run `wasp db migrate-dev --name <descriptive-name>`                                                       |
+| Can't login after email signup with `Dummy` email provider   | Check the server logs for the verification link or set SKIP_EMAIL_VERIFICATION_IN_DEV=true in .env.server |
+| Types stale/IDE errors after changes                         | Restart TS server `Cmd+Shift+P`                                                                           |
+| Wasp not recognizing changes                                 | **WAIT PATIENTLY** as Wasp recompiles the project. Re-run `wasp start` if necessary.                      |
+| Persistent weirdness after waiting patiently and restarting. | Run `wasp clean` && `wasp start`                                                                          |

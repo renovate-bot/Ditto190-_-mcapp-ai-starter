@@ -1,7 +1,8 @@
 ---
-applyTo: '*'
-description: 'Quarkus and MCP Server with HTTP SSE transport development standards and instructions'
+applyTo: "*"
+description: "Quarkus and MCP Server with HTTP SSE transport development standards and instructions"
 ---
+
 # Quarkus MCP Server
 
 Build MCP servers with Java 21, Quarkus, and HTTP SSE transport.

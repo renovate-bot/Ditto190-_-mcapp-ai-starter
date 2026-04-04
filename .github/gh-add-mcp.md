@@ -4,7 +4,7 @@ This repository helper explains how to register the ContextStream MCP endpoint w
 
 Commands
 
-1) Run the helper script (recommended):
+1. Run the helper script (recommended):
 
    # Make executable (once)
 
@@ -18,7 +18,7 @@ Commands
 
    ./scripts/add-mcp.sh --gh-alias
 
-2) Manual commands
+2. Manual commands
 
 - Bash / macOS / Linux (recommended):
 

@@ -30,6 +30,7 @@ On first launch, Prompt Registry offers a hub selection dialog:
 3. **Skip** — Configure later via commands
 
 When you select a hub:
+
 - Hub is imported and set as active
 - All sources from the hub are automatically synced
 - First available profile is auto-activated
@@ -42,6 +43,7 @@ On first run, the extension automatically adds the **Awesome Copilot** source (`
 ### Auto-Sync on Startup
 
 Each time VS Code starts, the active hub is automatically synchronized:
+
 - Hub configuration is refreshed from its source
 - All sources are synced for latest bundles
 - Tree view updates with current state

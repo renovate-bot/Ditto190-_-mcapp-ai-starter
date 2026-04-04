@@ -1,10 +1,10 @@
 ---
-title: 'Copilot Configuration Basics'
-description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
+title: "Copilot Configuration Basics"
+description: "Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience."
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: '2025-11-28'
-estimatedReadingTime: '10 minutes'
+lastUpdated: "2025-11-28"
+estimatedReadingTime: "10 minutes"
 tags:
   - configuration
   - setup
@@ -27,6 +27,7 @@ GitHub Copilot uses a hierarchical configuration system where settings at differ
 User settings apply globally across all your projects and represent your personal preferences. These are stored in your IDE's user configuration and travel with your IDE profile.
 
 **Common user-level settings**:
+
 - Enable/disable inline suggestions globally
 - Commit message style preferences
 - Default language preferences
@@ -38,6 +39,7 @@ User settings apply globally across all your projects and represent your persona
 Repository settings live in your codebase (typically in `.github/` although some editors allow customising the paths that Copilot will use) and are shared with everyone working on the project. These provide the highest level of customization and override both user and workspace settings.
 
 **Common repository-level customizations**:
+
 - Custom instructions for coding conventions
 - Reusable skills for common tasks
 - Specialized agents for project workflows
@@ -70,6 +72,7 @@ These settings control GitHub Copilot's core behavior across all IDEs:
 Control whether Copilot automatically suggests code completions as you type.
 
 **VS Code example**:
+
 ```json
 {
   "github.copilot.enable": {
@@ -87,6 +90,7 @@ Control whether Copilot automatically suggests code completions as you type.
 Control access to GitHub Copilot Chat in your IDE.
 
 **VS Code example**:
+
 ```json
 {
   "github.copilot.chat.enabled": true
@@ -100,6 +104,7 @@ Control access to GitHub Copilot Chat in your IDE.
 Configure how and when Copilot generates suggestions.
 
 **VS Code example**:
+
 ```json
 {
   "editor.inlineSuggest.enabled": true,
@@ -114,6 +119,7 @@ Configure how and when Copilot generates suggestions.
 Enable or disable Copilot for specific programming languages.
 
 **VS Code example**:
+
 ```json
 {
   "github.copilot.enable": {
@@ -132,15 +138,12 @@ Enable or disable Copilot for specific programming languages.
 Prevent Copilot from accessing specific files or directories.
 
 **VS Code example**:
+
 ```json
 {
   "github.copilot.advanced": {
     "debug.filterLogCategories": [],
-    "excludedFiles": [
-      "**/secrets/**",
-      "**/*.env",
-      "**/node_modules/**"
-    ]
+    "excludedFiles": ["**/secrets/**", "**/*.env", "**/node_modules/**"]
   }
 }
 ```
@@ -175,11 +178,12 @@ A well-organized Copilot configuration directory looks like this:
 Agents are specialized assistants for specific workflows. Place agent definition files in `.github/agents/`.
 
 **Example agent** (`terraform-expert.agent.md`):
+
 ```markdown
 ---
-description: 'Terraform infrastructure-as-code specialist'
-tools: ['filesystem', 'terminal']
-name: 'Terraform Expert'
+description: "Terraform infrastructure-as-code specialist"
+tools: ["filesystem", "terminal"]
+name: "Terraform Expert"
 ---
 
 You are an expert in Terraform and cloud infrastructure.
@@ -193,15 +197,17 @@ Guide users through creating, reviewing, and deploying infrastructure code.
 Skills are self-contained folders that package reusable capabilities. Store them in `.github/skills/`.
 
 **Example skill** (`generate-tests/SKILL.md`):
+
 ```markdown
 ---
 name: generate-tests
-description: 'Generate comprehensive unit tests for a component, covering happy path, edge cases, and error conditions'
+description: "Generate comprehensive unit tests for a component, covering happy path, edge cases, and error conditions"
 ---
 
 # generate-tests
 
 Generate unit tests for the selected code that:
+
 - Cover all public methods and edge cases
 - Use our testing conventions from @testing-utils.ts
 - Include descriptive test names
@@ -218,13 +224,15 @@ Skills can also bundle reference files, templates, and scripts in their folder, 
 Instructions provide persistent context that applies automatically when working in specific files or directories. Store them in `.github/instructions/`.
 
 **Example instruction** (`typescript-conventions.instructions.md`):
+
 ```markdown
 ---
-description: 'TypeScript coding conventions for this project'
-applyTo: '**.ts, **.tsx'
+description: "TypeScript coding conventions for this project"
+applyTo: "**.ts, **.tsx"
 ---
 
 When writing TypeScript code:
+
 - Use strict type checking
 - Prefer interfaces over type aliases for object types
 - Always handle null/undefined with optional chaining
@@ -250,13 +258,15 @@ mkdir -p .github/{agents,skills,instructions}
 Create instructions that capture your team's coding standards:
 
 ```markdown
-<!-- .github/instructions/team-conventions.instructions.md -->
----
+## <!-- .github/instructions/team-conventions.instructions.md -->
+
 description: 'Team coding conventions and best practices'
-applyTo: '**'
+applyTo: '\*\*'
+
 ---
 
 Our team follows these practices:
+
 - Write self-documenting code with clear names
 - Add comments only for complex logic
 - Prefer composition over inheritance
@@ -268,15 +278,17 @@ Our team follows these practices:
 Identify repetitive tasks and create skills for them:
 
 ```markdown
-<!-- .github/skills/add-error-handling/SKILL.md -->
----
+## <!-- .github/skills/add-error-handling/SKILL.md -->
+
 name: add-error-handling
 description: 'Add comprehensive error handling to existing code following team patterns'
+
 ---
 
 # add-error-handling
 
 Add error handling to the selected code:
+
 - Catch and handle potential errors
 - Log errors with context
 - Provide meaningful error messages
@@ -353,11 +365,7 @@ A: Use the `excludedFiles` setting in your IDE configuration or create a workspa
 ```json
 {
   "github.copilot.advanced": {
-    "excludedFiles": [
-      "**/secrets/**",
-      "**/*.env",
-      "**/test/fixtures/**"
-    ]
+    "excludedFiles": ["**/secrets/**", "**/*.env", "**/test/fixtures/**"]
   }
 }
 ```

@@ -38,7 +38,7 @@ interface SkillsData {
   };
 }
 
-type SortOption = 'title' | 'lastUpdated';
+type SortOption = "title" | "lastUpdated";
 
 const resourceType = "skill";
 let allItems: Skill[] = [];
@@ -48,11 +48,11 @@ let currentFilters = {
   categories: [] as string[],
   hasAssets: false,
 };
-let currentSort: SortOption = 'title';
+let currentSort: SortOption = "title";
 
 function sortItems(items: Skill[]): Skill[] {
   return [...items].sort((a, b) => {
-    if (currentSort === 'lastUpdated') {
+    if (currentSort === "lastUpdated") {
       const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
       const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
       return dateB - dateA;
@@ -63,7 +63,7 @@ function sortItems(items: Skill[]): Skill[] {
 
 function applyFiltersAndRender(): void {
   const searchInput = document.getElementById(
-    "search-input"
+    "search-input",
   ) as HTMLInputElement;
   const countEl = document.getElementById("results-count");
   const query = searchInput?.value || "";
@@ -72,7 +72,7 @@ function applyFiltersAndRender(): void {
 
   if (currentFilters.categories.length > 0) {
     results = results.filter((item) =>
-      currentFilters.categories.includes(item.category)
+      currentFilters.categories.includes(item.category),
     );
   }
   if (currentFilters.hasAssets) {
@@ -87,7 +87,7 @@ function applyFiltersAndRender(): void {
     activeFilters.push(
       `${currentFilters.categories.length} categor${
         currentFilters.categories.length > 1 ? "ies" : "y"
-      }`
+      }`,
     );
   if (currentFilters.hasAssets) activeFilters.push("has assets");
   let countText = `${results.length} of ${allItems.length} skills`;
@@ -111,18 +111,18 @@ function renderItems(items: Skill[], query = ""): void {
     .map(
       (item) => `
     <div class="resource-item" data-path="${escapeHtml(
-      item.skillFile
+      item.skillFile,
     )}" data-skill-id="${escapeHtml(item.id)}">
       <div class="resource-info">
         <div class="resource-title">${
           query ? search.highlight(item.title, query) : escapeHtml(item.title)
         }</div>
         <div class="resource-description">${escapeHtml(
-          item.description || "No description"
+          item.description || "No description",
         )}</div>
         <div class="resource-meta">
           <span class="resource-tag tag-category">${escapeHtml(
-            item.category
+            item.category,
           )}</span>
           ${
             item.hasAssets
@@ -132,14 +132,14 @@ function renderItems(items: Skill[], query = ""): void {
               : ""
           }
           <span class="resource-tag">${item.files.length} file${
-        item.files.length === 1 ? "" : "s"
-      }</span>
+            item.files.length === 1 ? "" : "s"
+          }</span>
           ${getLastUpdatedHtml(item.lastUpdated)}
         </div>
       </div>
       <div class="resource-actions">
         <button class="btn btn-primary download-skill-btn" data-skill-id="${escapeHtml(
-          item.id
+          item.id,
         )}" title="Download as ZIP">
           <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
             <path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/>
@@ -148,11 +148,11 @@ function renderItems(items: Skill[], query = ""): void {
           Download
         </button>
         <a href="${getGitHubUrl(
-          item.path
+          item.path,
         )}" class="btn btn-secondary" target="_blank" onclick="event.stopPropagation()" title="View on GitHub">GitHub</a>
       </div>
     </div>
-  `
+  `,
     )
     .join("");
 
@@ -178,7 +178,7 @@ function renderItems(items: Skill[], query = ""): void {
 
 async function downloadSkill(
   skillId: string,
-  btn: HTMLButtonElement
+  btn: HTMLButtonElement,
 ): Promise<void> {
   const skill = allItems.find((item) => item.id === skillId);
   if (!skill || !skill.files || skill.files.length === 0) {
@@ -249,13 +249,15 @@ async function downloadSkill(
 export async function initSkillsPage(): Promise<void> {
   const list = document.getElementById("resource-list");
   const searchInput = document.getElementById(
-    "search-input"
+    "search-input",
   ) as HTMLInputElement;
   const hasAssetsCheckbox = document.getElementById(
-    "filter-has-assets"
+    "filter-has-assets",
   ) as HTMLInputElement;
   const clearFiltersBtn = document.getElementById("clear-filters");
-  const sortSelect = document.getElementById("sort-select") as HTMLSelectElement;
+  const sortSelect = document.getElementById(
+    "sort-select",
+  ) as HTMLSelectElement;
 
   const data = await fetchData<SkillsData>("skills.json");
   if (!data || !data.items) {
@@ -275,7 +277,7 @@ export async function initSkillsPage(): Promise<void> {
     data.filters.categories.map((c) => ({ value: c, label: c })),
     "value",
     "label",
-    true
+    true,
   );
   document.getElementById("filter-category")?.addEventListener("change", () => {
     currentFilters.categories = getChoicesValues(categorySelect);
@@ -290,7 +292,7 @@ export async function initSkillsPage(): Promise<void> {
   applyFiltersAndRender();
   searchInput?.addEventListener(
     "input",
-    debounce(() => applyFiltersAndRender(), 200)
+    debounce(() => applyFiltersAndRender(), 200),
   );
 
   hasAssetsCheckbox?.addEventListener("change", () => {
@@ -300,7 +302,7 @@ export async function initSkillsPage(): Promise<void> {
 
   clearFiltersBtn?.addEventListener("click", () => {
     currentFilters = { categories: [], hasAssets: false };
-    currentSort = 'title';
+    currentSort = "title";
     categorySelect.removeActiveItems();
     if (hasAssetsCheckbox) hasAssetsCheckbox.checked = false;
     if (searchInput) searchInput.value = "";

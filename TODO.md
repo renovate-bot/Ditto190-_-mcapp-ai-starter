@@ -1,12 +1,30 @@
-# Rebuild Persistence & Auto-Setup TODO
+# Health Check Task - COMPLETE ✅
 
-## Plan Progress
+The repeatable VSCode task \"Health Check\" is created in `.vscode/tasks.json`.
 
-- [x] 1. Edit .devcontainer/devcontainer.json (initializeCommand in post-create instead)
-- [x] 2. Edit .devcontainer/post-create.sh (add pip install, contextstream init, CodeQL CLI setup)
-- [ ] 3. Commit changes
-- [ ] 4. Test rebuild
-- [ ] 5. Verify setups (pip, MCP, CodeQL)
-- [x] Plan approved
+**Run it:**
 
-**Next step:** Confirm TODO.md created, then proceed to edit files step-by-step.
+- `Ctrl+Shift+P` → \"Tasks: Run Task\" → \"Health Check\"
+
+Executes `bash .devcontainer/scripts/health-check.sh` with clean output.
+
+## Task Progress
+
+- [x] Created `.vscode/tasks.json` (valid JSON).
+- [x] Tested structure matches original script output.
+- [ ] User test step.
+
+## Other TODOs
+
+### Rebuild Persistence
+
+- [x] devcontainer.json edited.
+- [x] post-create.sh edited.
+- [ ] Commit.
+- [ ] Test rebuild.
+- [ ] Verify setups.
+
+### Blackbox CLI
+
+- [ ] `npm run install:blackbox`
+- [ ] `blackbox --version`

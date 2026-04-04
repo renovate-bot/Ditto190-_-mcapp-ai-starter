@@ -1,10 +1,20 @@
 /**
  * Agents page functionality
  */
-import { createChoices, getChoicesValues, type Choices } from '../choices';
-import { FuzzySearch, type SearchItem } from '../search';
-import { fetchData, debounce, escapeHtml, getGitHubUrl, getInstallDropdownHtml, setupDropdownCloseHandlers, getActionButtonsHtml, setupActionHandlers, getLastUpdatedHtml } from '../utils';
-import { setupModal, openFileModal } from '../modal';
+import { createChoices, getChoicesValues, type Choices } from "../choices";
+import { FuzzySearch, type SearchItem } from "../search";
+import {
+  fetchData,
+  debounce,
+  escapeHtml,
+  getGitHubUrl,
+  getInstallDropdownHtml,
+  setupDropdownCloseHandlers,
+  getActionButtonsHtml,
+  setupActionHandlers,
+  getLastUpdatedHtml,
+} from "../utils";
+import { setupModal, openFileModal } from "../modal";
 
 interface Agent extends SearchItem {
   path: string;
@@ -22,14 +32,14 @@ interface AgentsData {
   };
 }
 
-type SortOption = 'title' | 'lastUpdated';
+type SortOption = "title" | "lastUpdated";
 
-const resourceType = 'agent';
+const resourceType = "agent";
 let allItems: Agent[] = [];
 let search = new FuzzySearch<Agent>();
 let modelSelect: Choices;
 let toolSelect: Choices;
-let currentSort: SortOption = 'title';
+let currentSort: SortOption = "title";
 
 let currentFilters = {
   models: [] as string[],
@@ -39,7 +49,7 @@ let currentFilters = {
 
 function sortItems(items: Agent[]): Agent[] {
   return [...items].sort((a, b) => {
-    if (currentSort === 'lastUpdated') {
+    if (currentSort === "lastUpdated") {
       // Sort by last updated (newest first), with null/undefined at end
       const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
       const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
@@ -51,15 +61,17 @@ function sortItems(items: Agent[]): Agent[] {
 }
 
 function applyFiltersAndRender(): void {
-  const searchInput = document.getElementById('search-input') as HTMLInputElement;
-  const countEl = document.getElementById('results-count');
-  const query = searchInput?.value || '';
+  const searchInput = document.getElementById(
+    "search-input",
+  ) as HTMLInputElement;
+  const countEl = document.getElementById("results-count");
+  const query = searchInput?.value || "";
 
   let results = query ? search.search(query) : [...allItems];
 
   if (currentFilters.models.length > 0) {
-    results = results.filter(item => {
-      if (currentFilters.models.includes('(none)') && !item.model) {
+    results = results.filter((item) => {
+      if (currentFilters.models.includes("(none)") && !item.model) {
         return true;
       }
       return item.model && currentFilters.models.includes(item.model);
@@ -67,13 +79,13 @@ function applyFiltersAndRender(): void {
   }
 
   if (currentFilters.tools.length > 0) {
-    results = results.filter(item =>
-      item.tools?.some(tool => currentFilters.tools.includes(tool))
+    results = results.filter((item) =>
+      item.tools?.some((tool) => currentFilters.tools.includes(tool)),
     );
   }
 
   if (currentFilters.hasHandoffs) {
-    results = results.filter(item => item.hasHandoffs);
+    results = results.filter((item) => item.hasHandoffs);
   }
 
   // Apply sorting
@@ -82,19 +94,21 @@ function applyFiltersAndRender(): void {
   renderItems(results, query);
 
   const activeFilters: string[] = [];
-  if (currentFilters.models.length > 0) activeFilters.push(`models: ${currentFilters.models.length}`);
-  if (currentFilters.tools.length > 0) activeFilters.push(`tools: ${currentFilters.tools.length}`);
-  if (currentFilters.hasHandoffs) activeFilters.push('has handoffs');
+  if (currentFilters.models.length > 0)
+    activeFilters.push(`models: ${currentFilters.models.length}`);
+  if (currentFilters.tools.length > 0)
+    activeFilters.push(`tools: ${currentFilters.tools.length}`);
+  if (currentFilters.hasHandoffs) activeFilters.push("has handoffs");
 
   let countText = `${results.length} of ${allItems.length} agents`;
   if (activeFilters.length > 0) {
-    countText += ` (filtered by ${activeFilters.join(', ')})`;
+    countText += ` (filtered by ${activeFilters.join(", ")})`;
   }
   if (countEl) countEl.textContent = countText;
 }
 
-function renderItems(items: Agent[], query = ''): void {
-  const list = document.getElementById('resource-list');
+function renderItems(items: Agent[], query = ""): void {
+  const list = document.getElementById("resource-list");
   if (!list) return;
 
   if (items.length === 0) {
@@ -107,16 +121,23 @@ function renderItems(items: Agent[], query = ''): void {
     return;
   }
 
-  list.innerHTML = items.map(item => `
+  list.innerHTML = items
+    .map(
+      (item) => `
     <div class="resource-item" data-path="${escapeHtml(item.path)}">
       <div class="resource-info">
         <div class="resource-title">${query ? search.highlight(item.title, query) : escapeHtml(item.title)}</div>
-        <div class="resource-description">${escapeHtml(item.description || 'No description')}</div>
+        <div class="resource-description">${escapeHtml(item.description || "No description")}</div>
         <div class="resource-meta">
-          ${item.model ? `<span class="resource-tag tag-model">${escapeHtml(item.model)}</span>` : ''}
-          ${item.tools?.slice(0, 3).map(t => `<span class="resource-tag">${escapeHtml(t)}</span>`).join('') || ''}
-          ${item.tools && item.tools.length > 3 ? `<span class="resource-tag">+${item.tools.length - 3} more</span>` : ''}
-          ${item.hasHandoffs ? `<span class="resource-tag tag-handoffs">handoffs</span>` : ''}
+          ${item.model ? `<span class="resource-tag tag-model">${escapeHtml(item.model)}</span>` : ""}
+          ${
+            item.tools
+              ?.slice(0, 3)
+              .map((t) => `<span class="resource-tag">${escapeHtml(t)}</span>`)
+              .join("") || ""
+          }
+          ${item.tools && item.tools.length > 3 ? `<span class="resource-tag">+${item.tools.length - 3} more</span>` : ""}
+          ${item.hasHandoffs ? `<span class="resource-tag tag-handoffs">handoffs</span>` : ""}
           ${getLastUpdatedHtml(item.lastUpdated)}
         </div>
       </div>
@@ -128,11 +149,13 @@ function renderItems(items: Agent[], query = ''): void {
         </a>
       </div>
     </div>
-  `).join('');
+  `,
+    )
+    .join("");
 
   // Add click handlers
-  list.querySelectorAll('.resource-item').forEach(el => {
-    el.addEventListener('click', () => {
+  list.querySelectorAll(".resource-item").forEach((el) => {
+    el.addEventListener("click", () => {
       const path = (el as HTMLElement).dataset.path;
       if (path) openFileModal(path, resourceType);
     });
@@ -140,15 +163,23 @@ function renderItems(items: Agent[], query = ''): void {
 }
 
 export async function initAgentsPage(): Promise<void> {
-  const list = document.getElementById('resource-list');
-  const searchInput = document.getElementById('search-input') as HTMLInputElement;
-  const handoffsCheckbox = document.getElementById('filter-handoffs') as HTMLInputElement;
-  const clearFiltersBtn = document.getElementById('clear-filters');
-  const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
+  const list = document.getElementById("resource-list");
+  const searchInput = document.getElementById(
+    "search-input",
+  ) as HTMLInputElement;
+  const handoffsCheckbox = document.getElementById(
+    "filter-handoffs",
+  ) as HTMLInputElement;
+  const clearFiltersBtn = document.getElementById("clear-filters");
+  const sortSelect = document.getElementById(
+    "sort-select",
+  ) as HTMLSelectElement;
 
-  const data = await fetchData<AgentsData>('agents.json');
+  const data = await fetchData<AgentsData>("agents.json");
   if (!data || !data.items) {
-    if (list) list.innerHTML = '<div class="empty-state"><h3>Failed to load data</h3></div>';
+    if (list)
+      list.innerHTML =
+        '<div class="empty-state"><h3>Failed to load data</h3></div>';
     return;
   }
 
@@ -156,44 +187,59 @@ export async function initAgentsPage(): Promise<void> {
   search.setItems(allItems);
 
   // Initialize Choices.js for model filter
-  modelSelect = createChoices('#filter-model', { placeholderValue: 'All Models' });
-  modelSelect.setChoices(data.filters.models.map(m => ({ value: m, label: m })), 'value', 'label', true);
-  document.getElementById('filter-model')?.addEventListener('change', () => {
+  modelSelect = createChoices("#filter-model", {
+    placeholderValue: "All Models",
+  });
+  modelSelect.setChoices(
+    data.filters.models.map((m) => ({ value: m, label: m })),
+    "value",
+    "label",
+    true,
+  );
+  document.getElementById("filter-model")?.addEventListener("change", () => {
     currentFilters.models = getChoicesValues(modelSelect);
     applyFiltersAndRender();
   });
 
   // Initialize Choices.js for tool filter
-  toolSelect = createChoices('#filter-tool', { placeholderValue: 'All Tools' });
-  toolSelect.setChoices(data.filters.tools.map(t => ({ value: t, label: t })), 'value', 'label', true);
-  document.getElementById('filter-tool')?.addEventListener('change', () => {
+  toolSelect = createChoices("#filter-tool", { placeholderValue: "All Tools" });
+  toolSelect.setChoices(
+    data.filters.tools.map((t) => ({ value: t, label: t })),
+    "value",
+    "label",
+    true,
+  );
+  document.getElementById("filter-tool")?.addEventListener("change", () => {
     currentFilters.tools = getChoicesValues(toolSelect);
     applyFiltersAndRender();
   });
 
   // Initialize sort select
-  sortSelect?.addEventListener('change', () => {
+  sortSelect?.addEventListener("change", () => {
     currentSort = sortSelect.value as SortOption;
     applyFiltersAndRender();
   });
 
   applyFiltersAndRender();
 
-  searchInput?.addEventListener('input', debounce(() => applyFiltersAndRender(), 200));
+  searchInput?.addEventListener(
+    "input",
+    debounce(() => applyFiltersAndRender(), 200),
+  );
 
-  handoffsCheckbox?.addEventListener('change', () => {
+  handoffsCheckbox?.addEventListener("change", () => {
     currentFilters.hasHandoffs = handoffsCheckbox.checked;
     applyFiltersAndRender();
   });
 
-  clearFiltersBtn?.addEventListener('click', () => {
+  clearFiltersBtn?.addEventListener("click", () => {
     currentFilters = { models: [], tools: [], hasHandoffs: false };
-    currentSort = 'title';
+    currentSort = "title";
     modelSelect.removeActiveItems();
     toolSelect.removeActiveItems();
     if (handoffsCheckbox) handoffsCheckbox.checked = false;
-    if (searchInput) searchInput.value = '';
-    if (sortSelect) sortSelect.value = 'title';
+    if (searchInput) searchInput.value = "";
+    if (sortSelect) sortSelect.value = "title";
     applyFiltersAndRender();
   });
 
@@ -203,4 +249,4 @@ export async function initAgentsPage(): Promise<void> {
 }
 
 // Auto-initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', initAgentsPage);
+document.addEventListener("DOMContentLoaded", initAgentsPage);

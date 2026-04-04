@@ -13,6 +13,7 @@ This reference documents common errors during preflight validation and how to ha
 ### Not Logged In (Azure CLI)
 
 **Detection:**
+
 ```
 ERROR: Please run 'az login' to setup account.
 ERROR: AADSTS700082: The refresh token has expired
@@ -21,12 +22,14 @@ ERROR: AADSTS700082: The refresh token has expired
 **Exit Codes:** Non-zero
 
 **Handling:**
+
 1. Note the error in the report
 2. Include remediation steps
 3. Skip remaining Azure CLI commands
 4. Continue with other validation steps if possible
 
 **Report Entry:**
+
 ```markdown
 #### ❌ Azure CLI Authentication Required
 
@@ -40,16 +43,19 @@ ERROR: AADSTS700082: The refresh token has expired
 ### Not Logged In (azd)
 
 **Detection:**
+
 ```
 ERROR: not logged in, run `azd auth login` to login
 ```
 
 **Handling:**
+
 1. Note the error in the report
 2. Skip azd commands
 3. Suggest `azd auth login`
 
 **Report Entry:**
+
 ```markdown
 #### ❌ Azure Developer CLI Authentication Required
 
@@ -62,12 +68,14 @@ ERROR: not logged in, run `azd auth login` to login
 ### Token Expired
 
 **Detection:**
+
 ```
 AADSTS700024: Client assertion is not within its valid time range
 AADSTS50173: The provided grant has expired
 ```
 
 **Handling:**
+
 1. Note the error
 2. Suggest re-authentication
 3. Skip Azure operations
@@ -79,17 +87,20 @@ AADSTS50173: The provided grant has expired
 ### Insufficient RBAC Permissions
 
 **Detection:**
+
 ```
-AuthorizationFailed: The client '...' with object id '...' does not have authorization 
+AuthorizationFailed: The client '...' with object id '...' does not have authorization
 to perform action '...' over scope '...'
 ```
 
 **Handling:**
+
 1. **First attempt:** Retry with `--validation-level ProviderNoRbac`
 2. Note the permission limitation in the report
 3. If ProviderNoRbac also fails, report the specific missing permission
 
 **Report Entry:**
+
 ```markdown
 #### ⚠️ Limited Permission Validation
 
@@ -103,17 +114,20 @@ to perform action '...' over scope '...'
 ### Resource Group Not Found
 
 **Detection:**
+
 ```
 ResourceGroupNotFound: Resource group 'xxx' could not be found.
 ```
 
 **Handling:**
+
 1. Note in report
 2. Suggest creating the resource group
 3. Skip what-if for this scope
 
 **Report Entry:**
-```markdown
+
+````markdown
 #### ❌ Resource Group Does Not Exist
 
 - **Severity:** Error
@@ -123,14 +137,18 @@ ResourceGroupNotFound: Resource group 'xxx' could not be found.
   ```bash
   az group create --name my-rg --location eastus
   ```
+````
+
 ```
 
 ### Subscription Access Denied
 
 **Detection:**
 ```
+
 SubscriptionNotFound: The subscription 'xxx' could not be found.
 InvalidSubscriptionId: Subscription '...' is not valid
+
 ```
 
 **Handling:**
@@ -146,9 +164,11 @@ InvalidSubscriptionId: Subscription '...' is not valid
 
 **Detection:**
 ```
+
 /path/main.bicep(22,51) : Error BCP064: Found unexpected tokens
 /path/main.bicep(10,5) : Error BCP018: Expected the "=" character at this location
-```
+
+````
 
 **Handling:**
 1. Parse error output for line/column numbers
@@ -166,17 +186,19 @@ InvalidSubscriptionId: Subscription '...' is not valid
 - **Message:** Found unexpected tokens in interpolated expression
 - **Remediation:** Check the string interpolation syntax at line 22
 - **Documentation:** https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/diagnostics/bcp064
-```
+````
 
 ### Module Not Found
 
 **Detection:**
+
 ```
 Error BCP091: An error occurred reading file. Could not find file '...'
 Error BCP190: The module is not valid
 ```
 
 **Handling:**
+
 1. Note missing module
 2. Check if `bicep restore` is needed
 3. Verify module path
@@ -184,12 +206,14 @@ Error BCP190: The module is not valid
 ### Parameter File Issues
 
 **Detection:**
+
 ```
 Error BCP032: The value must be a compile-time constant
 Error BCP035: The specified object is missing required properties
 ```
 
 **Handling:**
+
 1. Note parameter issues
 2. Indicate which parameters are problematic
 3. Suggest fixes
@@ -201,19 +225,24 @@ Error BCP035: The specified object is missing required properties
 ### Azure CLI Not Found
 
 **Detection:**
+
 ```
 'az' is not recognized as an internal or external command
 az: command not found
 ```
 
 **Handling:**
+
 1. Note in report
 2. Provide installation instructions.
-  - If available use the Azure MCP `extension_cli_install` tool to get installation instructions.
-  - Otherwise look for instructions at https://learn.microsoft.com/en-us/cli/azure/install-azure-cli.
+
+- If available use the Azure MCP `extension_cli_install` tool to get installation instructions.
+- Otherwise look for instructions at https://learn.microsoft.com/en-us/cli/azure/install-azure-cli.
+
 3. Skip az commands
 
 **Report Entry:**
+
 ```markdown
 #### ⏭️ Azure CLI Not Installed
 
@@ -227,17 +256,20 @@ az: command not found
 ### Bicep CLI Not Found
 
 **Detection:**
+
 ```
 'bicep' is not recognized as an internal or external command
 bicep: command not found
 ```
 
 **Handling:**
+
 1. Note in report
 2. Azure CLI may have built-in Bicep - try `az bicep build`
 3. Provide installation link
 
 **Report Entry:**
+
 ```markdown
 #### ⏭️ Bicep CLI Not Installed
 
@@ -251,12 +283,14 @@ bicep: command not found
 ### Azure Developer CLI Not Found
 
 **Detection:**
+
 ```
 'azd' is not recognized as an internal or external command
 azd: command not found
 ```
 
 **Handling:**
+
 1. If `azure.yaml` exists, this is required
 2. Fall back to az CLI commands if possible
 3. Note in report
@@ -268,11 +302,13 @@ azd: command not found
 ### Nested Template Limits
 
 **Detection:**
+
 ```
 The deployment exceeded the nested template limit of 500
 ```
 
 **Handling:**
+
 1. Note as warning (not error)
 2. Explain affected resources show as "Ignore"
 3. Suggest manual review
@@ -280,11 +316,13 @@ The deployment exceeded the nested template limit of 500
 ### Template Link Not Supported
 
 **Detection:**
+
 ```
 templateLink references in nested deployments won't be visible in what-if
 ```
 
 **Handling:**
+
 1. Note as warning
 2. Explain limitation
 3. Resources will be verified during actual deployment
@@ -294,6 +332,7 @@ templateLink references in nested deployments won't be visible in what-if
 **Detection:** Properties showing function names like `[utcNow()]` instead of values
 
 **Handling:**
+
 1. Note as informational
 2. Explain these are evaluated at deployment time
 3. Not an error
@@ -305,12 +344,14 @@ templateLink references in nested deployments won't be visible in what-if
 ### Timeout
 
 **Detection:**
+
 ```
 Connection timed out
 Request timed out
 ```
 
 **Handling:**
+
 1. Suggest retry
 2. Check network connectivity
 3. May indicate Azure service issues
@@ -318,12 +359,14 @@ Request timed out
 ### SSL/TLS Errors
 
 **Detection:**
+
 ```
 SSL: CERTIFICATE_VERIFY_FAILED
 unable to get local issuer certificate
 ```
 
 **Handling:**
+
 1. Note in report
 2. May indicate proxy or corporate firewall
 3. Suggest checking SSL settings
@@ -358,6 +401,7 @@ When multiple errors occur, aggregate them logically:
 4. **Provide summary count** at the top
 
 Example:
+
 ```markdown
 ## Issues
 
@@ -379,14 +423,14 @@ Found **3 errors** and **2 warnings**
 
 ## Exit Code Reference
 
-| Tool | Exit Code | Meaning |
-|------|-----------|---------|
-| az | 0 | Success |
-| az | 1 | General error |
-| az | 2 | Command not found |
-| az | 3 | Required argument missing |
-| azd | 0 | Success |
-| azd | 1 | Error |
-| bicep | 0 | Build succeeded |
-| bicep | 1 | Build failed (errors) |
-| bicep | 2 | Build succeeded with warnings |
+| Tool  | Exit Code | Meaning                       |
+| ----- | --------- | ----------------------------- |
+| az    | 0         | Success                       |
+| az    | 1         | General error                 |
+| az    | 2         | Command not found             |
+| az    | 3         | Required argument missing     |
+| azd   | 0         | Success                       |
+| azd   | 1         | Error                         |
+| bicep | 0         | Build succeeded               |
+| bicep | 1         | Build failed (errors)         |
+| bicep | 2         | Build succeeded with warnings |

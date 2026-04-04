@@ -2,9 +2,9 @@
 
 ## Overview
 
-This document specifies how to **emulate the AT28C256 (32 KB Parallel EEPROM)** in a 6502-based system emulator. The goal is *behavioral accuracy* suitable for SBCs, monitors, and real ROM images, not just generic file-backed storage.
+This document specifies how to **emulate the AT28C256 (32 KB Parallel EEPROM)** in a 6502-based system emulator. The goal is _behavioral accuracy_ suitable for SBCs, monitors, and real ROM images, not just generic file-backed storage.
 
-The AT28C256 is commonly used as **ROM** in 6502 systems, but it is *electrically writable* and has timing behaviors that differ from SRAM.
+The AT28C256 is commonly used as **ROM** in 6502 systems, but it is _electrically writable_ and has timing behaviors that differ from SRAM.
 
 ---
 
@@ -47,9 +47,9 @@ A read occurs when:
 
 ### Read Rules
 
-* Address must be stable before `/OE` is asserted
-* Data appears on D0-D7 after access time (ignored in most emulators)
-* Output is **high-impedance** when `/OE = 1` or `/CE = 1`
+- Address must be stable before `/OE` is asserted
+- Data appears on D0-D7 after access time (ignored in most emulators)
+- Output is **high-impedance** when `/OE = 1` or `/CE = 1`
 
 ### Emulator Behavior
 
@@ -75,9 +75,9 @@ A write occurs when:
 
 ### Important EEPROM Characteristics
 
-* Writes are **not instantaneous**
-* Each write triggers an **internal programming cycle**
-* During programming, reads may return undefined data
+- Writes are **not instantaneous**
+- Each write triggers an **internal programming cycle**
+- During programming, reads may return undefined data
 
 ---
 
@@ -95,23 +95,23 @@ A write occurs when:
 
 #### Option A - Instant Writes (Common)
 
-* Write immediately updates memory
-* No busy state
-* Recommended for early emulators
+- Write immediately updates memory
+- No busy state
+- Recommended for early emulators
 
 #### Option B - Cycle-Based Busy State (Advanced)
 
-* Track a "write in progress" timer
-* Reads during write return last value or `0xFF`
-* Writes ignored until cycle completes
+- Track a "write in progress" timer
+- Reads during write return last value or `0xFF`
+- Writes ignored until cycle completes
 
 ---
 
 ## Page Write Emulation (Optional)
 
-* Page size: **64 bytes**
-* Writes within same page before timeout commit together
-* Crossing page boundary wraps within page (hardware quirk)
+- Page size: **64 bytes**
+- Writes within same page before timeout commit together
+- Crossing page boundary wraps within page (hardware quirk)
 
 Simplified rule:
 
@@ -128,21 +128,21 @@ Some systems treat EEPROM as **ROM-only** after programming.
 
 Emulator may support:
 
-* Read-only mode (writes ignored)
-* Programmable mode (writes allowed)
-* Runtime toggle (simulates programming jumper)
+- Read-only mode (writes ignored)
+- Programmable mode (writes allowed)
+- Runtime toggle (simulates programming jumper)
 
 ---
 
 ## Power-Up State
 
-* EEPROM retains contents
-* No undefined data on power-up
+- EEPROM retains contents
+- No undefined data on power-up
 
 Emulator should:
 
-* Load contents from image file
-* Preserve data across resets
+- Load contents from image file
+- Preserve data across resets
 
 ---
 
@@ -156,8 +156,8 @@ Emulator should:
 
 Emulator may:
 
-* Prioritize write
-* Or flag invalid state
+- Prioritize write
+- Or flag invalid state
 
 ---
 
@@ -218,20 +218,20 @@ void eeprom_write(addr, value);
 
 ## Testing Checklist
 
-* Reset vector fetch
-* ROM reads under normal execution
-* Writes ignored in read-only mode
-* Correct address masking (15 bits)
-* No bus drive when disabled
+- Reset vector fetch
+- ROM reads under normal execution
+- Writes ignored in read-only mode
+- Correct address masking (15 bits)
+- No bus drive when disabled
 
 ---
 
 ## References
 
-* [AT28C256 Datasheet (Microchip)](https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/AT28C256-Industrial-Grade-256-Kbit-Paged-Parallel-EEPROM-Data-Sheet-DS20006386.pdf)
-* [Ben Eater 6502 Computer Series](https://eater.net/6502)
-  * <https://www.youtube.com/watch?v=oO8_2JJV0B4>
-* [6502.org Memory Mapping Notes](https://6502.co.uk/lesson/memory-map)
+- [AT28C256 Datasheet (Microchip)](https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/AT28C256-Industrial-Grade-256-Kbit-Paged-Parallel-EEPROM-Data-Sheet-DS20006386.pdf)
+- [Ben Eater 6502 Computer Series](https://eater.net/6502)
+  - <https://www.youtube.com/watch?v=oO8_2JJV0B4>
+- [6502.org Memory Mapping Notes](https://6502.co.uk/lesson/memory-map)
 
 ---
 
@@ -239,7 +239,7 @@ void eeprom_write(addr, value);
 
 This specification intentionally mirrors **real hardware quirks** while allowing emulator authors to choose between simplicity and accuracy. It is suitable for:
 
-* Educational emulators
-* SBC simulation
-* ROM development workflows
-* Integration with 6502 + 6522 + SRAM emulation
+- Educational emulators
+- SBC simulation
+- ROM development workflows
+- Integration with 6502 + 6522 + SRAM emulation

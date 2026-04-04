@@ -41,14 +41,17 @@ When reviewing code, focus on:
 Provide feedback in this structure:
 
 **Strengths:**
+
 - List what the code does well
 
 **Issues Found:**
+
 - Critical: Issues that must be fixed
 - Minor: Suggestions for improvement
 - Nit: Style or preference items
 
 **Recommendations:**
+
 - Actionable steps to improve the code
 
 Be constructive, specific, and provide code examples when suggesting improvements.

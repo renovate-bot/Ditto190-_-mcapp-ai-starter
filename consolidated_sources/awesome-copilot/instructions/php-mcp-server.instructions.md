@@ -1,6 +1,6 @@
 ---
-description: 'Best practices for building Model Context Protocol servers in PHP using the official PHP SDK with attribute-based discovery and multiple transport options'
-applyTo: '**/*.php'
+description: "Best practices for building Model Context Protocol servers in PHP using the official PHP SDK with attribute-based discovery and multiple transport options"
+applyTo: "**/*.php"
 ---
 
 # PHP MCP Server Development Best Practices
@@ -41,21 +41,21 @@ my-mcp-server/
 
 ```json
 {
-    "name": "your-org/mcp-server",
-    "description": "MCP Server for...",
-    "type": "project",
-    "require": {
-        "php": "^8.2",
-        "mcp/sdk": "^0.1"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^10.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
+  "name": "your-org/mcp-server",
+  "description": "MCP Server for...",
+  "type": "project",
+  "require": {
+    "php": "^8.2",
+    "mcp/sdk": "^0.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
     }
+  }
 }
 ```
 
@@ -138,7 +138,7 @@ class Calculator
 {
     /**
      * Adds two numbers together.
-     * 
+     *
      * @param int $a The first number
      * @param int $b The second number
      * @return int The sum of the two numbers
@@ -167,7 +167,7 @@ class FileManager
         if (!file_exists($path)) {
             throw new \InvalidArgumentException("File not found: {$path}");
         }
-        
+
         return file_get_contents($path);
     }
 }
@@ -184,10 +184,10 @@ class UserManager
     public function createUser(
         #[Schema(format: 'email')]
         string $email,
-        
+
         #[Schema(minimum: 18, maximum: 120)]
         int $age,
-        
+
         #[Schema(
             pattern: '^[A-Z][a-z]+$',
             description: 'Capitalized first name'
@@ -221,12 +221,12 @@ class ReportGenerator
             new TextContent('Summary: All checks passed.')
         ];
     }
-    
+
     #[McpTool]
     public function getChart(string $chartType): ImageContent
     {
         $imageData = $this->generateChartImage($chartType);
-        
+
         return new ImageContent(
             data: base64_encode($imageData),
             mimeType: 'image/png'
@@ -245,7 +245,7 @@ public function performCalculation(float $a, float $b, string $operation): float
         'add' => $a + $b,
         'subtract' => $a - $b,
         'multiply' => $a * $b,
-        'divide' => $b != 0 ? $a / $b : 
+        'divide' => $b != 0 ? $a / $b :
             throw new \InvalidArgumentException('Division by zero'),
         default => throw new \InvalidArgumentException('Invalid operation')
     };
@@ -303,7 +303,7 @@ class UserProvider
     public function getUserProfile(string $userId, string $section): array
     {
         // Variable order must match URI template order
-        return $this->users[$userId][$section] ?? 
+        return $this->users[$userId][$section] ??
             throw new \InvalidArgumentException("Profile section not found");
     }
 }
@@ -325,12 +325,12 @@ class FileProvider
             text: file_get_contents(__DIR__ . '/README.txt')
         );
     }
-    
+
     #[McpResource(uri: 'file://image.png', mimeType: 'image/png')]
     public function getImage(): BlobResourceContents
     {
         $imageData = file_get_contents(__DIR__ . '/image.png');
-        
+
         return new BlobResourceContents(
             uri: 'file://image.png',
             mimeType: 'image/png',
@@ -344,7 +344,7 @@ class FileProvider
 
 ### Basic Prompt
 
-```php
+````php
 <?php
 
 namespace App\Prompts;
@@ -365,7 +365,7 @@ class PromptGenerator
         ];
     }
 }
-```
+````
 
 ### Prompt with Mixed Content
 
@@ -378,7 +378,7 @@ use Mcp\Schema\Enum\Role;
 public function analyzeImage(string $imageUrl, string $question): array
 {
     $imageData = file_get_contents($imageUrl);
-    
+
     return [
         new PromptMessage(Role::Assistant, [
             new TextContent('You are an image analysis expert.')
@@ -405,7 +405,7 @@ use Mcp\Capability\Attribute\{McpPrompt, CompletionProvider};
 public function generateContent(
     #[CompletionProvider(values: ['blog', 'article', 'tutorial', 'guide'])]
     string $contentType,
-    
+
     #[CompletionProvider(values: ['beginner', 'intermediate', 'advanced'])]
     string $difficulty
 ): array
@@ -436,10 +436,10 @@ enum Status
 #[McpResourceTemplate(uriTemplate: 'tasks/{taskId}')]
 public function getTask(
     string $taskId,
-    
+
     #[CompletionProvider(enum: Priority::class)]
     string $priority,
-    
+
     #[CompletionProvider(enum: Status::class)]
     string $status
 ): array
@@ -471,7 +471,7 @@ public function getUserProfile(
     string $userId
 ): array
 {
-    return $this->users[$userId] ?? 
+    return $this->users[$userId] ??
         throw new \InvalidArgumentException('User not found');
 }
 ```
@@ -564,7 +564,7 @@ public function divideNumbers(float $a, float $b): float
     if ($b === 0.0) {
         throw new \InvalidArgumentException('Division by zero is not allowed');
     }
-    
+
     return $a / $b;
 }
 
@@ -574,11 +574,11 @@ public function processFile(string $filename): string
     if (!file_exists($filename)) {
         throw new \InvalidArgumentException("File not found: {$filename}");
     }
-    
+
     if (!is_readable($filename)) {
         throw new \RuntimeException("File not readable: {$filename}");
     }
-    
+
     return file_get_contents($filename);
 }
 ```
@@ -602,23 +602,23 @@ use App\Tools\Calculator;
 class CalculatorTest extends TestCase
 {
     private Calculator $calculator;
-    
+
     protected function setUp(): void
     {
         $this->calculator = new Calculator();
     }
-    
+
     public function testAdd(): void
     {
         $result = $this->calculator->add(5, 3);
         $this->assertSame(8, $result);
     }
-    
+
     public function testDivideByZero(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Division by zero');
-        
+
         $this->calculator->divide(10, 0);
     }
 }
@@ -633,9 +633,9 @@ public function testServerDiscoversTools(): void
         ->setServerInfo('Test Server', '1.0.0')
         ->setDiscovery(__DIR__ . '/../src', ['.'])
         ->build();
-    
+
     $capabilities = $server->getCapabilities();
-    
+
     $this->assertArrayHasKey('tools', $capabilities);
     $this->assertNotEmpty($capabilities['tools']);
 }
@@ -710,14 +710,14 @@ class McpServer extends Command
 {
     protected $signature = 'mcp:serve';
     protected $description = 'Start MCP server';
-    
+
     public function handle()
     {
         $server = Server::builder()
             ->setServerInfo('Laravel MCP Server', '1.0.0')
             ->setDiscovery(app_path(), ['Tools', 'Resources'])
             ->build();
-        
+
         $transport = new StdioTransport();
         $server->run($transport);
     }

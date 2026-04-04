@@ -4,7 +4,15 @@ import eslintConfigPrettier from "eslint-config-prettier";
 
 export default tseslint.config(
   {
-    ignores: ["out/", "test-out/", "dist/", "test-dist/", "**/*.d.ts", "node_modules/", "lib/"],
+    ignores: [
+      "out/",
+      "test-out/",
+      "dist/",
+      "test-dist/",
+      "**/*.d.ts",
+      "node_modules/",
+      "lib/",
+    ],
   },
   eslint.configs.recommended,
   eslintConfigPrettier,
@@ -71,5 +79,5 @@ export default tseslint.config(
       eqeqeq: "warn",
       semi: "off",
     },
-  }
+  },
 );

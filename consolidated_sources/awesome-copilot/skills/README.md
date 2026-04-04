@@ -9,10 +9,12 @@ This directory contains two complete AgentSkills templates that demonstrate the 
 **Use when:** Creating simple skills with instructions only.
 
 **Structure:**
+
 - Single `SKILL.md` file with required frontmatter
 - No scripts or additional resources
 
 **Best for:**
+
 - Guidance and best practices
 - Procedural instructions
 - Reference documentation
@@ -27,6 +29,7 @@ This directory contains two complete AgentSkills templates that demonstrate the 
 **Use when:** Creating complex skills with scripts, validation, and resources.
 
 **Structure:**
+
 ```
 example-full-skill/
 ├── SKILL.md                    # Main instructions
@@ -41,12 +44,14 @@ example-full-skill/
 ```
 
 **Best for:**
+
 - Data validation and processing
 - Multi-step workflows with shell commands
 - Skills requiring external tools
 - Complex integrations with multiple runtimes
 
 **Scripts demonstrate:**
+
 - ✅ Non-interactive execution (all input via CLI)
 - ✅ Self-contained dependencies (auto-installed)
 - ✅ Clear `--help` documentation
@@ -166,6 +171,7 @@ skills-ref to-prompt /path/to/my-new-skill
 If adding scripts to your skill:
 
 ### ✅ DO:
+
 - Accept all input via CLI flags (`--input`, `--output`, etc.)
 - Provide `--help` with usage examples
 - Output structured data (JSON, CSV) to stdout
@@ -176,6 +182,7 @@ If adding scripts to your skill:
 - Support `--dry-run` for destructive operations
 
 ### ❌ DON'T:
+
 - Prompt for user input (agents run non-interactively)
 - Require separate package managers or manifests
 - Output unbounded data without pagination
@@ -187,32 +194,32 @@ If adding scripts to your skill:
 ### Required Fields
 
 ```yaml
-name: skill-name              # 1-64 chars, lowercase-with-hyphens
-description: What it does...  # 1-1024 chars, describe what AND when
+name: skill-name # 1-64 chars, lowercase-with-hyphens
+description: What it does... # 1-1024 chars, describe what AND when
 ```
 
 ### Optional Fields
 
 ```yaml
-license: Apache-2.0           # SPDX identifier
+license: Apache-2.0 # SPDX identifier
 
-compatibility: |              # Runtime/model requirements
+compatibility: | # Runtime/model requirements
   Requires Python 3.11+
   Works best with Claude 3+
 
-allowed-tools:                # Tool restrictions
+allowed-tools: # Tool restrictions
   - read_file
   - write_file
   - run_command
 
-metadata:                     # Custom key-value pairs
-  version: '1.0.0'
-  author: 'Your Name'
-  category: 'data-processing'
+metadata: # Custom key-value pairs
+  version: "1.0.0"
+  author: "Your Name"
+  category: "data-processing"
   tags:
     - validation
     - json
-  requires_python: '>=3.11'
+  requires_python: ">=3.11"
 ```
 
 ## Progressive Disclosure Pattern
@@ -220,16 +227,19 @@ metadata:                     # Custom key-value pairs
 AgentSkills use a 3-level loading strategy:
 
 **Level 1: Metadata (Startup)**
+
 - Load only `name` and `description` from frontmatter
 - Low token cost: ~50-100 tokens per skill
 - Enables fast skill discovery
 
 **Level 2: Instructions (Activation)**
+
 - Load full SKILL.md when task matches
 - Medium token cost: ~500-5000 tokens
 - Provides complete guidance
 
 **Level 3: Resources (Execution)**
+
 - Load scripts/references/assets on demand
 - Variable token cost depending on resource size
 - Only accessed when explicitly needed

@@ -46,12 +46,12 @@ def login():
 
 The `request.form` is an `ImmutableMultiDict` that contains parsed form data from POST and PUT requests.
 
-| Method | Description |
-|--------|-------------|
-| `request.form['key']` | Access a value; raises `400 Bad Request` if missing |
-| `request.form.get('key')` | Access a value; returns `None` if missing |
-| `request.form.get('key', 'default')` | Access a value with a fallback default |
-| `request.form.getlist('key')` | Returns a list of all values for a key (for multi-select fields) |
+| Method                               | Description                                                      |
+| ------------------------------------ | ---------------------------------------------------------------- |
+| `request.form['key']`                | Access a value; raises `400 Bad Request` if missing              |
+| `request.form.get('key')`            | Access a value; returns `None` if missing                        |
+| `request.form.get('key', 'default')` | Access a value with a fallback default                           |
+| `request.form.getlist('key')`        | Returns a list of all values for a key (for multi-select fields) |
 
 ### The `request.method` Attribute
 
@@ -127,37 +127,37 @@ class RegistrationForm(FlaskForm):
 
 ### Common Field Types
 
-| Field Type | Description |
-|-----------|-------------|
-| `StringField` | Single-line text input |
-| `PasswordField` | Password input (masked characters) |
-| `TextAreaField` | Multi-line text input |
-| `IntegerField` | Integer input with built-in type coercion |
-| `FloatField` | Float input with built-in type coercion |
-| `BooleanField` | Checkbox (True/False) |
-| `SelectField` | Dropdown select menu |
-| `SelectMultipleField` | Multiple-select dropdown |
-| `RadioField` | Radio button group |
-| `FileField` | File upload input |
-| `HiddenField` | Hidden input field |
-| `SubmitField` | Submit button |
-| `DateField` | Date picker input |
+| Field Type            | Description                               |
+| --------------------- | ----------------------------------------- |
+| `StringField`         | Single-line text input                    |
+| `PasswordField`       | Password input (masked characters)        |
+| `TextAreaField`       | Multi-line text input                     |
+| `IntegerField`        | Integer input with built-in type coercion |
+| `FloatField`          | Float input with built-in type coercion   |
+| `BooleanField`        | Checkbox (True/False)                     |
+| `SelectField`         | Dropdown select menu                      |
+| `SelectMultipleField` | Multiple-select dropdown                  |
+| `RadioField`          | Radio button group                        |
+| `FileField`           | File upload input                         |
+| `HiddenField`         | Hidden input field                        |
+| `SubmitField`         | Submit button                             |
+| `DateField`           | Date picker input                         |
 
 ### Common Validators
 
-| Validator | Description |
-|-----------|-------------|
-| `DataRequired()` | Field must not be empty |
-| `Email()` | Must be a valid email format |
-| `Length(min, max)` | String length must fall within range |
-| `EqualTo('field')` | Must match another field's value |
-| `NumberRange(min, max)` | Numeric value must fall within range |
-| `Regexp(regex)` | Must match the provided regular expression |
-| `URL()` | Must be a valid URL |
-| `Optional()` | Field is allowed to be empty |
-| `InputRequired()` | Raw input data must be present |
-| `AnyOf(values)` | Must be one of the provided values |
-| `NoneOf(values)` | Must not be any of the provided values |
+| Validator               | Description                                |
+| ----------------------- | ------------------------------------------ |
+| `DataRequired()`        | Field must not be empty                    |
+| `Email()`               | Must be a valid email format               |
+| `Length(min, max)`      | String length must fall within range       |
+| `EqualTo('field')`      | Must match another field's value           |
+| `NumberRange(min, max)` | Numeric value must fall within range       |
+| `Regexp(regex)`         | Must match the provided regular expression |
+| `URL()`                 | Must be a valid URL                        |
+| `Optional()`            | Field is allowed to be empty               |
+| `InputRequired()`       | Raw input data must be present             |
+| `AnyOf(values)`         | Must be one of the provided values         |
+| `NoneOf(values)`        | Must not be any of the provided values     |
 
 ---
 
@@ -204,54 +204,51 @@ Returns `True` only if both conditions are met.
 
 ```html
 <form method="POST" action="{{ url_for('register') }}">
-    {{ form.hidden_tag() }}
+  {{ form.hidden_tag() }}
 
-    <div>
-        {{ form.username.label }}
-        {{ form.username(class="form-control", placeholder="Enter username") }}
-        {% for error in form.username.errors %}
-            <span class="error">{{ error }}</span>
-        {% endfor %}
-    </div>
+  <div>
+    {{ form.username.label }} {{ form.username(class="form-control",
+    placeholder="Enter username") }} {% for error in form.username.errors %}
+    <span class="error">{{ error }}</span>
+    {% endfor %}
+  </div>
 
-    <div>
-        {{ form.email.label }}
-        {{ form.email(class="form-control", placeholder="Enter email") }}
-        {% for error in form.email.errors %}
-            <span class="error">{{ error }}</span>
-        {% endfor %}
-    </div>
+  <div>
+    {{ form.email.label }} {{ form.email(class="form-control",
+    placeholder="Enter email") }} {% for error in form.email.errors %}
+    <span class="error">{{ error }}</span>
+    {% endfor %}
+  </div>
 
-    <div>
-        {{ form.password.label }}
-        {{ form.password(class="form-control") }}
-        {% for error in form.password.errors %}
-            <span class="error">{{ error }}</span>
-        {% endfor %}
-    </div>
+  <div>
+    {{ form.password.label }} {{ form.password(class="form-control") }} {% for
+    error in form.password.errors %}
+    <span class="error">{{ error }}</span>
+    {% endfor %}
+  </div>
 
-    <div>
-        {{ form.confirm_password.label }}
-        {{ form.confirm_password(class="form-control") }}
-        {% for error in form.confirm_password.errors %}
-            <span class="error">{{ error }}</span>
-        {% endfor %}
-    </div>
+  <div>
+    {{ form.confirm_password.label }} {{
+    form.confirm_password(class="form-control") }} {% for error in
+    form.confirm_password.errors %}
+    <span class="error">{{ error }}</span>
+    {% endfor %}
+  </div>
 
-    {{ form.submit(class="btn btn-primary") }}
+  {{ form.submit(class="btn btn-primary") }}
 </form>
 ```
 
 ### Key Template Elements
 
-| Element | Purpose |
-|---------|---------|
-| `{{ form.hidden_tag() }}` | Renders the hidden CSRF token field |
-| `{{ form.field.label }}` | Renders the `<label>` element for the field |
-| `{{ form.field() }}` | Renders the `<input>` element for the field |
+| Element                         | Purpose                                           |
+| ------------------------------- | ------------------------------------------------- |
+| `{{ form.hidden_tag() }}`       | Renders the hidden CSRF token field               |
+| `{{ form.field.label }}`        | Renders the `<label>` element for the field       |
+| `{{ form.field() }}`            | Renders the `<input>` element for the field       |
 | `{{ form.field(class="...") }}` | Renders the input with additional HTML attributes |
-| `{{ form.field.errors }}` | List of validation error messages for the field |
-| `{{ form.field.data }}` | The current value of the field |
+| `{{ form.field.errors }}`       | List of validation error messages for the field   |
+| `{{ form.field.data }}`         | The current value of the field                    |
 
 ---
 
@@ -282,17 +279,17 @@ In your template, always include one of these:
 For JavaScript-based form submissions:
 
 ```html
-<meta name="csrf-token" content="{{ csrf_token() }}">
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 ```
 
 ```javascript
-fetch('/api/submit', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': document.querySelector('meta[name="csrf-token"]').content
-    },
-    body: JSON.stringify(data)
+fetch("/api/submit", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-CSRFToken": document.querySelector('meta[name="csrf-token"]').content,
+  },
+  body: JSON.stringify(data),
 });
 ```
 
@@ -383,10 +380,8 @@ File upload forms must use `enctype="multipart/form-data"`:
 
 ```html
 <form method="POST" enctype="multipart/form-data">
-    {{ form.hidden_tag() }}
-    {{ form.photo.label }}
-    {{ form.photo() }}
-    {{ form.submit() }}
+  {{ form.hidden_tag() }} {{ form.photo.label }} {{ form.photo() }} {{
+  form.submit() }}
 </form>
 ```
 
@@ -407,15 +402,10 @@ flash('Please check your input.', 'warning')
 ### Displaying Flash Messages in Templates
 
 ```html
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category, message in messages %}
+<div class="alert alert-{{ category }}">{{ message }}</div>
+{% endfor %} {% endif %} {% endwith %}
 ```
 
 ---

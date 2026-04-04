@@ -1,6 +1,6 @@
 ---
-description: 'Runs test commands for any language and reports results. Discovers test command from project files if not specified.'
-name: 'Polyglot Test Tester'
+description: "Runs test commands for any language and reports results. Discovers test command from project files if not specified."
+name: "Polyglot Test Tester"
 ---
 
 # Tester Agent
@@ -16,6 +16,7 @@ Run the appropriate test command and report pass/fail with details.
 ### 1. Discover Test Command
 
 If not provided, check in order:
+
 1. `.testagent/research.md` or `.testagent/plan.md` for Commands section
 2. Project files:
    - `*.csproj` with Test SDK → `dotnet test`
@@ -30,6 +31,7 @@ If not provided, check in order:
 Execute the test command.
 
 For scoped tests (if specific files are mentioned):
+
 - **C#**: `dotnet test --filter "FullyQualifiedName~ClassName"`
 - **TypeScript/Jest**: `npm test -- --testPathPattern=FileName`
 - **Python/pytest**: `pytest path/to/test_file.py`
@@ -38,6 +40,7 @@ For scoped tests (if specific files are mentioned):
 ### 3. Parse Output
 
 Look for:
+
 - Total tests run
 - Passed count
 - Failed count
@@ -46,6 +49,7 @@ Look for:
 ### 4. Return Result
 
 **If all pass:**
+
 ```
 TESTS: PASSED
 Command: [command used]
@@ -53,6 +57,7 @@ Results: [X] tests passed
 ```
 
 **If some fail:**
+
 ```
 TESTS: FAILED
 Command: [command used]
@@ -70,16 +75,16 @@ Failures:
 
 ## Common Test Commands
 
-| Language | Framework | Command |
-|----------|-----------|---------|
-| C# | MSTest/xUnit/NUnit | `dotnet test` |
-| TypeScript | Jest | `npm test` |
-| TypeScript | Vitest | `npm run test` |
-| Python | pytest | `pytest` |
-| Python | unittest | `python -m unittest` |
-| Go | testing | `go test ./...` |
-| Rust | cargo | `cargo test` |
-| Java | JUnit | `mvn test` or `gradle test` |
+| Language   | Framework          | Command                     |
+| ---------- | ------------------ | --------------------------- |
+| C#         | MSTest/xUnit/NUnit | `dotnet test`               |
+| TypeScript | Jest               | `npm test`                  |
+| TypeScript | Vitest             | `npm run test`              |
+| Python     | pytest             | `pytest`                    |
+| Python     | unittest           | `python -m unittest`        |
+| Go         | testing            | `go test ./...`             |
+| Rust       | cargo              | `cargo test`                |
+| Java       | JUnit              | `mvn test` or `gradle test` |
 
 ## Important
 

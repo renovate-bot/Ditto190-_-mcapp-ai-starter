@@ -4,13 +4,13 @@
 
 ### Button Types
 
-| Type | Purpose | Visual Treatment |
-| ---- | ------- | ---------------- |
-| Primary | Main action on page | Solid fill, brand color |
-| Secondary | Supporting actions | Outline or muted fill |
-| Tertiary | Low-emphasis actions | Text-only, underline optional |
-| Destructive | Delete/remove actions | Red color, confirmation required |
-| Ghost | Minimal UI, icon buttons | Transparent, subtle hover |
+| Type        | Purpose                  | Visual Treatment                 |
+| ----------- | ------------------------ | -------------------------------- |
+| Primary     | Main action on page      | Solid fill, brand color          |
+| Secondary   | Supporting actions       | Outline or muted fill            |
+| Tertiary    | Low-emphasis actions     | Text-only, underline optional    |
+| Destructive | Delete/remove actions    | Red color, confirmation required |
+| Ghost       | Minimal UI, icon buttons | Transparent, subtle hover        |
 
 ### Button States
 
@@ -69,13 +69,13 @@ Loading    → Processing: spinner replaces or accompanies label
 
 ### Input States
 
-| State | Border | Background | Additional |
-| ----- | ------ | ---------- | ---------- |
-| Default | Gray (#D1D5DB) | White | - |
-| Focus | Primary color | White | Shadow/glow |
-| Filled | Gray | White | Checkmark optional |
-| Error | Red (#EF4444) | Light red tint | Error icon + message |
-| Disabled | Light gray | Gray (#F3F4F6) | 50% opacity text |
+| State    | Border         | Background     | Additional           |
+| -------- | -------------- | -------------- | -------------------- |
+| Default  | Gray (#D1D5DB) | White          | -                    |
+| Focus    | Primary color  | White          | Shadow/glow          |
+| Filled   | Gray           | White          | Checkmark optional   |
+| Error    | Red (#EF4444)  | Light red tint | Error icon + message |
+| Disabled | Light gray     | Gray (#F3F4F6) | 50% opacity text     |
 
 ### Validation Timing
 
@@ -260,15 +260,15 @@ Home > Products > Electronics > Headphones
 
 ### Data Visualization Selection
 
-| Data Type | Chart Type |
-| --------- | ---------- |
-| Comparison across categories | Bar chart |
-| Trend over time | Line chart |
-| Part of whole | Pie (≤5 slices) or Donut |
-| Distribution | Histogram |
-| Correlation | Scatter plot |
-| Geographic | Map |
-| Single metric | Big number + sparkline |
+| Data Type                    | Chart Type               |
+| ---------------------------- | ------------------------ |
+| Comparison across categories | Bar chart                |
+| Trend over time              | Line chart               |
+| Part of whole                | Pie (≤5 slices) or Donut |
+| Distribution                 | Histogram                |
+| Correlation                  | Scatter plot             |
+| Geographic                   | Map                      |
+| Single metric                | Big number + sparkline   |
 
 ### Dashboard Best Practices
 
@@ -314,12 +314,12 @@ Home > Products > Electronics > Headphones
 
 ### Loading Patterns
 
-| Duration | Pattern |
-| -------- | ------- |
-| <1 second | No indicator (feels instant) |
-| 1-3 seconds | Spinner or progress indicator |
-| 3-10 seconds | Skeleton screens + progress |
-| >10 seconds | Progress bar + explanation |
+| Duration     | Pattern                       |
+| ------------ | ----------------------------- |
+| <1 second    | No indicator (feels instant)  |
+| 1-3 seconds  | Spinner or progress indicator |
+| 3-10 seconds | Skeleton screens + progress   |
+| >10 seconds  | Progress bar + explanation    |
 
 ### Skeleton Screen
 

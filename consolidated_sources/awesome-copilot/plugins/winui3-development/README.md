@@ -13,14 +13,14 @@ copilot plugin install winui3-development@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                      | Description                                                                         |
+| -------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `/winui3-development:winui3-migration-guide` | UWP-to-WinUI 3 migration reference with API mappings and before/after code snippets |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent           | Description                                                                                                                                                                                               |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `winui3-expert` | Expert agent for WinUI 3 and Windows App SDK development. Prevents common UWP-to-WinUI 3 API mistakes, guides XAML controls, MVVM patterns, windowing, threading, app lifecycle, dialogs, and deployment. |
 
 ## Key Features

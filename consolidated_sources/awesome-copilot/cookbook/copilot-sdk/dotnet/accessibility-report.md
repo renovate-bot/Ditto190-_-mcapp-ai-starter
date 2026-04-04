@@ -99,12 +99,12 @@ session.On(evt =>
 
 var prompt = $"""
     Use the Playwright MCP server to analyze the accessibility of this webpage: {url}
-    
+
     Please:
     1. Navigate to the URL using playwright-browser_navigate
     2. Take an accessibility snapshot using playwright-browser_snapshot
     3. Analyze the snapshot and provide a detailed accessibility report
-    
+
     Format the report EXACTLY like this structure with emoji indicators:
 
     📊 Accessibility Report: [Page Title] (domain.com)
@@ -173,14 +173,14 @@ if (generateTests == "y" || generateTests == "yes")
 
     var testGenerationPrompt = $"""
         Based on the accessibility report you just generated for {url}, create Playwright accessibility tests in {language}.
-        
+
         The tests should:
         1. Verify all the accessibility checks from the report
         2. Test for the issues that were found (to ensure they get fixed)
         3. Include tests for landmarks, heading hierarchy, alt text, focus indicators, and more
         4. Use Playwright's accessibility testing features
         5. Include helpful comments explaining each test
-        
+
         Output the complete test file that can be saved and run.
         """;
 
@@ -278,7 +278,7 @@ Would you like to generate Playwright accessibility tests? (y/n): y
 Detecting project language...
 TypeScript detected (package.json found)
 
-Confirm language for tests (or enter a different one): 
+Confirm language for tests (or enter a different one):
 
 Generating accessibility tests...
 [Generated test file output...]

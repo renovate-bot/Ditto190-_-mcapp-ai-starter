@@ -19,12 +19,12 @@ marked -s "# Hello World"
 ### Method 2: Node.js Script
 
 ```javascript
-import { marked } from 'marked';
-import { readFileSync, writeFileSync } from 'fs';
+import { marked } from "marked";
+import { readFileSync, writeFileSync } from "fs";
 
-const markdown = readFileSync('input.md', 'utf-8');
+const markdown = readFileSync("input.md", "utf-8");
 const html = marked.parse(markdown);
-writeFileSync('output.html', html);
+writeFileSync("output.html", html);
 ```
 
 ### Method 3: Browser Usage
@@ -32,8 +32,8 @@ writeFileSync('output.html', html);
 ```html
 <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 <script>
-  const html = marked.parse('# Markdown Content');
-  document.getElementById('output').innerHTML = html;
+  const html = marked.parse("# Markdown Content");
+  document.getElementById("output").innerHTML = html;
 </script>
 ```
 
@@ -54,19 +54,19 @@ Expanded portions of `SKILL.md` at `### Step-by-Step Workflows`.
 Create a script `convert-all.js`:
 
 ```javascript
-import { marked } from 'marked';
-import { readFileSync, writeFileSync, readdirSync } from 'fs';
-import { join, basename } from 'path';
+import { marked } from "marked";
+import { readFileSync, writeFileSync, readdirSync } from "fs";
+import { join, basename } from "path";
 
-const inputDir = './docs';
-const outputDir = './html';
+const inputDir = "./docs";
+const outputDir = "./html";
 
 readdirSync(inputDir)
-  .filter(file => file.endsWith('.md'))
-  .forEach(file => {
-    const markdown = readFileSync(join(inputDir, file), 'utf-8');
+  .filter((file) => file.endsWith(".md"))
+  .forEach((file) => {
+    const markdown = readFileSync(join(inputDir, file), "utf-8");
     const html = marked.parse(markdown);
-    const outputFile = basename(file, '.md') + '.html';
+    const outputFile = basename(file, ".md") + ".html";
     writeFileSync(join(outputDir, outputFile), html);
     console.log(`Converted: ${file} → ${outputFile}`);
   });
@@ -77,13 +77,13 @@ Run with: `node convert-all.js`
 ### Workflow 3: Conversion with Custom Options
 
 ```javascript
-import { marked } from 'marked';
+import { marked } from "marked";
 
 // Configure options
 marked.setOptions({
-  gfm: true,           // GitHub Flavored Markdown
-  breaks: true,        // Convert \n to <br>
-  pedantic: false,     // Don't conform to original markdown.pl
+  gfm: true, // GitHub Flavored Markdown
+  breaks: true, // Convert \n to <br>
+  pedantic: false, // Don't conform to original markdown.pl
 });
 
 const html = marked.parse(markdownContent);
@@ -94,10 +94,10 @@ const html = marked.parse(markdownContent);
 Wrap converted content in a full HTML template:
 
 ```javascript
-import { marked } from 'marked';
-import { readFileSync, writeFileSync } from 'fs';
+import { marked } from "marked";
+import { readFileSync, writeFileSync } from "fs";
 
-const markdown = readFileSync('input.md', 'utf-8');
+const markdown = readFileSync("input.md", "utf-8");
 const content = marked.parse(markdown);
 
 const html = `<!DOCTYPE html>
@@ -117,5 +117,5 @@ ${content}
 </body>
 </html>`;
 
-writeFileSync('output.html', html);
+writeFileSync("output.html", html);
 ```

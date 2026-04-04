@@ -19,18 +19,19 @@ docs/
 
 ## Finding Documentation
 
-| Audience | Directory | Topics |
-|----------|-----------|--------|
-| Users | `user-guide/` | Installation, marketplace, sources, profiles, troubleshooting |
-| Authors | `author-guide/` | Creating collections, schemas, validation, publishing |
-| Contributors | `contributor-guide/` | Dev setup, architecture, testing, coding standards |
-| Developers | `reference/` | Commands, settings, APIs, schemas |
+| Audience     | Directory            | Topics                                                        |
+| ------------ | -------------------- | ------------------------------------------------------------- |
+| Users        | `user-guide/`        | Installation, marketplace, sources, profiles, troubleshooting |
+| Authors      | `author-guide/`      | Creating collections, schemas, validation, publishing         |
+| Contributors | `contributor-guide/` | Dev setup, architecture, testing, coding standards            |
+| Developers   | `reference/`         | Commands, settings, APIs, schemas                             |
 
 ## Updating Documentation
 
 ### When to Update
 
 Update documentation when:
+
 - Adding new features or commands
 - Changing existing behavior
 - Fixing bugs that affect user-facing functionality
@@ -46,15 +47,15 @@ Update documentation when:
 
 ### File Placement
 
-| Content Type | Location |
-|--------------|----------|
-| New VS Code command | `reference/commands.md` |
-| New extension setting | `reference/settings.md` |
-| User-facing feature | `user-guide/` (appropriate file) |
-| Repository-level installation | `user-guide/repository-installation.md` |
-| Collection authoring | `author-guide/` (appropriate file) |
-| Development process | `contributor-guide/` (appropriate file) |
-| API or schema changes | `reference/` (appropriate file) |
+| Content Type                    | Location                                              |
+| ------------------------------- | ----------------------------------------------------- |
+| New VS Code command             | `reference/commands.md`                               |
+| New extension setting           | `reference/settings.md`                               |
+| User-facing feature             | `user-guide/` (appropriate file)                      |
+| Repository-level installation   | `user-guide/repository-installation.md`               |
+| Collection authoring            | `author-guide/` (appropriate file)                    |
+| Development process             | `contributor-guide/` (appropriate file)               |
+| API or schema changes           | `reference/` (appropriate file)                       |
 | Installation/scope architecture | `contributor-guide/architecture/installation-flow.md` |
 
 ## Key Files

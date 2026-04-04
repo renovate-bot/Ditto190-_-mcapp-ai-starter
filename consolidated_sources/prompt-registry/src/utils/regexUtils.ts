@@ -6,10 +6,10 @@
 /**
  * Escape special regex characters in a string
  * This prevents strings (like Windows paths) from being interpreted as regex patterns
- * 
+ *
  * @param str - String to escape
  * @returns Escaped string safe for use in RegExp constructor
- * 
+ *
  * @example
  * ```typescript
  * const path = 'C:\\Users\\Test\\file.txt';
@@ -18,17 +18,17 @@
  * ```
  */
 export function escapeRegex(str: string): string {
-    // Escape all special regex characters: . * + ? ^ $ { } ( ) | [ ] \
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Escape all special regex characters: . * + ? ^ $ { } ( ) | [ ] \
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 /**
  * Create a RegExp from a string, escaping special characters
- * 
+ *
  * @param pattern - Pattern string to convert to regex
  * @param flags - Optional regex flags (g, i, m, etc.)
  * @returns RegExp object
- * 
+ *
  * @example
  * ```typescript
  * const regex = createSafeRegex('path.with.dots', 'g');
@@ -36,18 +36,18 @@ export function escapeRegex(str: string): string {
  * ```
  */
 export function createSafeRegex(pattern: string, flags?: string): RegExp {
-    return new RegExp(escapeRegex(pattern), flags);
+  return new RegExp(escapeRegex(pattern), flags);
 }
 
 /**
  * Replace all occurrences of a literal string in text
  * Safer than String.replace() with regex for dynamic patterns
- * 
+ *
  * @param text - Text to search in
  * @param search - Literal string to find (will be escaped)
  * @param replacement - Replacement string (special chars like $ and \ are preserved)
  * @returns Text with replacements
- * 
+ *
  * @example
  * ```typescript
  * const template = 'Path: {{PATH}}';
@@ -56,22 +56,26 @@ export function createSafeRegex(pattern: string, flags?: string): RegExp {
  * // Result: 'Path: C:\\Users\\Test' (backslashes preserved)
  * ```
  */
-export function replaceAll(text: string, search: string, replacement: string): string {
-    const escapedSearch = escapeRegex(search);
-    const regex = new RegExp(escapedSearch, 'g');
-    // Use function to prevent interpretation of $ and \ in replacement
-    return text.replace(regex, () => replacement);
+export function replaceAll(
+  text: string,
+  search: string,
+  replacement: string,
+): string {
+  const escapedSearch = escapeRegex(search);
+  const regex = new RegExp(escapedSearch, "g");
+  // Use function to prevent interpretation of $ and \ in replacement
+  return text.replace(regex, () => replacement);
 }
 
 /**
  * Replace template variables in text with values
  * Handles special characters in both keys and values safely
- * 
+ *
  * @param text - Template text with placeholders
  * @param variables - Object with variable names and values
  * @param options - Configuration options
  * @returns Text with variables replaced
- * 
+ *
  * @example
  * ```typescript
  * const template = 'Install to: {{PATH}}, version: {{VERSION}}';
@@ -82,20 +86,20 @@ export function replaceAll(text: string, search: string, replacement: string): s
  * ```
  */
 export function replaceVariables(
-    text: string,
-    variables: Record<string, string>,
-    options: {
-        prefix?: string;
-        suffix?: string;
-    } = {}
+  text: string,
+  variables: Record<string, string>,
+  options: {
+    prefix?: string;
+    suffix?: string;
+  } = {},
 ): string {
-    const { prefix = '{{', suffix = '}}' } = options;
-    let result = text;
-    
-    for (const [key, value] of Object.entries(variables)) {
-        const placeholder = `${prefix}${key}${suffix}`;
-        result = replaceAll(result, placeholder, value);
-    }
-    
-    return result;
+  const { prefix = "{{", suffix = "}}" } = options;
+  let result = text;
+
+  for (const [key, value] of Object.entries(variables)) {
+    const placeholder = `${prefix}${key}${suffix}`;
+    result = replaceAll(result, placeholder, value);
+  }
+
+  return result;
 }

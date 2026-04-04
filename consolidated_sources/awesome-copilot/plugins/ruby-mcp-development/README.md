@@ -13,14 +13,14 @@ copilot plugin install ruby-mcp-development@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                           | Description                                                                                            |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | `/ruby-mcp-development:ruby-mcp-server-generator` | Generate a complete Model Context Protocol server project in Ruby using the official MCP Ruby SDK gem. |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent             | Description                                                                                                                       |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `ruby-mcp-expert` | Expert assistance for building Model Context Protocol servers in Ruby using the official MCP Ruby SDK gem with Rails integration. |
 
 ## Source

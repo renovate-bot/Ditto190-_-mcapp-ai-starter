@@ -33,26 +33,26 @@ A consolidated reference guide covering web performance concepts, optimization t
 
 ### Recommended Timings
 
-| Target | Threshold |
-|--------|-----------|
-| Page load indication | 1 second |
-| Idling | 50ms |
-| Animations | 16.7ms (60 FPS) |
-| User input response | 50-200ms |
+| Target               | Threshold       |
+| -------------------- | --------------- |
+| Page load indication | 1 second        |
+| Idling               | 50ms            |
+| Animations           | 16.7ms (60 FPS) |
+| User input response  | 50-200ms        |
 
 Users abandon sites that respond slowly. The goal is to minimize loading and response times while adding features that conceal latency by maximizing availability and interactivity as soon as possible.
 
 ### Key Performance Metrics
 
-| Metric | Full Name | Definition |
-|--------|-----------|------------|
-| **FCP** | First Contentful Paint | First time any content appears |
-| **LCP** | Largest Contentful Paint | Largest content element visible |
-| **CLS** | Cumulative Layout Shift | Visual stability during interactions |
-| **INP** | Interaction to Next Paint | Responsiveness to user input |
-| **TTFB** | Time to First Byte | Server response time |
-| **TTI** | Time to Interactive | Page becomes fully interactive |
-| **Jank** | -- | Non-smooth animation or scrolling |
+| Metric   | Full Name                 | Definition                           |
+| -------- | ------------------------- | ------------------------------------ |
+| **FCP**  | First Contentful Paint    | First time any content appears       |
+| **LCP**  | Largest Contentful Paint  | Largest content element visible      |
+| **CLS**  | Cumulative Layout Shift   | Visual stability during interactions |
+| **INP**  | Interaction to Next Paint | Responsiveness to user input         |
+| **TTFB** | Time to First Byte        | Server response time                 |
+| **TTI**  | Time to Interactive       | Page becomes fully interactive       |
+| **Jank** | --                        | Non-smooth animation or scrolling    |
 
 ### Performance API Categories
 
@@ -115,13 +115,13 @@ Metrics focused on user perception rather than raw milliseconds:
 
 ### Optimization Areas
 
-| Area | Focus | Impact |
-|------|-------|--------|
-| **Multimedia (Images)** | Media optimization based on device capability, size, pixel density | Reduces bytes per image |
-| **Multimedia (Video)** | Video compression, audio track removal from background videos | Reduces file size |
-| **JavaScript** | Best practices for interactive experiences | Improves responsiveness, battery life |
-| **HTML** | DOM node minimization, optimal attribute ordering | Improves load and render time |
-| **CSS** | Feature-specific optimization | Prevents negative performance impact |
+| Area                    | Focus                                                              | Impact                                |
+| ----------------------- | ------------------------------------------------------------------ | ------------------------------------- |
+| **Multimedia (Images)** | Media optimization based on device capability, size, pixel density | Reduces bytes per image               |
+| **Multimedia (Video)**  | Video compression, audio track removal from background videos      | Reduces file size                     |
+| **JavaScript**          | Best practices for interactive experiences                         | Improves responsiveness, battery life |
+| **HTML**                | DOM node minimization, optimal attribute ordering                  | Improves load and render time         |
+| **CSS**                 | Feature-specific optimization                                      | Prevents negative performance impact  |
 
 ### Performance Strategy
 
@@ -156,7 +156,8 @@ Metrics focused on user perception rather than raw milliseconds:
   id="my-stylesheet"
   rel="stylesheet"
   href="/path/to/my.css"
-  media="print" />
+  media="print"
+/>
 <noscript><link rel="stylesheet" href="/path/to/my.css" /></noscript>
 ```
 
@@ -219,7 +220,8 @@ stylesheet.addEventListener("load", () => {
   srcset="480w.jpg 480w, 800w.jpg 800w"
   sizes="(width <= 600px) 480px, 800px"
   src="800w.jpg"
-  alt="Family portrait" />
+  alt="Family portrait"
+/>
 ```
 
 **Using `srcset` for different device resolutions:**
@@ -228,7 +230,8 @@ stylesheet.addEventListener("load", () => {
 <img
   srcset="320w.jpg, 480w.jpg 1.5x, 640w.jpg 2x"
   src="640w.jpg"
-  alt="Family portrait" />
+  alt="Family portrait"
+/>
 ```
 
 **Using the `<picture>` element:**
@@ -261,7 +264,12 @@ stylesheet.addEventListener("load", () => {
 **Iframes:**
 
 ```html
-<iframe src="https://example.com" loading="lazy" width="600" height="400"></iframe>
+<iframe
+  src="https://example.com"
+  loading="lazy"
+  width="600"
+  height="400"
+></iframe>
 ```
 
 ### Iframe Best Practices
@@ -662,17 +670,17 @@ Most entries are automatically recorded and accessible via:
 
 **Built-in Metrics:**
 
-| Interface | Purpose |
-|-----------|---------|
-| `PerformanceNavigationTiming` | Document navigation timings (load time, etc.) |
-| `PerformanceResourceTiming` | Network metrics for resources (images, scripts, CSS, fetch calls) |
-| `PerformancePaintTiming` | Render operations during page construction |
-| `PerformanceEventTiming` | Event latency and Interaction to Next Paint (INP) |
-| `LargestContentfulPaint` | Render time of largest visible content |
-| `LayoutShift` | Page layout stability metrics |
-| `PerformanceLongTaskTiming` | Long-running tasks blocking rendering |
-| `PerformanceLongAnimationFrameTiming` | Long animation frame metrics |
-| `PerformanceServerTiming` | Server metrics from `Server-Timing` HTTP header |
+| Interface                             | Purpose                                                           |
+| ------------------------------------- | ----------------------------------------------------------------- |
+| `PerformanceNavigationTiming`         | Document navigation timings (load time, etc.)                     |
+| `PerformanceResourceTiming`           | Network metrics for resources (images, scripts, CSS, fetch calls) |
+| `PerformancePaintTiming`              | Render operations during page construction                        |
+| `PerformanceEventTiming`              | Event latency and Interaction to Next Paint (INP)                 |
+| `LargestContentfulPaint`              | Render time of largest visible content                            |
+| `LayoutShift`                         | Page layout stability metrics                                     |
+| `PerformanceLongTaskTiming`           | Long-running tasks blocking rendering                             |
+| `PerformanceLongAnimationFrameTiming` | Long animation frame metrics                                      |
+| `PerformanceServerTiming`             | Server metrics from `Server-Timing` HTTP header                   |
 
 ### Usage Pattern
 
@@ -700,20 +708,20 @@ performance.measure("operation-duration", "start-operation", "end-operation");
 
 ### Types of Performance Entries
 
-| Entry Type | Interface | Purpose |
-|------------|-----------|---------|
-| `"element"` | PerformanceElementTiming | Load and render time for specific DOM elements |
-| `"event"` | PerformanceEventTiming | Browser response time to event triggers |
-| `"first-input"` | PerformanceEventTiming | First Input Delay measurement |
-| `"largest-contentful-paint"` | LargestContentfulPaint | Largest paint during page load |
-| `"layout-shift"` | LayoutShift | Page layout shift metrics |
-| `"longtask"` | PerformanceLongTaskTiming | Tasks taking 50ms or more |
-| `"mark"` | PerformanceMark | Custom developer timestamps |
-| `"measure"` | PerformanceMeasure | Custom measurements between timestamps |
-| `"navigation"` | PerformanceNavigationTiming | Navigation and initial page load metrics |
-| `"paint"` | PerformancePaintTiming | Key rendering moments during page load |
-| `"resource"` | PerformanceResourceTiming | Resource fetch duration |
-| `"visibility-state"` | VisibilityStateEntry | Tab visibility state changes |
+| Entry Type                   | Interface                   | Purpose                                        |
+| ---------------------------- | --------------------------- | ---------------------------------------------- |
+| `"element"`                  | PerformanceElementTiming    | Load and render time for specific DOM elements |
+| `"event"`                    | PerformanceEventTiming      | Browser response time to event triggers        |
+| `"first-input"`              | PerformanceEventTiming      | First Input Delay measurement                  |
+| `"largest-contentful-paint"` | LargestContentfulPaint      | Largest paint during page load                 |
+| `"layout-shift"`             | LayoutShift                 | Page layout shift metrics                      |
+| `"longtask"`                 | PerformanceLongTaskTiming   | Tasks taking 50ms or more                      |
+| `"mark"`                     | PerformanceMark             | Custom developer timestamps                    |
+| `"measure"`                  | PerformanceMeasure          | Custom measurements between timestamps         |
+| `"navigation"`               | PerformanceNavigationTiming | Navigation and initial page load metrics       |
+| `"paint"`                    | PerformancePaintTiming      | Key rendering moments during page load         |
+| `"resource"`                 | PerformanceResourceTiming   | Resource fetch duration                        |
+| `"visibility-state"`         | VisibilityStateEntry        | Tab visibility state changes                   |
 
 ### Accessing Performance Data
 
@@ -724,7 +732,7 @@ function logEventDuration(entries) {
   const events = entries.getEntriesByType("event");
   for (const event of events) {
     console.log(
-      `Event handler took: ${event.processingEnd - event.processingStart} milliseconds`
+      `Event handler took: ${event.processingEnd - event.processingStart} milliseconds`,
     );
   }
 }
@@ -743,27 +751,27 @@ Advantages of PerformanceObserver:
 **Method 2: Direct query methods**
 
 ```javascript
-performance.getEntries();              // All entries
-performance.getEntriesByType(type);    // Entries of specific type
-performance.getEntriesByName(name);    // Entries with specific name
+performance.getEntries(); // All entries
+performance.getEntriesByType(type); // Entries of specific type
+performance.getEntriesByName(name); // Entries with specific name
 ```
 
 ### Performance Entry Buffer Sizes
 
-| Entry Type | Max Buffer Size |
-|------------|----------------|
-| `"resource"` | 250 (adjustable) |
-| `"longtask"` | 200 |
-| `"element"` | 150 |
-| `"event"` | 150 |
-| `"layout-shift"` | 150 |
-| `"largest-contentful-paint"` | 150 |
-| `"visibility-state"` | 50 |
-| `"mark"` | Infinite |
-| `"measure"` | Infinite |
-| `"navigation"` | Infinite |
-| `"paint"` | 2 (fixed) |
-| `"first-input"` | 1 (fixed) |
+| Entry Type                   | Max Buffer Size  |
+| ---------------------------- | ---------------- |
+| `"resource"`                 | 250 (adjustable) |
+| `"longtask"`                 | 200              |
+| `"element"`                  | 150              |
+| `"event"`                    | 150              |
+| `"layout-shift"`             | 150              |
+| `"largest-contentful-paint"` | 150              |
+| `"visibility-state"`         | 50               |
+| `"mark"`                     | Infinite         |
+| `"measure"`                  | Infinite         |
+| `"navigation"`               | Infinite         |
+| `"paint"`                    | 2 (fixed)        |
+| `"first-input"`              | 1 (fixed)        |
 
 ### Handling Dropped Entries
 
@@ -774,7 +782,7 @@ function perfObserver(list, observer, droppedEntriesCount) {
   });
   if (droppedEntriesCount > 0) {
     console.warn(
-      `${droppedEntriesCount} entries were dropped because the buffer was full.`
+      `${droppedEntriesCount} entries were dropped because the buffer was full.`,
     );
   }
 }
@@ -843,7 +851,7 @@ const observer = new PerformanceObserver((list) => {
   list.getEntries().forEach((entry) => {
     entry.serverTiming.forEach((serverEntry) => {
       console.log(
-        `${serverEntry.name} (${serverEntry.description}) duration: ${serverEntry.duration}`
+        `${serverEntry.name} (${serverEntry.description}) duration: ${serverEntry.duration}`,
       );
       // Logs "cache (Cache Read) duration: 23.2"
       // Logs "db () duration: 53"
@@ -853,7 +861,7 @@ const observer = new PerformanceObserver((list) => {
 });
 
 ["navigation", "resource"].forEach((type) =>
-  observer.observe({ type, buffered: true })
+  observer.observe({ type, buffered: true }),
 );
 ```
 
@@ -898,7 +906,7 @@ performance.mark("login-started", {
 const loginMeasure = performance.measure(
   "login-duration",
   "login-started",
-  "login-finished"
+  "login-finished",
 );
 console.log(loginMeasure.duration);
 ```

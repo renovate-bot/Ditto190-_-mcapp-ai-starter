@@ -6,11 +6,11 @@ We take the security of {{projectName}} seriously. This document outlines our se
 
 ## Supported Versions
 
-| Version | Supported | Security Updates |
-|---------|-----------|------------------|
-| Current main branch | ✅ Yes | ✅ Yes |
-| Latest tagged release | ✅ Yes | ✅ Yes |
-| Older versions | ❌ No | ❌ No |
+| Version               | Supported | Security Updates |
+| --------------------- | --------- | ---------------- |
+| Current main branch   | ✅ Yes    | ✅ Yes           |
+| Latest tagged release | ✅ Yes    | ✅ Yes           |
+| Older versions        | ❌ No     | ❌ No            |
 
 ## 🐛 Reporting a Vulnerability
 
@@ -23,6 +23,7 @@ Public disclosure can put users at risk. Please follow our responsible disclosur
 **Primary Method**: Email us at {{internalContact}}
 
 **What to Include**:
+
 - **Description** of the vulnerability
 - **Steps to reproduce** the issue
 - **Potential impact** of the vulnerability
@@ -34,7 +35,7 @@ Public disclosure can put users at risk. Please follow our responsible disclosur
 ### Response Timeline
 
 - **Acknowledgment**: Within 1 business day
-- **Initial Assessment**: Within 3 business days  
+- **Initial Assessment**: Within 3 business days
 - **Detailed Response**: Within 7 business days
 - **Patch Release**: As soon as feasible, based on severity
 
@@ -57,16 +58,19 @@ Public disclosure can put users at risk. Please follow our responsible disclosur
 ### Common Security Considerations
 
 #### Prompt Injection Risks
+
 - **Input validation**: Be aware of potential prompt injection scenarios
 - **Output filtering**: Consider what your prompts might generate
 - **Context isolation**: Understand how prompts interact with user input
 
-#### Code Generation Risks  
+#### Code Generation Risks
+
 - **Code review**: Review generated code for security issues
 - **Testing**: Test generated code in safe environments first
 - **Validation**: Validate generated code before use
 
 #### Data Privacy
+
 - **No personal data**: Don't include personal or sensitive information in prompts
 - **Compliance**: Follow relevant data protection regulations
 - **Minimal data**: Use only necessary data in prompts
@@ -83,7 +87,7 @@ Public disclosure can put users at risk. Please follow our responsible disclosur
 ### Dependency Management
 
 - **Regular updates**: Dependencies are updated regularly
-- **Vulnerability scanning**: Automated scanning for known vulnerabilities  
+- **Vulnerability scanning**: Automated scanning for known vulnerabilities
 - **Minimal dependencies**: We limit dependencies to reduce attack surface
 - **Source verification**: Dependencies are sourced from trusted repositories
 
@@ -125,12 +129,12 @@ Public disclosure can put users at risk. Please follow our responsible disclosur
 
 ### Severity Levels
 
-| Level | Description | Response Time |
-|-------|-------------|----------------|
-| **Critical** | Immediate danger to users | Within 4 hours |
-| **High** | Significant security impact | Within 24 hours |
-| **Medium** | Moderate security issue | Within 3 days |
-| **Low** | Minor security issue | Within 7 days |
+| Level        | Description                 | Response Time   |
+| ------------ | --------------------------- | --------------- |
+| **Critical** | Immediate danger to users   | Within 4 hours  |
+| **High**     | Significant security impact | Within 24 hours |
+| **Medium**   | Moderate security issue     | Within 3 days   |
+| **Low**      | Minor security issue        | Within 7 days   |
 
 ### Response Process
 
@@ -143,11 +147,13 @@ Public disclosure can put users at risk. Please follow our responsible disclosur
 ## 📞 Security Contacts
 
 ### Security Team
+
 - **Email**: {{internalContact}}
 - **Slack**: #security-team (if available)
 - **GitHub**: @security-lead
 
 ### Reporting Security Issues
+
 - **Primary**: {{internalContact}}
 - **Backup**: Contact any Trusted Committer privately
 - **Emergency**: {{internalContact}}
@@ -155,12 +161,14 @@ Public disclosure can put users at risk. Please follow our responsible disclosur
 ## 🔄 Security Updates
 
 ### How We Communicate
+
 - **Security advisories**: Published on GitHub
 - **Release notes**: Security fixes noted in releases
 - **Email notifications**: For critical issues
 - **Slack announcements**: For internal teams
 
 ### Update Process
+
 - **Assessment**: Evaluate impact and urgency
 - **Development**: Create and test fixes
 - **Release**: Publish security updates
@@ -169,11 +177,13 @@ Public disclosure can put users at risk. Please follow our responsible disclosur
 ## 📚 Security Resources
 
 ### Recommended Reading
+
 - [OWASP Prompt Injection Prevention](https://owasp.org/)
 - [GitHub Security Best Practices](https://docs.github.com/en/code-security)
 - [npm Security Best Practices](https://docs.npmjs.com/getting-started/securing-your-code)
 
 ### Security Tools
+
 - **npm audit**: Check for known vulnerabilities
 - **GitHub Dependabot**: Automated dependency updates
 - **CodeQL**: Code analysis for security issues
@@ -184,6 +194,7 @@ Public disclosure can put users at risk. Please follow our responsible disclosur
 ## 🤝 Contributing to Security
 
 We welcome security contributions:
+
 - **Report vulnerabilities** responsibly
 - **Suggest improvements** to our security practices
 - **Submit security-focused** pull requests

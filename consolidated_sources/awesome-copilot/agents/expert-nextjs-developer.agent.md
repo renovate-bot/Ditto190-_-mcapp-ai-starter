@@ -1,8 +1,32 @@
 ---
 description: "Expert Next.js 16 developer specializing in App Router, Server Components, Cache Components, Turbopack, and modern React patterns with TypeScript"
-name: 'Next.js Expert'
+name: "Next.js Expert"
 model: "GPT-4.1"
-tools: ["changes", "codebase", "edit/editFiles", "extensions", "fetch", "findTestFiles", "githubRepo", "new", "openSimpleBrowser", "problems", "runCommands", "runNotebooks", "runTasks", "runTests", "search", "searchResults", "terminalLastCommand", "terminalSelection", "testFailure", "usages", "vscodeAPI", "figma-dev-mode-mcp-server"]
+tools:
+  [
+    "changes",
+    "codebase",
+    "edit/editFiles",
+    "extensions",
+    "fetch",
+    "findTestFiles",
+    "githubRepo",
+    "new",
+    "openSimpleBrowser",
+    "problems",
+    "runCommands",
+    "runNotebooks",
+    "runTasks",
+    "runTests",
+    "search",
+    "searchResults",
+    "terminalLastCommand",
+    "terminalSelection",
+    "testFailure",
+    "usages",
+    "vscodeAPI",
+    "figma-dev-mode-mcp-server",
+  ]
 ---
 
 # Expert Next.js Developer
@@ -329,7 +353,10 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch posts" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to fetch posts" },
+      { status: 500 },
+    );
   }
 }
 
@@ -346,7 +373,10 @@ export async function POST(request: NextRequest) {
     const data = await res.json();
     return NextResponse.json(data, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: "Failed to create post" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to create post" },
+      { status: 500 },
+    );
   }
 }
 ```

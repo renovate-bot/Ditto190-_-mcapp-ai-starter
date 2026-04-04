@@ -13,14 +13,14 @@ copilot plugin install power-apps-code-apps@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                              | Description                                                                                                      |
+| ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `/power-apps-code-apps:power-apps-code-app-scaffold` | Scaffold a complete Power Apps Code App project with PAC CLI setup, SDK integration, and connector configuration |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent                   | Description                                                                                                                  |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `power-platform-expert` | Power Platform expert providing guidance on Code Apps, canvas apps, Dataverse, connectors, and Power Platform best practices |
 
 ## Source

@@ -1,8 +1,15 @@
 ---
-description: 'Expert assistant for developing AEM components using HTL, Tailwind CSS, and Figma-to-code workflows with design system integration'
-name: 'AEM Front-End Specialist'
-model: 'GPT-4.1'
-tools: ['codebase', 'edit/editFiles', 'web/fetch', 'githubRepo', 'figma-dev-mode-mcp-server']
+description: "Expert assistant for developing AEM components using HTL, Tailwind CSS, and Figma-to-code workflows with design system integration"
+name: "AEM Front-End Specialist"
+model: "GPT-4.1"
+tools:
+  [
+    "codebase",
+    "edit/editFiles",
+    "web/fetch",
+    "githubRepo",
+    "figma-dev-mode-mcp-server",
+  ]
 ---
 
 # AEM Front-End Specialist
@@ -133,31 +140,45 @@ You are a world-class expert in building Adobe Experience Manager (AEM) componen
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
 <sly data-sly-test.hasContent="${model.title || model.description}" />
 
-<article class="cmp-card bg-white rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
-         role="article"
-         data-component="card">
-
+<article
+  class="cmp-card bg-white rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
+  role="article"
+  data-component="card"
+>
   <!-- Card Image -->
-  <div class="cmp-card__image mb-4 relative h-48 overflow-hidden rounded-md" data-sly-test="${model.image}">
-    <sly data-sly-resource="${model.image @ resourceType='core/wcm/components/image/v3/image',
-                                            cssClassNames='absolute inset-0 w-full h-full object-cover'}"></sly>
+  <div
+    class="cmp-card__image mb-4 relative h-48 overflow-hidden rounded-md"
+    data-sly-test="${model.image}"
+  >
+    <sly
+      data-sly-resource="${model.image @ resourceType='core/wcm/components/image/v3/image',
+                                            cssClassNames='absolute inset-0 w-full h-full object-cover'}"
+    ></sly>
   </div>
 
   <!-- Card Content -->
   <div class="cmp-card__content">
-    <h3 class="cmp-card__title text-h5 md:text-h4 font-display font-bold text-black mb-3" data-sly-test="${model.title}">
+    <h3
+      class="cmp-card__title text-h5 md:text-h4 font-display font-bold text-black mb-3"
+      data-sly-test="${model.title}"
+    >
       ${model.title}
     </h3>
-    <p class="cmp-card__description text-grey leading-normal mb-4" data-sly-test="${model.description}">
+    <p
+      class="cmp-card__description text-grey leading-normal mb-4"
+      data-sly-test="${model.description}"
+    >
       ${model.description @ context='html'}
     </p>
   </div>
 
   <!-- Card CTA -->
   <div class="cmp-card__actions" data-sly-test="${model.ctaUrl}">
-    <a href="${model.ctaUrl}"
-       class="cmp-button--primary inline-flex items-center gap-2 transition-colors duration-300"
-       aria-label="Read more about ${model.title}">
+    <a
+      href="${model.ctaUrl}"
+      class="cmp-button--primary inline-flex items-center gap-2 transition-colors duration-300"
+      aria-label="Read more about ${model.title}"
+    >
       <span>${model.ctaText}</span>
       <span class="cmp-button__icon" aria-hidden="true">→</span>
     </a>
@@ -172,29 +193,47 @@ You are a world-class expert in building Adobe Experience Manager (AEM) componen
 ```html
 <sly data-sly-use.model="com.yourproject.core.models.HeroModel"></sly>
 
-<section class="cmp-hero relative w-full min-h-screen flex flex-col lg:flex-row bg-white"
-         data-component="hero">
-
+<section
+  class="cmp-hero relative w-full min-h-screen flex flex-col lg:flex-row bg-white"
+  data-component="hero"
+>
   <!-- Background Image/Video (absolute positioning for background only) -->
-  <div class="cmp-hero__background absolute inset-0 w-full h-full z-0" data-sly-test="${model.backgroundImage}">
-    <sly data-sly-resource="${model.backgroundImage @ resourceType='core/wcm/components/image/v3/image',
-                                                       cssClassNames='absolute inset-0 w-full h-full object-cover'}"></sly>
+  <div
+    class="cmp-hero__background absolute inset-0 w-full h-full z-0"
+    data-sly-test="${model.backgroundImage}"
+  >
+    <sly
+      data-sly-resource="${model.backgroundImage @ resourceType='core/wcm/components/image/v3/image',
+                                                       cssClassNames='absolute inset-0 w-full h-full object-cover'}"
+    ></sly>
     <!-- Optional overlay -->
-    <div class="absolute inset-0 bg-black/40" data-sly-test="${model.showOverlay}"></div>
+    <div
+      class="absolute inset-0 bg-black/40"
+      data-sly-test="${model.showOverlay}"
+    ></div>
   </div>
 
   <!-- Content Section: stacks on mobile, left column on desktop, uses flex layout -->
-  <div class="cmp-hero__content flex-1 p-4 lg:p-11 flex flex-col justify-center relative z-10">
-    <h1 class="cmp-hero__title text-h2-mobile md:text-h1 font-display text-white mb-4 max-w-3xl">
+  <div
+    class="cmp-hero__content flex-1 p-4 lg:p-11 flex flex-col justify-center relative z-10"
+  >
+    <h1
+      class="cmp-hero__title text-h2-mobile md:text-h1 font-display text-white mb-4 max-w-3xl"
+    >
       ${model.title}
     </h1>
     <p class="cmp-hero__description text-body-big text-white mb-6 max-w-2xl">
       ${model.description @ context='html'}
     </p>
-    <div class="cmp-hero__actions flex flex-col sm:flex-row gap-4" data-sly-test="${model.buttons}">
+    <div
+      class="cmp-hero__actions flex flex-col sm:flex-row gap-4"
+      data-sly-test="${model.buttons}"
+    >
       <sly data-sly-list.button="${model.buttons}">
-        <a href="${button.url}"
-           class="cmp-button--${button.variant @ context='attribute'} inline-flex">
+        <a
+          href="${button.url}"
+          class="cmp-button--${button.variant @ context='attribute'} inline-flex"
+        >
           ${button.text}
         </a>
       </sly>
@@ -202,9 +241,14 @@ You are a world-class expert in building Adobe Experience Manager (AEM) componen
   </div>
 
   <!-- Optional Image Section: bottom on mobile, right column on desktop -->
-  <div class="cmp-hero__media flex-1 relative min-h-[400px] lg:min-h-0" data-sly-test="${model.sideImage}">
-    <sly data-sly-resource="${model.sideImage @ resourceType='core/wcm/components/image/v3/image',
-                                                 cssClassNames='absolute inset-0 w-full h-full object-cover'}"></sly>
+  <div
+    class="cmp-hero__media flex-1 relative min-h-[400px] lg:min-h-0"
+    data-sly-test="${model.sideImage}"
+  >
+    <sly
+      data-sly-resource="${model.sideImage @ resourceType='core/wcm/components/image/v3/image',
+                                                 cssClassNames='absolute inset-0 w-full h-full object-cover'}"
+    ></sly>
   </div>
 </section>
 ```
@@ -224,7 +268,7 @@ You are a world-class expert in building Adobe Experience Manager (AEM) componen
   }
 
   &::before {
-    content: '';
+    content: "";
     @apply absolute inset-0 bg-black/40 z-1;
   }
 

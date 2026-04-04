@@ -14,7 +14,9 @@ export const setupGracefulShutdown = (name, { exitCode = 1 } = {}) => {
   const cleanup = (signal) => {
     if (_shuttingDown) return;
     _shuttingDown = true;
-    console.log(`\n🛑 ${name}: received ${signal}, shutting down gracefully...`);
+    console.log(
+      `\n🛑 ${name}: received ${signal}, shutting down gracefully...`,
+    );
     // Best-effort cleanup: keep this short and synchronous
     try {
       // Place for lightweight cleanup tasks if needed in future
@@ -32,30 +34,30 @@ export const setupGracefulShutdown = (name, { exitCode = 1 } = {}) => {
     }
   };
 
-  const onSigInt = () => cleanup('SIGINT');
-  const onSigTerm = () => cleanup('SIGTERM');
-  const onSigHup = () => cleanup('SIGHUP');
+  const onSigInt = () => cleanup("SIGINT");
+  const onSigTerm = () => cleanup("SIGTERM");
+  const onSigHup = () => cleanup("SIGHUP");
   const onUncaught = (err) => {
     console.error(`${name}: Uncaught exception:`, err);
-    cleanup('uncaughtException');
+    cleanup("uncaughtException");
   };
   const onUnhandledRejection = (reason) => {
     console.error(`${name}: Unhandled promise rejection:`, reason);
-    cleanup('unhandledRejection');
+    cleanup("unhandledRejection");
   };
 
-  process.on('SIGINT', onSigInt);
-  process.on('SIGTERM', onSigTerm);
-  process.on('SIGHUP', onSigHup);
-  process.on('uncaughtException', onUncaught);
-  process.on('unhandledRejection', onUnhandledRejection);
+  process.on("SIGINT", onSigInt);
+  process.on("SIGTERM", onSigTerm);
+  process.on("SIGHUP", onSigHup);
+  process.on("uncaughtException", onUncaught);
+  process.on("unhandledRejection", onUnhandledRejection);
 
   // Return a teardown function useful for tests or if a caller wants to remove handlers
   return () => {
-    process.removeListener('SIGINT', onSigInt);
-    process.removeListener('SIGTERM', onSigTerm);
-    process.removeListener('SIGHUP', onSigHup);
-    process.removeListener('uncaughtException', onUncaught);
-    process.removeListener('unhandledRejection', onUnhandledRejection);
+    process.removeListener("SIGINT", onSigInt);
+    process.removeListener("SIGTERM", onSigTerm);
+    process.removeListener("SIGHUP", onSigHup);
+    process.removeListener("uncaughtException", onUncaught);
+    process.removeListener("unhandledRejection", onUnhandledRejection);
   };
 };

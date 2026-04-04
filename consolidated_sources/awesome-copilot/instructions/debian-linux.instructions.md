@@ -1,6 +1,6 @@
 ---
-description: 'Guidance for Debian-based Linux administration, apt workflows, and Debian policy conventions.'
-applyTo: '**'
+description: "Guidance for Debian-based Linux administration, apt workflows, and Debian policy conventions."
+applyTo: "**"
 ---
 
 # Debian Linux Administration Guidelines

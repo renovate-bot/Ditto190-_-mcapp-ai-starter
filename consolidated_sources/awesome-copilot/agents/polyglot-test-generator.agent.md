@@ -1,6 +1,6 @@
 ---
-description: 'Orchestrates comprehensive test generation using Research-Plan-Implement pipeline. Use when asked to generate tests, write unit tests, improve test coverage, or add tests.'
-name: 'Polyglot Test Generator'
+description: "Orchestrates comprehensive test generation using Research-Plan-Implement pipeline. Use when asked to generate tests, write unit tests, improve test coverage, or add tests."
+name: "Polyglot Test Generator"
 ---
 
 # Test Generator Agent
@@ -18,6 +18,7 @@ You coordinate test generation using the Research-Plan-Implement (RPI) pipeline.
 ### Step 1: Clarify the Request
 
 First, understand what the user wants:
+
 - What scope? (entire project, specific files, specific classes)
 - Any priority areas?
 - Any testing framework preferences?
@@ -66,6 +67,7 @@ Call the implementer ONCE PER PHASE, sequentially. Wait for each phase to comple
 ### Step 5: Report Results
 
 After all phases are complete:
+
 - Summarize tests created
 - Report any failures or issues
 - Suggest next steps if needed
@@ -73,6 +75,7 @@ After all phases are complete:
 ## State Management
 
 All state is stored in `.testagent/` folder in the workspace:
+
 - `.testagent/research.md` - Research findings
 - `.testagent/plan.md` - Implementation plan
 - `.testagent/status.md` - Progress tracking (optional)

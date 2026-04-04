@@ -13,14 +13,14 @@ copilot plugin install php-mcp-development@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                         | Description                                                                                                                        |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `/php-mcp-development:php-mcp-server-generator` | Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent            | Description                                                                                               |
+| ---------------- | --------------------------------------------------------------------------------------------------------- |
 | `php-mcp-expert` | Expert assistant for PHP MCP server development using the official PHP SDK with attribute-based discovery |
 
 ## Source

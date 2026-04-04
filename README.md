@@ -316,6 +316,9 @@ bash scripts/test-runner.sh
 
 # Run only Python tests (fast, no LLM API keys needed)
 bash scripts/test-runner.sh --suite python --fast
+
+# Install Blackbox CLI (AI coding assistant)
+npm run install:blackbox
 ```
 
 ### LLM providers — Ollama works out of the box

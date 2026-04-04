@@ -6,48 +6,58 @@ Adapters provide a unified interface for fetching bundles from different source 
 
 ```typescript
 interface IRepositoryAdapter {
-    readonly type: string;
-    readonly source: RegistrySource;
-    fetchBundles(): Promise<Bundle[]>;
-    downloadBundle(bundle: Bundle): Promise<Buffer>;
-    fetchMetadata(): Promise<SourceMetadata>;
-    validate(): Promise<ValidationResult>;
-    requiresAuthentication(): boolean;
-    getManifestUrl(bundleId: string, version?: string): string;
-    getDownloadUrl(bundleId: string, version?: string): string;
-    forceAuthentication?(): Promise<void>;
+  readonly type: string;
+  readonly source: RegistrySource;
+  fetchBundles(): Promise<Bundle[]>;
+  downloadBundle(bundle: Bundle): Promise<Buffer>;
+  fetchMetadata(): Promise<SourceMetadata>;
+  validate(): Promise<ValidationResult>;
+  requiresAuthentication(): boolean;
+  getManifestUrl(bundleId: string, version?: string): string;
+  getDownloadUrl(bundleId: string, version?: string): string;
+  forceAuthentication?(): Promise<void>;
 }
 ```
 
 ## Adapter Types
 
-| Adapter | Source Type | Installation Method | Status |
-|---------|-------------|---------------------|--------|
-| **GitHubAdapter** | `github` | URL-based (getDownloadUrl) | Active |
-| **LocalAdapter** | `local` | Buffer-based (downloadBundle) | Active |
-| **AwesomeCopilotAdapter** | `awesome-copilot` | Buffer-based (builds zip on-the-fly) | Active |
-| **LocalAwesomeCopilotAdapter** | `local-awesome-copilot` | Buffer-based | Active |
-| **ApmAdapter** | `apm` | URL-based | Active |
-| **LocalApmAdapter** | `local-apm` | Buffer-based | Active |
-| **GitLabAdapter** | `gitlab` | URL-based | ⚠️ Deprecated |
-| **HttpAdapter** | `http` | URL-based | ⚠️ Deprecated |
+| Adapter                        | Source Type             | Installation Method                  | Status        |
+| ------------------------------ | ----------------------- | ------------------------------------ | ------------- |
+| **GitHubAdapter**              | `github`                | URL-based (getDownloadUrl)           | Active        |
+| **LocalAdapter**               | `local`                 | Buffer-based (downloadBundle)        | Active        |
+| **AwesomeCopilotAdapter**      | `awesome-copilot`       | Buffer-based (builds zip on-the-fly) | Active        |
+| **LocalAwesomeCopilotAdapter** | `local-awesome-copilot` | Buffer-based                         | Active        |
+| **ApmAdapter**                 | `apm`                   | URL-based                            | Active        |
+| **LocalApmAdapter**            | `local-apm`             | Buffer-based                         | Active        |
+| **GitLabAdapter**              | `gitlab`                | URL-based                            | ⚠️ Deprecated |
+| **HttpAdapter**                | `http`                  | URL-based                            | ⚠️ Deprecated |
 
 > **Deprecation Notice:** `GitLabAdapter` and `HttpAdapter` are deprecated and will be removed in a future release.
 
 Source types are defined in `src/types/registry.ts`:
+
 ```typescript
-export type SourceType = 'github' | 'gitlab' | 'http' | 'local' | 
-    'awesome-copilot' | 'local-awesome-copilot' | 'apm' | 'local-apm';
+export type SourceType =
+  | "github"
+  | "gitlab"
+  | "http"
+  | "local"
+  | "awesome-copilot"
+  | "local-awesome-copilot"
+  | "apm"
+  | "local-apm";
 ```
 
 ## Two Installation Paths
 
 **URL-Based** (`install()`):
+
 - Pre-packaged zip bundles on remote servers
 - Direct download from URL
 - Used by: GitHub, GitLab, HTTP
 
 **Buffer-Based** (`installFromBuffer()`):
+
 - Dynamically created bundles
 - Builds zip in memory
 - Used by: AwesomeCopilot, Local
@@ -57,22 +67,42 @@ export type SourceType = 'github' | 'gitlab' | 'http' | 'local' |
 ```typescript
 // 1. Extend RepositoryAdapter base class
 export class MyAdapter extends RepositoryAdapter {
-    readonly type = 'my-type';
-    
-    async fetchBundles(): Promise<Bundle[]> { /* ... */ }
-    async downloadBundle(bundle: Bundle): Promise<Buffer> { /* ... */ }
-    async fetchMetadata(): Promise<SourceMetadata> { /* ... */ }
-    async validate(): Promise<ValidationResult> { /* ... */ }
-    getManifestUrl(bundleId: string, version?: string): string { /* ... */ }
-    getDownloadUrl(bundleId: string, version?: string): string { /* ... */ }
+  readonly type = "my-type";
+
+  async fetchBundles(): Promise<Bundle[]> {
+    /* ... */
+  }
+  async downloadBundle(bundle: Bundle): Promise<Buffer> {
+    /* ... */
+  }
+  async fetchMetadata(): Promise<SourceMetadata> {
+    /* ... */
+  }
+  async validate(): Promise<ValidationResult> {
+    /* ... */
+  }
+  getManifestUrl(bundleId: string, version?: string): string {
+    /* ... */
+  }
+  getDownloadUrl(bundleId: string, version?: string): string {
+    /* ... */
+  }
 }
 
 // 2. Register in factory
-RepositoryAdapterFactory.register('my-type', MyAdapter);
+RepositoryAdapterFactory.register("my-type", MyAdapter);
 
 // 3. Add to SourceType union in src/types/registry.ts
-export type SourceType = 'github' | 'gitlab' | 'http' | 'local' | 
-    'awesome-copilot' | 'local-awesome-copilot' | 'apm' | 'local-apm' | 'my-type';
+export type SourceType =
+  | "github"
+  | "gitlab"
+  | "http"
+  | "local"
+  | "awesome-copilot"
+  | "local-awesome-copilot"
+  | "apm"
+  | "local-apm"
+  | "my-type";
 ```
 
 ## See Also

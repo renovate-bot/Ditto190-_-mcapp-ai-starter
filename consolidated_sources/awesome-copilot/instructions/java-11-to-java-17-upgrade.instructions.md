@@ -685,7 +685,6 @@ java -XX:SharedArchiveFile=myapp.jsa -cp myapp.jar com.example.Main
 ### Phase 1: Foundation (Weeks 1-2)
 
 1. **Update build system**
-
    - Modify Maven/Gradle configuration for Java 17
    - Update CI/CD pipelines
    - Verify dependency compatibility
@@ -698,7 +697,6 @@ java -XX:SharedArchiveFile=myapp.jsa -cp myapp.jar com.example.Main
 ### Phase 2: Language Features (Weeks 3-4)
 
 1. **Implement Records**
-
    - Convert data classes to records
    - Add validation in compact constructors
    - Test serialization compatibility
@@ -710,7 +708,6 @@ java -XX:SharedArchiveFile=myapp.jsa -cp myapp.jar com.example.Main
 ### Phase 3: Advanced Features (Weeks 5-6)
 
 1. **Switch Expressions**
-
    - Convert switch statements to expressions
    - Use new arrow syntax
    - Implement complex yield logic
@@ -723,7 +720,6 @@ java -XX:SharedArchiveFile=myapp.jsa -cp myapp.jar com.example.Main
 ### Phase 4: Sealed Classes (Weeks 7-8)
 
 1. **Design sealed hierarchies**
-
    - Identify inheritance restrictions
    - Implement sealed class patterns
    - Combine with pattern matching
@@ -759,26 +755,22 @@ java -XX:SharedArchiveFile=myapp.jsa -cp myapp.jar com.example.Main
 ## Best Practices
 
 1. **Use Records for Data Classes**
-
    - Immutable data containers
    - API data transfer objects
    - Configuration objects
 
 2. **Apply Pattern Matching Strategically**
-
    - Replace instanceof chains
    - Use with sealed classes
    - Combine with switch expressions
 
 3. **Adopt Text Blocks for Multi-line Content**
-
    - SQL queries
    - JSON templates
    - HTML content
    - Configuration files
 
 4. **Design with Sealed Classes**
-
    - Domain modeling
    - State machines
    - Algebraic data types

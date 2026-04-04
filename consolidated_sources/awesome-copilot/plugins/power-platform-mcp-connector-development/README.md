@@ -13,15 +13,15 @@ copilot plugin install power-platform-mcp-connector-development@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
-| `/power-platform-mcp-connector-development:power-platform-mcp-connector-suite` | Generate complete Power Platform custom connector with MCP integration for Copilot Studio - includes schema generation, troubleshooting, and validation |
-| `/power-platform-mcp-connector-development:mcp-copilot-studio-server-generator` | Generate a complete MCP server implementation optimized for Copilot Studio integration with proper schema constraints and streamable HTTP support |
+| Command                                                                         | Description                                                                                                                                             |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/power-platform-mcp-connector-development:power-platform-mcp-connector-suite`  | Generate complete Power Platform custom connector with MCP integration for Copilot Studio - includes schema generation, troubleshooting, and validation |
+| `/power-platform-mcp-connector-development:mcp-copilot-studio-server-generator` | Generate a complete MCP server implementation optimized for Copilot Studio integration with proper schema constraints and streamable HTTP support       |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent                                   | Description                                                                                                                                                             |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `power-platform-mcp-integration-expert` | Expert in Power Platform custom connector development with MCP integration for Copilot Studio - comprehensive knowledge of schemas, protocols, and integration patterns |
 
 ## Source

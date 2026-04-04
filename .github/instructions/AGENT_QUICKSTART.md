@@ -1,12 +1,12 @@
 ---
 description: Quick reference card for AI agents starting work on mcapp-ai-starter
-applyTo: '**'
+applyTo: "**"
 ---
 
 # AI Agent Quick Reference Card
 
 **Repository**: Ditto190/mcapp-ai-starter  
-**Workspace ID**: e76de4e7-5d4b-40c0-9023-10172088310c  
+**Workspace ID**: e76de4e7-5d4b-40c0-9023-10172088310c
 
 ## Before You Start (5 min)
 
@@ -51,13 +51,13 @@ git remote -v
 
 ### Build, Test, Deploy (Per Component)
 
-| Component | Build | Test | Deploy |
-|-----------|-------|------|--------|
-| Root SDK | `npm run build` | `npm test` | `npm run build:all` |
-| GenerateAgents | `cd GenerateAgents.md && uv sync` | `uv run pytest -q` | N/A |
-| generateagents-mcp | `cd generateagents-mcp && uv sync` | `uv run python verify.py` | `uv run server.py` |
-| prompt-registry | `cd prompt-registry && npm ci` | `npm run test:unit` | `npm run compile` |
-| awesome-copilot | `cd awesome-copilot && npm ci` | `npm run skill:validate` | `npm run build` |
+| Component          | Build                              | Test                      | Deploy              |
+| ------------------ | ---------------------------------- | ------------------------- | ------------------- |
+| Root SDK           | `npm run build`                    | `npm test`                | `npm run build:all` |
+| GenerateAgents     | `cd GenerateAgents.md && uv sync`  | `uv run pytest -q`        | N/A                 |
+| generateagents-mcp | `cd generateagents-mcp && uv sync` | `uv run python verify.py` | `uv run server.py`  |
+| prompt-registry    | `cd prompt-registry && npm ci`     | `npm run test:unit`       | `npm run compile`   |
+| awesome-copilot    | `cd awesome-copilot && npm ci`     | `npm run skill:validate`  | `npm run build`     |
 
 ## Your Workflow
 

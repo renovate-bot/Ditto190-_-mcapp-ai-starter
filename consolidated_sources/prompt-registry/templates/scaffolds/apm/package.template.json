@@ -8,11 +8,7 @@
   "devDependencies": {
     "js-yaml": "^4.1.0"
   },
-  "keywords": [
-    "apm",
-    "prompts",
-    "ai"
-  ],
+  "keywords": ["apm", "prompts", "ai"],
   "author": "{{author}}",
   "license": "MIT"
 }

@@ -9,6 +9,7 @@ This repository now has Serena's symbolic code navigation tools integrated with 
 ### 1. Agent Tool Access
 
 #### Plan Agent (13 tools)
+
 ```json
 "github.copilot.chat.planAgent.additionalTools": [
     "memory",                                   // Cache decisions
@@ -27,6 +28,7 @@ This repository now has Serena's symbolic code navigation tools integrated with 
 ```
 
 #### Ask Agent (6 tools)
+
 ```json
 "github.copilot.chat.askAgent.additionalTools": [
     "github_support_docs_search",               // GitHub docs
@@ -54,6 +56,7 @@ These files are used by Serena to cache architectural knowledge and speed up sub
 ### 3. Sample Workflow
 
 Created `.github/workflows/serena-symbol-analysis.yml` demonstrating:
+
 - Analyzing changed symbols on PRs
 - Running only affected tests
 - Updating Serena memory with results
@@ -69,6 +72,7 @@ Created `.github/workflows/serena-symbol-analysis.yml` demonstrating:
 ```
 
 **What happens:**
+
 1. Plan Agent uses `find_symbol` to locate all classes inheriting from `dspy.Module`
 2. Uses `get_symbols_overview` to understand each module's structure
 3. Uses `find_referencing_symbols` to map dependencies
@@ -86,6 +90,7 @@ Created `.github/workflows/serena-symbol-analysis.yml` demonstrating:
 ```
 
 **What happens:**
+
 1. Plan Agent uses `read_memory('test-coverage-map.md')` to get symbol→test mappings
 2. Uses GitHub Actions MCP: `actions_list()` to check existing workflows
 3. Uses sequential thinking to design the workflow
@@ -99,17 +104,19 @@ Created `.github/workflows/serena-symbol-analysis.yml` demonstrating:
 ```
 
 **What happens:**
+
 1. Ask Agent uses `get_symbols_overview(path='generateagents-mcp/server.py', depth=1)`
 2. Returns list of classes without reading full file (~20 tokens vs 2000 tokens)
 
 ### Example 4: Refactor with Serena
 
 ```
-@edit Use Serena to refactor the CLI argument parser in 
+@edit Use Serena to refactor the CLI argument parser in
       GenerateAgents.md/cli.py to use argparse subcommands
 ```
 
 **What happens:**
+
 1. Edit Agent uses `find_symbol(name_path='cli/parse_args')`
 2. Reads symbol body to understand current implementation
 3. Uses `replace_symbol_body` to update the function
@@ -119,17 +126,17 @@ Created `.github/workflows/serena-symbol-analysis.yml` demonstrating:
 
 Now that the full `github` MCP is enabled for Plan Agent, you have access to:
 
-| Tool | Purpose | Example Use |
-|------|---------|-------------|
-| `mcp_github2_actions_get` | Get workflow details | Check workflow status |
-| `mcp_github2_actions_list` | List all workflows | Audit CI/CD setup |
-| `mcp_github2_actions_run_trigger` | Trigger workflow | Start deployment |
-| `mcp_github2_create_branch` | Create branch | Start feature work |
-| `mcp_github2_create_pull_request` | Create PR | Automate code reviews |
-| `mcp_github2_get_file_contents` | Read files | Analyze configs |
-| `mcp_github2_create_or_update_file` | Write files | Generate workflows |
-| `mcp_github2_issue_write` | Create issues | Track bugs |
-| `mcp_github2_pull_request_read` | Read PR details | Analyze changes |
+| Tool                                | Purpose              | Example Use           |
+| ----------------------------------- | -------------------- | --------------------- |
+| `mcp_github2_actions_get`           | Get workflow details | Check workflow status |
+| `mcp_github2_actions_list`          | List all workflows   | Audit CI/CD setup     |
+| `mcp_github2_actions_run_trigger`   | Trigger workflow     | Start deployment      |
+| `mcp_github2_create_branch`         | Create branch        | Start feature work    |
+| `mcp_github2_create_pull_request`   | Create PR            | Automate code reviews |
+| `mcp_github2_get_file_contents`     | Read files           | Analyze configs       |
+| `mcp_github2_create_or_update_file` | Write files          | Generate workflows    |
+| `mcp_github2_issue_write`           | Create issues        | Track bugs            |
+| `mcp_github2_pull_request_read`     | Read PR details      | Analyze changes       |
 
 Full list: 80+ tools in the attached tool references.
 
@@ -139,7 +146,7 @@ Full list: 80+ tools in the attached tool references.
 
 ```bash
 # In VS Code chat:
-@plan Use Serena to find all Python classes in GenerateAgents.md/src/ 
+@plan Use Serena to find all Python classes in GenerateAgents.md/src/
       that inherit from dspy.Module
 ```
 
@@ -165,7 +172,7 @@ Expected: Returns content from `.serena/memories/github-actions-patterns.md`
 
 ```bash
 @plan Use Serena to analyze changed files in the last 3 commits,
-      then create a GitHub Actions workflow that runs tests only 
+      then create a GitHub Actions workflow that runs tests only
       for the changed modules
 ```
 
@@ -174,37 +181,43 @@ Expected: Complex multi-tool orchestration demonstrating the full stack.
 ## Context Window Impact
 
 ### Before Serena
+
 - Reading `GenerateAgents.md/src/modules.py`: ~5,000 tokens
 - Understanding class relationships: Read 5-10 files = 25,000+ tokens
 - Total for architecture analysis: 50,000-100,000 tokens
 
 ### After Serena
+
 - `get_symbols_overview()`: 500 tokens
-- `find_referencing_symbols()`: 800 tokens  
+- `find_referencing_symbols()`: 800 tokens
 - `read_memory('symbol-analysis-cache.md')`: 300 tokens
 - Total for same analysis: 1,600 tokens (97-98% reduction!)
 
 ## Advanced Patterns
 
 ### Pattern 1: CI/CD Optimization
+
 ```
 Use Serena's symbol tracking to run only affected tests,
 reducing CI time from 15 minutes to 2-3 minutes.
 ```
 
 ### Pattern 2: Architecture Documentation
+
 ```
-Combine Serena + GenerateAgents MCP to auto-generate 
+Combine Serena + GenerateAgents MCP to auto-generate
 AGENTS.md when code structure changes.
 ```
 
 ### Pattern 3: Refactoring Assistance
+
 ```
 Serena finds all references to a symbol before you change it,
 preventing breaking changes.
 ```
 
 ### Pattern 4: Code Review Automation
+
 ```
 PR opened → Serena analyzes symbols → GitHub Actions runs
 targeted tests → Posts summary comment → Requests human review
@@ -214,21 +227,25 @@ only if risks detected.
 ## Troubleshooting
 
 ### Serena tools not showing up
+
 - Reload VS Code window (`Cmd/Ctrl + Shift + P` → "Developer: Reload Window")
 - Check `.vscode/settings.json` has correct tool names
 - Try: `@plan --tools` to list available tools
 
 ### "Cannot find symbol" errors
+
 - Serena works best with Python, TypeScript, JavaScript
 - For other languages, use `search_for_pattern` instead
 - Check file extensions: `.py`, `.ts`, `.js` are supported
 
 ### Memory files not persisting
+
 - Check `.serena/memories/` directory exists
 - Verify `.gitignore` excludes `.serena/` (it should)
 - Memory is workspace-specific, not global
 
 ### GitHub Actions tools not available
+
 - Verify `github` is in Plan Agent's `additionalTools`
 - Check MCP connection: Settings → Copilot → MCP Servers
 - Try restarting Copilot: `Cmd/Ctrl + Shift + P` → "Copilot: Restart"

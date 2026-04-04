@@ -36,7 +36,10 @@ function test() {
 ```html
 <blockquote class="markdown-alert markdown-alert-tip">
   <p><strong>Tip</strong></p>
-  <p>To preserve your formatting within a list, make sure to indent non-fenced code blocks by eight spaces.</p>
+  <p>
+    To preserve your formatting within a list, make sure to indent non-fenced
+    code blocks by eight spaces.
+  </p>
 </blockquote>
 ```
 
@@ -56,15 +59,15 @@ function test() {
 
 ### Parsed HTML
 
-```html
-    <pre><code>
+````html
+<pre><code>
     ```
 
     Look! You can see my backticks.
 
     ```
     </code></pre>
-```
+````
 
 ## Syntax Highlighting (Language Identifier)
 
@@ -126,7 +129,7 @@ puts markdown.to_html
 ## Lists
 
 ```md
-* [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+- [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
 ```
 
 ```html
@@ -161,5 +164,5 @@ graph TD
 
 ## Closing Notes
 
-* No `language-*` class appears here because **no language identifier** was provided.
-* The inner triple backticks are preserved **as literal text** inside `<code>`.
+- No `language-*` class appears here because **no language identifier** was provided.
+- The inner triple backticks are preserved **as literal text** inside `<code>`.

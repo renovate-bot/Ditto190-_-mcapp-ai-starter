@@ -16,10 +16,6 @@
     "dataverse",
     "connectors"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/power-apps-code-app-scaffold"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/power-apps-code-app-scaffold"]
 }

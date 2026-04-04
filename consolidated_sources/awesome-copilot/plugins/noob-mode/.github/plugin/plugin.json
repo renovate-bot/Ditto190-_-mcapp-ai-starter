@@ -16,7 +16,5 @@
     "copilot-cli",
     "ux"
   ],
-  "skills": [
-    "./skills/noob-mode"
-  ]
+  "skills": ["./skills/noob-mode"]
 }

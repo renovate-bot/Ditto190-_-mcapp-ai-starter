@@ -6,11 +6,11 @@ Aspire supports 10+ languages/runtimes. The AppHost is always .NET, but orchestr
 
 ## Hosting model differences
 
-| Model | Resource type | How it runs | Examples |
-|---|---|---|---|
-| **Project** | `ProjectResource` | .NET project reference, built by SDK | `AddProject<T>()` |
-| **Container** | `ContainerResource` | Docker/OCI image | `AddContainer()`, `AddRedis()`, `AddPostgres()` |
-| **Executable** | `ExecutableResource` | Native OS process | `AddExecutable()`, all `Add*App()` polyglot methods |
+| Model          | Resource type        | How it runs                          | Examples                                            |
+| -------------- | -------------------- | ------------------------------------ | --------------------------------------------------- |
+| **Project**    | `ProjectResource`    | .NET project reference, built by SDK | `AddProject<T>()`                                   |
+| **Container**  | `ContainerResource`  | Docker/OCI image                     | `AddContainer()`, `AddRedis()`, `AddPostgres()`     |
+| **Executable** | `ExecutableResource` | Native OS process                    | `AddExecutable()`, all `Add*App()` polyglot methods |
 
 All polyglot `Add*App()` methods create `ExecutableResource` instances under the hood. They don't require the target language's SDK on the AppHost side — only that the workload's runtime is installed on the dev machine.
 
@@ -25,6 +25,7 @@ builder.AddProject<Projects.MyApi>("api")
 ```
 
 **Chaining methods:**
+
 - `.WithHttpEndpoint(port?, targetPort?, name?)` — expose HTTP endpoint
 - `.WithHttpsEndpoint(port?, targetPort?, name?)` — expose HTTPS endpoint
 - `.WithEndpoint(port?, targetPort?, scheme?, name?)` — generic endpoint
@@ -50,6 +51,7 @@ builder.AddUvicornApp("fastapi", "../fastapi-app", "app:app")
 **`AddPythonApp(name, projectDirectory, scriptPath, args?)`**
 
 Chaining methods:
+
 - `.WithHttpEndpoint(port?, targetPort?, name?)` — expose HTTP
 - `.WithVirtualEnvironment(path?)` — use venv (default: `.venv`)
 - `.WithPipPackages(packages)` — install pip packages on start
@@ -60,6 +62,7 @@ Chaining methods:
 **`AddUvicornApp(name, projectDirectory, appModule, args?)`**
 
 Chaining methods:
+
 - `.WithHttpEndpoint(port?, targetPort?, name?)` — expose HTTP
 - `.WithVirtualEnvironment(path?)` — use venv
 - `.WithReference(resource)` — wire dependency
@@ -67,6 +70,7 @@ Chaining methods:
 - `.WaitFor(resource)` — wait for dependency health
 
 **Python service discovery:** Environment variables are injected automatically. Use `os.environ` to read:
+
 ```python
 import os
 redis_conn = os.environ["ConnectionStrings__cache"]
@@ -89,6 +93,7 @@ builder.AddNodeApp("worker", "server.js", "../node-worker")
 **`AddJavaScriptApp(name, workingDirectory)`**
 
 Chaining methods:
+
 - `.WithHttpEndpoint(port?, targetPort?, name?)` — expose HTTP
 - `.WithNpmPackageInstallation()` — run `npm install` before start
 - `.WithReference(resource)` — wire dependency
@@ -98,18 +103,21 @@ Chaining methods:
 **`AddViteApp(name, workingDirectory)`**
 
 Chaining methods (same as `AddJavaScriptApp` plus):
+
 - `.WithNpmPackageInstallation()` — run `npm install` before start
 - `.WithHttpEndpoint(port?, targetPort?, name?)` — Vite defaults to 5173
 
 **`AddNodeApp(name, scriptPath, workingDirectory)`**
 
 Chaining methods:
+
 - `.WithHttpEndpoint(port?, targetPort?, name?)` — expose HTTP
 - `.WithNpmPackageInstallation()` — run `npm install` before start
 - `.WithReference(resource)` — wire dependency
 - `.WithEnvironment(key, value)` — set env var
 
 **JS/TS service discovery:** Environment variables are injected. Use `process.env`:
+
 ```javascript
 const redisUrl = process.env.ConnectionStrings__cache;
 const apiUrl = process.env.services__api__http__0;
@@ -134,12 +142,14 @@ builder.AddGolangApp("go-api", "../go-service")
 ```
 
 Chaining methods:
+
 - `.WithHttpEndpoint(port?, targetPort?, name?)`
 - `.WithReference(resource)`
 - `.WithEnvironment(key, value)`
 - `.WaitFor(resource)`
 
 **Go service discovery:** Standard env vars via `os.Getenv()`:
+
 ```go
 redisAddr := os.Getenv("ConnectionStrings__cache")
 ```
@@ -156,6 +166,7 @@ builder.AddSpringApp("spring-api", "../spring-service")
 ```
 
 Chaining methods:
+
 - `.WithHttpEndpoint(port?, targetPort?, name?)`
 - `.WithReference(resource)`
 - `.WithEnvironment(key, value)`
@@ -164,6 +175,7 @@ Chaining methods:
 - `.WithGradleBuild()` — run Gradle build before start
 
 **Java service discovery:** Env vars via `System.getenv()`:
+
 ```java
 String dbConn = System.getenv("ConnectionStrings__db");
 ```
@@ -180,6 +192,7 @@ builder.AddRustApp("rust-worker", "../rust-service")
 ```
 
 Chaining methods:
+
 - `.WithHttpEndpoint(port?, targetPort?, name?)`
 - `.WithReference(resource)`
 - `.WithEnvironment(key, value)`
@@ -197,6 +210,7 @@ builder.AddBunApp("bun-api", "../bun-service")
 ```
 
 Chaining methods:
+
 - `.WithHttpEndpoint(port?, targetPort?, name?)`
 - `.WithReference(resource)`
 - `.WithEnvironment(key, value)`
@@ -214,6 +228,7 @@ builder.AddDenoApp("deno-api", "../deno-service")
 ```
 
 Chaining methods:
+
 - `.WithHttpEndpoint(port?, targetPort?, name?)`
 - `.WithReference(resource)`
 - `.WithEnvironment(key, value)`

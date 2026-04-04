@@ -12,33 +12,33 @@ All adapters must implement the `IRepositoryAdapter` interface:
 
 ```typescript
 interface IRepositoryAdapter {
-    // The type of repository this adapter handles
-    readonly type: string;
-    
-    // The source configuration
-    readonly source: RegistrySource;
-    
-    // Fetch all bundles from this source
-    fetchBundles(): Promise<Bundle[]>;
-    
-    // Download a specific bundle (returns zip Buffer)
-    downloadBundle(bundle: Bundle): Promise<Buffer>;
-    
-    // Get metadata about the source
-    fetchMetadata(): Promise<SourceMetadata>;
-    
-    // Validate source configuration
-    validate(): Promise<ValidationResult>;
-    
-    // Check if source requires authentication
-    requiresAuthentication(): boolean;
-    
-    // Get URLs for bundles
-    getManifestUrl(bundleId: string, version?: string): string;
-    getDownloadUrl(bundleId: string, version?: string): string;
-    
-    // Force re-authentication (optional)
-    forceAuthentication?(): Promise<void>;
+  // The type of repository this adapter handles
+  readonly type: string;
+
+  // The source configuration
+  readonly source: RegistrySource;
+
+  // Fetch all bundles from this source
+  fetchBundles(): Promise<Bundle[]>;
+
+  // Download a specific bundle (returns zip Buffer)
+  downloadBundle(bundle: Bundle): Promise<Buffer>;
+
+  // Get metadata about the source
+  fetchMetadata(): Promise<SourceMetadata>;
+
+  // Validate source configuration
+  validate(): Promise<ValidationResult>;
+
+  // Check if source requires authentication
+  requiresAuthentication(): boolean;
+
+  // Get URLs for bundles
+  getManifestUrl(bundleId: string, version?: string): string;
+  getDownloadUrl(bundleId: string, version?: string): string;
+
+  // Force re-authentication (optional)
+  forceAuthentication?(): Promise<void>;
 }
 ```
 
@@ -79,55 +79,60 @@ async downloadBundle(bundle: Bundle): Promise<Buffer> {
 ### Step 1: Implement the Interface
 
 ```typescript
-import { IRepositoryAdapter, Bundle, SourceMetadata, ValidationResult } from '../types';
+import {
+  IRepositoryAdapter,
+  Bundle,
+  SourceMetadata,
+  ValidationResult,
+} from "../types";
 
 export class MyCustomAdapter implements IRepositoryAdapter {
-    constructor(private config: MyAdapterConfig) {}
-    
-    async fetchBundles(): Promise<Bundle[]> {
-        // Fetch bundle list from your source
-        const response = await fetch(this.config.apiUrl);
-        const data = await response.json();
-        
-        return data.bundles.map(item => ({
-            id: item.id,
-            name: item.name,
-            version: item.version,
-            description: item.description,
-            // ... other bundle properties
-        }));
+  constructor(private config: MyAdapterConfig) {}
+
+  async fetchBundles(): Promise<Bundle[]> {
+    // Fetch bundle list from your source
+    const response = await fetch(this.config.apiUrl);
+    const data = await response.json();
+
+    return data.bundles.map((item) => ({
+      id: item.id,
+      name: item.name,
+      version: item.version,
+      description: item.description,
+      // ... other bundle properties
+    }));
+  }
+
+  async downloadBundle(bundle: Bundle): Promise<Buffer> {
+    // For buffer-based adapters
+    const response = await fetch(`${this.config.apiUrl}/download/${bundle.id}`);
+    return Buffer.from(await response.arrayBuffer());
+  }
+
+  async fetchMetadata(): Promise<SourceMetadata> {
+    return {
+      name: this.config.name,
+      type: "my-custom",
+      url: this.config.apiUrl,
+    };
+  }
+
+  async validate(): Promise<ValidationResult> {
+    try {
+      await fetch(this.config.apiUrl);
+      return { valid: true };
+    } catch (error) {
+      return { valid: false, error: error.message };
     }
-    
-    async downloadBundle(bundle: Bundle): Promise<Buffer> {
-        // For buffer-based adapters
-        const response = await fetch(`${this.config.apiUrl}/download/${bundle.id}`);
-        return Buffer.from(await response.arrayBuffer());
-    }
-    
-    async fetchMetadata(): Promise<SourceMetadata> {
-        return {
-            name: this.config.name,
-            type: 'my-custom',
-            url: this.config.apiUrl,
-        };
-    }
-    
-    async validate(): Promise<ValidationResult> {
-        try {
-            await fetch(this.config.apiUrl);
-            return { valid: true };
-        } catch (error) {
-            return { valid: false, error: error.message };
-        }
-    }
-    
-    getManifestUrl(bundleId: string, version: string): string {
-        return `${this.config.apiUrl}/manifests/${bundleId}/${version}`;
-    }
-    
-    getDownloadUrl(bundleId: string, version: string): string {
-        return `${this.config.apiUrl}/download/${bundleId}/${version}`;
-    }
+  }
+
+  getManifestUrl(bundleId: string, version: string): string {
+    return `${this.config.apiUrl}/manifests/${bundleId}/${version}`;
+  }
+
+  getDownloadUrl(bundleId: string, version: string): string {
+    return `${this.config.apiUrl}/download/${bundleId}/${version}`;
+  }
 }
 ```
 
@@ -136,11 +141,11 @@ export class MyCustomAdapter implements IRepositoryAdapter {
 Register your adapter with the `RepositoryAdapterFactory`:
 
 ```typescript
-import { RepositoryAdapterFactory } from '../adapters/RepositoryAdapterFactory';
-import { MyCustomAdapter } from './MyCustomAdapter';
+import { RepositoryAdapterFactory } from "../adapters/RepositoryAdapterFactory";
+import { MyCustomAdapter } from "./MyCustomAdapter";
 
 // Register the adapter type
-RepositoryAdapterFactory.register('my-custom', MyCustomAdapter);
+RepositoryAdapterFactory.register("my-custom", MyCustomAdapter);
 ```
 
 ### Step 3: Update Source Types
@@ -148,30 +153,30 @@ RepositoryAdapterFactory.register('my-custom', MyCustomAdapter);
 Add your adapter type to the `SourceType` union in `src/types/registry.ts`:
 
 ```typescript
-export type SourceType = 
-    | 'github' 
-    | 'gitlab' 
-    | 'http' 
-    | 'local' 
-    | 'awesome-copilot'
-    | 'local-awesome-copilot'
-    | 'apm'
-    | 'local-apm'
-    | 'my-custom';
+export type SourceType =
+  | "github"
+  | "gitlab"
+  | "http"
+  | "local"
+  | "awesome-copilot"
+  | "local-awesome-copilot"
+  | "apm"
+  | "local-apm"
+  | "my-custom";
 ```
 
 ## Built-in Adapters
 
-| Adapter | Source Type | Description | Status |
-|---------|-------------|-------------|--------|
-| `GitHubAdapter` | `github` | Fetches releases and assets from GitHub repositories | Active |
-| `LocalAdapter` | `local` | Installs from local file system directories | Active |
-| `AwesomeCopilotAdapter` | `awesome-copilot` | Fetches YAML collections from GitHub, builds zips on-the-fly | Active |
-| `LocalAwesomeCopilotAdapter` | `local-awesome-copilot` | Local YAML collections for development | Active |
-| `ApmAdapter` | `apm` | APM package repositories | Active |
-| `LocalApmAdapter` | `local-apm` | Local APM packages | Active |
-| `GitLabAdapter` | `gitlab` | Fetches releases and raw files from GitLab | ⚠️ Deprecated |
-| `HttpAdapter` | `http` | Downloads zip bundles from HTTP/HTTPS URLs | ⚠️ Deprecated |
+| Adapter                      | Source Type             | Description                                                  | Status        |
+| ---------------------------- | ----------------------- | ------------------------------------------------------------ | ------------- |
+| `GitHubAdapter`              | `github`                | Fetches releases and assets from GitHub repositories         | Active        |
+| `LocalAdapter`               | `local`                 | Installs from local file system directories                  | Active        |
+| `AwesomeCopilotAdapter`      | `awesome-copilot`       | Fetches YAML collections from GitHub, builds zips on-the-fly | Active        |
+| `LocalAwesomeCopilotAdapter` | `local-awesome-copilot` | Local YAML collections for development                       | Active        |
+| `ApmAdapter`                 | `apm`                   | APM package repositories                                     | Active        |
+| `LocalApmAdapter`            | `local-apm`             | Local APM packages                                           | Active        |
+| `GitLabAdapter`              | `gitlab`                | Fetches releases and raw files from GitLab                   | ⚠️ Deprecated |
+| `HttpAdapter`                | `http`                  | Downloads zip bundles from HTTP/HTTPS URLs                   | ⚠️ Deprecated |
 
 > **Deprecation Notice:** `GitLabAdapter` and `HttpAdapter` are deprecated and will be removed in a future release. Migrate to `github` or `awesome-copilot` sources.
 
@@ -188,15 +193,15 @@ private async getAuthenticationToken(): Promise<string | undefined> {
     // 1. Try VSCode GitHub authentication
     const session = await vscode.authentication.getSession('github', ['repo'], { silent: true });
     if (session) return session.accessToken;
-    
+
     // 2. Try GitHub CLI
     const { stdout } = await execAsync('gh auth token');
     if (stdout.trim()) return stdout.trim();
-    
+
     // 3. Try explicit token from source config
     const explicitToken = this.getAuthToken();
     if (explicitToken) return explicitToken;
-    
+
     return undefined;
 }
 ```
@@ -204,7 +209,7 @@ private async getAuthenticationToken(): Promise<string | undefined> {
 Use Bearer token format for authenticated requests:
 
 ```typescript
-headers['Authorization'] = `Bearer ${token}`;
+headers["Authorization"] = `Bearer ${token}`;
 ```
 
 ## Bundle Manifest Format

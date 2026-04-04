@@ -21,12 +21,12 @@
 
 ### Contrast Ratios
 
-| Element | Minimum Ratio | Enhanced (AAA) |
-| ------- | ------------- | -------------- |
-| Body text | 4.5:1 | 7:1 |
-| Large text (18px+) | 3:1 | 4.5:1 |
-| UI components | 3:1 | - |
-| Graphical objects | 3:1 | - |
+| Element            | Minimum Ratio | Enhanced (AAA) |
+| ------------------ | ------------- | -------------- |
+| Body text          | 4.5:1         | 7:1            |
+| Large text (18px+) | 3:1           | 4.5:1          |
+| UI components      | 3:1           | -              |
+| Graphical objects  | 3:1           | -              |
 
 ### Color Independence
 
@@ -48,12 +48,12 @@ Never use color as the only means of conveying information:
 
 **Safe text colors on backgrounds:**
 
-| Background | Text Color | Contrast |
-| ---------- | ---------- | -------- |
-| White (#FFFFFF) | Dark gray (#1F2937) | 15.5:1 ✓ |
-| Light gray (#F3F4F6) | Dark gray (#374151) | 10.9:1 ✓ |
-| Primary blue (#2563EB) | White (#FFFFFF) | 4.6:1 ✓ |
-| Dark (#111827) | White (#FFFFFF) | 18.1:1 ✓ |
+| Background             | Text Color          | Contrast |
+| ---------------------- | ------------------- | -------- |
+| White (#FFFFFF)        | Dark gray (#1F2937) | 15.5:1 ✓ |
+| Light gray (#F3F4F6)   | Dark gray (#374151) | 10.9:1 ✓ |
+| Primary blue (#2563EB) | White (#FFFFFF)     | 4.6:1 ✓  |
+| Dark (#111827)         | White (#FFFFFF)     | 18.1:1 ✓ |
 
 **Colors to avoid for text:**
 
@@ -78,7 +78,7 @@ Never use color as the only means of conveying information:
 ```css
 /* Example focus styles */
 :focus {
-  outline: 2px solid #2563EB;
+  outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 
@@ -87,22 +87,21 @@ Never use color as the only means of conveying information:
 }
 
 :focus-visible {
-  outline: 2px solid #2563EB;
+  outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
-
 ```
 
 ### Keyboard Shortcuts
 
-| Key | Expected Behavior |
-| --- | ----------------- |
-| Tab | Move to next interactive element |
-| Shift+Tab | Move to previous element |
-| Enter | Activate button/link |
-| Space | Activate button, toggle checkbox |
-| Escape | Close modal/dropdown |
-| Arrow keys | Navigate within components |
+| Key        | Expected Behavior                |
+| ---------- | -------------------------------- |
+| Tab        | Move to next interactive element |
+| Shift+Tab  | Move to previous element         |
+| Enter      | Activate button/link             |
+| Space      | Activate button, toggle checkbox |
+| Escape     | Close modal/dropdown             |
+| Arrow keys | Navigate within components       |
 
 ---
 
@@ -112,14 +111,14 @@ Never use color as the only means of conveying information:
 
 Use appropriate elements for their purpose:
 
-| Purpose | Element | Not This |
-| ------- | ------- | -------- |
-| Navigation | `<nav>` | `<div class="nav">` |
-| Main content | `<main>` | `<div id="main">` |
-| Header | `<header>` | `<div class="header">` |
-| Footer | `<footer>` | `<div class="footer">` |
-| Button | `<button>` | `<div onclick>` |
-| Link | `<a href>` | `<span onclick>` |
+| Purpose      | Element    | Not This               |
+| ------------ | ---------- | ---------------------- |
+| Navigation   | `<nav>`    | `<div class="nav">`    |
+| Main content | `<main>`   | `<div id="main">`      |
+| Header       | `<header>` | `<div class="header">` |
+| Footer       | `<footer>` | `<div class="footer">` |
+| Button       | `<button>` | `<div onclick>`        |
+| Link         | `<a href>` | `<span onclick>`       |
 
 ### Heading Hierarchy
 
@@ -164,11 +163,11 @@ Complex: alt="Brief description" + detailed description nearby
 
 ### Touch Target Sizes
 
-| Platform | Minimum | Recommended |
-| -------- | ------- | ----------- |
-| WCAG 2.1 | 44×44px | 48×48px |
-| iOS (Apple) | 44×44pt | - |
-| Android | 48×48dp | - |
+| Platform    | Minimum | Recommended |
+| ----------- | ------- | ----------- |
+| WCAG 2.1    | 44×44px | 48×48px     |
+| iOS (Apple) | 44×44pt | -           |
+| Android     | 48×48dp | -           |
 
 ### Touch Target Spacing
 
@@ -293,30 +292,30 @@ role="status" - Status updates (like polite)
 
 ### Roles
 
-| Role | Purpose |
-| ---- | ------- |
-| `button` | Clickable button |
-| `link` | Navigation link |
-| `dialog` | Modal dialog |
-| `alert` | Important message |
-| `navigation` | Navigation region |
-| `main` | Main content |
-| `search` | Search functionality |
-| `tab/tablist/tabpanel` | Tab interface |
+| Role                   | Purpose              |
+| ---------------------- | -------------------- |
+| `button`               | Clickable button     |
+| `link`                 | Navigation link      |
+| `dialog`               | Modal dialog         |
+| `alert`                | Important message    |
+| `navigation`           | Navigation region    |
+| `main`                 | Main content         |
+| `search`               | Search functionality |
+| `tab/tablist/tabpanel` | Tab interface        |
 
 ### Properties
 
-| Property | Purpose |
-| -------- | ------- |
-| `aria-label` | Accessible name |
-| `aria-labelledby` | Reference to labeling element |
-| `aria-describedby` | Reference to description |
-| `aria-hidden` | Hide from assistive tech |
-| `aria-expanded` | Expandable state |
-| `aria-selected` | Selection state |
-| `aria-disabled` | Disabled state |
-| `aria-required` | Required field |
-| `aria-invalid` | Invalid input |
+| Property           | Purpose                       |
+| ------------------ | ----------------------------- |
+| `aria-label`       | Accessible name               |
+| `aria-labelledby`  | Reference to labeling element |
+| `aria-describedby` | Reference to description      |
+| `aria-hidden`      | Hide from assistive tech      |
+| `aria-expanded`    | Expandable state              |
+| `aria-selected`    | Selection state               |
+| `aria-disabled`    | Disabled state                |
+| `aria-required`    | Required field                |
+| `aria-invalid`     | Invalid input                 |
 
 ### Golden Rule
 

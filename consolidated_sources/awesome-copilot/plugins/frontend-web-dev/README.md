@@ -13,17 +13,17 @@ copilot plugin install frontend-web-dev@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
-| `/frontend-web-dev:playwright-explore-website` | Website exploration for testing using Playwright MCP |
-| `/frontend-web-dev:playwright-generate-test` | Generate a Playwright test based on a scenario using Playwright MCP |
+| Command                                        | Description                                                         |
+| ---------------------------------------------- | ------------------------------------------------------------------- |
+| `/frontend-web-dev:playwright-explore-website` | Website exploration for testing using Playwright MCP                |
+| `/frontend-web-dev:playwright-generate-test`   | Generate a Playwright test based on a scenario using Playwright MCP |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
-| `expert-react-frontend-engineer` | Expert React 19.2 frontend engineer specializing in modern hooks, Server Components, Actions, TypeScript, and performance optimization |
-| `electron-angular-native` | Code Review Mode tailored for Electron app with Node.js backend (main), Angular frontend (render), and native integration layer (e.g., AppleScript, shell, or native tooling). Services in other repos are not reviewed here. |
+| Agent                            | Description                                                                                                                                                                                                                   |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `expert-react-frontend-engineer` | Expert React 19.2 frontend engineer specializing in modern hooks, Server Components, Actions, TypeScript, and performance optimization                                                                                        |
+| `electron-angular-native`        | Code Review Mode tailored for Electron app with Node.js backend (main), Angular frontend (render), and native integration layer (e.g., AppleScript, shell, or native tooling). Services in other repos are not reviewed here. |
 
 ## Source
 

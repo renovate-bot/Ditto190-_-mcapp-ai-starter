@@ -9,7 +9,7 @@ on:
     types: [published]
 
 permissions:
-  contents: write  # required for pushing to gh-pages
+  contents: write # required for pushing to gh-pages
 
 jobs:
   deploy:

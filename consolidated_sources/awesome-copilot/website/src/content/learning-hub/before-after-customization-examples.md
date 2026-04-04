@@ -1,10 +1,10 @@
 ---
-title: 'Before/After Customization Examples'
-description: 'See real-world transformations showing how custom agents, skills, and instructions dramatically improve GitHub Copilot effectiveness.'
+title: "Before/After Customization Examples"
+description: "See real-world transformations showing how custom agents, skills, and instructions dramatically improve GitHub Copilot effectiveness."
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: '2025-12-12'
-estimatedReadingTime: '12 minutes'
+lastUpdated: "2025-12-12"
+estimatedReadingTime: "12 minutes"
 tags:
   - customization
   - examples
@@ -37,6 +37,7 @@ async function getUser(userId: string) {
 ```
 
 **Problems**:
+
 - No error handling or retry logic
 - Doesn't use existing HTTP client utilities
 - Missing type safety
@@ -49,11 +50,12 @@ Create `.github/instructions/typescript-api.md`:
 
 ````markdown
 ---
-description: 'API client patterns for our application'
-applyTo: '**/*-api.ts, **/services/**/*.ts'
+description: "API client patterns for our application"
+applyTo: "**/*-api.ts, **/services/**/*.ts"
 ---
 
 When generating API client code:
+
 - Always use the HttpClient class from `@/lib/http-client`
 - Include proper TypeScript types for request/response
 - Add structured error handling with our ApiError class
@@ -63,19 +65,20 @@ When generating API client code:
 - Never hardcode API endpoints
 
 Example pattern:
+
 ```typescript
-import { httpClient } from '@/lib/http-client';
-import { ApiError } from '@/lib/errors';
-import { logger } from '@/lib/logger';
+import { httpClient } from "@/lib/http-client";
+import { ApiError } from "@/lib/errors";
+import { logger } from "@/lib/logger";
 
 async function fetchResource<T>(endpoint: string): Promise<T> {
   try {
     const response = await httpClient.get<T>(endpoint);
-    logger.debug('API call successful', { endpoint });
+    logger.debug("API call successful", { endpoint });
     return response.data;
   } catch (error) {
-    logger.error('API call failed', { endpoint, error });
-    throw new ApiError('Failed to fetch resource', error);
+    logger.error("API call failed", { endpoint, error });
+    throw new ApiError("Failed to fetch resource", error);
   }
 }
 ```
@@ -85,9 +88,9 @@ Now Copilot generates code aligned with your team's patterns:
 
 ```typescript
 // user-api.ts
-import { httpClient } from '@/lib/http-client';
-import { ApiError } from '@/lib/errors';
-import { logger } from '@/lib/logger';
+import { httpClient } from "@/lib/http-client";
+import { ApiError } from "@/lib/errors";
+import { logger } from "@/lib/logger";
 
 interface User {
   id: string;
@@ -98,16 +101,17 @@ interface User {
 async function getUser(userId: string): Promise<User> {
   try {
     const response = await httpClient.get<User>(`/users/${userId}`);
-    logger.debug('User fetched successfully', { userId });
+    logger.debug("User fetched successfully", { userId });
     return response.data;
   } catch (error) {
-    logger.error('Failed to fetch user', { userId, error });
-    throw new ApiError('Unable to retrieve user data', error);
+    logger.error("Failed to fetch user", { userId, error });
+    throw new ApiError("Unable to retrieve user data", error);
   }
 }
 ```
 
 **Benefits**:
+
 - Automatically uses your team's HTTP client
 - Includes proper error handling and logging
 - Type-safe with your interfaces
@@ -122,18 +126,19 @@ Default Copilot test suggestions are often generic and miss project-specific pat
 
 ```typescript
 // user-service.test.ts
-import { UserService } from './user-service';
+import { UserService } from "./user-service";
 
-describe('UserService', () => {
-  it('should get user by id', async () => {
+describe("UserService", () => {
+  it("should get user by id", async () => {
     const service = new UserService();
-    const user = await service.getUserById('123');
+    const user = await service.getUserById("123");
     expect(user).toBeDefined();
   });
 });
 ```
 
 **Problems**:
+
 - No test fixtures or factories
 - Missing setup/teardown
 - Doesn't use testing utilities
@@ -147,7 +152,7 @@ Create a skill folder `.github/skills/generate-tests/` with a `SKILL.md`:
 ````markdown
 ---
 name: generate-tests
-description: 'Generate comprehensive test suites using our testing patterns, including fixtures, setup/teardown, and thorough assertions'
+description: "Generate comprehensive test suites using our testing patterns, including fixtures, setup/teardown, and thorough assertions"
 ---
 
 # generate-tests
@@ -155,17 +160,20 @@ description: 'Generate comprehensive test suites using our testing patterns, inc
 Generate a comprehensive test suite for the selected code following these patterns:
 
 **Setup Requirements**:
+
 - Use our test factory functions from `@/test/factories`
 - Set up database transactions with `setupTestDb()` and `cleanupTestDb()`
 - Mock external services using our mock utilities from `@/test/mocks`
 
 **Test Structure**:
+
 - Group related tests in `describe` blocks
 - Use descriptive test names that explain behavior: "should [action] when [condition]"
 - Include setup/teardown in `beforeEach`/`afterEach`
 - Test happy path, edge cases, and error scenarios
 
 **Assertions**:
+
 - Use specific assertions, not just `.toBeDefined()`
 - Verify all relevant properties of returned objects
 - Check error messages and types for failure cases
@@ -174,12 +182,13 @@ Generate a comprehensive test suite for the selected code following these patter
 See [references/test-patterns.md](references/test-patterns.md) for standard patterns and [templates/test-template.ts](templates/test-template.ts) for a starter structure.
 
 **Example Pattern**:
-```typescript
-import { setupTestDb, cleanupTestDb } from '@/test/setup';
-import { createUser, createPost } from '@/test/factories';
-import { mockApiClient } from '@/test/mocks';
 
-describe('UserService', () => {
+```typescript
+import { setupTestDb, cleanupTestDb } from "@/test/setup";
+import { createUser, createPost } from "@/test/factories";
+import { mockApiClient } from "@/test/mocks";
+
+describe("UserService", () => {
   beforeEach(async () => {
     await setupTestDb();
   });
@@ -188,25 +197,26 @@ describe('UserService', () => {
     await cleanupTestDb();
   });
 
-  describe('getUserById', () => {
-    it('should return user when found', async () => {
-      const user = await createUser({ name: 'Alice' });
+  describe("getUserById", () => {
+    it("should return user when found", async () => {
+      const user = await createUser({ name: "Alice" });
       const service = new UserService();
-      
+
       const result = await service.getUserById(user.id);
-      
+
       expect(result).toEqual({
         id: user.id,
-        name: 'Alice',
-        email: expect.any(String)
+        name: "Alice",
+        email: expect.any(String),
       });
     });
 
-    it('should throw NotFoundError when user does not exist', async () => {
+    it("should throw NotFoundError when user does not exist", async () => {
       const service = new UserService();
-      
-      await expect(service.getUserById('nonexistent'))
-        .rejects.toThrow(NotFoundError);
+
+      await expect(service.getUserById("nonexistent")).rejects.toThrow(
+        NotFoundError,
+      );
     });
   });
 });
@@ -219,13 +229,13 @@ Now when you select code and use `/generate-tests`, or when an agent detects a t
 
 ```typescript
 // user-service.test.ts
-import { setupTestDb, cleanupTestDb } from '@/test/setup';
-import { createUser, createPost } from '@/test/factories';
-import { mockApiClient } from '@/test/mocks';
-import { UserService } from './user-service';
-import { NotFoundError } from '@/lib/errors';
+import { setupTestDb, cleanupTestDb } from "@/test/setup";
+import { createUser, createPost } from "@/test/factories";
+import { mockApiClient } from "@/test/mocks";
+import { UserService } from "./user-service";
+import { NotFoundError } from "@/lib/errors";
 
-describe('UserService', () => {
+describe("UserService", () => {
   let service: UserService;
 
   beforeEach(async () => {
@@ -237,52 +247,54 @@ describe('UserService', () => {
     await cleanupTestDb();
   });
 
-  describe('getUserById', () => {
-    it('should return user with all properties when found', async () => {
-      const user = await createUser({ 
-        name: 'Alice Johnson',
-        email: 'alice@example.com'
+  describe("getUserById", () => {
+    it("should return user with all properties when found", async () => {
+      const user = await createUser({
+        name: "Alice Johnson",
+        email: "alice@example.com",
       });
-      
+
       const result = await service.getUserById(user.id);
-      
+
       expect(result).toEqual({
         id: user.id,
-        name: 'Alice Johnson',
-        email: 'alice@example.com',
-        createdAt: expect.any(Date)
+        name: "Alice Johnson",
+        email: "alice@example.com",
+        createdAt: expect.any(Date),
       });
     });
 
-    it('should throw NotFoundError when user does not exist', async () => {
-      await expect(service.getUserById('nonexistent-id'))
-        .rejects.toThrow(NotFoundError);
+    it("should throw NotFoundError when user does not exist", async () => {
+      await expect(service.getUserById("nonexistent-id")).rejects.toThrow(
+        NotFoundError,
+      );
     });
 
-    it('should throw NotFoundError with correct message', async () => {
-      await expect(service.getUserById('invalid'))
-        .rejects.toThrow('User not found');
+    it("should throw NotFoundError with correct message", async () => {
+      await expect(service.getUserById("invalid")).rejects.toThrow(
+        "User not found",
+      );
     });
   });
 
-  describe('getUserPosts', () => {
-    it('should return all posts for a user', async () => {
+  describe("getUserPosts", () => {
+    it("should return all posts for a user", async () => {
       const user = await createUser();
-      const post1 = await createPost({ userId: user.id, title: 'First Post' });
-      const post2 = await createPost({ userId: user.id, title: 'Second Post' });
-      
+      const post1 = await createPost({ userId: user.id, title: "First Post" });
+      const post2 = await createPost({ userId: user.id, title: "Second Post" });
+
       const result = await service.getUserPosts(user.id);
-      
+
       expect(result).toHaveLength(2);
-      expect(result[0]).toMatchObject({ title: 'First Post' });
-      expect(result[1]).toMatchObject({ title: 'Second Post' });
+      expect(result[0]).toMatchObject({ title: "First Post" });
+      expect(result[1]).toMatchObject({ title: "Second Post" });
     });
 
-    it('should return empty array when user has no posts', async () => {
+    it("should return empty array when user has no posts", async () => {
       const user = await createUser();
-      
+
       const result = await service.getUserPosts(user.id);
-      
+
       expect(result).toEqual([]);
     });
   });
@@ -290,6 +302,7 @@ describe('UserService', () => {
 ```
 
 **Benefits**:
+
 - Richer test coverage including edge cases
 - Uses team's testing utilities and patterns
 - Proper setup/teardown
@@ -320,6 +333,7 @@ resource "azurerm_storage_account" "data" {
 ```
 
 **Problems**:
+
 - No consistent naming aligned to Azure conventions
 - Missing tags
 - Public network access not blocked; no private endpoint or network rules
@@ -415,6 +429,7 @@ output "storage_account_id" {
 ```
 
 **Benefits**:
+
 - Secure-by-default configuration (encryption at rest, TLS 1.2+)
 - Follows Azure naming and tagging conventions
 - Public access blocked with diagnostics enabled
@@ -428,6 +443,7 @@ output "storage_account_id" {
 Developers manually review pull requests and write comments, which can be time-consuming and inconsistent:
 
 **Manual Process**:
+
 1. Read through code changes
 2. Think about potential issues
 3. Write detailed feedback
@@ -443,7 +459,7 @@ Create a skill folder `skills/review-pr/` with a `SKILL.md`:
 ````markdown
 ---
 name: review-pr
-description: 'Generate comprehensive code review with actionable feedback, covering correctness, security, performance, and maintainability'
+description: "Generate comprehensive code review with actionable feedback, covering correctness, security, performance, and maintainability"
 ---
 
 # review-pr
@@ -451,6 +467,7 @@ description: 'Generate comprehensive code review with actionable feedback, cover
 Analyze the current git diff and provide a structured code review with:
 
 **Structure**:
+
 1. **Summary**: Brief overview of changes
 2. **Positive Feedback**: What's done well
 3. **Issues Found**: Problems categorized by severity (Critical/Major/Minor)
@@ -458,6 +475,7 @@ Analyze the current git diff and provide a structured code review with:
 5. **Questions**: Clarifications needed
 
 **Review Focus**:
+
 - Code correctness and logic errors
 - Security vulnerabilities
 - Performance implications
@@ -467,6 +485,7 @@ Analyze the current git diff and provide a structured code review with:
 - Documentation needs
 
 **Tone**:
+
 - Be constructive and helpful
 - Explain the "why" behind suggestions
 - Offer specific fixes, not just critique
@@ -474,6 +493,7 @@ Analyze the current git diff and provide a structured code review with:
 
 **Format**:
 Use markdown with code blocks for suggestions. For each issue, provide:
+
 - Clear description of the problem
 - Why it matters
 - Suggested fix with code example
@@ -481,16 +501,19 @@ Use markdown with code blocks for suggestions. For each issue, provide:
 See [references/review-checklist.md](references/review-checklist.md) for the standard review checklist.
 
 Example format:
+
 ## 🔴 Critical Issues
 
 ### Missing Input Validation
+
 **Problem**: The `processUser` function doesn't validate the email format.
 **Impact**: Could lead to invalid data in the database.
 **Fix**:
+
 ```typescript
 function processUser(user: User) {
   if (!isValidEmail(user.email)) {
-    throw new ValidationError('Invalid email format');
+    throw new ValidationError("Invalid email format");
   }
   // ... rest of function
 }
@@ -501,9 +524,11 @@ Using this skill on a PR (via `/review-pr` or agent invocation) generates struct
 
 ````markdown
 ## Summary
+
 This PR adds user authentication with JWT tokens. The implementation includes login, token generation, and middleware for protected routes.
 
 ## 🎉 Positive Feedback
+
 - Good separation of concerns with separate auth service and middleware
 - Comprehensive error handling in the login flow
 - Clear function naming that makes the code self-documenting
@@ -511,23 +536,29 @@ This PR adds user authentication with JWT tokens. The implementation includes lo
 ## 🔴 Critical Issues
 
 ### 1. Hardcoded Secret Key
+
 **Problem**: The JWT secret is hardcoded in `auth.service.ts`:
+
 ```typescript
-const secret = 'my-secret-key'; // ❌ Hardcoded
+const secret = "my-secret-key"; // ❌ Hardcoded
 ```
+
 **Impact**: Security vulnerability - secrets should never be in source code.
 **Fix**:
+
 ```typescript
 const secret = process.env.JWT_SECRET;
 if (!secret) {
-  throw new Error('JWT_SECRET environment variable is required');
+  throw new Error("JWT_SECRET environment variable is required");
 }
 ```
 
 ### 2. Missing Password Hashing Salt Rounds
+
 **Problem**: Password hashing uses default bcrypt rounds which may be too low.
 **Impact**: Weak password protection if defaults are insufficient.
 **Fix**:
+
 ```typescript
 const SALT_ROUNDS = 12; // Explicit configuration
 const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
@@ -536,6 +567,7 @@ const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 ## ⚠️ Major Issues
 
 ### 3. No Token Expiration Validation
+
 **Problem**: The auth middleware doesn't check token expiration explicitly.
 **Impact**: Expired tokens might be accepted if JWT library doesn't verify.
 **Fix**: Add explicit expiration check in the middleware.
@@ -543,32 +575,38 @@ const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 ## 💡 Suggestions
 
 ### 4. Consider Adding Refresh Tokens
+
 The current implementation uses only access tokens. Consider implementing refresh tokens for better security and user experience:
+
 - Short-lived access tokens (15 minutes)
 - Longer-lived refresh tokens (7 days)
 - Token rotation on refresh
 
 ### 5. Add Rate Limiting
+
 The login endpoint should have rate limiting to prevent brute force attacks:
+
 ```typescript
-import rateLimit from 'express-rate-limit';
+import rateLimit from "express-rate-limit";
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 5, // 5 attempts
-  message: 'Too many login attempts, please try again later'
+  message: "Too many login attempts, please try again later",
 });
 
-app.post('/login', loginLimiter, authController.login);
+app.post("/login", loginLimiter, authController.login);
 ```
 
 ## ❓ Questions
+
 1. What's the intended token expiration time for production?
 2. Should we implement token revocation for logout functionality?
 3. Are there plans for multi-factor authentication in the future?
 ````
 
 **Benefits**:
+
 - Consistent review quality
 - Faster review process (5-10 minutes)
 - Structured, actionable feedback
@@ -586,10 +624,9 @@ These examples demonstrate how customization transforms GitHub Copilot from a ge
 4. **Combination** of all three creates a comprehensive development assistant
 
 The investment in creating customizations pays dividends through:
+
 - Faster development with fewer manual corrections
 - Consistent code quality across the team
 - Automatic adherence to best practices
 - Reduced onboarding time for new team members
 - Better security and maintainability
-
-

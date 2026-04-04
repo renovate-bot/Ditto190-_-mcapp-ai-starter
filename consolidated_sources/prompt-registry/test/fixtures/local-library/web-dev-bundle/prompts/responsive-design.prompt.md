@@ -14,7 +14,7 @@ Convert fixed-width layouts to responsive designs using mobile-first approach.
 
 - **Fluid Typography**: `clamp(1rem, 2vw + 1rem, 2rem)`
 - **Responsive Images**: `srcset`, `picture` element
-- **Container Queries**: For component-level responsiveness  
+- **Container Queries**: For component-level responsiveness
 - **Grid/Flexbox**: Flexible layouts
 - **Media Queries**: Breakpoint-based adjustments
 
@@ -22,16 +22,22 @@ Convert fixed-width layouts to responsive designs using mobile-first approach.
 
 ```css
 /* Mobile first */
-.container { width: 100%; }
+.container {
+  width: 100%;
+}
 
 /* Tablet */
 @media (min-width: 768px) {
-  .container { width: 750px; }
+  .container {
+    width: 750px;
+  }
 }
 
 /* Desktop */
 @media (min-width: 1024px) {
-  .container { width: 1000px; }
+  .container {
+    width: 1000px;
+  }
 }
 ```
 

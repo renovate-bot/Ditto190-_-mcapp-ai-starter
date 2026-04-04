@@ -17,9 +17,7 @@
     "architecture",
     "technical-spike"
   ],
-  "agents": [
-    "./agents"
-  ],
+  "agents": ["./agents"],
   "skills": [
     "./skills/breakdown-feature-implementation",
     "./skills/breakdown-feature-prd",

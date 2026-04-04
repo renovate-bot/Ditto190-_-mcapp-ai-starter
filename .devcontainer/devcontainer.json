@@ -13,13 +13,7 @@
       "version": "20"
     }
   },
-  "forwardPorts": [
-    5678,
-    11434,
-    6333,
-    5432,
-    8080
-  ],
+  "forwardPorts": [5678, 11434, 6333, 5432, 8080],
   "portsAttributes": {
     "5678": {
       "label": "n8n UI",
@@ -54,29 +48,29 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        \"ms-vscode-remote.remote-containers",
-        "ms-azuretools.vscode-docker",
-        "ms-python.python",
-        "ms-python.debugpy",
-        "ms-python.pylint",
-        "ms-python.black-formatter",
         "charliermarsh.ruff",
-        "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
+        "davidanson.vscode-markdownlint",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "foxundermoon.shell-format",
         "github.copilot",
         "github.copilot-chat",
-        "redhat.vscode-yaml",
         "github.vscode-github-actions",
-        "eamodio.gitlens",
+        "humao.rest-client",
         "mhutchie.git-graph",
         "mikestead.dotenv",
-        "timonwong.shellcheck",
-        "foxundermoon.shell-format",
-        "humao.rest-client",
-        "yzhang.markdown-all-in-one",
-        "davidanson.vscode-markdownlint",
+        "ms-azuretools.vscode-docker",
+        "ms-python.black-formatter",
+        "ms-python.debugpy",
+        "ms-python.pylint",
+        "ms-python.python",
+        "ms-vscode-remote.remote-containers",
+        "redhat.vscode-yaml",
         "streetsidesoftware.code-spell-checker",
-        "usernamehw.errorlens"
+        "timonwong.shellcheck",
+        "usernamehw.errorlens",
+        "yzhang.markdown-all-in-one"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
@@ -127,5 +121,9 @@
     "storage": "32gb"
   },
   "remoteUser": "root",
-  "privileged": true
+  "privileged": true,
+  "containerEnv": {
+    "PATH": "/usr/local/share/nvm/versions/node/v20/bin:${HOME}/.local/bin:/usr/local/bin:${containerEnv:PATH}",
+    "NVM_DIR": "/usr/local/share/nvm"
+  }
 }

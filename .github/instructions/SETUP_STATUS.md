@@ -27,7 +27,6 @@
   - Agent folder layout + naming conventions
   - Migration folder rules (gated integration pattern)
   - Git worktree conventions
-  
 - ✅ `.github/instructions/initial-setup.instructions.md` — foundation setup (Phases 1–5)
   - Clone, .env, dependency installation
   - Docker stack startup
@@ -35,7 +34,6 @@
   - Multi-agent orchestration workflow
   - ContextStream memory per worktree
   - Troubleshooting (locked worktrees, conflicts, sync issues)
-  
 - ✅ `.github/instructions/multi-agent-workflow.instructions.md` — complete workflow reference
   - Priority 1: git worktrees, automatic commits, parallel agents
   - Practical example: 2 agents in parallel
@@ -126,7 +124,7 @@ Create `.github/workflows/multi-agent-orchestrator.yml`:
 name: Multi-Agent Orchestrator
 on:
   schedule:
-    - cron: '*/15 * * * *'  # Run every 15 minutes
+    - cron: "*/15 * * * *" # Run every 15 minutes
   workflow_dispatch:
 
 permissions:
@@ -175,10 +173,10 @@ for wt in $WORKTREES; do
   BRANCH=$(git -C "$wt" rev-parse --abbrev-ref HEAD)
   MAIN_COMMIT=$(git log -1 --format=%H origin/main)
   WS_COMMIT=$(git -C "$wt" log -1 --format=%H)
-  
+
   if [ "$MAIN_COMMIT" != "$WS_COMMIT" ]; then
     echo "Worktree $wt (branch $BRANCH) has new commits"
-    
+
     # Create PR if none exists
     if ! gh pr list --head "$BRANCH" --base main | grep -q "$BRANCH"; then
       echo "Creating PR for $BRANCH"
@@ -256,21 +254,24 @@ For each agent (e.g., `agent-foo`), create:
 ```markdown
 ---
 description: Agent Foo's workflow for specific task
-applyTo: '**'
+applyTo: "**"
 ---
 
 # Agent Foo — Task Description
 
 ## Your Setup
+
 - Worktree: `/workspaces/mcapp-agent-foo`
 - Branch: `feature/agent-foo`
 - Session ID: `agent-foo-session-2026-04-03`
 - ContextStream workspace: `mcpapp-monorepo` (e76de4e7-5d4b-40c0-9023-10172088310c)
 
 ## Assigned Task
+
 [Summary of what Agent Foo is building]
 
 ## Success Criteria
+
 - [ ] Tests pass: `npm test` OR `uv run pytest -m 'not e2e' -q`
 - [ ] Lint passes: `npm run lint`
 - [ ] All component CI passes (in .github/workflows/repo-ci.yml)
@@ -280,6 +281,7 @@ applyTo: '**'
 - [ ] Branch deleted
 
 ## How to Commit
+
 1. Edit files in your worktree
 2. Run tests: `npm test && npm run lint`
 3. Stage all: `git add .`
@@ -288,6 +290,7 @@ applyTo: '**'
 6. Wait for Multi-Agent Orchestrator to create PR + request reviews
 
 ## If Blocked
+
 - Conflicts during merge? Request manual merge help from @code-reviewer
 - Tests failing? Check `.github/workflows/repo-ci.yml` for reproduction steps
 - ContextStream unreachable? Try: `contextstream-mcp setup --force`
@@ -308,14 +311,14 @@ applyTo: '**'
 
 ## 🛠️ Troubleshooting Quick Reference
 
-| Problem | Command |
-|---------|---------|
-| Worktree locked | `git worktree unlock ../mcapp-agent-<name>` |
-| Branch exists already | `git fetch origin && git worktree add ../mcapp-agent-<name> feature/<name>` |
-| Tests failing | `cd ../../ && npm test:e2e` (from worktree parent) |
-| ContextStream not init | `contextstream-mcp init --folder-path=$(pwd)` |
-| GitLab mirroring delayed | Check GitLab webhook status in project settings |
-| Can't push | `git push --force-with-lease origin feature/<name>` (use with caution) |
+| Problem                  | Command                                                                     |
+| ------------------------ | --------------------------------------------------------------------------- |
+| Worktree locked          | `git worktree unlock ../mcapp-agent-<name>`                                 |
+| Branch exists already    | `git fetch origin && git worktree add ../mcapp-agent-<name> feature/<name>` |
+| Tests failing            | `cd ../../ && npm test:e2e` (from worktree parent)                          |
+| ContextStream not init   | `contextstream-mcp init --folder-path=$(pwd)`                               |
+| GitLab mirroring delayed | Check GitLab webhook status in project settings                             |
+| Can't push               | `git push --force-with-lease origin feature/<name>` (use with caution)      |
 
 ---
 
@@ -331,4 +334,3 @@ be15e3e fut(agents): add multi-agent orchestrator and workflow documentation
 **Status**: Foundation layer **complete**. Ready for multi-agent agent assignment and Phase 2 testing.  
 **Next**: Run Phase 1 setup, create first sandbox worktree, test commit → PR → merge loop.  
 **Estimated Time to Full Setup**: 30–45 min (including Docker startup and dependency install).
-

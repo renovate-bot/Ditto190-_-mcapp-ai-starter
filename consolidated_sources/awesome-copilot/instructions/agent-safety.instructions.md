@@ -1,6 +1,6 @@
 ---
-description: 'Guidelines for building safe, governed AI agent systems. Apply when writing code that uses agent frameworks, tool-calling LLMs, or multi-agent orchestration to ensure proper safety boundaries, policy enforcement, and auditability.'
-applyTo: '**'
+description: "Guidelines for building safe, governed AI agent systems. Apply when writing code that uses agent frameworks, tool-calling LLMs, or multi-agent orchestration to ensure proper safety boundaries, policy enforcement, and auditability."
+applyTo: "**"
 ---
 
 # Agent Safety & Governance
@@ -44,6 +44,7 @@ applyTo: '**'
 ## Code Patterns
 
 When writing agent tool functions:
+
 ```python
 # Good: Governed tool with explicit policy
 @govern(policy)
@@ -56,6 +57,7 @@ async def search(query: str) -> str:
 ```
 
 When defining policies:
+
 ```yaml
 # Good: Explicit allowlist, content filters, rate limit
 name: my-agent
@@ -69,6 +71,7 @@ allowed_tools: ["*"]
 ```
 
 When composing multi-agent policies:
+
 ```python
 # Good: Most-restrictive-wins composition
 final_policy = compose_policies(org_policy, team_policy, agent_policy)
@@ -90,6 +93,6 @@ final_policy = agent_policy
 - Relying only on output guardrails (post-generation) instead of pre-execution governance
 - Hardcoding policy rules instead of loading from configuration
 - Allowing agents to self-modify their own governance policies
-- Forgetting to governance-check tool *arguments*, not just tool *names*
+- Forgetting to governance-check tool _arguments_, not just tool _names_
 - Not decaying trust scores over time — stale trust is dangerous
 - Logging prompts in audit trails — log decisions and metadata, not user content

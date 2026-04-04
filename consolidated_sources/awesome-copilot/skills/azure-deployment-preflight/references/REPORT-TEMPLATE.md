@@ -6,7 +6,7 @@ Use this template structure when generating `preflight-report.md` in the project
 
 ## Template
 
-```markdown
+````markdown
 # Azure Deployment Preflight Report
 
 **Generated:** {timestamp}
@@ -16,22 +16,22 @@ Use this template structure when generating `preflight-report.md` in the project
 
 ## Summary
 
-| Property | Value |
-|----------|-------|
-| **Template File(s)** | {bicep-files} |
+| Property              | Value                 |
+| --------------------- | --------------------- | ----------------- | --------------- | ------- |
+| **Template File(s)**  | {bicep-files}         |
 | **Parameter File(s)** | {param-files-or-none} |
-| **Project Type** | {azd-project | standalone-bicep} |
-| **Deployment Scope** | {resourceGroup | subscription | managementGroup | tenant} |
-| **Target** | {resource-group-name | subscription-name | mg-id} |
-| **Validation Level** | {Provider | ProviderNoRbac} |
+| **Project Type**      | {azd-project          | standalone-bicep} |
+| **Deployment Scope**  | {resourceGroup        | subscription      | managementGroup | tenant} |
+| **Target**            | {resource-group-name  | subscription-name | mg-id}          |
+| **Validation Level**  | {Provider             | ProviderNoRbac}   |
 
 ### Validation Results
 
-| Check | Status | Details |
-|-------|--------|---------|
-| Bicep Syntax | {✅ Pass | ❌ Fail | ⚠️ Warnings | ⏭️ Skipped} | {details} |
-| What-If Analysis | {✅ Pass | ❌ Fail | ⏭️ Skipped} | {details} |
-| Permission Check | {✅ Pass | ⚠️ Limited | ❌ Fail} | {details} |
+| Check            | Status   | Details    |
+| ---------------- | -------- | ---------- | ----------- | ----------- | --------- |
+| Bicep Syntax     | {✅ Pass | ❌ Fail    | ⚠️ Warnings | ⏭️ Skipped} | {details} |
+| What-If Analysis | {✅ Pass | ❌ Fail    | ⏭️ Skipped} | {details}   |
+| Permission Check | {✅ Pass | ⚠️ Limited | ❌ Fail}    | {details}   |
 
 ---
 
@@ -39,17 +39,17 @@ Use this template structure when generating `preflight-report.md` in the project
 
 ### Commands Run
 
-| Step | Command | Exit Code | Duration |
-|------|---------|-----------|----------|
-| 1 | `{command}` | {0 | non-zero} | {duration} |
-| 2 | `{command}` | {0 | non-zero} | {duration} |
+| Step | Command     | Exit Code | Duration  |
+| ---- | ----------- | --------- | --------- | ---------- |
+| 1    | `{command}` | {0        | non-zero} | {duration} |
+| 2    | `{command}` | {0        | non-zero} | {duration} |
 
 ### Tool Versions
 
-| Tool | Version |
-|------|---------|
-| Azure CLI | {version} |
-| Bicep CLI | {version} |
+| Tool                | Version          |
+| ------------------- | ---------------- |
+| Azure CLI           | {version}        |
+| Bicep CLI           | {version}        |
 | Azure Developer CLI | {version-or-n/a} |
 
 ---
@@ -61,9 +61,11 @@ Use this template structure when generating `preflight-report.md` in the project
 {end-if}
 
 {if-issues-exist}
+
 ### Errors
 
 {for-each-error}
+
 #### ❌ {error-title}
 
 - **Severity:** Error
@@ -78,6 +80,7 @@ Use this template structure when generating `preflight-report.md` in the project
 ### Warnings
 
 {for-each-warning}
+
 #### ⚠️ {warning-title}
 
 - **Severity:** Warning
@@ -96,13 +99,13 @@ Use this template structure when generating `preflight-report.md` in the project
 
 ### Change Summary
 
-| Change Type | Count |
-|-------------|-------|
-| 🆕 Create | {count} |
-| 📝 Modify | {count} |
-| 🗑️ Delete | {count} |
+| Change Type | Count   |
+| ----------- | ------- |
+| 🆕 Create   | {count} |
+| 📝 Modify   | {count} |
+| 🗑️ Delete   | {count} |
 | ✓ No Change | {count} |
-| ⚠️ Ignore | {count} |
+| ⚠️ Ignore   | {count} |
 
 ### Resources to Create
 
@@ -113,22 +116,23 @@ Use this template structure when generating `preflight-report.md` in the project
 {end-if}
 
 {if-no-resources-to-create}
-*No resources will be created.*
+_No resources will be created._
 {end-if}
 
 ### Resources to Modify
 
 {if-resources-to-modify}
+
 #### {resource-type}/{resource-name}
 
-| Property | Current Value | New Value |
-|----------|---------------|-----------|
-| {property-path} | {current} | {new} |
+| Property        | Current Value | New Value |
+| --------------- | ------------- | --------- |
+| {property-path} | {current}     | {new}     |
 
 {end-if}
 
 {if-no-resources-to-modify}
-*No resources will be modified.*
+_No resources will be modified._
 {end-if}
 
 ### Resources to Delete
@@ -139,15 +143,16 @@ Use this template structure when generating `preflight-report.md` in the project
 | {type} | {name} |
 
 > ⚠️ **Warning:** Resources listed for deletion will be permanently removed.
-{end-if}
+> {end-if}
 
 {if-no-resources-to-delete}
-*No resources will be deleted.*
+_No resources will be deleted._
 {end-if}
 
 {end-if-what-if-succeeded}
 
 {if-what-if-failed}
+
 ### What-If Analysis Failed
 
 The what-if operation could not complete. See the Issues section for details.
@@ -171,19 +176,23 @@ The what-if operation could not complete. See the Issues section for details.
 The preflight validation passed. You can proceed with deployment:
 
 **For azd projects:**
+
 ```bash
 azd provision
 # or
 azd up
 ```
+````
 
 **For standalone Bicep:**
+
 ```bash
 az deployment group create \
   --resource-group {rg-name} \
   --template-file {bicep-file} \
   --parameters {param-file}
 ```
+
 {end-if}
 
 {if-issues-exist}
@@ -191,12 +200,13 @@ Please resolve the issues listed above before deploying. After fixes:
 
 1. Re-run preflight validation to verify fixes
 2. Proceed with deployment once all checks pass
-{end-if}
+   {end-if}
 
 ---
 
-*Report generated by Azure Deployment Preflight Skill*
-```
+_Report generated by Azure Deployment Preflight Skill_
+
+````
 
 ---
 
@@ -333,11 +343,12 @@ The preflight validation passed with warnings. Review the warnings above, then p
 
 ```bash
 azd provision --environment dev
-```
+````
 
 ---
 
-*Report generated by Azure Deployment Preflight Skill*
+_Report generated by Azure Deployment Preflight Skill_
+
 ```
 
 ---
@@ -350,3 +361,4 @@ azd provision --environment dev
 4. **Link to documentation** when available
 5. **Order issues by severity** (errors first, then warnings)
 6. **Include command examples** in Next Steps
+```

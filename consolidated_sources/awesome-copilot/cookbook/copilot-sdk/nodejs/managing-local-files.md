@@ -27,29 +27,31 @@ await client.start();
 
 // Create session
 const session = await client.createSession({
-    model: "gpt-5",
+  model: "gpt-5",
 });
 
 // Event handler
 session.on((event) => {
-    switch (event.type) {
-        case "assistant.message":
-            console.log(`\nCopilot: ${event.data.content}`);
-            break;
-        case "tool.execution_start":
-            console.log(`  → Running: ${event.data.toolName} ${event.data.toolCallId}`);
-            break;
-        case "tool.execution_complete":
-            console.log(`  ✓ Completed: ${event.data.toolCallId}`);
-            break;
-    }
+  switch (event.type) {
+    case "assistant.message":
+      console.log(`\nCopilot: ${event.data.content}`);
+      break;
+    case "tool.execution_start":
+      console.log(
+        `  → Running: ${event.data.toolName} ${event.data.toolCallId}`,
+      );
+      break;
+    case "tool.execution_complete":
+      console.log(`  ✓ Completed: ${event.data.toolCallId}`);
+      break;
+  }
 });
 
 // Ask Copilot to organize files
 const targetFolder = path.join(os.homedir(), "Downloads");
 
 await session.sendAndWait({
-    prompt: `
+  prompt: `
 Analyze the files in "${targetFolder}" and organize them into subfolders.
 
 1. First, list all files and their metadata
@@ -100,7 +102,7 @@ For safety, you can ask Copilot to only preview changes:
 
 ```typescript
 await session.sendAndWait({
-    prompt: `
+  prompt: `
 Analyze files in "${targetFolder}" and show me how you would organize them
 by file type. DO NOT move any files - just show me the plan.
 `,
@@ -113,7 +115,7 @@ Let Copilot determine the best grouping based on file content:
 
 ```typescript
 await session.sendAndWait({
-    prompt: `
+  prompt: `
 Look at the files in "${targetFolder}" and suggest a logical organization.
 Consider:
 - File names and what they might contain

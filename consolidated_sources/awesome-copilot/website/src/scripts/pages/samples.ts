@@ -81,8 +81,8 @@ export async function initSamplesPage(): Promise<void> {
             ...recipe,
             title: recipe.name,
             cookbookId: cookbook.id,
-          } as SearchableItem & { cookbookId: string })
-      )
+          }) as SearchableItem & { cookbookId: string },
+      ),
     );
     search = new FuzzySearch(allRecipes);
 
@@ -125,7 +125,7 @@ function setupFilters(): void {
 
   // Language filter
   const languageSelect = document.getElementById(
-    "filter-language"
+    "filter-language",
   ) as HTMLSelectElement;
   if (languageSelect) {
     // Get unique languages across all cookbooks
@@ -162,7 +162,7 @@ function setupFilters(): void {
       samplesData.filters.tags.map((tag) => ({ value: tag, label: tag })),
       "value",
       "label",
-      true
+      true,
     );
 
     tagSelect.addEventListener("change", () => {
@@ -182,7 +182,7 @@ function setupFilters(): void {
  */
 function setupSearch(): void {
   const searchInput = document.getElementById(
-    "search-input"
+    "search-input",
   ) as HTMLInputElement;
   if (!searchInput) return;
 
@@ -204,7 +204,7 @@ function clearFilters(): void {
   selectedTags = [];
 
   const languageSelect = document.getElementById(
-    "filter-language"
+    "filter-language",
   ) as HTMLSelectElement;
   if (languageSelect) languageSelect.value = "";
 
@@ -214,7 +214,7 @@ function clearFilters(): void {
   }
 
   const searchInput = document.getElementById(
-    "search-input"
+    "search-input",
   ) as HTMLInputElement;
   if (searchInput) searchInput.value = "";
 
@@ -233,7 +233,7 @@ function getFilteredRecipes(): {
   if (!samplesData || !search) return [];
 
   const searchInput = document.getElementById(
-    "search-input"
+    "search-input",
   ) as HTMLInputElement;
   const query = searchInput?.value.trim() || "";
 
@@ -246,7 +246,7 @@ function getFilteredRecipes(): {
     results = searchResults.map((item) => {
       const recipe = item as SearchableItem & { cookbookId: string };
       const cookbook = samplesData!.cookbooks.find(
-        (c) => c.id === recipe.cookbookId
+        (c) => c.id === recipe.cookbookId,
       )!;
       return {
         cookbook,
@@ -257,21 +257,21 @@ function getFilteredRecipes(): {
   } else {
     // No search query - return all recipes
     results = samplesData.cookbooks.flatMap((cookbook) =>
-      cookbook.recipes.map((recipe) => ({ cookbook, recipe }))
+      cookbook.recipes.map((recipe) => ({ cookbook, recipe })),
     );
   }
 
   // Apply language filter using per-recipe languages array
   if (selectedLanguage) {
     results = results.filter(({ recipe }) =>
-      recipe.languages.includes(selectedLanguage!)
+      recipe.languages.includes(selectedLanguage!),
     );
   }
 
   // Apply tag filter
   if (selectedTags.length > 0) {
     results = results.filter(({ recipe }) =>
-      selectedTags.some((tag) => recipe.tags.includes(tag))
+      selectedTags.some((tag) => recipe.tags.includes(tag)),
     );
   }
 
@@ -325,7 +325,7 @@ function renderCookbooks(): void {
  */
 function renderCookbookSection(
   cookbook: Cookbook,
-  recipes: { recipe: Recipe; highlighted?: string }[]
+  recipes: { recipe: Recipe; highlighted?: string }[],
 ): string {
   const languageTabs = cookbook.languages
     .map(
@@ -335,13 +335,13 @@ function renderCookbookSection(
             title="${lang.name}">
       ${lang.icon}
     </button>
-  `
+  `,
     )
     .join("");
 
   const recipeCards = recipes
     .map(({ recipe, highlighted }) =>
-      renderRecipeCard(cookbook, recipe, highlighted)
+      renderRecipeCard(cookbook, recipe, highlighted),
     )
     .join("");
 
@@ -369,7 +369,7 @@ function renderCookbookSection(
 function renderRecipeCard(
   cookbook: Cookbook,
   recipe: Recipe,
-  highlightedName?: string
+  highlightedName?: string,
 ): string {
   const recipeKey = `${cookbook.id}-${recipe.id}`;
   const isExpanded = expandedRecipes.has(recipeKey);
@@ -419,14 +419,15 @@ function renderRecipeCard(
 
   // Local recipe — existing behavior
   // Determine which language to show
-  const displayLang = selectedLanguage || cookbook.languages?.[0]?.id || "nodejs";
+  const displayLang =
+    selectedLanguage || cookbook.languages?.[0]?.id || "nodejs";
   const variant = recipe.variants[displayLang];
 
   const langIndicators = (cookbook.languages ?? [])
     .filter((lang) => recipe.variants[lang.id])
     .map(
       (lang) =>
-        `<span class="lang-indicator" title="${lang.name}">${lang.icon}</span>`
+        `<span class="lang-indicator" title="${lang.name}">${lang.icon}</span>`,
     )
     .join("");
 
@@ -434,8 +435,8 @@ function renderRecipeCard(
     <div class="recipe-card${
       isExpanded ? " expanded" : ""
     }" data-recipe="${recipeKey}" data-cookbook="${
-    cookbook.id
-  }" data-recipe-id="${recipe.id}">
+      cookbook.id
+    }" data-recipe-id="${recipe.id}">
       <div class="recipe-header">
         <h3>${highlightedName || escapeHtml(recipe.name)}</h3>
         <div class="recipe-langs">${langIndicators}</div>
@@ -517,7 +518,7 @@ function setupRecipeListeners(): void {
         selectedLanguage = langId;
         // Update language filter select
         const languageSelect = document.getElementById(
-          "filter-language"
+          "filter-language",
         ) as HTMLSelectElement;
         if (languageSelect) languageSelect.value = langId;
         renderCookbooks();
@@ -532,7 +533,7 @@ function setupRecipeListeners(): void {
  */
 async function showRecipeContent(
   filePath: string,
-  type: "recipe" | "example"
+  type: "recipe" | "example",
 ): Promise<void> {
   // Use existing modal infrastructure
   const { openFileModal } = await import("../modal");

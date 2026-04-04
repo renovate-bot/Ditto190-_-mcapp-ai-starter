@@ -6,21 +6,23 @@ These are short, actionable notes to help an AI coding assistant be productive i
 
 Before working in any folder, **MUST READ** the corresponding AGENTS.md file:
 
-| Working in... | Read first |
-|---------------|------------|
-| `.kiro/specs/` | `.kiro/specs/AGENTS.md` — Guidance for specifications, design, and tasks |
-| `docs/` | `docs/AGENTS.md` — Documentation structure and update guidelines |
-| `test/` | `test/AGENTS.md` — Test writing patterns and helpers |
-| `test/e2e/` | `test/e2e/AGENTS.md` — E2E test guidance |
-| `src/adapters/` | `src/adapters/AGENTS.md` — Adapter implementation guide |
-| `src/services/` | `src/services/AGENTS.md` — Service layer patterns |
+| Working in...   | Read first                                                               |
+| --------------- | ------------------------------------------------------------------------ |
+| `.kiro/specs/`  | `.kiro/specs/AGENTS.md` — Guidance for specifications, design, and tasks |
+| `docs/`         | `docs/AGENTS.md` — Documentation structure and update guidelines         |
+| `test/`         | `test/AGENTS.md` — Test writing patterns and helpers                     |
+| `test/e2e/`     | `test/e2e/AGENTS.md` — E2E test guidance                                 |
+| `src/adapters/` | `src/adapters/AGENTS.md` — Adapter implementation guide                  |
+| `src/services/` | `src/services/AGENTS.md` — Service layer patterns                        |
 
 **Before writing or modifying ANY file, you MUST:**
+
 1. **Identify which folder** the file is in (e.g., `test/services/NewService.test.ts` → folder is `test/`)
 2. **Read the corresponding AGENTS.md file FIRST** (e.g., `test/AGENTS.md`)
 3. **Apply the guidance** from that file to your changes
 
 **Concrete Examples:**
+
 - Creating `test/services/NewService.test.ts` → **MUST read `test/AGENTS.md` BEFORE writing any test code**
 - Modifying `src/adapters/GitHubAdapter.ts` → **MUST read `src/adapters/AGENTS.md` BEFORE making changes**
 - Writing `.kiro/specs/new-feature/design.md` → **MUST read `.kiro/specs/AGENTS.md` BEFORE creating the spec**
@@ -29,6 +31,7 @@ Before working in any folder, **MUST READ** the corresponding AGENTS.md file:
 - Adding `test/e2e/new-workflow.test.ts` → **MUST read `test/e2e/AGENTS.md` BEFORE writing E2E tests**
 
 **Failure to read these guides will result in:**
+
 - Broken tests due to incorrect VS Code mocking
 - Duplicated utilities that already exist
 - Missing critical debugging strategies
@@ -58,6 +61,7 @@ When tests fail, determine whether the bug is in **test code** or **production c
 5. **Validate assumptions with real-world testing**: If possible, reproduce the issue in the actual extension before fixing
 
 **Red flags that the bug is in production code:**
+
 - Test fixtures match documented formats but validation fails
 - Multiple test approaches fail with the same error pattern
 - Error shows data transformation (e.g., `v1.0.0` → `1.0.0`) not present in test code
@@ -67,6 +71,7 @@ When tests fail, determine whether the bug is in **test code** or **production c
 ### Test-Driven Development (TDD)
 
 Use TDD when it makes sense (most new functionality):
+
 1. Write a failing test for the expected behavior
 2. Write the minimum code to make it pass
 3. Refactor if needed, keeping tests green
@@ -78,26 +83,39 @@ Use TDD when it makes sense (most new functionality):
 This is a critical mistake that defeats the purpose of E2E testing:
 
 ❌ **WRONG**: Manually calling internal methods with the same logic as production code
+
 ```typescript
 // This is NOT an E2E test - it duplicates production code!
 const result = await scopeConflictResolver.migrateBundle(
-    bundleId, 'repository', 'user',
-    async () => { await registryManager.uninstallBundle(bundleId, 'repository'); },
-    async (bundle, scope) => { await registryManager.installBundle(bundleId, { scope }); }
+  bundleId,
+  "repository",
+  "user",
+  async () => {
+    await registryManager.uninstallBundle(bundleId, "repository");
+  },
+  async (bundle, scope) => {
+    await registryManager.installBundle(bundleId, { scope });
+  },
 );
 ```
 
 ✅ **CORRECT**: Test through the actual entry point
+
 ```typescript
 // Option 1: VS Code Extension Tests (test/suite/*.test.ts) - runs in real VS Code
-await vscode.commands.executeCommand('promptRegistry.moveToUser', bundleId);
+await vscode.commands.executeCommand("promptRegistry.moveToUser", bundleId);
 
 // Option 2: Test through the command handler class
-const bundleScopeCommands = new BundleScopeCommands(registryManager, resolver, service);
+const bundleScopeCommands = new BundleScopeCommands(
+  registryManager,
+  resolver,
+  service,
+);
 await bundleScopeCommands.moveToUser(bundleId);
 ```
 
 **Why this matters:**
+
 - If production code has a bug, duplicated test code has the same bug
 - Tests don't catch regressions when production code changes
 - Tests don't verify command registration wiring in `extension.ts`
@@ -116,12 +134,14 @@ await bundleScopeCommands.moveToUser(bundleId);
 **If tests won't run due to setup issues YOU introduced, the task is incomplete.**
 
 **What counts as YOUR responsibility:**
+
 - Mock setup issues caused by your code changes
 - Type errors introduced by your implementation
 - Compilation failures from your new code
 - Import errors from files you created
 
 **What does NOT count:**
+
 - Pre-existing test failures
 - Flaky tests that were already flaky
 - Infrastructure issues (network, file system)
@@ -144,6 +164,7 @@ await bundleScopeCommands.moveToUser(bundleId);
 ### Discovery Before Design
 
 Before implementing anything new:
+
 1. Search for existing similar functionality (`grep -r "class.*Manager" src/`)
 2. Check if utilities already exist in `src/utils/` or `test/helpers/`
 3. Review tests for established patterns
@@ -179,18 +200,18 @@ src/
 
 ### Key Files
 
-| File | Purpose |
-|------|---------|
-| `src/services/RegistryManager.ts` | Main entrypoint, event emitters |
-| `src/services/BundleInstaller.ts` | Download/extract/validate/install logic |
-| `src/services/LockfileManager.ts` | Lockfile CRUD for repository-scoped bundles |
-| `src/services/UserScopeService.ts` | User/workspace scope file placement |
-| `src/services/RepositoryScopeService.ts` | Repository scope file placement |
-| `src/adapters/*` | Source implementations (github, gitlab, http, local, awesome-copilot) |
-| `src/storage/RegistryStorage.ts` | Persistent paths and JSON layout |
-| `src/services/MigrationRegistry.ts` | globalState-based migration tracker |
-| `src/migrations/` | Migration scripts (one file per migration) |
-| `src/commands/*` | Command handlers wiring UI to services |
+| File                                     | Purpose                                                               |
+| ---------------------------------------- | --------------------------------------------------------------------- |
+| `src/services/RegistryManager.ts`        | Main entrypoint, event emitters                                       |
+| `src/services/BundleInstaller.ts`        | Download/extract/validate/install logic                               |
+| `src/services/LockfileManager.ts`        | Lockfile CRUD for repository-scoped bundles                           |
+| `src/services/UserScopeService.ts`       | User/workspace scope file placement                                   |
+| `src/services/RepositoryScopeService.ts` | Repository scope file placement                                       |
+| `src/adapters/*`                         | Source implementations (github, gitlab, http, local, awesome-copilot) |
+| `src/storage/RegistryStorage.ts`         | Persistent paths and JSON layout                                      |
+| `src/services/MigrationRegistry.ts`      | globalState-based migration tracker                                   |
+| `src/migrations/`                        | Migration scripts (one file per migration)                            |
+| `src/commands/*`                         | Command handlers wiring UI to services                                |
 
 ---
 
@@ -227,37 +248,49 @@ npm run package:vsix           # Create .vsix package
 ## Project Conventions
 
 ### Singletons
+
 `RegistryManager.getInstance(context?)` requires ExtensionContext on first call. Pass `context` from `extension.ts`.
 
 ### Storage
+
 Persistent data lives under `context.globalStorageUri.fsPath`. Use `RegistryStorage.getPaths()`.
 
 ### Bundles
+
 Valid bundles require `deployment-manifest.yml` at root. `BundleInstaller.validateBundle` enforces id/version/name.
 
 ### Adapters
+
 Register via `RepositoryAdapterFactory.register('type', AdapterClass)`. Implement `IRepositoryAdapter`.
 
 ### Scopes
+
 Installs support `user`, `workspace`, and `repository` scopes. Repository scope uses the lockfile (`prompt-registry.lock.json`) as the single source of truth.
 
 ### Linting
+
 ESLint v9 with flat config (`eslint.config.mjs`). The `lib/` directory is excluded from root linting (it has its own ESLint setup). The `@typescript-eslint/semi` rule was removed in v8 — formatting is handled by Prettier (`eslint-config-prettier`).
 
 ### lib/ workspace
+
 `lib/` is a separate npm workspace (`@prompt-registry/collection-scripts`). Tests compile to `lib/dist-test/` via `lib/tsconfig.test.json` before running with mocha. Run `cd lib && npm test` to build and test.
 
 ### Error Handling
+
 Use `Logger.getInstance()`. Throw errors with clear messages. Commands catch and show via VS Code notifications.
 
 ### Migrations
+
 Use `MigrationRegistry` (globalState-backed) for tracking data migrations. Each migration is a named entry with `pending`/`completed`/`skipped` status. Define migration logic in `src/migrations/`. Wire migrations into `extension.ts` activation via `runMigrations()`. Lockfile migrations use dual-read (try new + legacy ID) since lockfiles are Git-shared. Mark all migration-related code with `@migration-cleanup(migration-name)` comments so cleanup sites can be found with `grep -r "@migration-cleanup"`.
 
 ### Migration Cleanup
+
 When a migration is no longer needed, search for all related code with:
+
 ```bash
 grep -r "@migration-cleanup(migration-name)" src/ test/
 ```
+
 This finds every file with dual-read fallback, legacy functions, and migration logic that can be removed.
 
 ---
@@ -273,12 +306,15 @@ This finds every file with dual-read fallback, legacy functions, and migration l
 ## Quick Examples
 
 ### Add a new adapter
+
 Copy `src/adapters/HttpAdapter.ts`, implement `fetchBundles()`/`getDownloadUrl()`/`validate()`, register in `RegistryManager`.
 
 ### Fix bundle validation
+
 Update `BundleInstaller.validateBundle()` — manifest version must match bundle.version unless `'latest'`.
 
 ### Inspect installed bundles
+
 Open extension global storage path (see `RegistryStorage.getPaths().installed`) or enable `promptregistry.enableLogging`.
 
 ---
@@ -296,17 +332,18 @@ Open extension global storage path (see `RegistryStorage.getPaths().installed`) 
 
 **After implementing features or fixing bugs, you MUST update documentation.** Consult [`docs/README.md`](docs/README.md) to identify which files need updates.
 
-| Change type | Update these docs |
-|-------------|-------------------|
-| New command | `docs/reference/commands.md` |
-| New setting | `docs/reference/settings.md` |
-| New adapter | `docs/contributor-guide/architecture/adapters.md`, `docs/reference/adapter-api.md` |
+| Change type                      | Update these docs                                                                                                  |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| New command                      | `docs/reference/commands.md`                                                                                       |
+| New setting                      | `docs/reference/settings.md`                                                                                       |
+| New adapter                      | `docs/contributor-guide/architecture/adapters.md`, `docs/reference/adapter-api.md`                                 |
 | Installation/update flow changes | `docs/contributor-guide/architecture/installation-flow.md`, `docs/contributor-guide/architecture/update-system.md` |
-| UI changes | `docs/contributor-guide/architecture/ui-components.md` |
-| User-facing behavior | Relevant file in `docs/user-guide/` |
-| Schema changes | `docs/author-guide/collection-schema.md` or `docs/reference/hub-schema.md` |
+| UI changes                       | `docs/contributor-guide/architecture/ui-components.md`                                                             |
+| User-facing behavior             | Relevant file in `docs/user-guide/`                                                                                |
+| Schema changes                   | `docs/author-guide/collection-schema.md` or `docs/reference/hub-schema.md`                                         |
 
 **Documentation standards:**
+
 1. **Keep it concise** — One clear sentence beats three vague ones
 2. **Update the right file** — See [docs/AGENTS.md](docs/AGENTS.md) for file placement guidance
 3. **Verify accuracy** — Ensure docs match the implemented behavior
@@ -317,19 +354,20 @@ Open extension global storage path (see `RegistryStorage.getPaths().installed`) 
 
 **Before planning or implementing features**, consult the documentation index at [`docs/README.md`](docs/README.md) to understand existing designs and user-facing behavior.
 
-| Working on... | Read first |
-|---------------|------------|
-| Installation/update flows | `docs/contributor-guide/architecture/installation-flow.md`, `docs/contributor-guide/architecture/update-system.md` |
-| Adapters (GitHub, GitLab, etc.) | `docs/contributor-guide/architecture/adapters.md`, `docs/reference/adapter-api.md` |
-| Authentication | `docs/contributor-guide/architecture/authentication.md` |
-| UI (Marketplace, TreeView) | `docs/contributor-guide/architecture/ui-components.md` |
-| Validation logic | `docs/contributor-guide/architecture/validation.md` |
-| MCP integration | `docs/contributor-guide/architecture/mcp-integration.md` |
-| Commands or settings | `docs/reference/commands.md`, `docs/reference/settings.md` |
-| Bundle/collection schemas | `docs/author-guide/collection-schema.md`, `docs/reference/hub-schema.md` |
-| Testing strategy | `docs/contributor-guide/testing.md` |
+| Working on...                   | Read first                                                                                                         |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Installation/update flows       | `docs/contributor-guide/architecture/installation-flow.md`, `docs/contributor-guide/architecture/update-system.md` |
+| Adapters (GitHub, GitLab, etc.) | `docs/contributor-guide/architecture/adapters.md`, `docs/reference/adapter-api.md`                                 |
+| Authentication                  | `docs/contributor-guide/architecture/authentication.md`                                                            |
+| UI (Marketplace, TreeView)      | `docs/contributor-guide/architecture/ui-components.md`                                                             |
+| Validation logic                | `docs/contributor-guide/architecture/validation.md`                                                                |
+| MCP integration                 | `docs/contributor-guide/architecture/mcp-integration.md`                                                           |
+| Commands or settings            | `docs/reference/commands.md`, `docs/reference/settings.md`                                                         |
+| Bundle/collection schemas       | `docs/author-guide/collection-schema.md`, `docs/reference/hub-schema.md`                                           |
+| Testing strategy                | `docs/contributor-guide/testing.md`                                                                                |
 
 **Why this matters:**
+
 - Prevents reimplementing existing documented behavior
 - Ensures new code aligns with documented architecture
 - Avoids breaking user-facing contracts described in user guides

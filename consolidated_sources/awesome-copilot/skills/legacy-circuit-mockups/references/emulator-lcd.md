@@ -39,10 +39,10 @@ The goal is **functional correctness** for SBC emulators, firmware testing, and 
 
 ## Logical Registers
 
-| RS | Register             |
-| -- | -------------------- |
-| 0  | Instruction Register |
-| 1  | Data Register        |
+| RS  | Register             |
+| --- | -------------------- |
+| 0   | Instruction Register |
+| 1   | Data Register        |
 
 ---
 
@@ -65,9 +65,9 @@ The goal is **functional correctness** for SBC emulators, firmware testing, and 
 
 ### DDRAM (Display Data RAM)
 
-* Size: 80 bytes
-* Line 1 base: `0x00`
-* Line 2 base: `0x40`
+- Size: 80 bytes
+- Line 1 base: `0x00`
+- Line 2 base: `0x40`
 
 Emulator mapping:
 
@@ -78,8 +78,8 @@ Row 1: DDRAM[0x40-0x4F]
 
 ### CGRAM (Character Generator RAM)
 
-* Stores up to 8 custom characters
-* 8 bytes per character
+- Stores up to 8 custom characters
+- 8 bytes per character
 
 ---
 
@@ -95,9 +95,9 @@ E: HIGH  LOW
 
 ### Emulator Behavior
 
-* On falling edge of `E`, latch data
-* Write data to DDRAM or CGRAM depending on address mode
-* Auto-increment or decrement address based on entry mode
+- On falling edge of `E`, latch data
+- Write data to DDRAM or CGRAM depending on address mode
+- Auto-increment or decrement address based on entry mode
 
 ---
 
@@ -125,8 +125,8 @@ E: HIGH
 
 Emulator may simplify:
 
-* Ignore reads entirely
-* Or return busy flag + address counter
+- Ignore reads entirely
+- Or return busy flag + address counter
 
 ---
 
@@ -134,8 +134,8 @@ Emulator may simplify:
 
 ### Real Hardware
 
-* Busy flag = D7
-* Commands take 37-1520 µs
+- Busy flag = D7
+- Commands take 37-1520 µs
 
 ### Emulator Options
 
@@ -152,16 +152,16 @@ Recommended default: **Always ready**
 
 On reset:
 
-* Display OFF
-* Cursor OFF
-* DDRAM cleared or undefined
-* Address counter = 0
+- Display OFF
+- Cursor OFF
+- DDRAM cleared or undefined
+- Address counter = 0
 
 Emulator should:
 
-* Clear DDRAM
-* Set cursor to (0,0)
-* Display enabled
+- Clear DDRAM
+- Set cursor to (0,0)
+- Display enabled
 
 ---
 
@@ -185,17 +185,17 @@ Cursor moves automatically after writes based on entry mode.
 
 ### 8-bit Mode
 
-* Full byte transferred on D0-D7
+- Full byte transferred on D0-D7
 
 ### 4-bit Mode
 
-* High nibble sent first
-* Two enable pulses per byte
+- High nibble sent first
+- Two enable pulses per byte
 
 Emulator simplification:
 
-* Accept full byte writes
-* Ignore nibble timing
+- Accept full byte writes
+- Ignore nibble timing
 
 ---
 
@@ -203,10 +203,10 @@ Emulator simplification:
 
 Recommended approach:
 
-* Maintain 16x2 character buffer
-* Render ASCII subset
-* Substitute unsupported glyphs
-* Optionally render custom CGRAM chars
+- Maintain 16x2 character buffer
+- Render ASCII subset
+- Substitute unsupported glyphs
+- Optionally render custom CGRAM chars
 
 ---
 
@@ -239,20 +239,20 @@ R/W  GND
 
 ## Testing Checklist
 
-* Clear display command
-* Cursor positioning via DDRAM addresses
-* Sequential character writes
-* Line wrap behavior
-* Custom character display
+- Clear display command
+- Cursor positioning via DDRAM addresses
+- Sequential character writes
+- Line wrap behavior
+- Custom character display
 
 ---
 
 ## References
 
-* [HD44780U Datasheet (Hitachi)](https://academy.cba.mit.edu/classes/output_devices/44780.pdf)
-* [Ben Eater LCD Interface Notes](https://hackaday.io/project/174128-db6502/log/181838-adventures-with-hd44780-lcd-controller)
-* [Ben Eater's 6502 Computer](https://github.com/tedkotz/be6502)
-* [Build a 6502 Computer](https://eater.net/6502)
+- [HD44780U Datasheet (Hitachi)](https://academy.cba.mit.edu/classes/output_devices/44780.pdf)
+- [Ben Eater LCD Interface Notes](https://hackaday.io/project/174128-db6502/log/181838-adventures-with-hd44780-lcd-controller)
+- [Ben Eater's 6502 Computer](https://github.com/tedkotz/be6502)
+- [Build a 6502 Computer](https://eater.net/6502)
 
 ---
 
@@ -260,7 +260,7 @@ R/W  GND
 
 This spec intentionally prioritizes **firmware-visible behavior** over electrical accuracy, making it ideal for:
 
-* SBC emulators
-* ROM and monitor development
-* Automated testing of LCD output
-* Educational CPU projects
+- SBC emulators
+- ROM and monitor development
+- Automated testing of LCD output
+- Educational CPU projects

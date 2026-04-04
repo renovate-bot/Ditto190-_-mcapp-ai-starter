@@ -1,4 +1,5 @@
 # ContextStream Rules
+
 **MANDATORY STARTUP:** On the first message of EVERY session call `init(...)` then `context(user_message="...")`. On subsequent messages, call `context(user_message="...")` first by default. A narrow bypass is allowed only for immediate read-only ContextStream calls when prior context is still fresh and no state-changing tool has run.
 
 ## Required Tool Calls
@@ -10,6 +11,7 @@
 **Read-only examples** (default: call `context(...)` first; narrow bypass only for immediate read-only ContextStream calls when context is fresh and no state-changing tool has run): `workspace(action="list"|"get"|"create")`, `memory(action="list_docs"|"list_events"|"list_todos"|"list_tasks"|"list_transcripts"|"list_nodes"|"decisions"|"get_doc"|"get_event"|"get_task"|"get_todo"|"get_transcript")`, `session(action="get_lessons"|"get_plan"|"list_plans"|"recall")`, `help(action="version"|"tools"|"auth")`, `project(action="list"|"get"|"index_status")`, `reminder(action="list"|"active")`, any read-only data query
 
 **Common queries — use these exact tool calls:**
+
 - "list lessons" / "show lessons" → `session(action="get_lessons")`
 - "list decisions" / "show decisions" / "how many decisions" → `memory(action="decisions")`
 - "list docs" → `memory(action="list_docs")`
@@ -58,6 +60,7 @@ These should be followed exactly as they contain real-time context.
 4. If search returns 0 results after refresh/retry: local tools are allowed
 
 ### Search Mode Selection:
+
 - `auto` (recommended): query-aware mode selection
 - `hybrid`: mixed semantic + keyword retrieval for broad discovery
 - `semantic`: conceptual/natural-language questions ("how does auth work?")
@@ -68,10 +71,12 @@ These should be followed exactly as they contain real-time context.
 - `team`: cross-project team search
 
 ### Output Format Hints:
+
 - `output_format="paths"` for file lists and rename targets
 - `output_format="count"` for "how many" queries
 
 ### Two-Phase Search Playbook (recommended):
+
 1. **Discovery pass**: run `search(mode="auto", query="<concept + module>", output_format="paths", limit=10)`
 2. **Precision pass**: use symbols from pass 1 with a specific mode:
    - Exact symbol/text: `search(mode="keyword", query="\"my_symbol\"", include_content=true, file_types=["rs"], limit=20)`
@@ -82,6 +87,7 @@ These should be followed exactly as they contain real-time context.
 ## Plans and Tasks
 
 **ALWAYS** use ContextStream for plans and tasks — do NOT create markdown plan files or use built-in todo tools:
+
 - Plans: `session(action="capture_plan", title="...", steps=[...])`
 - Tasks: `memory(action="create_task", title="...", description="...")`
 - Link tasks to plans: `memory(action="create_task", plan_id="...")`
@@ -89,16 +95,18 @@ These should be followed exactly as they contain real-time context.
 ## Memory, Docs & Todos
 
 **ALWAYS** use ContextStream for memory, documents, and todos — NOT editor built-in tools or local files:
+
 - Decisions: `session(action="capture", event_type="decision", title="...", content="...")`
 - Notes/insights: `session(action="capture", event_type="note|insight", title="...", content="...")`
 - Facts/preferences: `memory(action="create_node", node_type="fact|preference", title="...", content="...")`
 - Documents: `memory(action="create_doc", title="...", content="...", doc_type="spec|general")`
 - Todos: `memory(action="create_todo", title="...", todo_priority="high|medium|low")`
-Do NOT use `create_memory`, `TodoWrite`, `todo_list`, or local file writes for persistence.
+  Do NOT use `create_memory`, `TodoWrite`, `todo_list`, or local file writes for persistence.
 
 ## Skills
 
 Reusable instruction + action bundles that persist across projects and sessions:
+
 - Browse: `skill(action="list")` or `skill(action="list", scope="team")`
 - Create: `skill(action="create", name="...", instruction_body="...", trigger_patterns=[...])`
 - Update: `skill(action="update", name="...", instruction_body="...", change_summary="...")` (name or `skill_id`)
@@ -117,11 +125,13 @@ Use `search(include_content=true)` to get inline code snippets in results.
 ## Context Pressure
 
 When `context()` returns `context_pressure.level: "high"`:
+
 - Save a session snapshot before compaction
 - `session(action="capture", event_type="session_snapshot", title="...", content="...")`
 - After compaction: `init(folder_path="...", is_post_compact=true)` to restore
 
 ---
+
 ## IMPORTANT: No Hooks Available
 
 **This editor does NOT have hooks to enforce ContextStream behavior.**
@@ -156,20 +166,24 @@ You MUST follow these rules manually - there is no automatic enforcement.
 Transcripts are OFF by default.
 
 ### Enable for this chat:
+
 ```
 context(user_message="<user's message>", save_exchange=true, session_id="<session-id>")
 ```
 
 ### Disable for this chat:
+
 ```
 context(user_message="<user's message>", save_exchange=false, session_id="<session-id>")
 ```
 
 ### Default policy via MCP config env:
+
 - `CONTEXTSTREAM_TRANSCRIPTS_ENABLED="true|false"`
 - `CONTEXTSTREAM_HOOK_TRANSCRIPTS_ENABLED="true|false"`
 
 ### Session ID Guidelines:
+
 - Generate ONCE at the start of the conversation
 - Use a unique identifier (UUID or timestamp-based)
 - Keep the SAME session_id for ALL context() calls
@@ -183,17 +197,21 @@ context(user_message="<user's message>", save_exchange=false, session_id="<sessi
 You MUST manage indexing manually:
 
 ### After Creating/Editing Files:
+
 ```
 project(action="index")
 ```
+
 If folder context is active, this resolves the current repo and uses the local ingest path automatically.
 
 ### To Target A Specific Folder Or Recover From Stale Scope:
+
 ```
 project(action="ingest_local", path="<project_folder>")
 ```
 
 ### Signs You Need to Re-index:
+
 - Search doesn't find code you just wrote
 - Search returns old versions of functions
 - New files don't appear in search results
@@ -205,16 +223,19 @@ project(action="ingest_local", path="<project_folder>")
 **There is NO hook to redirect local tools.** You MUST self-enforce:
 
 ### Before ANY Search, Check Index Status:
+
 ```
 project(action="index_status")
 ```
 
 ### Search Protocol:
+
 - **IF indexed & fresh:** `search(mode="auto", query="...")` before local tools
 - **IF NOT indexed or stale (>7 days):** wait up to ~20s for background refresh, retry `search(mode="auto", ...)`, then allow local tools only after the grace window elapses
 - **IF search returns 0 results after retry/window:** local tools are allowed
 
 ### Choose Search Mode Intelligently:
+
 - `auto` (recommended): query-aware mode selection
 - `hybrid`: mixed semantic + keyword retrieval for broad discovery
 - `semantic`: conceptual questions ("how does X work?")
@@ -225,10 +246,12 @@ project(action="index_status")
 - `team`: cross-project team search
 
 ### Output Format Hints:
+
 - Use `output_format="paths"` for file listings and rename targets
 - Use `output_format="count"` for "how many" queries
 
 ### Two-Phase Search Pattern (for precision):
+
 - Pass 1 (discovery): `search(mode="auto", query="<concept + module>", output_format="paths", limit=10)`
 - Pass 2 (precision): use one of:
   - exact text/symbol: `search(mode="keyword", query="\"exact_text\"", include_content=true)`
@@ -237,6 +260,7 @@ project(action="index_status")
 - Then use local Read/Grep only on paths returned by ContextStream.
 
 ### When Local Tools Are OK:
+
 - The stale/not-indexed grace window has elapsed (~20s default, configurable)
 - ContextStream search still returns 0 results or errors after retry
 - User explicitly requests local tools
@@ -249,11 +273,13 @@ project(action="index_status")
 You MUST save state manually when the conversation gets long:
 
 ### When to Save State:
+
 - After completing a major task
 - Before the conversation might be compacted
 - If `context()` returns `context_pressure.level: "high"`
 
 ### How to Save State:
+
 ```
 session(action="capture", event_type="session_snapshot",
   title="Session checkpoint",
@@ -261,6 +287,7 @@ session(action="capture", event_type="session_snapshot",
 ```
 
 ### After Compaction (if context seems lost):
+
 ```
 init(folder_path="...", is_post_compact=true)
 ```
@@ -308,6 +335,7 @@ ContextStream memory, docs, and todos persist across sessions, are searchable, a
 If the response includes [VERSION_NOTICE] or [VERSION_CRITICAL], tell the user about the available update.
 
 ### Update Commands:
+
 ```bash
 # macOS/Linux
 curl -fsSL https://contextstream.io/scripts/setup-beta.sh | bash
@@ -317,8 +345,8 @@ npm install -g @contextstream/mcp-server@latest
 
 ---
 
-
 ---
+
 ## VS Code Copilot Notes
 
 - Keep this file concise; put detailed workflows in `.github/skills/contextstream-workflow/SKILL.md`
@@ -326,6 +354,5 @@ npm install -g @contextstream/mcp-server@latest
 - Before code discovery, use `search(mode="auto", query="...")`
 
 </contextstream>
-
 
 ---

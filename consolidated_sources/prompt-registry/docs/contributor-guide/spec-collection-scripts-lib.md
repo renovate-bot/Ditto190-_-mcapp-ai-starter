@@ -7,6 +7,7 @@ Extract the scaffold scripts from `templates/scaffolds/github/scripts/` into a s
 ## Problem Statement
 
 Currently, scaffold scripts are copied into each collection repository created from the scaffold. This causes:
+
 1. **Duplication**: Same code exists in multiple repositories
 2. **Maintenance burden**: Bug fixes and improvements must be manually applied to each repository
 3. **Version drift**: Different repositories may have different versions of the scripts
@@ -15,6 +16,7 @@ Currently, scaffold scripts are copied into each collection repository created f
 ## Solution
 
 Create an npm subproject at `lib/` that:
+
 1. Contains all reusable collection scripts
 2. Has its own CI/CD pipeline publishing to GitHub Packages
 3. Is consumed by scaffolded repositories via npm dependency
@@ -48,6 +50,7 @@ lib/
 ### Core Modules
 
 #### `validate.ts`
+
 ```typescript
 export const VALIDATION_RULES: ValidationRules;
 export function validateCollectionId(id: string): ValidationResult;
@@ -55,30 +58,61 @@ export function validateVersion(version: string): ValidationResult;
 export function validateItemKind(kind: string): ValidationResult;
 export function normalizeRepoRelativePath(path: string): string;
 export function isSafeRepoRelativePath(path: string): boolean;
-export function validateCollectionFile(repoRoot: string, collectionFile: string): FileValidationResult;
-export function validateCollectionObject(collection: object, sourceLabel: string): ObjectValidationResult;
-export function validateAllCollections(repoRoot: string, collectionFiles: string[]): AllCollectionsResult;
-export function generateMarkdown(result: AllCollectionsResult, totalFiles: number): string;
+export function validateCollectionFile(
+  repoRoot: string,
+  collectionFile: string,
+): FileValidationResult;
+export function validateCollectionObject(
+  collection: object,
+  sourceLabel: string,
+): ObjectValidationResult;
+export function validateAllCollections(
+  repoRoot: string,
+  collectionFiles: string[],
+): AllCollectionsResult;
+export function generateMarkdown(
+  result: AllCollectionsResult,
+  totalFiles: number,
+): string;
 ```
 
 #### `collections.ts`
+
 ```typescript
 export function listCollectionFiles(repoRoot: string): string[];
-export function readCollection(repoRoot: string, collectionFile: string): Collection;
-export function resolveCollectionItemPaths(repoRoot: string, collection: Collection): string[];
+export function readCollection(
+  repoRoot: string,
+  collectionFile: string,
+): Collection;
+export function resolveCollectionItemPaths(
+  repoRoot: string,
+  collection: Collection,
+): string[];
 ```
 
 #### `bundle-id.ts`
+
 ```typescript
-export function generateBundleId(repoSlug: string, collectionId: string, version: string): string;
+export function generateBundleId(
+  repoSlug: string,
+  collectionId: string,
+  version: string,
+): string;
 ```
 
 #### `cli.ts`
+
 ```typescript
-export function parseSingleArg(argv: string[], flag: string): string | undefined;
+export function parseSingleArg(
+  argv: string[],
+  flag: string,
+): string | undefined;
 export function parseMultiArg(argv: string[], flag: string): string[];
 export function hasFlag(argv: string[], flag: string): boolean;
-export function getPositionalArg(argv: string[], index: number): string | undefined;
+export function getPositionalArg(
+  argv: string[],
+  index: number,
+): string | undefined;
 ```
 
 ## CI/CD Workflow
@@ -86,10 +120,12 @@ export function getPositionalArg(argv: string[], index: number): string | undefi
 ### New Workflow: `lib-collection-scripts-ci.yml`
 
 Triggers:
+
 - Push to `main` with changes in `lib/**`
 - Pull requests with changes in `lib/**`
 
 Jobs:
+
 1. **lint-and-test**: Run ESLint and unit tests
 2. **build**: Compile TypeScript
 3. **publish** (on main only): Publish to GitHub Packages with auto-versioning
@@ -97,6 +133,7 @@ Jobs:
 ### Modified Workflow: `vscode-extension-secure-ci.yml`
 
 Add path exclusions:
+
 ```yaml
 paths-ignore:
   - "lib/**"
@@ -105,6 +142,7 @@ paths-ignore:
 ## Scaffold Template Changes
 
 ### Before (current)
+
 ```
 templates/scaffolds/github/
 ├── scripts/
@@ -120,6 +158,7 @@ templates/scaffolds/github/
 ```
 
 ### After (proposed)
+
 ```
 templates/scaffolds/github/
 ├── scripts/
@@ -128,6 +167,7 @@ templates/scaffolds/github/
 ```
 
 The scaffold's `package.json.template` will include:
+
 ```json
 {
   "devDependencies": {
@@ -146,20 +186,27 @@ The scaffold's `package.json.template` will include:
 ### `ValidateApmCommand.ts` Changes
 
 The extension's validate command will import validation logic from the shared library:
+
 ```typescript
-import { validateCollectionFile, validateAllCollections } from '@prompt-registry/collection-scripts';
+import {
+  validateCollectionFile,
+  validateAllCollections,
+} from "@prompt-registry/collection-scripts";
 ```
 
 This ensures validation behavior is identical between:
+
 - CLI scripts in collection repositories
 - VS Code extension's validate command
 
 ## Migration Path
 
 ### For New Repositories
+
 Scaffolded repositories will automatically use the npm package.
 
 ### For Existing Repositories
+
 1. Remove `scripts/lib/` directory
 2. Update `package.json` to add dependency
 3. Update npm scripts to use CLI commands
@@ -167,11 +214,13 @@ Scaffolded repositories will automatically use the npm package.
 ## Testing Strategy
 
 ### Unit Tests (in `lib/test/`)
+
 - Port existing tests from `test/scripts/collections-lib.test.ts`
 - Add tests for CLI entry points
 - Ensure 100% coverage of validation logic
 
 ### Integration Tests
+
 - Test that scaffolded repositories can install and use the package
 - Test that VS Code extension correctly uses the shared library
 
@@ -187,11 +236,11 @@ Scaffolded repositories will automatically use the npm package.
 
 ## Risks and Mitigations
 
-| Risk | Mitigation |
-|------|------------|
+| Risk                               | Mitigation                                          |
+| ---------------------------------- | --------------------------------------------------- |
 | Breaking existing collection repos | Maintain backward compatibility; document migration |
-| GitHub Packages access issues | Provide fallback instructions for private repos |
-| Version conflicts | Use semver and clear changelog |
+| GitHub Packages access issues      | Provide fallback instructions for private repos     |
+| Version conflicts                  | Use semver and clear changelog                      |
 
 ## Implementation Order
 

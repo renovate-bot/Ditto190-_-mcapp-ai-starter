@@ -3,11 +3,7 @@
     "contextstream": {
       "type": "stdio",
       "command": "npx",
-      "args": [
-        "--prefer-online",
-        "-y",
-        "@contextstream/mcp-server@latest"
-      ],
+      "args": ["--prefer-online", "-y", "@contextstream/mcp-server@latest"],
       "env": {
         "CONTEXTSTREAM_API_URL": "https://api.contextstream.io",
         "CONTEXTSTREAM_API_KEY": "cbiq_sWeB1_-Oj3cx-7nbKhAq3WcLQJQzm3rNd7Bh4coDpX0",
@@ -19,9 +15,7 @@
       "url": "https://n8n.mcp.kapa.ai/"
     },
     "n8n-mcp": {
-      "args": [
-        "n8n-mcp"
-      ],
+      "args": ["n8n-mcp"],
       "command": "npx",
       "env": {
         "DISABLE_CONSOLE_OUTPUT": "false",

@@ -48,7 +48,7 @@ const RESOURCE_TYPE_TO_JSON: Record<string, string> = {
  */
 async function resolveResourceTitle(
   filePath: string,
-  type: string
+  type: string,
 ): Promise<string> {
   const fallback = filePath.split("/").pop() || filePath;
   const jsonFile = RESOURCE_TYPE_TO_JSON[type];
@@ -112,7 +112,7 @@ function getFocusableElements(container: HTMLElement): HTMLElement[] {
   ].join(", ");
 
   return Array.from(
-    container.querySelectorAll<HTMLElement>(focusableSelectors)
+    container.querySelectorAll<HTMLElement>(focusableSelectors),
   ).filter((el) => el.offsetParent !== null); // Filter out hidden elements
 }
 
@@ -176,7 +176,7 @@ export function setupModal(): void {
       const success = await copyToClipboard(currentFileContent);
       showToast(
         success ? "Copied to clipboard!" : "Failed to copy",
-        success ? "success" : "error"
+        success ? "success" : "error",
       );
     }
   });
@@ -186,7 +186,7 @@ export function setupModal(): void {
       const success = await downloadFile(currentFilePath);
       showToast(
         success ? "Download started!" : "Download failed",
-        success ? "success" : "error"
+        success ? "success" : "error",
       );
     }
   });
@@ -196,7 +196,7 @@ export function setupModal(): void {
       const success = await shareFile(currentFilePath);
       showToast(
         success ? "Link copied to clipboard!" : "Failed to copy link",
-        success ? "success" : "error"
+        success ? "success" : "error",
       );
     }
   });
@@ -245,7 +245,7 @@ function updateHash(filePath: string | null): void {
       history.pushState(
         null,
         "",
-        window.location.pathname + window.location.search
+        window.location.pathname + window.location.search,
       );
     }
   }
@@ -259,10 +259,10 @@ export function setupInstallDropdown(containerId: string): void {
   if (!container) return;
 
   const toggle = container.querySelector<HTMLButtonElement>(
-    ".install-btn-toggle"
+    ".install-btn-toggle",
   );
   const menuItems = container.querySelectorAll<HTMLAnchorElement>(
-    ".install-dropdown-menu a"
+    ".install-dropdown-menu a",
   );
 
   toggle?.addEventListener("click", (e) => {
@@ -350,7 +350,7 @@ export async function openFileModal(
   filePath: string,
   type: string,
   updateUrl = true,
-  trigger?: HTMLElement
+  trigger?: HTMLElement,
 ): Promise<void> {
   const modal = document.getElementById("file-modal");
   const title = document.getElementById("modal-title");
@@ -358,13 +358,13 @@ export async function openFileModal(
   const contentEl = modalContent?.querySelector("code");
   const installDropdown = document.getElementById("install-dropdown");
   const installBtnMain = document.getElementById(
-    "install-btn-main"
+    "install-btn-main",
   ) as HTMLAnchorElement | null;
   const installVscode = document.getElementById(
-    "install-vscode"
+    "install-vscode",
   ) as HTMLAnchorElement | null;
   const installInsiders = document.getElementById(
-    "install-insiders"
+    "install-insiders",
   ) as HTMLAnchorElement | null;
   const copyBtn = document.getElementById("copy-btn");
   const downloadBtn = document.getElementById("download-btn");
@@ -415,7 +415,7 @@ export async function openFileModal(
       modalContent,
       installDropdown,
       copyBtn,
-      downloadBtn
+      downloadBtn,
     );
     return;
   }
@@ -430,7 +430,7 @@ export async function openFileModal(
   if (downloadBtn) downloadBtn.style.display = "inline-flex";
 
   // Restore pre/code structure if it was replaced by plugin view
-  if (modalContent.tagName !== 'PRE') {
+  if (modalContent.tagName !== "PRE") {
     const modalBody = modalContent.parentElement;
     if (modalBody) {
       const pre = document.createElement("pre");
@@ -477,7 +477,7 @@ async function openPluginModal(
   modalContent: HTMLElement,
   installDropdown: HTMLElement | null,
   copyBtn: HTMLElement | null,
-  downloadBtn: HTMLElement | null
+  downloadBtn: HTMLElement | null,
 ): Promise<void> {
   // Hide install dropdown and copy/download for plugins
   if (installDropdown) installDropdown.style.display = "none";
@@ -493,7 +493,8 @@ async function openPluginModal(
     modalBody.replaceChild(div, modalContent);
     modalContent = div;
   } else {
-    modalContent.innerHTML = '<div class="collection-loading">Loading plugin...</div>';
+    modalContent.innerHTML =
+      '<div class="collection-loading">Loading plugin...</div>';
   }
 
   // Load plugins data if not cached
@@ -523,7 +524,7 @@ async function openPluginModal(
   modalContent.innerHTML = `
     <div class="collection-view">
       <div class="collection-description">${escapeHtml(
-        plugin.description || ""
+        plugin.description || "",
       )}</div>
       ${
         plugin.tags && plugin.tags.length > 0
@@ -544,26 +545,26 @@ async function openPluginModal(
           .map(
             (item) => `
           <div class="collection-item" data-path="${escapeHtml(
-            item.path
+            item.path,
           )}" data-type="${escapeHtml(item.kind)}">
             <span class="collection-item-icon">${getResourceIcon(
-              item.kind
+              item.kind,
             )}</span>
             <div class="collection-item-info">
               <div class="collection-item-name">${escapeHtml(
-                item.path.split("/").pop() || item.path
+                item.path.split("/").pop() || item.path,
               )}</div>
               ${
                 item.usage
                   ? `<div class="collection-item-usage">${escapeHtml(
-                      item.usage
+                      item.usage,
                     )}</div>`
                   : ""
               }
             </div>
             <span class="collection-item-type">${escapeHtml(item.kind)}</span>
           </div>
-        `
+        `,
           )
           .join("")}
       </div>

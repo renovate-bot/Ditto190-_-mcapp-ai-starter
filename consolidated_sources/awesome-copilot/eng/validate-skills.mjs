@@ -20,7 +20,10 @@ function validateSkillName(name) {
   if (!/^[a-z0-9-]+$/.test(name)) {
     return "name must contain only lowercase letters, numbers, and hyphens";
   }
-  if (name.length < SKILL_NAME_MIN_LENGTH || name.length > SKILL_NAME_MAX_LENGTH) {
+  if (
+    name.length < SKILL_NAME_MIN_LENGTH ||
+    name.length > SKILL_NAME_MAX_LENGTH
+  ) {
     return `name must be between ${SKILL_NAME_MIN_LENGTH} and ${SKILL_NAME_MAX_LENGTH} characters`;
   }
   return null;
@@ -64,7 +67,7 @@ function validateSkillFolder(folderPath, folderName) {
     // Validate that folder name matches skill name
     if (metadata.name !== folderName) {
       errors.push(
-        `Folder name "${folderName}" does not match skill name "${metadata.name}"`
+        `Folder name "${folderName}" does not match skill name "${metadata.name}"`,
       );
     }
   }
@@ -87,7 +90,7 @@ function validateSkillFolder(folderPath, folderName) {
             stats.size /
             1024 /
             1024
-          ).toFixed(2)}MB)`
+          ).toFixed(2)}MB)`,
         );
       }
     } catch (error) {
@@ -105,12 +108,10 @@ function validateSkills() {
     return true;
   }
 
-  const skillFolders = fs
-    .readdirSync(SKILLS_DIR)
-    .filter((file) => {
-      const filePath = path.join(SKILLS_DIR, file);
-      return fs.statSync(filePath).isDirectory();
-    });
+  const skillFolders = fs.readdirSync(SKILLS_DIR).filter((file) => {
+    const filePath = path.join(SKILLS_DIR, file);
+    return fs.statSync(filePath).isDirectory();
+  });
 
   if (skillFolders.length === 0) {
     console.log("No skill folders found - validation skipped");
@@ -140,7 +141,7 @@ function validateSkills() {
       if (metadata) {
         if (usedNames.has(metadata.name)) {
           console.error(
-            `❌ Duplicate skill name "${metadata.name}" found in ${folder}`
+            `❌ Duplicate skill name "${metadata.name}" found in ${folder}`,
           );
           hasErrors = true;
         } else {

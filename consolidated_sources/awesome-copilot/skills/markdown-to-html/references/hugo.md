@@ -79,14 +79,14 @@ mysite/
 
 ## CLI Commands
 
-| Command | Description |
-|---------|-------------|
-| `hugo new site <name>` | Create new site |
-| `hugo new content <path>` | Create content file |
-| `hugo` | Build to `public/` |
-| `hugo server` | Start dev server |
-| `hugo mod init` | Initialize Hugo Modules |
-| `hugo mod tidy` | Clean up modules |
+| Command                   | Description             |
+| ------------------------- | ----------------------- |
+| `hugo new site <name>`    | Create new site         |
+| `hugo new content <path>` | Create content file     |
+| `hugo`                    | Build to `public/`      |
+| `hugo server`             | Start dev server        |
+| `hugo mod init`           | Initialize Hugo Modules |
+| `hugo mod tidy`           | Clean up modules        |
 
 ### Build Options
 
@@ -218,26 +218,24 @@ Content here...
 
 ## Templates
 
-### Base Template (_default/baseof.html)
+### Base Template (\_default/baseof.html)
 
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <title>{{ .Title }} | {{ .Site.Title }}</title>
-  {{ partial "head.html" . }}
-</head>
-<body>
-  {{ partial "header.html" . }}
-  <main>
-    {{ block "main" . }}{{ end }}
-  </main>
-  {{ partial "footer.html" . }}
-</body>
+  <head>
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    {{ partial "header.html" . }}
+    <main>{{ block "main" . }}{{ end }}</main>
+    {{ partial "footer.html" . }}
+  </body>
 </html>
 ```
 
-### Single Page (_default/single.html)
+### Single Page (\_default/single.html)
 
 ```html
 {{ define "main" }}
@@ -249,18 +247,17 @@ Content here...
 {{ end }}
 ```
 
-### List Page (_default/list.html)
+### List Page (\_default/list.html)
 
 ```html
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ range .Pages }}
-  <article>
-    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-    <p>{{ .Summary }}</p>
-  </article>
-{{ end }}
-{{ end }}
+<article>
+  <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+  <p>{{ .Summary }}</p>
+</article>
+{{ end }} {{ end }}
 ```
 
 ## Shortcodes
@@ -311,9 +308,8 @@ content/
 ### Accessing Resources
 
 ```html
-{{ $image := .Resources.GetMatch "image.jpg" }}
-{{ with $image }}
-  <img src="{{ .RelPermalink }}" alt="...">
+{{ $image := .Resources.GetMatch "image.jpg" }} {{ with $image }}
+<img src="{{ .RelPermalink }}" alt="..." />
 {{ end }}
 ```
 
@@ -323,7 +319,7 @@ content/
 
 ```html
 {{ $styles := resources.Get "scss/main.scss" | toCSS | minify }}
-<link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
 ```
 
 ### JavaScript Bundling
@@ -356,7 +352,7 @@ categories = ['tutorials']
 
 ```html
 {{ range .Site.Taxonomies.tags }}
-  <a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a>
+<a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a>
 {{ end }}
 ```
 
@@ -376,14 +372,14 @@ defaultContentLanguage = 'en'
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
-| Page not found | Check `baseURL` configuration |
-| Theme not loading | Verify theme path in config |
-| Raw HTML not showing | Set `unsafe = true` in goldmark config |
-| Slow builds | Use `--templateMetrics` to debug |
-| Module errors | Run `hugo mod tidy` |
-| CSS not updating | Clear browser cache or use fingerprinting |
+| Issue                | Solution                                  |
+| -------------------- | ----------------------------------------- |
+| Page not found       | Check `baseURL` configuration             |
+| Theme not loading    | Verify theme path in config               |
+| Raw HTML not showing | Set `unsafe = true` in goldmark config    |
+| Slow builds          | Use `--templateMetrics` to debug          |
+| Module errors        | Run `hugo mod tidy`                       |
+| CSS not updating     | Clear browser cache or use fingerprinting |
 
 ## Resources
 

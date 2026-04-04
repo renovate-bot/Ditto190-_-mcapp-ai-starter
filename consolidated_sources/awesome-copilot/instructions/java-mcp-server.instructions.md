@@ -1,5 +1,5 @@
 ---
-description: 'Best practices and patterns for building Model Context Protocol (MCP) servers in Java using the official MCP Java SDK with reactive streams and Spring integration.'
+description: "Best practices and patterns for building Model Context Protocol (MCP) servers in Java using the official MCP Java SDK with reactive streams and Spring integration."
 applyTo: "**/*.java, **/pom.xml, **/build.gradle, **/build.gradle.kts"
 ---
 
@@ -76,13 +76,13 @@ Tool searchTool = Tool.builder()
 // Register tool handler
 server.addToolHandler("search", (arguments) -> {
     String query = arguments.get("query").asText();
-    int limit = arguments.has("limit") 
-        ? arguments.get("limit").asInt() 
+    int limit = arguments.has("limit")
+        ? arguments.get("limit").asInt()
         : 10;
-    
+
     // Perform search
     List<String> results = performSearch(query, limit);
-    
+
     return Mono.just(ToolResponse.success()
         .addTextContent("Found " + results.size() + " results")
         .build());
@@ -162,12 +162,12 @@ server.addPromptGetHandler((name, arguments) -> {
     if (name.equals("analyze")) {
         String topic = arguments.getOrDefault("topic", "general");
         String depth = arguments.getOrDefault("depth", "basic");
-        
+
         List<PromptMessage> messages = List.of(
             PromptMessage.user("Please analyze this topic: " + topic),
             PromptMessage.assistant("I'll provide a " + depth + " analysis of " + topic)
         );
-        
+
         return Mono.just(PromptResult.builder()
             .description("Analysis of " + topic + " at " + depth + " level")
             .messages(messages)
@@ -245,12 +245,12 @@ import jakarta.servlet.http.HttpServlet;
 public class McpServlet extends HttpServlet {
     private final McpServer server;
     private final ServletServerTransport transport;
-    
+
     public McpServlet() {
         this.server = createMcpServer();
         this.transport = new ServletServerTransport();
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         transport.handleRequest(server, req, resp).block();
@@ -278,7 +278,7 @@ import io.mcp.spring.McpServerConfigurer;
 
 @Configuration
 public class McpConfiguration {
-    
+
     @Bean
     public McpServerConfigurer mcpServerConfigurer() {
         return server -> server
@@ -299,12 +299,12 @@ import io.mcp.spring.ToolHandler;
 
 @Component
 public class SearchToolHandler implements ToolHandler {
-    
+
     @Override
     public String getName() {
         return "search";
     }
-    
+
     @Override
     public Tool getTool() {
         return Tool.builder()
@@ -314,7 +314,7 @@ public class SearchToolHandler implements ToolHandler {
                 .property("query", JsonSchema.string().required(true)))
             .build();
     }
-    
+
     @Override
     public Mono<ToolResponse> handle(JsonNode arguments) {
         String query = arguments.get("query").asText();
@@ -391,7 +391,7 @@ private static final Logger log = LoggerFactory.getLogger(MyMcpServer.class);
 
 server.addToolHandler("process", (args) -> {
     log.info("Tool called: process, args: {}", args);
-    
+
     return Mono.fromCallable(() -> {
         String result = process(args);
         log.debug("Processing completed successfully");
@@ -413,7 +413,7 @@ server.addToolHandler("traced", (args) -> {
     return Mono.deferContextual(ctx -> {
         String traceId = ctx.get("traceId");
         log.info("Processing with traceId: {}", traceId);
-        
+
         return Mono.just(ToolResponse.success()
             .addTextContent("Processed")
             .build());
@@ -430,17 +430,17 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.Assertions.assertThat;
 
 class McpServerTest {
-    
+
     @Test
     void testToolHandler() {
         McpServer server = createTestServer();
         McpSyncServer syncServer = server.toSyncServer();
-        
+
         JsonNode args = objectMapper.createObjectNode()
             .put("query", "test");
-        
+
         ToolResponse response = syncServer.callTool("search", args);
-        
+
         assertThat(response.isError()).isFalse();
         assertThat(response.getContent()).hasSize(1);
     }
@@ -508,7 +508,7 @@ server.addToolHandler("validate", (args) -> {
             .message("Missing required_field")
             .build());
     }
-    
+
     return processRequest(args);
 });
 ```
@@ -519,7 +519,7 @@ server.addToolHandler("validate", (args) -> {
 server.addToolHandler("async", (args) -> {
     return Mono.fromCallable(() -> callExternalApi(args))
         .timeout(Duration.ofSeconds(30))
-        .onErrorResume(TimeoutException.class, e -> 
+        .onErrorResume(TimeoutException.class, e ->
             Mono.just(ToolResponse.error()
                 .message("Operation timed out")
                 .build()))
@@ -533,7 +533,7 @@ server.addToolHandler("async", (args) -> {
 private final Map<String, String> cache = new ConcurrentHashMap<>();
 
 server.addResourceReadHandler((uri) -> {
-    return Mono.fromCallable(() -> 
+    return Mono.fromCallable(() ->
         cache.computeIfAbsent(uri, this::loadResource))
         .map(content -> ResourceContent.text(content, uri));
 });
