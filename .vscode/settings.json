@@ -90,5 +90,11 @@
     "all"
   ],
   "github.copilot.chat.cli.branchSupport.enabled": true,
-  "github.copilot.chat.cli.sessionController.enabled": true
+  "github.copilot.chat.cli.sessionController.enabled": true,
+  "chat.tools.terminal.autoApprove": {
+    "/^bash -lc 'set -e\nprintf \"\\\\n--- GIT STATUS ---\\\\n\"\ngit status --porcelain --untracked-files=all \\|\\| true\nprintf \"\\\\n--- CURRENT BRANCH ---\\\\n\"\ngit branch --show-current \\|\\| true\nprintf \"\\\\nStaging all changes\\.\\.\\.\\\\n\"\ngit add -A\nprintf \"\\\\nAttempting commit with message: fixed contextstream mcp\\\\n\"\nif git commit -m \"fixed contextstream mcp\"; then\n  echo \"Commit created\"\nelse\n  echo \"No commit created \\(maybe no changes or commit failed\\)\"\nfi\nBRANCH=\\$\\(git rev-parse --abbrev-ref HEAD 2>/dev/null \\|\\| echo \"\"\\)\nif \\[ -n \"\\$BRANCH\" \\]; then\n  echo \"Pushing branch: \\$BRANCH\"\n  if git push --set-upstream origin \"\\$BRANCH\"; then\n    echo \"Push successful\"\n  else\n    echo \"Push failed; attempting simple git push\"\n    git push \\|\\| echo \"Push ultimately failed\"\n  fi\nelse\n  echo \"Could not determine branch name; skipping push\"\nfi\n'$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  }
 }
