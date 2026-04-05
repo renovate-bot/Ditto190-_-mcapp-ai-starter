@@ -1,0 +1,73 @@
+{
+  "root": "tools/external",
+  "repos": [
+    {
+      "name": "awesome-neovim-modme",
+      "path": "tools/external/awesome-neovim-modme",
+      "type": "script-collection",
+      "files": [
+        ".gitignore",
+        "CONTRIBUTING.md",
+        "README.md",
+        ".yamllint.yml",
+        "LICENSE",
+        "MAINTAINERS.md"
+      ]
+    },
+    {
+      "name": "system-manager",
+      "path": "tools/external/system-manager",
+      "type": "nix-project",
+      "files": [
+        ".envrc",
+        "shell.nix",
+        "CHANGELOG.md",
+        "renovate.json",
+        "default.nix",
+        ".gitignore",
+        ".pre-commit-config.yaml",
+        "CONTRIBUTING.md",
+        "Cargo.toml",
+        "buildbot-nix.toml",
+        ".treefmt.toml",
+        "package.nix",
+        "README.md",
+        "flake.lock",
+        "flake.nix",
+        "Cargo.lock",
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "awesome-sysadmin",
+      "path": "tools/external/awesome-sysadmin",
+      "type": "misc",
+      "files": [
+        "LICENSE.txt",
+        ".gitignore",
+        "README.md"
+      ]
+    },
+    {
+      "name": "treefmt-nix",
+      "path": "tools/external/treefmt-nix",
+      "type": "nix-project",
+      "files": [
+        "examples.sh",
+        "LICENSE.md",
+        "renovate.json",
+        "default.nix",
+        "treefmt.nix",
+        ".gitignore",
+        "run-tests.sh",
+        "supported-programs.sh",
+        "README.md",
+        "module-options.nix",
+        "flake.lock",
+        "flake.nix",
+        "programs.nix",
+        "flake-module.nix"
+      ]
+    }
+  ]
+}

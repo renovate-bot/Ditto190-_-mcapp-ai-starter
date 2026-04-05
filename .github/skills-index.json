@@ -1,0 +1,1122 @@
+[
+  {
+    "path": "workspaces/mcapp-ai-starter/.agents/skills/add-app-to-server/SKILL.md",
+    "name": "add-app-to-server",
+    "description": "This skill should be used when the user asks to \"add an app to my MCP server\", \"add UI to my MCP server\", \"add a view to my MCP tool\", \"enrich MCP tools with UI\", \"add interactive UI to existing server\", \"add MCP Apps to my server\", or needs to add interactive UI capabilities to an existing MCP server that already has tools. Provides guidance for analyzing existing tools and adding MCP Apps UI resources."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/.agents/skills/add-feature/SKILL.md",
+    "name": "add-feature",
+    "description": "Add Wasp's built-in features to your app — auth, email, jobs, and more. These are full-stack, batteries-included features that Wasp handles for you. Use when the user wants to add meta tags, authentication (email, social auth providers), email sending, database setup, styling (tailwind, shadcn), or other Wasp-powered functionality."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/.agents/skills/convert-web-app/SKILL.md",
+    "name": "convert-web-app",
+    "description": "This skill should be used when the user asks to \"add MCP App support to my web app\", \"turn my web app into a hybrid MCP App\", \"make my web page work as an MCP App too\", \"wrap my existing UI as an MCP App\", \"convert iframe embed to MCP App\", \"turn my SPA into an MCP App\", or needs to add MCP App support to an existing web application while keeping it working standalone. Provides guidance for analyzing existing web apps and creating a hybrid web + MCP App with server-side tool and resource registration."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/.agents/skills/create-mcp-app/SKILL.md",
+    "name": "create-mcp-app",
+    "description": "This skill should be used when the user asks to \"create an MCP App\", \"add a UI to an MCP tool\", \"build an interactive MCP View\", \"scaffold an MCP App\", or needs guidance on MCP Apps SDK patterns, UI-resource registration, MCP App lifecycle, or host integration. Provides comprehensive guidance for building MCP Apps with interactive UIs."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/.agents/skills/expert-advice/SKILL.md",
+    "name": "expert-advice",
+    "description": "Get advice on app improvements and functionality from a Wasp expert. Takes optional arguments for more specific requests e.g. `/expert-advice how can I improve account management?`."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/.agents/skills/start-dev-server/SKILL.md",
+    "name": "start-dev-server",
+    "description": "Start the Wasp dev server and set up full debugging visibility. This includes running the server (with access to logs), and connecting browser console access so the agent can see client-side errors. Essential for any development or debugging work."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/.agents/skills/wasp-plugin-help/SKILL.md",
+    "name": "wasp-plugin-help",
+    "description": "Shows the Wasp plugin's available features, commands, and skills."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/.agents/skills/wasp-plugin-init/SKILL.md",
+    "name": "wasp-plugin-init",
+    "description": "Adds Wasp knowledge, LLM-friendly documentation fetching instructions, and best practices to your project's CLAUDE.md or AGENTS.md file"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/add-educational-comments/SKILL.md",
+    "name": "add-educational-comments",
+    "description": "Add educational comments to the file specified, or prompt asking for file to comment if one is not provided."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/agent-governance/SKILL.md",
+    "name": "agent-governance",
+    "description": "|"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/agentic-eval/SKILL.md",
+    "name": "agentic-eval",
+    "description": "|"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/ai-prompt-engineering-safety-review/SKILL.md",
+    "name": "ai-prompt-engineering-safety-review",
+    "description": "Comprehensive AI prompt engineering safety review and improvement prompt. Analyzes prompts for safety, bias, security vulnerabilities, and effectiveness while providing detailed improvement recommendations with extensive frameworks, testing methodologies, and educational content."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/appinsights-instrumentation/SKILL.md",
+    "name": "appinsights-instrumentation",
+    "description": "Instrument a webapp to send useful telemetry data to Azure App Insights"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/apple-appstore-reviewer/SKILL.md",
+    "name": "apple-appstore-reviewer",
+    "description": "Serves as a reviewer of the codebase with instructions on looking for Apple App Store optimizations or rejection reasons."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/arch-linux-triage/SKILL.md",
+    "name": "arch-linux-triage",
+    "description": "Triage and resolve Arch Linux issues with pacman, systemd, and rolling-release best practices."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/architecture-blueprint-generator/SKILL.md",
+    "name": "architecture-blueprint-generator",
+    "description": "Comprehensive project architecture blueprint generator that analyzes codebases to create detailed architectural documentation. Automatically detects technology stacks and architectural patterns, generates visual diagrams, documents implementation patterns, and provides extensible blueprints for maintaining architectural consistency and guiding new development."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/aspire/SKILL.md",
+    "name": "aspire",
+    "description": "Aspire skill covering the Aspire CLI, AppHost orchestration, service discovery, integrations, MCP server, VS Code extension, Dev Containers, GitHub Codespaces, templates, dashboard, and deployment. Use when the user asks to create, run, debug, configure, deploy, or troubleshoot an Aspire distributed application."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/aspnet-minimal-api-openapi/SKILL.md",
+    "name": "aspnet-minimal-api-openapi",
+    "description": "Create ASP.NET Minimal API endpoints with proper OpenAPI documentation"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/az-cost-optimize/SKILL.md",
+    "name": "az-cost-optimize",
+    "description": "Analyze Azure resources used in the app (IaC files and/or resources in a target rg) and optimize costs - creating GitHub issues for identified optimizations."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/azure-deployment-preflight/SKILL.md",
+    "name": "azure-deployment-preflight",
+    "description": "Performs comprehensive preflight validation of Bicep deployments to Azure, including template syntax validation, what-if analysis, and permission checks. Use this skill before any deployment to Azure to preview changes, identify potential issues, and ensure the deployment will succeed. Activate when users mention deploying to Azure, validating Bicep files, checking deployment permissions, previewing infrastructure changes, running what-if, or preparing for azd provision."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/azure-devops-cli/SKILL.md",
+    "name": "azure-devops-cli",
+    "description": "Manage Azure DevOps resources via CLI including projects, repos, pipelines, builds, pull requests, work items, artifacts, and service endpoints. Use when working with Azure DevOps, az commands, devops automation, CI/CD, or when user mentions Azure DevOps CLI."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/azure-resource-health-diagnose/SKILL.md",
+    "name": "azure-resource-health-diagnose",
+    "description": "Analyze Azure resource health, diagnose issues from logs and telemetry, and create a remediation plan for identified problems."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/azure-resource-visualizer/SKILL.md",
+    "name": "azure-resource-visualizer",
+    "description": "Analyze Azure resource groups and generate detailed Mermaid architecture diagrams showing the relationships between individual resources. Use this skill when the user asks for a diagram of their Azure resources or help in understanding how the resources relate to each other."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/azure-role-selector/SKILL.md",
+    "name": "azure-role-selector",
+    "description": "When user is asking for guidance for which role to assign to an identity given desired permissions, this agent helps them understand the role that will meet the requirements with least privilege access and how to apply that role."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/azure-static-web-apps/SKILL.md",
+    "name": "azure-static-web-apps",
+    "description": "Helps create, configure, and deploy Azure Static Web Apps using the SWA CLI. Use when deploying static sites to Azure, setting up SWA local development, configuring staticwebapp.config.json, adding Azure Functions APIs to SWA, or setting up GitHub Actions CI/CD for Static Web Apps."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/bigquery-pipeline-audit/SKILL.md",
+    "name": "bigquery-pipeline-audit",
+    "description": "Audits Python + BigQuery pipelines for cost safety, idempotency, and production readiness. Returns a structured report with exact patch locations."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/boost-prompt/SKILL.md",
+    "name": "boost-prompt",
+    "description": "Interactive prompt refinement workflow: interrogates scope, deliverables, constraints; copies final markdown to clipboard; never writes code. Requires the Joyride extension."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/breakdown-epic-arch/SKILL.md",
+    "name": "breakdown-epic-arch",
+    "description": "Prompt for creating the high-level technical architecture for an Epic, based on a Product Requirements Document."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/breakdown-epic-pm/SKILL.md",
+    "name": "breakdown-epic-pm",
+    "description": "Prompt for creating an Epic Product Requirements Document (PRD) for a new epic. This PRD will be used as input for generating a technical architecture specification."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/breakdown-feature-implementation/SKILL.md",
+    "name": "breakdown-feature-implementation",
+    "description": "Prompt for creating detailed feature implementation plans, following Epoch monorepo structure."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/breakdown-feature-prd/SKILL.md",
+    "name": "breakdown-feature-prd",
+    "description": "Prompt for creating Product Requirements Documents (PRDs) for new features, based on an Epic."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/breakdown-plan/SKILL.md",
+    "name": "breakdown-plan",
+    "description": "Issue Planning and Automation prompt that generates comprehensive project plans with Epic > Feature > Story/Enabler > Test hierarchy, dependencies, priorities, and automated tracking."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/breakdown-test/SKILL.md",
+    "name": "breakdown-test",
+    "description": "Test Planning and Quality Assurance prompt that generates comprehensive test strategies, task breakdowns, and quality validation plans for GitHub projects."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/centos-linux-triage/SKILL.md",
+    "name": "centos-linux-triage",
+    "description": "Triage and resolve CentOS issues using RHEL-compatible tooling, SELinux-aware practices, and firewalld."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/chrome-devtools/SKILL.md",
+    "name": "chrome-devtools",
+    "description": "Expert-level browser automation, debugging, and performance analysis using Chrome DevTools MCP. Use for interacting with web pages, capturing screenshots, analyzing network traffic, and profiling performance."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/code-exemplars-blueprint-generator/SKILL.md",
+    "name": "code-exemplars-blueprint-generator",
+    "description": "Technology-agnostic prompt generator that creates customizable AI prompts for scanning codebases and identifying high-quality code exemplars. Supports multiple programming languages (.NET, Java, JavaScript, TypeScript, React, Angular, Python) with configurable analysis depth, categorization methods, and documentation formats to establish coding standards and maintain consistency across development teams."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/comment-code-generate-a-tutorial/SKILL.md",
+    "name": "comment-code-generate-a-tutorial",
+    "description": "Transform this Python script into a polished, beginner-friendly project by refactoring the code, adding clear instructional comments, and generating a complete markdown tutorial."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/containerize-aspnet-framework/SKILL.md",
+    "name": "containerize-aspnet-framework",
+    "description": "Containerize an ASP.NET .NET Framework project by creating Dockerfile and .dockerfile files customized for the project."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/containerize-aspnetcore/SKILL.md",
+    "name": "containerize-aspnetcore",
+    "description": "Containerize an ASP.NET Core project by creating Dockerfile and .dockerfile files customized for the project."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/context-map/SKILL.md",
+    "name": "context-map",
+    "description": "Generate a map of all files relevant to a task before making changes"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/conventional-commit/SKILL.md",
+    "name": "conventional-commit",
+    "description": "Prompt and workflow for generating conventional commit messages using a structured XML format. Guides users to create standardized, descriptive commit messages in line with the Conventional Commits specification, including instructions, examples, and validation."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/convert-plaintext-to-md/SKILL.md",
+    "name": "convert-plaintext-to-md",
+    "description": "Convert a text-based document to markdown following instructions from prompt, or if a documented option is passed, follow the instructions for that option."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/copilot-cli-quickstart/SKILL.md",
+    "name": "copilot-cli-quickstart",
+    "description": ">"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/copilot-instructions-blueprint-generator/SKILL.md",
+    "name": "copilot-instructions-blueprint-generator",
+    "description": "Technology-agnostic blueprint generator for creating comprehensive copilot-instructions.md files that guide GitHub Copilot to produce code consistent with project standards, architecture patterns, and exact technology versions by analyzing existing codebase patterns and avoiding assumptions."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/copilot-sdk/SKILL.md",
+    "name": "copilot-sdk",
+    "description": "Build agentic applications with GitHub Copilot SDK. Use when embedding AI agents in apps, creating custom tools, implementing streaming responses, managing sessions, connecting to MCP servers, or creating custom agents. Triggers on Copilot SDK, GitHub SDK, agentic app, embed Copilot, programmable agent, MCP server, custom agent."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/copilot-usage-metrics/SKILL.md",
+    "name": "copilot-usage-metrics",
+    "description": "Retrieve and display GitHub Copilot usage metrics for organizations and enterprises using the GitHub CLI and REST API."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/corporate-brand-guidelines/SKILL.md",
+    "name": "corporate-brand-guidelines",
+    "description": "Applies consistent corporate branding standards to all documents ensuring colors, fonts, layouts, and messaging align with organizational brand guidelines"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/cosmosdb-datamodeling/SKILL.md",
+    "name": "cosmosdb-datamodeling",
+    "description": "Step-by-step guide for capturing key application requirements for NoSQL use-case and produce Azure Cosmos DB Data NoSQL Model design using best practices and common patterns, artifacts_produced: \"cosmosdb_requirements.md\" file and \"cosmosdb_data_model.md\" file"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-agentsmd/SKILL.md",
+    "name": "create-agentsmd",
+    "description": "Prompt for generating an AGENTS.md file for a repository"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-architectural-decision-record/SKILL.md",
+    "name": "create-architectural-decision-record",
+    "description": "Create an Architectural Decision Record (ADR) document for AI-optimized decision documentation."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-github-action-workflow-specification/SKILL.md",
+    "name": "create-github-action-workflow-specification",
+    "description": "Create a formal specification for an existing GitHub Actions CI/CD workflow, optimized for AI consumption and workflow maintenance."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-github-issue-feature-from-specification/SKILL.md",
+    "name": "create-github-issue-feature-from-specification",
+    "description": "Create GitHub Issue for feature request from specification file using feature_request.yml template."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-github-issues-feature-from-implementation-plan/SKILL.md",
+    "name": "create-github-issues-feature-from-implementation-plan",
+    "description": "Create GitHub Issues from implementation plan phases using feature_request.yml or chore_request.yml templates."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-github-issues-for-unmet-specification-requirements/SKILL.md",
+    "name": "create-github-issues-for-unmet-specification-requirements",
+    "description": "Create GitHub Issues for unimplemented requirements from specification files using feature_request.yml template."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-github-pull-request-from-specification/SKILL.md",
+    "name": "create-github-pull-request-from-specification",
+    "description": "Create GitHub Pull Request for feature request from specification file using pull_request_template.md template."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-implementation-plan/SKILL.md",
+    "name": "create-implementation-plan",
+    "description": "Create a new implementation plan file for new features, refactoring existing code or upgrading packages, design, architecture or infrastructure."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-llms/SKILL.md",
+    "name": "create-llms",
+    "description": "Create an llms.txt file from scratch based on repository structure following the llms.txt specification at https://llmstxt.org/"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-oo-component-documentation/SKILL.md",
+    "name": "create-oo-component-documentation",
+    "description": "Create comprehensive, standardized documentation for object-oriented components following industry best practices and architectural documentation standards."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-readme/SKILL.md",
+    "name": "create-readme",
+    "description": "Create a README.md file for the project"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-specification/SKILL.md",
+    "name": "create-specification",
+    "description": "Create a new specification file for the solution, optimized for Generative AI consumption."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-spring-boot-java-project/SKILL.md",
+    "name": "create-spring-boot-java-project",
+    "description": "Create Spring Boot Java Project Skeleton"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-spring-boot-kotlin-project/SKILL.md",
+    "name": "create-spring-boot-kotlin-project",
+    "description": "Create Spring Boot Kotlin Project Skeleton"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-technical-spike/SKILL.md",
+    "name": "create-technical-spike",
+    "description": "Create time-boxed technical spike documents for researching and resolving critical development decisions before implementation."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-tldr-page/SKILL.md",
+    "name": "create-tldr-page",
+    "description": "Create a tldr page from documentation URLs and command examples, requiring both URL and command name."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/create-web-form/SKILL.md",
+    "name": "create-web-form",
+    "description": "Create robust, accessible web forms with best practices for HTML structure, CSS styling, JavaScript interactivity, form validation, and server-side processing. Use when asked to \"create a form\", \"build a web form\", \"add a contact form\", \"make a signup form\", or when building any HTML form with data handling. Covers PHP and Python backends, MySQL database integration, REST APIs, XML data exchange, accessibility (ARIA), and progressive web apps."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/csharp-async/SKILL.md",
+    "name": "csharp-async",
+    "description": "Get best practices for C# async programming"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/csharp-docs/SKILL.md",
+    "name": "csharp-docs",
+    "description": "Ensure that C# types are documented with XML comments and follow best practices for documentation."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/csharp-mcp-server-generator/SKILL.md",
+    "name": "csharp-mcp-server-generator",
+    "description": "Generate a complete MCP server project in C# with tools, prompts, and proper configuration"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/csharp-mstest/SKILL.md",
+    "name": "csharp-mstest",
+    "description": "Get best practices for MSTest 3.x/4.x unit testing, including modern assertion APIs and data-driven tests"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/csharp-nunit/SKILL.md",
+    "name": "csharp-nunit",
+    "description": "Get best practices for NUnit unit testing, including data-driven tests"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/csharp-tunit/SKILL.md",
+    "name": "csharp-tunit",
+    "description": "Get best practices for TUnit unit testing, including data-driven tests"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/csharp-xunit/SKILL.md",
+    "name": "csharp-xunit",
+    "description": "Get best practices for XUnit unit testing, including data-driven tests"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/datanalysis-credit-risk/SKILL.md",
+    "name": "datanalysis-credit-risk",
+    "description": "Credit risk data cleaning and variable screening pipeline for pre-loan modeling. Use when working with raw credit data that needs quality assessment,  missing value analysis, or variable selection before modeling. it covers data loading and formatting, abnormal period filtering, missing rate calculation, high-missing variable removal,low-IV variable filtering, high-PSI variable removal, Null Importance denoising, high-correlation variable removal, and cleaning report generation. Applicable scenarios arecredit risk data cleaning, variable screening, pre-loan modeling preprocessing."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/dataverse-python-advanced-patterns/SKILL.md",
+    "name": "dataverse-python-advanced-patterns",
+    "description": "Generate production code for Dataverse SDK using advanced patterns, error handling, and optimization techniques."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/dataverse-python-production-code/SKILL.md",
+    "name": "dataverse-python-production-code",
+    "description": "Generate production-ready Python code using Dataverse SDK with error handling, optimization, and best practices"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/dataverse-python-quickstart/SKILL.md",
+    "name": "dataverse-python-quickstart",
+    "description": "Generate Python SDK setup + CRUD + bulk + paging snippets using official patterns."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/dataverse-python-usecase-builder/SKILL.md",
+    "name": "dataverse-python-usecase-builder",
+    "description": "Generate complete solutions for specific Dataverse SDK use cases with architecture recommendations"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/debian-linux-triage/SKILL.md",
+    "name": "debian-linux-triage",
+    "description": "Triage and resolve Debian Linux issues with apt, systemd, and AppArmor-aware guidance."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/declarative-agents/SKILL.md",
+    "name": "declarative-agents",
+    "description": "Complete development kit for Microsoft 365 Copilot declarative agents with three comprehensive workflows (basic, advanced, validation), TypeSpec support, and Microsoft 365 Agents Toolkit integration"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/devops-rollout-plan/SKILL.md",
+    "name": "devops-rollout-plan",
+    "description": "Generate comprehensive rollout plans with preflight checks, step-by-step deployment, verification signals, rollback procedures, and communication plans for infrastructure and application changes"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/documentation-writer/SKILL.md",
+    "name": "documentation-writer",
+    "description": "Diátaxis Documentation Expert. An expert technical writer specializing in creating high-quality software documentation, guided by the principles and structure of the Diátaxis technical documentation authoring framework."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/dotnet-best-practices/SKILL.md",
+    "name": "dotnet-best-practices",
+    "description": "Ensure .NET/C# code meets best practices for the solution/project."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/dotnet-design-pattern-review/SKILL.md",
+    "name": "dotnet-design-pattern-review",
+    "description": "Review the C#/.NET code for design pattern implementation and suggest improvements."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/dotnet-upgrade/SKILL.md",
+    "name": "dotnet-upgrade",
+    "description": "Ready-to-use prompts for comprehensive .NET framework upgrade analysis and execution"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/editorconfig/SKILL.md",
+    "name": "editorconfig",
+    "description": "Generates a comprehensive and best-practice-oriented .editorconfig file based on project analysis and user preferences."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/ef-core/SKILL.md",
+    "name": "ef-core",
+    "description": "Get best practices for Entity Framework Core"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/entra-agent-user/SKILL.md",
+    "name": "entra-agent-user",
+    "description": "Create Agent Users in Microsoft Entra ID from Agent Identities, enabling AI agents to act as digital workers with user identity capabilities in Microsoft 365 and Azure environments."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/example-full-skill/SKILL.md",
+    "name": "example-full-skill",
+    "description": "A comprehensive AgentSkill example demonstrating all available fields, including scripts, references, and metadata. Use this as a reference for complex skills requiring multiple resources."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/example-minimal-skill/SKILL.md",
+    "name": "example-minimal-skill",
+    "description": "A minimal AgentSkill example showing only required fields. Use this template for simple, instruction-only skills without scripts or additional resources."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/excalidraw-diagram-generator/SKILL.md",
+    "name": "excalidraw-diagram-generator",
+    "description": "Generate Excalidraw diagrams from natural language descriptions. Use when asked to \"create a diagram\", \"make a flowchart\", \"visualize a process\", \"draw a system architecture\", \"create a mind map\", or \"generate an Excalidraw file\". Supports flowcharts, relationship diagrams, mind maps, and system architecture diagrams. Outputs .excalidraw JSON files that can be opened directly in Excalidraw."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/fabric-lakehouse/SKILL.md",
+    "name": "fabric-lakehouse",
+    "description": "Use this skill to get context about Fabric Lakehouse and its features for software systems and AI-powered functions. It offers descriptions of Lakehouse data components, organization with schemas and shortcuts, access control, and code examples. This skill supports users in designing, building, and optimizing Lakehouse solutions using best practices."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/fedora-linux-triage/SKILL.md",
+    "name": "fedora-linux-triage",
+    "description": "Triage and resolve Fedora issues with dnf, systemd, and SELinux-aware guidance."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/finalize-agent-prompt/SKILL.md",
+    "name": "finalize-agent-prompt",
+    "description": "Finalize prompt file using the role of an AI agent to polish the prompt for the end user."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/financial-modeling-suite/SKILL.md",
+    "name": "financial-modeling-suite",
+    "description": "Advanced financial modeling toolkit providing DCF valuation, sensitivity analysis, Monte Carlo simulation, and scenario planning for investment decisions and risk assessment"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/financial-ratio-analyzer/SKILL.md",
+    "name": "financial-ratio-analyzer",
+    "description": "Analyzes key financial ratios and metrics from financial statements for comprehensive investment analysis and company performance evaluation"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/finnish-humanizer/SKILL.md",
+    "name": "finnish-humanizer",
+    "description": "Detect and remove AI-generated markers from Finnish text, making it sound like a native Finnish speaker wrote it. Use when asked to \"humanize\", \"naturalize\", or \"remove AI feel\" from Finnish text, or when editing .md/.txt files containing Finnish content. Identifies 26 patterns (12 Finnish-specific + 14 universal) and 4 style markers."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/first-ask/SKILL.md",
+    "name": "first-ask",
+    "description": "Interactive, input-tool powered, task refinement workflow: interrogates scope, deliverables, constraints before carrying out the task; Requires the Joyride extension."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/fluentui-blazor/SKILL.md",
+    "name": "fluentui-blazor",
+    "description": ">"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/folder-structure-blueprint-generator/SKILL.md",
+    "name": "folder-structure-blueprint-generator",
+    "description": "Comprehensive technology-agnostic prompt for analyzing and documenting project folder structures. Auto-detects project types (.NET, Java, React, Angular, Python, Node.js, Flutter), generates detailed blueprints with visualization options, naming conventions, file placement patterns, and extension templates for maintaining consistent code organization across diverse technology stacks."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/game-engine/SKILL.md",
+    "name": "game-engine",
+    "description": "Expert skill for building web-based game engines and games using HTML5, Canvas, WebGL, and JavaScript. Use when asked to create games, build game engines, implement game physics, handle collision detection, set up game loops, manage sprites, add game controls, or work with 2D/3D rendering. Covers techniques for platformers, breakout-style games, maze games, tilemaps, audio, multiplayer via WebRTC, and publishing games."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/gen-specs-as-issues/SKILL.md",
+    "name": "gen-specs-as-issues",
+    "description": "This workflow guides you through a systematic approach to identify missing features, prioritize them, and create detailed specifications for implementation."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/generate-custom-instructions-from-codebase/SKILL.md",
+    "name": "generate-custom-instructions-from-codebase",
+    "description": "Migration and code evolution instructions generator for GitHub Copilot. Analyzes differences between two project versions (branches, commits, or releases) to create precise instructions allowing Copilot to maintain consistency during technology migrations, major refactoring, or framework version upgrades."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/gh-cli/SKILL.md",
+    "name": "gh-cli",
+    "description": "GitHub CLI (gh) comprehensive reference for repositories, issues, pull requests, Actions, projects, releases, gists, codespaces, organizations, extensions, and all GitHub operations from the command line."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/git-commit/SKILL.md",
+    "name": "git-commit",
+    "description": "Execute git commit with conventional commit message analysis, intelligent staging, and message generation. Use when user asks to commit changes, create a git commit, or mentions \"/commit\". Supports: (1) Auto-detecting type and scope from changes, (2) Generating conventional commit messages from diff, (3) Interactive commit with optional type/scope/description overrides, (4) Intelligent file staging for logical grouping"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/git-flow-branch-creator/SKILL.md",
+    "name": "git-flow-branch-creator",
+    "description": "Intelligent Git Flow branch creator that analyzes git status/diff and creates appropriate branches following the nvie Git Flow branching model."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/github-copilot-starter/SKILL.md",
+    "name": "github-copilot-starter",
+    "description": "Set up complete GitHub Copilot configuration for a new project based on technology stack"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/github-issues/SKILL.md",
+    "name": "github-issues",
+    "description": "Create, update, and manage GitHub issues using MCP tools. Use this skill when users want to create bug reports, feature requests, or task issues, update existing issues, add labels/assignees/milestones, or manage issue workflows. Triggers on requests like \"create an issue\", \"file a bug\", \"request a feature\", \"update issue X\", or any GitHub issue management task."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/go-mcp-server-generator/SKILL.md",
+    "name": "go-mcp-server-generator",
+    "description": "Generate a complete Go MCP server project with proper structure, dependencies, and implementation using the official github.com/modelcontextprotocol/go-sdk."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/image-manipulation-image-magick/SKILL.md",
+    "name": "image-manipulation-image-magick",
+    "description": "Process and manipulate images using ImageMagick. Supports resizing, format conversion, batch processing, and retrieving image metadata. Use when working with images, creating thumbnails, resizing wallpapers, or performing batch image operations."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/import-infrastructure-as-code/SKILL.md",
+    "name": "import-infrastructure-as-code",
+    "description": "Import existing Azure resources into Terraform using Azure CLI discovery and Azure Verified Modules (AVM). Use when asked to reverse-engineer live Azure infrastructure, generate Infrastructure as Code from existing subscriptions/resource groups/resource IDs, map dependencies, derive exact import addresses from downloaded module source, prevent configuration drift, and produce AVM-based Terraform files ready for validation and planning across any Azure resource type."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/java-add-graalvm-native-image-support/SKILL.md",
+    "name": "java-add-graalvm-native-image-support",
+    "description": "GraalVM Native Image expert that adds native image support to Java applications, builds the project, analyzes build errors, applies fixes, and iterates until successful compilation using Oracle best practices."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/java-docs/SKILL.md",
+    "name": "java-docs",
+    "description": "Ensure that Java types are documented with Javadoc comments and follow best practices for documentation."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/java-junit/SKILL.md",
+    "name": "java-junit",
+    "description": "Get best practices for JUnit 5 unit testing, including data-driven tests"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/java-mcp-server-generator/SKILL.md",
+    "name": "java-mcp-server-generator",
+    "description": "Generate a complete Model Context Protocol server project in Java using the official MCP Java SDK with reactive streams and optional Spring Boot integration."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/java-refactoring-extract-method/SKILL.md",
+    "name": "java-refactoring-extract-method",
+    "description": "Refactoring using Extract Methods in Java Language"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/java-refactoring-remove-parameter/SKILL.md",
+    "name": "java-refactoring-remove-parameter",
+    "description": "Refactoring using Remove Parameter in Java Language"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/java-springboot/SKILL.md",
+    "name": "java-springboot",
+    "description": "Get best practices for developing applications with Spring Boot."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/javascript-typescript-jest/SKILL.md",
+    "name": "javascript-typescript-jest",
+    "description": "Best practices for writing JavaScript/TypeScript tests using Jest, including mocking strategies, test structure, and common patterns."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/kotlin-mcp-server-generator/SKILL.md",
+    "name": "kotlin-mcp-server-generator",
+    "description": "Generate a complete Kotlin MCP server project with proper structure, dependencies, and implementation using the official io.modelcontextprotocol:kotlin-sdk library."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/kotlin-springboot/SKILL.md",
+    "name": "kotlin-springboot",
+    "description": "Get best practices for developing applications with Spring Boot and Kotlin."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/legacy-circuit-mockups/SKILL.md",
+    "name": "legacy-circuit-mockups",
+    "description": "Generate breadboard circuit mockups and visual diagrams using HTML5 Canvas drawing techniques. Use when asked to create circuit layouts, visualize electronic component placements, draw breadboard diagrams, mockup 6502 builds, generate retro computer schematics, or design vintage electronics projects. Supports 555 timers, W65C02S microprocessors, 28C256 EEPROMs, W65C22 VIA chips, 7400-series logic gates, LEDs, resistors, capacitors, switches, buttons, crystals, and wires."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/make-repo-contribution/SKILL.md",
+    "name": "make-repo-contribution",
+    "description": "All changes to code must follow the guidance documented in the repository. Before any issue is filed, branch is made, commits generated, or pull request (or PR) created, a search must be done to ensure the right steps are followed. Whenever asked to create an issue, commit messages, to push code, or create a PR, use this skill so everything is done correctly."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/make-skill-template/SKILL.md",
+    "name": "make-skill-template",
+    "description": "Create new Agent Skills for GitHub Copilot from prompts or by duplicating this template. Use when asked to \"create a skill\", \"make a new skill\", \"scaffold a skill\", or when building specialized AI capabilities with bundled resources. Generates SKILL.md files with proper frontmatter, directory structure, and optional scripts/references/assets folders."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/markdown-to-html/SKILL.md",
+    "name": "markdown-to-html",
+    "description": "Convert Markdown files to HTML similar to `marked.js`, `pandoc`, `gomarkdown/markdown`, or similar tools; or writing custom script to convert markdown to html and/or working on web template systems like `jekyll/jekyll`, `gohugoio/hugo`, or similar web templating systems that utilize markdown documents, converting them to html. Use when asked to \"convert markdown to html\", \"transform md to html\", \"render markdown\", \"generate html from markdown\", or when working with .md files and/or web a templating system that converts markdown to HTML output. Supports CLI and Node.js workflows with GFM, CommonMark, and standard Markdown flavors."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/mcp-cli/SKILL.md",
+    "name": "mcp-cli",
+    "description": "Interface for MCP (Model Context Protocol) servers via CLI. Use when you need to interact with external tools, APIs, or data sources through MCP servers, list available MCP servers/tools, or call MCP tools from command line."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/mcp-configure/SKILL.md",
+    "name": "mcp-configure",
+    "description": "Configure an MCP server for GitHub Copilot with your Dataverse environment."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/mcp-copilot-studio-server-generator/SKILL.md",
+    "name": "mcp-copilot-studio-server-generator",
+    "description": "Generate a complete MCP server implementation optimized for Copilot Studio integration with proper schema constraints and streamable HTTP support"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/mcp-create-adaptive-cards/SKILL.md",
+    "name": "mcp-create-adaptive-cards",
+    "description": "Skill converted from mcp-create-adaptive-cards.prompt.md"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/mcp-create-declarative-agent/SKILL.md",
+    "name": "mcp-create-declarative-agent",
+    "description": "Skill converted from mcp-create-declarative-agent.prompt.md"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/mcp-deploy-manage-agents/SKILL.md",
+    "name": "mcp-deploy-manage-agents",
+    "description": "Skill converted from mcp-deploy-manage-agents.prompt.md"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/meeting-minutes/SKILL.md",
+    "name": "meeting-minutes",
+    "description": "Generate concise, actionable meeting minutes for internal meetings. Includes metadata, attendees, agenda, decisions, action items (owner + due date), and follow-up steps."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/memory-merger/SKILL.md",
+    "name": "memory-merger",
+    "description": "Merges mature lessons from a domain memory file into its instruction file. Syntax: `/memory-merger >domain [scope]` where scope is `global` (default), `user`, `workspace`, or `ws`."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/mentoring-juniors/SKILL.md",
+    "name": "mentoring-juniors",
+    "description": "Socratic mentoring for junior developers and AI newcomers. Guides through questions, never answers. Triggers: \"help me understand\", \"explain this code\", \"I''m stuck\", \"Im stuck\", \"I''m confused\", \"Im confused\", \"I don''t understand\", \"I dont understand\", \"can you teach me\", \"teach me\", \"mentor me\", \"guide me\", \"what does this error mean\", \"why doesn''t this work\", \"why does not this work\", \"I''m a beginner\", \"Im a beginner\", \"I''m learning\", \"Im learning\", \"I''m new to this\", \"Im new to this\", \"walk me through\", \"how does this work\", \"what''s wrong with my code\", \"what''s wrong\", \"can you break this down\", \"ELI5\", \"step by step\", \"where do I start\", \"what am I missing\", \"newbie here\", \"junior dev\", \"first time using\", \"how do I\", \"what is\", \"is this right\", \"not sure\", \"need help\", \"struggling\", \"show me\", \"help me debug\", \"best practice\", \"too complex\", \"overwhelmed\", \"lost\", \"debug this\", \"/socratic\", \"/hint\", \"/concept\", \"/pseudocode\". Progressive clue systems, teaching techniques, and success metrics."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/microsoft-code-reference/SKILL.md",
+    "name": "microsoft-code-reference",
+    "description": "Look up Microsoft API references, find working code samples, and verify SDK code is correct. Use when working with Azure SDKs, .NET libraries, or Microsoft APIs—to find the right method, check parameters, get working examples, or troubleshoot errors. Catches hallucinated methods, wrong signatures, and deprecated patterns by querying official docs."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/microsoft-docs/SKILL.md",
+    "name": "microsoft-docs",
+    "description": "Query official Microsoft documentation to find concepts, tutorials, and code examples across Azure, .NET, Agent Framework, Aspire, VS Code, GitHub, and more. Uses Microsoft Learn MCP as the default, with Context7 and Aspire MCP for content that lives outside learn.microsoft.com."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/microsoft-skill-creator/SKILL.md",
+    "name": "microsoft-skill-creator",
+    "description": "Create agent skills for Microsoft technologies using Learn MCP tools. Use when users want to create a skill that teaches agents about any Microsoft technology, library, framework, or service (Azure, .NET, M365, VS Code, Bicep, etc.). Investigates topics deeply, then generates a hybrid skill storing essential knowledge locally while enabling dynamic deeper investigation."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/mkdocs-translations/SKILL.md",
+    "name": "mkdocs-translations",
+    "description": "Generate a language translation for a mkdocs documentation stack."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/model-recommendation/SKILL.md",
+    "name": "model-recommendation",
+    "description": "Analyze chatmode or prompt files and recommend optimal AI models based on task complexity, required capabilities, and cost-efficiency"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/msstore-cli/SKILL.md",
+    "name": "msstore-cli",
+    "description": "Microsoft Store Developer CLI (msstore) for publishing Windows applications to the Microsoft Store. Use when asked to configure Store credentials, list Store apps, check submission status, publish submissions, manage package flights, set up CI/CD for Store publishing, or integrate with Partner Center. Supports Windows App SDK/WinUI, UWP, .NET MAUI, Flutter, Electron, React Native, and PWA applications."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/multi-stage-dockerfile/SKILL.md",
+    "name": "multi-stage-dockerfile",
+    "description": "Create optimized multi-stage Dockerfiles for any language or framework"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/my-issues/SKILL.md",
+    "name": "my-issues",
+    "description": "List my issues in the current repository"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/my-pull-requests/SKILL.md",
+    "name": "my-pull-requests",
+    "description": "List my pull requests in the current repository"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/nano-banana-pro-openrouter/SKILL.md",
+    "name": "nano-banana-pro-openrouter",
+    "description": "Generate or edit images via OpenRouter with the Gemini 3 Pro Image model. Use for prompt-only image generation, image edits, and multi-image compositing; supports 1K/2K/4K output."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/next-intl-add-language/SKILL.md",
+    "name": "next-intl-add-language",
+    "description": "Add new language to a Next.js + next-intl application"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/noob-mode/SKILL.md",
+    "name": "noob-mode",
+    "description": "Plain-English translation layer for non-technical Copilot CLI users. Translates every approval prompt, error message, and technical output into clear, jargon-free English with color-coded risk indicators."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/nuget-manager/SKILL.md",
+    "name": "nuget-manager",
+    "description": "Manage NuGet packages in .NET projects/solutions. Use this skill when adding, removing, or updating NuGet package versions. It enforces using `dotnet` CLI for package management and provides strict procedures for direct file edits only when updating versions."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/openapi-to-application-code/SKILL.md",
+    "name": "openapi-to-application-code",
+    "description": "Generate a complete, production-ready application from an OpenAPI specification"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/pdftk-server/SKILL.md",
+    "name": "pdftk-server",
+    "description": "Skill for using the command-line tool pdftk (PDFtk Server) for working with PDF files. Use when asked to merge PDFs, split PDFs, rotate pages, encrypt or decrypt PDFs, fill PDF forms, apply watermarks, stamp overlays, extract metadata, burst documents into pages, repair corrupted PDFs, attach or extract files, or perform any PDF manipulation from the command line."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/penpot-uiux-design/SKILL.md",
+    "name": "penpot-uiux-design",
+    "description": "Comprehensive guide for creating professional UI/UX designs in Penpot using MCP tools. Use this skill when: (1) Creating new UI/UX designs for web, mobile, or desktop applications, (2) Building design systems with components and tokens, (3) Designing dashboards, forms, navigation, or landing pages, (4) Applying accessibility standards and best practices, (5) Following platform guidelines (iOS, Android, Material Design), (6) Reviewing or improving existing Penpot designs for usability. Triggers: \"design a UI\", \"create interface\", \"build layout\", \"design dashboard\", \"create form\", \"design landing page\", \"make it accessible\", \"design system\", \"component library\"."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/php-mcp-server-generator/SKILL.md",
+    "name": "php-mcp-server-generator",
+    "description": "Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/plantuml-ascii/SKILL.md",
+    "name": "plantuml-ascii",
+    "description": "Generate ASCII art diagrams using PlantUML text mode. Use when user asks to create ASCII diagrams, text-based diagrams, terminal-friendly diagrams, or mentions plantuml ascii, text diagram, ascii art diagram. Supports: Converting PlantUML diagrams to ASCII art, Creating sequence diagrams, class diagrams, flowcharts in ASCII format, Generating Unicode-enhanced ASCII art with -utxt flag"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/playwright-automation-fill-in-form/SKILL.md",
+    "name": "playwright-automation-fill-in-form",
+    "description": "Automate filling in a form using Playwright MCP"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/playwright-explore-website/SKILL.md",
+    "name": "playwright-explore-website",
+    "description": "Website exploration for testing using Playwright MCP"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/playwright-generate-test/SKILL.md",
+    "name": "playwright-generate-test",
+    "description": "Generate a Playwright test based on a scenario using Playwright MCP"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/polyglot-test-agent/SKILL.md",
+    "name": "polyglot-test-agent",
+    "description": "Generates comprehensive, workable unit tests for any programming language using a multi-agent pipeline. Use when asked to generate tests, write unit tests, improve test coverage, add test coverage, create test files, or test a codebase. Supports C#, TypeScript, JavaScript, Python, Go, Rust, Java, and more. Orchestrates research, planning, and implementation phases to produce tests that compile, pass, and follow project conventions."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/postgresql-code-review/SKILL.md",
+    "name": "postgresql-code-review",
+    "description": "PostgreSQL-specific code review assistant focusing on PostgreSQL best practices, anti-patterns, and unique quality standards. Covers JSONB operations, array usage, custom types, schema design, function optimization, and PostgreSQL-exclusive security features like Row Level Security (RLS)."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/postgresql-optimization/SKILL.md",
+    "name": "postgresql-optimization",
+    "description": "PostgreSQL-specific development assistant focusing on unique PostgreSQL features, advanced data types, and PostgreSQL-exclusive capabilities. Covers JSONB operations, array types, custom types, range/geometric types, full-text search, window functions, and PostgreSQL extensions ecosystem."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/power-apps-code-app-scaffold/SKILL.md",
+    "name": "power-apps-code-app-scaffold",
+    "description": "Scaffold a complete Power Apps Code App project with PAC CLI setup, SDK integration, and connector configuration"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/power-bi-dax-optimization/SKILL.md",
+    "name": "power-bi-dax-optimization",
+    "description": "Comprehensive Power BI DAX formula optimization prompt for improving performance, readability, and maintainability of DAX calculations."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/power-bi-model-design-review/SKILL.md",
+    "name": "power-bi-model-design-review",
+    "description": "Comprehensive Power BI data model design review prompt for evaluating model architecture, relationships, and optimization opportunities."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/power-bi-performance-troubleshooting/SKILL.md",
+    "name": "power-bi-performance-troubleshooting",
+    "description": "Systematic Power BI performance troubleshooting prompt for identifying, diagnosing, and resolving performance issues in Power BI models, reports, and queries."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/power-bi-report-design-consultation/SKILL.md",
+    "name": "power-bi-report-design-consultation",
+    "description": "Power BI report visualization design prompt for creating effective, user-friendly, and accessible reports with optimal chart selection and layout design."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/power-platform-mcp-connector-suite/SKILL.md",
+    "name": "power-platform-mcp-connector-suite",
+    "description": "Generate complete Power Platform custom connector with MCP integration for Copilot Studio - includes schema generation, troubleshooting, and validation"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/powerbi-modeling/SKILL.md",
+    "name": "powerbi-modeling",
+    "description": "Power BI semantic modeling assistant for building optimized data models. Use when working with Power BI semantic models, creating measures, designing star schemas, configuring relationships, implementing RLS, or optimizing model performance. Triggers on queries about DAX calculations, table relationships, dimension/fact table design, naming conventions, model documentation, cardinality, cross-filter direction, calculation groups, and data model best practices. Always connects to the active model first using power-bi-modeling MCP tools to understand the data structure before providing guidance."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/prd/SKILL.md",
+    "name": "prd",
+    "description": "Generate high-quality Product Requirements Documents (PRDs) for software systems and AI-powered features. Includes executive summaries, user stories, technical specifications, and risk analysis."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/project-workflow-analysis-blueprint-generator/SKILL.md",
+    "name": "project-workflow-analysis-blueprint-generator",
+    "description": "Comprehensive technology-agnostic prompt generator for documenting end-to-end application workflows. Automatically detects project architecture patterns, technology stacks, and data flow patterns to generate detailed implementation blueprints covering entry points, service layers, data access, error handling, and testing approaches across multiple technologies including .NET, Java/Spring, React, and microservices architectures."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/prompt-builder/SKILL.md",
+    "name": "prompt-builder",
+    "description": "Guide users through creating high-quality GitHub Copilot prompts with proper structure, tools, and best practices."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/pytest-coverage/SKILL.md",
+    "name": "pytest-coverage",
+    "description": "Run pytest tests with coverage, discover lines missing coverage, and increase coverage to 100%."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/python-mcp-server-generator/SKILL.md",
+    "name": "python-mcp-server-generator",
+    "description": "Generate a complete MCP server project in Python with tools, resources, and proper configuration"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/quasi-coder/SKILL.md",
+    "name": "quasi-coder",
+    "description": "Expert 10x engineer skill for interpreting and implementing code from shorthand, quasi-code, and natural language descriptions. Use when collaborators provide incomplete code snippets, pseudo-code, or descriptions with potential typos or incorrect terminology. Excels at translating non-technical or semi-technical descriptions into production-quality code."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/readme-blueprint-generator/SKILL.md",
+    "name": "readme-blueprint-generator",
+    "description": "Intelligent README.md generation prompt that analyzes project documentation structure and creates comprehensive repository documentation. Scans .github/copilot directory files and copilot-instructions.md to extract project information, technology stack, architecture, development workflow, coding standards, and testing approaches while generating well-structured markdown documentation with proper formatting, cross-references, and developer-focused content."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/refactor-method-complexity-reduce/SKILL.md",
+    "name": "refactor-method-complexity-reduce",
+    "description": "Refactor given method `${input:methodName}` to reduce its cognitive complexity to `${input:complexityThreshold}` or below, by extracting helper methods."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/refactor-plan/SKILL.md",
+    "name": "refactor-plan",
+    "description": "Plan a multi-file refactor with proper sequencing and rollback steps"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/refactor/SKILL.md",
+    "name": "refactor",
+    "description": "Surgical code refactoring to improve maintainability without changing behavior. Covers extracting functions, renaming variables, breaking down god functions, improving type safety, eliminating code smells, and applying design patterns. Less drastic than repo-rebuilder; use for gradual improvements."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/remember-interactive-programming/SKILL.md",
+    "name": "remember-interactive-programming",
+    "description": "A micro-prompt that reminds the agent that it is an interactive programmer. Works great in Clojure when Copilot has access to the REPL (probably via Backseat Driver). Will work with any system that has a live REPL that the agent can use. Adapt the prompt with any specific reminders in your workflow and/or workspace."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/remember/SKILL.md",
+    "name": "remember",
+    "description": "Transforms lessons learned into domain-organized memory instructions (global or workspace). Syntax: `/remember [>domain [scope]] lesson clue` where scope is `global` (default), `user`, `workspace`, or `ws`."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/repo-story-time/SKILL.md",
+    "name": "repo-story-time",
+    "description": "Generate a comprehensive repository summary and narrative story from commit history"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/review-and-refactor/SKILL.md",
+    "name": "review-and-refactor",
+    "description": "Review and refactor code in your project according to defined instructions"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/ruby-mcp-server-generator/SKILL.md",
+    "name": "ruby-mcp-server-generator",
+    "description": "Generate a complete Model Context Protocol server project in Ruby using the official MCP Ruby SDK gem."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/rust-mcp-server-generator/SKILL.md",
+    "name": "rust-mcp-server-generator",
+    "description": "Generate a complete Rust Model Context Protocol server project with tools, prompts, resources, and tests using the official rmcp SDK"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/scoutqa-test/SKILL.md",
+    "name": "scoutqa-test",
+    "description": "|"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/shuffle-json-data/SKILL.md",
+    "name": "shuffle-json-data",
+    "description": "Shuffle repetitive JSON objects safely by validating schema consistency before randomising entries."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/snowflake-semanticview/SKILL.md",
+    "name": "snowflake-semanticview",
+    "description": "Create, alter, and validate Snowflake semantic views using Snowflake CLI (snow). Use when asked to build or troubleshoot semantic views/semantic layer definitions with CREATE/ALTER SEMANTIC VIEW, to validate semantic-view DDL against Snowflake via CLI, or to guide Snowflake CLI installation and connection setup."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/sponsor-finder/SKILL.md",
+    "name": "sponsor-finder",
+    "description": "Find which of a GitHub repository's dependencies are sponsorable via GitHub Sponsors. Uses deps.dev API for dependency resolution across npm, PyPI, Cargo, Go, RubyGems, Maven, and NuGet. Checks npm funding metadata, FUNDING.yml files, and web search. Verifies every link. Shows direct and transitive dependencies with OSSF Scorecard health data. Invoke with /sponsor followed by a GitHub owner/repo (e.g. \"/sponsor expressjs/express\")."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/sql-code-review/SKILL.md",
+    "name": "sql-code-review",
+    "description": "Universal SQL code review assistant that performs comprehensive security, maintainability, and code quality analysis across all SQL databases (MySQL, PostgreSQL, SQL Server, Oracle). Focuses on SQL injection prevention, access control, code standards, and anti-pattern detection. Complements SQL optimization prompt for complete development coverage."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/sql-optimization/SKILL.md",
+    "name": "sql-optimization",
+    "description": "Universal SQL performance optimization assistant for comprehensive query tuning, indexing strategies, and database performance analysis across all SQL databases (MySQL, PostgreSQL, SQL Server, Oracle). Provides execution plan analysis, pagination optimization, batch operations, and performance monitoring guidance."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/structured-autonomy-generate/SKILL.md",
+    "name": "structured-autonomy-generate",
+    "description": "Structured Autonomy Implementation Generator Prompt"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/structured-autonomy-implement/SKILL.md",
+    "name": "structured-autonomy-implement",
+    "description": "Structured Autonomy Implementation Prompt"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/structured-autonomy-plan/SKILL.md",
+    "name": "structured-autonomy-plan",
+    "description": "Structured Autonomy Planning Prompt"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/suggest-awesome-github-copilot-agents/SKILL.md",
+    "name": "suggest-awesome-github-copilot-agents",
+    "description": "Suggest relevant GitHub Copilot Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom agents in this repository, and identifying outdated agents that need updates."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/suggest-awesome-github-copilot-instructions/SKILL.md",
+    "name": "suggest-awesome-github-copilot-instructions",
+    "description": "Suggest relevant GitHub Copilot instruction files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing instructions in this repository, and identifying outdated instructions that need updates."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/suggest-awesome-github-copilot-prompts/SKILL.md",
+    "name": "suggest-awesome-github-copilot-prompts",
+    "description": "Suggest relevant GitHub Copilot prompt files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing prompts in this repository, and identifying outdated prompts that need updates."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/suggest-awesome-github-copilot-skills/SKILL.md",
+    "name": "suggest-awesome-github-copilot-skills",
+    "description": "Suggest relevant GitHub Copilot skills from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing skills in this repository, and identifying outdated skills that need updates."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/swift-mcp-server-generator/SKILL.md",
+    "name": "swift-mcp-server-generator",
+    "description": "Generate a complete Model Context Protocol server project in Swift using the official MCP Swift SDK package."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/technology-stack-blueprint-generator/SKILL.md",
+    "name": "technology-stack-blueprint-generator",
+    "description": "Comprehensive technology stack blueprint generator that analyzes codebases to create detailed architectural documentation. Automatically detects technology stacks, programming languages, and implementation patterns across multiple platforms (.NET, Java, JavaScript, React, Python). Generates configurable blueprints with version information, licensing details, usage patterns, coding conventions, and visual diagrams. Provides implementation-ready templates and maintains architectural consistency for guided development."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/terraform-azurerm-set-diff-analyzer/SKILL.md",
+    "name": "terraform-azurerm-set-diff-analyzer",
+    "description": "Analyze Terraform plan JSON output for AzureRM Provider to distinguish between false-positive diffs (order-only changes in Set-type attributes) and actual resource changes. Use when reviewing terraform plan output for Azure resources like Application Gateway, Load Balancer, Firewall, Front Door, NSG, and other resources with Set-type attributes that cause spurious diffs due to internal ordering changes."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/tldr-prompt/SKILL.md",
+    "name": "tldr-prompt",
+    "description": "Create tldr summaries for GitHub Copilot files (prompts, agents, instructions, collections), MCP servers, or documentation from URLs and queries."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/transloadit-media-processing/SKILL.md",
+    "name": "transloadit-media-processing",
+    "description": "Process media files (video, audio, images, documents) using Transloadit. Use when asked to encode video to HLS/MP4, generate thumbnails, resize or watermark images, extract audio, concatenate clips, add subtitles, OCR documents, or run any media processing pipeline. Covers 86+ processing robots for file transformation at scale."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/typescript-mcp-server-generator/SKILL.md",
+    "name": "typescript-mcp-server-generator",
+    "description": "Generate a complete MCP server project in TypeScript with tools, resources, and proper configuration"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/typespec-api-operations/SKILL.md",
+    "name": "typespec-api-operations",
+    "description": "Add GET, POST, PATCH, and DELETE operations to a TypeSpec API plugin with proper routing, parameters, and adaptive cards"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/typespec-create-agent/SKILL.md",
+    "name": "typespec-create-agent",
+    "description": "Generate a complete TypeSpec declarative agent with instructions, capabilities, and conversation starters for Microsoft 365 Copilot"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/typespec-create-api-plugin/SKILL.md",
+    "name": "typespec-create-api-plugin",
+    "description": "Generate a TypeSpec API plugin with REST operations, authentication, and Adaptive Cards for Microsoft 365 Copilot"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/update-avm-modules-in-bicep/SKILL.md",
+    "name": "update-avm-modules-in-bicep",
+    "description": "Update Azure Verified Modules (AVM) to latest versions in Bicep files."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/update-implementation-plan/SKILL.md",
+    "name": "update-implementation-plan",
+    "description": "Update an existing implementation plan file with new or update requirements to provide new features, refactoring existing code or upgrading packages, design, architecture or infrastructure."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/update-llms/SKILL.md",
+    "name": "update-llms",
+    "description": "Update the llms.txt file in the root folder to reflect changes in documentation or specifications following the llms.txt specification at https://llmstxt.org/"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/update-markdown-file-index/SKILL.md",
+    "name": "update-markdown-file-index",
+    "description": "Update a markdown file section with an index/table of files from a specified folder."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/update-oo-component-documentation/SKILL.md",
+    "name": "update-oo-component-documentation",
+    "description": "Update existing object-oriented component documentation following industry best practices and architectural documentation standards."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/update-specification/SKILL.md",
+    "name": "update-specification",
+    "description": "Update an existing specification file for the solution, optimized for Generative AI consumption based on new requirements or updates to any existing code."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/vscode-ext-commands/SKILL.md",
+    "name": "vscode-ext-commands",
+    "description": "Guidelines for contributing commands in VS Code extensions. Indicates naming convention, visibility, localization and other relevant attributes, following VS Code extension development guidelines, libraries and good practices"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/vscode-ext-localization/SKILL.md",
+    "name": "vscode-ext-localization",
+    "description": "Guidelines for proper localization of VS Code extensions, following VS Code extension development guidelines, libraries and good practices"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/web-design-reviewer/SKILL.md",
+    "name": "web-design-reviewer",
+    "description": "This skill enables visual inspection of websites running locally or remotely to identify and fix design issues. Triggers on requests like \"review website design\", \"check the UI\", \"fix the layout\", \"find design problems\". Detects issues with responsive design, accessibility, visual consistency, and layout breakage, then performs fixes at the source code level."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/webapp-testing/SKILL.md",
+    "name": "webapp-testing",
+    "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/what-context-needed/SKILL.md",
+    "name": "what-context-needed",
+    "description": "Ask Copilot what files it needs to see before answering a question"
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/winapp-cli/SKILL.md",
+    "name": "winapp-cli",
+    "description": "Windows App Development CLI (winapp) for building, packaging, and deploying Windows applications. Use when asked to initialize Windows app projects, create MSIX packages, generate AppxManifest.xml, manage development certificates, add package identity for debugging, sign packages, publish to the Microsoft Store, create external catalogs, or access Windows SDK build tools. Supports .NET (csproj), C++, Electron, Rust, Tauri, and cross-platform frameworks targeting Windows."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/winmd-api-search/SKILL.md",
+    "name": "winmd-api-search",
+    "description": "Find and explore Windows desktop APIs. Use when building features that need platform capabilities — camera, file access, notifications, UI controls, AI/ML, sensors, networking, etc. Discovers the right API for a task and retrieves full type details (methods, properties, events, enumeration values)."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/winui3-migration-guide/SKILL.md",
+    "name": "winui3-migration-guide",
+    "description": "UWP-to-WinUI 3 migration reference. Maps legacy UWP APIs to correct Windows App SDK equivalents with before/after code snippets. Covers namespace changes, threading (CoreDispatcher to DispatcherQueue), windowing (CoreWindow to AppWindow), dialogs, pickers, sharing, printing, background tasks, and the most common Copilot code generation mistakes."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/workiq-copilot/SKILL.md",
+    "name": "workiq-copilot",
+    "description": "Guides the Copilot CLI on how to use the WorkIQ CLI/MCP server to query Microsoft 365 Copilot data (emails, meetings, docs, Teams, people) for live context, summaries, and recommendations."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/awesome-copilot/skills/write-coding-standards-from-file/SKILL.md",
+    "name": "write-coding-standards-from-file",
+    "description": "Write a coding standards document for a project using the coding styles from the file(s) and/or folder(s) passed as arguments in the prompt."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/consolidated_sources/prompt-registry/templates/scaffolds/github/skills/example-skill/SKILL.md",
+    "name": "example-skill",
+    "description": "Performs thorough code reviews following best practices. Use when reviewing pull requests, checking code quality, or ensuring coding standards compliance."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/examples/pdf-server/plugin/skills/pdf-reading/SKILL.md",
+    "name": "pdf-reading",
+    "description": "Read and navigate PDF documents using the local PDF server. Reference this when the user wants to open, read, search, or interact with any PDF file or academic paper."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/plugins/mcp-apps/skills/add-app-to-server/SKILL.md",
+    "name": "add-app-to-server",
+    "description": "This skill should be used when the user asks to \"add an app to my MCP server\", \"add UI to my MCP server\", \"add a view to my MCP tool\", \"enrich MCP tools with UI\", \"add interactive UI to existing server\", \"add MCP Apps to my server\", or needs to add interactive UI capabilities to an existing MCP server that already has tools. Provides guidance for analyzing existing tools and adding MCP Apps UI resources."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/plugins/mcp-apps/skills/convert-web-app/SKILL.md",
+    "name": "convert-web-app",
+    "description": "This skill should be used when the user asks to \"add MCP App support to my web app\", \"turn my web app into a hybrid MCP App\", \"make my web page work as an MCP App too\", \"wrap my existing UI as an MCP App\", \"convert iframe embed to MCP App\", \"turn my SPA into an MCP App\", or needs to add MCP App support to an existing web application while keeping it working standalone. Provides guidance for analyzing existing web apps and creating a hybrid web + MCP App with server-side tool and resource registration."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/plugins/mcp-apps/skills/create-mcp-app/SKILL.md",
+    "name": "create-mcp-app",
+    "description": "This skill should be used when the user asks to \"create an MCP App\", \"add a UI to an MCP tool\", \"build an interactive MCP View\", \"scaffold an MCP App\", or needs guidance on MCP Apps SDK patterns, UI-resource registration, MCP App lifecycle, or host integration. Provides comprehensive guidance for building MCP Apps with interactive UIs."
+  },
+  {
+    "path": "workspaces/mcapp-ai-starter/plugins/mcp-apps/skills/migrate-oai-app/SKILL.md",
+    "name": "migrate-oai-app",
+    "description": "This skill should be used when the user asks to \"migrate from OpenAI Apps SDK\", \"convert OpenAI App to MCP\", \"port from window.openai\", \"migrate from skybridge\", \"convert openai/outputTemplate\", or needs guidance on converting OpenAI Apps SDK applications to MCP Apps SDK. Provides step-by-step migration guidance with API mapping tables."
+  }
+]
