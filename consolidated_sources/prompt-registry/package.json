@@ -854,7 +854,7 @@
     "@types/archiver": "^7.0.0",
     "@types/glob": "^8.1.0",
     "archiver": "^7.0.1",
-    "axios": "^1.6.0",
+    "axios": "^1.14.0",
     "glob": "^13.0.0",
     "js-yaml": "^4.1.1",
     "jsonc-parser": "^3.2.0",
