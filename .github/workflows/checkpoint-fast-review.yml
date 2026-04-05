@@ -1,10 +1,10 @@
 name: Checkpoint Fast Review
 
 on:
-  # Only run on PRs targeting main — NOT on every feature-branch push.
-  pull_request:
-    branches: [main]
-    types: [opened, reopened, synchronize, ready_for_review]
+  # DISABLED - run only via ChatOps or manual trigger
+  # pull_request:
+  #   branches: [main]
+  #   types: [opened, reopened, synchronize, ready_for_review]
   # Allow ChatOps slash-command trigger from PR comments.
   issue_comment:
     types: [created]

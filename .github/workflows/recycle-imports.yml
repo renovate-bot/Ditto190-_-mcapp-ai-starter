@@ -7,13 +7,14 @@ on:
         description: "Comma-separated paths to scan"
         required: false
         default: "migration,tools/external/system-manager"
-  pull_request:
-    branches: [main]
-    paths:
-      - migration/**
-      - tools/external/system-manager/**
-      - scripts/recycle-imports.sh
-      - .github/workflows/recycle-imports.yml
+  # DISABLED - run only via manual trigger
+  # pull_request:
+  #   branches: [main]
+  #   paths:
+  #     - migration/**
+  #     - tools/external/system-manager/**
+  #     - scripts/recycle-imports.sh
+  #     - .github/workflows/recycle-imports.yml
 
 permissions:
   contents: read
