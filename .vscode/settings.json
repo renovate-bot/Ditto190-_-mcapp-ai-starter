@@ -136,7 +136,11 @@
   "github.copilot.chat.cli.sessionController.enabled": true,
   "chat.tools.terminal.autoApprove": {
     "approve": true,
-    "matchCommandLine": true
+    "matchCommandLine": true,
+    "/^set -e\ncd /workspaces/mcapp-ai-starter\nprintf \"Repo status before maintenance:\\\\n\"\ngit status --short\nprintf \"\\\\nCurrent branch: \"\ngit branch --show-current\nprintf \"\\\\nNode/npm: \"\nnode -v && npm -v\n$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
   },
   "github.copilot.chat.agentDebugLog.fileLogging.enabled": true,
   "chat.mcp.serverSampling": {

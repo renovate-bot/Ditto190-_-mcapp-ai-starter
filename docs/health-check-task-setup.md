@@ -4,10 +4,13 @@
 # Workspace ID: 16d99449-f219-41fd-b021-1cb09e2eedeb
 
 # ContextStream Rules
+
 **MANDATORY STARTUP:** On the first message of EVERY session call `mcp__contextstream__init(...)` then `mcp__contextstream__context(user_message="...")`. On subsequent messages, call `mcp__contextstream__context(user_message="...")` first by default. A narrow bypass is allowed only for immediate read-only ContextStream calls when prior context is still fresh and no state-changing tool has run.
 
 ## Quick Rules
+
 <contextstream_rules>
+
 | Message | Required |
 |---------|----------|
 | **First message in session** | `mcp__contextstream__init(...)` → `mcp__contextstream__context(user_message="...")` BEFORE any other tool |
@@ -16,9 +19,11 @@
 </contextstream_rules>
 
 ## Detailed Rules
+
 **Read-only examples** (default: call `mcp__contextstream__context(...)` first; narrow bypass only for immediate read-only ContextStream calls when context is fresh and no state-changing tool has run): `mcp__contextstream__workspace(action="list"|"get"|"create")`, `mcp__contextstream__memory(action="list_docs"|"list_events"|"list_todos"|"list_tasks"|"list_transcripts"|"list_nodes"|"decisions"|"get_doc"|"get_event"|"get_task"|"get_todo"|"get_transcript")`, `mcp__contextstream__session(action="get_lessons"|"get_plan"|"list_plans"|"recall")`, `mcp__contextstream__help(action="version"|"tools"|"auth")`, `mcp__contextstream__project(action="list"|"get"|"index_status")`, `mcp__contextstream__reminder(action="list"|"active")`, any read-only data query
 
 **Common queries — use these exact tool calls:**
+
 - "list lessons" / "show lessons" → `mcp__contextstream__session(action="get_lessons")`
 - "list decisions" / "show decisions" / "how many decisions" → `mcp__contextstream__memory(action="decisions")`
 - "list docs" → `mcp__contextstream__memory(action="list_docs")`
@@ -59,12 +64,14 @@ If the `instruct` tool is available, run `mcp__contextstream__instruct(action="g
 **Notices:** [LESSONS_WARNING] → apply lessons | [PREFERENCE] → follow user preferences | [RULES_NOTICE] → run `mcp__contextstream__generate_rules()` | [VERSION_NOTICE/CRITICAL] → tell user about update
 
 ---
+
 ## Claude Code-Specific Rules
 
 **CRITICAL: ContextStream mcp__contextstream__search() REPLACES all built-in search tools.**
 **The user is paying for ContextStream's premium search — default tools must not bypass it.**
 
 ### Search: Use ContextStream, Not Built-in Tools
+
 - **Do NOT** use `Grep` for code search — use `mcp__contextstream__search(mode="keyword", query="...")` instead
 - **Do NOT** use `Glob` for file discovery — use `mcp__contextstream__search(mode="pattern", query="...")` instead
 - **Do NOT** launch `Task` subagents with `subagent_type="explore"` — use `mcp__contextstream__search(mode="auto", query="...")` instead
@@ -74,23 +81,25 @@ If the `instruct` tool is available, run `mcp__contextstream__instruct(action="g
 - **NEVER** dismiss ContextStream results as "non-code" — use the returned file paths to `read_file` the relevant code
 - Only fall back to `Grep`/`Glob` after stale/not-indexed grace window (~20s) and retry still returns **exactly 0 results**
 
-### Search Mode Selection (use these instead of built-in tools):
+### Search Mode Selection (use these instead of built-in tools)
+
 - Instead of `Grep("pattern")`: use `mcp__contextstream__search(mode="keyword", query="pattern")`
 - Instead of `Glob("**/*.tsx")`: use `mcp__contextstream__search(mode="pattern", query="*.tsx")`
 - Instead of `Grep` with regex: use `mcp__contextstream__search(mode="pattern", query="regex")`
 - Instead of `Task(subagent_type="explore")`: use `mcp__contextstream__search(mode="auto", query="<what you're looking for>")`
 
 ### Memory: Use ContextStream, Not Local Files
+
 - **Do NOT** write decisions/notes/specs to local files
 - Use `mcp__contextstream__session(action="capture", event_type="decision|insight|operation|uncategorized", title="...", content="...")`
 - Use `mcp__contextstream__memory(action="create_doc", title="...", content="...", doc_type="spec|general")`
 
 ### Planning: Use ContextStream, Not Built-in Tools
+
 - **Do NOT** create markdown plan files or use `TodoWrite` — they vanish across sessions
 - **ALWAYS** save plans: `mcp__contextstream__session(action="capture_plan", title="...", steps=[...])`
 - **ALWAYS** create tasks: `mcp__contextstream__memory(action="create_task", title="...", plan_id="...")`
 </contextstream>
-
 
 # Health Check VSCode Task Setup
 
@@ -197,6 +206,6 @@ Check CONTEXTSTREAM_API_URL and CONTEXTSTREAM_API_KEY are set.
 Remove stale version pins like @contextstream/mcp-server@0.3.xx.
 Restart VS Code/Copilot after config changes.
 Marketplace Note
-The MCP marketplace entry now targets the hosted remote MCP at https://mcp.contextstream.io/mcp?default_context_mode=fast so VS Code can use the native OAuth flow instead of writing a local npm-based stdio config.
+The MCP marketplace entry now targets the hosted remote MCP at <https://mcp.contextstream.io/mcp?default_context_mode=fast> so VS Code can use the native OAuth flow instead of writing a local npm-based stdio config.
 
 Use the Rust or Node local runtime configs above only when you explicitly want local execution, custom/self-hosted endpoints, or editor environments that do not support the hosted remote flow.
