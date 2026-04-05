@@ -91,8 +91,7 @@ _mcapp_prompt() {
 mcapp_dev_setup() {
   _mcapp_load_dotenv
   _mcapp_add_paths
-  # Ensure UV-based workflow is preferred and disable per-project venvs by default
-  export MCAPP_NO_VENV=1
+  # export MCAPP_NO_VENV=1
   _mcapp_activate_uv
   _mcapp_contextstream_helpers
   _mcapp_prompt
@@ -106,8 +105,12 @@ mcapp_dev_setup() {
   fi
 }
 
-# Auto-run setup when this file is sourced
-mcapp_dev_setup
+# Auto-run setup when this file is sourced, but only for interactive shells.
+# Suppress startup output to avoid noisy messages in new terminals; users can
+# call `mcapp_dev_setup` manually to see full status.
+if [[ $- == *i* ]]; then
+  mcapp_dev_setup >/dev/null 2>&1 || true
+fi
 
 export MCAPP_DEV_PROFILE_LOADED=1
 

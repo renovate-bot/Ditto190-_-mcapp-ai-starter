@@ -83,6 +83,8 @@ This allows multiple collections to safely share common MCP servers without conf
 ## Validation
 
 Run `Ctrl+Shift+P` → "Prompt Registry: Validate Collections"
+.
+Alternatively, use Github Workflow to compile and validate collections with gh ah cli // [#17](https://github.com/Ditto190/mcapp-ai-starter/issues/17)TODO reference the command
 
 ## See Also
 

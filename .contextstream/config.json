@@ -1,15 +1,13 @@
 {
-  "api_url": "https://api.contextstream.io",
-  "associated_at": "2026-04-04T11:32:11.326641713+00:00",
+  "associated_at": "2026-04-04T22:46:21.433230132+00:00",
   "configured_editors": [
     "copilot"
   ],
   "context_pack": true,
   "indexing_enabled": true,
-  "project_id": "ea73d75c-527d-4009-bc19-cf785160e9f2",
+  "project_id": "7c5cc839-6f0d-4186-a5ba-16bf61313405",
   "project_name": "mcapp-ai-starter",
   "updated_at": "2026-04-03T23:45:49.415Z",
   "version": "0.2.16",
-  "workspace_id": "e76de4e7-5d4b-40c0-9023-10172088310c",
-  "workspace_name": "mcpapp-monorepo"
+  "workspace_id": "16d99449-f219-41fd-b021-1cb09e2eedeb",
 }

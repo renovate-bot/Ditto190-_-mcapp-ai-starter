@@ -16,7 +16,6 @@ jobs:
     permissions:
       contents: read
     timeout-minutes: 30
-    snapshot: true
 
     steps:
       - name: Checkout repository
@@ -49,4 +48,14 @@ jobs:
         run: |
           echo "Node: $(node --version || echo 'node not installed')"
           echo "npm: $(npm --version || echo 'npm not installed')"
-          echo "python: $(python --version || echo 'python not installed')"
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Install gh-aw extension
+        uses: github/gh-aw-actions/setup-cli@73ae9ce231580f337133352d321d42b6bf54b6a9 # v0.66.1
+        with:
+          version: v0.66.1
+      - name: Verify Python installation
+        run: |
+          echo "Python: $(python --version || echo 'python not installed')"
+          echo "Pip: $(pip --version || echo 'pip not installed')"

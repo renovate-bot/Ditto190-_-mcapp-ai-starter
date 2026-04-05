@@ -4,7 +4,7 @@
     "MEMORY_GUARD": "enabled",
     "GOROOT": "/usr/local/go",
     "GOPATH": "/root/go",
-    "PATH": "/usr/local/go/bin:/root/go/bin:/usr/local/bin:/root/.local/bin:${env:PATH}"
+    "PATH": "/usr/local/go/bin:/root/go/bin:${env:PATH}"
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -149,20 +149,5 @@
   "[ql]": {
     "editor.defaultFormatter": "GitHub.vscode-codeql"
   },
-  "python.analysis.typeCheckingMode": "basic",
-  "github.copilot.chat.additionalReadAccessPaths": [
-    "/workspaces/mcapp-ai-starter",
-    "/usr/local/bin",
-    "/root/.local/bin",
-    "/usr/bin"
-  ],
-  "chat.subagents.allowInvocationsFromSubagents": true,
-  "scm.repositories.explorer": true,
-  "scm.repositories.selectionMode": "single",
-  "editor.aiStats.enabled": true,
-  "workbench.commandPalette.experimental.suggestCommands": true,
-  "workbench.experimental.cloudChanges.autoStore": "onShutdown",
-  "chat.mcp.discovery.enabled": {
-    "claude-desktop": true
-  }
+  "python.analysis.typeCheckingMode": "basic"
 }

@@ -1,3 +1,0 @@
-#!/bin/bash
-# ContextStream user-prompt-submit Hook Wrapper for Cline/Roo/Kilo Code
-exec npx -y @contextstream/mcp-server@latest hook user-prompt-submit

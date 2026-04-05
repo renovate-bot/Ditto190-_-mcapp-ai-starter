@@ -1,0 +1,37 @@
+name: Recycle Imported Repos
+
+on:
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: "Comma-separated paths to scan"
+        required: false
+        default: "migration,tools/external/system-manager"
+  pull_request:
+    paths:
+      - migration/**
+      - tools/external/system-manager/**
+      - scripts/recycle-imports.sh
+      - .github/workflows/recycle-imports.yml
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build recycle inventory
+        run: |
+          bash scripts/recycle-imports.sh --paths "${{ github.event.inputs.paths || 'migration,tools/external/system-manager' }}"
+
+      - name: Upload recycle artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: recycle-inventory
+          path: reports/recycle/

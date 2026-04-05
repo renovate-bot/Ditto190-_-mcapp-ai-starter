@@ -1,0 +1,31 @@
+# .spectral.yaml — OpenAPI / AsyncAPI linting for mcapp-ai-starter
+# Run: spectral lint <file>.yaml
+# Install: npm install -g @stoplight/spectral-cli
+# Or in nix devShell: pkgs.nodePackages."@stoplight/spectral-cli"
+extends:
+  - spectral:oas # OpenAPI 2.x / 3.x ruleset
+  - spectral:asyncapi # AsyncAPI 2.x ruleset (n8n webhook schemas)
+
+rules:
+  # Enforce operation tags for discoverability
+  operation-tags: true
+
+  # Warn on missing contact info (downgraded from error)
+  info-contact:
+    severity: warn
+
+  # Require descriptions on all operations
+  operation-description:
+    severity: warn
+
+  # Enforce unique operation IDs
+  operation-operationId:
+    severity: error
+
+  # Warn on responses without examples
+  oas3-valid-media-example:
+    severity: warn
+
+  # Disallow empty servers array in OAS3
+  oas3-api-servers:
+    severity: warn

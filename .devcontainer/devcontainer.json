@@ -14,6 +14,9 @@
     },
     "ghcr.io/devcontainers/features/node:1": {
       "version": "20"
+    },
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "1.22"
     }
   },
   "forwardPorts": [
@@ -53,12 +56,12 @@
       "visibility": "private"
     }
   },
-  "initializeCommand": "npm install -g @contextstream/mcp-server@latest",
   "onCreateCommand": "bash .devcontainer/pre-install.sh",
   "customizations": {
     "vscode": {
       "extensions": [
         "charliermarsh.ruff",
+        "golang.go",
         "dbaeumer.vscode-eslint",
         "davidanson.vscode-markdownlint",
         "eamodio.gitlens",

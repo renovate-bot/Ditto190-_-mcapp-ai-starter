@@ -17,7 +17,7 @@ ContextStream provides:
 - Server: `contextstream`
 - Type: `http`
 - URL: `https://mcp.contextstream.io/mcp?default_context_mode=fast`
-- Auth: `X-ContextStream-API-Key` header in this workspace config
+- Auth: handled by VS Code for the hosted MCP endpoint; do not hardcode API keys in workspace config files
 
 Important: do not define the same `contextstream` server in multiple active MCP config files for this workspace (for example both a root-level `mcp.json` and `.vscode/mcp.json`). Keep a single active definition to avoid startup conflicts.
 

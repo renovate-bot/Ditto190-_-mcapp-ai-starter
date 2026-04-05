@@ -1,12 +1,5 @@
 {
     "servers": {
-        "contextstream": {
-            "headers": {
-                "X-ContextStream-API-Key": "cbiq_6GoQO0cN9G9FoR9L3qAC5RlZnz1iiW3f-fsQ9BYuGRI"
-            },
-            "type": "http",
-            "url": "https://mcp.contextstream.io/mcp?default_context_mode=fast"
-        },
         "nixos": {
             "command": "bash",
             "args": [

@@ -1,3 +1,0 @@
-#!/bin/bash
-# ContextStream post-write Hook Wrapper for Cline/Roo/Kilo Code
-exec npx -y @contextstream/mcp-server@latest hook post-write
