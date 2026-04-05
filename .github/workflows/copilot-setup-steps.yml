@@ -2,10 +2,16 @@ name: "Copilot Setup Steps"
 
 on:
   workflow_dispatch:
+  # Only run when the workflow file itself changes, and only on PRs/main — not all branches.
   push:
+    branches: [main]
     paths:
       - .github/workflows/copilot-setup-steps.yml
   pull_request:
+    branches: [main]
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    branches: [main]
     paths:
       - .github/workflows/copilot-setup-steps.yml
 

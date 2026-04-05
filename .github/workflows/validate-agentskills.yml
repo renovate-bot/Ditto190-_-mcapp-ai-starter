@@ -1,7 +1,9 @@
 name: Validate AgentSkills
 
 on:
+  # Only run for PRs targeting main; feature→feature PRs are excluded.
   pull_request:
+    branches: [main]
     paths:
       - "awesome-copilot/skills/**"
   push:
@@ -9,6 +11,10 @@ on:
     paths:
       - "awesome-copilot/skills/**"
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:

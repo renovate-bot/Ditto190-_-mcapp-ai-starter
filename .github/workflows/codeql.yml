@@ -12,6 +12,16 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  # For schedule runs (no ref variation), use workflow name only to avoid queue buildup.
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+concurrency:
+  # For schedule runs (no ref variation), use workflow name only to avoid queue buildup.
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})

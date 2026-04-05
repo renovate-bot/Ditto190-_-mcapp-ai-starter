@@ -4,7 +4,9 @@ name: Serena Symbol Analysis + Targeted Testing
 # with GitHub Actions to drive smart, targeted testing on PRs.
 
 on:
+  # Only run for PRs targeting main (not internal feature→feature PRs).
   pull_request:
+    branches: [main]
     types: [opened, synchronize, reopened]
     paths:
       - "**/*.py"
@@ -14,6 +16,10 @@ on:
 permissions:
   contents: read
   pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   analyze-changed-symbols:

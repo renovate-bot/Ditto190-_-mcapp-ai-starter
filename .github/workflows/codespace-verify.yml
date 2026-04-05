@@ -10,6 +10,7 @@ on:
       - "llm.config.json"
       - "scripts/**"
   pull_request:
+    branches: [main]
     paths:
       - ".devcontainer/**"
       - ".env.example"
@@ -17,6 +18,10 @@ on:
       - "llm.config.json"
       - "scripts/**"
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read

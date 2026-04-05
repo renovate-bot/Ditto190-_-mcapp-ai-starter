@@ -8,6 +8,7 @@ on:
         required: false
         default: "migration,tools/external/system-manager"
   pull_request:
+    branches: [main]
     paths:
       - migration/**
       - tools/external/system-manager/**

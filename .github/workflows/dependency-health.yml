@@ -18,6 +18,16 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  # Use run_id for scheduled runs so they are never cancelled; use ref otherwise.
+  group: ${{ github.workflow }}-${{ github.event_name == 'schedule' && github.run_id || github.ref }}
+  cancel-in-progress: true
+
+concurrency:
+  # Use run_id for scheduled runs so they are never cancelled; use ref otherwise.
+  group: ${{ github.workflow }}-${{ github.event_name == 'schedule' && github.run_id || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   npm-audit:
     name: npm security audit
