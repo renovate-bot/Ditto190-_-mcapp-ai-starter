@@ -33,7 +33,7 @@
 | **No environment / toolchain contract** | Agents hardcode paths like `/workspaces/mcapp-ai-starter` and assume `uv`, `npm`, `docker`, `gh` are available. No file documents these prerequisites |
 | **No error escalation policy** | What happens when an agent fails and the user is not present? No fallback or notification path is defined |
 | **No agent versioning or changelog** | Agents evolve but there is no version field or change history. Breaking changes to output formats will silently break orchestrators |
-| **`migration-analyst` has no trigger definition** | Unlike other agents, it has no `description` frontmatter trigger phrases and no integration into `dev-quality-lead` |
+| **`migration-analyst` lacks explicit routing hints / trigger phrases** | It appears to have `description` frontmatter already, but unlike other agents it is missing clearer `USE WHEN`-style routing metadata (for example `argument-hint` or equivalent invocation hints) and is not integrated into `dev-quality-lead` |
 | **`multi-agent-orchestrator` references non-existent script** | References `.github/scripts/orchestrator.js` which does not exist in the repo |
 | **No folder-scoped AGENTS.md for `src/`, `prompt-registry/`, `awesome-copilot/`** | These are active code directories with no agent guidance |
 | **`agentskills/` directory is undocumented** | Contains skills (`add-feature`, `expert-advice`, `start-dev-server`, etc.) with no index or usage instructions in any AGENTS file |
