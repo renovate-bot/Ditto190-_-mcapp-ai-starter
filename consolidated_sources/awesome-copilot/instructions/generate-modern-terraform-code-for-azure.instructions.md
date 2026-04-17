@@ -1,12 +1,14 @@
 ---
-description: 'Guidelines for generating modern Terraform code for Azure'
-applyTo: '**/*.tf'
+description: "Guidelines for generating modern Terraform code for Azure"
+applyTo: "**/*.tf"
 ---
 
 ## 1. Use Latest Terraform and Providers
+
 Always target the latest stable Terraform version and Azure providers. In code, specify the required Terraform and provider versions to enforce this. Keep provider versions updated to get new features and fixes.
 
 ## 2. Organize Code Cleanly
+
 Structure Terraform configurations with logical file separation:
 
 - Use `main.tf` for resources

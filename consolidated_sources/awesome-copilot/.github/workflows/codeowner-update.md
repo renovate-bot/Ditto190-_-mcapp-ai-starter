@@ -1,5 +1,5 @@
 ---
-description: 'Updates the CODEOWNERS file when a maintainer comments #codeowner on a pull request'
+description: "Updates the CODEOWNERS file when a maintainer comments #codeowner on a pull request"
 on:
   issue_comment:
     types: [created]

@@ -320,19 +320,19 @@ Nämä eivät ole patterneita vaan muotoiluvalintoja joita AI suosii:
 
 ### Tehdyt muutokset
 
-| # | Pattern | Muutos |
-|---|---------|--------|
-| 1 | Passiivin ylikäyttö | "on ollut erittäin nopeaa" → "on muuttunut nopeasti" |
-| 2 | Nominaalirakenteet | "suorittaa nopeamman reagoinnin" → "reagoivat nopeammin" |
-| 3 | Pronominien ylikäyttö | "Me näemme, että" → poistettu |
-| 5 | Käännösrakenteet | "tapaa, jolla" → "suunnittelusta ylläpitoon" |
-| 7 | Adjektiivikasaumat | "uudet teknologiat, innovatiiviset työkalut ja tehokkaat menetelmät" → "Uudet työkalut ja menetelmät" |
-| 8 | Ylipitkät virkkeet | Ensimmäinen kappale pilkottu |
-| 9 | Joka/jotka-kasautuminen | "jotka ovat saaneet laajaa hyväksyntää" → "ovat yleistyneet" |
-| 10 | Virkakielisyys | "Kyseisten menetelmien avulla" → poistettu |
-| 13 | Merkittävyyden liioittelu | "merkittävä ja keskeinen" → poistettu |
-| 17 | Täytesanat | "On syytä huomata, että" → poistettu |
-| 18 | Geneerinen lopetus | "Tulevaisuus näyttää valoisalta" → rehellinen epävarmuus |
-| 19 | Epämääräiset viittaukset | "Tutkimukset osoittavat" → nimetty lähde |
-| 20 | "Haasteista huolimatta" | Poistettu kaava, haasteet jätetty auki |
-| 21 | Kolmen sääntö | Kolmen ryhmät karsittu |
+| #   | Pattern                   | Muutos                                                                                                |
+| --- | ------------------------- | ----------------------------------------------------------------------------------------------------- |
+| 1   | Passiivin ylikäyttö       | "on ollut erittäin nopeaa" → "on muuttunut nopeasti"                                                  |
+| 2   | Nominaalirakenteet        | "suorittaa nopeamman reagoinnin" → "reagoivat nopeammin"                                              |
+| 3   | Pronominien ylikäyttö     | "Me näemme, että" → poistettu                                                                         |
+| 5   | Käännösrakenteet          | "tapaa, jolla" → "suunnittelusta ylläpitoon"                                                          |
+| 7   | Adjektiivikasaumat        | "uudet teknologiat, innovatiiviset työkalut ja tehokkaat menetelmät" → "Uudet työkalut ja menetelmät" |
+| 8   | Ylipitkät virkkeet        | Ensimmäinen kappale pilkottu                                                                          |
+| 9   | Joka/jotka-kasautuminen   | "jotka ovat saaneet laajaa hyväksyntää" → "ovat yleistyneet"                                          |
+| 10  | Virkakielisyys            | "Kyseisten menetelmien avulla" → poistettu                                                            |
+| 13  | Merkittävyyden liioittelu | "merkittävä ja keskeinen" → poistettu                                                                 |
+| 17  | Täytesanat                | "On syytä huomata, että" → poistettu                                                                  |
+| 18  | Geneerinen lopetus        | "Tulevaisuus näyttää valoisalta" → rehellinen epävarmuus                                              |
+| 19  | Epämääräiset viittaukset  | "Tutkimukset osoittavat" → nimetty lähde                                                              |
+| 20  | "Haasteista huolimatta"   | Poistettu kaava, haasteet jätetty auki                                                                |
+| 21  | Kolmen sääntö             | Kolmen ryhmät karsittu                                                                                |

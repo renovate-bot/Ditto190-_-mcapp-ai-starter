@@ -187,40 +187,40 @@ pdftk input.pdf unpack_files output /path/to/output/
 
 ## Output Options
 
-| Option | Description |
-|--------|-------------|
-| `output <filename>` | Specify output file. Use `-` for stdout or `PROMPT` for interactive. |
-| `encrypt_40bit` | Apply 40-bit RC4 encryption |
-| `encrypt_128bit` | Apply 128-bit RC4 encryption (default when password set) |
-| `owner_pw <password>` | Set the owner password |
-| `user_pw <password>` | Set the user password |
-| `allow <permissions>` | Grant specific permissions (see below) |
-| `compress` | Compress page streams |
-| `uncompress` | Decompress page streams (useful for debugging) |
-| `flatten` | Flatten form fields into page content |
-| `need_appearances` | Signal viewer to regenerate field appearances |
-| `keep_first_id` | Preserve document ID from first input |
-| `keep_final_id` | Preserve document ID from last input |
-| `drop_xfa` | Remove XFA form data |
-| `verbose` | Enable detailed operation output |
-| `dont_ask` | Suppress interactive prompts |
-| `do_ask` | Enable interactive prompts |
+| Option                | Description                                                          |
+| --------------------- | -------------------------------------------------------------------- |
+| `output <filename>`   | Specify output file. Use `-` for stdout or `PROMPT` for interactive. |
+| `encrypt_40bit`       | Apply 40-bit RC4 encryption                                          |
+| `encrypt_128bit`      | Apply 128-bit RC4 encryption (default when password set)             |
+| `owner_pw <password>` | Set the owner password                                               |
+| `user_pw <password>`  | Set the user password                                                |
+| `allow <permissions>` | Grant specific permissions (see below)                               |
+| `compress`            | Compress page streams                                                |
+| `uncompress`          | Decompress page streams (useful for debugging)                       |
+| `flatten`             | Flatten form fields into page content                                |
+| `need_appearances`    | Signal viewer to regenerate field appearances                        |
+| `keep_first_id`       | Preserve document ID from first input                                |
+| `keep_final_id`       | Preserve document ID from last input                                 |
+| `drop_xfa`            | Remove XFA form data                                                 |
+| `verbose`             | Enable detailed operation output                                     |
+| `dont_ask`            | Suppress interactive prompts                                         |
+| `do_ask`              | Enable interactive prompts                                           |
 
 ## Permissions
 
 Use with the `allow` keyword when encrypting. Available permissions:
 
-| Permission | Description |
-|------------|-------------|
-| `Printing` | Allow high-quality printing |
-| `DegradedPrinting` | Allow low-quality printing |
-| `ModifyContents` | Allow content modification |
-| `Assembly` | Allow document assembly |
-| `CopyContents` | Allow content copying |
-| `ScreenReaders` | Allow screen reader access |
+| Permission          | Description                   |
+| ------------------- | ----------------------------- |
+| `Printing`          | Allow high-quality printing   |
+| `DegradedPrinting`  | Allow low-quality printing    |
+| `ModifyContents`    | Allow content modification    |
+| `Assembly`          | Allow document assembly       |
+| `CopyContents`      | Allow content copying         |
+| `ScreenReaders`     | Allow screen reader access    |
 | `ModifyAnnotations` | Allow annotation modification |
-| `FillIn` | Allow form fill-in |
-| `AllFeatures` | Grant all permissions |
+| `FillIn`            | Allow form fill-in            |
+| `AllFeatures`       | Grant all permissions         |
 
 ## Key Notes
 

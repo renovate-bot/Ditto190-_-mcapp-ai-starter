@@ -15,21 +15,21 @@ prompts:
     file: prompts/security-review.prompt.md
     type: prompt
     tags: [security, review, vulnerabilities]
-  
+
   - id: fix-vulnerability
     name: Fix Security Vulnerability
     description: Remediate common security vulnerabilities (OWASP Top 10)
     file: prompts/fix-vulnerability.prompt.md
     type: prompt
     tags: [security, fix, owasp]
-  
+
   - id: security-standards
     name: Secure Coding Standards
     description: Apply secure coding practices automatically
     file: prompts/security-standards.instructions.md
     type: instructions
     tags: [security, standards, owasp]
-  
+
   - id: security-expert
     name: Security Expert Mode
     description: Expert security consultant for threat modeling and remediation

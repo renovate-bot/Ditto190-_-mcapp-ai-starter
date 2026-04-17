@@ -1,28 +1,44 @@
 ---
 name: neo4j-docker-client-generator
 description: AI agent that generates simple, high-quality Python Neo4j client libraries from GitHub issues with proper best practices
-tools: ['read', 'edit', 'search', 'shell', 'neo4j-local/neo4j-local-get_neo4j_schema', 'neo4j-local/neo4j-local-read_neo4j_cypher', 'neo4j-local/neo4j-local-write_neo4j_cypher']
+tools:
+  [
+    "read",
+    "edit",
+    "search",
+    "shell",
+    "neo4j-local/neo4j-local-get_neo4j_schema",
+    "neo4j-local/neo4j-local-read_neo4j_cypher",
+    "neo4j-local/neo4j-local-write_neo4j_cypher",
+  ]
 mcp-servers:
   neo4j-local:
-    type: 'local'
-    command: 'docker'
-    args: [
-      'run',
-      '-i',
-      '--rm',
-      '-e', 'NEO4J_URI',
-      '-e', 'NEO4J_USERNAME',
-      '-e', 'NEO4J_PASSWORD',
-      '-e', 'NEO4J_DATABASE',
-      '-e', 'NEO4J_NAMESPACE=neo4j-local',
-      '-e', 'NEO4J_TRANSPORT=stdio',
-      'mcp/neo4j-cypher:latest'
-    ]
+    type: "local"
+    command: "docker"
+    args:
+      [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "NEO4J_URI",
+        "-e",
+        "NEO4J_USERNAME",
+        "-e",
+        "NEO4J_PASSWORD",
+        "-e",
+        "NEO4J_DATABASE",
+        "-e",
+        "NEO4J_NAMESPACE=neo4j-local",
+        "-e",
+        "NEO4J_TRANSPORT=stdio",
+        "mcp/neo4j-cypher:latest",
+      ]
     env:
-      NEO4J_URI: '${COPILOT_MCP_NEO4J_URI}'
-      NEO4J_USERNAME: '${COPILOT_MCP_NEO4J_USERNAME}'
-      NEO4J_PASSWORD: '${COPILOT_MCP_NEO4J_PASSWORD}'
-      NEO4J_DATABASE: '${COPILOT_MCP_NEO4J_DATABASE}'
+      NEO4J_URI: "${COPILOT_MCP_NEO4J_URI}"
+      NEO4J_USERNAME: "${COPILOT_MCP_NEO4J_USERNAME}"
+      NEO4J_PASSWORD: "${COPILOT_MCP_NEO4J_PASSWORD}"
+      NEO4J_DATABASE: "${COPILOT_MCP_NEO4J_DATABASE}"
     tools: ["*"]
 ---
 
@@ -95,6 +111,7 @@ README.md                # Clear usage examples
 #### File-by-File Guidelines
 
 **models.py**:
+
 - Use Pydantic `BaseModel` for all entity classes
 - Include type hints for all fields
 - Use `Optional` for nullable properties
@@ -102,6 +119,7 @@ README.md                # Clear usage examples
 - Keep models simple - one class per Neo4j node label
 
 **repository.py**:
+
 - Implement repository pattern (one class per entity type)
 - Provide basic CRUD methods: `create`, `find_by_*`, `find_all`, `update`, `delete`
 - **Always parameterize Cypher queries** using named parameters
@@ -110,34 +128,40 @@ README.md                # Clear usage examples
 - Handle `None` returns for not-found cases
 
 **connection.py**:
+
 - Create a connection manager class with `__init__`, `close`, and context manager support
 - Accept URI, username, password as constructor parameters
 - Use Neo4j Python driver (`neo4j` package)
 - Provide session management helpers
 
 **exceptions.py**:
+
 - Define custom exceptions: `Neo4jClientError`, `ConnectionError`, `QueryError`, `NotFoundError`
 - Keep exception hierarchy simple
 
 **tests/conftest.py**:
+
 - Use `testcontainers-neo4j` for test fixtures
 - Provide session-scoped Neo4j container fixture
 - Provide function-scoped client fixture
 - Include cleanup logic
 
 **tests/test_repository.py**:
+
 - Test basic CRUD operations
 - Test edge cases (not found, duplicates)
 - Keep tests simple and readable
 - Use descriptive test names
 
 **pyproject.toml**:
+
 - Use modern PEP 621 format
 - Include dependencies: `neo4j`, `pydantic`
 - Include dev dependencies: `pytest`, `testcontainers`
 - Specify Python version requirement (3.9+)
 
 **README.md**:
+
 - Quick start installation instructions
 - Simple usage examples with code snippets
 - What's included (features list)
@@ -182,6 +206,7 @@ Before creating pull request, verify:
 - Keep classes small and focused
 
 **What to INCLUDE:**
+
 - ✅ Pydantic models for type safety
 - ✅ Repository pattern for query organization
 - ✅ Type hints everywhere
@@ -192,6 +217,7 @@ Before creating pull request, verify:
 - ✅ Clear README with examples
 
 **What to AVOID:**
+
 - ❌ Complex transaction management
 - ❌ Async/await (unless explicitly requested)
 - ❌ ORM-like abstractions
@@ -215,6 +241,7 @@ Before creating pull request, verify:
 ## Key Reminders
 
 **This is a STARTING POINT, not a final product.** The goal is to:
+
 - Provide clean, working code that demonstrates best practices
 - Make it easy for developers to understand and extend
 - Focus on simplicity and clarity over completeness
@@ -225,6 +252,7 @@ Before creating pull request, verify:
 ## Environment Configuration
 
 Connection to Neo4j requires these environment variables:
+
 - `NEO4J_URI` - Database URI (e.g., `bolt://localhost:7687`)
 - `NEO4J_USERNAME` - Auth username (typically `neo4j`)
 - `NEO4J_PASSWORD` - Auth password

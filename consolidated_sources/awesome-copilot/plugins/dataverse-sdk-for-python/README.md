@@ -13,12 +13,12 @@ copilot plugin install dataverse-sdk-for-python@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
-| `/dataverse-sdk-for-python:dataverse-python-quickstart` | Generate Python SDK setup + CRUD + bulk + paging snippets using official patterns. |
+| Command                                                        | Description                                                                                                      |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `/dataverse-sdk-for-python:dataverse-python-quickstart`        | Generate Python SDK setup + CRUD + bulk + paging snippets using official patterns.                               |
 | `/dataverse-sdk-for-python:dataverse-python-advanced-patterns` | Generate production code for Dataverse SDK using advanced patterns, error handling, and optimization techniques. |
-| `/dataverse-sdk-for-python:dataverse-python-production-code` | Generate production-ready Python code using Dataverse SDK with error handling, optimization, and best practices |
-| `/dataverse-sdk-for-python:dataverse-python-usecase-builder` | Generate complete solutions for specific Dataverse SDK use cases with architecture recommendations |
+| `/dataverse-sdk-for-python:dataverse-python-production-code`   | Generate production-ready Python code using Dataverse SDK with error handling, optimization, and best practices  |
+| `/dataverse-sdk-for-python:dataverse-python-usecase-builder`   | Generate complete solutions for specific Dataverse SDK use cases with architecture recommendations               |
 
 ## Source
 

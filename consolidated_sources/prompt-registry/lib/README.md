@@ -5,6 +5,7 @@ Shared scripts for building, validating, and publishing Copilot prompt collectio
 ## Installation
 
 ### Option 1: Use with npx (Recommended)
+
 No installation required - run from anywhere:
 
 ```bash
@@ -12,11 +13,13 @@ npx --package @prompt-registry/collection-scripts validate-collections
 ```
 
 ### Option 2: Install locally
+
 ```bash
 npm install @prompt-registry/collection-scripts
 ```
 
 ### Option 3: Install globally
+
 ```bash
 npm install -g @prompt-registry/collection-scripts
 ```
@@ -59,17 +62,17 @@ create-skill my-skill --description "A helpful skill"
 
 ## CLI Commands
 
-| Command | Description |
-|---------|-------------|
-| `validate-collections` | Validate collection YAML files |
-| `validate-skills` | Validate skill folders following Agent Skills spec |
-| `build-collection-bundle` | Build a collection bundle ZIP |
-| `compute-collection-version` | Compute next version from git tags |
-| `detect-affected-collections` | Detect collections affected by file changes |
-| `generate-manifest` | Generate deployment manifest |
-| `publish-collections` | Build and publish affected collections |
-| `list-collections` | List all collections in repo |
-| `create-skill` | Create a new skill directory structure |
+| Command                       | Description                                        |
+| ----------------------------- | -------------------------------------------------- |
+| `validate-collections`        | Validate collection YAML files                     |
+| `validate-skills`             | Validate skill folders following Agent Skills spec |
+| `build-collection-bundle`     | Build a collection bundle ZIP                      |
+| `compute-collection-version`  | Compute next version from git tags                 |
+| `detect-affected-collections` | Detect collections affected by file changes        |
+| `generate-manifest`           | Generate deployment manifest                       |
+| `publish-collections`         | Build and publish affected collections             |
+| `list-collections`            | List all collections in repo                       |
+| `create-skill`                | Create a new skill directory structure             |
 
 ## Programmatic API
 
@@ -83,21 +86,21 @@ import {
   validateAllCollections,
   generateMarkdown,
   VALIDATION_RULES,
-  
+
   // Collections
   listCollectionFiles,
   readCollection,
   resolveCollectionItemPaths,
-  
+
   // Bundle ID
   generateBundleId,
-  
+
   // CLI utilities
   parseSingleArg,
   parseMultiArg,
   hasFlag,
   getPositionalArg,
-} from '@prompt-registry/collection-scripts';
+} from "@prompt-registry/collection-scripts";
 ```
 
 ## Usage in package.json

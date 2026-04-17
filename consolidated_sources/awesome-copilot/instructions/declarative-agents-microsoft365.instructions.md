@@ -18,7 +18,7 @@ Microsoft 365 Copilot declarative agents are powerful custom AI assistants that 
   "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.5/schema.json",
   "version": "v1.5",
   "name": "string (max 100 characters)",
-  "description": "string (max 1000 characters)", 
+  "description": "string (max 1000 characters)",
   "instructions": "string (max 8000 characters)",
   "capabilities": ["array (max 5 items)"],
   "conversation_starters": ["array (max 4 items, optional)"]
@@ -26,8 +26,9 @@ Microsoft 365 Copilot declarative agents are powerful custom AI assistants that 
 ```
 
 ### Character Limits & Constraints
+
 - **Name**: Maximum 100 characters, required
-- **Description**: Maximum 1000 characters, required  
+- **Description**: Maximum 1000 characters, required
 - **Instructions**: Maximum 8000 characters, required
 - **Capabilities**: Maximum 5 items, minimum 1 item
 - **Conversation Starters**: Maximum 4 items, optional
@@ -35,16 +36,19 @@ Microsoft 365 Copilot declarative agents are powerful custom AI assistants that 
 ## Available Capabilities
 
 ### Core Capabilities
+
 1. **WebSearch**: Internet search and real-time information access
 2. **OneDriveAndSharePoint**: File access, document search, content management
 3. **GraphConnectors**: Enterprise data integration from third-party systems
 4. **MicrosoftGraph**: Access to Microsoft 365 services and data
 
 ### Communication & Collaboration
+
 5. **TeamsAndOutlook**: Teams chat, meetings, email integration
 6. **CopilotForMicrosoft365**: Advanced Copilot features and workflows
 
 ### Business Applications
+
 7. **PowerPlatform**: Power Apps, Power Automate, Power BI integration
 8. **BusinessDataProcessing**: Advanced data analysis and processing
 9. **WordAndExcel**: Document creation, editing, analysis
@@ -54,6 +58,7 @@ Microsoft 365 Copilot declarative agents are powerful custom AI assistants that 
 ## Microsoft 365 Agents Toolkit Integration
 
 ### VS Code Extension Setup
+
 ```bash
 # Install Microsoft 365 Agents Toolkit
 # Extension ID: teamsdevapp.ms-teams-vscode-extension
@@ -62,6 +67,7 @@ Microsoft 365 Copilot declarative agents are powerful custom AI assistants that 
 ### TypeSpec Development Workflow
 
 #### 1. Modern Agent Definition
+
 ```typespec
 import "@typespec/json-schema";
 
@@ -75,30 +81,30 @@ model Agent {
   /** Schema version */
   @minLength(1)
   $schema: "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.5/schema.json";
-  
+
   /** Agent version */
   version: "v1.5";
-  
+
   /** Agent name (max 100 characters) */
   @maxLength(100)
   @minLength(1)
   name: string;
-  
+
   /** Agent description (max 1000 characters) */
   @maxLength(1000)
-  @minLength(1)  
+  @minLength(1)
   description: string;
-  
+
   /** Agent instructions (max 8000 characters) */
   @maxLength(8000)
   @minLength(1)
   instructions: string;
-  
+
   /** Agent capabilities (1-5 items) */
   @minItems(1)
   @maxItems(5)
   capabilities: AgentCapability[];
-  
+
   /** Conversation starters (max 4 items) */
   @maxItems(4)
   conversation_starters?: ConversationStarter[];
@@ -107,7 +113,7 @@ model Agent {
 /** Available agent capabilities */
 union AgentCapability {
   "WebSearch",
-  "OneDriveAndSharePoint", 
+  "OneDriveAndSharePoint",
   "GraphConnectors",
   "MicrosoftGraph",
   "TeamsAndOutlook",
@@ -129,6 +135,7 @@ model ConversationStarter {
 ```
 
 #### 2. Compilation to JSON
+
 ```bash
 # Compile TypeSpec to JSON manifest
 tsp compile agent.tsp --emit=@typespec/json-schema
@@ -137,6 +144,7 @@ tsp compile agent.tsp --emit=@typespec/json-schema
 ### Environment Configuration
 
 #### Development Environment
+
 ```json
 {
   "name": "${DEV_AGENT_NAME}",
@@ -147,6 +155,7 @@ tsp compile agent.tsp --emit=@typespec/json-schema
 ```
 
 #### Production Environment
+
 ```json
 {
   "name": "${PROD_AGENT_NAME}",
@@ -159,14 +168,18 @@ tsp compile agent.tsp --emit=@typespec/json-schema
 ## Development Best Practices
 
 ### 1. Schema Validation
+
 ```typescript
 // Validate against v1.5 schema
-const schema = await fetch('https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.5/schema.json');
+const schema = await fetch(
+  "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.5/schema.json",
+);
 const validator = new JSONSchema(schema);
 const isValid = validator.validate(agentManifest);
 ```
 
 ### 2. Character Limit Management
+
 ```typescript
 // Validation helper functions
 function validateName(name: string): boolean {
@@ -183,6 +196,7 @@ function validateInstructions(instructions: string): boolean {
 ```
 
 ### 3. Capability Selection Strategy
+
 - **Start Simple**: Begin with 1-2 core capabilities
 - **Incremental Addition**: Add capabilities based on user feedback
 - **Performance Testing**: Test each capability combination thoroughly
@@ -191,6 +205,7 @@ function validateInstructions(instructions: string): boolean {
 ## Agents Playground Testing
 
 ### Local Testing Setup
+
 ```bash
 # Start Agents Playground
 npm install -g @microsoft/agents-playground
@@ -198,6 +213,7 @@ agents-playground start --manifest=./agent.json
 ```
 
 ### Testing Scenarios
+
 1. **Capability Validation**: Test each declared capability
 2. **Conversation Flow**: Validate conversation starters
 3. **Error Handling**: Test invalid inputs and edge cases
@@ -206,6 +222,7 @@ agents-playground start --manifest=./agent.json
 ## Deployment & Lifecycle Management
 
 ### 1. Development Lifecycle
+
 ```mermaid
 graph LR
     A[TypeSpec Definition] --> B[JSON Compilation]
@@ -216,6 +233,7 @@ graph LR
 ```
 
 ### 2. Version Management
+
 ```json
 {
   "name": "MyAgent v1.2.0",
@@ -230,13 +248,15 @@ graph LR
 ```
 
 ### 3. Environment Promotion
+
 - **Development**: Full debugging, verbose logging
-- **Staging**: Production-like testing, performance monitoring  
+- **Staging**: Production-like testing, performance monitoring
 - **Production**: Optimized performance, minimal logging
 
 ## Advanced Features
 
 ### Behavior Overrides
+
 ```json
 {
   "instructions": "You are a specialized financial analyst agent. Always provide disclaimers for financial advice.",
@@ -249,6 +269,7 @@ graph LR
 ```
 
 ### Localization Support
+
 ```json
 {
   "name": {
@@ -267,12 +288,14 @@ graph LR
 ## Monitoring & Analytics
 
 ### Performance Metrics
+
 - Response time per capability
 - User engagement with conversation starters
 - Error rates and failure patterns
 - Capability utilization statistics
 
 ### Logging Strategy
+
 ```typescript
 // Structured logging for agent interactions
 const log = {
@@ -282,18 +305,20 @@ const log = {
   userId: "user123",
   capability: "WebSearch",
   responseTime: 1250,
-  success: true
+  success: true,
 };
 ```
 
 ## Security & Compliance
 
 ### Data Privacy
+
 - Implement proper data handling for sensitive information
 - Ensure compliance with GDPR, CCPA, and organizational policies
 - Use appropriate access controls for enterprise capabilities
 
-### Security Considerations  
+### Security Considerations
+
 - Validate all inputs and outputs
 - Implement rate limiting and abuse prevention
 - Monitor for suspicious activity patterns
@@ -302,12 +327,14 @@ const log = {
 ## Troubleshooting
 
 ### Common Issues
+
 1. **Schema Validation Errors**: Check character limits and required fields
 2. **Capability Conflicts**: Verify capability combinations are supported
 3. **Performance Issues**: Monitor response times and optimize instructions
 4. **Deployment Failures**: Validate environment configuration and permissions
 
 ### Debug Tools
+
 - TypeSpec compiler diagnostics
 - Agents Playground debugging
 - Microsoft 365 Agents Toolkit logs

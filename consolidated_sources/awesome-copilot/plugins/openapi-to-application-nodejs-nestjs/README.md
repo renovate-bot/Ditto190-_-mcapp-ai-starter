@@ -13,14 +13,14 @@ copilot plugin install openapi-to-application-nodejs-nestjs@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                                             | Description                                                                     |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `/openapi-to-application-nodejs-nestjs:openapi-to-application-code` | Generate a complete, production-ready application from an OpenAPI specification |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent                    | Description                                                                      |
+| ------------------------ | -------------------------------------------------------------------------------- |
 | `openapi-to-application` | Expert assistant for generating working applications from OpenAPI specifications |
 
 ## Source

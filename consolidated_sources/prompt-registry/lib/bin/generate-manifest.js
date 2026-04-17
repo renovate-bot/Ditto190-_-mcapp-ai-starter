@@ -1,62 +1,65 @@
 #!/usr/bin/env node
-const fs = require('fs');
-const yaml = require('js-yaml');
-const path = require('path');
+const fs = require("fs");
+const yaml = require("js-yaml");
+const path = require("path");
 
-const { normalizeRepoRelativePath } = require('../dist');
+const { normalizeRepoRelativePath } = require("../dist");
 
 function parseArgs(argv) {
   const out = {
-    version: '0.0.0-dev',
+    version: "0.0.0-dev",
     collectionFile: undefined,
-    outFile: 'deployment-manifest.yml',
+    outFile: "deployment-manifest.yml",
   };
 
   argv.forEach((arg, idx) => {
-    if (arg === '--collection-file' && argv[idx + 1]) {
+    if (arg === "--collection-file" && argv[idx + 1]) {
       out.collectionFile = argv[idx + 1];
-    } else if (arg === '--out' && argv[idx + 1]) {
+    } else if (arg === "--out" && argv[idx + 1]) {
       out.outFile = argv[idx + 1];
-    } else if (!arg.startsWith('--') && idx === 0) {
+    } else if (!arg.startsWith("--") && idx === 0) {
       out.version = arg;
     }
   });
 
-  if (!out.version) out.version = '0.0.0-dev';
+  if (!out.version) out.version = "0.0.0-dev";
   return out;
 }
 
 const args = parseArgs(process.argv.slice(2));
 
 try {
-  const packageJsonPath = path.join(process.cwd(), 'package.json');
+  const packageJsonPath = path.join(process.cwd(), "package.json");
   const packageJson = fs.existsSync(packageJsonPath)
-    ? JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
+    ? JSON.parse(fs.readFileSync(packageJsonPath, "utf8"))
     : {};
   const repoRoot = process.cwd();
 
   // Read collection file
-  const collectionsDir = path.join(repoRoot, 'collections');
+  const collectionsDir = path.join(repoRoot, "collections");
   let collectionFile = args.collectionFile;
   if (!collectionFile) {
-    collectionFile = fs.readdirSync(collectionsDir).find((f) => f.endsWith('.collection.yml'));
-    if (collectionFile) collectionFile = path.join('collections', collectionFile);
+    collectionFile = fs
+      .readdirSync(collectionsDir)
+      .find((f) => f.endsWith(".collection.yml"));
+    if (collectionFile)
+      collectionFile = path.join("collections", collectionFile);
   }
 
   if (!collectionFile) {
-    console.error('❌ No collection file found in collections/');
+    console.error("❌ No collection file found in collections/");
     process.exit(1);
   }
 
   const collectionAbs = path.isAbsolute(collectionFile)
     ? collectionFile
     : path.join(repoRoot, collectionFile);
-  const collection = yaml.load(fs.readFileSync(collectionAbs, 'utf8'));
+  const collection = yaml.load(fs.readFileSync(collectionAbs, "utf8"));
 
   // Map collection kinds to manifest types (only for those that need transformation)
   const kindToTypeMap = {
-    instruction: 'instructions',
-    'chat-mode': 'chatmode',
+    instruction: "instructions",
+    "chat-mode": "chatmode",
   };
 
   // Process all items into prompts array with type field
@@ -68,15 +71,19 @@ try {
     const itemAbs = path.join(repoRoot, itemPath);
 
     if (!fs.existsSync(itemAbs)) {
-      const normalizedNote = item.path && item.path !== itemPath ? ` (normalized: ${itemPath})` : '';
-      console.error(`❌ Referenced ${kind} file not found: ${item.path || itemPath}${normalizedNote}`);
+      const normalizedNote =
+        item.path && item.path !== itemPath ? ` (normalized: ${itemPath})` : "";
+      console.error(
+        `❌ Referenced ${kind} file not found: ${item.path || itemPath}${normalizedNote}`,
+      );
       process.exit(1);
     }
 
-    const itemContent = fs.readFileSync(itemAbs, 'utf8');
+    const itemContent = fs.readFileSync(itemAbs, "utf8");
     const nameMatch = itemContent.match(/^#\s+(.+)$/m);
     const descMatch =
-      itemContent.match(/^##?\s*Description[:\s]+(.+)$/im) || itemContent.match(/^>\s*(.+)$/m);
+      itemContent.match(/^##?\s*Description[:\s]+(.+)$/im) ||
+      itemContent.match(/^>\s*(.+)$/m);
 
     // Clone tags array to avoid YAML anchors
     const tags = collection.tags ? [...collection.tags] : [];
@@ -89,10 +96,13 @@ try {
 
     // Determine item ID: for skills, use parent folder name; otherwise use filename
     let itemId;
-    if (kind === 'skill') {
+    if (kind === "skill") {
       // For skills like "skills/example-skill/SKILL.md", use "example-skill"
-      const pathParts = itemPath.split('/');
-      itemId = pathParts.length >= 2 ? pathParts[pathParts.length - 2] : path.basename(itemPath, extension);
+      const pathParts = itemPath.split("/");
+      itemId =
+        pathParts.length >= 2
+          ? pathParts[pathParts.length - 2]
+          : path.basename(itemPath, extension);
     } else {
       itemId = path.basename(itemPath, extension);
     }
@@ -100,7 +110,7 @@ try {
     return {
       id: itemId,
       name: nameMatch ? nameMatch[1] : itemId,
-      description: descMatch ? descMatch[1] : '',
+      description: descMatch ? descMatch[1] : "",
       file: itemPath,
       type: type,
       tags: tags,
@@ -112,13 +122,14 @@ try {
   let manifestId = collection.id;
   if (!manifestId) {
     // fallback to package name (without scope prefix)
-    manifestId = (packageJson.name || 'unknown')
-      .replace('@amadeus-airlines-solutions/', '')
-      .replace(/^@[^/]+\//, '');
+    manifestId = (packageJson.name || "unknown")
+      .replace("@amadeus-airlines-solutions/", "")
+      .replace(/^@[^/]+\//, "");
   }
 
   // Extract MCP servers from either 'mcp.items' or 'mcpServers' field (matching AwesomeCopilotAdapter)
-  const mcpServers = collection.mcpServers || (collection.mcp && collection.mcp.items);
+  const mcpServers =
+    collection.mcpServers || (collection.mcp && collection.mcp.items);
 
   // Create deployment manifest
   const manifest = {
@@ -126,11 +137,14 @@ try {
     version: args.version,
     name: collection.name || packageJson.description,
     description: collection.description || packageJson.description,
-    author: collection.author || packageJson.author || 'Prompt Registry',
+    author: collection.author || packageJson.author || "Prompt Registry",
     tags: collection.tags || packageJson.keywords || [],
-    environments: ['vscode', 'windsurf', 'cursor'],
-    license: packageJson.license || 'MIT',
-    repository: packageJson.repository?.url?.replace(/^git\+/, '').replace(/\.git$/, '') || '',
+    environments: ["vscode", "windsurf", "cursor"],
+    license: packageJson.license || "MIT",
+    repository:
+      packageJson.repository?.url
+        ?.replace(/^git\+/, "")
+        .replace(/\.git$/, "") || "",
     prompts: prompts,
     dependencies: [],
     ...(mcpServers && Object.keys(mcpServers).length > 0 ? { mcpServers } : {}),
@@ -140,7 +154,7 @@ try {
   fs.mkdirSync(path.dirname(args.outFile), { recursive: true });
   fs.writeFileSync(args.outFile, yaml.dump(manifest, { lineWidth: -1 }));
 
-  console.log('✓ Deployment manifest generated successfully');
+  console.log("✓ Deployment manifest generated successfully");
   console.log(`  Version: ${args.version}`);
   console.log(`  ID: ${manifest.id}`);
   console.log(`  Total Items: ${prompts.length}`);
@@ -151,7 +165,7 @@ try {
     typesCounts[p.type] = (typesCounts[p.type] || 0) + 1;
   });
   Object.keys(typesCounts).forEach((type) => {
-    const typeLabel = type.charAt(0).toUpperCase() + type.slice(1) + 's';
+    const typeLabel = type.charAt(0).toUpperCase() + type.slice(1) + "s";
     console.log(`    ${typeLabel}: ${typesCounts[type]}`);
   });
 
@@ -160,6 +174,6 @@ try {
     console.log(`  MCP Servers: ${Object.keys(mcpServers).length}`);
   }
 } catch (error) {
-  console.error('❌ Error generating deployment manifest:', error.message);
+  console.error("❌ Error generating deployment manifest:", error.message);
   process.exit(1);
 }

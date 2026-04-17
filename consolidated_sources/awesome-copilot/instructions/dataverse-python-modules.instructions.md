@@ -1,6 +1,7 @@
 ---
-applyTo: '**'
+applyTo: "**"
 ---
+
 # Dataverse SDK for Python — Complete Module Reference
 
 ## Package Hierarchy
@@ -41,6 +42,7 @@ cfg_default = DataverseConfig.from_env()
 ```
 
 **Key attributes:**
+
 - `language_code: int = 1033` — LCID for localized labels and messages.
 - `http_retries: int | None` — (Reserved) Maximum retry attempts for transient errors.
 - `http_backoff: float | None` — (Reserved) Backoff multiplier between retries.
@@ -126,6 +128,7 @@ except SQLParseError as e:
 Low-level OData protocol, metadata, SQL, and file operations (internal delegation).
 
 The `data` package is primarily internal; the high-level `DataverseClient` in the `client` module wraps and exposes:
+
 - CRUD operations via OData
 - Metadata management (create/update/delete tables and columns)
 - SQL query execution

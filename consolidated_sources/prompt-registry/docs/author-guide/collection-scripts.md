@@ -78,17 +78,17 @@ The Prompt Registry VS Code extension uses the same validation logic as the CLI 
 
 ## Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `validate-collections` | Validate collection YAML files |
-| `validate-skills` | Validate skill folders against Agent Skills spec |
-| `build-collection-bundle` | Build a collection bundle ZIP |
-| `compute-collection-version` | Compute next version from git tags |
-| `detect-affected-collections` | Detect collections affected by file changes |
-| `generate-manifest` | Generate deployment manifest |
-| `publish-collections` | Build and publish affected collections |
-| `list-collections` | List all collections in repo |
-| `create-skill` | Create a new skill directory (interactive wizard) |
+| Command                       | Description                                       |
+| ----------------------------- | ------------------------------------------------- |
+| `validate-collections`        | Validate collection YAML files                    |
+| `validate-skills`             | Validate skill folders against Agent Skills spec  |
+| `build-collection-bundle`     | Build a collection bundle ZIP                     |
+| `compute-collection-version`  | Compute next version from git tags                |
+| `detect-affected-collections` | Detect collections affected by file changes       |
+| `generate-manifest`           | Generate deployment manifest                      |
+| `publish-collections`         | Build and publish affected collections            |
+| `list-collections`            | List all collections in repo                      |
+| `create-skill`                | Create a new skill directory (interactive wizard) |
 
 ## Programmatic API
 
@@ -99,17 +99,20 @@ import {
   validateCollectionFile,
   validateAllCollections,
   listCollectionFiles,
-  generateBundleId
-} from '@prompt-registry/collection-scripts';
+  generateBundleId,
+} from "@prompt-registry/collection-scripts";
 
 // Validate a single collection
-const result = validateCollectionFile(repoRoot, 'collections/my.collection.yml');
+const result = validateCollectionFile(
+  repoRoot,
+  "collections/my.collection.yml",
+);
 
 // List all collections
 const collections = listCollectionFiles(repoRoot);
 
 // Generate a bundle ID
-const bundleId = generateBundleId('owner/repo', 'my-collection', '1.0.0');
+const bundleId = generateBundleId("owner/repo", "my-collection", "1.0.0");
 ```
 
 ## Migration from Local Scripts

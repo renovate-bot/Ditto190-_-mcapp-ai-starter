@@ -26,7 +26,7 @@ prompts:
       - api
       - rest
       - endpoint
-  
+
   - id: database-schema
     name: Design Database Schema
     description: Design efficient database schemas with proper relationships
@@ -36,7 +36,7 @@ prompts:
       - database
       - schema
       - sql
-  
+
   - id: add-validation
     name: Add Input Validation
     description: Implement comprehensive input validation and sanitization
@@ -46,7 +46,7 @@ prompts:
       - validation
       - security
       - input
-  
+
   - id: nodejs-standards
     name: Node.js Standards
     description: Node.js coding standards and best practices
@@ -56,7 +56,7 @@ prompts:
       - nodejs
       - standards
       - backend
-  
+
   - id: api-architect
     name: API Architect Mode
     description: Expert API design and architecture guidance

@@ -1,6 +1,6 @@
 ---
-description: 'Color usage guidelines and styling rules for HTML elements to ensure accessible, professional designs.'
-applyTo: '**/*.html, **/*.css, **/*.js'
+description: "Color usage guidelines and styling rules for HTML elements to ensure accessible, professional designs."
+applyTo: "**/*.html, **/*.css, **/*.js"
 ---
 
 # HTML CSS Style Color Guide
@@ -15,9 +15,9 @@ represent the full spectrum of their respective hue ranges (e.g., "blue" include
 - **Neutral Colors**: Grays and grayscale variations
 - **Binary Colors**: Black and white
 - **60-30-10 Rule**
-  - **Primary Color**: Use 60% of the time (*cool or light color*)
-  - **Secondary Color**: Use 30% of the time (*cool or light color*)
-  - **Accent**: Use 10% of the time (*complementary hot color*)
+  - **Primary Color**: Use 60% of the time (_cool or light color_)
+  - **Secondary Color**: Use 30% of the time (_cool or light color_)
+  - **Accent**: Use 10% of the time (_complementary hot color_)
 
 ## Color Usage Guidelines
 

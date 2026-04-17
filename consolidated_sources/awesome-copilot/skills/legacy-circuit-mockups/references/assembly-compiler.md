@@ -4,11 +4,11 @@
 
 This document defines a **complete specification for compiling 6502 assembly language** for a single-board computer consisting of:
 
-* **MOS 6502 CPU**
-* **MOS 6522 VIA**
-* **AS6C62256 (32 KB SRAM)**
-* **AT28C256 (32 KB EEPROM / ROM)**
-* **DFRobot FIT0127 (HD44780-compatible 16x2 LCD)**
+- **MOS 6502 CPU**
+- **MOS 6522 VIA**
+- **AS6C62256 (32 KB SRAM)**
+- **AT28C256 (32 KB EEPROM / ROM)**
+- **DFRobot FIT0127 (HD44780-compatible 16x2 LCD)**
 
 The focus is on **toolchain behavior, memory layout, ROM construction, and firmware conventions**, not electrical wiring.
 
@@ -61,17 +61,17 @@ On reset:
 
 Assembler **MUST** support:
 
-* `.org` absolute addressing
-* Symbolic labels
-* Binary output (`.bin`)
-* Little-endian word emission
-* Zero-page optimization
+- `.org` absolute addressing
+- Symbolic labels
+- Binary output (`.bin`)
+- Little-endian word emission
+- Zero-page optimization
 
 Recommended assemblers:
 
-* **ca65** (cc65 toolchain)
-* **vasm6502**
-* **64tass**
+- **ca65** (cc65 toolchain)
+- **vasm6502**
+- **64tass**
 
 ---
 
@@ -168,10 +168,10 @@ lcd_init:
 
 ## LCD Command/Data Interface
 
-| Operation | RS | Data            |
-| --------- | -- | --------------- |
-| Command   | 0  | Instruction     |
-| Data      | 1  | ASCII character |
+| Operation | RS  | Data            |
+| --------- | --- | --------------- |
+| Command   | 0   | Instruction     |
+| Data      | 1   | ASCII character |
 
 ---
 
@@ -188,9 +188,9 @@ lcd_init:
 
 ## RAM Usage (AS6C62256)
 
-* Stack uses page `$01`
-* All RAM assumed volatile
-* No ROM shadowing
+- Stack uses page `$01`
+- All RAM assumed volatile
+- No ROM shadowing
 
 ---
 
@@ -216,9 +216,9 @@ Ensure `rom.bin` is exactly **32768 bytes**.
 
 ## EEPROM Programming
 
-* Target device: **AT28C256**
-* Programmer: **MiniPro / T48**
-* Verify after write
+- Target device: **AT28C256**
+- Programmer: **MiniPro / T48**
+- Verify after write
 
 ---
 
@@ -226,30 +226,30 @@ Ensure `rom.bin` is exactly **32768 bytes**.
 
 Emulator must:
 
-* Load ROM at `$9000-$FFFF`
-* Emulate VIA I/O side effects
-* Render LCD output
-* Honor RESET vector
+- Load ROM at `$9000-$FFFF`
+- Emulate VIA I/O side effects
+- Render LCD output
+- Honor RESET vector
 
 ---
 
 ## Testing Checklist
 
-* Reset vector execution
-* VIA register writes
-* LCD displays correct text
-* Stack operations valid
-* ROM image maps correctly
+- Reset vector execution
+- VIA register writes
+- LCD displays correct text
+- Stack operations valid
+- ROM image maps correctly
 
 ---
 
 ## References
 
-* [MOS 6502 Programming Manual](http://archive.6502.org/datasheets/synertek_programming_manual.pdf)
-* [MOS 6522 VIA Datasheet](http://archive.6502.org/datasheets/mos_6522_preliminary_nov_1977.pdf)
-* [AT28C256 Datasheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/AT28C256-Industrial-Grade-256-Kbit-Paged-Parallel-EEPROM-Data-Sheet-DS20006386.pdf)
-* [HD44780 LCD Datasheet](https://www.futurlec.com/LED/LCD16X2BLa.shtml)
-* [cc65 Toolchain Docs](https://cc65.github.io/doc/cc65.html)
+- [MOS 6502 Programming Manual](http://archive.6502.org/datasheets/synertek_programming_manual.pdf)
+- [MOS 6522 VIA Datasheet](http://archive.6502.org/datasheets/mos_6522_preliminary_nov_1977.pdf)
+- [AT28C256 Datasheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/AT28C256-Industrial-Grade-256-Kbit-Paged-Parallel-EEPROM-Data-Sheet-DS20006386.pdf)
+- [HD44780 LCD Datasheet](https://www.futurlec.com/LED/LCD16X2BLa.shtml)
+- [cc65 Toolchain Docs](https://cc65.github.io/doc/cc65.html)
 
 ---
 

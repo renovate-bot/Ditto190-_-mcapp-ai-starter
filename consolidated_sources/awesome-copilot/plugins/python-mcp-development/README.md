@@ -13,14 +13,14 @@ copilot plugin install python-mcp-development@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                               | Description                                                                                      |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | `/python-mcp-development:python-mcp-server-generator` | Generate a complete MCP server project in Python with tools, resources, and proper configuration |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent               | Description                                                                    |
+| ------------------- | ------------------------------------------------------------------------------ |
 | `python-mcp-expert` | Expert assistant for developing Model Context Protocol (MCP) servers in Python |
 
 ## Source

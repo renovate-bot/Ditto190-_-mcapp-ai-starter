@@ -81,21 +81,21 @@ pandoc -f latex -t html input.tex -o output.html
 
 ## Common Options
 
-| Option | Description |
-|--------|-------------|
-| `-f, --from <format>` | Input format |
-| `-t, --to <format>` | Output format |
-| `-s, --standalone` | Produce standalone document |
-| `-o, --output <file>` | Output file |
-| `--toc` | Include table of contents |
-| `--toc-depth <n>` | TOC depth (default: 3) |
-| `-N, --number-sections` | Number section headings |
-| `--css <url>` | Link to CSS stylesheet |
-| `--template <file>` | Use custom template |
-| `--metadata <key>=<value>` | Set metadata |
-| `--mathml` | Use MathML for math |
-| `--mathjax` | Use MathJax for math |
-| `-V, --variable <key>=<value>` | Set template variable |
+| Option                         | Description                 |
+| ------------------------------ | --------------------------- |
+| `-f, --from <format>`          | Input format                |
+| `-t, --to <format>`            | Output format               |
+| `-s, --standalone`             | Produce standalone document |
+| `-o, --output <file>`          | Output file                 |
+| `--toc`                        | Include table of contents   |
+| `--toc-depth <n>`              | TOC depth (default: 3)      |
+| `-N, --number-sections`        | Number section headings     |
+| `--css <url>`                  | Link to CSS stylesheet      |
+| `--template <file>`            | Use custom template         |
+| `--metadata <key>=<value>`     | Set metadata                |
+| `--mathml`                     | Use MathML for math         |
+| `--mathjax`                    | Use MathJax for math        |
+| `-V, --variable <key>=<value>` | Set template variable       |
 
 ## Markdown Extensions
 
@@ -114,17 +114,17 @@ pandoc -f markdown_strict input.md -o output.html
 
 ### Common Extensions
 
-| Extension | Description |
-|-----------|-------------|
+| Extension     | Description              |
+| ------------- | ------------------------ |
 | `pipe_tables` | Pipe tables (default on) |
-| `footnotes` | Footnote support |
-| `emoji` | Emoji shortcodes |
-| `smart` | Smart quotes and dashes |
-| `task_lists` | Task list checkboxes |
-| `strikeout` | Strikethrough text |
-| `superscript` | Superscript text |
-| `subscript` | Subscript text |
-| `raw_html` | Raw HTML passthrough |
+| `footnotes`   | Footnote support         |
+| `emoji`       | Emoji shortcodes         |
+| `smart`       | Smart quotes and dashes  |
+| `task_lists`  | Task list checkboxes     |
+| `strikeout`   | Strikethrough text       |
+| `superscript` | Superscript text         |
+| `subscript`   | Subscript text           |
+| `raw_html`    | Raw HTML passthrough     |
 
 ## Templates
 
@@ -143,15 +143,15 @@ pandoc --template=mytemplate.html input.md -o output.html
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <title>$title$</title>
-  $for(css)$
-  <link rel="stylesheet" href="$css$">
-  $endfor$
-</head>
-<body>
-$body$
-</body>
+  <head>
+    <title>$title$</title>
+    $for(css)$
+    <link rel="stylesheet" href="$css$" />
+    $endfor$
+  </head>
+  <body>
+    $body$
+  </body>
 </html>
 ```
 

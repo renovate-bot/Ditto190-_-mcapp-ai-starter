@@ -9,11 +9,13 @@ If you have a repository with a `collections/` folder but no GitHub Actions work
 ### Quick Setup
 
 1. Run the scaffold command in your existing project directory:
+
    ```bash
    # From VS Code Command Palette: "Prompt Registry: Scaffold Project" → "GitHub"
    ```
 
 2. Delete the generated example files:
+
    ```bash
    rm -rf prompts/example.prompt.md instructions/example.instructions.md agents/example.agent.md collections/example.collection.yml skills/example-skill
    ```
@@ -50,7 +52,7 @@ items:
   - kind: chatmode
     path: chatmodes/my-mode.chatmode.md
 
-# After  
+# After
 items:
   - kind: agent
     path: agents/my-mode.agent.md

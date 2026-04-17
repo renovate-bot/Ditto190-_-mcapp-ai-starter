@@ -1,6 +1,7 @@
 # Full-Stack Development Workflow
 
 ## Project Setup
+
 1. **Environment Configuration**
    - Set up development environment with proper tooling
    - Configure linting, formatting, and testing frameworks
@@ -12,6 +13,7 @@
    - Set up monitoring and error tracking
 
 ## Development Cycle
+
 1. **Feature Planning**
    - Break down features into manageable tasks
    - Consider cross-platform compatibility
@@ -33,6 +35,7 @@
    - Performance monitoring and optimization
 
 ## Windsurf Integration
+
 - Use Cascade mode for multi-file refactoring
 - Leverage context panels for project understanding
 - Maintain Flow state during development sessions

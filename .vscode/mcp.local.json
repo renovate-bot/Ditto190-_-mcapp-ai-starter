@@ -1,15 +1,15 @@
 {
-    "servers": {
-        "awesome-copilot": {
-            "type": "stdio",
-            "command": "bash",
-            "args": [
-                "-c",
-                "set -e; if [ ! -d /workspaces/mcp-dotnet-samples ]; then echo 'Cloning mcp-dotnet-samples...'; git clone --depth 1 https://github.com/microsoft/mcp-dotnet-samples /workspaces/mcp-dotnet-samples || exit 1; fi; cd /workspaces/mcp-dotnet-samples/awesome-copilot/src/McpSamples.AwesomeCopilot.HybridApp && exec dotnet run --no-launch-profile"
-            ],
-            "env": {
-                "DOTNET_CLI_TELEMETRY_OPTOUT": "1"
-            }
-        }
+  "servers": {
+    "awesome-copilot": {
+      "type": "stdio",
+      "command": "bash",
+      "args": [
+        "-c",
+        "set -e; if [ ! -d /workspaces/mcp-dotnet-samples ]; then echo 'Cloning mcp-dotnet-samples...'; git clone --depth 1 https://github.com/microsoft/mcp-dotnet-samples /workspaces/mcp-dotnet-samples || exit 1; fi; cd /workspaces/mcp-dotnet-samples/awesome-copilot/src/McpSamples.AwesomeCopilot.HybridApp && exec dotnet run --no-launch-profile"
+      ],
+      "env": {
+        "DOTNET_CLI_TELEMETRY_OPTOUT": "1"
+      }
     }
+  }
 }

@@ -28,6 +28,7 @@ The Penpot MCP integration requires **three components** working together:
 - **Modern browser** - Chrome, Firefox, or Chromium-based browser
 
 Verify Node.js installation:
+
 ```bash
 node --version  # Should be v22.x or higher
 npm --version
@@ -134,7 +135,12 @@ Claude Desktop requires the `mcp-remote` proxy (stdio-only transport):
      "mcpServers": {
        "penpot": {
          "command": "npx",
-         "args": ["-y", "mcp-remote", "http://localhost:4401/sse", "--allow-http"]
+         "args": [
+           "-y",
+           "mcp-remote",
+           "http://localhost:4401/sse",
+           "--allow-http"
+         ]
        }
      }
    }
@@ -159,6 +165,7 @@ claude mcp add penpot -t http http://localhost:4401/mcp
 **Solutions**:
 
 1. Verify servers are running:
+
    ```bash
    # Check if ports are in use
    lsof -i :4401  # MCP server
@@ -206,7 +213,7 @@ claude mcp add penpot -t http http://localhost:4401/mcp
    ```bash
    # Test the SSE endpoint
    curl http://localhost:4401/sse
-   
+
    # Test the MCP endpoint
    curl http://localhost:4401/mcp
    ```
@@ -262,6 +269,7 @@ kill -9 <PID>
 ```
 
 Or configure different ports via environment variables:
+
 ```bash
 PENPOT_MCP_SERVER_PORT=4501 npm run start:all
 ```
@@ -281,14 +289,14 @@ PENPOT_MCP_SERVER_PORT=4501 npm run start:all
 
 ### Environment Variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `PENPOT_MCP_SERVER_PORT` | 4401 | HTTP/SSE server port |
-| `PENPOT_MCP_WEBSOCKET_PORT` | 4402 | WebSocket server port |
-| `PENPOT_MCP_SERVER_LISTEN_ADDRESS` | localhost | Server bind address |
-| `PENPOT_MCP_LOG_LEVEL` | info | Log level (trace/debug/info/warn/error) |
-| `PENPOT_MCP_LOG_DIR` | logs | Log file directory |
-| `PENPOT_MCP_REMOTE_MODE` | false | Enable remote mode (disables file system access) |
+| Variable                           | Default   | Description                                      |
+| ---------------------------------- | --------- | ------------------------------------------------ |
+| `PENPOT_MCP_SERVER_PORT`           | 4401      | HTTP/SSE server port                             |
+| `PENPOT_MCP_WEBSOCKET_PORT`        | 4402      | WebSocket server port                            |
+| `PENPOT_MCP_SERVER_LISTEN_ADDRESS` | localhost | Server bind address                              |
+| `PENPOT_MCP_LOG_LEVEL`             | info      | Log level (trace/debug/info/warn/error)          |
+| `PENPOT_MCP_LOG_DIR`               | logs      | Log file directory                               |
+| `PENPOT_MCP_REMOTE_MODE`           | false     | Enable remote mode (disables file system access) |
 
 ### Example: Custom Configuration
 
@@ -305,6 +313,7 @@ npm run start:all
 Run this checklist to confirm everything works:
 
 1. **Servers Running**:
+
    ```bash
    curl -s http://localhost:4401/sse | head -1
    # Should return SSE stream headers

@@ -87,29 +87,29 @@ Browsers restrict "powerful features" (notifications, webcam, GPU, payments) to:
 
 ## Common Security Attacks
 
-| Attack | Description |
-|---|---|
-| Clickjacking | Tricks users into clicking hidden UI elements |
-| Cross-Site Scripting (XSS) | Injects malicious scripts into trusted websites |
-| Cross-Site Request Forgery (CSRF) | Forces authenticated users to perform unwanted actions |
-| Cross-Site Leaks (XS-Leaks) | Infers information about users from side channels |
-| SQL Injection | Inserts malicious SQL via user input |
-| Phishing | Impersonates trusted entities to steal credentials |
-| Man-in-the-Middle (MITM) | Intercepts communication between two parties |
-| Server-Side Request Forgery (SSRF) | Manipulates server into making unintended requests |
-| Subdomain Takeover | Exploits dangling DNS records |
-| Supply Chain Attacks | Compromises third-party dependencies |
-| Prototype Pollution | Injects properties into JavaScript object prototypes |
+| Attack                             | Description                                            |
+| ---------------------------------- | ------------------------------------------------------ |
+| Clickjacking                       | Tricks users into clicking hidden UI elements          |
+| Cross-Site Scripting (XSS)         | Injects malicious scripts into trusted websites        |
+| Cross-Site Request Forgery (CSRF)  | Forces authenticated users to perform unwanted actions |
+| Cross-Site Leaks (XS-Leaks)        | Infers information about users from side channels      |
+| SQL Injection                      | Inserts malicious SQL via user input                   |
+| Phishing                           | Impersonates trusted entities to steal credentials     |
+| Man-in-the-Middle (MITM)           | Intercepts communication between two parties           |
+| Server-Side Request Forgery (SSRF) | Manipulates server into making unintended requests     |
+| Subdomain Takeover                 | Exploits dangling DNS records                          |
+| Supply Chain Attacks               | Compromises third-party dependencies                   |
+| Prototype Pollution                | Injects properties into JavaScript object prototypes   |
 
 ## Key HTTP Security Headers
 
-| Header | Purpose |
-|---|---|
-| `Strict-Transport-Security` | Enforce HTTPS-only access |
-| `X-Frame-Options` | Prevent clickjacking |
-| `X-Content-Type-Options` | Prevent MIME sniffing |
-| `Content-Security-Policy` | Control resource loading and XSS prevention |
-| `Access-Control-Allow-Origin` | Manage CORS |
+| Header                        | Purpose                                     |
+| ----------------------------- | ------------------------------------------- |
+| `Strict-Transport-Security`   | Enforce HTTPS-only access                   |
+| `X-Frame-Options`             | Prevent clickjacking                        |
+| `X-Content-Type-Options`      | Prevent MIME sniffing                       |
+| `Content-Security-Policy`     | Control resource loading and XSS prevention |
+| `Access-Control-Allow-Origin` | Manage CORS                                 |
 
 ## Practical Implementation Guides
 

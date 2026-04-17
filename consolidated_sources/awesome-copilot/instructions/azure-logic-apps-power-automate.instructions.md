@@ -1,5 +1,5 @@
 ---
-description: 'Guidelines for developing Azure Logic Apps and Power Automate workflows with best practices for Workflow Definition Language (WDL), integration patterns, and enterprise automation'
+description: "Guidelines for developing Azure Logic Apps and Power Automate workflows with best practices for Workflow Definition Language (WDL), integration patterns, and enterprise automation"
 applyTo: "**/*.json,**/*.logicapp.json,**/workflow.json,**/*-definition.json,**/*.flow.json"
 ---
 
@@ -17,14 +17,14 @@ When working with Logic Apps or Power Automate flow JSON files, ensure your work
 {
   "definition": {
     "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-    "actions": { },
+    "actions": {},
     "contentVersion": "1.0.0.0",
-    "outputs": { },
-    "parameters": { },
-    "staticResults": { },
-    "triggers": { }
+    "outputs": {},
+    "parameters": {},
+    "staticResults": {},
+    "triggers": {}
   },
-  "parameters": { }
+  "parameters": {}
 }
 ```
 
@@ -169,6 +169,7 @@ When working with Logic Apps or Power Automate flow JSON files, ensure your work
 - **Document complex expressions** with comments
 
 Common expression patterns:
+
 - String manipulation: `concat()`, `replace()`, `substring()`
 - Collection operations: `filter()`, `map()`, `select()`
 - Conditional logic: `if()`, `and()`, `or()`, `equals()`
@@ -200,27 +201,30 @@ Power Automate supports advanced expressions in conditions to check multiple val
 
 Common logical expression functions for conditions in Power Automate:
 
-| Expression | Description | Example |
-|------------|-------------|---------|
-| `and` | Returns true if both arguments are true | `@and(equals(item()?['Status'], 'completed'), equals(item()?['Assigned'], 'John'))` |
-| `or` | Returns true if either argument is true | `@or(equals(item()?['Status'], 'completed'), equals(item()?['Status'], 'unnecessary'))` |
-| `equals` | Checks if values are equal | `@equals(item()?['Status'], 'blocked')` |
-| `greater` | Checks if first value is greater than second | `@greater(item()?['Due'], item()?['Paid'])` |
-| `less` | Checks if first value is less than second | `@less(item()?['dueDate'], addDays(utcNow(),1))` |
-| `empty` | Checks if object, array or string is empty | `@empty(item()?['Status'])` |
-| `not` | Returns opposite of a boolean value | `@not(contains(item()?['Status'], 'Failed'))` |
+| Expression | Description                                  | Example                                                                                 |
+| ---------- | -------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `and`      | Returns true if both arguments are true      | `@and(equals(item()?['Status'], 'completed'), equals(item()?['Assigned'], 'John'))`     |
+| `or`       | Returns true if either argument is true      | `@or(equals(item()?['Status'], 'completed'), equals(item()?['Status'], 'unnecessary'))` |
+| `equals`   | Checks if values are equal                   | `@equals(item()?['Status'], 'blocked')`                                                 |
+| `greater`  | Checks if first value is greater than second | `@greater(item()?['Due'], item()?['Paid'])`                                             |
+| `less`     | Checks if first value is less than second    | `@less(item()?['dueDate'], addDays(utcNow(),1))`                                        |
+| `empty`    | Checks if object, array or string is empty   | `@empty(item()?['Status'])`                                                             |
+| `not`      | Returns opposite of a boolean value          | `@not(contains(item()?['Status'], 'Failed'))`                                           |
 
 Example: Check if a status is "completed" OR "unnecessary":
+
 ```
 @or(equals(item()?['Status'], 'completed'), equals(item()?['Status'], 'unnecessary'))
 ```
 
 Example: Check if status is "blocked" AND assigned to specific person:
+
 ```
 @and(equals(item()?['Status'], 'blocked'), equals(item()?['Assigned'], 'John Wonder'))
 ```
 
 Example: Check if a payment is overdue AND incomplete:
+
 ```
 @and(greater(item()?['Due'], item()?['Paid']), less(item()?['dueDate'], utcNow()))
 ```
@@ -409,7 +413,7 @@ Example: Check if a payment is overdue AND incomplete:
 
 While Azure Logic Apps and Power Automate share the same underlying workflow engine and language, they have different target audiences and capabilities:
 
-- **Power Automate**: 
+- **Power Automate**:
   - User-friendly interface for business users
   - Part of the Power Platform ecosystem
   - Integration with Microsoft 365 and Dynamics 365
@@ -424,23 +428,27 @@ While Azure Logic Apps and Power Automate share the same underlying workflow eng
 ### Logic App Types
 
 #### Consumption Logic Apps
+
 - Pay-per-execution pricing model
 - Serverless architecture
 - Suitable for variable or unpredictable workloads
 
 #### Standard Logic Apps
+
 - Fixed pricing based on App Service Plan
 - Predictable performance
 - Local development support
 - Integration with VNets
 
 #### Integration Service Environment (ISE)
+
 - Dedicated deployment environment
 - Higher throughput and longer execution durations
 - Direct access to VNet resources
 - Isolated runtime environment
 
 ### Power Automate License Types
+
 - **Power Automate per user plan**: For individual users
 - **Power Automate per flow plan**: For specific workflows
 - **Power Automate Process plan**: For RPA capabilities
@@ -449,6 +457,7 @@ While Azure Logic Apps and Power Automate share the same underlying workflow eng
 ## Common Integration Patterns
 
 ### Architectural Patterns
+
 - **Mediator Pattern**: Use Logic Apps/Power Automate as an orchestration layer between systems
 - **Content-Based Routing**: Route messages based on content to different destinations
 - **Message Transformation**: Transform messages between formats (JSON, XML, EDI, etc.)
@@ -459,7 +468,9 @@ While Azure Logic Apps and Power Automate share the same underlying workflow eng
 - **Choreography Pattern**: Coordinate multiple services without a central orchestrator
 
 ### Action Patterns
+
 - **Asynchronous Processing Pattern**: For long-running operations
+
   ```json
   "LongRunningAction": {
     "type": "Http",
@@ -495,6 +506,7 @@ While Azure Logic Apps and Power Automate share the same underlying workflow eng
   ```
 
 ### Enterprise Integration Patterns
+
 - **B2B Message Exchange**: Exchange EDI documents between trading partners (AS2, X12, EDIFACT)
 - **Integration Account**: Use for storing and managing B2B artifacts (agreements, schemas, maps)
 - **Rules Engine**: Implement complex business rules using the Azure Logic Apps Rules Engine
@@ -522,25 +534,25 @@ While Azure Logic Apps and Power Automate share the same underlying workflow eng
 trigger:
   branches:
     include:
-    - main
-    - release/*
+      - main
+      - release/*
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
 steps:
-- task: AzureResourceManagerTemplateDeployment@3
-  inputs:
-    deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'Your-Azure-Connection'
-    subscriptionId: '$(subscriptionId)'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: '$(resourceGroupName)'
-    location: '$(location)'
-    templateLocation: 'Linked artifact'
-    csmFile: '$(System.DefaultWorkingDirectory)/arm-templates/logicapp-template.json'
-    csmParametersFile: '$(System.DefaultWorkingDirectory)/arm-templates/logicapp-parameters-$(Environment).json'
-    deploymentMode: 'Incremental'
+  - task: AzureResourceManagerTemplateDeployment@3
+    inputs:
+      deploymentScope: "Resource Group"
+      azureResourceManagerConnection: "Your-Azure-Connection"
+      subscriptionId: "$(subscriptionId)"
+      action: "Create Or Update Resource Group"
+      resourceGroupName: "$(resourceGroupName)"
+      location: "$(location)"
+      templateLocation: "Linked artifact"
+      csmFile: "$(System.DefaultWorkingDirectory)/arm-templates/logicapp-template.json"
+      csmParametersFile: "$(System.DefaultWorkingDirectory)/arm-templates/logicapp-parameters-$(Environment).json"
+      deploymentMode: "Incremental"
 ```
 
 ## Cross-Platform Considerations
@@ -611,18 +623,12 @@ This example demonstrates a Logic App that accepts an HTTP request, validates th
           "and": [
             {
               "not": {
-                "equals": [
-                  "@triggerBody()?['customerId']",
-                  null
-                ]
+                "equals": ["@triggerBody()?['customerId']", null]
               }
             },
             {
               "not": {
-                "equals": [
-                  "@triggerBody()?['requestType']",
-                  null
-                ]
+                "equals": ["@triggerBody()?['requestType']", null]
               }
             }
           ]
@@ -639,9 +645,7 @@ This example demonstrates a Logic App that accepts an HTTP request, validates th
               }
             },
             "runAfter": {
-              "Get_API_Key": [
-                "Succeeded"
-              ]
+              "Get_API_Key": ["Succeeded"]
             }
           },
           "Get_API_Key": {
@@ -683,9 +687,7 @@ This example demonstrates a Logic App that accepts an HTTP request, validates th
               }
             },
             "runAfter": {
-              "Get_Customer_Data": [
-                "Succeeded"
-              ]
+              "Get_Customer_Data": ["Succeeded"]
             }
           },
           "Switch_Request_Type": {
@@ -731,9 +733,7 @@ This example demonstrates a Logic App that accepts an HTTP request, validates th
                       }
                     },
                     "runAfter": {
-                      "Calculate_Order_Statistics": [
-                        "Succeeded"
-                      ]
+                      "Calculate_Order_Statistics": ["Succeeded"]
                     }
                   }
                 }
@@ -747,19 +747,14 @@ This example demonstrates a Logic App that accepts an HTTP request, validates th
                     "name": "responsePayload",
                     "value": {
                       "error": "Invalid request type specified",
-                      "validTypes": [
-                        "Profile",
-                        "OrderSummary"
-                      ]
+                      "validTypes": ["Profile", "OrderSummary"]
                     }
                   }
                 }
               }
             },
             "runAfter": {
-              "Parse_Customer_Response": [
-                "Succeeded"
-              ]
+              "Parse_Customer_Response": ["Succeeded"]
             }
           },
           "Log_Successful_Request": {
@@ -779,9 +774,7 @@ This example demonstrates a Logic App that accepts an HTTP request, validates th
               }
             },
             "runAfter": {
-              "Switch_Request_Type": [
-                "Succeeded"
-              ]
+              "Switch_Request_Type": ["Succeeded"]
             }
           },
           "Return_Success_Response": {
@@ -795,9 +788,7 @@ This example demonstrates a Logic App that accepts an HTTP request, validates th
               }
             },
             "runAfter": {
-              "Log_Successful_Request": [
-                "Succeeded"
-              ]
+              "Log_Successful_Request": ["Succeeded"]
             }
           }
         },
@@ -818,9 +809,7 @@ This example demonstrates a Logic App that accepts an HTTP request, validates th
           }
         },
         "runAfter": {
-          "Initialize_Response_Variable": [
-            "Succeeded"
-          ]
+          "Initialize_Response_Variable": ["Succeeded"]
         }
       },
       "Initialize_Response_Variable": {
@@ -857,10 +846,7 @@ This example demonstrates a Logic App that accepts an HTTP request, validates th
               },
               "requestType": {
                 "type": "string",
-                "enum": [
-                  "Profile",
-                  "OrderSummary"
-                ]
+                "enum": ["Profile", "OrderSummary"]
               }
             }
           }
@@ -944,9 +930,7 @@ This example demonstrates a Logic App that processes events from Azure Service B
               }
             },
             "runAfter": {
-              "Get_API_Key": [
-                "Succeeded"
-              ]
+              "Get_API_Key": ["Succeeded"]
             },
             "retryPolicy": {
               "type": "exponential",
@@ -1031,16 +1015,12 @@ This example demonstrates a Logic App that processes events from Azure Service B
                   }
                 },
                 "runAfter": {
-                  "Check_Product_Stock": [
-                    "Succeeded"
-                  ]
+                  "Check_Product_Stock": ["Succeeded"]
                 }
               }
             },
             "runAfter": {
-              "Get_Customer_Details": [
-                "Succeeded"
-              ]
+              "Get_Customer_Details": ["Succeeded"]
             }
           },
           "Check_Order_Validity": {
@@ -1048,16 +1028,10 @@ This example demonstrates a Logic App that processes events from Azure Service B
             "expression": {
               "and": [
                 {
-                  "equals": [
-                    "@length(variables('invalidItems'))",
-                    0
-                  ]
+                  "equals": ["@length(variables('invalidItems'))", 0]
                 },
                 {
-                  "greater": [
-                    "@length(variables('validItems'))",
-                    0
-                  ]
+                  "greater": ["@length(variables('validItems'))", 0]
                 }
               ]
             },
@@ -1100,9 +1074,7 @@ This example demonstrates a Logic App that processes events from Azure Service B
                   }
                 },
                 "runAfter": {
-                  "Process_Valid_Order": [
-                    "Succeeded"
-                  ]
+                  "Process_Valid_Order": ["Succeeded"]
                 }
               },
               "Complete_Message": {
@@ -1122,9 +1094,7 @@ This example demonstrates a Logic App that processes events from Azure Service B
                   }
                 },
                 "runAfter": {
-                  "Send_Order_Confirmation": [
-                    "Succeeded"
-                  ]
+                  "Send_Order_Confirmation": ["Succeeded"]
                 }
               }
             },
@@ -1168,24 +1138,18 @@ This example demonstrates a Logic App that processes events from Azure Service B
                     }
                   },
                   "runAfter": {
-                    "Send_Invalid_Stock_Notification": [
-                      "Succeeded"
-                    ]
+                    "Send_Invalid_Stock_Notification": ["Succeeded"]
                   }
                 }
               }
             },
             "runAfter": {
-              "Validate_Stock": [
-                "Succeeded"
-              ]
+              "Validate_Stock": ["Succeeded"]
             }
           }
         },
         "runAfter": {
-          "Initialize_Variables": [
-            "Succeeded"
-          ]
+          "Initialize_Variables": ["Succeeded"]
         }
       },
       "Initialize_Variables": {
@@ -1205,9 +1169,7 @@ This example demonstrates a Logic App that processes events from Azure Service B
           ]
         },
         "runAfter": {
-          "Parse_Message": [
-            "Succeeded"
-          ]
+          "Parse_Message": ["Succeeded"]
         }
       },
       "Handle_Process_Error": {
@@ -1249,9 +1211,7 @@ This example demonstrates a Logic App that processes events from Azure Service B
               }
             },
             "runAfter": {
-              "Log_Error_Details": [
-                "Succeeded"
-              ]
+              "Log_Error_Details": ["Succeeded"]
             }
           },
           "Send_Alert_To_Operations": {
@@ -1273,17 +1233,12 @@ This example demonstrates a Logic App that processes events from Azure Service B
               }
             },
             "runAfter": {
-              "Abandon_Message": [
-                "Succeeded"
-              ]
+              "Abandon_Message": ["Succeeded"]
             }
           }
         },
         "runAfter": {
-          "Try_Process_Order": [
-            "Failed",
-            "TimedOut"
-          ]
+          "Try_Process_Order": ["Failed", "TimedOut"]
         }
       }
     },
@@ -1552,15 +1507,15 @@ Integrate Logic Apps with Azure API Management for enhanced security, governance
         </claim>
       </required-claims>
     </validate-jwt>
-    
+
     <!-- Rate limiting -->
     <rate-limit calls="5" renewal-period="60" />
-    
+
     <!-- Request transformation -->
     <set-header name="Correlation-Id" exists-action="override">
       <value>@(context.RequestId)</value>
     </set-header>
-    
+
     <!-- Logging -->
     <log-to-eventhub logger-id="api-logger">
       @{

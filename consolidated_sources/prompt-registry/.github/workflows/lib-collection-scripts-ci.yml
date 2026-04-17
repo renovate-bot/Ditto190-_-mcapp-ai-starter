@@ -50,7 +50,7 @@ jobs:
     needs: lint-and-test
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     permissions:
-      id-token: write  # Required for OIDC
+      id-token: write # Required for OIDC
       contents: write
 
     defaults:
@@ -82,7 +82,7 @@ jobs:
         run: |
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
           echo "version=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
-          
+
           # Check if this version tag already exists
           if git tag -l "collection-scripts-v$PACKAGE_VERSION" | grep -q .; then
             echo "exists=true" >> $GITHUB_OUTPUT

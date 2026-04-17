@@ -48,7 +48,7 @@ function parseMetadata(skillPath):
 
 ### Injecting into context
 
-Include skill metadata in the system prompt so the model knows what skills are available. 
+Include skill metadata in the system prompt so the model knows what skills are available.
 
 Follow your platform's guidance for system prompt updates. For example, for Claude models, the recommended format uses XML:
 
@@ -86,12 +86,14 @@ The [skills-ref](https://github.com/agentskills/agentskills/tree/main/skills-ref
 
 For example:
 
-**Validate a skill directory:** 
+**Validate a skill directory:**
+
 ```
 skills-ref validate <path>
 ```
 
 **Generate `<available_skills>` XML for agent prompts:**
+
 ```
 skills-ref to-prompt <path>...
 ```

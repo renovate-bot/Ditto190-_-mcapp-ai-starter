@@ -31,25 +31,25 @@ terraform show -json plan.tfplan | python analyze_plan.py
 
 ### Options
 
-| Option | Short | Description | Default |
-|--------|-------|-------------|---------|
-| `--format` | `-f` | Output format (markdown/json/summary) | markdown |
-| `--exit-code` | `-e` | Return exit code based on changes | false |
-| `--quiet` | `-q` | Suppress warnings | false |
-| `--verbose` | `-v` | Show detailed warnings | false |
-| `--ignore-case` | - | Compare values case-insensitively | false |
-| `--attributes` | - | Path to custom attribute definition file | (built-in) |
-| `--include` | - | Filter resources to analyze (can specify multiple) | (all) |
-| `--exclude` | - | Filter resources to exclude (can specify multiple) | (none) |
+| Option          | Short | Description                                        | Default    |
+| --------------- | ----- | -------------------------------------------------- | ---------- |
+| `--format`      | `-f`  | Output format (markdown/json/summary)              | markdown   |
+| `--exit-code`   | `-e`  | Return exit code based on changes                  | false      |
+| `--quiet`       | `-q`  | Suppress warnings                                  | false      |
+| `--verbose`     | `-v`  | Show detailed warnings                             | false      |
+| `--ignore-case` | -     | Compare values case-insensitively                  | false      |
+| `--attributes`  | -     | Path to custom attribute definition file           | (built-in) |
+| `--include`     | -     | Filter resources to analyze (can specify multiple) | (all)      |
+| `--exclude`     | -     | Filter resources to exclude (can specify multiple) | (none)     |
 
 ### Exit Codes (with `--exit-code`)
 
-| Code | Meaning |
-|------|---------|
-| 0 | No changes, or order-only changes |
-| 1 | Actual Set attribute changes |
-| 2 | Resource replacement (delete + create) |
-| 3 | Error |
+| Code | Meaning                                |
+| ---- | -------------------------------------- |
+| 0    | No changes, or order-only changes      |
+| 1    | Actual Set attribute changes           |
+| 2    | Resource replacement (delete + create) |
+| 3    | Error                                  |
 
 ## Output Formats
 
@@ -70,6 +70,7 @@ python analyze_plan.py plan.json --format json
 ```
 
 Example output:
+
 ```json
 {
   "summary": {
@@ -92,6 +93,7 @@ python analyze_plan.py plan.json --format summary
 ```
 
 Example output:
+
 ```
 🟢 3 order-only | 🟡 1 set changes
 ```
@@ -106,27 +108,27 @@ name: Terraform Plan Analysis
 on:
   pull_request:
     paths:
-      - '**.tf'
+      - "**.tf"
 
 jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
-        
+
       - name: Terraform Init & Plan
         run: |
           terraform init
           terraform plan -out=plan.tfplan
           terraform show -json plan.tfplan > plan.json
-          
+
       - name: Analyze Set Diff
         run: |
           python path/to/analyze_plan.py plan.json --format markdown > analysis.md
-          
+
       - name: Comment PR
         uses: marocchino/sticky-pull-request-comment@v2
         with:
@@ -136,11 +138,11 @@ jobs:
 ### GitHub Actions (Gate with Exit Code)
 
 ```yaml
-      - name: Analyze and Gate
-        run: |
-          python path/to/analyze_plan.py plan.json --exit-code --format summary
-        # Fail on exit code 2 (resource replacement)
-        continue-on-error: false
+- name: Analyze and Gate
+  run: |
+    python path/to/analyze_plan.py plan.json --exit-code --format summary
+  # Fail on exit code 2 (resource replacement)
+  continue-on-error: false
 ```
 
 ### Azure Pipelines
@@ -148,39 +150,41 @@ jobs:
 ```yaml
 - task: TerraformCLI@0
   inputs:
-    command: 'plan'
-    commandOptions: '-out=plan.tfplan'
+    command: "plan"
+    commandOptions: "-out=plan.tfplan"
 
 - script: |
     terraform show -json plan.tfplan > plan.json
     python scripts/analyze_plan.py plan.json --format markdown > $(Build.ArtifactStagingDirectory)/analysis.md
-  displayName: 'Analyze Plan'
+  displayName: "Analyze Plan"
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)/analysis.md'
-    artifactName: 'plan-analysis'
+    pathToPublish: "$(Build.ArtifactStagingDirectory)/analysis.md"
+    artifactName: "plan-analysis"
 ```
 
 ### Filtering Examples
 
 Analyze only specific resources:
+
 ```bash
 python analyze_plan.py plan.json --include application_gateway --include load_balancer
 ```
 
 Exclude specific resources:
+
 ```bash
 python analyze_plan.py plan.json --exclude virtual_network
 ```
 
 ## Interpreting Results
 
-| Category | Meaning | Recommended Action |
-|----------|---------|-------------------|
-| 🟢 Order-only | False-positive diff, no actual change | Safe to ignore |
-| 🟡 Actual change | Set element added/removed/modified | Review the content, usually in-place update |
-| 🔴 Resource replacement | delete + create | Check for downtime impact |
+| Category                | Meaning                               | Recommended Action                          |
+| ----------------------- | ------------------------------------- | ------------------------------------------- |
+| 🟢 Order-only           | False-positive diff, no actual change | Safe to ignore                              |
+| 🟡 Actual change        | Set element added/removed/modified    | Review the content, usually in-place update |
+| 🔴 Resource replacement | delete + create                       | Check for downtime impact                   |
 
 ## Custom Attribute Definitions
 

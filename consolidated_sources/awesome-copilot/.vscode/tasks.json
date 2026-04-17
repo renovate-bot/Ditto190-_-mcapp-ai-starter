@@ -34,12 +34,7 @@
       "label": "create-collection",
       "type": "shell",
       "command": "npm run collection:create",
-      "args": [
-        "--id",
-        "${input:collectionId}",
-        "--tags",
-        "${input:tags}"
-      ],
+      "args": ["--id", "${input:collectionId}", "--tags", "${input:tags}"],
       "problemMatcher": [],
       "group": "none",
       "detail": "Creates a new collection manifest template.",

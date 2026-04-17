@@ -7,12 +7,14 @@ These examples show how Copilot CLI behaves **without** Noob Mode vs. **with** N
 ## 1. File Read Approval
 
 ### ❌ Without Noob Mode
+
 ```
 Allow tool: view on path "/Users/you/contracts/nda-template.md"?
 [y/n]
 ```
 
 ### ✅ With Noob Mode
+
 ```
 📋 WHAT I'M ASKING TO DO:
 I want to open and read the file "contracts/nda-template.md" to see what's in it.
@@ -34,12 +36,14 @@ This just reads the file — nothing gets changed or deleted. It's like opening 
 ## 2. File Edit Approval
 
 ### ❌ Without Noob Mode
+
 ```
 Allow tool: edit on path "/Users/you/memo.md"?
 [y/n]
 ```
 
 ### ✅ With Noob Mode
+
 ```
 📋 WHAT I'M ASKING TO DO:
 I want to edit the file "memo.md" — specifically, I'll update the third paragraph to include the new licensing terms you mentioned.
@@ -61,12 +65,14 @@ I'll be changing an existing file. The specific change is adding two sentences t
 ## 3. Bash Command — Safe Command
 
 ### ❌ Without Noob Mode
+
 ```
 Allow tool: bash with command "grep -r 'indemnification' ./contracts/"?
 [y/n]
 ```
 
 ### ✅ With Noob Mode
+
 ```
 📋 WHAT I'M ASKING TO DO:
 I want to search all files in your "contracts" folder for the word "indemnification."
@@ -88,12 +94,14 @@ Running commands is generally high-risk, but this command only searches — it d
 ## 4. Bash Command — Risky Command
 
 ### ❌ Without Noob Mode
+
 ```
 Allow tool: bash with command "rm -rf node_modules && npm install"?
 [y/n]
 ```
 
 ### ✅ With Noob Mode
+
 ```
 📋 WHAT I'M ASKING TO DO:
 I want to (1) delete the "node_modules" folder, which contains downloaded software libraries, and then (2) re-download all of them fresh.
@@ -115,12 +123,14 @@ The first part deletes an entire folder. However, the second part immediately re
 ## 5. Git Operation
 
 ### ❌ Without Noob Mode
+
 ```
 Allow tool: bash with command "git push origin feature/update-terms"?
 [y/n]
 ```
 
 ### ✅ With Noob Mode
+
 ```
 📋 WHAT I'M ASKING TO DO:
 I want to upload your changes to the shared server (GitHub) on a branch called "feature/update-terms."
@@ -142,12 +152,14 @@ This sends your changes to a shared server where your colleagues can see them. I
 ## 6. URL Access
 
 ### ❌ Without Noob Mode
+
 ```
 Allow tool: web_fetch on URL "https://api.github.com/repos/github/docs/issues"?
 [y/n]
 ```
 
 ### ✅ With Noob Mode
+
 ```
 📋 WHAT I'M ASKING TO DO:
 I want to visit a GitHub web page that lists issues (tracked tasks and bugs) for the "docs" project.
@@ -169,6 +181,7 @@ This connects to an external website (GitHub's API). It only reads information �
 ## 7. Build Error Output
 
 ### ❌ Without Noob Mode
+
 ```
 npm ERR! code ERESOLVE
 npm ERR! ERESOLVE unable to resolve dependency tree
@@ -180,6 +193,7 @@ npm ERR!   peer react@"^17.0.0" from react-beautiful-dnd@13.1.1
 ```
 
 ### ✅ With Noob Mode
+
 ```
 ❌ WHAT WENT WRONG:
 Two software libraries need different versions of the same tool (React), and they're incompatible.
@@ -200,6 +214,7 @@ Option C: Find an alternative library that works with React 18
 ## 8. Test Failure Output
 
 ### ❌ Without Noob Mode
+
 ```
 FAIL src/utils.test.ts
   ● validateEmail › should reject invalid emails
@@ -212,6 +227,7 @@ FAIL src/utils.test.ts
 ```
 
 ### ✅ With Noob Mode
+
 ```
 ❌ WHAT WENT WRONG:
 One of the automated checks failed. The email validation function has a bug.
@@ -230,6 +246,7 @@ Want me to look at the validation code and fix it?
 ## 9. Git Status/Diff Output
 
 ### ❌ Without Noob Mode
+
 ```
 On branch main
 Changes not staged for commit:
@@ -240,6 +257,7 @@ Untracked files:
 ```
 
 ### ✅ With Noob Mode
+
 ```
 ✅ HERE'S WHAT'S GOING ON WITH YOUR FILES:
 
@@ -258,11 +276,13 @@ Untracked files:
 ## 10. Multi-Step Task Planning
 
 ### ❌ Without Noob Mode
+
 ```
 I'll read the current implementation, refactor the auth module, update the tests, and run the test suite.
 ```
 
 ### ✅ With Noob Mode
+
 ```
 📍 HERE'S MY PLAN (4 steps):
 
@@ -281,11 +301,13 @@ Starting with step 1 now...
 ## 11. Technical Question to User
 
 ### ❌ Without Noob Mode
+
 ```
 Should I use a relative or absolute path for the import?
 ```
 
 ### ✅ With Noob Mode
+
 ```
 I need your input on something:
 
@@ -305,12 +327,14 @@ Trade-off: Always works regardless of where things move, but is more verbose.
 ## 12. Package Installation
 
 ### ❌ Without Noob Mode
+
 ```
 Allow tool: bash with command "npm install lodash@4.17.21"?
 [y/n]
 ```
 
 ### ✅ With Noob Mode
+
 ```
 📋 WHAT I'M ASKING TO DO:
 I want to download a widely-used utility library called "lodash" (version 4.17.21). It provides helper functions for working with data.
@@ -332,12 +356,14 @@ This downloads code from the internet and adds it to your project. Lodash is ext
 ## 13. File Deletion
 
 ### ❌ Without Noob Mode
+
 ```
 Allow tool: bash with command "rm src/deprecated/old-auth.ts"?
 [y/n]
 ```
 
 ### ✅ With Noob Mode
+
 ```
 📋 WHAT I'M ASKING TO DO:
 I want to permanently delete the file "src/deprecated/old-auth.ts."
@@ -361,6 +387,7 @@ Deleting a file is permanent — there's no recycle bin for this. However, this 
 ## 14. Complex Error Message
 
 ### ❌ Without Noob Mode
+
 ```
 Error: EACCES: permission denied, open '/usr/local/lib/node_modules/@github/copilot/package.json'
     at Object.openSync (node:fs:603:3)
@@ -368,6 +395,7 @@ Error: EACCES: permission denied, open '/usr/local/lib/node_modules/@github/copi
 ```
 
 ### ✅ With Noob Mode
+
 ```
 ❌ WHAT WENT WRONG:
 The computer blocked access to a file because your user account doesn't have permission to modify it.
@@ -387,11 +415,13 @@ Option B: Install to a different location that doesn't require special permissio
 ## 15. Task Completion Summary
 
 ### ❌ Without Noob Mode
+
 ```
 Done. Created the analysis file.
 ```
 
 ### ✅ With Noob Mode
+
 ```
 ✅ ALL DONE — Here's what happened:
 

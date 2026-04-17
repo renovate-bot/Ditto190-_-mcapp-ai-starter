@@ -15,10 +15,6 @@
     "server-development",
     "sdk"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/go-mcp-server-generator"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/go-mcp-server-generator"]
 }

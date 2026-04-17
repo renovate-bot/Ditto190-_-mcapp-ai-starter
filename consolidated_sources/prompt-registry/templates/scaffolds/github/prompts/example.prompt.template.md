@@ -8,8 +8,9 @@ description: Generate a comprehensive README file for a project
 ## Context
 
 You are helping to document a software project. The README should include:
+
 - Clear and concise description of what the project does
-- Installation and setup instructions  
+- Installation and setup instructions
 - Usage examples and getting started guide
 - Contribution guidelines
 - License information
@@ -25,6 +26,7 @@ You are helping to document a software project. The README should include:
 ## Output Format
 
 Provide a complete README with these sections:
+
 1. Project title and tagline
 2. Brief description (2-3 sentences)
 3. Features overview (bullet points)

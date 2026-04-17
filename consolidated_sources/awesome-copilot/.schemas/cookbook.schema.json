@@ -10,7 +10,14 @@
       "description": "List of cookbooks",
       "items": {
         "type": "object",
-        "required": ["id", "name", "description", "path", "languages", "recipes"],
+        "required": [
+          "id",
+          "name",
+          "description",
+          "path",
+          "languages",
+          "recipes"
+        ],
         "properties": {
           "id": {
             "type": "string",

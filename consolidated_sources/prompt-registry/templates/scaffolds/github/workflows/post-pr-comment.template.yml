@@ -13,7 +13,7 @@ permissions:
 jobs:
   post-comment:
     name: Post Validation Comment
-    runs-on: {{githubRunner}}
+    runs-on: { { githubRunner } }
     if: github.event.workflow_run.event == 'pull_request'
     steps:
       - uses: actions/checkout@v4

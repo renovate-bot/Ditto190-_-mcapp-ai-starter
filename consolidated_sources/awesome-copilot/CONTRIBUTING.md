@@ -36,7 +36,7 @@ Instructions help customize GitHub Copilot's behavior for specific technologies,
 
 ```markdown
 ---
-description: 'Instructions for customizing GitHub Copilot behavior for specific technologies and practices'
+description: "Instructions for customizing GitHub Copilot behavior for specific technologies and practices"
 ---
 
 # Your Technology/Framework Name
@@ -66,10 +66,10 @@ Agents are specialized configurations that transform GitHub Copilot Chat into do
 
 ```markdown
 ---
-description: 'Brief description of the agent and its purpose'
-model: 'gpt-5'
-tools: ['codebase', 'terminalCommand']
-name: 'My Agent Name'
+description: "Brief description of the agent and its purpose"
+model: "gpt-5"
+tools: ["codebase", "terminalCommand"]
+name: "My Agent Name"
 ---
 
 You are an expert [domain/role] with deep knowledge in [specific areas].
@@ -175,9 +175,9 @@ hooks/my-hook/
 
 ```markdown
 ---
-name: 'My Hook Name'
-description: 'Brief description of what this hook does'
-tags: ['logging', 'automation']
+name: "My Hook Name"
+description: "Brief description of what this hook does"
+tags: ["logging", "automation"]
 ---
 
 # My Hook Name
@@ -257,7 +257,7 @@ Create a daily summary of open issues for the team.
 > [!IMPORTANT]
 > All pull requests should target the **`staged`** branch, not `main`.
 
-> [!NOTE] 
+> [!NOTE]
 > We use [all-contributors](https://github.com/all-contributors/all-contributors) to recognize all types of contributions to the project. Jump to [Contributors Recognition](#contributor-recognition) to learn more!
 
 ## What We Accept
@@ -308,18 +308,17 @@ The contributors list is updated automatically every Sunday at **3:00 AM UTC**. 
 
 We welcome many kinds of contributions, including the custom categories below:
 
-| Category | Description | Emoji |
-| --- | --- | :---: |
-| **Instructions** | Custom instruction sets that guide GitHub Copilot behavior | 🧭 |
-| **Agents** | Defined GitHub Copilot roles or personalities | 🎭 |
-| **Skills** | Specialized knowledge of a task for GitHub Copilot | 🧰 |
-| **Workflows** | Agentic Workflows for AI-powered repository automation | ⚡ |
-| **Plugins** | Installable packages of related prompts, agents, or skills | 🎁 |
+| Category         | Description                                                | Emoji |
+| ---------------- | ---------------------------------------------------------- | :---: |
+| **Instructions** | Custom instruction sets that guide GitHub Copilot behavior |  🧭   |
+| **Agents**       | Defined GitHub Copilot roles or personalities              |  🎭   |
+| **Skills**       | Specialized knowledge of a task for GitHub Copilot         |  🧰   |
+| **Workflows**    | Agentic Workflows for AI-powered repository automation     |  ⚡   |
+| **Plugins**      | Installable packages of related prompts, agents, or skills |  🎁   |
 
 In addition, all standard contribution types supported by [All Contributors](https://allcontributors.org/emoji-key/) are recognized.
 
 > Every contribution matters. Thanks for helping improve this resource for the GitHub Copilot community.
-
 
 ## Code of Conduct
 

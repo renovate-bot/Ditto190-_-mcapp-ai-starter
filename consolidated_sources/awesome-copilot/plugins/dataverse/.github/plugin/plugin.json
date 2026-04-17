@@ -7,11 +7,6 @@
   },
   "repository": "https://github.com/github/awesome-copilot",
   "license": "MIT",
-  "keywords": [
-    "dataverse",
-    "mcp"
-  ],
-  "skills": [
-    "./skills/mcp-configure"
-  ]
+  "keywords": ["dataverse", "mcp"],
+  "skills": ["./skills/mcp-configure"]
 }

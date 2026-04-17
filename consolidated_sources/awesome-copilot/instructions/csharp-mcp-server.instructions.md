@@ -1,6 +1,6 @@
 ---
-description: 'Instructions for building Model Context Protocol (MCP) servers using the C# SDK'
-applyTo: '**/*.cs, **/*.csproj'
+description: "Instructions for building Model Context Protocol (MCP) servers using the C# SDK"
+applyTo: "**/*.cs, **/*.csproj"
 ---
 
 # C# MCP Server Development
@@ -44,9 +44,10 @@ applyTo: '**/*.cs, **/*.csproj'
 ## Common Patterns
 
 ### Basic Server Setup
+
 ```csharp
 var builder = Host.CreateApplicationBuilder(args);
-builder.Logging.AddConsole(options => 
+builder.Logging.AddConsole(options =>
     options.LogToStandardErrorThreshold = LogLevel.Trace);
 builder.Services
     .AddMcpServer()
@@ -56,18 +57,20 @@ await builder.Build().RunAsync();
 ```
 
 ### Simple Tool
+
 ```csharp
 [McpServerToolType]
 public static class MyTools
 {
     [McpServerTool, Description("Description of what the tool does")]
     public static string ToolName(
-        [Description("Parameter description")] string param) => 
+        [Description("Parameter description")] string param) =>
         $"Result: {param}";
 }
 ```
 
 ### Tool with Dependency Injection
+
 ```csharp
 [McpServerTool, Description("Fetches data from a URL")]
 public static async Task<string> FetchData(
@@ -78,6 +81,7 @@ public static async Task<string> FetchData(
 ```
 
 ### Tool with Sampling
+
 ```csharp
 [McpServerTool, Description("Analyzes content using the client's LLM")]
 public static async Task<string> Analyze(

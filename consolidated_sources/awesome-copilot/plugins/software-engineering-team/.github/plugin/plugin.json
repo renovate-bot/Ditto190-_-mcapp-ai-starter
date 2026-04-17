@@ -17,7 +17,5 @@
     "product",
     "ai-ethics"
   ],
-  "agents": [
-    "./agents"
-  ]
+  "agents": ["./agents"]
 }

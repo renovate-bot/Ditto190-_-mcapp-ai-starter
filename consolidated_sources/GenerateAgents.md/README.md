@@ -25,17 +25,18 @@ Copy the sample env file and fill in the key for your chosen provider:
 ```bash
 cp .env.sample .env
 ```
-*(Make sure the `.env` file sits directly in the root directory of the project, i.e., `GenerateAgents.md/.env`)*
+
+_(Make sure the `.env` file sits directly in the root directory of the project, i.e., `GenerateAgents.md/.env`)_
 
 You only need **one** provider key — whichever model you select:
 
-| Provider | Env Variable | Get a key |
-|---|---|---|
-| Gemini | `GEMINI_API_KEY` | [Google AI Studio](https://aistudio.google.com/apikey) |
-| Anthropic | `ANTHROPIC_API_KEY` | [Anthropic Console](https://console.anthropic.com/) |
-| OpenAI | `OPENAI_API_KEY` | [OpenAI Platform](https://platform.openai.com/api-keys) |
+| Provider  | Env Variable        | Get a key                                               |
+| --------- | ------------------- | ------------------------------------------------------- |
+| Gemini    | `GEMINI_API_KEY`    | [Google AI Studio](https://aistudio.google.com/apikey)  |
+| Anthropic | `ANTHROPIC_API_KEY` | [Anthropic Console](https://console.anthropic.com/)     |
+| OpenAI    | `OPENAI_API_KEY`    | [OpenAI Platform](https://platform.openai.com/api-keys) |
 
-*Note: You can use **any** of the 100+ providers supported by [LiteLLM](https://docs.litellm.ai/docs/providers) (e.g., `OLLAMA_API_BASE`, `OPENROUTER_API_KEY`) simply by exposing the environment variables LiteLLM expects.*
+_Note: You can use **any** of the 100+ providers supported by [LiteLLM](https://docs.litellm.ai/docs/providers) (e.g., `OLLAMA_API_BASE`, `OPENROUTER_API_KEY`) simply by exposing the environment variables LiteLLM expects._
 
 ### 3. Run
 
@@ -48,6 +49,7 @@ uv run autogenerateagentsmd --github-repository https://github.com/pallets/flask
 ```
 
 #### Using Specific Models
+
 ```bash
 # Choose a specific model (supports ANY model natively supported by LiteLLM)
 uv run autogenerateagentsmd /path/to/local/repo --model anthropic/claude-sonnet-4.6
@@ -67,7 +69,7 @@ uv run autogenerateagentsmd --list-models
 #### Advanced Analysis
 
 **1. Strict Style**
-Research suggests that broad, descriptive codebase summaries can sometimes distract LLMs and drive up token costs. The strict style combats this by giving the agent *only* what it can't easily `grep` for itself: strict constraints, undocumented quirks, and things it must *never* do.
+Research suggests that broad, descriptive codebase summaries can sometimes distract LLMs and drive up token costs. The strict style combats this by giving the agent _only_ what it can't easily `grep` for itself: strict constraints, undocumented quirks, and things it must _never_ do.
 
 ```bash
 uv run autogenerateagentsmd --github-repository https://github.com/pallets/flask --style strict
@@ -88,8 +90,8 @@ uv run autogenerateagentsmd --github-repository https://github.com/pallets/flask
 
 The generated file will be saved under the `projects/` directory using the repository name.
 
-| Output | Location |
-|---|---|
+| Output      | Location                           |
+| ----------- | ---------------------------------- |
 | `AGENTS.md` | `./projects/<repo-name>/AGENTS.md` |
 
 ---
@@ -99,45 +101,73 @@ The generated file will be saved under the `projects/` directory using the repos
 GenerateAgents supports two distinct styles for `AGENTS.md`, each tailored to different AI agent setups. You can toggle between them using the `--style` flag.
 
 Here are two examples generated for the `flask` repository:
+
 - **[Strict Style Example](projects/flask/AGENTS_strict.md)** (`--style strict`) - Focuses purely on coding constraints, anti-patterns, and repository quirks.
 - **[Comprehensive Style Example](projects/flask/AGENTS_comprehensive.md)** (`--style comprehensive`) - Includes high-level architectural overviews and explanations alongside constraints.
 
 ##### 1. Comprehensive Style (Default)
+
 This builds a detailed, expansive guide. It extracts high-level abstractions like project architecture, directory mappings, data flow principles, and agent personas. Great for giving a brand-new AI agent a complete tour of the repository.
 
 **Output Format:**
+
 ```markdown
 # AGENTS.md — <repo-name>
+
 ## Project Overview
+
 ## Agent Persona
+
 ## Tech Stack
+
 ## Architecture
+
 ## Code Style
+
 ## Anti-Patterns & Restrictions
+
 ## Database & State Management
+
 ## Error Handling & Logging
+
 ## Testing Commands
+
 ## Testing Guidelines
+
 ## Security & Compliance
+
 ## Dependencies & Environment
+
 ## PR & Git Rules
+
 ## Documentation Standards
+
 ## Common Patterns
+
 ## Agent Workflow / SOP
+
 ## Few-Shot Examples
 ```
 
 ##### 2. Strict Style
-Research suggests that broad, descriptive codebase summaries can sometimes distract LLMs and drive up token costs. The strict style combats this by giving the agent *only* what it can't easily `grep` for itself: strict constraints, undocumented quirks, and things it must *never* do.
+
+Research suggests that broad, descriptive codebase summaries can sometimes distract LLMs and drive up token costs. The strict style combats this by giving the agent _only_ what it can't easily `grep` for itself: strict constraints, undocumented quirks, and things it must _never_ do.
 
 **Output Format:**
+
 ```markdown
 # AGENTS.md — <repo-name>
+
 ## Code Style & Strict Rules
+
 ## Anti-Patterns & Restrictions
+
 ## Security & Compliance
+
 ## Lessons Learned (Past Failures)
+
 ## Repository Quirks & Gotchas
+
 ## Execution Commands
 ```
 
@@ -223,26 +253,27 @@ GenerateAgents/
 
 | Variable | Required | Description |
 `|---|---|---|
-| `AUTOSKILL_MODEL` | No | Default model string (avoids `--model` flag) |
-| `GITHUB_REPO_URL` | No | Target repository URL (skips prompt) |
+| `AUTOSKILL_MODEL`| No | Default model string (avoids`--model`flag) |
+|`GITHUB_REPO_URL` | No | Target repository URL (skips prompt) |
 
 ### Supported Models
 
-GenerateAgents natively supports **ANY model supported by LiteLLM**! 
+GenerateAgents natively supports **ANY model supported by LiteLLM**!
 
-**Important:** When passing a model string to the `--model` flag, you *must* explicitly provide it in the format `PROVIDER/MODEL_NAME` (e.g., `ollama/llama3`, `openrouter/anthropic/claude-3-opus`, `openai/gpt-4o`). This ensures LiteLLM appropriately maps the request to the correct provider API. Make sure the corresponding required environment variables are exported.
+**Important:** When passing a model string to the `--model` flag, you _must_ explicitly provide it in the format `PROVIDER/MODEL_NAME` (e.g., `ollama/llama3`, `openrouter/anthropic/claude-3-opus`, `openai/gpt-4o`). This ensures LiteLLM appropriately maps the request to the correct provider API. Make sure the corresponding required environment variables are exported.
 
 You can also pass custom endpoints and API keys directly via the CLI, which is especially useful for local providers:
-* `--api-base`: Allows pointing to custom local LM endpoints (e.g., `http://localhost:11434` for Ollama).
-* `--api-key`: Explicitly pass an API key rather than relying on environment variables.
+
+- `--api-base`: Allows pointing to custom local LM endpoints (e.g., `http://localhost:11434` for Ollama).
+- `--api-key`: Explicitly pass an API key rather than relying on environment variables.
 
 For ease of use, we maintain a "Catalog" of default fallbacks. If you just pass the provider name, these are the models we use by default:
 
-| Provider | Default Model |
-|---|---|
-| Gemini | `gemini/gemini-2.5-pro` |
+| Provider  | Default Model                 |
+| --------- | ----------------------------- |
+| Gemini    | `gemini/gemini-2.5-pro`       |
 | Anthropic | `anthropic/claude-sonnet-4.6` |
-| OpenAI | `openai/gpt-5.2` |
+| OpenAI    | `openai/gpt-5.2`              |
 
 Run `uv run autogenerateagentsmd --list-models` to view our catalog and defaults.
 
@@ -287,7 +318,7 @@ AUTOSKILL_MODEL=openai/gpt-5.2 uv run pytest tests/ -v -s -m e2e
 uv run pytest tests/ -v -s -k "test_clone"
 ```
 
-> ⚠️ **Note:** E2E pipeline tests make real LLM API calls and may take 1-2 minutes per test. Test generated `AGENTS.md` and markdown outputs are persisted in `tests/output/<repo_name>/` for manual inspection. 
+> ⚠️ **Note:** E2E pipeline tests make real LLM API calls and may take 1-2 minutes per test. Test generated `AGENTS.md` and markdown outputs are persisted in `tests/output/<repo_name>/` for manual inspection.
 
 ---
 

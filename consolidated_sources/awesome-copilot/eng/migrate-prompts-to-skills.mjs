@@ -129,7 +129,7 @@ function main() {
     "\nNext steps:\n" +
       "1. Run 'npm run skill:validate' to validate all new skills\n" +
       "2. Update plugin manifests to reference skills instead of commands\n" +
-      "3. Remove prompts directory after testing\n"
+      "3. Remove prompts directory after testing\n",
   );
 }
 

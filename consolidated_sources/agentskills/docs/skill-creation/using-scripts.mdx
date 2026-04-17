@@ -21,6 +21,7 @@ When an existing package already does what you need, you can reference it direct
 
     - Not bundled with Python — requires a separate install.
     - Fast. Caches aggressively so repeat runs are near-instant.
+
   </Tab>
   <Tab title="pipx">
     [pipx](https://pipx.pypa.io/) runs Python packages in isolated environments. Available via OS package managers (`apt install pipx`, `brew install pipx`).
@@ -32,6 +33,7 @@ When an existing package already does what you need, you can reference it direct
 
     - Not bundled with Python — requires a separate install.
     - A mature alternative to `uvx`. While `uvx` has become the standard recommendation, `pipx` remains a reliable option with broader OS package manager availability.
+
   </Tab>
   <Tab title="npx">
     [npx](https://docs.npmjs.com/cli/commands/npx) runs npm packages, downloading them on demand. It ships with npm (which ships with Node.js).
@@ -44,6 +46,7 @@ When an existing package already does what you need, you can reference it direct
     - Bundled with Node.js — no extra install needed.
     - Downloads the package, runs it, and caches it for future use.
     - Pin versions with `npx package@version` for reproducibility.
+
   </Tab>
   <Tab title="bunx">
     [bunx](https://bun.sh/docs/cli/bunx) is Bun's equivalent of `npx`. It ships with [Bun](https://bun.sh/).
@@ -55,6 +58,7 @@ When an existing package already does what you need, you can reference it direct
 
     - Drop-in replacement for `npx` in Bun-based environments.
     - Only appropriate when the user's environment has Bun rather than Node.js.
+
   </Tab>
   <Tab title="deno run">
     [deno run](https://docs.deno.com/runtime/reference/cli/run/) runs scripts directly from URLs or specifiers. It ships with [Deno](https://deno.com/).
@@ -66,6 +70,7 @@ When an existing package already does what you need, you can reference it direct
 
     - Permission flags (`--allow-read`, etc.) are required for filesystem/network access.
     - Use `--` to separate Deno flags from the tool's own flags.
+
   </Tab>
   <Tab title="go run">
     [go run](https://pkg.go.dev/cmd/go#hdr-Compile_and_run_Go_program) compiles and runs Go packages directly. It is built into the `go` command.
@@ -77,6 +82,7 @@ When an existing package already does what you need, you can reference it direct
 
     - Built into Go — no extra tooling needed.
     - Pin versions or use `@latest` to make the command explicit.
+
   </Tab>
 </Tabs>
 
@@ -105,6 +111,7 @@ Then instruct the agent to run them:
 ## Workflow
 
 1. Run the validation script:
+
    ```bash
    bash scripts/validate.sh "$INPUT_FILE"
    ```
@@ -116,7 +123,9 @@ Then instruct the agent to run them:
 ````
 
 <Note>
-The same relative-path convention works in support files like `references/*.md` — script execution paths (in code blocks) are relative to the **skill directory root**, because the agent runs commands from there.
+  The same relative-path convention works in support files like
+  `references/*.md` — script execution paths (in code blocks) are relative to
+  the **skill directory root**, because the agent runs commands from there.
 </Note>
 
 ## Self-contained scripts
@@ -153,6 +162,7 @@ Several languages support inline dependency declarations:
     - Pin versions with [PEP 508](https://peps.python.org/pep-0508/) specifiers: `"beautifulsoup4>=4.12,<5"`.
     - Use `requires-python` to constrain the Python version.
     - Use `uv lock --script` to create a lockfile for full reproducibility.
+
   </Tab>
   <Tab title="Deno">
     Deno's `npm:` and `jsr:` import specifiers make every script self-contained by default:
@@ -175,6 +185,7 @@ Several languages support inline dependency declarations:
     - Version specifiers follow semver: `@1.0.0` (exact), `@^1.0.0` (compatible).
     - Dependencies are cached globally. Use `--reload` to force re-fetch.
     - Packages with native addons (node-gyp) may not work — packages that ship pre-built binaries work best.
+
   </Tab>
   <Tab title="Bun">
     Bun auto-installs missing packages at runtime when no `node_modules` directory is found. Pin versions directly in the import path:
@@ -196,6 +207,7 @@ Several languages support inline dependency declarations:
     - No `package.json` or `node_modules` needed. TypeScript works natively.
     - Packages are cached globally. First run downloads; subsequent runs are near-instant.
     - If a `node_modules` directory exists anywhere up the directory tree, auto-install is disabled and Bun falls back to standard Node.js resolution.
+
   </Tab>
   <Tab title="Ruby">
     Bundler ships with Ruby since 2.6. Use `bundler/inline` to declare gems directly in the script:
@@ -219,6 +231,7 @@ Several languages support inline dependency declarations:
 
     - Pin versions explicitly (`gem 'nokogiri', '~> 1.16'`) — there is no lockfile.
     - An existing `Gemfile` or `BUNDLE_GEMFILE` env var in the working directory can interfere.
+
   </Tab>
 </Tabs>
 

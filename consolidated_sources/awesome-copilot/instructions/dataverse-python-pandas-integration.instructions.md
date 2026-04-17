@@ -1,6 +1,7 @@
 # Dataverse SDK for Python - Pandas Integration Guide
 
 ## Overview
+
 Guide to integrating the Dataverse SDK for Python with pandas DataFrames for data science and analysis workflows. The SDK's JSON response format maps seamlessly to pandas DataFrames, enabling data scientists to work with Dataverse data using familiar data manipulation tools.
 
 ---
@@ -8,13 +9,16 @@ Guide to integrating the Dataverse SDK for Python with pandas DataFrames for dat
 ## 1. Introduction to PandasODataClient
 
 ### What is PandasODataClient?
+
 `PandasODataClient` is a thin wrapper around the standard `DataverseClient` that returns data in pandas DataFrame format instead of raw JSON dictionaries. This makes it ideal for:
+
 - Data scientists working with tabular data
 - Analytics and reporting workflows
 - Data exploration and cleaning
 - Integration with machine learning pipelines
 
 ### Installation Requirements
+
 ```bash
 # Install core dependencies
 pip install PowerPlatform-Dataverse-Client
@@ -25,13 +29,16 @@ pip install pandas
 ```
 
 ### When to Use PandasODataClient
+
 ✅ **Use when you need:**
+
 - Data exploration and analysis
 - Working with tabular data
 - Integration with statistical/ML libraries
 - Efficient data manipulation
 
 ❌ **Use DataverseClient instead when you need:**
+
 - Real-time CRUD operations only
 - File upload operations
 - Metadata operations
@@ -42,6 +49,7 @@ pip install pandas
 ## 2. Basic DataFrame Workflow
 
 ### Converting Query Results to DataFrame
+
 ```python
 from azure.identity import InteractiveBrowserCredential
 from PowerPlatform.Dataverse.client import DataverseClient
@@ -74,6 +82,7 @@ print(f"Total records: {len(df)}")
 ```
 
 ### Query Parameters Map to DataFrame
+
 ```python
 # All query parameters return as columns in DataFrame
 df = pd.DataFrame(
@@ -94,6 +103,7 @@ df = pd.DataFrame(
 ## 3. Data Exploration with Pandas
 
 ### Basic Exploration
+
 ```python
 import pandas as pd
 from azure.identity import InteractiveBrowserCredential
@@ -117,6 +127,7 @@ print(df.head(10))        # First 10 rows
 ```
 
 ### Filtering and Selecting
+
 ```python
 # Filter rows by condition
 high_value = df[df['creditlimit'] > 100000]
@@ -132,6 +143,7 @@ print(df['industrycode'].value_counts())
 ```
 
 ### Sorting and Grouping
+
 ```python
 # Sort by column
 sorted_df = df.sort_values('creditlimit', ascending=False)
@@ -147,6 +159,7 @@ print(df.groupby('industrycode')['creditlimit'].describe())
 ```
 
 ### Data Cleaning
+
 ```python
 # Handle missing values
 df_clean = df.dropna()                    # Remove rows with NaN
@@ -167,6 +180,7 @@ df['createdon'] = pd.to_datetime(df['createdon'])
 ## 4. Data Analysis Patterns
 
 ### Aggregation and Summarization
+
 ```python
 # Create summary report
 summary = df.groupby('industrycode').agg({
@@ -179,6 +193,7 @@ print(summary)
 ```
 
 ### Time-Series Analysis
+
 ```python
 # Convert to datetime
 df['createdon'] = pd.to_datetime(df['createdon'])
@@ -193,6 +208,7 @@ df['day_of_week'] = df['createdon'].dt.day_name()
 ```
 
 ### Join and Merge Operations
+
 ```python
 # Load two related tables
 accounts = pd.DataFrame(client.get("account", select=["accountid", "name"]))
@@ -210,6 +226,7 @@ print(merged.head())
 ```
 
 ### Statistical Analysis
+
 ```python
 # Correlation matrix
 correlation = df[['creditlimit', 'industrycode']].corr()
@@ -228,6 +245,7 @@ print(df['creditlimit'].quantile([0.25, 0.5, 0.75]))
 ## 5. Pivot Tables and Reports
 
 ### Creating Pivot Tables
+
 ```python
 # Pivot table by industry and status
 pivot = pd.pivot_table(
@@ -242,6 +260,7 @@ print(pivot)
 ```
 
 ### Generating Reports
+
 ```python
 # Sales report by industry
 industry_report = df.groupby('industrycode').agg({
@@ -266,6 +285,7 @@ industry_report.to_excel('industry_report.xlsx')
 ## 6. Data Visualization
 
 ### Matplotlib Integration
+
 ```python
 import matplotlib.pyplot as plt
 
@@ -293,6 +313,7 @@ plt.show()
 ```
 
 ### Seaborn Integration
+
 ```python
 import seaborn as sns
 
@@ -313,6 +334,7 @@ plt.show()
 ## 7. Machine Learning Integration
 
 ### Preparing Data for ML
+
 ```python
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -339,6 +361,7 @@ print(f"Training set: {len(X_train)}, Test set: {len(X_test)}")
 ```
 
 ### Building a Classification Model
+
 ```python
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
@@ -365,6 +388,7 @@ print(importances)
 ## 8. Advanced DataFrame Operations
 
 ### Custom Functions
+
 ```python
 # Apply function to columns
 df['name_length'] = df['name'].apply(len)
@@ -383,6 +407,7 @@ df['adjusted_limit'] = df['creditlimit'].where(
 ```
 
 ### String Operations
+
 ```python
 # String methods
 df['name_upper'] = df['name'].str.upper()
@@ -399,6 +424,7 @@ df['industry'] = df['industrycode'].map({
 ```
 
 ### Reshaping Data
+
 ```python
 # Transpose
 transposed = df.set_index('name').T
@@ -415,6 +441,7 @@ melted = pd.melt(df, id_vars=['name'], var_name='metric', value_name='value')
 ## 9. Performance Optimization
 
 ### Efficient Data Loading
+
 ```python
 # Load large datasets in chunks
 all_records = []
@@ -435,6 +462,7 @@ print(f"Total: {len(df)} records")
 ```
 
 ### Memory Optimization
+
 ```python
 # Reduce memory usage
 # Use categorical for repeated values
@@ -451,6 +479,7 @@ print(df.memory_usage(deep=True).sum() / 1024**2, "MB")
 ```
 
 ### Query Optimization
+
 ```python
 # Apply filters on server, not client
 # ✅ GOOD: Filter on server

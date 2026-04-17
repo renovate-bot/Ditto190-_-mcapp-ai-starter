@@ -77,7 +77,7 @@ export class FuzzySearch<T extends SearchableItem = SearchItem> {
   private calculateScore(
     item: T,
     queryWords: string[],
-    fields: string[]
+    fields: string[],
   ): number {
     let totalScore = 0;
 
@@ -120,7 +120,7 @@ export class FuzzySearch<T extends SearchableItem = SearchItem> {
       fields.some((field) => {
         const value = (item as Record<string, unknown>)[field];
         return value && String(value).toLowerCase().includes(word);
-      })
+      }),
     );
 
     if (matchesAllWords && queryWords.length > 1) {
@@ -144,7 +144,7 @@ export class FuzzySearch<T extends SearchableItem = SearchItem> {
       if (word.length < 2) continue;
       const regex = new RegExp(
         `(${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
-        "gi"
+        "gi",
       );
       const parts = result.split(/(<[^>]+>)/g);
       let inMark = false;

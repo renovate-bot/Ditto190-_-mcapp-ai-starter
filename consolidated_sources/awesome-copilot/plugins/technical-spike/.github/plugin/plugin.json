@@ -13,10 +13,6 @@
     "validation",
     "research"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/create-technical-spike"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/create-technical-spike"]
 }

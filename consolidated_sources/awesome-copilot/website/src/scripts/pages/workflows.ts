@@ -52,7 +52,7 @@ function sortItems(items: Workflow[]): Workflow[] {
 
 function applyFiltersAndRender(): void {
   const searchInput = document.getElementById(
-    "search-input"
+    "search-input",
   ) as HTMLInputElement;
   const countEl = document.getElementById("results-count");
   const query = searchInput?.value || "";
@@ -61,7 +61,7 @@ function applyFiltersAndRender(): void {
 
   if (currentFilters.triggers.length > 0) {
     results = results.filter((item) =>
-      item.triggers.some((t) => currentFilters.triggers.includes(t))
+      item.triggers.some((t) => currentFilters.triggers.includes(t)),
     );
   }
 
@@ -73,7 +73,7 @@ function applyFiltersAndRender(): void {
     activeFilters.push(
       `${currentFilters.triggers.length} trigger${
         currentFilters.triggers.length > 1 ? "s" : ""
-      }`
+      }`,
     );
   let countText = `${results.length} of ${allItems.length} workflows`;
   if (activeFilters.length > 0) {
@@ -101,13 +101,13 @@ function renderItems(items: Workflow[], query = ""): void {
           query ? search.highlight(item.title, query) : escapeHtml(item.title)
         }</div>
         <div class="resource-description">${escapeHtml(
-          item.description || "No description"
+          item.description || "No description",
         )}</div>
         <div class="resource-meta">
           ${item.triggers
             .map(
               (t) =>
-                `<span class="resource-tag tag-trigger">${escapeHtml(t)}</span>`
+                `<span class="resource-tag tag-trigger">${escapeHtml(t)}</span>`,
             )
             .join("")}
           ${getLastUpdatedHtml(item.lastUpdated)}
@@ -116,11 +116,11 @@ function renderItems(items: Workflow[], query = ""): void {
       <div class="resource-actions">
         ${getActionButtonsHtml(item.path)}
         <a href="${getGitHubUrl(
-          item.path
+          item.path,
         )}" class="btn btn-secondary" target="_blank" onclick="event.stopPropagation()" title="View on GitHub">GitHub</a>
       </div>
     </div>
-  `
+  `,
     )
     .join("");
 
@@ -137,11 +137,11 @@ function renderItems(items: Workflow[], query = ""): void {
 export async function initWorkflowsPage(): Promise<void> {
   const list = document.getElementById("resource-list");
   const searchInput = document.getElementById(
-    "search-input"
+    "search-input",
   ) as HTMLInputElement;
   const clearFiltersBtn = document.getElementById("clear-filters");
   const sortSelect = document.getElementById(
-    "sort-select"
+    "sort-select",
   ) as HTMLSelectElement;
 
   const data = await fetchData<WorkflowsData>("workflows.json");
@@ -163,7 +163,7 @@ export async function initWorkflowsPage(): Promise<void> {
     data.filters.triggers.map((t) => ({ value: t, label: t })),
     "value",
     "label",
-    true
+    true,
   );
   document.getElementById("filter-trigger")?.addEventListener("change", () => {
     currentFilters.triggers = getChoicesValues(triggerSelect);
@@ -178,7 +178,7 @@ export async function initWorkflowsPage(): Promise<void> {
   applyFiltersAndRender();
   searchInput?.addEventListener(
     "input",
-    debounce(() => applyFiltersAndRender(), 200)
+    debounce(() => applyFiltersAndRender(), 200),
   );
 
   clearFiltersBtn?.addEventListener("click", () => {

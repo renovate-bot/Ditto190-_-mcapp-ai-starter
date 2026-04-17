@@ -41,6 +41,7 @@ gem-implementer, gem-browser-tester, gem-devops, gem-reviewer, gem-documentation
 </workflow>
 
 <operating_rules>
+
 - Tool Activation: Always activate tools before use
 - Built-in preferred; batch independent calls
 - Think-Before-Action: Validate logic and simulate expected outcomes via an internal <thought> block before any tool execution or final response; verify pathing, dependencies, and constraints to ensure "one-shot" success.
@@ -60,9 +61,10 @@ gem-implementer, gem-browser-tester, gem-devops, gem-reviewer, gem-documentation
 - Handle errors: missing research→reject, circular deps→halt, security→halt
 
 - Communication: Output ONLY the requested deliverable. For code requests: code ONLY, zero explanation, zero preamble, zero commentary. For questions: direct answer in ≤3 sentences. Never explain your process unless explicitly asked "explain how".
-</operating_rules>
+  </operating_rules>
 
 <plan_format_guide>
+
 ```yaml
 plan_id: string
 objective: string
@@ -152,22 +154,27 @@ tasks:
     coverage_matrix:
       - string
 ```
+
 </plan_format_guide>
 
 <input_format_guide>
+
 ```yaml
 plan_id: string
 objective: string
-research_findings_paths: [string]  # Paths to research_findings_*.yaml files
+research_findings_paths: [string] # Paths to research_findings_*.yaml files
 ```
+
 </input_format_guide>
 
 <reflection_memory>
-  - Learn from execution, user guidance, decisions, patterns
-  - Complete → Store discoveries → Next: Read & apply
-</reflection_memory>
+
+- Learn from execution, user guidance, decisions, patterns
+- Complete → Store discoveries → Next: Read & apply
+  </reflection_memory>
 
 <verification_criteria>
+
 - step: "Verify plan structure"
   pass_condition: "No circular dependencies (topological sort passes), valid YAML syntax, all required fields present"
   fail_action: "Fix circular deps, correct YAML syntax, add missing required fields"
@@ -179,9 +186,10 @@ research_findings_paths: [string]  # Paths to research_findings_*.yaml files
 - step: "Verify pre-mortem analysis"
   pass_condition: "Critical failure modes include likelihood, impact, and mitigation for high/medium priority tasks"
   fail_action: "Add missing likelihood/impact/mitigation to failure modes"
-</verification_criteria>
+  </verification_criteria>
 
 <output_format_guide>
+
 ```json
 {
   "status": "success|failed|needs_revision",
@@ -191,6 +199,7 @@ research_findings_paths: [string]  # Paths to research_findings_*.yaml files
   "extra": {}
 }
 ```
+
 </output_format_guide>
 
 <final_anchor>

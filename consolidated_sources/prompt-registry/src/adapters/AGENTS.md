@@ -14,18 +14,18 @@ Adapters provide a unified interface for different prompt bundle sources (GitHub
 
 ```typescript
 interface IRepositoryAdapter {
-    fetchBundles(source: RegistrySource): Promise<Bundle[]>;
-    getDownloadUrl(bundle: Bundle): Promise<string | Buffer>;
-    validate(source: RegistrySource): Promise<boolean>;
+  fetchBundles(source: RegistrySource): Promise<Bundle[]>;
+  getDownloadUrl(bundle: Bundle): Promise<string | Buffer>;
+  validate(source: RegistrySource): Promise<boolean>;
 }
 ```
 
 ### Two Download Patterns
 
-| Pattern | Return Type | Used By | When |
-|---------|-------------|---------|------|
-| URL-based | `string` | GitHub, GitLab, HTTP | Pre-packaged bundles |
-| Buffer-based | `Buffer` | Awesome Copilot, Local | Dynamically created bundles |
+| Pattern      | Return Type | Used By                | When                        |
+| ------------ | ----------- | ---------------------- | --------------------------- |
+| URL-based    | `string`    | GitHub, GitLab, HTTP   | Pre-packaged bundles        |
+| Buffer-based | `Buffer`    | Awesome Copilot, Local | Dynamically created bundles |
 
 ## Authentication Chain (GitHub)
 

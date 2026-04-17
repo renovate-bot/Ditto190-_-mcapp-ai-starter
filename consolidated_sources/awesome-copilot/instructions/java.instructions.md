@@ -1,6 +1,6 @@
 ---
-description: 'Guidelines for building Java base applications'
-applyTo: '**/*.java'
+description: "Guidelines for building Java base applications"
+applyTo: "**/*.java"
 ---
 
 # Java Development
@@ -8,7 +8,7 @@ applyTo: '**/*.java'
 ## General Instructions
 
 - First, prompt the user if they want to integrate static analysis tools (SonarQube, PMD, Checkstyle) into their project setup.
-  - If yes, document a recommended static-analysis setup. 
+  - If yes, document a recommended static-analysis setup.
     - Prefer SonarQube/SonarCloud (SonarLint in IDE + `sonar-scanner` in CI).
     - Create a Sonar project key.
     - Store the scanner token in CI secrets.
@@ -58,7 +58,7 @@ Below are concise, human-readable rules you can apply regardless of which static
 - Redundant casts — Remove unnecessary casts; prefer correct generic typing and let the compiler infer types where possible.
 - Reachable conditions — Avoid conditional expressions that are always true or false; they indicate bugs or dead code and should be corrected.
 
-For contributors who *do* use Sonar or SonarLint: the IDE/scan will show the specific rule key (for example, S2095 for resource leaks) and the affected file/line. Use that information to navigate to the exact location, then apply the recommended remediation.
+For contributors who _do_ use Sonar or SonarLint: the IDE/scan will show the specific rule key (for example, S2095 for resource leaks) and the affected file/line. Use that information to navigate to the exact location, then apply the recommended remediation.
 
 ### Common Code Smells
 

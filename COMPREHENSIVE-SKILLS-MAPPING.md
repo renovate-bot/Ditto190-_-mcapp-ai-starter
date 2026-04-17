@@ -5,8 +5,9 @@
 This document provides a **complete inventory** of all extractable skills from the Anthropic Claude Cookbooks repository. These skills span from foundational ML capabilities to advanced AI patterns, providing a rich set of building blocks for GitHub Copilot Agent automation.
 
 **Total Discoverable Skills: 18+**
+
 - Custom pre-built skills: 3
-- Capability frameworks: 5  
+- Capability frameworks: 5
 - Code pattern tutorials: 1
 - Multimodal examples: 6
 - Agent orchestration patterns: 3
@@ -18,6 +19,7 @@ This document provides a **complete inventory** of all extractable skills from t
 These are fully implemented, tested skills ready for direct conversion.
 
 ### 1.1: Analyzing Financial Statements
+
 - **Source Location**: `skills/custom_skills/analyzing-financial-statements/`
 - **Type**: Financial Analysis
 - **Complexity**: High
@@ -35,6 +37,7 @@ These are fully implemented, tested skills ready for direct conversion.
 - **Conversion Notes**: Wrap existing Python modules with AgentSkill metadata
 
 ### 1.2: Creating Financial Models
+
 - **Source Location**: `skills/custom_skills/creating-financial-models/`
 - **Type**: Financial Modeling
 - **Complexity**: Very High
@@ -52,6 +55,7 @@ These are fully implemented, tested skills ready for direct conversion.
 - **Conversion Notes**: This is a comprehensive suite; may benefit from modular structure
 
 ### 1.3: Applying Brand Guidelines
+
 - **Source Location**: `skills/custom_skills/applying-brand-guidelines/`
 - **Type**: Brand/Design
 - **Complexity**: Medium
@@ -72,6 +76,7 @@ These are fully implemented, tested skills ready for direct conversion.
 These are substantial tutorial notebooks with production-grade implementation examples. Each builds a complete solution from scratch.
 
 ### 2.1: Classification (Insurance Support Tickets)
+
 - **Source Location**: `capabilities/classification/guide.ipynb` (402 KB)
 - **Type**: NLP/ML - Text Classification
 - **Complexity**: High
@@ -99,6 +104,7 @@ These are substantial tutorial notebooks with production-grade implementation ex
   - `text-embedding-retrieval` (shared RAG infrastructure)
 
 ### 2.2: Retrieval-Augmented Generation (RAG)
+
 - **Source Location**: `capabilities/retrieval_augmented_generation/guide.ipynb` (663 KB)
 - **Type**: AI/Knowledge - Domain Knowledge Augmentation
 - **Complexity**: Very High
@@ -119,6 +125,7 @@ These are substantial tutorial notebooks with production-grade implementation ex
 - **Critical for**: Building the infrastructure for Tier 1 skills that use RAG
 
 ### 2.3: Text-to-SQL (Natural Language Queries)
+
 - **Source Location**: `capabilities/text_to_sql/guide.ipynb` (2.9 MB - LARGEST)
 - **Type**: AI/Database - SQL Generation
 - **Complexity**: Very High
@@ -142,6 +149,7 @@ These are substantial tutorial notebooks with production-grade implementation ex
   - Error correction
 
 ### 2.4: Summarization
+
 - **Source Location**: `capabilities/summarization/guide.ipynb` (187 KB)
 - **Type**: NLP - Content Synthesis
 - **Complexity**: Medium-High
@@ -156,6 +164,7 @@ These are substantial tutorial notebooks with production-grade implementation ex
 - **Conversion Notes**: Good foundation skill; pairs well with RAG
 
 ### 2.5: Contextual Embeddings
+
 - **Source Location**: `capabilities/contextual-embeddings/` (TBD - Not yet explored)
 - **Type**: AI/NLP - Vector Representations
 - **Complexity**: Medium
@@ -173,6 +182,7 @@ These are substantial tutorial notebooks with production-grade implementation ex
 ## Tier 3: Specialized Implementations (Niche Value)
 
 ### 3.1: Prompting for Frontend Aesthetics
+
 - **Source Location**: `coding/prompting_for_frontend_aesthetics.ipynb` (64 KB)
 - **Type**: Design/Development - UI/CSS Generation
 - **Complexity**: Medium
@@ -186,6 +196,7 @@ These are substantial tutorial notebooks with production-grade implementation ex
 These are advanced examples for working with images, audio, and documents.
 
 ### 4.1: Best Practices for Vision
+
 - **Source Location**: `multimodal/best_practices_for_vision.ipynb` (4.5 MB)
 - **Type**: Vision/AI - Image Analysis
 - **Complexity**: High
@@ -194,6 +205,7 @@ These are advanced examples for working with images, audio, and documents.
 - **Estimated Conversion Time**: 6-8 hours
 
 ### 4.2: Image Cropping Tool
+
 - **Source Location**: `multimodal/crop_tool.ipynb` (166 KB)
 - **Type**: Vision/Utility - Image Processing
 - **Complexity**: Low-Medium
@@ -201,6 +213,7 @@ These are advanced examples for working with images, audio, and documents.
 - **Estimated Conversion Time**: 2-3 hours
 
 ### 4.3: Getting Started with Vision
+
 - **Source Location**: `multimodal/getting_started_with_vision.ipynb` (1.5 MB)
 - **Type**: Vision/Tutorial - Foundation
 - **Complexity**: Medium
@@ -208,6 +221,7 @@ These are advanced examples for working with images, audio, and documents.
 - **Estimated Conversion Time**: 4-5 hours
 
 ### 4.4: Transcribing Text (OCR/Audio)
+
 - **Source Location**: `multimodal/how_to_transcribe_text.ipynb` (3.7 MB)
 - **Type**: Multimodal - Audio/OCR
 - **Complexity**: High
@@ -216,6 +230,7 @@ These are advanced examples for working with images, audio, and documents.
 - **Estimated Conversion Time**: 6-7 hours
 
 ### 4.5: Reading Charts, Graphs, and PowerPoints
+
 - **Source Location**: `multimodal/reading_charts_graphs_powerpoints.ipynb` (18 KB)
 - **Type**: Vision - Document Intelligence
 - **Complexity**: Medium
@@ -224,6 +239,7 @@ These are advanced examples for working with images, audio, and documents.
 - **Estimated Conversion Time**: 3-4 hours
 
 ### 4.6: Using Sub-Agents
+
 - **Source Location**: `multimodal/using_sub_agents.ipynb` (20 KB)
 - **Type**: AI/Orchestration - Delegation Pattern
 - **Complexity**: Medium-High
@@ -238,6 +254,7 @@ These are advanced examples for working with images, audio, and documents.
 Advanced patterns for multi-agent coordination.
 
 ### 5.1: Basic Workflows
+
 - **Source Location**: `patterns/agents/basic_workflows.ipynb` (33 KB)
 - **Type**: AI/Orchestration - Foundational
 - **Complexity**: Medium
@@ -245,6 +262,7 @@ Advanced patterns for multi-agent coordination.
 - **Estimated Conversion Time**: 2-3 hours
 
 ### 5.2: Evaluator-Optimizer Pattern
+
 - **Source Location**: `patterns/agents/evaluator_optimizer.ipynb` (11 KB)
 - **Type**: AI/Optimization - Self-Improvement Loop
 - **Complexity**: High
@@ -253,6 +271,7 @@ Advanced patterns for multi-agent coordination.
 - **Estimated Conversion Time**: 3-4 hours
 
 ### 5.3: Orchestrator-Workers Pattern
+
 - **Source Location**: `patterns/agents/orchestrator_workers.ipynb` (30 KB)
 - **Type**: AI/Orchestration - Distributed
 - **Complexity**: High
@@ -265,6 +284,7 @@ Advanced patterns for multi-agent coordination.
 ## Conversion Priority Matrix
 
 ### Immediate Conversion (Week 1) - 25-30 hours
+
 1. **Classification** (Tier 2.1) - High business value
 2. **Financial Ratio Analyzer** (Tier 1.1) - Pre-built, production-ready
 3. **Financial Modeling Suite** (Tier 1.2) - Pre-built, production-ready
@@ -272,12 +292,14 @@ Advanced patterns for multi-agent coordination.
 5. **Summarization** (Tier 2.4) - Foundational capability
 
 ### Secondary Conversion (Week 2-3) - 30-40 hours
+
 1. **RAG** (Tier 2.2) - Foundation for many other skills
 2. **Text-to-SQL** (Tier 2.3) - High complexity, high value
 3. **Vision Capabilities** (Tier 4.1-4.2) - Strategic multimodal support
 4. **Contextual Embeddings** (Tier 2.5) - Infrastructure dependency
 
 ### Advanced Conversion (Week 4+) - 20-30 hours
+
 1. **Agent Orchestration Patterns** (Tier 5.1-5.3)
 2. **Multimodal Examples** (Tier 4.3-4.6)
 3. **Frontend Aesthetics** (Tier 3.1)
@@ -286,20 +308,21 @@ Advanced patterns for multi-agent coordination.
 
 ## Key Statistics
 
-| Category | Count | Total Size | Avg Complexity |
-|----------|-------|-----------|-----------------|
-| Pre-built Skills | 3 | ~60 KB | Medium-High |
-| Capability Guides | 5 | ~3.2 MB | High |
-| Code Patterns | 1 | 64 KB | Medium |
-| Multimodal Examples | 6 | ~10 MB | Medium-High |
-| Agent Patterns | 3 | 64 KB | High |
-| **TOTAL** | **18** | **~13.4 MB** | **Medium-High** |
+| Category            | Count  | Total Size   | Avg Complexity  |
+| ------------------- | ------ | ------------ | --------------- |
+| Pre-built Skills    | 3      | ~60 KB       | Medium-High     |
+| Capability Guides   | 5      | ~3.2 MB      | High            |
+| Code Patterns       | 1      | 64 KB        | Medium          |
+| Multimodal Examples | 6      | ~10 MB       | Medium-High     |
+| Agent Patterns      | 3      | 64 KB        | High            |
+| **TOTAL**           | **18** | **~13.4 MB** | **Medium-High** |
 
 ---
 
 ## Shared Infrastructure Requirements
 
 Multiple skills will leverage:
+
 - **VoyageAI Embeddings** (for RAG, Classification, Contextual search)
 - **Vector Database** (Qdrant - from n8n stack)
 - **Evaluation Framework** (Confusion matrices, metrics)
@@ -312,15 +335,18 @@ Consider building these as shared utilities/modules that multiple skills can con
 ## Risk Assessment
 
 ### High-Risk Conversions:
+
 - **Text-to-SQL** (2.9 MB, very complex) - May need phased approach
 - **Best Practices for Vision** (4.5 MB) - Large, dense content
 - **Transcription** (3.7 MB) - Multimodal complexity
 
 ### Medium-Risk:
+
 - **Classification** (balanced complexity/value)
 - **RAG** (critical dependency for multiple skills)
 
 ### Low-Risk:
+
 - All pre-built skills (Tier 1)
 - Simpler patterns (Tier 3-5)
 
@@ -329,21 +355,25 @@ Consider building these as shared utilities/modules that multiple skills can con
 ## Next Steps
 
 ### Phase 1: Validation
+
 1. ✅ Complete repository reconnaissance (DONE)
-2. ⏳ Create quick prototypes of Tier 1 skills 
+2. ⏳ Create quick prototypes of Tier 1 skills
 3. ⏳ Validate file extraction and code parsing
 
 ### Phase 2: Foundation
+
 4. ⏳ Convert Tier 1 skills (pre-built)
 5. ⏳ Build shared infrastructure (embeddings, eval framework)
 6. ⏳ Test awesome-copilot integration
 
 ### Phase 3: Scale
+
 7. ⏳ Convert Tier 2 capabilities (starting with Classification, RAG)
 8. ⏳ Add multimodal support (Vision, Audio)
 9. ⏳ Create orchestration patterns
 
 ### Phase 4: Polish
+
 10. ⏳ Documentation and examples
 11. ⏳ n8n workflow integration
 12. ⏳ Performance optimization
@@ -352,13 +382,13 @@ Consider building these as shared utilities/modules that multiple skills can con
 
 ## Resource Estimates
 
-| Phase | Estimated Duration | Resource Level |
-|-------|-------------------|-----------------|
-| Phase 1 | 1-2 weeks | 1 senior dev |
-| Phase 2 | 2-3 weeks | 1.5 senior devs |
-| Phase 3 | 3-4 weeks | 2 senior devs |
-| Phase 4 | 1-2 weeks | 1 senior dev |
-| **TOTAL** | **7-11 weeks** | **Avg 1.4 devs** |
+| Phase     | Estimated Duration | Resource Level   |
+| --------- | ------------------ | ---------------- |
+| Phase 1   | 1-2 weeks          | 1 senior dev     |
+| Phase 2   | 2-3 weeks          | 1.5 senior devs  |
+| Phase 3   | 3-4 weeks          | 2 senior devs    |
+| Phase 4   | 1-2 weeks          | 1 senior dev     |
+| **TOTAL** | **7-11 weeks**     | **Avg 1.4 devs** |
 
 **Note**: These are estimates for full production-grade conversions with testing, documentation, and integration.
 

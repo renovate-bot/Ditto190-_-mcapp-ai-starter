@@ -1,10 +1,10 @@
 ---
-title: 'Agentic Workflows'
-description: 'Learn what GitHub Agentic Workflows are, how to use community workflows from Awesome Copilot, and how to contribute your own.'
+title: "Agentic Workflows"
+description: "Learn what GitHub Agentic Workflows are, how to use community workflows from Awesome Copilot, and how to contribute your own."
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: '2026-02-27'
-estimatedReadingTime: '7 minutes'
+lastUpdated: "2026-02-27"
+estimatedReadingTime: "7 minutes"
 tags:
   - workflows
   - automation
@@ -27,6 +27,7 @@ This article covers what agentic workflows are, how to install and use workflows
 An agentic workflow is a markdown file that combines YAML frontmatter (triggers, permissions, safe outputs) with natural language instructions that a coding agent follows at runtime. The markdown file is the source: you use the `gh aw` CLI to compile it into a `.lock.yml` workflow file, and GitHub Actions runs that compiled workflow to execute a Copilot coding agent that follows the instructions autonomously.
 
 **Key characteristics**:
+
 - Defined in a single `.md` file — no YAML actions syntax required
 - Triggered by schedules, repository events, or slash commands
 - Run inside GitHub Actions with the Copilot coding agent
@@ -65,13 +66,13 @@ The **frontmatter** declares the workflow's triggers, permissions, and safe outp
 
 ### When to Use Agentic Workflows
 
-| Use Case | Example |
-|----------|---------|
-| Scheduled reports | Daily issue summaries, weekly org health checks |
-| Event-driven automation | Triage new issues, check PR relevance |
-| Slash commands | `/relevance-check` on an issue or PR |
-| Compliance checks | License audits, release readiness reviews |
-| Repository maintenance | Identify stale repos, track contributor activity |
+| Use Case                | Example                                          |
+| ----------------------- | ------------------------------------------------ |
+| Scheduled reports       | Daily issue summaries, weekly org health checks  |
+| Event-driven automation | Triage new issues, check PR relevance            |
+| Slash commands          | `/relevance-check` on an issue or PR             |
+| Compliance checks       | License audits, release readiness reviews        |
+| Repository maintenance  | Identify stale repos, track contributor activity |
 
 Agentic Workflows are ideal when you need **autonomous, event-driven automation** that goes beyond what static GitHub Actions can do — tasks that require reasoning, summarization, or context-aware decisions.
 
@@ -156,10 +157,12 @@ safe-outputs:
 ```
 
 **Required fields**:
+
 - `name` — human-readable workflow name
 - `description` — concise summary of the workflow's purpose
 
 **Workflow fields**:
+
 - `on` — trigger configuration (schedules, events, slash commands)
 - `permissions` — GitHub API scopes (use least-privilege)
 - `safe-outputs` — guardrails for what the agent can create or modify

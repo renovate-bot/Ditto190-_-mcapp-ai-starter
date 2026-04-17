@@ -60,11 +60,11 @@ MySQL is used to create dynamic, data-driven web applications.
 
 PHP offers three ways to connect to and interact with MySQL:
 
-| API | Description |
-|-----|-------------|
-| **MySQLi (Object-Oriented)** | MySQL Improved extension - OO interface |
-| **MySQLi (Procedural)** | MySQL Improved extension - procedural interface |
-| **PDO (PHP Data Objects)** | Works with 12 different database systems |
+| API                          | Description                                     |
+| ---------------------------- | ----------------------------------------------- |
+| **MySQLi (Object-Oriented)** | MySQL Improved extension - OO interface         |
+| **MySQLi (Procedural)**      | MySQL Improved extension - procedural interface |
+| **PDO (PHP Data Objects)**   | Works with 12 different database systems        |
 
 **Recommendation:** Use **MySQLi** or **PDO**. The older `mysql_*` functions are deprecated and
 removed as of PHP 7.0.
@@ -803,12 +803,12 @@ $conn->close();
 
 **The `bind_param()` type string argument:**
 
-| Character | Description |
-|-----------|-------------|
-| `i` | integer |
-| `d` | double |
-| `s` | string |
-| `b` | BLOB (binary large object) |
+| Character | Description                |
+| --------- | -------------------------- |
+| `i`       | integer                    |
+| `d`       | double                     |
+| `s`       | string                     |
+| `b`       | BLOB (binary large object) |
 
 Each parameter must have a type specified. By telling MySQL what type of data to expect, you
 minimize the risk of SQL injection.
@@ -1146,17 +1146,17 @@ $conn = null;
 
 **Common WHERE operators:**
 
-| Operator | Description |
-|----------|-------------|
-| `=` | Equal |
-| `<>` or `!=` | Not equal |
-| `>` | Greater than |
-| `<` | Less than |
-| `>=` | Greater than or equal |
-| `<=` | Less than or equal |
-| `BETWEEN` | Between an inclusive range |
-| `LIKE` | Search for a pattern |
-| `IN` | To specify multiple possible values for a column |
+| Operator     | Description                                      |
+| ------------ | ------------------------------------------------ |
+| `=`          | Equal                                            |
+| `<>` or `!=` | Not equal                                        |
+| `>`          | Greater than                                     |
+| `<`          | Less than                                        |
+| `>=`         | Greater than or equal                            |
+| `<=`         | Less than or equal                               |
+| `BETWEEN`    | Between an inclusive range                       |
+| `LIKE`       | Search for a pattern                             |
+| `IN`         | To specify multiple possible values for a column |
 
 **Important:** Always use prepared statements with bound parameters when using user-supplied
 values in WHERE clauses to prevent SQL injection.
@@ -1648,38 +1648,38 @@ them in quotes, which causes a SQL error.
 
 ### Connection Patterns
 
-| Method | Connect | Close |
-|--------|---------|-------|
-| MySQLi OO | `new mysqli($host, $user, $pass, $db)` | `$conn->close()` |
-| MySQLi Proc | `mysqli_connect($host, $user, $pass, $db)` | `mysqli_close($conn)` |
-| PDO | `new PDO("mysql:host=$host;dbname=$db", $user, $pass)` | `$conn = null` |
+| Method      | Connect                                                | Close                 |
+| ----------- | ------------------------------------------------------ | --------------------- |
+| MySQLi OO   | `new mysqli($host, $user, $pass, $db)`                 | `$conn->close()`      |
+| MySQLi Proc | `mysqli_connect($host, $user, $pass, $db)`             | `mysqli_close($conn)` |
+| PDO         | `new PDO("mysql:host=$host;dbname=$db", $user, $pass)` | `$conn = null`        |
 
 ### CRUD Operations
 
-| Operation | SQL Command |
-|-----------|-------------|
+| Operation  | SQL Command                                          |
+| ---------- | ---------------------------------------------------- |
 | **Create** | `INSERT INTO table (col1, col2) VALUES (val1, val2)` |
-| **Read** | `SELECT col1, col2 FROM table WHERE condition` |
-| **Update** | `UPDATE table SET col1=val1 WHERE condition` |
-| **Delete** | `DELETE FROM table WHERE condition` |
+| **Read**   | `SELECT col1, col2 FROM table WHERE condition`       |
+| **Update** | `UPDATE table SET col1=val1 WHERE condition`         |
+| **Delete** | `DELETE FROM table WHERE condition`                  |
 
 ### Query Modifiers
 
-| Modifier | Purpose | Example |
-|----------|---------|---------|
-| `WHERE` | Filter rows | `WHERE id = 1` |
-| `ORDER BY` | Sort results | `ORDER BY name ASC` |
-| `LIMIT` | Restrict row count | `LIMIT 10` |
-| `LIMIT offset, count` | Pagination | `LIMIT 20, 10` |
+| Modifier              | Purpose            | Example             |
+| --------------------- | ------------------ | ------------------- |
+| `WHERE`               | Filter rows        | `WHERE id = 1`      |
+| `ORDER BY`            | Sort results       | `ORDER BY name ASC` |
+| `LIMIT`               | Restrict row count | `LIMIT 10`          |
+| `LIMIT offset, count` | Pagination         | `LIMIT 20, 10`      |
 
 ### MySQLi bind_param Types
 
-| Type | Character |
-|------|-----------|
-| Integer | `i` |
-| Double | `d` |
-| String | `s` |
-| BLOB | `b` |
+| Type    | Character |
+| ------- | --------- |
+| Integer | `i`       |
+| Double  | `d`       |
+| String  | `s`       |
+| BLOB    | `b`       |
 
 ### Security Best Practices
 
@@ -1692,5 +1692,5 @@ them in quotes, which causes a SQL error.
 
 ---
 
-*This reference was consolidated from W3Schools PHP MySQL tutorial pages.*
-*Source URLs are listed at the beginning of each section.*
+_This reference was consolidated from W3Schools PHP MySQL tutorial pages._
+_Source URLs are listed at the beginning of each section._

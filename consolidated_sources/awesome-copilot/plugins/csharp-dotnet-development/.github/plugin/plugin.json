@@ -7,15 +7,8 @@
   },
   "repository": "https://github.com/github/awesome-copilot",
   "license": "MIT",
-  "keywords": [
-    "csharp",
-    "dotnet",
-    "aspnet",
-    "testing"
-  ],
-  "agents": [
-    "./agents"
-  ],
+  "keywords": ["csharp", "dotnet", "aspnet", "testing"],
+  "agents": ["./agents"],
   "skills": [
     "./skills/csharp-async",
     "./skills/aspnet-minimal-api-openapi",

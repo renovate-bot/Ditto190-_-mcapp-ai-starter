@@ -8,8 +8,8 @@
 
 /* Nerd Fonts for programming language icons */
 @font-face {
-  font-family: 'Monaspace Argon NF';
-  src: url('../fonts/MonaspaceArgonNF-Regular.woff2') format('woff2');
+  font-family: "Monaspace Argon NF";
+  src: url("../fonts/MonaspaceArgonNF-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -28,30 +28,49 @@
   --color-text-secondary: var(--color-text-muted);
   --color-bg-primary: var(--color-bg);
   --color-primary: var(--color-accent);
-  --color-purple-light: #C898FD;
-  --color-purple-dark: #43179E;
-  --color-link: #B870FF;
-  --color-link-hover: #C898FD;
-  --color-accent: #8534F3;
-  --color-accent-hover: #B870FF;
-  --color-accent-secondary: #FE4C25;
-  --color-danger: #C53211;
-  --color-warning: #F08A3A;
+  --color-purple-light: #c898fd;
+  --color-purple-dark: #43179e;
+  --color-link: #b870ff;
+  --color-link-hover: #c898fd;
+  --color-accent: #8534f3;
+  --color-accent-hover: #b870ff;
+  --color-accent-secondary: #fe4c25;
+  --color-danger: #c53211;
+  --color-warning: #f08a3a;
   --color-success: #10b981;
-  --color-error: #C53211;
+  --color-error: #c53211;
   --color-card-bg: rgba(20, 20, 28, 0.8);
   --color-card-hover: rgba(28, 28, 40, 0.9);
   --color-glass: rgba(255, 255, 255, 0.05);
   --color-glass-border: rgba(255, 255, 255, 0.1);
-  --gradient-primary: linear-gradient(180deg, #8534F3 0%, #B870FF 50%, #FE4C25 100%);
-  --gradient-accent: linear-gradient(135deg, #43179E 0%, #8534F3 100%);
-  --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(133, 52, 243, 0.25), transparent),
-                   radial-gradient(ellipse 60% 40% at 80% 50%, rgba(254, 76, 37, 0.12), transparent),
-                   radial-gradient(ellipse 60% 40% at 20% 50%, rgba(184, 112, 255, 0.12), transparent);
+  --gradient-primary: linear-gradient(
+    180deg,
+    #8534f3 0%,
+    #b870ff 50%,
+    #fe4c25 100%
+  );
+  --gradient-accent: linear-gradient(135deg, #43179e 0%, #8534f3 100%);
+  --gradient-hero:
+    radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(133, 52, 243, 0.25),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 50%,
+      rgba(254, 76, 37, 0.12),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 20% 50%,
+      rgba(184, 112, 255, 0.12),
+      transparent
+    );
   --border-radius: 8px;
   --border-radius-lg: 16px;
   --border-radius-xl: 24px;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 12px 24px -10px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 40px -10px rgba(133, 52, 243, 0.5);
@@ -59,7 +78,9 @@
   --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --container-width: 1200px;
   --header-height: 72px;
-  --font-mono: 'Monaspace Argon NF', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  --font-mono:
+    "Monaspace Argon NF", "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+    Courier, monospace;
 }
 
 /* Light theme */
@@ -71,16 +92,30 @@
   --color-text: #3f3f46;
   --color-text-muted: #71717a;
   --color-text-emphasis: #18181b;
-  --color-link: #8534F3;
-  --color-link-hover: #43179E;
+  --color-link: #8534f3;
+  --color-link-hover: #43179e;
   --color-card-bg: rgba(255, 255, 255, 0.9);
   --color-card-hover: rgba(255, 255, 255, 1);
   --color-glass: rgba(255, 255, 255, 0.7);
   --color-glass-border: rgba(0, 0, 0, 0.08);
-  --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(133, 52, 243, 0.12), transparent),
-                   radial-gradient(ellipse 60% 40% at 80% 50%, rgba(254, 76, 37, 0.06), transparent),
-                   radial-gradient(ellipse 60% 40% at 20% 50%, rgba(184, 112, 255, 0.06), transparent);
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --gradient-hero:
+    radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(133, 52, 243, 0.12),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 50%,
+      rgba(254, 76, 37, 0.06),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 20% 50%,
+      rgba(184, 112, 255, 0.06),
+      transparent
+    );
+  --shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
   --shadow-glow: 0 0 40px -10px rgba(133, 52, 243, 0.3);
 }
@@ -95,16 +130,30 @@
     --color-text: #3f3f46;
     --color-text-muted: #71717a;
     --color-text-emphasis: #18181b;
-    --color-link: #8534F3;
-    --color-link-hover: #43179E;
+    --color-link: #8534f3;
+    --color-link-hover: #43179e;
     --color-card-bg: rgba(255, 255, 255, 0.9);
     --color-card-hover: rgba(255, 255, 255, 1);
     --color-glass: rgba(255, 255, 255, 0.7);
     --color-glass-border: rgba(0, 0, 0, 0.08);
-    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(133, 52, 243, 0.12), transparent),
-                     radial-gradient(ellipse 60% 40% at 80% 50%, rgba(254, 76, 37, 0.06), transparent),
-                     radial-gradient(ellipse 60% 40% at 20% 50%, rgba(184, 112, 255, 0.06), transparent);
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    --gradient-hero:
+      radial-gradient(
+        ellipse 80% 50% at 50% -20%,
+        rgba(133, 52, 243, 0.12),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 80% 50%,
+        rgba(254, 76, 37, 0.06),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 20% 50%,
+        rgba(184, 112, 255, 0.06),
+        transparent
+      );
+    --shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
     --shadow-glow: 0 0 40px -10px rgba(133, 52, 243, 0.3);
   }
@@ -121,7 +170,9 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
+    Arial, sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
@@ -330,10 +381,14 @@ a:hover {
 
 /* Handle auto mode with prefers-color-scheme */
 @media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]):not([data-theme="light"]) .theme-toggle .icon-sun {
+  :root:not([data-theme="dark"]):not([data-theme="light"])
+    .theme-toggle
+    .icon-sun {
     display: none;
   }
-  :root:not([data-theme="dark"]):not([data-theme="light"]) .theme-toggle .icon-moon {
+  :root:not([data-theme="dark"]):not([data-theme="light"])
+    .theme-toggle
+    .icon-moon {
     display: block;
   }
 }
@@ -347,7 +402,7 @@ a:hover {
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -468,7 +523,11 @@ a:hover {
 }
 
 .search-result-title mark {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(236, 72, 153, 0.3));
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.3),
+    rgba(236, 72, 153, 0.3)
+  );
   color: inherit;
   padding: 0 2px;
   border-radius: 2px;
@@ -539,7 +598,7 @@ a:hover {
 }
 
 .card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -946,7 +1005,8 @@ a:hover {
 .modal-body pre {
   margin: 0;
   padding: 24px;
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-family:
+    "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 13px;
   line-height: 1.6;
   white-space: pre-wrap;
@@ -1280,7 +1340,7 @@ a:hover {
 }
 
 .choices__list--multiple .choices__item .choices__button {
-  border-left-color: rgba(255,255,255,0.3);
+  border-left-color: rgba(255, 255, 255, 0.3);
   padding-left: 8px;
   margin-left: 6px;
 }
@@ -1312,7 +1372,11 @@ a:hover {
 
 /* Tag variants */
 .tag-model {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.2),
+    rgba(139, 92, 246, 0.2)
+  );
   color: #a5b4fc;
 }
 
@@ -1323,27 +1387,47 @@ a:hover {
 }
 
 .tag-handoffs {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 191, 36, 0.2));
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.2),
+    rgba(251, 191, 36, 0.2)
+  );
   color: #fcd34d;
 }
 
 .tag-extension {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(52, 211, 153, 0.2));
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.2),
+    rgba(52, 211, 153, 0.2)
+  );
   color: #6ee7b7;
 }
 
 .tag-category {
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(244, 114, 182, 0.2));
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.2),
+    rgba(244, 114, 182, 0.2)
+  );
   color: #f9a8d4;
 }
 
 .tag-assets {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(34, 211, 238, 0.2));
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.2),
+    rgba(34, 211, 238, 0.2)
+  );
   color: #67e8f9;
 }
 
 .tag-collection {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 191, 36, 0.2));
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.2),
+    rgba(251, 191, 36, 0.2)
+  );
   color: #fcd34d;
 }
 
@@ -1386,7 +1470,7 @@ a:hover {
 }
 
 .resource-item::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1679,7 +1763,10 @@ a:hover {
   text-decoration: none;
   border-radius: 6px;
   border-left: 2px solid transparent;
-  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+  transition:
+    color 0.15s,
+    background-color 0.15s,
+    border-color 0.15s;
 }
 
 .sidebar-nav-list a:hover {
@@ -1817,7 +1904,7 @@ a:hover {
   border-radius: 4px;
   background-color: var(--color-bg-tertiary);
   border: 1px solid var(--color-border);
-  font-family: 'Monaspace Argon NF', monospace;
+  font-family: "Monaspace Argon NF", monospace;
 }
 
 .article-content pre {
@@ -1913,7 +2000,9 @@ a:hover {
   border: 1px solid var(--color-glass-border);
   text-decoration: none;
   color: var(--color-text);
-  transition: background-color 0.2s, border-color 0.2s;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
 }
 
 .article-card:hover {

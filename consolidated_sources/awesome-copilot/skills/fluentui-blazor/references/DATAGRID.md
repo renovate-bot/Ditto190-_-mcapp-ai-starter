@@ -129,22 +129,22 @@ For large datasets, enable virtualization:
 
 ## Key Parameters
 
-| Parameter | Type | Description |
-|---|---|---|
-| `Items` | `IQueryable<TGridItem>?` | In-memory data source |
-| `ItemsProvider` | `GridItemsProvider<TGridItem>?` | Async data provider |
-| `Pagination` | `PaginationState?` | Pagination state |
-| `Virtualize` | `bool` | Enable virtualization |
-| `ItemSize` | `float` | Estimated row height (px) |
-| `ItemKey` | `Func<TGridItem, object>?` | Stable key for `@key` |
-| `ResizableColumns` | `bool` | Enable column resize |
-| `HeaderCellAsButtonWithMenu` | `bool` | Sortable header UI |
-| `GridTemplateColumns` | `string?` | CSS grid-template-columns |
-| `Loading` | `bool` | Show loading indicator |
-| `ShowHover` | `bool` | Highlight rows on hover |
-| `OnRowClick` | `EventCallback<FluentDataGridRow<TGridItem>>` | Row click handler |
-| `OnRowDoubleClick` | `EventCallback<FluentDataGridRow<TGridItem>>` | Row double-click handler |
-| `OnRowFocus` | `EventCallback<FluentDataGridRow<TGridItem>>` | Row focus handler |
+| Parameter                    | Type                                          | Description               |
+| ---------------------------- | --------------------------------------------- | ------------------------- |
+| `Items`                      | `IQueryable<TGridItem>?`                      | In-memory data source     |
+| `ItemsProvider`              | `GridItemsProvider<TGridItem>?`               | Async data provider       |
+| `Pagination`                 | `PaginationState?`                            | Pagination state          |
+| `Virtualize`                 | `bool`                                        | Enable virtualization     |
+| `ItemSize`                   | `float`                                       | Estimated row height (px) |
+| `ItemKey`                    | `Func<TGridItem, object>?`                    | Stable key for `@key`     |
+| `ResizableColumns`           | `bool`                                        | Enable column resize      |
+| `HeaderCellAsButtonWithMenu` | `bool`                                        | Sortable header UI        |
+| `GridTemplateColumns`        | `string?`                                     | CSS grid-template-columns |
+| `Loading`                    | `bool`                                        | Show loading indicator    |
+| `ShowHover`                  | `bool`                                        | Highlight rows on hover   |
+| `OnRowClick`                 | `EventCallback<FluentDataGridRow<TGridItem>>` | Row click handler         |
+| `OnRowDoubleClick`           | `EventCallback<FluentDataGridRow<TGridItem>>` | Row double-click handler  |
+| `OnRowFocus`                 | `EventCallback<FluentDataGridRow<TGridItem>>` | Row focus handler         |
 
 ## Sorting
 

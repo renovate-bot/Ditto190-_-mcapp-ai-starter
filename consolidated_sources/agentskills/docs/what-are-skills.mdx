@@ -18,9 +18,9 @@ my-skill/
 Skills use **progressive disclosure** to manage context efficiently:
 
 1. **Discovery**: At startup, agents load only the name and description of each available skill, just enough to know when it might be relevant.  
-     
+
 2. **Activation**: When a task matches a skill's description, the agent reads the full `SKILL.md` instructions into context.  
-     
+
 3. **Execution**: The agent follows the instructions, optionally loading referenced files or executing bundled code as needed.
 
 This approach keeps agents fast while giving them access to more context on demand.
@@ -38,18 +38,21 @@ description: Extract text and tables from PDF files, fill forms, merge documents
 # PDF Processing
 
 ## When to use this skill
+
 Use this skill when the user needs to work with PDF files...
 
 ## How to extract text
+
 1. Use pdfplumber for text extraction...
 
 ## How to fill forms
+
 ...
 ```
 
 The following frontmatter is required at the top of `SKILL.md`:
 
-- `name`: A short identifier 
+- `name`: A short identifier
 - `description`: When to use this skill
 
 The Markdown body contains the actual instructions and has no specific restrictions on structure or content.

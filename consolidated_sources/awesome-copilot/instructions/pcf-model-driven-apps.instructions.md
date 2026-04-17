@@ -1,6 +1,6 @@
 ---
-description: 'Code components for model-driven apps implementation and configuration'
-applyTo: '**/*.{ts,tsx,js,json,xml,pcfproj,csproj}'
+description: "Code components for model-driven apps implementation and configuration"
+applyTo: "**/*.{ts,tsx,js,json,xml,pcfproj,csproj}"
 ---
 
 # Code Components for Model-Driven Apps
@@ -10,6 +10,7 @@ Power Apps component framework gives developers the ability to extend the visual
 ## Component Usage
 
 You can add code components to:
+
 - Columns
 - Grids
 - Sub grids
@@ -40,7 +41,7 @@ To add code components to a column or a table in model-driven apps, see [Add cod
 
 ## Update Existing Code Components
 
-Whenever you update the code components and want to see the changes in runtime, you need to bump the version property in the manifest file. 
+Whenever you update the code components and want to see the changes in runtime, you need to bump the version property in the manifest file.
 
 **Best Practice**: It is recommended to always bump the version of the component whenever you make changes.
 

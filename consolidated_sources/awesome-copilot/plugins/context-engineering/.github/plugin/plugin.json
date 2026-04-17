@@ -14,9 +14,7 @@
     "best-practices",
     "architecture"
   ],
-  "agents": [
-    "./agents"
-  ],
+  "agents": ["./agents"],
   "skills": [
     "./skills/context-map",
     "./skills/what-context-needed",

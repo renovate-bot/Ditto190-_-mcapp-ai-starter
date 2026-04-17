@@ -1,7 +1,7 @@
 ---
-name: 'Session Auto-Commit'
-description: 'Automatically commits and pushes changes when a Copilot coding agent session ends'
-tags: ['automation', 'git', 'productivity']
+name: "Session Auto-Commit"
+description: "Automatically commits and pushes changes when a Copilot coding agent session ends"
+tags: ["automation", "git", "productivity"]
 ---
 
 # Session Auto-Commit Hook
@@ -11,6 +11,7 @@ Automatically commits and pushes changes when a GitHub Copilot coding agent sess
 ## Overview
 
 This hook runs at the end of each Copilot coding agent session and automatically:
+
 - Detects if there are uncommitted changes
 - Stages all changes
 - Creates a timestamped commit
@@ -26,11 +27,13 @@ This hook runs at the end of each Copilot coding agent session and automatically
 ## Installation
 
 1. Copy this hook folder to your repository's `.github/hooks/` directory:
+
    ```bash
    cp -r hooks/session-auto-commit .github/hooks/
    ```
 
 2. Ensure the script is executable:
+
    ```bash
    chmod +x .github/hooks/session-auto-commit/auto-commit.sh
    ```

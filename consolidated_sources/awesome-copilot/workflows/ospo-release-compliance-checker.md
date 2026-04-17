@@ -1,7 +1,7 @@
 ---
-name: 'OSS Release Compliance Checker'
-description: 'Analyzes a target repository against open source release requirements and posts a detailed compliance report as an issue comment.'
-labels: ['ospo', 'compliance', 'release']
+name: "OSS Release Compliance Checker"
+description: "Analyzes a target repository against open source release requirements and posts a detailed compliance report as an issue comment."
+labels: ["ospo", "compliance", "release"]
 on:
   issues:
     types: [opened, labeled]
@@ -60,15 +60,15 @@ For the target repository, check whether each of the following files exists at
 the repository root (or in `.github/` where conventional). For each file that
 exists, also assess whether it has meaningful content.
 
-| File | What to look for |
-|------|-----------------|
-| `LICENSE` | Must be present. Contents must match the license declared in the repo metadata. |
-| `README.md` | Must be present and substantial (>100 lines recommended). Should contain sections for usage, install, and contributing. |
-| `CODEOWNERS` | Must list at least one maintainer or team. |
-| `CONTRIBUTING.md` | Must describe how to contribute (issues, PRs, CLA/DCO, code style). |
-| `SUPPORT.md` | Must explain how users can get help. |
-| `CODE_OF_CONDUCT.md` | Must adopt a recognized code of conduct. |
-| `SECURITY.md` | Must describe the security vulnerability disclosure process. |
+| File                 | What to look for                                                                                                        |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `LICENSE`            | Must be present. Contents must match the license declared in the repo metadata.                                         |
+| `README.md`          | Must be present and substantial (>100 lines recommended). Should contain sections for usage, install, and contributing. |
+| `CODEOWNERS`         | Must list at least one maintainer or team.                                                                              |
+| `CONTRIBUTING.md`    | Must describe how to contribute (issues, PRs, CLA/DCO, code style).                                                     |
+| `SUPPORT.md`         | Must explain how users can get help.                                                                                    |
+| `CODE_OF_CONDUCT.md` | Must adopt a recognized code of conduct.                                                                                |
+| `SECURITY.md`        | Must describe the security vulnerability disclosure process.                                                            |
 
 ## 4. Security Configuration Check
 
@@ -100,11 +100,11 @@ not enabled or you lack permission to check it.
 Based on your findings, assign a risk level (**Low**, **Medium**, or **High**)
 to each of the following categories:
 
-| Category | Low 🟢 | Medium 🟡 | High 🔴 |
-|----------|--------|-----------|---------|
-| **Business Risk** | No secrets, no proprietary code patterns | Some internal references found | Secrets detected, proprietary code |
-| **Legal Risk** | Permissive license, no copyleft deps | Minor license inconsistencies | GPL/AGPL deps, license mismatch |
-| **Open Source Risk** | All files present, active maintainers | Some files missing or thin | No README, no CODEOWNERS |
+| Category             | Low 🟢                                   | Medium 🟡                      | High 🔴                            |
+| -------------------- | ---------------------------------------- | ------------------------------ | ---------------------------------- |
+| **Business Risk**    | No secrets, no proprietary code patterns | Some internal references found | Secrets detected, proprietary code |
+| **Legal Risk**       | Permissive license, no copyleft deps     | Minor license inconsistencies  | GPL/AGPL deps, license mismatch    |
+| **Open Source Risk** | All files present, active maintainers    | Some files missing or thin     | No README, no CODEOWNERS           |
 
 ## 7. Generate Compliance Report
 
@@ -120,5 +120,5 @@ Post **one** comment on the triggering issue with these sections:
 ### Tone Guidelines
 
 - Be **constructive** — help teams succeed, don't gatekeep.
-- Explain *why* missing items matter and link to guidance.
+- Explain _why_ missing items matter and link to guidance.
 - Celebrate what the team has already done well.

@@ -19,6 +19,7 @@
 ### Decision-Making Authority
 
 Define the agent's autonomy level:
+
 - **Can Decide:** Actions the agent can take independently
 - **Must Confirm:** Actions requiring user approval
 - **Cannot Do:** Explicit limitations
@@ -30,6 +31,7 @@ Define the agent's autonomy level:
 **Trigger:** What initiates this workflow
 
 **Steps:**
+
 1. Step 1 description
 2. Step 2 description
 3. Step 3 description
@@ -41,6 +43,7 @@ Define the agent's autonomy level:
 **Trigger:** What initiates this workflow
 
 **Steps:**
+
 1. Step 1 description
 2. Step 2 description
 
@@ -79,6 +82,7 @@ Define the agent's autonomy level:
 **Task:** Description of the task
 
 **Agent Actions:**
+
 1. Action 1 taken
 2. Action 2 taken
 3. Final outcome
@@ -88,6 +92,7 @@ Define the agent's autonomy level:
 **Task:** Description of the task
 
 **Agent Actions:**
+
 1. Action 1 taken
 2. Final outcome
 

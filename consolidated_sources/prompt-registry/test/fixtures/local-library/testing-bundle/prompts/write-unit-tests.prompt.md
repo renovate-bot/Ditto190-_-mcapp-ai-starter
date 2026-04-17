@@ -5,19 +5,19 @@ Generate comprehensive unit tests following TDD principles and best practices.
 ## Test Structure (AAA Pattern)
 
 ```javascript
-describe('ComponentName', () => {
+describe("ComponentName", () => {
   // Arrange - Setup
   beforeEach(() => {
     // Setup code
   });
-  
-  it('should do something specific', () => {
+
+  it("should do something specific", () => {
     // Arrange - Prepare test data
-    const input = { value: 'test' };
-    
+    const input = { value: "test" };
+
     // Act - Execute function
     const result = functionUnderTest(input);
-    
+
     // Assert - Verify result
     expect(result).toBe(expected);
   });
@@ -35,22 +35,22 @@ describe('ComponentName', () => {
 ## Jest Example
 
 ```javascript
-import { calculateTotal } from './calculator';
+import { calculateTotal } from "./calculator";
 
-describe('calculateTotal', () => {
-  it('should sum positive numbers', () => {
+describe("calculateTotal", () => {
+  it("should sum positive numbers", () => {
     expect(calculateTotal([1, 2, 3])).toBe(6);
   });
-  
-  it('should handle empty array', () => {
+
+  it("should handle empty array", () => {
     expect(calculateTotal([])).toBe(0);
   });
-  
-  it('should throw on invalid input', () => {
-    expect(() => calculateTotal(null)).toThrow('Invalid input');
+
+  it("should throw on invalid input", () => {
+    expect(() => calculateTotal(null)).toThrow("Invalid input");
   });
-  
-  it('should handle negative numbers', () => {
+
+  it("should handle negative numbers", () => {
     expect(calculateTotal([1, -2, 3])).toBe(2);
   });
 });
@@ -59,14 +59,14 @@ describe('calculateTotal', () => {
 ## Mocking Dependencies
 
 ```javascript
-jest.mock('./api');
+jest.mock("./api");
 
-it('should fetch user data', async () => {
-  const mockUser = { id: 1, name: 'Test' };
+it("should fetch user data", async () => {
+  const mockUser = { id: 1, name: "Test" };
   api.getUser.mockResolvedValue(mockUser);
-  
+
   const result = await fetchUserData(1);
-  
+
   expect(api.getUser).toHaveBeenCalledWith(1);
   expect(result).toEqual(mockUser);
 });

@@ -6,7 +6,7 @@ Ready-to-use templates for different types of Microsoft technologies.
 
 For client libraries, SDKs, and programming frameworks.
 
-```markdown
+````markdown
 ---
 name: {sdk-name}
 description: {What it does}. Use when agents need to {primary task} with {technology context}. Supports {languages/platforms}.
@@ -25,9 +25,11 @@ description: {What it does}. Use when agents need to {primary task} with {techno
 {3-5 essential concepts, one paragraph each max}
 
 ### {Concept 1}
+
 {Brief explanation}
 
 ### {Concept 2}
+
 {Brief explanation}
 
 ## Quick Start
@@ -37,22 +39,26 @@ description: {What it does}. Use when agents need to {primary task} with {techno
 ## Common Patterns
 
 ### {Pattern 1: e.g., "Basic CRUD"}
+
 ```{language}
 {code}
 ```
+````
 
 ### {Pattern 2: e.g., "Error Handling"}
+
 ```{language}
 {code}
 ```
 
 ## API Quick Reference
 
-| Class/Method | Purpose | Example |
-|--------------|---------|---------|
-| {name} | {what it does} | `{usage}` |
+| Class/Method | Purpose        | Example   |
+| ------------ | -------------- | --------- |
+| {name}       | {what it does} | `{usage}` |
 
 For full API documentation:
+
 - `microsoft_docs_search(query="{sdk} {class} API reference")`
 - `microsoft_docs_fetch(url="{url}")`
 
@@ -66,12 +72,13 @@ See [best-practices.md](references/best-practices.md) for detailed guidance.
 
 ## Learn More
 
-| Topic | How to Find |
-|-------|-------------|
-| {Advanced topic 1} | `microsoft_docs_search(query="{sdk} {topic}")` |
-| {Advanced topic 2} | `microsoft_docs_fetch(url="{url}")` |
-| {Code examples} | `microsoft_code_sample_search(query="{sdk} {scenario}", language="{lang}")` |
-```
+| Topic              | How to Find                                                                 |
+| ------------------ | --------------------------------------------------------------------------- |
+| {Advanced topic 1} | `microsoft_docs_search(query="{sdk} {topic}")`                              |
+| {Advanced topic 2} | `microsoft_docs_fetch(url="{url}")`                                         |
+| {Code examples}    | `microsoft_code_sample_search(query="{sdk} {scenario}", language="{lang}")` |
+
+````
 
 ---
 
@@ -107,24 +114,27 @@ description: Work with {Azure Service}. Use when agents need to {primary capabil
 ## SDK Usage ({Language})
 
 ### Installation
-```
+````
+
 {package install command}
-```
+
+````
 
 ### Authentication
 ```{language}
 {auth code pattern}
-```
+````
 
 ### Basic Operations
+
 ```{language}
 {CRUD or primary operations}
 ```
 
 ## Key Configurations
 
-| Setting | Purpose | Default |
-|---------|---------|---------|
+| Setting   | Purpose            | Default |
+| --------- | ------------------ | ------- |
 | {setting} | {what it controls} | {value} |
 
 ## Pricing & Limits
@@ -137,27 +147,30 @@ For current pricing: `microsoft_docs_search(query="{service} pricing")`
 ## Common Patterns
 
 ### {Pattern 1}
+
 {Code or configuration}
 
 ### {Pattern 2}
+
 {Code or configuration}
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
-| {Common error} | {Fix} |
+| Issue          | Solution |
+| -------------- | -------- |
+| {Common error} | {Fix}    |
 
 For more issues: `microsoft_docs_search(query="{service} troubleshoot {symptom}")`
 
 ## Learn More
 
-| Topic | How to Find |
-|-------|-------------|
-| REST API | `microsoft_docs_fetch(url="{url}")` |
-| ARM/Bicep | `microsoft_docs_search(query="{service} bicep template")` |
-| Security | `microsoft_docs_search(query="{service} security best practices")` |
-```
+| Topic     | How to Find                                                        |
+| --------- | ------------------------------------------------------------------ |
+| REST API  | `microsoft_docs_fetch(url="{url}")`                                |
+| ARM/Bicep | `microsoft_docs_search(query="{service} bicep template")`          |
+| Security  | `microsoft_docs_search(query="{service} security best practices")` |
+
+````
 
 ---
 
@@ -177,50 +190,58 @@ description: Build {type of apps} with {Framework}. Use when agents need to crea
 
 ## Project Structure
 
-```
+````
+
 {typical-project}/
-├── {folder}/     # {purpose}
-├── {file}        # {purpose}
-└── {file}        # {purpose}
-```
+├── {folder}/ # {purpose}
+├── {file} # {purpose}
+└── {file} # {purpose}
+
+````
 
 ## Getting Started
 
 ### Create New Project
 ```bash
 {CLI command to scaffold}
-```
+````
 
 ### Project Configuration
+
 {Key files to configure and what they control}
 
 ## Core Concepts
 
 ### {Concept 1: e.g., "Components"}
+
 {Explanation with minimal code example}
 
 ### {Concept 2: e.g., "Routing"}
+
 {Explanation with minimal code example}
 
 ### {Concept 3: e.g., "State Management"}
+
 {Explanation with minimal code example}
 
 ## Common Patterns
 
 ### {Pattern 1}
+
 ```{language}
 {code}
 ```
 
 ### {Pattern 2}
+
 ```{language}
 {code}
 ```
 
 ## Configuration Options
 
-| Setting | File | Purpose |
-|---------|------|---------|
+| Setting   | File   | Purpose        |
+| --------- | ------ | -------------- |
 | {setting} | {file} | {what it does} |
 
 ## Deployment
@@ -231,12 +252,13 @@ For detailed deployment: `microsoft_docs_search(query="{framework} deploy {targe
 
 ## Learn More
 
-| Topic | How to Find |
-|-------|-------------|
-| {Advanced feature} | `microsoft_docs_search(query="{framework} {feature}")` |
-| {Integration} | `microsoft_docs_fetch(url="{url}")` |
-| {Samples} | `microsoft_code_sample_search(query="{framework} {scenario}")` |
-```
+| Topic              | How to Find                                                    |
+| ------------------ | -------------------------------------------------------------- |
+| {Advanced feature} | `microsoft_docs_search(query="{framework} {feature}")`         |
+| {Integration}      | `microsoft_docs_fetch(url="{url}")`                            |
+| {Samples}          | `microsoft_code_sample_search(query="{framework} {scenario}")` |
+
+````
 
 ---
 
@@ -267,17 +289,21 @@ description: Interact with {API/Protocol}. Use when agents need to {primary oper
 ## Common Endpoints/Operations
 
 ### {Operation 1: e.g., "List Items"}
-```
+````
+
 {HTTP method} {endpoint}
-```
+
+````
 ```{language}
 {SDK code}
-```
+````
 
 ### {Operation 2: e.g., "Create Item"}
+
 ```
 {HTTP method} {endpoint}
 ```
+
 ```{language}
 {SDK code}
 ```
@@ -285,30 +311,33 @@ description: Interact with {API/Protocol}. Use when agents need to {primary oper
 ## Request/Response Patterns
 
 ### Pagination
+
 {How to handle pagination}
 
 ### Error Handling
+
 {Error format and common codes}
 
 ## Quick Reference
 
-| Operation | Endpoint/Method | Notes |
-|-----------|-----------------|-------|
-| {op} | `{endpoint}` | {note} |
+| Operation | Endpoint/Method | Notes  |
+| --------- | --------------- | ------ |
+| {op}      | `{endpoint}`    | {note} |
 
 ## Permissions/Scopes
 
 | Operation | Required Permission |
-|-----------|---------------------|
-| {op} | `{permission}` |
+| --------- | ------------------- |
+| {op}      | `{permission}`      |
 
 ## Learn More
 
-| Topic | How to Find |
-|-------|-------------|
-| Full endpoint reference | `microsoft_docs_fetch(url="{url}")` |
-| Permissions | `microsoft_docs_search(query="{api} permissions {resource}")` |
-| SDKs | `microsoft_docs_search(query="{api} SDK {language}")` |
+| Topic                   | How to Find                                                   |
+| ----------------------- | ------------------------------------------------------------- |
+| Full endpoint reference | `microsoft_docs_fetch(url="{url}")`                           |
+| Permissions             | `microsoft_docs_search(query="{api} permissions {resource}")` |
+| SDKs                    | `microsoft_docs_search(query="{api} SDK {language}")`         |
+
 ```
 
 ---
@@ -331,3 +360,4 @@ Templates are starting points. Customize by:
 3. **Adjusting depth** based on complexity (more concepts for complex tech)
 4. **Adding reference files** for detailed content that doesn't fit in SKILL.md
 5. **Adding sample_codes/** for working examples beyond inline snippets
+```

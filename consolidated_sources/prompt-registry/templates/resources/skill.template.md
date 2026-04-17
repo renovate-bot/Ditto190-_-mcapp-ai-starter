@@ -1,6 +1,6 @@
 ---
-name: {{collectionId}}
-description: {{RESOURCE_DESCRIPTION}}
+name: { { collectionId } }
+description: { { RESOURCE_DESCRIPTION } }
 ---
 
 # {{RESOURCE_NAME}}
@@ -10,6 +10,7 @@ This skill provides specialized domain knowledge and capabilities for AI agents.
 ## When to Use This Skill
 
 Use this skill when you need to:
+
 - Describe the primary use cases for this skill
 - Specify the types of problems it solves
 - Outline the scenarios where it's most effective
@@ -17,6 +18,7 @@ Use this skill when you need to:
 ## Prerequisites
 
 List any requirements needed to use this skill:
+
 - Required tools or software
 - Environment setup
 - API keys or credentials
@@ -25,16 +27,21 @@ List any requirements needed to use this skill:
 ## Core Capabilities
 
 ### 1. Primary Capability
+
 Describe the main functionality this skill provides and how it helps accomplish tasks.
 
 ### 2. Supporting Features
+
 Additional capabilities that complement the primary function:
+
 - Feature details
 - Use cases
 - Integration points
 
 ### 3. Bundled Assets (Optional)
+
 If this skill includes helper scripts, templates, or other resources:
+
 - List the assets and their purpose
 - Explain how agents can utilize them
 - Reference locations of key files
@@ -42,21 +49,25 @@ If this skill includes helper scripts, templates, or other resources:
 ## Usage Examples
 
 ### Example 1: Basic Usage
+
 ```
 Describe a typical user request or scenario where this skill would be invoked.
 ```
 
 **Expected outcome:**
+
 - Step-by-step description of what happens
 - Key actions performed by the agent
 - Final result delivered
 
 ### Example 2: Advanced Usage
+
 ```
 Describe a more complex scenario that demonstrates the skill's full capabilities.
 ```
 
 **Expected outcome:**
+
 - Detailed workflow
 - How the skill handles edge cases
 - Integration with other tools or skills
@@ -82,6 +93,6 @@ Describe a more complex scenario that demonstrates the skill's full capabilities
 
 ---
 
-*Skill created by: {{AUTHOR}}*  
-*Version: {{VERSION}}*  
-*Last updated: {{DATE}}*
+_Skill created by: {{AUTHOR}}_  
+_Version: {{VERSION}}_  
+_Last updated: {{DATE}}_

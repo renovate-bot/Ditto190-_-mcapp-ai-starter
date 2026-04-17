@@ -3,6 +3,7 @@
 ## Our Pledge
 
 We are committed to providing a welcoming and inclusive environment for everyone, regardless of:
+
 - Background, education, or experience level
 - Gender identity and expression
 - Sexual orientation
@@ -36,6 +37,7 @@ We are committed to providing a welcoming and inclusive environment for everyone
 ## Scope
 
 This Code of Conduct applies to all spaces managed by the {{projectName}} project, including:
+
 - **GitHub repositories** (issues, PRs, discussions)
 - **Slack channels** and other communication platforms
 - **Meetings and events** (virtual or in-person)
@@ -47,12 +49,14 @@ This Code of Conduct applies to all spaces managed by the {{projectName}} projec
 
 If you experience or witness unacceptable behavior, please report it:
 
-**Primary Contact**: 
+**Primary Contact**:
+
 - **Email**: conduct@yourcompany.com
 - **Slack**: Direct message any Trusted Committer
 - **GitHub**: Report issue to any repository maintainer
 
 **What to Include**:
+
 - **Description** of the incident
 - **People involved** (if known)
 - **Date and time** of the incident
@@ -69,6 +73,7 @@ If you experience or witness unacceptable behavior, please report it:
 ### Possible Consequences
 
 Depending on the severity and nature of the violation, consequences may include:
+
 - **Warning** for first-time minor infractions
 - **Temporary suspension** from project participation
 - **Permanent ban** from project spaces
@@ -96,18 +101,21 @@ Depending on the severity and nature of the violation, consequences may include:
 We encourage behaviors that contribute to a healthy community:
 
 ### 🤝 Welcoming New Contributors
+
 - **Answer questions** from newcomers patiently
 - **Help with onboarding** and setup issues
 - **Mentor** less experienced contributors
 - **Celebrate** first contributions
 
 ### 📚 Knowledge Sharing
+
 - **Document** your work clearly
 - **Share best practices** and lessons learned
 - **Create examples** and tutorials
 - **Participate** in community discussions
 
 ### 🎯 Constructive Feedback
+
 - **Focus on the code/content**, not the person
 - **Suggest improvements** with specific examples
 - **Acknowledge effort** and good intentions
@@ -120,6 +128,7 @@ This Code of Conduct is adapted from the [Contributor Covenant](https://www.cont
 ## Questions or Concerns?
 
 If you have questions about this Code of Conduct or need clarification:
+
 - **Email**: conduct@yourcompany.com
 - **Slack**: Message any Trusted Committer
 - **GitHub**: Open an issue with `code-of-conduct` label

@@ -1,6 +1,6 @@
 ---
-description: 'WinUI 3 and Windows App SDK coding guidelines. Prevents common UWP API misuse, enforces correct XAML namespaces, threading, windowing, and MVVM patterns for desktop Windows apps.'
-applyTo: '**/*.xaml, **/*.cs, **/*.csproj'
+description: "WinUI 3 and Windows App SDK coding guidelines. Prevents common UWP API misuse, enforces correct XAML namespaces, threading, windowing, and MVVM patterns for desktop Windows apps."
+applyTo: "**/*.xaml, **/*.cs, **/*.csproj"
 ---
 
 # WinUI 3 / Windows App SDK
@@ -104,7 +104,6 @@ These UWP patterns are **wrong** for WinUI 3 desktop apps. Always use the Window
 - Prefer using the built-in TextBlock styles over hardcoding `FontSize`, `FontWeight`, or `FontFamily`.
 - Font: Segoe UI Variable is the default — do not change it.
 - Use sentence casing for all UI text.
-
 
 ## Theming & Colors
 

@@ -1,6 +1,6 @@
 ---
-description: 'Using dependent libraries in PCF components'
-applyTo: '**/*.{ts,tsx,js,json,xml,pcfproj,csproj}'
+description: "Using dependent libraries in PCF components"
+applyTo: "**/*.{ts,tsx,js,json,xml,pcfproj,csproj}"
 ---
 
 # Dependent Libraries (Preview)
@@ -44,26 +44,28 @@ Add this file to override the default feature flags for a component without modi
 
 **Feature Flags:**
 
-| Flag | Description |
-|------|-------------|
-| `pcfResourceDependency` | Enables the component to use a library resource. |
+| Flag                    | Description                                                                                                                 |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `pcfResourceDependency` | Enables the component to use a library resource.                                                                            |
 | `pcfAllowCustomWebpack` | Enables the component to use a custom web pack. This feature must be enabled for components that define a library resource. |
 
 By default, these values are `off`. Set them to `on` to override the default.
 
 **Example 1:**
+
 ```json
-{ 
-  "pcfAllowCustomWebpack": "on" 
-} 
+{
+  "pcfAllowCustomWebpack": "on"
+}
 ```
 
 **Example 2:**
+
 ```json
-{ 
-   "pcfResourceDependency": "on",
-   "pcfAllowCustomWebpack": "off" 
-} 
+{
+  "pcfResourceDependency": "on",
+  "pcfAllowCustomWebpack": "off"
+}
 ```
 
 ### webpack.config.js
@@ -73,14 +75,14 @@ The build process for components uses [Webpack](https://webpack.js.org/) to bund
 This file might look like the following when the library alias is `myLib`:
 
 ```javascript
-/* eslint-disable */ 
-"use strict"; 
+/* eslint-disable */
+"use strict";
 
-module.exports = { 
-  externals: { 
-    "myLib": "myLib" 
-  }, 
-}  
+module.exports = {
+  externals: {
+    myLib: "myLib",
+  },
+};
 ```
 
 ### Register Dependencies

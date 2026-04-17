@@ -1,6 +1,6 @@
 ---
-description: 'Step-by-step guide for converting Spring Boot JPA applications to use Azure Cosmos DB with Spring Data Cosmos'
-applyTo: '**/*.java,**/pom.xml,**/build.gradle,**/application*.properties'
+description: "Step-by-step guide for converting Spring Boot JPA applications to use Azure Cosmos DB with Spring Data Cosmos"
+applyTo: "**/*.java,**/pom.xml,**/build.gradle,**/application*.properties"
 ---
 
 # Convert Spring JPA project to Spring Data Cosmos
@@ -48,6 +48,7 @@ This generalized guide applies to any JPA to Spring Data Cosmos DB conversion pr
 ### Step 3 — Configuration class with Azure Identity
 
 - Create `src/main/java/<rootpkg>/config/CosmosConfiguration.java`:
+
   ```java
   @Configuration
   @EnableCosmosRepositories(basePackages = "<rootpkg>")
@@ -76,6 +77,7 @@ This generalized guide applies to any JPA to Spring Data Cosmos DB conversion pr
   }
 
   ```
+
 - **IMPORTANT**: Use `DefaultAzureCredentialBuilder().build()` instead of key-based authentication for production security
 
 ### Step 4 — Entity transformation
@@ -103,6 +105,7 @@ This generalized guide applies to any JPA to Spring Data Cosmos DB conversion pr
 - **CRITICAL - Authentication Entity Pattern**:
   - **For User entities with Spring Security**: Store authorities as `Set<String>` instead of `Set<Authority>` objects
   - **Example User entity transformation**:
+
     ```java
     @Container(containerName = "users")
     public class User {
@@ -131,6 +134,7 @@ This generalized guide applies to any JPA to Spring Data Cosmos DB conversion pr
     }
 
     ```
+
 - **CRITICAL - Template Compatibility for Relationship Changes**:
   - **When converting relationships to ID references, preserve template access**
   - **Example**: If entity had `List<Specialty> specialties` → convert to:
@@ -165,6 +169,7 @@ This generalized guide applies to any JPA to Spring Data Cosmos DB conversion pr
       ```
 
     - **Update count methods**: `getNrOfSpecialties()` should use transient list, not ID list
+
 - **CRITICAL - Method Signature Conflicts**:
   - **When converting ID types from Integer to String, check for method signature conflicts**
   - **Common conflict**: `getPet(String name)` vs `getPet(String id)` - both have same signature
@@ -194,6 +199,7 @@ This generalized guide applies to any JPA to Spring Data Cosmos DB conversion pr
 - **CRITICAL**: Create service classes to bridge Cosmos document storage with existing template expectations
 - **Purpose**: Handle relationship population and maintain template compatibility
 - **Service pattern for each entity with relationships**:
+
   ```java
   @Service
   public class EntityService {
@@ -242,6 +248,7 @@ This generalized guide applies to any JPA to Spring Data Cosmos DB conversion pr
 ### Step 6.5 — **Spring Security Integration** (CRITICAL for Authentication)
 
 - **UserDetailsService Integration Pattern**:
+
   ```java
   @Service
   @Transactional
@@ -277,6 +284,7 @@ This generalized guide applies to any JPA to Spring Data Cosmos DB conversion pr
   }
 
   ```
+
 - **Key Authentication Requirements**:
   - User entity must be fully serializable (no `@JsonIgnore` on password/authorities)
   - Store authorities as `Set<String>` for Cosmos DB compatibility
@@ -329,6 +337,7 @@ private void populateRelationships(Entity entity) {
 ### Step 7 — Data seeding
 
 - Create `@Component` implementing `CommandLineRunner`:
+
   ```java
   @Component
   public class DataSeeder implements CommandLineRunner {
@@ -344,6 +353,7 @@ private void populateRelationships(Entity entity) {
   }
 
   ```
+
 - **CRITICAL - BigDecimal Reflection Issues with JDK 17+**:
   - **If using BigDecimal fields**, you may encounter reflection errors during seeding
   - **Error pattern**: `Unable to make field private final java.math.BigInteger java.math.BigDecimal.intVal accessible`
@@ -576,6 +586,7 @@ When encountering template errors:
    - `method X cannot be applied to given types` → Remove pagination parameters
    - `cannot find symbol: method Y()` → Update to new repository method names
    - Method signature conflicts → Rename conflicting methods
+
 #### When runtime fails:
 
 1. **Check application logs** for specific error messages
@@ -600,13 +611,11 @@ When encountering template errors:
 #### **Template-Specific Runtime Errors**
 
 - **`Property or field 'XXX' cannot be found on object of type 'YYY'`**:
-
   - Root cause: Template accessing relationship property that was converted to ID storage
   - Solution: Add transient property to entity + populate in service layer
   - Prevention: Always check template usage before converting relationships
 
 - **`EL1008E` Spring Expression Language errors**:
-
   - Root cause: Service layer not populating transient properties
   - Solution: Verify `populateRelationships()` methods are called and working
   - Prevention: Test all template navigation after service layer implementation
@@ -715,19 +724,16 @@ If runtime fails after successful compilation:
 #### **Common Authentication Serialization Errors**:
 
 1. **`Cannot pass null or empty values to constructor`**:
-
    - **Root Cause**: `@JsonIgnore` preventing required field serialization to Cosmos DB
    - **Solution**: Remove `@JsonIgnore` from all persisted fields (password, authorities, etc.)
    - **Verification**: Check User entity has no `@JsonIgnore` on stored fields
 
 2. **`BadCredentialsException` during login**:
-
    - **Root Cause**: Password field not accessible during authentication
    - **Solution**: Ensure password field is serializable and accessible in UserDetailsService
    - **Verification**: Add debug logs in `loadUserByUsername` method
 
 3. **Authorities not loading correctly**:
-
    - **Root Cause**: Authority objects stored as complex entities instead of strings
    - **Solution**: Store authorities as `Set<String>` and convert to `GrantedAuthority` in UserDetailsService
    - **Pattern**:
@@ -840,7 +846,7 @@ default List<Entity> customFindMethod() {
 management:
   health:
     readiness:
-      include: 'ping,diskSpace' # Remove 'db' if present
+      include: "ping,diskSpace" # Remove 'db' if present
 ```
 
 **Files to Check**:
@@ -857,7 +863,7 @@ management:
 
 **Solution**: Update service methods to handle new entity structure:
 
-```java
+````java
 // Before: Entity relationships
 public Set<RelatedEntity> getRelatedEntities() {
     return entity.getRelatedEntities(); // Direct entity references
@@ -925,7 +931,7 @@ public Set<RelatedEntity> getRelatedEntities() {
    // Replace BigDecimal fields with alternatives:
    private Double amount; // Or String for high precision
 
-   ```
+````
 
 3. **Health Check Configuration**:
    ```yaml
@@ -933,7 +939,7 @@ public Set<RelatedEntity> getRelatedEntities() {
    management:
      health:
        readiness:
-         include: 'ping,diskSpace'
+         include: "ping,diskSpace"
    ```
 
 ### **Authentication Conversion Patterns**

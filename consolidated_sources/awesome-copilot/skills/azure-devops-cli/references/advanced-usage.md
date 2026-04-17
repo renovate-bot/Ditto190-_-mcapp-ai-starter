@@ -1,6 +1,7 @@
 # Advanced Usage: Output, Queries & Parameters
 
 ## Table of Contents
+
 - [Output Formats](#output-formats)
 - [JMESPath Queries](#jmespath-queries)
 - [Advanced JMESPath Queries](#advanced-jmespath-queries)
@@ -143,27 +144,27 @@ az boards work-item relation list --id $PARENT_ID --query "[?rel=='System.LinkTy
 
 Available on all commands:
 
-| Parameter | Description |
-|---|---|
-| `--help` / `-h` | Show command help |
-| `--output` / `-o` | Output format (json, jsonc, none, table, tsv, yaml, yamlc) |
-| `--query` | JMESPath query string for filtering output |
-| `--verbose` | Increase logging verbosity |
-| `--debug` | Show all debug logs |
-| `--only-show-errors` | Only show errors, suppress warnings |
-| `--subscription` | Name or ID of subscription |
-| `--yes` / `-y` | Skip confirmation prompts |
+| Parameter            | Description                                                |
+| -------------------- | ---------------------------------------------------------- |
+| `--help` / `-h`      | Show command help                                          |
+| `--output` / `-o`    | Output format (json, jsonc, none, table, tsv, yaml, yamlc) |
+| `--query`            | JMESPath query string for filtering output                 |
+| `--verbose`          | Increase logging verbosity                                 |
+| `--debug`            | Show all debug logs                                        |
+| `--only-show-errors` | Only show errors, suppress warnings                        |
+| `--subscription`     | Name or ID of subscription                                 |
+| `--yes` / `-y`       | Skip confirmation prompts                                  |
 
 ## Common Parameters
 
-| Parameter | Description |
-|---|---|
+| Parameter                  | Description                                                         |
+| -------------------------- | ------------------------------------------------------------------- |
 | `--org` / `--organization` | Azure DevOps organization URL (e.g., `https://dev.azure.com/{org}`) |
-| `--project` / `-p` | Project name or ID |
-| `--detect` | Auto-detect organization from git config |
-| `--yes` / `-y` | Skip confirmation prompts |
-| `--open` | Open resource in web browser |
-| `--subscription` | Azure subscription (for Azure resources) |
+| `--project` / `-p`         | Project name or ID                                                  |
+| `--detect`                 | Auto-detect organization from git config                            |
+| `--yes` / `-y`             | Skip confirmation prompts                                           |
+| `--open`                   | Open resource in web browser                                        |
+| `--subscription`           | Azure subscription (for Azure resources)                            |
 
 ## Git Aliases
 

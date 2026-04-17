@@ -1,7 +1,31 @@
 .env
+.env.local
+.env.*.local
 
 # Serena memory cache (workspace-specific)
 .serena/
+
+# Local session preservation snapshots
+.session-state/
+
+# Local agent and MCP state (machine/session specific)
+.contextstream/
+.copilot/
+.claude/
+.mcp.json
+opencode.json
+DRAFTworkspace.json
+skills-lock.json
+
+# Common local noise
+*.log
+.DS_Store
+
+# Secret/certificate artifacts (never commit)
+*.pem
+*.key
+*.p12
+*.pfx
 
 # Python artifacts
 __pycache__/

@@ -13,16 +13,16 @@ copilot plugin install mcp-m365-copilot@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                          | Description                  |
+| ------------------------------------------------ | ---------------------------- |
 | `/mcp-m365-copilot:mcp-create-declarative-agent` | mcp-create-declarative-agent |
-| `/mcp-m365-copilot:mcp-create-adaptive-cards` | mcp-create-adaptive-cards |
-| `/mcp-m365-copilot:mcp-deploy-manage-agents` | mcp-deploy-manage-agents |
+| `/mcp-m365-copilot:mcp-create-adaptive-cards`    | mcp-create-adaptive-cards    |
+| `/mcp-m365-copilot:mcp-deploy-manage-agents`     | mcp-deploy-manage-agents     |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent                   | Description                                                                                                                  |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `mcp-m365-agent-expert` | Expert assistant for building MCP-based declarative agents for Microsoft 365 Copilot with Model Context Protocol integration |
 
 ## Source

@@ -1,7 +1,7 @@
 ---
-applyTo: '**.cs, **.csproj'
-description: 'This file provides guidance on building C# applications using GitHub Copilot SDK.'
-name: 'GitHub Copilot SDK C# Instructions'
+applyTo: "**.cs, **.csproj"
+description: "This file provides guidance on building C# applications using GitHub Copilot SDK."
+name: "GitHub Copilot SDK C# Instructions"
 ---
 
 ## Core Principles
@@ -15,6 +15,7 @@ name: 'GitHub Copilot SDK C# Instructions'
 ## Installation
 
 Always install via NuGet:
+
 ```bash
 dotnet add package GitHub.Copilot.SDK
 ```
@@ -47,6 +48,7 @@ When creating a CopilotClient, use `CopilotClientOptions`:
 ### Manual Server Control
 
 For explicit control:
+
 ```csharp
 var client = new CopilotClient(new CopilotClientOptions { AutoStart = false });
 await client.StartAsync();
@@ -257,6 +259,7 @@ var session = await client.CreateSessionAsync(new SessionConfig
 ### Tool Execution Flow
 
 When Copilot invokes a tool, the client automatically:
+
 1. Runs your handler function
 2. Serializes the return value
 3. Responds to the CLI
@@ -547,4 +550,3 @@ var session = await client.CreateSessionAsync(new SessionConfig
     ]
 });
 ```
-

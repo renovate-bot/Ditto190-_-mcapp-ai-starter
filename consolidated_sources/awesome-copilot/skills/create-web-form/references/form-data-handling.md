@@ -174,13 +174,13 @@ if __name__ == "__main__":
 
 #### Other Server-Side Frameworks
 
-| Language   | Frameworks                              |
-|------------|-----------------------------------------|
-| Python     | Django, Flask, web2py, py4web           |
-| Node.js    | Express, Next.js, Nuxt, Remix          |
-| PHP        | Laravel, Laminas, Symfony               |
-| Ruby       | Ruby On Rails                           |
-| Java       | Spring Boot                             |
+| Language | Frameworks                    |
+| -------- | ----------------------------- |
+| Python   | Django, Flask, web2py, py4web |
+| Node.js  | Express, Next.js, Nuxt, Remix |
+| PHP      | Laravel, Laminas, Symfony     |
+| Ruby     | Ruby On Rails                 |
+| Java     | Spring Boot                   |
 
 ### A Special Case: Sending Files
 
@@ -199,7 +199,8 @@ This specifies the `Content-Type` HTTP header.
 <form
   method="post"
   action="https://example.com/upload"
-  enctype="multipart/form-data">
+  enctype="multipart/form-data"
+>
   <div>
     <label for="file">Choose a file</label>
     <input type="file" id="file" name="myFile" />
@@ -232,13 +233,13 @@ All incoming data must be checked and sanitized:
 
 ### Quick Reference: GET vs POST
 
-| Aspect             | GET                                  | POST                                   |
-|--------------------|--------------------------------------|----------------------------------------|
-| Data location      | Visible in URL as query parameters   | Hidden in request body                 |
-| Data size          | Limited by URL length                | No inherent limit                      |
-| Security           | Not suitable for sensitive data      | Better for sensitive/large data        |
-| Caching            | Can be cached                        | Not cached                             |
-| Use case           | Reading/retrieving data              | Modifying server state, sending files  |
+| Aspect        | GET                                | POST                                  |
+| ------------- | ---------------------------------- | ------------------------------------- |
+| Data location | Visible in URL as query parameters | Hidden in request body                |
+| Data size     | Limited by URL length              | No inherent limit                     |
+| Security      | Not suitable for sensitive data    | Better for sensitive/large data       |
+| Caching       | Can be cached                      | Not cached                            |
+| Use case      | Reading/retrieving data            | Modifying server state, sending files |
 
 ### Important Notes
 
@@ -303,22 +304,18 @@ Validates against specific formats (email, URL, number, date, etc.).
 Validates against a regular expression.
 
 ```html
-<input
-  type="text"
-  pattern="[Bb]anana|[Cc]herry"
-  required
-/>
+<input type="text" pattern="[Bb]anana|[Cc]herry" required />
 ```
 
 **Pattern Examples:**
 
-| Pattern  | Matches                                  |
-|----------|------------------------------------------|
-| `a`      | Single character 'a'                     |
-| `abc`    | 'a' followed by 'b' followed by 'c'     |
-| `ab?c`   | 'ac' or 'abc'                            |
-| `ab*c`   | 'ac', 'abc', 'abbbbbc', etc.             |
-| `a\|b`   | 'a' or 'b'                               |
+| Pattern | Matches                             |
+| ------- | ----------------------------------- |
+| `a`     | Single character 'a'                |
+| `abc`   | 'a' followed by 'b' followed by 'c' |
+| `ab?c`  | 'ac' or 'abc'                       |
+| `ab*c`  | 'ac', 'abc', 'abbbbbc', etc.        |
+| `a\|b`  | 'a' or 'b'                          |
 
 ### CSS Pseudo-Classes for Validation States
 
@@ -413,16 +410,16 @@ The Constraint Validation API provides methods and properties for custom validat
 
 **`validity`** -- Returns a `ValidityState` object with these properties:
 
-| Property          | Description                                         |
-|-------------------|-----------------------------------------------------|
-| `valid`           | `true` if element meets all constraints             |
-| `valueMissing`    | `true` if required but empty                        |
-| `typeMismatch`    | `true` if value does not match type (e.g., email)   |
-| `patternMismatch` | `true` if pattern does not match                    |
-| `tooLong`         | `true` if exceeds `maxlength`                       |
-| `tooShort`        | `true` if below `minlength`                         |
-| `rangeOverflow`   | `true` if exceeds `max`                             |
-| `rangeUnderflow`  | `true` if below `min`                               |
+| Property          | Description                                          |
+| ----------------- | ---------------------------------------------------- |
+| `valid`           | `true` if element meets all constraints              |
+| `valueMissing`    | `true` if required but empty                         |
+| `typeMismatch`    | `true` if value does not match type (e.g., email)    |
+| `patternMismatch` | `true` if pattern does not match                     |
+| `tooLong`         | `true` if exceeds `maxlength`                        |
+| `tooShort`        | `true` if below `minlength`                          |
+| `rangeOverflow`   | `true` if exceeds `max`                              |
+| `rangeUnderflow`  | `true` if below `min`                                |
 | `customError`     | `true` if custom error set via `setCustomValidity()` |
 
 **`willValidate`** -- Boolean, `true` if element will be validated on form submission.
@@ -431,16 +428,16 @@ The Constraint Validation API provides methods and properties for custom validat
 
 ```javascript
 // Check validity without submitting
-element.checkValidity()    // Returns boolean
+element.checkValidity(); // Returns boolean
 
 // Report validity to user
-element.reportValidity()   // Shows browser's error message
+element.reportValidity(); // Shows browser's error message
 
 // Set custom error message
-element.setCustomValidity("Custom error text")
+element.setCustomValidity("Custom error text");
 
 // Clear custom error
-element.setCustomValidity("")
+element.setCustomValidity("");
 ```
 
 ### JavaScript Custom Validation Examples
@@ -509,8 +506,7 @@ function showError() {
   } else if (email.validity.typeMismatch) {
     emailError.textContent = "Entered value needs to be an email address.";
   } else if (email.validity.tooShort) {
-    emailError.textContent =
-      `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
+    emailError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
   }
   emailError.className = "error active";
 }
@@ -613,11 +609,11 @@ input:focus:invalid {
 
 ### Validation Summary
 
-| Approach               | Pros                                        | Cons                                   |
-|------------------------|---------------------------------------------|----------------------------------------|
-| HTML built-in          | No JavaScript needed, fast                  | Limited customization                  |
-| Constraint Validation API | Modern, integrates with built-in features | Requires JavaScript                    |
-| Fully manual (JS)      | Complete control over UI and logic          | More code, must handle everything      |
+| Approach                  | Pros                                      | Cons                              |
+| ------------------------- | ----------------------------------------- | --------------------------------- |
+| HTML built-in             | No JavaScript needed, fast                | Limited customization             |
+| Constraint Validation API | Modern, integrates with built-in features | Requires JavaScript               |
+| Fully manual (JS)         | Complete control over UI and logic        | More code, must handle everything |
 
 - **HTML validation** is faster and does not require JavaScript.
 - **JavaScript validation** provides more customization and control.

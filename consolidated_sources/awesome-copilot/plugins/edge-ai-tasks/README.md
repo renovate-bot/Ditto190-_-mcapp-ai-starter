@@ -13,10 +13,10 @@ copilot plugin install edge-ai-tasks@awesome-copilot
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent             | Description                                                                                       |
+| ----------------- | ------------------------------------------------------------------------------------------------- |
 | `task-researcher` | Task research specialist for comprehensive project analysis - Brought to you by microsoft/edge-ai |
-| `task-planner` | Task planner for creating actionable implementation plans - Brought to you by microsoft/edge-ai |
+| `task-planner`    | Task planner for creating actionable implementation plans - Brought to you by microsoft/edge-ai   |
 
 ## Source
 

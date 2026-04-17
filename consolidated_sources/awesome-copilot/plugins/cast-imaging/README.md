@@ -13,11 +13,11 @@ copilot plugin install cast-imaging@awesome-copilot
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
-| `cast-imaging-software-discovery` | Specialized agent for comprehensive software application discovery and architectural mapping through static code analysis using CAST Imaging |
-| `cast-imaging-impact-analysis` | Specialized agent for comprehensive change impact assessment and risk analysis in software systems using CAST Imaging |
-| `cast-imaging-structural-quality-advisor` | Specialized agent for identifying, analyzing, and providing remediation guidance for code quality issues using CAST Imaging |
+| Agent                                     | Description                                                                                                                                  |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cast-imaging-software-discovery`         | Specialized agent for comprehensive software application discovery and architectural mapping through static code analysis using CAST Imaging |
+| `cast-imaging-impact-analysis`            | Specialized agent for comprehensive change impact assessment and risk analysis in software systems using CAST Imaging                        |
+| `cast-imaging-structural-quality-advisor` | Specialized agent for identifying, analyzing, and providing remediation guidance for code quality issues using CAST Imaging                  |
 
 ## Source
 

@@ -1,6 +1,6 @@
 ---
-description: 'Code components for canvas apps implementation, security, and configuration'
-applyTo: '**/*.{ts,tsx,js,json,xml,pcfproj,csproj}'
+description: "Code components for canvas apps implementation, security, and configuration"
+applyTo: "**/*.{ts,tsx,js,json,xml,pcfproj,csproj}"
 ---
 
 # Code Components for Canvas Apps
@@ -18,6 +18,7 @@ Professional developers can use Power Apps component framework to create code co
 When you open a canvas app that contains code components in Power Apps Studio, a warning message about potentially unsafe code appears. Code components in the Power Apps Studio environment have access to security tokens; hence only components from trusted sources should be opened.
 
 **Best Practices:**
+
 - Administrators and system customizers should review and validate all code components before importing them into an environment
 - Make components available to makers only after validation
 - The `Default` publisher is shown when you import code components by using an unmanaged solution or when you have used `pac pcf push` to install your code component

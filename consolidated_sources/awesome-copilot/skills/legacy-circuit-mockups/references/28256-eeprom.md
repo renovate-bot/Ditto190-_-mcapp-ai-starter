@@ -28,12 +28,12 @@ The device supports byte-level write operations, fast read access, and software-
 
 ### 3.1 Address Pins (A0-A14)
 
-* Select one of 32,768 memory locations
+- Select one of 32,768 memory locations
 
 ### 3.2 Data Pins (I/O0-I/O7)
 
-* Bidirectional tri-state data bus
-* Outputs valid during read cycles
+- Bidirectional tri-state data bus
+- Outputs valid during read cycles
 
 ### 3.3 Control Pins
 
@@ -49,8 +49,8 @@ The device supports byte-level write operations, fast read access, and software-
 
 ## 4. Memory Organization
 
-* Linear address space from `$0000` to `$7FFF`
-* Each address corresponds to one 8-bit byte
+- Linear address space from `$0000` to `$7FFF`
+- Each address corresponds to one 8-bit byte
 
 ```text
 Address Range: 0000h - 7FFFh
@@ -69,9 +69,9 @@ Data Width:    8 bits
 | OE     | LOW   |
 | WE     | HIGH  |
 
-* Data appears on I/O pins after access time
-* Output remains valid while CE and OE are asserted
-* Outputs are high-impedance when CE or OE is HIGH
+- Data appears on I/O pins after access time
+- Output remains valid while CE and OE are asserted
+- Outputs are high-impedance when CE or OE is HIGH
 
 ---
 
@@ -85,9 +85,9 @@ Data Width:    8 bits
 | OE     | HIGH      |
 | WE     | LOW pulse |
 
-* Address and data must be stable during WE low pulse
-* Internal write cycle time ≈ 10 ms (max)
-* Device automatically handles erase-before-write
+- Address and data must be stable during WE low pulse
+- Internal write cycle time ≈ 10 ms (max)
+- Device automatically handles erase-before-write
 
 ---
 
@@ -118,24 +118,24 @@ Write $20 to address $5555
 
 ## 8. Write Cycle Timing Notes
 
-* Writes are internally timed; no external polling required
-* During write cycle, reads return undefined data
-* Device ignores additional write attempts while busy
+- Writes are internally timed; no external polling required
+- During write cycle, reads return undefined data
+- Device ignores additional write attempts while busy
 
 ---
 
 ## 9. Data Polling (Optional)
 
-* I/O7 may be monitored during write
-* When I/O7 matches written data, write is complete
+- I/O7 may be monitored during write
+- When I/O7 matches written data, write is complete
 
 ---
 
 ## 10. Reset and Power Behavior
 
-* No explicit reset pin
-* Writes inhibited during power-up and power-down
-* Outputs default to high-impedance until CE and OE asserted
+- No explicit reset pin
+- Writes inhibited during power-up and power-down
+- Outputs default to high-impedance until CE and OE asserted
 
 ---
 
@@ -173,18 +173,18 @@ WE  inverted R/W?
 
 ## 14. Common Use Cases
 
-* ROM replacement in retro systems
-* Firmware storage
-* Microcomputer monitors and BASIC ROMs
-* Prototyping and hobbyist computers
+- ROM replacement in retro systems
+- Firmware storage
+- Microcomputer monitors and BASIC ROMs
+- Prototyping and hobbyist computers
 
 ---
 
 ## 15. References
 
-* <https://www.utmel.com/components/at28bv256-eeproms-pinout-equivalent-and-datasheet?id=1019>
-* <https://www.futurlec.com/Memory/28C256.shtml>
-* <https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf>
-* <https://bread80.com/2020/08/10/the-ben-eater-eeprom-programmer-28c256-and-software-data-protection/>
+- <https://www.utmel.com/components/at28bv256-eeproms-pinout-equivalent-and-datasheet?id=1019>
+- <https://www.futurlec.com/Memory/28C256.shtml>
+- <https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf>
+- <https://bread80.com/2020/08/10/the-ben-eater-eeprom-programmer-28c256-and-software-data-protection/>
 
 ---

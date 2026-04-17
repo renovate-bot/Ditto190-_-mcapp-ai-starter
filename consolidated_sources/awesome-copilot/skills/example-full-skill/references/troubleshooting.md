@@ -9,6 +9,7 @@ Common errors and solutions for `example-full-skill`.
 **Cause:** Python's uv package manager is not installed.
 
 **Solution:**
+
 ```bash
 # Install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -22,6 +23,7 @@ uv --version
 **Cause:** Deno runtime is not installed.
 
 **Solution:**
+
 ```bash
 # Linux/macOS
 curl -fsSL https://deno.land/install.sh | sh
@@ -38,6 +40,7 @@ deno --version
 **Cause:** jq JSON processor is not installed (required by process.sh).
 
 **Solution:**
+
 ```bash
 # Ubuntu/Debian
 sudo apt install jq
@@ -56,13 +59,15 @@ jq --version
 **Cause:** Email field doesn't contain '@' character.
 
 **Example:**
+
 ```json
 {
-  "email": "alice.example.com"  // Missing @
+  "email": "alice.example.com" // Missing @
 }
 ```
 
 **Solution:** Fix email format:
+
 ```json
 {
   "email": "alice@example.com"
@@ -74,16 +79,18 @@ jq --version
 **Cause:** Status field contains value not in allowed enum.
 
 **Example:**
+
 ```json
 {
-  "status": "disabled"  // Not in enum
+  "status": "disabled" // Not in enum
 }
 ```
 
 **Solution:** Use one of the allowed values:
+
 ```json
 {
-  "status": "inactive"  // Valid: active, inactive, or pending
+  "status": "inactive" // Valid: active, inactive, or pending
 }
 ```
 
@@ -92,19 +99,21 @@ jq --version
 **Cause:** Item is missing a required field.
 
 **Example:**
+
 ```json
 {
   "items": [
     {
       "name": "Alice",
       "email": "alice@example.com"
-       // Missing 'id' and 'status'
+      // Missing 'id' and 'status'
     }
   ]
 }
 ```
 
 **Solution:** Add all required fields:
+
 ```json
 {
   "items": [
@@ -125,17 +134,21 @@ jq --version
 **Cause:** Input JSON doesn't have an 'items' array, or it's empty.
 
 **Example:**
+
 ```json
 {
-  "data": []  // Wrong field name
+  "data": [] // Wrong field name
 }
 ```
 
 **Solution:** Use correct structure:
+
 ```json
 {
   "items": [
-    { /* item data */ }
+    {
+      /* item data */
+    }
   ]
 }
 ```
@@ -145,6 +158,7 @@ jq --version
 **Cause:** JSON syntax error (missing comma, bracket, quote, etc.).
 
 **Example:**
+
 ```json
 {
   "items": [
@@ -157,6 +171,7 @@ jq --version
 ```
 
 **Solution:** Validate JSON syntax:
+
 ```bash
 # Use jq to validate
 jq empty input.json
@@ -169,6 +184,7 @@ jq empty input.json
 **Cause:** Script files don't have execute permissions.
 
 **Solution:**
+
 ```bash
 # Make scripts executable
 chmod +x scripts/*.py scripts/*.sh scripts/*.ts
@@ -191,16 +207,19 @@ deno run --allow-read scripts/extract.ts --help
 **Cause:** No write permission or disk full.
 
 **Check disk space:**
+
 ```bash
 df -h .
 ```
 
 **Check permissions:**
+
 ```bash
 ls -la
 ```
 
 **Solution:**
+
 ```bash
 # Try writing to a different directory
 bash scripts/process.sh input.json /tmp/output.json
@@ -212,11 +231,13 @@ chmod +w .
 ### Error: Python dependency installation fails
 
 **Symptom:**
+
 ```
 Error: Failed to install pydantic>=2.0.0
 ```
 
 **Solution:**
+
 ```bash
 # Clear uv cache
 uv cache clean
@@ -231,11 +252,13 @@ uv pip install pydantic strictyaml
 ### Error: Deno permission denied
 
 **Symptom:**
+
 ```
 error: Requires read access to "input.json", run again with the --allow-read flag
 ```
 
 **Solution:** Add required permissions to deno run command:
+
 ```bash
 # For reading files
 deno run --allow-read scripts/extract.ts --file input.json --fields id,name
@@ -256,12 +279,15 @@ deno run --allow-read --allow-write scripts/extract.ts \
 **This is a warning, not an error.** The field will be set to `null` in output.
 
 **If you want to avoid this warning:**
+
 1. Check available fields first:
+
 ```bash
 jq '.items[0] | keys' input.json
 ```
 
 2. Extract only existing fields:
+
 ```bash
 deno run --allow-read scripts/extract.ts \
   --file input.json \
@@ -273,6 +299,7 @@ deno run --allow-read scripts/extract.ts \
 **Symptom:** Processing very large files (>100MB) is slow or fails.
 
 **Solution:** Process in batches:
+
 ```bash
 # Split large file into chunks
 jq -c '.items[] | {items: [.]}' large-input.json | split -l 1000 - chunk-
@@ -295,12 +322,14 @@ jq -s '{processed: (map(.processed) | add), results: (map(.results[]) | .)}' out
 **Cause:** Agent not running commands from skill root directory.
 
 **Solution:** Ensure agent uses absolute paths or changes to skill directory first:
+
 ```bash
 cd /path/to/example-full-skill
 bash scripts/process.sh input.json output.json
 ```
 
 Or use absolute paths:
+
 ```bash
 bash /path/to/example-full-skill/scripts/process.sh \
   /path/to/input.json \
@@ -312,6 +341,7 @@ bash /path/to/example-full-skill/scripts/process.sh \
 **Cause:** Agent runs in non-interactive shell with limited environment.
 
 **Check:**
+
 1. Scripts use shebang: `#!/usr/bin/env python3` or `#!/usr/bin/env bash`
 2. Scripts don't prompt for input
 3. Required tools are in PATH (python3, jq, deno)

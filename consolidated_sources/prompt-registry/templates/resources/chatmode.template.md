@@ -13,6 +13,7 @@
 ### Communication Style
 
 Describe how the chat mode should communicate:
+
 - Tone and voice
 - Level of detail
 - Technical depth
@@ -20,6 +21,7 @@ Describe how the chat mode should communicate:
 ### Response Structure
 
 Define the expected structure of responses:
+
 1. Opening: How to begin responses
 2. Body: Content organization
 3. Closing: How to conclude

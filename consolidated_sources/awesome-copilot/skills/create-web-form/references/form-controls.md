@@ -38,6 +38,7 @@ Form controls can exist outside a `<form>` element using the `form` attribute to
 `<fieldset>` groups widgets that share the same purpose, improving usability and accessibility. `<legend>` provides a descriptive label for the fieldset.
 
 **Key Benefits:**
+
 - Screen readers (like JAWS and NVDA) speak the legend before each control inside the fieldset
 - Essential for grouping radio buttons and checkboxes
 - Useful for sectioning long forms across multiple pages
@@ -71,8 +72,7 @@ Form controls can exist outside a `<form>` element using the `form` attribute to
 Labels formally associate text with form controls. The `for` attribute connects a label to its input via the input's `id`.
 
 ```html
-<label for="name">Name:</label>
-<input type="text" id="name" name="user_name" />
+<label for="name">Name:</label> <input type="text" id="name" name="user_name" />
 ```
 
 **Implicit Association:** Nest the control inside the label (though explicit `for` attribute is still best practice):
@@ -84,6 +84,7 @@ Labels formally associate text with form controls. The `for` attribute connects 
 ```
 
 **Accessibility Impact:**
+
 - Screen readers announce: "Name, edit text"
 - Without proper labels: "Edit text blank" (not helpful)
 
@@ -207,15 +208,15 @@ Use these semantic HTML elements to structure forms:
 
 ### Form Structure Best Practices
 
-| Practice | Benefit |
-|----------|---------|
-| Always use `<form>` wrapper | Recognized by assistive tech and browser plugins |
-| Wrap related controls in `<fieldset>` with `<legend>` | Improves usability and accessibility |
-| Always associate labels with `for` attribute | Screen readers announce label with control |
-| Use semantic HTML (`<section>`, `<h2>`, etc.) | Better form structure and accessibility |
-| Group radio buttons/checkboxes in lists | Clearer visual and semantic organization |
-| Indicate required fields clearly | Users and AT know which fields are mandatory |
-| Test with screen readers | Verify the form is truly accessible |
+| Practice                                              | Benefit                                          |
+| ----------------------------------------------------- | ------------------------------------------------ |
+| Always use `<form>` wrapper                           | Recognized by assistive tech and browser plugins |
+| Wrap related controls in `<fieldset>` with `<legend>` | Improves usability and accessibility             |
+| Always associate labels with `for` attribute          | Screen readers announce label with control       |
+| Use semantic HTML (`<section>`, `<h2>`, etc.)         | Better form structure and accessibility          |
+| Group radio buttons/checkboxes in lists               | Clearer visual and semantic organization         |
+| Indicate required fields clearly                      | Users and AT know which fields are mandatory     |
+| Test with screen readers                              | Verify the form is truly accessible              |
 
 ---
 
@@ -234,6 +235,7 @@ Created with `<input type="text">` or omitting the type attribute (text is the d
 ```
 
 **Common text field behaviors:**
+
 - Can be marked as `readonly` (value shown but not modifiable, still sent in form submission) or `disabled` (not sent with form)
 - Support `placeholder` attribute for brief descriptions
 - Can be constrained with `size` (physical box size) and `maxlength` (character limit)
@@ -281,7 +283,8 @@ Multiple selections allowed. Each checkbox can be independently checked or unche
         id="carrots"
         name="vegetable"
         value="carrots"
-        checked />
+        checked
+      />
     </li>
     <li>
       <label for="peas">Peas</label>
@@ -296,6 +299,7 @@ Multiple selections allowed. Each checkbox can be independently checked or unche
 ```
 
 **Properties:**
+
 - Use same `name` attribute for related checkboxes
 - Include `checked` attribute to pre-select
 - Only values of checked boxes are sent with form
@@ -325,6 +329,7 @@ Only one selection allowed per group. Tied together by the same `name` attribute
 ```
 
 **Properties:**
+
 - Buttons in same group share `name` attribute
 - Checking one automatically unchecks others
 - Only checked value is sent with form
@@ -381,10 +386,12 @@ Renders as an image but behaves as a submit button. Submits X and Y coordinates 
 ```
 
 **Coordinate Submission:**
+
 - X coordinate key: `[name].x`
 - Y coordinate key: `[name].y`
 
 **Example URL with GET method:**
+
 ```
 https://example.com?pos.x=123&pos.y=456
 ```
@@ -410,22 +417,24 @@ Allows users to select one or more files to send to server.
 ```
 
 **Attributes:**
+
 - `accept`: Constrains file types (e.g., `image/*`, `.pdf`)
 - `multiple`: Allows selecting multiple files
 
 ### Common Attributes for All Form Controls
 
-| Attribute | Default | Description |
-|-----------|---------|-------------|
-| `autofocus` | false | Element automatically receives focus when page loads (only one per document) |
-| `disabled` | false | User cannot interact; inherits from containing `<fieldset>` if applicable |
-| `form` | -- | Associates control with `<form>` element by ID (allows control outside form) |
-| `name` | -- | Control name; submitted with form data |
-| `value` | -- | Element's initial value |
+| Attribute   | Default | Description                                                                  |
+| ----------- | ------- | ---------------------------------------------------------------------------- |
+| `autofocus` | false   | Element automatically receives focus when page loads (only one per document) |
+| `disabled`  | false   | User cannot interact; inherits from containing `<fieldset>` if applicable    |
+| `form`      | --      | Associates control with `<form>` element by ID (allows control outside form) |
+| `name`      | --      | Control name; submitted with form data                                       |
+| `value`     | --      | Element's initial value                                                      |
 
 ### Form Data Submission Behavior
 
 **Checkable Items Special Case:**
+
 - Values sent only if checked
 - Unchecked items: nothing is sent (not even name)
 - Checked but no value attribute: name is sent with value of `"on"`
@@ -433,6 +442,7 @@ Allows users to select one or more files to send to server.
 ```html
 <input type="checkbox" name="subscribe" value="yes" />
 ```
+
 - If checked: `subscribe=yes`
 - If unchecked: (nothing)
 
@@ -452,6 +462,7 @@ HTML5 introduced new `<input type>` values to create native form controls with b
 ```
 
 **Key Features:**
+
 - **Validation**: Browser validates email format before submission
 - **Multiple emails**: Use `multiple` attribute for comma-separated addresses
 - **Mobile keyboards**: Displays `@` symbol by default on touch devices
@@ -462,6 +473,7 @@ HTML5 introduced new `<input type>` values to create native form controls with b
 ```
 
 **Important Notes:**
+
 - `a@b` is considered valid (allows intranet addresses)
 - Use the `pattern` attribute for custom validation
 
@@ -473,6 +485,7 @@ HTML5 introduced new `<input type>` values to create native form controls with b
 ```
 
 **Key Features:**
+
 - **Visual styling**: Rounded corners in some browsers
 - **Clear icon**: Displays a clear button to empty the field when focused with a value
 - **Keyboard**: Enter key may display "search" or magnifying glass icon
@@ -486,6 +499,7 @@ HTML5 introduced new `<input type>` values to create native form controls with b
 ```
 
 **Key Features:**
+
 - **Mobile keyboards**: Displays numeric keypad on touch devices
 - **No format enforcement**: Allows letters and special characters (accommodates various international formats)
 - **Pattern validation**: Use `pattern` attribute to enforce specific formats
@@ -493,11 +507,11 @@ HTML5 introduced new `<input type>` values to create native form controls with b
 ### URL Field (`type="url"`)
 
 ```html
-<label for="url">Enter a URL:</label>
-<input type="url" id="url" name="url" />
+<label for="url">Enter a URL:</label> <input type="url" id="url" name="url" />
 ```
 
 **Key Features:**
+
 - **Validation requirements**: Protocol required (e.g., `http:`) and proper URL format enforced
 - **Mobile keyboards**: Displays colon, period, and forward slash by default
 - **Note**: Well-formed URLs do not guarantee the site exists
@@ -511,25 +525,28 @@ HTML5 introduced new `<input type>` values to create native form controls with b
 
 **Attributes:**
 
-| Attribute | Purpose | Example |
-|-----------|---------|---------|
-| `min` | Minimum value | `min="1"` |
-| `max` | Maximum value | `max="10"` |
-| `step` | Increment/decrement value | `step="2"` |
+| Attribute | Purpose                   | Example    |
+| --------- | ------------------------- | ---------- |
+| `min`     | Minimum value             | `min="1"`  |
+| `max`     | Maximum value             | `max="10"` |
+| `step`    | Increment/decrement value | `step="2"` |
 
 **Examples:**
 
 Odd numbers between 1-10:
+
 ```html
 <input type="number" name="age" id="age" min="1" max="10" step="2" />
 ```
 
 Decimal values (0-1):
+
 ```html
 <input type="number" name="change" id="pennies" min="0" max="1" step="0.01" />
 ```
 
 **Key Features:**
+
 - **Spinner buttons**: Increase/decrease values
 - **Mobile**: Numeric keyboard displayed
 - **Default step**: `1` (only allows integers unless changed)
@@ -546,11 +563,13 @@ Decimal values (0-1):
   min="50000"
   max="500000"
   step="1000"
-  value="250000" />
+  value="250000"
+/>
 <output class="price-output" for="price"></output>
 ```
 
 **JavaScript to Display Value:**
+
 ```javascript
 const price = document.querySelector("#price");
 const output = document.querySelector(".price-output");
@@ -563,6 +582,7 @@ price.addEventListener("input", () => {
 ```
 
 **Key Features:**
+
 - Less precise than text input (best for approximate values)
 - Thumb movement via mouse, touch, or keyboard arrows
 - Use `<output>` element for displaying current value
@@ -576,6 +596,7 @@ price.addEventListener("input", () => {
 <label for="date">Enter the date:</label>
 <input type="date" name="date" id="date" />
 ```
+
 Captures: Year, month, day (no time).
 
 #### Date and Time Local (`type="datetime-local"`)
@@ -584,6 +605,7 @@ Captures: Year, month, day (no time).
 <label for="datetime">Enter the date and time:</label>
 <input type="datetime-local" name="datetime" id="datetime" />
 ```
+
 Captures: Date and time (no timezone).
 
 #### Month (`type="month"`)
@@ -592,6 +614,7 @@ Captures: Date and time (no timezone).
 <label for="month">Enter the month:</label>
 <input type="month" name="month" id="month" />
 ```
+
 Captures: Month and year.
 
 #### Time (`type="time"`)
@@ -600,6 +623,7 @@ Captures: Month and year.
 <label for="time">Enter a time:</label>
 <input type="time" name="time" id="time" />
 ```
+
 - **Display format**: 12-hour (in some browsers)
 - **Return format**: Always 24-hour
 
@@ -609,6 +633,7 @@ Captures: Month and year.
 <label for="week">Enter the week:</label>
 <input type="week" name="week" id="week" />
 ```
+
 - Weeks: Monday-Sunday
 - Week 1: Contains first Thursday of the year
 
@@ -622,7 +647,8 @@ Captures: Month and year.
   min="2025-06-01"
   max="2025-08-31"
   step="7"
-  id="myDate" />
+  id="myDate"
+/>
 ```
 
 #### Validation Example (CSS)
@@ -645,6 +671,7 @@ input:valid + span::after {
 ```
 
 **Key Features:**
+
 - Opens OS default color-picking functionality
 - Return value: Always lowercase 6-digit hexadecimal (e.g., `#ff0000`)
 - No manual format entry: System color picker handles selection
@@ -652,28 +679,30 @@ input:valid + span::after {
 ### Client-Side Validation Notes
 
 **Advantages:**
+
 - Immediate user feedback
 - Guides accurate form completion
 - Saves server round trips
 
 **Important Limitations:**
+
 - NOT a security measure -- easily disabled by users
 - Server-side validation is always required
 - Prevents only obvious mistakes, not malicious data
 
 ### HTML5 Input Types Summary
 
-| Type | Purpose | Key Attribute | Mobile Keyboard |
-|------|---------|---------------|-----------------|
-| `email` | Email address | `multiple` | @ symbol |
-| `search` | Search queries | `pattern` | Standard |
-| `tel` | Phone numbers | `pattern` | Numeric |
-| `url` | Web URLs | Required protocol | `:/.` symbols |
-| `number` | Numeric values | `min`, `max`, `step` | Numeric |
-| `range` | Slider selection | `min`, `max`, `step` | N/A |
-| `date` | Date picker | `min`, `max` | Calendar |
-| `time` | Time picker | `min`, `max` | Clock |
-| `color` | Color picker | Default hex | Color picker |
+| Type     | Purpose          | Key Attribute        | Mobile Keyboard |
+| -------- | ---------------- | -------------------- | --------------- |
+| `email`  | Email address    | `multiple`           | @ symbol        |
+| `search` | Search queries   | `pattern`            | Standard        |
+| `tel`    | Phone numbers    | `pattern`            | Numeric         |
+| `url`    | Web URLs         | Required protocol    | `:/.` symbols   |
+| `number` | Numeric values   | `min`, `max`, `step` | Numeric         |
+| `range`  | Slider selection | `min`, `max`, `step` | N/A             |
+| `date`   | Date picker      | `min`, `max`         | Calendar        |
+| `time`   | Time picker      | `min`, `max`         | Clock           |
+| `color`  | Color picker     | Default hex          | Color picker    |
 
 ---
 
@@ -688,6 +717,7 @@ input:valid + span::after {
 ```
 
 **Key Characteristics:**
+
 - Allows users to input multiple lines of text
 - Supports hard line breaks (pressing return)
 - Content is placed between opening and closing tags
@@ -695,24 +725,26 @@ input:valid + span::after {
 
 **Controlling Multi-Line Rendering:**
 
-| Attribute | Description |
-|-----------|-------------|
-| `cols` | Visible width in average character widths (default: 20) |
-| `rows` | Number of visible text rows (default: 2) |
-| `wrap` | Text wrapping behavior: `soft` (default), `hard`, or `off` |
+| Attribute | Description                                                |
+| --------- | ---------------------------------------------------------- |
+| `cols`    | Visible width in average character widths (default: 20)    |
+| `rows`    | Number of visible text rows (default: 2)                   |
+| `wrap`    | Text wrapping behavior: `soft` (default), `hard`, or `off` |
 
 **Example with wrapping:**
+
 ```html
 <textarea cols="30" rows="8" wrap="hard"></textarea>
 ```
 
 **Controlling Resizability (CSS):**
+
 ```css
 textarea {
-  resize: both;        /* horizontal and vertical */
-  resize: horizontal;  /* horizontal only */
-  resize: vertical;    /* vertical only */
-  resize: none;        /* no resizing */
+  resize: both; /* horizontal and vertical */
+  resize: horizontal; /* horizontal only */
+  resize: vertical; /* vertical only */
+  resize: none; /* no resizing */
 }
 ```
 
@@ -729,6 +761,7 @@ textarea {
 ```
 
 **With Grouping (`<optgroup>`):**
+
 ```html
 <select id="groups" name="groups">
   <optgroup label="fruits">
@@ -745,6 +778,7 @@ textarea {
 ```
 
 **With Value Attributes:**
+
 ```html
 <select id="simple" name="simple">
   <option value="banana">Big, beautiful yellow banana</option>
@@ -754,6 +788,7 @@ textarea {
 ```
 
 **Attributes:**
+
 - `selected` -- Sets the default selected option
 - `value` -- The value sent when form is submitted (if omitted, uses option text)
 - `size` -- Number of visible options
@@ -776,6 +811,7 @@ textarea {
 ```
 
 **Notes:**
+
 - Add `multiple` attribute to allow multiple selections
 - Users select via Cmd/Ctrl+click on desktop
 - All values display as a list (not dropdown)
@@ -798,6 +834,7 @@ textarea {
 ```
 
 **How It Works:**
+
 - `<datalist>` provides suggested values
 - Bound to input via `list` attribute (must match datalist `id`)
 - Browsers display matching values as user types
@@ -810,6 +847,7 @@ textarea {
 ```
 
 **Attributes:**
+
 - `max` -- Maximum value (default: 1.0 if not specified)
 - `value` -- Current progress value
 - Content inside is fallback for unsupported browsers
@@ -823,17 +861,20 @@ textarea {
 ```
 
 **Attributes:**
+
 - `min` / `max` -- Range boundaries
 - `low` / `high` -- Define three ranges (lower, medium, higher)
 - `value` -- Current meter value
 - `optimum` -- Preferred value (determines color coding)
 
 **Color Coding:**
+
 - Green: Value in preferred range
 - Yellow: Value in average range
 - Red: Value in worst range
 
 **Optimum Logic:**
+
 - If `optimum` in lower range: lower is preferred
 - If `optimum` in medium range: medium is preferred
 - If `optimum` in higher range: higher is preferred
@@ -842,10 +883,10 @@ textarea {
 
 ### Other Form Controls Summary
 
-| Element | Purpose | Input Type |
-|---------|---------|------------|
-| `<textarea>` | Multi-line text input | Text content |
-| `<select>` | Single or multiple selection | Predefined options |
+| Element      | Purpose                       | Input Type                  |
+| ------------ | ----------------------------- | --------------------------- |
+| `<textarea>` | Multi-line text input         | Text content                |
+| `<select>`   | Single or multiple selection  | Predefined options          |
 | `<datalist>` | Suggested autocomplete values | Text input with suggestions |
-| `<progress>` | Progress indication | Read-only display |
-| `<meter>` | Measurement display | Read-only display |
+| `<progress>` | Progress indication           | Read-only display           |
+| `<meter>`    | Measurement display           | Read-only display           |

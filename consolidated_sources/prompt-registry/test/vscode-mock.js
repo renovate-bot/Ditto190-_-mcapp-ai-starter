@@ -1,24 +1,24 @@
 // Mock vscode API for unit tests
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 module.exports = {
   workspace: {
     getConfiguration: (section) => ({
       get: (key, defaultValue) => {
         // Return mock configuration values for testing
-        if (section === 'olaf') {
+        if (section === "olaf") {
           const config = {
-            'repositoryOwner': 'test-owner',
-            'repositoryName': 'test-repo',
-            'githubToken': 'test-token',
-            'usePrivateRepository': false
+            repositoryOwner: "test-owner",
+            repositoryName: "test-repo",
+            githubToken: "test-token",
+            usePrivateRepository: false,
           };
           return config[key] || defaultValue;
         }
         return defaultValue;
       },
-      update: async (key, value, target) => undefined
+      update: async (key, value, target) => undefined,
     }),
     fs: {
       writeFile: async (uri, content) => {
@@ -52,18 +52,18 @@ module.exports = {
           type: stats.isDirectory() ? 2 : 1, // FileType.Directory = 2, FileType.File = 1
           ctime: stats.ctimeMs,
           mtime: stats.mtimeMs,
-          size: stats.size
+          size: stats.size,
         };
       },
       readDirectory: async (uri) => {
         const dirPath = uri.fsPath;
         const entries = fs.readdirSync(dirPath, { withFileTypes: true });
-        return entries.map(entry => [
+        return entries.map((entry) => [
           entry.name,
-          entry.isDirectory() ? 2 : 1 // FileType.Directory = 2, FileType.File = 1
+          entry.isDirectory() ? 2 : 1, // FileType.Directory = 2, FileType.File = 1
         ]);
-      }
-    }
+      },
+    },
   },
   window: {
     showInformationMessage: () => Promise.resolve(),
@@ -74,22 +74,22 @@ module.exports = {
       const quickPick = {
         items: [],
         selectedItems: [],
-        title: '',
-        placeholder: '',
+        title: "",
+        placeholder: "",
         ignoreFocusOut: false,
         onDidChangeSelection: () => ({ dispose: () => {} }),
         onDidAccept: () => ({ dispose: () => {} }),
         onDidHide: () => ({ dispose: () => {} }),
         show: () => {},
         hide: () => {},
-        dispose: () => {}
+        dispose: () => {},
       };
       return quickPick;
     },
     createOutputChannel: (name) => ({
       appendLine: () => undefined,
       show: () => undefined,
-      dispose: () => undefined
+      dispose: () => undefined,
     }),
     withProgress: async (options, task) => {
       const progress = { report: () => undefined };
@@ -99,12 +99,12 @@ module.exports = {
       show: () => undefined,
       sendText: () => undefined,
       dispose: () => undefined,
-      name: options?.name || 'terminal',
+      name: options?.name || "terminal",
       processId: Promise.resolve(12345),
       creationOptions: options || {},
       exitStatus: undefined,
-      state: { isInteractedWith: false }
-    })
+      state: { isInteractedWith: false },
+    }),
   },
   // Add missing TreeView related mocks
   TreeItem: class {
@@ -116,7 +116,7 @@ module.exports = {
   TreeItemCollapsibleState: {
     None: 0,
     Collapsed: 1,
-    Expanded: 2
+    Expanded: 2,
   },
   EventEmitter: class {
     constructor() {
@@ -131,38 +131,41 @@ module.exports = {
     }
   },
   Uri: {
-    file: (path) => ({ fsPath: path, scheme: 'file' }),
-    parse: (path) => ({ fsPath: path, scheme: 'file' }),
-    joinPath: (base, ...segments) => ({ fsPath: base.fsPath + '/' + segments.join('/'), scheme: 'file' })
+    file: (path) => ({ fsPath: path, scheme: "file" }),
+    parse: (path) => ({ fsPath: path, scheme: "file" }),
+    joinPath: (base, ...segments) => ({
+      fsPath: base.fsPath + "/" + segments.join("/"),
+      scheme: "file",
+    }),
   },
   env: {
-    appName: 'Visual Studio Code',
-    appRoot: '/mock/app/root',
-    language: 'en',
-    machineId: 'mock-machine-id',
-    sessionId: 'mock-session-id',
+    appName: "Visual Studio Code",
+    appRoot: "/mock/app/root",
+    language: "en",
+    machineId: "mock-machine-id",
+    sessionId: "mock-session-id",
     remoteName: undefined,
-    shell: '/bin/bash',
-    openExternal: () => Promise.resolve(true)
+    shell: "/bin/bash",
+    openExternal: () => Promise.resolve(true),
   },
   authentication: {
-    getSession: () => Promise.resolve(undefined)
+    getSession: () => Promise.resolve(undefined),
   },
   ConfigurationTarget: {
     Global: 1,
     Workspace: 2,
-    WorkspaceFolder: 3
+    WorkspaceFolder: 3,
   },
   commands: {
-    executeCommand: () => Promise.resolve()
+    executeCommand: () => Promise.resolve(),
   },
   ProgressLocation: {
     Notification: 15,
     Window: 10,
-    SourceControl: 1
+    SourceControl: 1,
   },
   extensions: {
     getExtension: () => undefined,
-    all: []
-  }
+    all: [],
+  },
 };

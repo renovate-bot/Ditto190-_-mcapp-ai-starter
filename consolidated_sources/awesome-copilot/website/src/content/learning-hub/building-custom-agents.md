@@ -1,10 +1,10 @@
 ---
-title: 'Building Custom Agents'
-description: 'Learn how to create specialized GitHub Copilot agents with custom personas, tool integrations, and domain expertise.'
+title: "Building Custom Agents"
+description: "Learn how to create specialized GitHub Copilot agents with custom personas, tool integrations, and domain expertise."
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: '2026-02-26'
-estimatedReadingTime: '10 minutes'
+lastUpdated: "2026-02-26"
+estimatedReadingTime: "10 minutes"
 tags:
   - agents
   - customization
@@ -34,6 +34,7 @@ Custom agents are Markdown files (`*.agent.md`) that configure GitHub Copilot wi
 When a user selects a custom agent in VS Code or assigns it to an issue via the Copilot coding agent, the agent's configuration shapes the entire interaction.
 
 **Key Points**:
+
 - Agents persist across a conversation—they maintain their persona and context
 - Agents can invoke tools, run commands, search codebases, and interact with MCP servers
 - Multiple agents can coexist in a repository, each serving different workflows
@@ -42,11 +43,13 @@ When a user selects a custom agent in VS Code or assigns it to an issue via the 
 ### How Agents Differ from Other Customizations
 
 **Agents vs Instructions**:
+
 - Agents are explicitly selected; instructions apply automatically to matching files
 - Agents define a complete persona; instructions provide passive background context
 - Use agents for interactive workflows; use instructions for coding standards
 
 **Agents vs Skills**:
+
 - Agents are persistent personas; skills are single-task capabilities
 - Agents can invoke skills during a conversation
 - Use agents for complex multi-step workflows; use skills for focused, repeatable tasks
@@ -59,10 +62,10 @@ Every agent file has two parts: YAML frontmatter and Markdown instructions.
 
 ```yaml
 ---
-name: 'Security Reviewer'
-description: 'Expert security auditor that reviews code for OWASP vulnerabilities, authentication flaws, and supply chain risks'
+name: "Security Reviewer"
+description: "Expert security auditor that reviews code for OWASP vulnerabilities, authentication flaws, and supply chain risks"
 model: Claude Sonnet 4
-tools: ['codebase', 'terminal', 'github']
+tools: ["codebase", "terminal", "github"]
 ---
 ```
 
@@ -74,13 +77,13 @@ tools: ['codebase', 'terminal', 'github']
 
 **tools** (recommended): An array of built-in tools and MCP servers the agent can access. Common tools include:
 
-| Tool | Purpose |
-|------|---------|
+| Tool       | Purpose                                       |
+| ---------- | --------------------------------------------- |
 | `codebase` | Search and analyze code across the repository |
-| `terminal` | Run shell commands |
-| `github` | Interact with GitHub APIs (issues, PRs, etc.) |
-| `fetch` | Make HTTP requests to external APIs |
-| `edit` | Modify files in the workspace |
+| `terminal` | Run shell commands                            |
+| `github`   | Interact with GitHub APIs (issues, PRs, etc.) |
+| `fetch`    | Make HTTP requests to external APIs           |
+| `edit`     | Modify files in the workspace                 |
 
 For MCP server tools, reference them by server name (e.g., `postgres`, `docker`). See [Understanding MCP Servers](../understanding-mcp-servers/) for details.
 
@@ -88,12 +91,12 @@ For MCP server tools, reference them by server name (e.g., `postgres`, `docker`)
 
 After the frontmatter, write Markdown instructions that define the agent's behavior. Structure these clearly:
 
-````markdown
+```markdown
 ---
-name: 'API Design Reviewer'
-description: 'Reviews API designs for consistency, RESTful patterns, and team conventions'
+name: "API Design Reviewer"
+description: "Reviews API designs for consistency, RESTful patterns, and team conventions"
 model: Claude Sonnet 4
-tools: ['codebase', 'github']
+tools: ["codebase", "github"]
 ---
 
 # API Design Reviewer
@@ -122,10 +125,11 @@ When reviewing API changes:
 ## Output Format
 
 Present findings as:
+
 - 🔴 **Breaking**: Changes that break existing clients
 - 🟡 **Warning**: Patterns that should be improved
 - 🟢 **Good**: Patterns that follow our conventions
-````
+```
 
 ## Design Patterns
 
@@ -135,10 +139,10 @@ Create agents with deep knowledge of a specific technology:
 
 ```markdown
 ---
-name: 'Terraform Expert'
-description: 'Infrastructure-as-code specialist for Terraform on Azure with security-first defaults'
+name: "Terraform Expert"
+description: "Infrastructure-as-code specialist for Terraform on Azure with security-first defaults"
 model: Claude Sonnet 4
-tools: ['codebase', 'terminal']
+tools: ["codebase", "terminal"]
 ---
 
 You are an expert in Terraform and Azure infrastructure.
@@ -158,10 +162,10 @@ Create agents that execute multi-step processes:
 
 ```markdown
 ---
-name: 'Release Manager'
-description: 'Automates release preparation including changelog generation, version bumping, and tag creation'
+name: "Release Manager"
+description: "Automates release preparation including changelog generation, version bumping, and tag creation"
 model: Claude Sonnet 4
-tools: ['codebase', 'terminal', 'github']
+tools: ["codebase", "terminal", "github"]
 ---
 
 You are a release manager who automates the release process.
@@ -187,10 +191,10 @@ Create agents that enforce standards:
 
 ```markdown
 ---
-name: 'Accessibility Auditor'
-description: 'Reviews UI components for WCAG 2.1 AA compliance and accessibility best practices'
+name: "Accessibility Auditor"
+description: "Reviews UI components for WCAG 2.1 AA compliance and accessibility best practices"
 model: Claude Sonnet 4
-tools: ['codebase']
+tools: ["codebase"]
 ---
 
 You are an accessibility expert who reviews UI components for WCAG compliance.
@@ -218,9 +222,9 @@ Agents become significantly more powerful when connected to external tools via M
 
 ```yaml
 ---
-name: 'Database Administrator'
-description: 'Expert DBA for PostgreSQL performance tuning, query optimization, and schema design'
-tools: ['codebase', 'terminal', 'postgres-mcp']
+name: "Database Administrator"
+description: "Expert DBA for PostgreSQL performance tuning, query optimization, and schema design"
+tools: ["codebase", "terminal", "postgres-mcp"]
 ---
 ```
 
@@ -237,12 +241,12 @@ The agent can then query your database, analyze query plans, and suggest optimiz
 
 ### Choosing the Right Model
 
-| Scenario | Recommended Model |
-|----------|-------------------|
-| Complex reasoning, security review | Claude Sonnet 4 or higher |
-| Code generation, refactoring | GPT-4.1 |
-| Quick analysis, simple tasks | Claude Haiku or GPT-4.1-mini |
-| Large codebase understanding | Models with larger context windows |
+| Scenario                           | Recommended Model                  |
+| ---------------------------------- | ---------------------------------- |
+| Complex reasoning, security review | Claude Sonnet 4 or higher          |
+| Code generation, refactoring       | GPT-4.1                            |
+| Quick analysis, simple tasks       | Claude Haiku or GPT-4.1-mini       |
+| Large codebase understanding       | Models with larger context windows |
 
 ### Organizing Agents in Your Repository
 

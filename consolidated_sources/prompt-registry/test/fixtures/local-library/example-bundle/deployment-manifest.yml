@@ -22,7 +22,7 @@ prompts:
     tags:
       - review
       - quality
-    
+
   - id: bug-analyzer
     name: Bug Analyzer
     description: Analyzes code to identify potential bugs and issues
@@ -30,7 +30,7 @@ prompts:
     tags:
       - debugging
       - analysis
-    
+
   - id: refactoring-guide
     name: Refactoring Guide
     description: Provides guidance on refactoring code for better maintainability
