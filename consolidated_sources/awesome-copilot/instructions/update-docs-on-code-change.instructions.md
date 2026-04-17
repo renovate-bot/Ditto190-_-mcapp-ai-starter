@@ -1,6 +1,6 @@
 ---
-description: 'Automatically update README.md and documentation files when application code changes require documentation updates'
-applyTo: '**/*.{md,js,mjs,cjs,ts,tsx,jsx,py,java,cs,go,rb,php,rs,cpp,c,h,hpp}'
+description: "Automatically update README.md and documentation files when application code changes require documentation updates"
+applyTo: "**/*.{md,js,mjs,cjs,ts,tsx,jsx,py,java,cs,go,rb,php,rs,cpp,c,h,hpp}"
 ---
 
 # Update Documentation on Code Change
@@ -22,7 +22,7 @@ custom cases and conditions for when and how to implement certain sections of th
 ### Instruction Sections and Configurable Instruction Sections
 
 There are several instruction sections in this document. The start of an instruction section is
-indicated by a level two header. Call this an **INSTRUCTION SECTION**.  Some instruction
+indicated by a level two header. Call this an **INSTRUCTION SECTION**. Some instruction
 sections are configurable. Some are not configurable and will always be used.
 
 Instruction sections that ARE configurable are not required, and are subject to additional context
@@ -93,6 +93,7 @@ of instructions that are independent of the entirety of this instruction file. C
 | apply-maintenance-schedule    | true    | Schedules regular documentation maintenance.                                | Disable if maintenance is managed differently.              |
 | apply-git-integration         | false   | Integrates documentation updates with Git workflows.                        | Enable if you want automatic Git integration.               |
 -->
+
 ## When to Update Documentation
 
 ### Trigger Conditions
@@ -281,12 +282,12 @@ If `apply-doc-verification == true`, then apply the following configurable instr
 - Validate configuration examples against schemas
 - Ensure API examples match current implementation
 
-    ```bash
-    # Example validation commands
-    npm run docs:check         # Verify docs build
-    npm run docs:test-examples # Test code examples
-    npm run docs:lint         # Check for issues
-    ```
+  ```bash
+  # Example validation commands
+  npm run docs:check         # Verify docs build
+  npm run docs:test-examples # Test code examples
+  npm run docs:lint         # Check for issues
+  ```
 
 ## Documentation Quality Standards `apply-doc-quality-standard`
 
@@ -527,7 +528,7 @@ If `apply-git-integration == true`, then apply the following configurable instru
 Before considering documentation complete, and concluding on the **final procedure**:
 
 - [ ] **Compiled instructions** are based on the sum of **constant instruction sections** and
-**configurable instruction sections**
+      **configurable instruction sections**
 - [ ] README.md reflects current project state
 - [ ] All new features are documented
 - [ ] Code examples are tested and work

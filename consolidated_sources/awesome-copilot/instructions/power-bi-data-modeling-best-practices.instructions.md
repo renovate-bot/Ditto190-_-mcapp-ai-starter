@@ -1,17 +1,20 @@
 ---
-description: 'Comprehensive Power BI data modeling best practices based on Microsoft guidance for creating efficient, scalable, and maintainable semantic models using star schema principles.'
-applyTo: '**/*.{pbix,md,json,txt}'
+description: "Comprehensive Power BI data modeling best practices based on Microsoft guidance for creating efficient, scalable, and maintainable semantic models using star schema principles."
+applyTo: "**/*.{pbix,md,json,txt}"
 ---
 
 # Power BI Data Modeling Best Practices
 
 ## Overview
+
 This document provides comprehensive instructions for designing efficient, scalable, and maintainable Power BI semantic models following Microsoft's official guidance and dimensional modeling best practices.
 
 ## Star Schema Design Principles
 
 ### 1. Fundamental Table Types
+
 **Dimension Tables** - Store descriptive business entities:
+
 - Products, customers, geography, time, employees
 - Contain unique key columns (preferably surrogate keys)
 - Relatively small number of rows
@@ -19,6 +22,7 @@ This document provides comprehensive instructions for designing efficient, scala
 - Support hierarchical drill-down scenarios
 
 **Fact Tables** - Store measurable business events:
+
 - Sales transactions, website clicks, manufacturing events
 - Contain foreign keys to dimension tables
 - Numeric measures for aggregation
@@ -31,7 +35,7 @@ Example Star Schema Structure:
 DimProduct (Dimension)          FactSales (Fact)              DimCustomer (Dimension)
 ├── ProductKey (PK)             ├── SalesKey (PK)             ├── CustomerKey (PK)
 ├── ProductName                 ├── ProductKey (FK)           ├── CustomerName
-├── Category                    ├── CustomerKey (FK)          ├── CustomerType  
+├── Category                    ├── CustomerKey (FK)          ├── CustomerType
 ├── SubCategory                 ├── DateKey (FK)              ├── Region
 └── UnitPrice                   ├── SalesAmount               └── RegistrationDate
                                ├── Quantity
@@ -47,6 +51,7 @@ DimDate (Dimension)             └── DiscountAmount
 ### 2. Table Design Best Practices
 
 #### Dimension Table Design
+
 ```
 ✅ DO:
 - Use surrogate keys (auto-incrementing integers) as primary keys
@@ -64,6 +69,7 @@ DimDate (Dimension)             └── DiscountAmount
 ```
 
 #### Fact Table Design
+
 ```
 ✅ DO:
 - Store data at the most granular level needed
@@ -84,6 +90,7 @@ DimDate (Dimension)             └── DiscountAmount
 ### 1. Relationship Types and Best Practices
 
 #### One-to-Many Relationships (Standard Pattern)
+
 ```
 Configuration:
 - From Dimension (One side) to Fact (Many side)
@@ -97,6 +104,7 @@ DimDate (1) ← DateKey → (*) FactSales
 ```
 
 #### Many-to-Many Relationships (Use Sparingly)
+
 ```
 When to Use:
 ✅ Genuine many-to-many business relationships
@@ -114,6 +122,7 @@ DimCustomer (1) ← CustomerKey → (*) BridgeCustomerAccount (*) ← AccountKey
 ```
 
 #### One-to-One Relationships (Rare)
+
 ```
 When to Use:
 - Extending dimension tables with additional attributes
@@ -127,6 +136,7 @@ Implementation:
 ```
 
 ### 2. Relationship Configuration Guidelines
+
 ```
 Filter Direction:
 ✅ Single Direction: Default choice, best performance
@@ -139,7 +149,7 @@ Cross-Filter Direction:
 - Dimension to Dimension: Only when business logic requires it
 
 Referential Integrity:
-✅ Enable for DirectQuery sources when data quality is guaranteed  
+✅ Enable for DirectQuery sources when data quality is guaranteed
 ✅ Improves query performance by using INNER JOINs
 ❌ Don't enable if source data has orphaned records
 ```
@@ -147,6 +157,7 @@ Referential Integrity:
 ## Storage Mode Optimization
 
 ### 1. Import Mode Best Practices
+
 ```
 When to Use Import Mode:
 ✅ Data size fits within capacity limits
@@ -163,6 +174,7 @@ Optimization Strategies:
 ```
 
 #### Data Reduction Techniques for Import
+
 ```
 Vertical Filtering (Column Reduction):
 ✅ Remove columns not used in reports or relationships
@@ -184,6 +196,7 @@ High Precision → Lower Precision: Match business requirements
 ```
 
 ### 2. DirectQuery Mode Best Practices
+
 ```
 When to Use DirectQuery Mode:
 ✅ Data exceeds import capacity limits
@@ -201,6 +214,7 @@ Optimization Requirements:
 ```
 
 #### DirectQuery Performance Optimization
+
 ```
 Database Optimization:
 ✅ Create indexes on frequently filtered columns
@@ -224,6 +238,7 @@ Query Performance:
 ```
 
 ### 3. Composite Model Design
+
 ```
 When to Use Composite Models:
 ✅ Combine historical (Import) with real-time (DirectQuery) data
@@ -233,12 +248,13 @@ When to Use Composite Models:
 
 Storage Mode Selection:
 Import: Small dimension tables, historical aggregated facts
-DirectQuery: Large fact tables, real-time operational data  
+DirectQuery: Large fact tables, real-time operational data
 Dual: Dimension tables that need to work with both Import and DirectQuery facts
 Hybrid: Fact tables combining historical (Import) with recent (DirectQuery) data
 ```
 
 #### Dual Storage Mode Strategy
+
 ```
 Use Dual Mode For:
 ✅ Dimension tables that relate to both Import and DirectQuery facts
@@ -255,6 +271,7 @@ Configuration:
 ## Advanced Modeling Patterns
 
 ### 1. Date Table Design
+
 ```
 Essential Date Table Attributes:
 ✅ Continuous date range (no gaps)
@@ -268,7 +285,7 @@ DateKey (Integer): 20240315 (YYYYMMDD format)
 Date (Date): 2024-03-15
 Year (Integer): 2024
 Quarter (Text): Q1 2024
-Month (Text): March 2024  
+Month (Text): March 2024
 MonthNumber (Integer): 3
 DayOfWeek (Text): Friday
 IsWorkingDay (Boolean): TRUE
@@ -277,6 +294,7 @@ FiscalQuarter (Text): FY2024 Q3
 ```
 
 ### 2. Slowly Changing Dimensions (SCD)
+
 ```
 Type 1 SCD (Overwrite):
 - Update existing records with new values
@@ -292,7 +310,7 @@ Type 2 SCD (History Preservation):
 
 Implementation Pattern:
 CustomerKey (Surrogate): 1, 2, 3, 4
-CustomerID (Business): 101, 101, 102, 103  
+CustomerID (Business): 101, 101, 102, 103
 CustomerName: "John Doe", "John Smith", "Jane Doe", "Bob Johnson"
 EffectiveDate: 2023-01-01, 2024-01-01, 2023-01-01, 2023-01-01
 ExpirationDate: 2023-12-31, 9999-12-31, 9999-12-31, 9999-12-31
@@ -300,6 +318,7 @@ IsCurrent: FALSE, TRUE, TRUE, TRUE
 ```
 
 ### 3. Role-Playing Dimensions
+
 ```
 Scenario: Date table used for Order Date, Ship Date, Delivery Date
 
@@ -324,6 +343,7 @@ Sales by Delivery Date = CALCULATE([Total Sales], USERELATIONSHIP(FactSales[Deli
 ```
 
 ### 4. Bridge Tables for Many-to-Many
+
 ```
 Scenario: Students can be in multiple Courses, Courses can have multiple Students
 
@@ -333,14 +353,14 @@ DimStudent (1) ← StudentKey → (*) BridgeStudentCourse (*) ← CourseKey → 
 Bridge Table Structure:
 StudentCourseKey (PK): Surrogate key
 StudentKey (FK): Reference to DimStudent
-CourseKey (FK): Reference to DimCourse  
+CourseKey (FK): Reference to DimCourse
 EnrollmentDate: Additional context
 Grade: Additional context
 Status: Active, Completed, Dropped
 
 Relationship Configuration:
 - DimStudent to BridgeStudentCourse: One-to-Many
-- BridgeStudentCourse to DimCourse: Many-to-One  
+- BridgeStudentCourse to DimCourse: Many-to-One
 - Set one relationship to bi-directional for filter propagation
 - Hide bridge table from report view
 ```
@@ -348,6 +368,7 @@ Relationship Configuration:
 ## Performance Optimization Strategies
 
 ### 1. Model Size Optimization
+
 ```
 Column Optimization:
 ✅ Remove unused columns completely
@@ -355,7 +376,7 @@ Column Optimization:
 ✅ Convert high-cardinality text to integers with lookup tables
 ✅ Remove redundant calculated columns
 
-Row Optimization:  
+Row Optimization:
 ✅ Filter to business-relevant time periods
 ✅ Remove invalid, test, or cancelled transactions
 ✅ Archive historical data appropriately
@@ -369,6 +390,7 @@ Aggregation Strategies:
 ```
 
 ### 2. Relationship Performance
+
 ```
 Key Selection:
 ✅ Use integer keys over text keys
@@ -390,6 +412,7 @@ Cross-Filtering Strategy:
 ```
 
 ### 3. Query Performance Patterns
+
 ```
 Efficient Model Patterns:
 ✅ Proper star schema implementation
@@ -409,14 +432,15 @@ Query Optimization:
 ## Security and Governance
 
 ### 1. Row-Level Security (RLS)
+
 ```
 Implementation Patterns:
 
 User-Based Security:
 [UserEmail] = USERPRINCIPALNAME()
 
-Role-Based Security:  
-VAR UserRole = 
+Role-Based Security:
+VAR UserRole =
     LOOKUPVALUE(
         UserRoles[Role],
         UserRoles[Email],
@@ -428,7 +452,7 @@ RETURN
 Dynamic Security:
 LOOKUPVALUE(
     UserRegions[Region],
-    UserRegions[Email], 
+    UserRegions[Email],
     USERPRINCIPALNAME()
 ) = Customers[Region]
 
@@ -441,6 +465,7 @@ Best Practices:
 ```
 
 ### 2. Data Governance
+
 ```
 Documentation Requirements:
 ✅ Business definitions for all measures
@@ -466,6 +491,7 @@ Version Control:
 ## Testing and Validation Framework
 
 ### 1. Model Testing Checklist
+
 ```
 Functional Testing:
 □ All relationships function correctly
@@ -490,6 +516,7 @@ Data Quality Testing:
 ```
 
 ### 2. Validation Procedures
+
 ```
 Business Validation:
 ✅ Compare report totals with source systems
@@ -509,6 +536,7 @@ Technical Validation:
 ## Common Anti-Patterns to Avoid
 
 ### 1. Schema Anti-Patterns
+
 ```
 ❌ Snowflake Schema (Unless Necessary):
 - Multiple normalized dimension tables
@@ -529,7 +557,8 @@ Technical Validation:
 - Better to use shared dimensions
 ```
 
-### 2. Relationship Anti-Patterns  
+### 2. Relationship Anti-Patterns
+
 ```
 ❌ Bidirectional Relationships Everywhere:
 - Performance impact
@@ -553,14 +582,15 @@ Technical Validation:
 ## Advanced Data Modeling Patterns
 
 ### 1. Slowly Changing Dimensions Implementation
+
 ```powerquery
 // Type 1 SCD: Power Query implementation for hash-based change detection
 let
     Source = Source,
 
     #"Added custom" = Table.TransformColumnTypes(
-        Table.AddColumn(Source, "Hash", each Binary.ToText( 
-            Text.ToBinary( 
+        Table.AddColumn(Source, "Hash", each Binary.ToText(
+            Text.ToBinary(
                 Text.Combine(
                     List.Transform({[FirstName],[LastName],[Region]}, each if _ = null then "" else _),
                 "|")),
@@ -595,6 +625,7 @@ in
 ```
 
 ### 2. Incremental Refresh with Query Folding
+
 ```powerquery
 // Optimized incremental refresh pattern
 let
@@ -607,6 +638,7 @@ in
 ```
 
 ### 3. Semantic Link Integration
+
 ```python
 # Working with Power BI semantic models in Python
 import sempy.fabric as fabric
@@ -617,6 +649,7 @@ plot_relationship_metadata(relationships)
 ```
 
 ### 4. Advanced Partition Strategies
+
 ```json
 // TMSL partition with time-based filtering
 "partition": {

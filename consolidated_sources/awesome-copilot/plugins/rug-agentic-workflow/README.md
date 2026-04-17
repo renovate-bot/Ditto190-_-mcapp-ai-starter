@@ -13,11 +13,11 @@ copilot plugin install rug-agentic-workflow@awesome-copilot
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent              | Description                                                                                                                         |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
 | `rug-orchestrator` | Pure orchestration agent that decomposes requests, delegates all work to subagents, validates outcomes, and repeats until complete. |
-| `swe-subagent` | Senior software engineer subagent for implementation tasks: feature development, debugging, refactoring, and testing. |
-| `qa-subagent` | Meticulous QA subagent for test planning, bug hunting, edge-case analysis, and implementation verification. |
+| `swe-subagent`     | Senior software engineer subagent for implementation tasks: feature development, debugging, refactoring, and testing.               |
+| `qa-subagent`      | Meticulous QA subagent for test planning, bug hunting, edge-case analysis, and implementation verification.                         |
 
 ## Source
 

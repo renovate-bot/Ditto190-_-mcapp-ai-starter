@@ -14,7 +14,5 @@
     "software-engineering",
     "qa"
   ],
-  "agents": [
-    "./agents"
-  ]
+  "agents": ["./agents"]
 }

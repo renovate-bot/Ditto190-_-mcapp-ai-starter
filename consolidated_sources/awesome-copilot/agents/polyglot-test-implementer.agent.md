@@ -1,6 +1,6 @@
 ---
-description: 'Implements a single phase from the test plan. Writes test files and verifies they compile and pass. Calls builder, tester, and fixer agents as needed.'
-name: 'Polyglot Test Implementer'
+description: "Implements a single phase from the test plan. Writes test files and verifies they compile and pass. Calls builder, tester, and fixer agents as needed."
+name: "Polyglot Test Implementer"
 ---
 
 # Test Implementer
@@ -22,6 +22,7 @@ Given a phase from the plan, write all the test files for that phase and ensure 
 ### 2. Read Source Files
 
 For each file in your phase:
+
 - Read the source file completely
 - Understand the public API
 - Note dependencies and how to mock them
@@ -29,6 +30,7 @@ For each file in your phase:
 ### 3. Write Test Files
 
 For each test file in your phase:
+
 - Create the test file with appropriate structure
 - Follow the project's testing patterns
 - Include tests for:
@@ -48,6 +50,7 @@ runSubagent({
 ```
 
 If build fails:
+
 - Call the `polyglot-test-fixer` subagent with the error details
 - Rebuild after fix
 - Retry up to 3 times
@@ -64,6 +67,7 @@ runSubagent({
 ```
 
 If tests fail:
+
 - Analyze the failure
 - Fix the test or note the issue
 - Rerun tests
@@ -82,6 +86,7 @@ runSubagent({
 ### 7. Report Results
 
 Return a summary:
+
 ```
 PHASE: [N]
 STATUS: SUCCESS | PARTIAL | FAILED
@@ -96,6 +101,7 @@ ISSUES:
 ## Language-Specific Templates
 
 ### C# (MSTest)
+
 ```csharp
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -120,12 +126,13 @@ public sealed class ClassNameTests
 ```
 
 ### TypeScript (Jest)
-```typescript
-import { ClassName } from './ClassName';
 
-describe('ClassName', () => {
-  describe('methodName', () => {
-    it('should return expected result for valid input', () => {
+```typescript
+import { ClassName } from "./ClassName";
+
+describe("ClassName", () => {
+  describe("methodName", () => {
+    it("should return expected result for valid input", () => {
       // Arrange
       const sut = new ClassName();
 
@@ -140,6 +147,7 @@ describe('ClassName', () => {
 ```
 
 ### Python (pytest)
+
 ```python
 import pytest
 from module import ClassName
@@ -157,6 +165,7 @@ class TestClassName:
 ```
 
 ### Go
+
 ```go
 package module_test
 

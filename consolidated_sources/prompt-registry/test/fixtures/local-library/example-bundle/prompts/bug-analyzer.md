@@ -52,6 +52,7 @@ For each potential bug found:
 **Fix:** How to resolve the issue
 
 **Example:**
+
 ```
 # Before (buggy code)
 [show the problematic code]

@@ -1,19 +1,24 @@
 // Mock vscode module for unit tests
-const path = require('path');
-const fs = require('fs');
-const Module = require('module');
+const path = require("path");
+const fs = require("fs");
+const Module = require("module");
 
 // Set test environment flag to prevent UpdateScheduler from running
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = "test";
 
 // Ensure this is running in Mocha context
-if (typeof global.suite === 'undefined' && typeof global.describe === 'undefined') {
-  console.warn('[mocha.setup.js] Warning: Mocha test functions not available yet. This file should be loaded via --require flag.');
+if (
+  typeof global.suite === "undefined" &&
+  typeof global.describe === "undefined"
+) {
+  console.warn(
+    "[mocha.setup.js] Warning: Mocha test functions not available yet. This file should be loaded via --require flag.",
+  );
 }
 
 // Clear module cache to ensure fresh mocks
-Object.keys(require.cache).forEach(key => {
-  if (key.includes('vscode') || key.includes('logger')) {
+Object.keys(require.cache).forEach((key) => {
+  if (key.includes("vscode") || key.includes("logger")) {
     delete require.cache[key];
   }
 });
@@ -21,8 +26,8 @@ Object.keys(require.cache).forEach(key => {
 // Intercept vscode module loading
 const originalResolveFilename = Module._resolveFilename;
 Module._resolveFilename = function (request, parent, isMain) {
-  if (request === 'vscode') {
-    return path.resolve(__dirname, 'mocha.setup.js');
+  if (request === "vscode") {
+    return path.resolve(__dirname, "mocha.setup.js");
   }
   return originalResolveFilename.call(this, request, parent, isMain);
 };
@@ -33,49 +38,51 @@ const vscode = {
     Unknown: 0,
     File: 1,
     Directory: 2,
-    SymbolicLink: 64
+    SymbolicLink: 64,
   },
   workspace: {
     fs: {
       createDirectory: (uri) => {
-          if (uri.scheme === 'file') {
-              return fs.promises.mkdir(uri.fsPath, { recursive: true });
-          }
-          return Promise.resolve();
+        if (uri.scheme === "file") {
+          return fs.promises.mkdir(uri.fsPath, { recursive: true });
+        }
+        return Promise.resolve();
       },
       writeFile: (uri, content) => {
-          if (uri.scheme === 'file') {
-              return fs.promises.writeFile(uri.fsPath, content);
-          }
-          return Promise.resolve();
+        if (uri.scheme === "file") {
+          return fs.promises.writeFile(uri.fsPath, content);
+        }
+        return Promise.resolve();
       },
       readFile: (uri) => {
-          if (uri.scheme === 'file') {
-              return fs.promises.readFile(uri.fsPath);
-          }
-          return Promise.resolve(new Uint8Array());
+        if (uri.scheme === "file") {
+          return fs.promises.readFile(uri.fsPath);
+        }
+        return Promise.resolve(new Uint8Array());
       },
       stat: (uri) => {
-          if (uri.scheme === 'file') {
-              return fs.promises.stat(uri.fsPath).then(stats => {
-                  return {
-                      type: stats.isDirectory() ? 2 : (stats.isFile() ? 1 : 0),
-                      ctime: stats.ctimeMs,
-                      mtime: stats.mtimeMs,
-                      size: stats.size
-                  };
-              });
-          }
-          return Promise.resolve({ type: 1, ctime: 0, mtime: 0, size: 0 });
+        if (uri.scheme === "file") {
+          return fs.promises.stat(uri.fsPath).then((stats) => {
+            return {
+              type: stats.isDirectory() ? 2 : stats.isFile() ? 1 : 0,
+              ctime: stats.ctimeMs,
+              mtime: stats.mtimeMs,
+              size: stats.size,
+            };
+          });
+        }
+        return Promise.resolve({ type: 1, ctime: 0, mtime: 0, size: 0 });
       },
       readDirectory: (uri) => {
-          if (uri.scheme === 'file') {
-              return fs.promises.readdir(uri.fsPath, { withFileTypes: true }).then(entries => {
-                  return entries.map(e => [e.name, e.isDirectory() ? 2 : 1]);
-              });
-          }
-          return Promise.resolve([]);
-      }
+        if (uri.scheme === "file") {
+          return fs.promises
+            .readdir(uri.fsPath, { withFileTypes: true })
+            .then((entries) => {
+              return entries.map((e) => [e.name, e.isDirectory() ? 2 : 1]);
+            });
+        }
+        return Promise.resolve([]);
+      },
     },
     createFileSystemWatcher: (pattern) => {
       // Return a mock FileSystemWatcher
@@ -83,52 +90,52 @@ const vscode = {
         onDidChange: (listener) => ({ dispose: () => {} }),
         onDidCreate: (listener) => ({ dispose: () => {} }),
         onDidDelete: (listener) => ({ dispose: () => {} }),
-        dispose: () => {}
+        dispose: () => {},
       };
     },
     getConfiguration: (section) => ({
       get: (key, defaultValue) => {
         // Return mock configuration values for testing
-        if (section === 'olaf') {
+        if (section === "olaf") {
           const config = {
-            'repositoryOwner': 'test-owner',
-            'repositoryName': 'test-repo',
-            'githubToken': 'test-token',
-            'usePrivateRepository': false
+            repositoryOwner: "test-owner",
+            repositoryName: "test-repo",
+            githubToken: "test-token",
+            usePrivateRepository: false,
           };
           return config[key] || defaultValue;
         }
         // Mock promptregistry.updateCheck configuration to prevent UpdateScheduler errors
-        if (section === 'promptregistry.updateCheck') {
+        if (section === "promptregistry.updateCheck") {
           const config = {
-            'enabled': false, // Disable update checks during tests
-            'frequency': 'manual',
-            'cacheTTL': 300000, // 5 minutes
-            'notificationPreference': 'all'
+            enabled: false, // Disable update checks during tests
+            frequency: "manual",
+            cacheTTL: 300000, // 5 minutes
+            notificationPreference: "all",
           };
           return config[key] || defaultValue;
         }
         // Mock promptregistry configuration
-        if (section === 'promptregistry') {
+        if (section === "promptregistry") {
           const config = {
-            'githubToken': '',
-            'autoCheckUpdates': false, // Disable auto updates during tests
-            'installationScope': 'user',
-            'defaultVersion': 'latest'
+            githubToken: "",
+            autoCheckUpdates: false, // Disable auto updates during tests
+            installationScope: "user",
+            defaultVersion: "latest",
           };
           return config[key] || defaultValue;
         }
         return defaultValue;
       },
-      update: async (key, value, target) => undefined
+      update: async (key, value, target) => undefined,
     }),
     workspaceFolders: [
-        {
-            uri: { fsPath: '/mock/workspace' },
-            name: 'workspace',
-            index: 0
-        }
-    ]
+      {
+        uri: { fsPath: "/mock/workspace" },
+        name: "workspace",
+        index: 0,
+      },
+    ],
   },
   window: {
     showInformationMessage: () => Promise.resolve(),
@@ -142,76 +149,84 @@ const vscode = {
       const quickPick = {
         items: [],
         selectedItems: [],
-        title: '',
-        placeholder: '',
+        title: "",
+        placeholder: "",
         ignoreFocusOut: false,
         onDidChangeSelection: () => ({ dispose: () => {} }),
         onDidAccept: () => ({ dispose: () => {} }),
         onDidHide: () => ({ dispose: () => {} }),
         show: () => {},
         hide: () => {},
-        dispose: () => {}
+        dispose: () => {},
       };
       return quickPick;
     },
     createOutputChannel: (name) => {
       const channel = {
-        appendLine: function() { return undefined; },
-        clear: function() { return undefined; },
-        show: function() { return undefined; },
-        dispose: function() { return undefined; }
+        appendLine: function () {
+          return undefined;
+        },
+        clear: function () {
+          return undefined;
+        },
+        show: function () {
+          return undefined;
+        },
+        dispose: function () {
+          return undefined;
+        },
       };
       return channel;
     },
     withProgress: async (options, task) => {
       const progress = { report: () => undefined };
       return await task(progress);
-    }
+    },
   },
   ProgressLocation: {
     Notification: 15,
     Window: 10,
-    SourceControl: 1
+    SourceControl: 1,
   },
   commands: {
     registerCommand: (command, callback) => ({ dispose: () => {} }),
     executeCommand: (command, ...args) => Promise.resolve(undefined),
-    getCommands: () => Promise.resolve([])
+    getCommands: () => Promise.resolve([]),
   },
   authentication: {
     // Mock authentication API for GitHub tests
     getSession: async () => undefined,
-    onDidChangeSessions: () => ({ dispose: () => {} })
+    onDidChangeSessions: () => ({ dispose: () => {} }),
   },
   Uri: {
     file: (path) => ({
       fsPath: path,
-      scheme: 'file',
-      authority: '',
+      scheme: "file",
+      authority: "",
       path: path,
-      query: '',
-      fragment: '',
-      toString: () => `file://${path}`
+      query: "",
+      fragment: "",
+      toString: () => `file://${path}`,
     }),
     joinPath: (base, ...segments) => {
-        const pathModule = require('path');
-        const joined = pathModule.join(base.path, ...segments);
-        return {
-            fsPath: joined,
-            scheme: base.scheme,
-            authority: base.authority,
-            path: joined,
-            query: '',
-            fragment: '',
-            toString: () => `${base.scheme}://${joined}`
-        };
+      const pathModule = require("path");
+      const joined = pathModule.join(base.path, ...segments);
+      return {
+        fsPath: joined,
+        scheme: base.scheme,
+        authority: base.authority,
+        path: joined,
+        query: "",
+        fragment: "",
+        toString: () => `${base.scheme}://${joined}`,
+      };
     },
     parse: (value) => ({
-        fsPath: value,
-        scheme: value.startsWith('http') ? value.split('://')[0] : 'file',
-        path: value,
-        toString: () => value
-    })
+      fsPath: value,
+      scheme: value.startsWith("http") ? value.split("://")[0] : "file",
+      path: value,
+      toString: () => value,
+    }),
   },
   EventEmitter: class EventEmitter {
     constructor() {
@@ -220,46 +235,46 @@ const vscode = {
     get event() {
       return (listener) => {
         this.listeners.push(listener);
-        return { 
+        return {
           dispose: () => {
             const index = this.listeners.indexOf(listener);
             if (index !== -1) {
               this.listeners.splice(index, 1);
             }
-          }
+          },
         };
       };
     }
     fire(data) {
-      this.listeners.forEach(listener => listener(data));
+      this.listeners.forEach((listener) => listener(data));
     }
     dispose() {
       this.listeners = [];
     }
   },
   env: {
-    appName: 'Visual Studio Code',
-    appRoot: '/mock/app/root',
-    language: 'en',
-    machineId: 'mock-machine-id',
-    sessionId: 'mock-session-id',
+    appName: "Visual Studio Code",
+    appRoot: "/mock/app/root",
+    language: "en",
+    machineId: "mock-machine-id",
+    sessionId: "mock-session-id",
     remoteName: undefined,
-    shell: '/bin/bash',
-    openExternal: (uri) => Promise.resolve(true)
+    shell: "/bin/bash",
+    openExternal: (uri) => Promise.resolve(true),
   },
   ConfigurationTarget: {
     Global: 1,
     Workspace: 2,
-    WorkspaceFolder: 3
+    WorkspaceFolder: 3,
   },
   ProgressLocation: {
     SourceControl: 1,
     Window: 10,
-    Notification: 15
+    Notification: 15,
   },
   QuickPickItemKind: {
     Separator: -1,
-    Default: 0
+    Default: 0,
   },
   TreeItem: class TreeItem {
     constructor(label, collapsibleState) {
@@ -270,7 +285,7 @@ const vscode = {
   TreeItemCollapsibleState: {
     None: 0,
     Collapsed: 1,
-    Expanded: 2
+    Expanded: 2,
   },
   ThemeIcon: class ThemeIcon {
     constructor(id, color) {
@@ -285,14 +300,14 @@ const vscode = {
   },
   extensions: {
     getExtension: () => undefined,
-    all: []
+    all: [],
   },
   RelativePattern: class RelativePattern {
     constructor(base, pattern) {
       this.base = base;
       this.pattern = pattern;
     }
-  }
+  },
 };
 
 module.exports = vscode;

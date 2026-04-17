@@ -2,13 +2,13 @@
 
 ## NuGet Packages
 
-| Package | Purpose |
-|---|---|
-| `Microsoft.FluentUI.AspNetCore.Components` | Core component library (required) |
-| `Microsoft.FluentUI.AspNetCore.Components.Icons` | Icon package (optional, recommended) |
-| `Microsoft.FluentUI.AspNetCore.Components.Emojis` | Emoji package (optional) |
+| Package                                                                    | Purpose                                 |
+| -------------------------------------------------------------------------- | --------------------------------------- |
+| `Microsoft.FluentUI.AspNetCore.Components`                                 | Core component library (required)       |
+| `Microsoft.FluentUI.AspNetCore.Components.Icons`                           | Icon package (optional, recommended)    |
+| `Microsoft.FluentUI.AspNetCore.Components.Emojis`                          | Emoji package (optional)                |
 | `Microsoft.FluentUI.AspNetCore.Components.DataGrid.EntityFrameworkAdapter` | EF Core adapter for DataGrid (optional) |
-| `Microsoft.FluentUI.AspNetCore.Components.DataGrid.ODataAdapter` | OData adapter for DataGrid (optional) |
+| `Microsoft.FluentUI.AspNetCore.Components.DataGrid.ODataAdapter`           | OData adapter for DataGrid (optional)   |
 
 ## Program.cs Registration
 
@@ -18,23 +18,23 @@ builder.Services.AddFluentUIComponents();
 
 ### Configuration Options (LibraryConfiguration)
 
-| Property | Type | Default | Notes |
-|---|---|---|---|
-| `UseTooltipServiceProvider` | `bool` | `true` | Registers `ITooltipService`. If true, you MUST add `<FluentTooltipProvider>` to layout |
-| `RequiredLabel` | `MarkupString` | Red `*` | Custom markup for required field indicators |
-| `HideTooltipOnCursorLeave` | `bool` | `false` | Close tooltip when cursor leaves both anchor and tooltip |
-| `ServiceLifetime` | `ServiceLifetime` | `Scoped` | Only `Scoped` or `Singleton`. `Transient` throws! |
-| `ValidateClassNames` | `bool` | `true` | Validates CSS class names against `^-?[_a-zA-Z]+[_a-zA-Z0-9-]*$` |
-| `CollocatedJavaScriptQueryString` | `Func<string, string>?` | `v={version}` | Cache-busting for JS files |
+| Property                          | Type                    | Default       | Notes                                                                                  |
+| --------------------------------- | ----------------------- | ------------- | -------------------------------------------------------------------------------------- |
+| `UseTooltipServiceProvider`       | `bool`                  | `true`        | Registers `ITooltipService`. If true, you MUST add `<FluentTooltipProvider>` to layout |
+| `RequiredLabel`                   | `MarkupString`          | Red `*`       | Custom markup for required field indicators                                            |
+| `HideTooltipOnCursorLeave`        | `bool`                  | `false`       | Close tooltip when cursor leaves both anchor and tooltip                               |
+| `ServiceLifetime`                 | `ServiceLifetime`       | `Scoped`      | Only `Scoped` or `Singleton`. `Transient` throws!                                      |
+| `ValidateClassNames`              | `bool`                  | `true`        | Validates CSS class names against `^-?[_a-zA-Z]+[_a-zA-Z0-9-]*$`                       |
+| `CollocatedJavaScriptQueryString` | `Func<string, string>?` | `v={version}` | Cache-busting for JS files                                                             |
 
 ### ServiceLifetime by hosting model
 
-| Hosting model | ServiceLifetime |
-|---|---|
-| Blazor Server | `Scoped` (default) |
-| Blazor WebAssembly Standalone | `Singleton` |
-| Blazor Web App (Interactive) | `Scoped` (default) |
-| Blazor Hybrid (MAUI) | `Singleton` |
+| Hosting model                 | ServiceLifetime    |
+| ----------------------------- | ------------------ |
+| Blazor Server                 | `Scoped` (default) |
+| Blazor WebAssembly Standalone | `Singleton`        |
+| Blazor Web App (Interactive)  | `Scoped` (default) |
+| Blazor Hybrid (MAUI)          | `Singleton`        |
 
 ## MainLayout.razor Template
 
@@ -96,7 +96,7 @@ Or use the convenience component:
 }
 ```
 
-## _Imports.razor
+## \_Imports.razor
 
 Add this to your `_Imports.razor`:
 
@@ -108,6 +108,7 @@ Add this to your `_Imports.razor`:
 ## Static Web Assets
 
 No manual `<link>` or `<script>` tags are needed. The library uses:
+
 - **CSS**: `reboot.css` (normalization) + component-scoped CSS — auto-loaded via static web assets
 - **JS**: `lib.module.js` — auto-loaded via Blazor's JS initializer system
 - Component-specific JS (e.g. DataGrid, Autocomplete) — lazy-loaded on demand
@@ -118,12 +119,12 @@ All served from `_content/Microsoft.FluentUI.AspNetCore.Components/`.
 
 Services automatically registered by `AddFluentUIComponents()`:
 
-| Service | Implementation | Purpose |
-|---|---|---|
-| `GlobalState` | `GlobalState` | Shared application state |
-| `IToastService` | `ToastService` | Toast notifications (needs `FluentToastProvider`) |
-| `IDialogService` | `DialogService` | Dialogs and panels (needs `FluentDialogProvider`) |
-| `IMessageService` | `MessageService` | Message bars (needs `FluentMessageBarProvider`) |
-| `IKeyCodeService` | `KeyCodeService` | Keyboard shortcuts (needs `FluentKeyCodeProvider`) |
-| `IMenuService` | `MenuService` | Context menus |
+| Service           | Implementation   | Purpose                                                                          |
+| ----------------- | ---------------- | -------------------------------------------------------------------------------- |
+| `GlobalState`     | `GlobalState`    | Shared application state                                                         |
+| `IToastService`   | `ToastService`   | Toast notifications (needs `FluentToastProvider`)                                |
+| `IDialogService`  | `DialogService`  | Dialogs and panels (needs `FluentDialogProvider`)                                |
+| `IMessageService` | `MessageService` | Message bars (needs `FluentMessageBarProvider`)                                  |
+| `IKeyCodeService` | `KeyCodeService` | Keyboard shortcuts (needs `FluentKeyCodeProvider`)                               |
+| `IMenuService`    | `MenuService`    | Context menus                                                                    |
 | `ITooltipService` | `TooltipService` | Tooltips (needs `FluentTooltipProvider`, opt-in via `UseTooltipServiceProvider`) |

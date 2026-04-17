@@ -1,7 +1,7 @@
 ---
-name: 'No Heredoc File Operations'
-description: 'Prevents terminal heredoc file corruption in VS Code Copilot by enforcing use of file editing tools instead of shell redirections'
-applyTo: '**'
+name: "No Heredoc File Operations"
+description: "Prevents terminal heredoc file corruption in VS Code Copilot by enforcing use of file editing tools instead of shell redirections"
+applyTo: "**"
 ---
 
 # MANDATORY: File Operation Override

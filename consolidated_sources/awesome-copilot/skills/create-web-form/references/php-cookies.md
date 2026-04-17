@@ -18,15 +18,15 @@ setcookie(name, value, expire, path, domain, secure, httponly);
 
 ### Parameters
 
-| Parameter  | Description                                                                                             |
-|------------|---------------------------------------------------------------------------------------------------------|
-| `name`     | Required. Specifies the name of the cookie.                                                             |
-| `value`    | Optional. Specifies the value of the cookie.                                                            |
-| `expire`   | Optional. Specifies when the cookie expires. The value `time() + 86400 * 30` will set the cookie to expire in 30 days. If this parameter is omitted or set to `0`, the cookie will expire at the end of the session (when the browser closes). Default is `0`. |
+| Parameter  | Description                                                                                                                                                                                                                                                                                                                |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`     | Required. Specifies the name of the cookie.                                                                                                                                                                                                                                                                                |
+| `value`    | Optional. Specifies the value of the cookie.                                                                                                                                                                                                                                                                               |
+| `expire`   | Optional. Specifies when the cookie expires. The value `time() + 86400 * 30` will set the cookie to expire in 30 days. If this parameter is omitted or set to `0`, the cookie will expire at the end of the session (when the browser closes). Default is `0`.                                                             |
 | `path`     | Optional. Specifies the server path of the cookie. If set to `"/"`, the cookie will be available within the entire domain. If set to `"/php/"`, the cookie will only be available within the `php` directory and all sub-directories of `php`. The default value is the current directory that the cookie is being set in. |
-| `domain`   | Optional. Specifies the domain name of the cookie. To make the cookie available on all subdomains of `example.com`, set domain to `".example.com"`. |
-| `secure`   | Optional. Specifies whether or not the cookie should only be transmitted over a secure HTTPS connection. `true` means the cookie will only be set if a secure connection exists. Default is `false`. |
-| `httponly`  | Optional. If set to `true` the cookie will be accessible only through the HTTP protocol (the cookie will not be accessible by scripting languages, such as JavaScript). This setting can help to reduce identity theft through XSS attacks. Default is `false`. |
+| `domain`   | Optional. Specifies the domain name of the cookie. To make the cookie available on all subdomains of `example.com`, set domain to `".example.com"`.                                                                                                                                                                        |
+| `secure`   | Optional. Specifies whether or not the cookie should only be transmitted over a secure HTTPS connection. `true` means the cookie will only be set if a secure connection exists. Default is `false`.                                                                                                                       |
+| `httponly` | Optional. If set to `true` the cookie will be accessible only through the HTTP protocol (the cookie will not be accessible by scripting languages, such as JavaScript). This setting can help to reduce identity theft through XSS attacks. Default is `false`.                                                            |
 
 **Note:** The `setcookie()` function must appear BEFORE the `<html>` tag (before any output is sent to the browser).
 

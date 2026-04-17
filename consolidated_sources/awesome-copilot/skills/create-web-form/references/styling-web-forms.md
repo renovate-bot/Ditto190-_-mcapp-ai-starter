@@ -128,7 +128,8 @@ Example HTML:
           checked
           id="carrots"
           name="carrots"
-          value="carrots" />
+          value="carrots"
+        />
       </li>
       <li>
         <label for="peas">Peas</label>
@@ -318,18 +319,18 @@ button:focus {
 
 ### Key CSS Properties for Forms
 
-| Property | Purpose |
-|---|---|
-| `font-family: inherit` | Inherit parent font |
-| `font-size: 100%` | Inherit parent size |
+| Property                 | Purpose                         |
+| ------------------------ | ------------------------------- |
+| `font-family: inherit`   | Inherit parent font             |
+| `font-size: 100%`        | Inherit parent size             |
 | `box-sizing: border-box` | Include padding/border in width |
-| `border: none` | Remove default borders |
-| `padding` | Add space inside elements |
-| `margin` | Add space outside elements |
-| `background` | Control background appearance |
-| `:focus` | Style focused form fields |
-| `resize` | Allow/prevent textarea resizing |
-| `overflow: auto` | Handle scrolling consistently |
+| `border: none`           | Remove default borders          |
+| `padding`                | Add space inside elements       |
+| `margin`                 | Add space outside elements      |
+| `background`             | Control background appearance   |
+| `:focus`                 | Style focused form fields       |
+| `resize`                 | Allow/prevent textarea resizing |
+| `overflow: auto`         | Handle scrolling consistently   |
 
 ### Best Practices
 
@@ -659,16 +660,16 @@ meter {
 
 ### Summary of Styling Approaches
 
-| Control Type | Approach | Difficulty |
-|---|---|---|
-| Checkbox/Radio | `appearance: none` + custom design | Medium |
-| Search input | `appearance: none` for older browsers | Low |
-| Select/Datalist | Wrapper + custom arrow, limited control | Medium |
-| Date inputs | Basic styling only | High |
-| Range slider | `appearance: none` + complex pseudo-elements | High |
-| Color input | Remove borders/padding | Low |
-| File input | Hide + style label | Medium |
-| Progress/Meter | Custom solution recommended | Very High |
+| Control Type    | Approach                                     | Difficulty |
+| --------------- | -------------------------------------------- | ---------- |
+| Checkbox/Radio  | `appearance: none` + custom design           | Medium     |
+| Search input    | `appearance: none` for older browsers        | Low        |
+| Select/Datalist | Wrapper + custom arrow, limited control      | Medium     |
+| Date inputs     | Basic styling only                           | High       |
+| Range slider    | `appearance: none` + complex pseudo-elements | High       |
+| Color input     | Remove borders/padding                       | Low        |
+| File input      | Hide + style label                           | Medium     |
+| Progress/Meter  | Custom solution recommended                  | Very High  |
 
 ### Key Takeaways
 
@@ -719,15 +720,15 @@ Customizable select elements allow you to build fully-styled `<select>` elements
 
 #### CSS Properties and Pseudo-Elements
 
-| Feature | Purpose |
-|---|---|
+| Feature                   | Purpose                                                                                           |
+| ------------------------- | ------------------------------------------------------------------------------------------------- |
 | `appearance: base-select` | Opts into browser-defined custom select styles (required on both `select` and `::picker(select)`) |
-| `::picker(select)` | Targets the entire picker contents (all elements except the first `<button>`) |
-| `::picker-icon` | Targets the arrow icon inside the select button |
-| `::checkmark` | Targets the checkmark in the currently-selected `<option>` |
-| `:open` | Targets select button when picker is open |
-| `:checked` | Targets the currently-selected `<option>` |
-| `:popover-open` | Targets picker in showing state (via Popover API) |
+| `::picker(select)`        | Targets the entire picker contents (all elements except the first `<button>`)                     |
+| `::picker-icon`           | Targets the arrow icon inside the select button                                                   |
+| `::checkmark`             | Targets the checkmark in the currently-selected `<option>`                                        |
+| `:open`                   | Targets select button when picker is open                                                         |
+| `:checked`                | Targets the currently-selected `<option>`                                                         |
+| `:popover-open`           | Targets picker in showing state (via Popover API)                                                 |
 
 #### Automatic Behaviors
 
@@ -1164,7 +1165,7 @@ input:optional {
 
 - Required controls have a solid border; optional controls have a dashed border.
 - Avoid using color alone to distinguish required vs optional (colorblind accessibility).
-- Standard web convention: use an asterisk (*) or the word "required" for required fields.
+- Standard web convention: use an asterisk (\*) or the word "required" for required fields.
 - `:optional` is rarely used since form controls are optional by default.
 
 ### Using Generated Content with Pseudo-Classes

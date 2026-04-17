@@ -69,13 +69,13 @@ A document containing undefined tags is invalid. Tags must be properly defined i
 
 Like HTML, XML uses character references for special reserved characters:
 
-| Entity    | Character | Description              |
-|-----------|-----------|--------------------------|
-| `&lt;`    | `<`       | Less than sign           |
-| `&gt;`    | `>`       | Greater than sign        |
-| `&amp;`   | `&`       | Ampersand                |
-| `&quot;`  | `"`       | Double quotation mark    |
-| `&apos;`  | `'`       | Apostrophe / single quote |
+| Entity   | Character | Description               |
+| -------- | --------- | ------------------------- |
+| `&lt;`   | `<`       | Less than sign            |
+| `&gt;`   | `>`       | Greater than sign         |
+| `&amp;`  | `&`       | Ampersand                 |
+| `&quot;` | `"`       | Double quotation mark     |
+| `&apos;` | `'`       | Apostrophe / single quote |
 
 #### Custom Entity Definition
 
@@ -131,13 +131,13 @@ At times, you may need to parse XML content and convert it into a DOM tree, or c
 
 ### Key Web Platform Objects
 
-| Object               | Purpose                                                                                      |
-|----------------------|----------------------------------------------------------------------------------------------|
-| **XMLSerializer**    | Serializes DOM trees, converting them into strings containing XML                            |
-| **DOMParser**        | Constructs a DOM tree by parsing a string containing XML, returning an XMLDocument or Document |
-| **fetch()**          | Loads content from a URL; XML content is returned as a text string you can parse with DOMParser |
-| **XMLHttpRequest**   | Precursor to fetch(); can return a resource as a Document via its `responseXML` property      |
-| **XPath**            | Creates address strings for specific portions of an XML document                              |
+| Object             | Purpose                                                                                         |
+| ------------------ | ----------------------------------------------------------------------------------------------- |
+| **XMLSerializer**  | Serializes DOM trees, converting them into strings containing XML                               |
+| **DOMParser**      | Constructs a DOM tree by parsing a string containing XML, returning an XMLDocument or Document  |
+| **fetch()**        | Loads content from a URL; XML content is returned as a text string you can parse with DOMParser |
+| **XMLHttpRequest** | Precursor to fetch(); can return a resource as a Document via its `responseXML` property        |
+| **XPath**          | Creates address strings for specific portions of an XML document                                |
 
 ### Creating an XML Document
 
@@ -290,11 +290,11 @@ Describes the URL(s) to use for search queries using the `template` attribute.
 
 **Firefox-supported URL types:**
 
-| Type                                      | Purpose                                    |
-|-------------------------------------------|--------------------------------------------|
-| `type="text/html"`                        | Actual search query URL                    |
-| `type="application/x-suggestions+json"`   | Search suggestions in JSON format          |
-| `type="application/x-moz-keywordsearch"`  | Keyword search in location bar (Firefox-only) |
+| Type                                     | Purpose                                       |
+| ---------------------------------------- | --------------------------------------------- |
+| `type="text/html"`                       | Actual search query URL                       |
+| `type="application/x-suggestions+json"`  | Search suggestions in JSON format             |
+| `type="application/x-moz-keywordsearch"` | Keyword search in location bar (Firefox-only) |
 
 **Dynamic parameters:**
 
@@ -310,7 +310,8 @@ Describes the URL(s) to use for search queries using the `template` attribute.
   rel="search"
   type="application/opensearchdescription+xml"
   title="[searchTitle]"
-  href="[descriptionURL]" />
+  href="[descriptionURL]"
+/>
 ```
 
 **Required attributes:**
@@ -327,13 +328,15 @@ Describes the URL(s) to use for search queries using the `template` attribute.
   rel="search"
   type="application/opensearchdescription+xml"
   title="MySite: By Author"
-  href="http://example.com/mysiteauthor.xml" />
+  href="http://example.com/mysiteauthor.xml"
+/>
 
 <link
   rel="search"
   type="application/opensearchdescription+xml"
   title="MySite: By Title"
-  href="http://example.com/mysitetitle.xml" />
+  href="http://example.com/mysitetitle.xml"
+/>
 ```
 
 ### Supporting Automatic Updates

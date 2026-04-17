@@ -37,6 +37,7 @@ To reset and re-trigger the first-run experience: `Ctrl+Shift+P` → "Prompt Reg
 5. **Use** — Prompts appear in Copilot Chat as `/<bundle-id>-<prompt-id>`
 
 Installed files location:
+
 - **macOS**: `~/Library/Application Support/Code/User/prompts/`
 - **Linux**: `~/.config/Code/User/prompts/`
 - **Windows**: `%APPDATA%\Code\User\prompts\`

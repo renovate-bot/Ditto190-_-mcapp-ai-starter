@@ -14,9 +14,7 @@
     "custom-connector",
     "json-rpc"
   ],
-  "agents": [
-    "./agents"
-  ],
+  "agents": ["./agents"],
   "skills": [
     "./skills/power-platform-mcp-connector-suite",
     "./skills/mcp-copilot-studio-server-generator"

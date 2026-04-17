@@ -34,11 +34,11 @@ configuration:
 
 ## Required Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `version` | string | Semantic version of the hub configuration format (e.g., `"1.0.0"`) |
-| `metadata` | object | Hub metadata and descriptive information |
-| `sources` | array | List of bundle sources available in this hub |
+| Field      | Type   | Description                                                        |
+| ---------- | ------ | ------------------------------------------------------------------ |
+| `version`  | string | Semantic version of the hub configuration format (e.g., `"1.0.0"`) |
+| `metadata` | object | Hub metadata and descriptive information                           |
+| `sources`  | array  | List of bundle sources available in this hub                       |
 
 ## Metadata Object
 
@@ -46,17 +46,17 @@ The `metadata` object contains descriptive information about the hub.
 
 ### Required Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `name` | string | Human-readable name of the hub (1-100 characters) |
+| Field         | Type   | Description                                                  |
+| ------------- | ------ | ------------------------------------------------------------ |
+| `name`        | string | Human-readable name of the hub (1-100 characters)            |
 | `description` | string | Detailed description of the hub's purpose (1-500 characters) |
-| `maintainer` | string | Name or identifier of the hub maintainer (1-100 characters) |
-| `updatedAt` | string | ISO 8601 timestamp of last update |
+| `maintainer`  | string | Name or identifier of the hub maintainer (1-100 characters)  |
+| `updatedAt`   | string | ISO 8601 timestamp of last update                            |
 
 ### Optional Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
+| Field      | Type   | Description                                                           |
+| ---------- | ------ | --------------------------------------------------------------------- |
 | `checksum` | string | Integrity checksum (format: `sha256:abc123...` or `sha512:abc123...`) |
 
 ### Example
@@ -76,52 +76,52 @@ The `sources` array defines bundle sources available in the hub.
 
 ### Required Fields per Source
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | string | Unique identifier (alphanumeric, hyphens, underscores; 1-50 chars) |
-| `type` | string | Source type (see below) |
-| `enabled` | boolean | Whether this source is currently active |
-| `priority` | number | Priority order for source resolution (0-100, higher = higher priority) |
+| Field      | Type    | Description                                                            |
+| ---------- | ------- | ---------------------------------------------------------------------- |
+| `id`       | string  | Unique identifier (alphanumeric, hyphens, underscores; 1-50 chars)     |
+| `type`     | string  | Source type (see below)                                                |
+| `enabled`  | boolean | Whether this source is currently active                                |
+| `priority` | number  | Priority order for source resolution (0-100, higher = higher priority) |
 
 ### Source Types
 
-| Type | Description |
-|------|-------------|
-| `github` | GitHub repository releases |
-| `gitlab` | GitLab repository releases |
-| `http` / `url` | HTTP/HTTPS bundle URLs |
-| `local` | Local file system directory |
-| `awesome-copilot` | GitHub-hosted YAML collections |
-| `local-awesome-copilot` | Local YAML collections |
-| `apm` | APM package repositories |
-| `local-apm` | Local APM packages |
+| Type                    | Description                    |
+| ----------------------- | ------------------------------ |
+| `github`                | GitHub repository releases     |
+| `gitlab`                | GitLab repository releases     |
+| `http` / `url`          | HTTP/HTTPS bundle URLs         |
+| `local`                 | Local file system directory    |
+| `awesome-copilot`       | GitHub-hosted YAML collections |
+| `local-awesome-copilot` | Local YAML collections         |
+| `apm`                   | APM package repositories       |
+| `local-apm`             | Local APM packages             |
 
 ### Optional Fields per Source
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `url` | string | URL or path to the source |
+| Field        | Type   | Description                              |
+| ------------ | ------ | ---------------------------------------- |
+| `url`        | string | URL or path to the source                |
 | `repository` | string | GitHub repository in `owner/repo` format |
-| `branch` | string | Git branch name |
-| `name` | string | Human-readable name of the source |
-| `config` | object | Source-specific configuration |
-| `metadata` | object | Additional source metadata |
+| `branch`     | string | Git branch name                          |
+| `name`       | string | Human-readable name of the source        |
+| `config`     | object | Source-specific configuration            |
+| `metadata`   | object | Additional source metadata               |
 
 ### Config Object
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `branch` | string | Git branch name (for git-based sources) |
+| Field             | Type   | Description                                         |
+| ----------------- | ------ | --------------------------------------------------- |
+| `branch`          | string | Git branch name (for git-based sources)             |
 | `collectionsPath` | string | Path to collections directory (for awesome-copilot) |
-| `indexFile` | string | Index file name (for awesome-copilot) |
+| `indexFile`       | string | Index file name (for awesome-copilot)               |
 
 ### Source Metadata Object
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `description` | string | Source description |
-| `homepage` | string | Source homepage URL |
-| `contact` | string | Contact information |
+| Field         | Type   | Description         |
+| ------------- | ------ | ------------------- |
+| `description` | string | Source description  |
+| `homepage`    | string | Source homepage URL |
+| `contact`     | string | Contact information |
 
 ### Example
 
@@ -156,31 +156,31 @@ The `profiles` array defines predefined bundle collections.
 
 ### Required Fields per Profile
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | string | Unique identifier (alphanumeric, hyphens, underscores; 1-50 chars) |
-| `name` | string | Human-readable name (1-100 characters) |
-| `description` | string | Description of the profile's purpose (1-500 characters) |
-| `bundles` | array | List of bundles included in this profile (minimum 1) |
+| Field         | Type   | Description                                                        |
+| ------------- | ------ | ------------------------------------------------------------------ |
+| `id`          | string | Unique identifier (alphanumeric, hyphens, underscores; 1-50 chars) |
+| `name`        | string | Human-readable name (1-100 characters)                             |
+| `description` | string | Description of the profile's purpose (1-500 characters)            |
+| `bundles`     | array  | List of bundles included in this profile (minimum 1)               |
 
 ### Optional Fields per Profile
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `icon` | string | Icon or emoji for the profile |
-| `active` | boolean | Whether this profile is currently active |
-| `createdAt` | string | ISO 8601 timestamp of creation |
-| `updatedAt` | string | ISO 8601 timestamp of last update |
-| `path` | array | Path hierarchy for organizing in the UI |
+| Field       | Type    | Description                              |
+| ----------- | ------- | ---------------------------------------- |
+| `icon`      | string  | Icon or emoji for the profile            |
+| `active`    | boolean | Whether this profile is currently active |
+| `createdAt` | string  | ISO 8601 timestamp of creation           |
+| `updatedAt` | string  | ISO 8601 timestamp of last update        |
+| `path`      | array   | Path hierarchy for organizing in the UI  |
 
 ### Bundle Object (within Profile)
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | Yes | Bundle identifier (1-50 chars) |
-| `version` | string | Yes | Bundle version (semver or `"latest"`) |
-| `source` | string | Yes | Source ID where this bundle is available |
-| `required` | boolean | Yes | Whether this bundle is mandatory for the profile |
+| Field      | Type    | Required | Description                                      |
+| ---------- | ------- | -------- | ------------------------------------------------ |
+| `id`       | string  | Yes      | Bundle identifier (1-50 chars)                   |
+| `version`  | string  | Yes      | Bundle version (semver or `"latest"`)            |
+| `source`   | string  | Yes      | Source ID where this bundle is available         |
+| `required` | boolean | Yes      | Whether this bundle is mandatory for the profile |
 
 ### Example
 
@@ -209,11 +209,11 @@ profiles:
 
 Hub-level configuration settings.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `autoSync` | boolean | Enable automatic synchronization with hub sources |
-| `syncInterval` | number | Sync interval in seconds (60-86400) |
-| `strictMode` | boolean | Enable strict validation and security checks |
+| Field          | Type    | Description                                       |
+| -------------- | ------- | ------------------------------------------------- |
+| `autoSync`     | boolean | Enable automatic synchronization with hub sources |
+| `syncInterval` | number  | Sync interval in seconds (60-86400)               |
+| `strictMode`   | boolean | Enable strict validation and security checks      |
 
 ### Example
 
@@ -276,16 +276,19 @@ configuration:
 Hub configurations are automatically validated during import and loading operations using two validation phases:
 
 ### Schema Validation
+
 - Uses JSON Schema validation with AJV
 - Validates against `schemas/hub-config.schema.json`
 - Checks field types, required fields, patterns, and constraints
 
 ### Runtime Validation
+
 - Additional business logic checks
 - Validates hub references and security constraints
 - Verifies source configurations and accessibility
 
 ### Manual Validation
+
 To manually validate a hub configuration:
 
 1. Open Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`)

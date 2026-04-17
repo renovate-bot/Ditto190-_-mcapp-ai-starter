@@ -9,7 +9,10 @@
  * @param flag - Flag name (e.g., '--collection-file')
  * @returns The value if found, undefined otherwise
  */
-export function parseSingleArg(argv: string[], flag: string): string | undefined {
+export function parseSingleArg(
+  argv: string[],
+  flag: string,
+): string | undefined {
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === flag && argv[i + 1]) {
       return argv[i + 1];
@@ -51,13 +54,16 @@ export function hasFlag(argv: string[], flag: string): boolean {
  * @param index - Positional index (0-based)
  * @returns The positional argument if found
  */
-export function getPositionalArg(argv: string[], index: number): string | undefined {
+export function getPositionalArg(
+  argv: string[],
+  index: number,
+): string | undefined {
   let posIndex = 0;
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    if (arg.startsWith('--')) {
+    if (arg.startsWith("--")) {
       // Skip flag and its value if it has one
-      if (argv[i + 1] && !argv[i + 1].startsWith('--')) {
+      if (argv[i + 1] && !argv[i + 1].startsWith("--")) {
         i++;
       }
       continue;

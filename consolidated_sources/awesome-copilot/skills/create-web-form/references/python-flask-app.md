@@ -26,12 +26,12 @@ Python offers several approaches to web development:
 
 ### HTTP Methods
 
-| Method | Purpose |
-|--------|---------|
-| `GET` | Retrieve data from the server |
-| `POST` | Submit data to the server |
-| `PUT` | Update existing data on the server |
-| `DELETE` | Remove data from the server |
+| Method   | Purpose                            |
+| -------- | ---------------------------------- |
+| `GET`    | Retrieve data from the server      |
+| `POST`   | Submit data to the server          |
+| `PUT`    | Update existing data on the server |
+| `DELETE` | Remove data from the server        |
 
 ### URL Structure
 
@@ -135,13 +135,13 @@ def show_post(post_id):
 
 ### URL Converters
 
-| Converter | Description |
-|-----------|-------------|
-| `string` | Accepts any text without a slash (default) |
-| `int` | Accepts positive integers |
-| `float` | Accepts positive floating-point values |
-| `path` | Like `string` but also accepts slashes |
-| `uuid` | Accepts UUID strings |
+| Converter | Description                                |
+| --------- | ------------------------------------------ |
+| `string`  | Accepts any text without a slash (default) |
+| `int`     | Accepts positive integers                  |
+| `float`   | Accepts positive floating-point values     |
+| `path`    | Like `string` but also accepts slashes     |
+| `uuid`    | Accepts UUID strings                       |
 
 ### Specifying HTTP Methods
 
@@ -174,64 +174,62 @@ def hello(name):
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>{% block title %}My App{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
     <nav>
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('about') }}">About</a>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('about') }}">About</a>
     </nav>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+    <main>{% block content %}{% endblock %}</main>
 
     <footer>
-        <p>My Web App</p>
+      <p>My Web App</p>
     </footer>
-</body>
+  </body>
 </html>
 ```
 
 **Child template (`templates/home.html`):**
 
 ```html
-{% extends "base.html" %}
-
-{% block title %}Home{% endblock %}
-
-{% block content %}
-    <h1>Welcome to My App</h1>
-    <p>This is the home page.</p>
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1>Welcome to My App</h1>
+<p>This is the home page.</p>
 {% endblock %}
 ```
 
 ### Jinja2 Template Syntax
 
-| Syntax | Purpose |
-|--------|---------|
-| `{{ variable }}` | Output the value of a variable |
-| `{% statement %}` | Execute a control flow statement |
-| `{# comment #}` | Template comment (not rendered) |
-| `{{ url_for('func') }}` | Generate a URL for a view function |
-| `{{ url_for('static', filename='style.css') }}` | Generate a URL for a static file |
+| Syntax                                          | Purpose                            |
+| ----------------------------------------------- | ---------------------------------- |
+| `{{ variable }}`                                | Output the value of a variable     |
+| `{% statement %}`                               | Execute a control flow statement   |
+| `{# comment #}`                                 | Template comment (not rendered)    |
+| `{{ url_for('func') }}`                         | Generate a URL for a view function |
+| `{{ url_for('static', filename='style.css') }}` | Generate a URL for a static file   |
 
 ### Control Flow in Templates
 
 ```html
 {% if user %}
-    <h1>Hello, {{ user.name }}!</h1>
+<h1>Hello, {{ user.name }}!</h1>
 {% else %}
-    <h1>Hello, stranger!</h1>
+<h1>Hello, stranger!</h1>
 {% endif %}
 
 <ul>
-{% for item in items %}
-    <li>{{ item }}</li>
-{% endfor %}
+  {% for item in items %}
+  <li>{{ item }}</li>
+  {% endfor %}
 </ul>
 ```
 
@@ -291,9 +289,9 @@ Flask automatically serves files from the `static/` directory.
 ### Referencing Static Files in Templates
 
 ```html
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 <script src="{{ url_for('static', filename='script.js') }}"></script>
-<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" />
 ```
 
 ---
@@ -382,11 +380,11 @@ handlers:
 
 For production, use a WSGI server instead of Flask's built-in development server:
 
-| Server | Description |
-|--------|-------------|
-| **Gunicorn** | Production-grade WSGI server for Unix |
-| **Waitress** | Production-grade WSGI server for Windows and Unix |
-| **uWSGI** | Full-featured WSGI server with many deployment options |
+| Server       | Description                                            |
+| ------------ | ------------------------------------------------------ |
+| **Gunicorn** | Production-grade WSGI server for Unix                  |
+| **Waitress** | Production-grade WSGI server for Windows and Unix      |
+| **uWSGI**    | Full-featured WSGI server with many deployment options |
 
 ```bash
 # Using Gunicorn

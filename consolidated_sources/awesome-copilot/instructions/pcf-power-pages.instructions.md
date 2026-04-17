@@ -1,6 +1,6 @@
 ---
-description: 'Using code components in Power Pages sites'
-applyTo: '**/*.{ts,tsx,js,json,xml,pcfproj,csproj}'
+description: "Using code components in Power Pages sites"
+applyTo: "**/*.{ts,tsx,js,json,xml,pcfproj,csproj}"
 ---
 
 # Use Code Components in Power Pages
@@ -26,6 +26,7 @@ To learn about creating and packaging code components in Power Apps component fr
 Power Pages supports restricted field types and formats for using code components. The following table lists all supported field data types and formats:
 
 **Supported Types:**
+
 - Currency
 - DateAndTime.DateAndTime
 - DateAndTime.DateOnly
@@ -48,6 +49,7 @@ For more information, see [Attributes list and descriptions](https://learn.micro
 ### Unsupported Code Components in Power Pages
 
 The following code component APIs aren't supported:
+
 - [Device.captureAudio](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/reference/device/captureaudio)
 - [Device.captureImage](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/reference/device/captureimage)
 - [Device.captureVideo](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/reference/device/capturevideo)
@@ -57,6 +59,7 @@ The following code component APIs aren't supported:
 - [Utility](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/reference/utility)
 
 **Additional Restrictions:**
+
 - The [uses-feature](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/manifest-schema-reference/uses-feature) element must not be set to true
 - [Value elements not supported](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/manifest-schema-reference/property#value-elements-that-are-not-supported) by Power Apps component framework
 - Power Apps Component Framework (PCF) controls bound to multiple fields in a form isn't supported

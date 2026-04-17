@@ -2,11 +2,11 @@
  * Collection file utilities.
  * @module collections
  */
-import * as fs from 'fs';
-import * as path from 'path';
-import * as yaml from 'js-yaml';
-import { normalizeRepoRelativePath } from './validate';
-import type { Collection } from './types';
+import * as fs from "fs";
+import * as path from "path";
+import * as yaml from "js-yaml";
+import { normalizeRepoRelativePath } from "./validate";
+import type { Collection } from "./types";
 
 /**
  * List all collection files in the repository.
@@ -14,11 +14,11 @@ import type { Collection } from './types';
  * @returns Array of collection file paths (repo-relative)
  */
 export function listCollectionFiles(repoRoot: string): string[] {
-  const collectionsDir = path.join(repoRoot, 'collections');
+  const collectionsDir = path.join(repoRoot, "collections");
   return fs
     .readdirSync(collectionsDir)
-    .filter((f) => f.endsWith('.collection.yml'))
-    .map((f) => path.join('collections', f));
+    .filter((f) => f.endsWith(".collection.yml"))
+    .map((f) => path.join("collections", f));
 }
 
 /**
@@ -28,14 +28,17 @@ export function listCollectionFiles(repoRoot: string): string[] {
  * @returns Parsed collection object
  * @throws Error if file is invalid YAML or not an object
  */
-export function readCollection(repoRoot: string, collectionFile: string): Collection {
+export function readCollection(
+  repoRoot: string,
+  collectionFile: string,
+): Collection {
   const abs = path.isAbsolute(collectionFile)
     ? collectionFile
     : path.join(repoRoot, collectionFile);
-  const content = fs.readFileSync(abs, 'utf8');
+  const content = fs.readFileSync(abs, "utf8");
   const collection = yaml.load(content) as Collection;
 
-  if (!collection || typeof collection !== 'object') {
+  if (!collection || typeof collection !== "object") {
     throw new Error(`Invalid collection YAML: ${collectionFile}`);
   }
 
@@ -56,7 +59,7 @@ function listFilesRecursively(dirPath: string, basePath: string): string[] {
     if (entry.isDirectory()) {
       results.push(...listFilesRecursively(fullPath, basePath));
     } else {
-      const relPath = path.relative(basePath, fullPath).replace(/\\/g, '/');
+      const relPath = path.relative(basePath, fullPath).replace(/\\/g, "/");
       results.push(relPath);
     }
   }
@@ -70,7 +73,10 @@ function listFilesRecursively(dirPath: string, basePath: string): string[] {
  * @param collection - Parsed collection object
  * @returns Array of normalized repo-relative paths
  */
-export function resolveCollectionItemPaths(repoRoot: string, collection: Collection): string[] {
+export function resolveCollectionItemPaths(
+  repoRoot: string,
+  collection: Collection,
+): string[] {
   const items = Array.isArray(collection.items) ? collection.items : [];
   const allPaths: string[] = [];
 
@@ -81,7 +87,7 @@ export function resolveCollectionItemPaths(repoRoot: string, collection: Collect
 
     const normalizedPath = normalizeRepoRelativePath(item.path);
 
-    if (item.kind === 'skill') {
+    if (item.kind === "skill") {
       // For skills, the path points to SKILL.md but we need the entire directory
       const skillDir = path.dirname(path.join(repoRoot, normalizedPath));
       if (fs.existsSync(skillDir) && fs.statSync(skillDir).isDirectory()) {

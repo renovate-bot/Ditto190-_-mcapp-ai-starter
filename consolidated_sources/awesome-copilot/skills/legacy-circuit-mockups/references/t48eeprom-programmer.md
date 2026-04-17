@@ -26,9 +26,9 @@ The T48 is a modern replacement for the TL866 series, offering expanded device s
 
 ### 3.1 ZIF Socket
 
-* **48-pin Zero Insertion Force (ZIF)** socket
-* Supports DIP packages directly
-* PLCC, SOP, TSOP supported via adapters
+- **48-pin Zero Insertion Force (ZIF)** socket
+- Supports DIP packages directly
+- PLCC, SOP, TSOP supported via adapters
 
 ### 3.2 Indicators and Controls
 
@@ -44,19 +44,19 @@ The T48 is a modern replacement for the TL866 series, offering expanded device s
 
 ### 4.1 Memory Devices
 
-* 27xxx EPROM
-* 28xxx EEPROM (e.g., AT28C256)
-* 29xxx Flash memory
-* Serial EEPROMs (with adapters)
+- 27xxx EPROM
+- 28xxx EEPROM (e.g., AT28C256)
+- 29xxx Flash memory
+- Serial EEPROMs (with adapters)
 
 ### 4.2 Programmable Logic
 
-* GAL16V8, GAL22V10 (read/write/verify)
+- GAL16V8, GAL22V10 (read/write/verify)
 
 ### 4.3 Microcontrollers (Limited)
 
-* Some PIC, AVR, and 8051-family devices
-* Programming support depends on voltage and pinout
+- Some PIC, AVR, and 8051-family devices
+- Programming support depends on voltage and pinout
 
 ---
 
@@ -74,17 +74,17 @@ The T48 is a modern replacement for the TL866 series, offering expanded device s
 
 ### 6.1 Common Operations
 
-* Device identification
-* Blank check
-* Read
-* Program (write)
-* Verify
-* Erase (Flash/EPROM)
+- Device identification
+- Blank check
+- Read
+- Program (write)
+- Verify
+- Erase (Flash/EPROM)
 
 ### 6.2 Verification Modes
 
-* Byte-by-byte comparison
-* Checksum / CRC validation
+- Byte-by-byte comparison
+- Checksum / CRC validation
 
 ---
 
@@ -92,9 +92,9 @@ The T48 is a modern replacement for the TL866 series, offering expanded device s
 
 ### 7.1 Official Software
 
-* Windows-based GUI
-* Device database with pin mappings
-* Automatic voltage and timing control
+- Windows-based GUI
+- Device database with pin mappings
+- Automatic voltage and timing control
 
 ### 7.2 Open-Source Tools
 
@@ -113,9 +113,9 @@ minipro -p AT28C256 -w rom.bin
 
 ## 8. Device Insertion and Pin Mapping
 
-* Device orientation indicated by **pin 1 marker**
-* Many devices use **lower-left alignment** in ZIF socket
-* Software displays correct insertion diagram
+- Device orientation indicated by **pin 1 marker**
+- Many devices use **lower-left alignment** in ZIF socket
+- Software displays correct insertion diagram
 
 ---
 
@@ -132,26 +132,26 @@ minipro -p AT28C256 -w rom.bin
 
 ## 10. Power and Safety Notes
 
-* Programmer powered entirely via USB
-* Do not insert or remove ICs while programming
-* Use adapters for non-DIP packages
+- Programmer powered entirely via USB
+- Do not insert or remove ICs while programming
+- Use adapters for non-DIP packages
 
 ---
 
 ## 11. Limitations
 
-* Not all microcontrollers are supported
-* High-voltage EPROMs may require specific adapters
-* Not intended for in-circuit programming (ISP)
+- Not all microcontrollers are supported
+- High-voltage EPROMs may require specific adapters
+- Not intended for in-circuit programming (ISP)
 
 ---
 
 ## 12. Common Use Cases
 
-* Programming EEPROMs for 6502 SBCs
-* Flashing ROM images for retro systems
-* Reading and backing up legacy EPROMs
-* GAL logic development
+- Programming EEPROMs for 6502 SBCs
+- Flashing ROM images for retro systems
+- Reading and backing up legacy EPROMs
+- GAL logic development
 
 ---
 
@@ -167,8 +167,8 @@ minipro -p AT28C256 -w rom.bin
 
 ## 14. References
 
-* <https://www.bulcomp-eng.com/datasheet/XGecu%20T48%20-%20Introduction.pdf>
-* <https://gitlab.com/DavidGriffith/minipro>
-* <https://opensource.com/article/23/1/learn-machine-language-retro-computer>
+- <https://www.bulcomp-eng.com/datasheet/XGecu%20T48%20-%20Introduction.pdf>
+- <https://gitlab.com/DavidGriffith/minipro>
+- <https://opensource.com/article/23/1/learn-machine-language-retro-computer>
 
 ---

@@ -212,15 +212,17 @@ trace.set_tracer_provider(provider)
 
 ```javascript
 const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
-const { OTLPTraceExporter } = require("@opentelemetry/exporter-trace-otlp-grpc");
+const {
+  OTLPTraceExporter,
+} = require("@opentelemetry/exporter-trace-otlp-grpc");
 
 const provider = new NodeTracerProvider();
 provider.addSpanProcessor(
   new BatchSpanProcessor(
     new OTLPTraceExporter({
       url: process.env.OTEL_EXPORTER_OTLP_ENDPOINT || "http://localhost:4317",
-    })
-  )
+    }),
+  ),
 );
 provider.register();
 ```

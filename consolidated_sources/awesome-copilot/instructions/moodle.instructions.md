@@ -1,6 +1,6 @@
 ---
-applyTo: '**/*.php, **/*.js, **/*.mustache, **/*.xml, **/*.css, **/*.scss'
-description: 'Instructions for GitHub Copilot to generate code in a Moodle project context.'
+applyTo: "**/*.php, **/*.js, **/*.mustache, **/*.xml, **/*.css, **/*.scss"
+description: "Instructions for GitHub Copilot to generate code in a Moodle project context."
 ---
 
 # Project Context
@@ -8,6 +8,7 @@ description: 'Instructions for GitHub Copilot to generate code in a Moodle proje
 This repository contains a Moodle project. Ensure that any generated code is compatible with the specific Moodle version used in this project (for example, Moodle 3.11, 4.1 LTS, or later).
 
 It includes:
+
 - Plugin development (local, block, mod, auth, enrol, tool, etc.)
 - Theme customization
 - CLI scripts
@@ -54,4 +55,3 @@ It includes:
 - Clear and specific answers in the Moodle context.
 - Always include files with full paths.
 - If there are multiple ways to do something, use the approach recommended by Moodle.
-

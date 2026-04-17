@@ -44,17 +44,20 @@ View logs: `View → Output → Prompt Registry`
 Access these commands via Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`):
 
 ### Diagnostic Commands
+
 - `Prompt Registry: Validate Repository Access` - Test GitHub connectivity and permissions
 - `Prompt Registry: Force GitHub Authentication` - Refresh authentication tokens
 - `Prompt Registry: List Sources` - Show all configured sources and their status
 - `Prompt Registry: List Installed` - Show all installed bundles
 
 ### Sync Commands
+
 - `Prompt Registry: Sync All Sources` - Refresh bundle lists from all sources
 - `Prompt Registry: Sync Source` - Refresh specific source
 - `Prompt Registry: Sync All Bundles` - Re-sync installed bundles to Copilot
 
 ### Bundle Management
+
 - `Prompt Registry: Update All Bundles` - Check and update all installed bundles
 - `Prompt Registry: Manual Check for Updates` - Force check for bundle updates
 
@@ -79,6 +82,7 @@ If all other troubleshooting steps fail, you can completely reset the extension:
    - Reload VS Code window (`Ctrl+R` / `Cmd+R`)
 
 **This will completely remove:**
+
 - All configured sources
 - All installed bundles
 - All profiles and settings

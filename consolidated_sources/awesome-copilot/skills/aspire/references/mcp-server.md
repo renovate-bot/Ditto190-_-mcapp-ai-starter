@@ -57,14 +57,14 @@ The tools available depend on your Aspire CLI version. Check with `aspire --vers
 
 These tools require a running AppHost (`aspire run`).
 
-| Tool                         | Description                                                                          |
-| ---------------------------- | ------------------------------------------------------------------------------------ |
-| `list_resources`             | Lists all resources, including state, health status, source, endpoints, and commands                |
-| `list_console_logs`          | Lists console logs for a resource                                                                   |
-| `list_structured_logs`       | Lists structured logs, optionally filtered by resource name                                         |
-| `list_traces`                | Lists distributed traces. Traces can be filtered using an optional resource name parameter          |
-| `list_trace_structured_logs` | Lists structured logs for a specific trace                                                          |
-| `execute_resource_command`   | Executes a resource command (accepts resource name and command name)                                |
+| Tool                         | Description                                                                                |
+| ---------------------------- | ------------------------------------------------------------------------------------------ |
+| `list_resources`             | Lists all resources, including state, health status, source, endpoints, and commands       |
+| `list_console_logs`          | Lists console logs for a resource                                                          |
+| `list_structured_logs`       | Lists structured logs, optionally filtered by resource name                                |
+| `list_traces`                | Lists distributed traces. Traces can be filtered using an optional resource name parameter |
+| `list_trace_structured_logs` | Lists structured logs for a specific trace                                                 |
+| `execute_resource_command`   | Executes a resource command (accepts resource name and command name)                       |
 
 #### AppHost management tools
 
@@ -139,23 +139,19 @@ The MCP server uses the **STDIO transport protocol** and may work with other age
 Once MCP is configured, your AI assistant can:
 
 1. **Inspect running state:**
-
    - "List all my Aspire resources and their status"
    - "Is the database healthy?"
    - "What port is the API running on?"
 
 2. **Read logs:**
-
    - "Show me the recent logs from the ML service"
    - "Are there any errors in the worker logs?"
 
 3. **View traces:**
-
    - "Show me the trace for the last failed request"
    - "What's the latency for API → Database calls?"
 
 4. **Control resources:**
-
    - "Restart the API service"
    - "Stop the worker while I debug the queue"
 

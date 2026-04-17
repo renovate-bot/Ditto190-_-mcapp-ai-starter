@@ -28,7 +28,7 @@ echo json_encode($age);
 Output:
 
 ```json
-{"Peter":35,"Ben":37,"Joe":43}
+{ "Peter": 35, "Ben": 37, "Joe": 43 }
 ```
 
 ### Encoding an Indexed Array
@@ -44,7 +44,7 @@ echo json_encode($cars);
 Output:
 
 ```json
-["Volvo","BMW","Toyota"]
+["Volvo", "BMW", "Toyota"]
 ```
 
 ### Encoding a PHP Object
@@ -63,7 +63,7 @@ echo json_encode($myObj);
 Output:
 
 ```json
-{"name":"John","age":30,"city":"New York"}
+{ "name": "John", "age": 30, "city": "New York" }
 ```
 
 ## `json_decode()` -- Decoding JSON to PHP
@@ -78,12 +78,12 @@ json_decode(string, assoc, depth, options)
 
 ### Parameters
 
-| Parameter | Description                                                                                                   |
-|-----------|---------------------------------------------------------------------------------------------------------------|
-| `string`  | Required. Specifies the JSON string to be decoded.                                                            |
+| Parameter | Description                                                                                                      |
+| --------- | ---------------------------------------------------------------------------------------------------------------- |
+| `string`  | Required. Specifies the JSON string to be decoded.                                                               |
 | `assoc`   | Optional. If set to `true`, the returned object will be converted into an associative array. Default is `false`. |
-| `depth`   | Optional. Specifies the maximum recursion depth. Default is `512`.                                            |
-| `options` | Optional. Specifies a bitmask (e.g., `JSON_BIGINT_AS_STRING`).                                               |
+| `depth`   | Optional. Specifies the maximum recursion depth. Default is `512`.                                               |
+| `options` | Optional. Specifies a bitmask (e.g., `JSON_BIGINT_AS_STRING`).                                                   |
 
 ### Decoding JSON into a PHP Object (default)
 

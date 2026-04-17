@@ -1,11 +1,11 @@
 {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "files.exclude": {
-        "**/node_modules": true,
-        "**/dist": true
-    },
-    "files.associations": {
-        "*.collection.yml": "yaml"
-    }
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/dist": true
+  },
+  "files.associations": {
+    "*.collection.yml": "yaml"
+  }
 }

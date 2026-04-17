@@ -38,7 +38,9 @@ function updatePluginManifest(pluginJsonPath) {
   // Commands: "./commands/foo.md" → Skills: "./skills/foo/"
   const validCommands = plugin.commands.filter((cmd) => {
     if (typeof cmd !== "string") {
-      console.log(`  ⚠  Skipping non-string command entry: ${JSON.stringify(cmd)}`);
+      console.log(
+        `  ⚠  Skipping non-string command entry: ${JSON.stringify(cmd)}`,
+      );
       return false;
     }
     if (!cmd.startsWith("./commands/") || !cmd.endsWith(".md")) {
@@ -70,7 +72,7 @@ function updatePluginManifest(pluginJsonPath) {
     fs.writeFileSync(
       pluginJsonPath,
       JSON.stringify(plugin, null, 2) + "\n",
-      "utf8"
+      "utf8",
     );
     console.log(`  ✓ Converted ${commandCount} command(s) to skills`);
     return { success: true, name: pluginName, count: commandCount };
@@ -114,7 +116,7 @@ function main() {
       PLUGINS_DIR,
       dirName,
       ".github/plugin",
-      "plugin.json"
+      "plugin.json",
     );
 
     if (!fs.existsSync(pluginJsonPath)) {
@@ -144,7 +146,7 @@ function main() {
   if (results.updated.length > 0) {
     console.log("\nUpdated plugins:");
     results.updated.forEach(({ name, count }) =>
-      console.log(`  - ${name} (${count} command(s) → skills)`)
+      console.log(`  - ${name} (${count} command(s) → skills)`),
     );
   }
 
@@ -157,7 +159,7 @@ function main() {
   console.log(
     "\nNext steps:\n" +
       "1. Run 'npm run plugin:validate' to validate all updated plugins\n" +
-      "2. Test that plugins work correctly\n"
+      "2. Test that plugins work correctly\n",
   );
 }
 

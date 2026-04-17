@@ -13,16 +13,16 @@ copilot plugin install context-engineering@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
-| `/context-engineering:context-map` | Generate a map of all files relevant to a task before making changes |
-| `/context-engineering:what-context-needed` | Ask Copilot what files it needs to see before answering a question |
-| `/context-engineering:refactor-plan` | Plan a multi-file refactor with proper sequencing and rollback steps |
+| Command                                    | Description                                                          |
+| ------------------------------------------ | -------------------------------------------------------------------- |
+| `/context-engineering:context-map`         | Generate a map of all files relevant to a task before making changes |
+| `/context-engineering:what-context-needed` | Ask Copilot what files it needs to see before answering a question   |
+| `/context-engineering:refactor-plan`       | Plan a multi-file refactor with proper sequencing and rollback steps |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent               | Description                                                                                              |
+| ------------------- | -------------------------------------------------------------------------------------------------------- |
 | `context-architect` | An agent that helps plan and execute multi-file changes by identifying relevant context and dependencies |
 
 ## Source

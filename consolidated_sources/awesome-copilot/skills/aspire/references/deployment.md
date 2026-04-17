@@ -6,10 +6,10 @@ Aspire separates **orchestration** (what to run) from **deployment** (where to r
 
 ## Publish vs Deploy
 
-| Concept | What it does |
-|---|---|
+| Concept              | What it does                                                           |
+| -------------------- | ---------------------------------------------------------------------- |
 | **`aspire publish`** | Generates deployment artifacts (Dockerfiles, Helm charts, Bicep, etc.) |
-| **Deploy** | You run the generated artifacts through your CI/CD pipeline |
+| **Deploy**           | You run the generated artifacts through your CI/CD pipeline            |
 
 Aspire does NOT deploy directly. It generates the manifests — you deploy them.
 
@@ -26,6 +26,7 @@ aspire publish -p docker -o ./docker-output
 ```
 
 Generates:
+
 - `docker-compose.yml` — service definitions matching your AppHost
 - `Dockerfile` for each .NET project
 - Environment variable configuration
@@ -47,6 +48,7 @@ aspire publish -p kubernetes -o ./k8s-output
 ```
 
 Generates:
+
 - Kubernetes YAML manifests (Deployments, Services, ConfigMaps, Secrets)
 - Helm chart (optional)
 - Ingress configuration
@@ -68,6 +70,7 @@ aspire publish -p azure -o ./azure-output
 ```
 
 Generates:
+
 - Bicep templates for Azure Container Apps Environment
 - Container App definitions for each service
 - Azure Container Registry configuration
@@ -96,6 +99,7 @@ aspire publish -p appservice -o ./appservice-output
 ```
 
 Generates:
+
 - Bicep templates for App Service Plans and Web Apps
 - Connection string configuration
 - Application settings
@@ -104,18 +108,18 @@ Generates:
 
 ## Resource model to deployment mapping
 
-| AppHost concept | Docker Compose | Kubernetes | Azure Container Apps |
-|---|---|---|---|
-| `AddProject<T>()` | `service` with Dockerfile | `Deployment` + `Service` | `Container App` |
-| `AddContainer()` | `service` with `image:` | `Deployment` + `Service` | `Container App` |
-| `AddRedis()` | `service: redis` | `StatefulSet` | Managed Redis |
-| `AddPostgres()` | `service: postgres` | `StatefulSet` | Azure PostgreSQL |
-| `.WithReference()` | `environment:` vars | `ConfigMap` / `Secret` | App settings |
-| `.WithReplicas(n)` | `deploy: replicas: n` | `replicas: n` | `minReplicas: n` |
-| `.WithVolume()` | `volumes:` | `PersistentVolumeClaim` | Azure Files |
-| `.WithHttpEndpoint()` | `ports:` | `Service` port | Ingress |
-| `.WithExternalHttpEndpoints()` | `ports:` (host) | `Ingress` / `LoadBalancer` | External ingress |
-| `AddParameter(secret: true)` | `.env` file | `Secret` | Key Vault reference |
+| AppHost concept                | Docker Compose            | Kubernetes                 | Azure Container Apps |
+| ------------------------------ | ------------------------- | -------------------------- | -------------------- |
+| `AddProject<T>()`              | `service` with Dockerfile | `Deployment` + `Service`   | `Container App`      |
+| `AddContainer()`               | `service` with `image:`   | `Deployment` + `Service`   | `Container App`      |
+| `AddRedis()`                   | `service: redis`          | `StatefulSet`              | Managed Redis        |
+| `AddPostgres()`                | `service: postgres`       | `StatefulSet`              | Azure PostgreSQL     |
+| `.WithReference()`             | `environment:` vars       | `ConfigMap` / `Secret`     | App settings         |
+| `.WithReplicas(n)`             | `deploy: replicas: n`     | `replicas: n`              | `minReplicas: n`     |
+| `.WithVolume()`                | `volumes:`                | `PersistentVolumeClaim`    | Azure Files          |
+| `.WithHttpEndpoint()`          | `ports:`                  | `Service` port             | Ingress              |
+| `.WithExternalHttpEndpoints()` | `ports:` (host)           | `Ingress` / `LoadBalancer` | External ingress     |
+| `AddParameter(secret: true)`   | `.env` file               | `Secret`                   | Key Vault reference  |
 
 ---
 
@@ -138,7 +142,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: "10.0.x"
 
       - name: Install Aspire CLI
         run: curl -sSL https://aspire.dev/install.sh | bash
@@ -161,23 +165,23 @@ trigger:
     include: [main]
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
 steps:
   - task: UseDotNet@2
     inputs:
-      version: '10.0.x'
+      version: "10.0.x"
 
   - script: curl -sSL https://aspire.dev/install.sh | bash
-    displayName: 'Install Aspire CLI'
+    displayName: "Install Aspire CLI"
 
   - script: aspire publish -p azure -o $(Build.ArtifactStagingDirectory)/deploy
-    displayName: 'Generate deployment manifests'
+    displayName: "Generate deployment manifests"
 
   - task: AzureResourceManagerTemplateDeployment@3
     inputs:
-      deploymentScope: 'Resource Group'
-      templateLocation: '$(Build.ArtifactStagingDirectory)/deploy/main.bicep'
+      deploymentScope: "Resource Group"
+      templateLocation: "$(Build.ArtifactStagingDirectory)/deploy/main.bicep"
 ```
 
 ---
@@ -193,6 +197,7 @@ var postgres = builder.AddPostgres("db", password: dbPassword);
 ```
 
 In deployment:
+
 - **Docker:** Loaded from `.env` file
 - **Kubernetes:** Loaded from `Secret` resource
 - **Azure:** Loaded from Key Vault via managed identity

@@ -43,68 +43,70 @@ import * as readline from "node:readline";
 // ============================================================================
 
 async function main() {
-    console.log("=== Accessibility Report Generator ===\n");
+  console.log("=== Accessibility Report Generator ===\n");
 
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
 
-    const askQuestion = (query: string): Promise<string> =>
-        new Promise((resolve) => rl.question(query, (answer) => resolve(answer.trim())));
+  const askQuestion = (query: string): Promise<string> =>
+    new Promise((resolve) =>
+      rl.question(query, (answer) => resolve(answer.trim())),
+    );
 
-    let url = await askQuestion("Enter URL to analyze: ");
+  let url = await askQuestion("Enter URL to analyze: ");
 
-    if (!url) {
-        console.log("No URL provided. Exiting.");
-        rl.close();
-        return;
+  if (!url) {
+    console.log("No URL provided. Exiting.");
+    rl.close();
+    return;
+  }
+
+  // Ensure URL has a scheme
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    url = "https://" + url;
+  }
+
+  console.log(`\nAnalyzing: ${url}`);
+  console.log("Please wait...\n");
+
+  // Create Copilot client with Playwright MCP server
+  const client = new CopilotClient();
+
+  const session = await client.createSession({
+    model: "claude-opus-4.6",
+    streaming: true,
+    mcpServers: {
+      playwright: {
+        type: "local",
+        command: "npx",
+        args: ["@playwright/mcp@latest"],
+        tools: ["*"],
+      },
+    },
+  });
+
+  // Set up streaming event handling
+  let idleResolve: (() => void) | null = null;
+
+  session.on((event) => {
+    if (event.type === "assistant.message.delta") {
+      process.stdout.write(event.data.deltaContent ?? "");
+    } else if (event.type === "session.idle") {
+      idleResolve?.();
+    } else if (event.type === "session.error") {
+      console.error(`\nError: ${event.data.message}`);
+      idleResolve?.();
     }
+  });
 
-    // Ensure URL has a scheme
-    if (!url.startsWith("http://") && !url.startsWith("https://")) {
-        url = "https://" + url;
-    }
-
-    console.log(`\nAnalyzing: ${url}`);
-    console.log("Please wait...\n");
-
-    // Create Copilot client with Playwright MCP server
-    const client = new CopilotClient();
-
-    const session = await client.createSession({
-        model: "claude-opus-4.6",
-        streaming: true,
-        mcpServers: {
-            playwright: {
-                type: "local",
-                command: "npx",
-                args: ["@playwright/mcp@latest"],
-                tools: ["*"],
-            },
-        },
+  const waitForIdle = (): Promise<void> =>
+    new Promise((resolve) => {
+      idleResolve = resolve;
     });
 
-    // Set up streaming event handling
-    let idleResolve: (() => void) | null = null;
-
-    session.on((event) => {
-        if (event.type === "assistant.message.delta") {
-            process.stdout.write(event.data.deltaContent ?? "");
-        } else if (event.type === "session.idle") {
-            idleResolve?.();
-        } else if (event.type === "session.error") {
-            console.error(`\nError: ${event.data.message}`);
-            idleResolve?.();
-        }
-    });
-
-    const waitForIdle = (): Promise<void> =>
-        new Promise((resolve) => {
-            idleResolve = resolve;
-        });
-
-    const prompt = `
+  const prompt = `
     Use the Playwright MCP server to analyze the accessibility of this webpage: ${url}
     
     Please:
@@ -123,33 +125,38 @@ async function main() {
     Include actual findings from the page analysis.
     `;
 
-    let idle = waitForIdle();
-    await session.send({ prompt });
-    await idle;
+  let idle = waitForIdle();
+  await session.send({ prompt });
+  await idle;
 
-    console.log("\n\n=== Report Complete ===\n");
+  console.log("\n\n=== Report Complete ===\n");
 
-    // Prompt user for test generation
-    const generateTests = await askQuestion(
-        "Would you like to generate Playwright accessibility tests? (y/n): "
-    );
+  // Prompt user for test generation
+  const generateTests = await askQuestion(
+    "Would you like to generate Playwright accessibility tests? (y/n): ",
+  );
 
-    if (generateTests.toLowerCase() === "y" || generateTests.toLowerCase() === "yes") {
-        const detectLanguagePrompt = `
+  if (
+    generateTests.toLowerCase() === "y" ||
+    generateTests.toLowerCase() === "yes"
+  ) {
+    const detectLanguagePrompt = `
         Analyze the current working directory to detect the primary programming language.
         Respond with ONLY the detected language name and a brief explanation.
         If no project is detected, suggest "TypeScript" as the default.
         `;
 
-        console.log("\nDetecting project language...\n");
-        idle = waitForIdle();
-        await session.send({ prompt: detectLanguagePrompt });
-        await idle;
+    console.log("\nDetecting project language...\n");
+    idle = waitForIdle();
+    await session.send({ prompt: detectLanguagePrompt });
+    await idle;
 
-        let language = await askQuestion("\n\nConfirm language for tests (or enter a different one): ");
-        if (!language) language = "TypeScript";
+    let language = await askQuestion(
+      "\n\nConfirm language for tests (or enter a different one): ",
+    );
+    if (!language) language = "TypeScript";
 
-        const testGenerationPrompt = `
+    const testGenerationPrompt = `
         Based on the accessibility report you just generated for ${url},
         create Playwright accessibility tests in ${language}.
         
@@ -159,17 +166,17 @@ async function main() {
         Output the complete test file.
         `;
 
-        console.log("\nGenerating accessibility tests...\n");
-        idle = waitForIdle();
-        await session.send({ prompt: testGenerationPrompt });
-        await idle;
+    console.log("\nGenerating accessibility tests...\n");
+    idle = waitForIdle();
+    await session.send({ prompt: testGenerationPrompt });
+    await idle;
 
-        console.log("\n\n=== Tests Generated ===");
-    }
+    console.log("\n\n=== Tests Generated ===");
+  }
 
-    rl.close();
-    await session.destroy();
-    await client.stop();
+  rl.close();
+  await session.destroy();
+  await client.stop();
 }
 
 main().catch(console.error);
@@ -191,14 +198,14 @@ The recipe configures a local MCP server that runs alongside the session:
 
 ```typescript
 const session = await client.createSession({
-    mcpServers: {
-        playwright: {
-            type: "local",
-            command: "npx",
-            args: ["@playwright/mcp@latest"],
-            tools: ["*"],
-        },
+  mcpServers: {
+    playwright: {
+      type: "local",
+      command: "npx",
+      args: ["@playwright/mcp@latest"],
+      tools: ["*"],
     },
+  },
 });
 ```
 
@@ -210,11 +217,11 @@ Unlike `sendAndWait`, this recipe uses streaming for real-time output:
 
 ```typescript
 session.on((event) => {
-    if (event.type === "assistant.message.delta") {
-        process.stdout.write(event.data.deltaContent ?? "");
-    } else if (event.type === "session.idle") {
-        idleResolve?.();
-    }
+  if (event.type === "assistant.message.delta") {
+    process.stdout.write(event.data.deltaContent ?? "");
+  } else if (event.type === "session.idle") {
+    idleResolve?.();
+  }
 });
 ```
 
@@ -256,7 +263,7 @@ Would you like to generate Playwright accessibility tests? (y/n): y
 Detecting project language...
 TypeScript detected (package.json found)
 
-Confirm language for tests (or enter a different one): 
+Confirm language for tests (or enter a different one):
 
 Generating accessibility tests...
 [Generated test file output...]

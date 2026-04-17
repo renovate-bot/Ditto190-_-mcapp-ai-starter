@@ -1,6 +1,6 @@
 ---
-description: 'Best practices for building Model Context Protocol servers in Rust using the official rmcp SDK with async/await patterns'
-applyTo: '**/*.rs'
+description: "Best practices for building Model Context Protocol servers in Rust using the official rmcp SDK with async/await patterns"
+applyTo: "**/*.rs"
 ---
 
 # Rust MCP Server Development Best Practices
@@ -73,10 +73,10 @@ use tokio::signal;
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt::init();
-    
+
     let handler = MyServerHandler::new();
     let transport = StdioTransport::new();
-    
+
     let server = Server::builder()
         .with_handler(handler)
         .with_capabilities(ServerCapabilities {
@@ -86,9 +86,9 @@ async fn main() -> anyhow::Result<()> {
             ..Default::default()
         })
         .build(transport)?;
-    
+
     server.run(signal::ctrl_c()).await?;
-    
+
     Ok(())
 }
 ```
@@ -115,7 +115,7 @@ impl MyServerHandler {
             tool_router: Self::create_tool_router(),
         }
     }
-    
+
     fn create_tool_router() -> ToolRouter {
         // Initialize and return tool router
         ToolRouter::new()
@@ -132,7 +132,7 @@ impl ServerHandler for MyServerHandler {
         let items = self.tool_router.list_all();
         Ok(ListToolsResult::with_all_items(items))
     }
-    
+
     async fn call_tool(
         &self,
         request: CallToolRequestParam,
@@ -204,12 +204,12 @@ impl ToolsHandler {
     async fn greet(params: Parameters<GreetParams>) -> String {
         format!("Hello, {}!", params.inner().name)
     }
-    
+
     #[tool(annotations(destructive_hint = true))]
     async fn reset_counter() -> String {
         "Counter reset".to_string()
     }
-    
+
     pub fn new() -> Self {
         Self {
             tool_router: Self::tool_router(),
@@ -296,7 +296,7 @@ async fn list_prompts(
             ]),
         },
     ];
-    
+
     Ok(ListPromptsResult { prompts })
 }
 
@@ -311,7 +311,7 @@ async fn get_prompt(
                 .as_ref()
                 .and_then(|args| args.get("language"))
                 .ok_or_else(|| ErrorData::invalid_params("language required"))?;
-            
+
             Ok(GetPromptResult {
                 description: Some("Code review prompt".to_string()),
                 messages: vec![
@@ -349,7 +349,7 @@ async fn list_resources(
             mime_type: Some("application/json".to_string()),
         },
     ];
-    
+
     Ok(ListResourcesResult { resources })
 }
 
@@ -456,9 +456,9 @@ async fn call_tool(
     context: RequestContext<RoleServer>,
 ) -> Result<CallToolResult, ErrorData> {
     validate_params(&request.name)?;
-    
+
     // Tool execution...
-    
+
     Ok(CallToolResult {
         content: vec![TextContent::text("Success")],
         is_error: Some(false),
@@ -477,10 +477,10 @@ async fn load_config() -> Result<Config> {
     let content = tokio::fs::read_to_string("config.json")
         .await
         .context("Failed to read config file")?;
-    
+
     let config: Config = serde_json::from_str(&content)
         .context("Failed to parse config")?;
-    
+
     Ok(config)
 }
 ```
@@ -495,7 +495,7 @@ Write unit tests for tools and handlers:
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[tokio::test]
     async fn test_calculate_add() {
         let params = Parameters::new(CalculateParams {
@@ -503,11 +503,11 @@ mod tests {
             b: 3.0,
             operation: "add".to_string(),
         });
-        
+
         let result = calculate(params).await.unwrap();
         assert_eq!(result, 8.0);
     }
-    
+
     #[tokio::test]
     async fn test_divide_by_zero() {
         let params = Parameters::new(CalculateParams {
@@ -515,7 +515,7 @@ mod tests {
             b: 0.0,
             operation: "divide".to_string(),
         });
-        
+
         let result = calculate(params).await;
         assert!(result.is_err());
     }
@@ -531,9 +531,9 @@ Test complete server interactions:
 async fn test_server_list_tools() {
     let handler = MyServerHandler::new();
     let context = RequestContext::default();
-    
+
     let result = handler.list_tools(None, context).await.unwrap();
-    
+
     assert!(!result.tools.is_empty());
     assert!(result.tools.iter().any(|t| t.name == "calculate"));
 }
@@ -554,10 +554,10 @@ async fn process_large_file(
     context: RequestContext<RoleServer>,
 ) -> Result<String, String> {
     let total = 100;
-    
+
     for i in 0..=total {
         // Do work...
-        
+
         if i % 10 == 0 {
             context.notify_progress(ProgressNotification {
                 progress: i,
@@ -565,7 +565,7 @@ async fn process_large_file(
             }).await.ok();
         }
     }
-    
+
     Ok("Processing complete".to_string())
 }
 ```
@@ -606,7 +606,7 @@ async fn fetch_data(params: Parameters<FetchParams>) -> Result<String, String> {
         .send()
         .await
         .map_err(|e| e.to_string())?;
-    
+
     let text = response.text().await.map_err(|e| e.to_string())?;
     Ok(text)
 }
@@ -630,7 +630,7 @@ impl ServerState {
             counter: Arc::new(RwLock::new(0)),
         }
     }
-    
+
     pub async fn increment(&self) -> i32 {
         let mut counter = self.counter.write().await;
         *counter += 1;
@@ -661,9 +661,9 @@ fn init_logging() {
 async fn my_tool(params: Parameters<MyParams>) -> String {
     debug!("Tool called with params: {:?}", params);
     info!("Processing request");
-    
+
     // Tool logic...
-    
+
     info!("Request completed");
     "Done".to_string()
 }

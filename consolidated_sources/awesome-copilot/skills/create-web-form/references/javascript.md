@@ -74,12 +74,12 @@ button.addEventListener("click", updateName);
 
 Application Programming Interfaces (APIs) provide ready-made code building blocks that enable powerful functionality:
 
-| API | Description |
-|-----|-------------|
-| **DOM API** | Manipulate HTML and CSS dynamically; create, remove, and change HTML elements |
-| **Geolocation API** | Retrieves geographical information |
-| **Canvas and WebGL APIs** | Create animated 2D and 3D graphics |
-| **Audio and Video APIs** | Play audio and video in web pages; capture video from web cameras |
+| API                       | Description                                                                   |
+| ------------------------- | ----------------------------------------------------------------------------- |
+| **DOM API**               | Manipulate HTML and CSS dynamically; create, remove, and change HTML elements |
+| **Geolocation API**       | Retrieves geographical information                                            |
+| **Canvas and WebGL APIs** | Create animated 2D and 3D graphics                                            |
+| **Audio and Video APIs**  | Play audio and video in web pages; capture video from web cameras             |
 
 ### Third-Party APIs
 
@@ -162,12 +162,12 @@ Avoid inline handlers because they pollute HTML with JavaScript, are inefficient
 
 ### Comparison
 
-| Method | Location | Best For | Pros | Cons |
-|--------|----------|----------|------|------|
-| **Internal** | `<script>` in body | Small projects | Simple, self-contained | Not reusable |
-| **External** | `<script src="">` | Most projects | Reusable, organized | Requires HTTP server |
-| **Inline** | `onclick=""` | Not recommended | Quick testing | Hard to maintain, pollutes HTML |
-| **Module** | `<script type="module">` | Modern projects | Safe timing, organized | Requires HTTP server |
+| Method       | Location                 | Best For        | Pros                   | Cons                            |
+| ------------ | ------------------------ | --------------- | ---------------------- | ------------------------------- |
+| **Internal** | `<script>` in body       | Small projects  | Simple, self-contained | Not reusable                    |
+| **External** | `<script src="">`        | Most projects   | Reusable, organized    | Requires HTTP server            |
+| **Inline**   | `onclick=""`             | Not recommended | Quick testing          | Hard to maintain, pollutes HTML |
+| **Module**   | `<script type="module">` | Modern projects | Safe timing, organized | Requires HTTP server            |
 
 ---
 
@@ -216,7 +216,7 @@ Script downloads in parallel and executes immediately when ready. Does not guara
 ### Wrap Internal Scripts in `DOMContentLoaded`
 
 ```javascript
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   const button = document.querySelector("button");
   button.addEventListener("click", updateName);
 });
@@ -291,8 +291,8 @@ let myDog = "Rover";
 **Numbers:**
 
 ```javascript
-let myAge = 17;           // integer
-let temperature = 98.6;   // floating point number
+let myAge = 17; // integer
+let temperature = 98.6; // floating point number
 ```
 
 **Strings:**
@@ -305,7 +305,7 @@ let dolphinGoodbye = "So long and thanks for all the fish";
 
 ```javascript
 let iAmAlive = true;
-let test = 6 < 3;  // returns false
+let test = 6 < 3; // returns false
 ```
 
 **Arrays:**
@@ -313,15 +313,15 @@ let test = 6 < 3;  // returns false
 ```javascript
 let myNameArray = ["Chris", "Bob", "Jim"];
 let myNumberArray = [10, 15, 40];
-myNameArray[0];    // "Chris" (zero-indexed)
-myNumberArray[2];  // 40
+myNameArray[0]; // "Chris" (zero-indexed)
+myNumberArray[2]; // 40
 ```
 
 **Objects:**
 
 ```javascript
 let dog = { name: "Spot", breed: "Dalmatian" };
-dog.name;  // "Spot"
+dog.name; // "Spot"
 ```
 
 ### Variable Naming Rules
@@ -339,13 +339,13 @@ JavaScript is **dynamically typed** -- you don't declare variable types. A varia
 
 ```javascript
 let myString = "Hello";
-typeof myString;           // "string"
+typeof myString; // "string"
 
 let myNumber = "500";
-typeof myNumber;           // "string"
+typeof myNumber; // "string"
 
 myNumber = 500;
-typeof myNumber;           // "number"
+typeof myNumber; // "number"
 ```
 
 ### Constants with `const`
@@ -354,24 +354,24 @@ Use **`const`** for values that should not change:
 
 ```javascript
 const myDog = "Rover";
-myDog = "Fido";  // Error: cannot reassign
+myDog = "Fido"; // Error: cannot reassign
 ```
 
 For objects, you can still modify properties even with `const`:
 
 ```javascript
 const bird = { species: "Kestrel" };
-bird.species = "Striated Caracara";  // OK - modifying content
+bird.species = "Striated Caracara"; // OK - modifying content
 ```
 
 ### `let` vs `const` vs `var`
 
-| Feature | `let` | `const` | `var` |
-|---------|-------|---------|-------|
-| Can reassign | Yes | No | Yes |
-| Must initialize | No | Yes | No |
-| Scoping | Block | Block | Function |
-| Hoisting issues | No | No | Yes |
+| Feature         | `let` | `const` | `var`    |
+| --------------- | ----- | ------- | -------- |
+| Can reassign    | Yes   | No      | Yes      |
+| Must initialize | No    | Yes     | No       |
+| Scoping         | Block | Block   | Function |
+| Hoisting issues | No    | No      | Yes      |
 
 **Best Practice:** Use `const` when possible, use `let` when you need to reassign. Avoid `var` in modern JavaScript.
 
@@ -389,21 +389,21 @@ bird.species = "Striated Caracara";  // OK - modifying content
 
 ### Arithmetic Operators
 
-| Operator | Name | Example | Result |
-|----------|------|---------|--------|
-| `+` | Addition | `6 + 9` | `15` |
-| `-` | Subtraction | `20 - 15` | `5` |
-| `*` | Multiplication | `3 * 7` | `21` |
-| `/` | Division | `10 / 5` | `2` |
-| `%` | Remainder (Modulo) | `8 % 3` | `2` |
-| `**` | Exponent | `5 ** 2` | `25` |
+| Operator | Name               | Example   | Result |
+| -------- | ------------------ | --------- | ------ |
+| `+`      | Addition           | `6 + 9`   | `15`   |
+| `-`      | Subtraction        | `20 - 15` | `5`    |
+| `*`      | Multiplication     | `3 * 7`   | `21`   |
+| `/`      | Division           | `10 / 5`  | `2`    |
+| `%`      | Remainder (Modulo) | `8 % 3`   | `2`    |
+| `**`     | Exponent           | `5 ** 2`  | `25`   |
 
 ```javascript
 const num1 = 10;
 const num2 = 50;
-9 * num1;      // 90
-num1 ** 3;     // 1000
-num2 / num1;   // 5
+9 * num1; // 90
+num1 ** 3; // 1000
+num2 / num1; // 5
 ```
 
 ### Operator Precedence
@@ -412,41 +412,41 @@ num2 / num1;   // 5
 2. **Add and Subtract** are done after (left to right)
 
 ```javascript
-num2 + num1 / 8 + 2;        // = 53.25  (50 + 1.25 + 2)
-(num2 + num1) / (8 + 2);    // = 6      (60 / 10)
+num2 + num1 / 8 + 2; // = 53.25  (50 + 1.25 + 2)
+(num2 + num1) / (8 + 2); // = 6      (60 / 10)
 ```
 
 ### Increment and Decrement Operators
 
 ```javascript
 let num1 = 4;
-num1++;     // Returns 4, then increments to 5
-++num1;     // Increments first, then returns 6
+num1++; // Returns 4, then increments to 5
+++num1; // Increments first, then returns 6
 
 let num2 = 6;
-num2--;     // Returns 6, then decrements to 5
---num2;     // Decrements first, then returns 4
+num2--; // Returns 6, then decrements to 5
+--num2; // Decrements first, then returns 4
 ```
 
 ### Assignment Operators
 
-| Operator | Example | Equivalent |
-|----------|---------|------------|
-| `+=` | `x += 4;` | `x = x + 4;` |
-| `-=` | `x -= 3;` | `x = x - 3;` |
-| `*=` | `x *= 3;` | `x = x * 3;` |
-| `/=` | `x /= 5;` | `x = x / 5;` |
+| Operator | Example   | Equivalent   |
+| -------- | --------- | ------------ |
+| `+=`     | `x += 4;` | `x = x + 4;` |
+| `-=`     | `x -= 3;` | `x = x - 3;` |
+| `*=`     | `x *= 3;` | `x = x * 3;` |
+| `/=`     | `x /= 5;` | `x = x / 5;` |
 
 ### Comparison Operators
 
-| Operator | Name | Example | Result |
-|----------|------|---------|--------|
-| `===` | Strict equality | `5 === 2 + 3` | `true` |
-| `!==` | Strict non-equality | `5 !== 2 + 3` | `false` |
-| `<` | Less than | `10 < 6` | `false` |
-| `>` | Greater than | `10 > 20` | `false` |
-| `<=` | Less than or equal | `3 <= 2` | `false` |
-| `>=` | Greater than or equal | `5 >= 4` | `true` |
+| Operator | Name                  | Example       | Result  |
+| -------- | --------------------- | ------------- | ------- |
+| `===`    | Strict equality       | `5 === 2 + 3` | `true`  |
+| `!==`    | Strict non-equality   | `5 !== 2 + 3` | `false` |
+| `<`      | Less than             | `10 < 6`      | `false` |
+| `>`      | Greater than          | `10 > 20`     | `false` |
+| `<=`     | Less than or equal    | `3 <= 2`      | `false` |
+| `>=`     | Greater than or equal | `5 >= 4`      | `true`  |
 
 Always use `===` and `!==` (strict versions) instead of `==` and `!=`.
 
@@ -455,21 +455,21 @@ Always use `===` and `!==` (strict versions) instead of `==` and `!=`.
 ```javascript
 // Round to decimal places
 const lotsOfDecimal = 1.7665849587;
-lotsOfDecimal.toFixed(2);  // "1.77"
+lotsOfDecimal.toFixed(2); // "1.77"
 
 // Convert string to number
 let myNumber = "74";
-myNumber = Number(myNumber) + 3;  // 77
+myNumber = Number(myNumber) + 3; // 77
 
 // Check data type
-typeof 5;      // "number"
-typeof 6.667;  // "number"
+typeof 5; // "number"
+typeof 6.667; // "number"
 
 // Math object methods
-Math.random();           // Random number between 0 and 1
-Math.floor(2.9);         // 2 (rounds down)
-Math.ceil(2.1);          // 3 (rounds up)
-Math.pow(5, 2);          // 25 (5 to the power of 2)
+Math.random(); // Random number between 0 and 1
+Math.floor(2.9); // 2 (rounds down)
+Math.ceil(2.1); // 3 (rounds up)
+Math.pow(5, 2); // 25 (5 to the power of 2)
 ```
 
 ---
@@ -483,7 +483,7 @@ Math.pow(5, 2);          // 25 (5 to the power of 2)
 Strings must be surrounded by quotes:
 
 ```javascript
-const single = 'Single quotes';
+const single = "Single quotes";
 const double = "Double quotes";
 const backtick = `Backtick`;
 ```
@@ -527,17 +527,17 @@ const newline2 = "One day you finally knew\nwhat you had to do, and began,";
 
 ```javascript
 // Using + operator
-const greeting = "Hello" + ", " + "Bob";  // "Hello, Bob"
+const greeting = "Hello" + ", " + "Bob"; // "Hello, Bob"
 
 // Using template literals (recommended)
 const name = "Ramesh";
-console.log(`Howdy, ${name}`);  // "Howdy, Ramesh"
+console.log(`Howdy, ${name}`); // "Howdy, Ramesh"
 ```
 
 ### Escaping Characters
 
 ```javascript
-const bigmouth = 'I\'ve got no right to take my place...';
+const bigmouth = "I've got no right to take my place...";
 ```
 
 ---
@@ -550,14 +550,14 @@ const bigmouth = 'I\'ve got no right to take my place...';
 
 ```javascript
 const browserType = "mozilla";
-browserType.length;  // 7
+browserType.length; // 7
 ```
 
 ### Retrieving Characters
 
 ```javascript
-browserType[0];                          // "m" (first character)
-browserType[browserType.length - 1];     // "a" (last character)
+browserType[0]; // "m" (first character)
+browserType[browserType.length - 1]; // "a" (last character)
 ```
 
 ### Testing for Substrings
@@ -565,20 +565,20 @@ browserType[browserType.length - 1];     // "a" (last character)
 ```javascript
 const browserType = "mozilla";
 
-browserType.includes("zilla");     // true
-browserType.startsWith("zilla");   // false
-browserType.endsWith("zilla");     // true
+browserType.includes("zilla"); // true
+browserType.startsWith("zilla"); // false
+browserType.endsWith("zilla"); // true
 ```
 
 ### Finding Position of a Substring
 
 ```javascript
 const tagline = "MDN - Resources for developers, by developers";
-tagline.indexOf("developers");     // 20
-tagline.indexOf("x");             // -1 (not found)
+tagline.indexOf("developers"); // 20
+tagline.indexOf("x"); // -1 (not found)
 
 // Finding subsequent occurrences
-const first = tagline.indexOf("developers");           // 20
+const first = tagline.indexOf("developers"); // 20
 const second = tagline.indexOf("developers", first + 1); // 35
 ```
 
@@ -586,16 +586,16 @@ const second = tagline.indexOf("developers", first + 1); // 35
 
 ```javascript
 const browserType = "mozilla";
-browserType.slice(1, 4);  // "ozi"
-browserType.slice(2);     // "zilla" (from index 2 to end)
+browserType.slice(1, 4); // "ozi"
+browserType.slice(2); // "zilla" (from index 2 to end)
 ```
 
 ### Changing Case
 
 ```javascript
 const radData = "My NaMe Is MuD";
-radData.toLowerCase();  // "my name is mud"
-radData.toUpperCase();  // "MY NAME IS MUD"
+radData.toLowerCase(); // "my name is mud"
+radData.toUpperCase(); // "MY NAME IS MUD"
 ```
 
 ### Replacing Parts of a String
@@ -603,11 +603,11 @@ radData.toUpperCase();  // "MY NAME IS MUD"
 ```javascript
 // Replace first occurrence
 const browserType = "mozilla";
-const updated = browserType.replace("moz", "van");  // "vanilla"
+const updated = browserType.replace("moz", "van"); // "vanilla"
 
 // Replace all occurrences
 let quote = "To be or not to be";
-quote = quote.replaceAll("be", "code");  // "To code or not to code"
+quote = quote.replaceAll("be", "code"); // "To code or not to code"
 ```
 
 **Important:** String methods return new strings; they don't modify the original unless you reassign.
@@ -623,32 +623,32 @@ quote = quote.replaceAll("be", "code");  // "To code or not to code"
 ```javascript
 const shopping = ["bread", "milk", "cheese", "hummus", "noodles"];
 const sequence = [1, 1, 2, 3, 5, 8, 13];
-const random = ["tree", 795, [0, 1, 2]];  // Mixed types allowed
+const random = ["tree", 795, [0, 1, 2]]; // Mixed types allowed
 ```
 
 ### Finding Array Length
 
 ```javascript
-shopping.length;  // 5
+shopping.length; // 5
 ```
 
 ### Accessing and Modifying Items
 
 ```javascript
-shopping[0];           // "bread" (zero-indexed)
+shopping[0]; // "bread" (zero-indexed)
 shopping[0] = "tahini"; // Modify first item
 
 // Multidimensional arrays
 const random = ["tree", 795, [0, 1, 2]];
-random[2][2];  // 2
+random[2][2]; // 2
 ```
 
 ### Finding Index of Items
 
 ```javascript
 const birds = ["Parrot", "Falcon", "Owl"];
-birds.indexOf("Owl");     // 2
-birds.indexOf("Rabbit");  // -1 (not found)
+birds.indexOf("Owl"); // 2
+birds.indexOf("Rabbit"); // -1 (not found)
 ```
 
 ### Adding Items
@@ -658,7 +658,7 @@ const cities = ["Manchester", "Liverpool"];
 
 // Add to end
 cities.push("Cardiff");
-cities.push("Bradford", "Brighton");  // Add multiple
+cities.push("Bradford", "Brighton"); // Add multiple
 
 // Add to start
 cities.unshift("Edinburgh");
@@ -670,17 +670,17 @@ cities.unshift("Edinburgh");
 const cities = ["Manchester", "Liverpool", "Edinburgh", "Carlisle"];
 
 // Remove from end
-cities.pop();       // Returns removed item
+cities.pop(); // Returns removed item
 
 // Remove from start
-cities.shift();     // Returns removed item
+cities.shift(); // Returns removed item
 
 // Remove from specific index
 const index = cities.indexOf("Liverpool");
 if (index !== -1) {
-  cities.splice(index, 1);    // Remove 1 item at index
+  cities.splice(index, 1); // Remove 1 item at index
 }
-cities.splice(index, 2);      // Remove 2 items starting at index
+cities.splice(index, 2); // Remove 2 items starting at index
 ```
 
 ### Iterating Over Arrays
@@ -698,7 +698,7 @@ for (const bird of birds) {
 
 ```javascript
 const numbers = [5, 2, 7, 6];
-const doubled = numbers.map(number => number * 2);
+const doubled = numbers.map((number) => number * 2);
 // [10, 4, 14, 12]
 ```
 
@@ -706,7 +706,7 @@ const doubled = numbers.map(number => number * 2);
 
 ```javascript
 const cities = ["London", "Liverpool", "Totnes", "Edinburgh"];
-const longer = cities.filter(city => city.length > 8);
+const longer = cities.filter((city) => city.length > 8);
 // ["Liverpool", "Edinburgh"]
 ```
 
@@ -724,7 +724,7 @@ const commaSeparated = cities.join(",");
 
 // Simple toString (always uses comma)
 const dogNames = ["Rocket", "Flash", "Bella"];
-dogNames.toString();  // "Rocket,Flash,Bella"
+dogNames.toString(); // "Rocket,Flash,Bella"
 ```
 
 ---
@@ -787,10 +787,12 @@ if (!(iceCreamVanOutside || houseStatus === "on fire")) {
 
 ```javascript
 // WRONG - will always evaluate to true
-if (x === 5 || 7 || 10 || 20) { }
+if (x === 5 || 7 || 10 || 20) {
+}
 
 // CORRECT
-if (x === 5 || x === 7 || x === 10 || x === 20) { }
+if (x === 5 || x === 7 || x === 10 || x === 20) {
+}
 ```
 
 ### Switch Statements
@@ -897,7 +899,7 @@ for (const contact of contacts) {
 for (let i = 1; i <= num; i++) {
   let sqRoot = Math.sqrt(i);
   if (Math.floor(sqRoot) !== sqRoot) {
-    continue;  // Skip non-perfect squares
+    continue; // Skip non-perfect squares
   }
   console.log(i);
 }
@@ -905,14 +907,14 @@ for (let i = 1; i <= num; i++) {
 
 ### Which Loop Type to Use?
 
-| Loop Type | Best For |
-|-----------|----------|
-| `for...of` | Iterating collections when you don't need index |
-| `for` | General purpose loops; full control of iteration |
-| `while` | When initializer before loop makes sense |
-| `do...while` | When code must run at least once |
-| `map()` | Transforming array items |
-| `filter()` | Selecting specific array items |
+| Loop Type    | Best For                                         |
+| ------------ | ------------------------------------------------ |
+| `for...of`   | Iterating collections when you don't need index  |
+| `for`        | General purpose loops; full control of iteration |
+| `while`      | When initializer before loop makes sense         |
+| `do...while` | When code must run at least once                 |
+| `map()`      | Transforming array items                         |
+| `filter()`   | Selecting specific array items                   |
 
 **Warning:** Always ensure loops terminate. Infinite loops crash browsers.
 
@@ -930,12 +932,12 @@ Functions are **reusable blocks of code** that perform a single task. They allow
 
 ```javascript
 const myText = "I am a string";
-const newString = myText.replace("string", "sausage");  // "I am a sausage"
+const newString = myText.replace("string", "sausage"); // "I am a sausage"
 
 const myArray = ["I", "love", "chocolate", "frogs"];
-const madeAString = myArray.join(" ");  // "I love chocolate frogs"
+const madeAString = myArray.join(" "); // "I love chocolate frogs"
 
-const myNumber = Math.random();  // Random number between 0 and 1
+const myNumber = Math.random(); // Random number between 0 and 1
 ```
 
 ### Custom Functions
@@ -945,7 +947,7 @@ function myFunction() {
   alert("hello");
 }
 
-myFunction();  // Calls the function
+myFunction(); // Calls the function
 ```
 
 ### Function Parameters and Default Parameters
@@ -955,8 +957,8 @@ function hello(name = "Chris") {
   console.log(`Hello ${name}!`);
 }
 
-hello("Ari");  // "Hello Ari!"
-hello();       // "Hello Chris!"
+hello("Ari"); // "Hello Ari!"
+hello(); // "Hello Chris!"
 ```
 
 ### Anonymous Functions
@@ -980,13 +982,13 @@ textBox.addEventListener("keydown", (event) => {
 });
 
 // Single parameter - parentheses optional
-textBox.addEventListener("keydown", event => {
+textBox.addEventListener("keydown", (event) => {
   console.log(`You pressed "${event.key}".`);
 });
 
 // Single return statement - implicit return
 const originals = [1, 2, 3];
-const doubled = originals.map(item => item * 2);  // [2, 4, 6]
+const doubled = originals.map((item) => item * 2); // [2, 4, 6]
 ```
 
 ### Function Scope
@@ -994,24 +996,24 @@ const doubled = originals.map(item => item * 2);  // [2, 4, 6]
 Variables inside functions are locked to **function scope** and unreachable from outside:
 
 ```javascript
-const x = 1;        // global scope - accessible everywhere
+const x = 1; // global scope - accessible everywhere
 
 function myFunc() {
-  const y = 2;      // function scope - only inside myFunc
-  console.log(x);   // Can access global x
+  const y = 2; // function scope - only inside myFunc
+  console.log(x); // Can access global x
 }
 
-console.log(x);     // Can access global x
-console.log(y);     // ReferenceError: y is not defined
+console.log(x); // Can access global x
+console.log(y); // ReferenceError: y is not defined
 ```
 
 ### Block Scope (let/const)
 
 ```javascript
 if (x === 1) {
-  const c = 4;      // block scope
+  const c = 4; // block scope
 }
-console.log(c);     // ReferenceError: c is not defined
+console.log(c); // ReferenceError: c is not defined
 ```
 
 ---
@@ -1085,8 +1087,8 @@ btn.addEventListener("click", () =>
 **Important:** Don't include parentheses when passing a function as a callback:
 
 ```javascript
-btn.addEventListener("click", displayMessage);    // Correct
-btn.addEventListener("click", displayMessage());  // Wrong - calls immediately
+btn.addEventListener("click", displayMessage); // Correct
+btn.addEventListener("click", displayMessage()); // Wrong - calls immediately
 ```
 
 ### Parameters vs Arguments
@@ -1106,7 +1108,7 @@ Return values are the values that a function returns when it completes execution
 
 ```javascript
 const myText = "The weather is cold";
-const newString = myText.replace("cold", "warm");  // "The weather is warm"
+const newString = myText.replace("cold", "warm"); // "The weather is warm"
 ```
 
 ### Using the return Keyword
@@ -1163,10 +1165,10 @@ input.addEventListener("change", () => {
 });
 ```
 
-| Concept | Description |
-|---------|-------------|
-| **return keyword** | Returns a value and exits the function immediately |
-| **No return value** | Functions without explicit return return `undefined` |
+| Concept              | Description                                           |
+| -------------------- | ----------------------------------------------------- |
+| **return keyword**   | Returns a value and exits the function immediately    |
+| **No return value**  | Functions without explicit return return `undefined`  |
 | **Variable storage** | Return values can be saved to variables for later use |
 
 ---
@@ -1221,18 +1223,18 @@ myElement.addEventListener("click", functionB);
 
 ### Common Event Types
 
-| Event | Description |
-|-------|-------------|
-| `click` | User clicks an element |
-| `dblclick` | User double-clicks an element |
-| `focus` | Element receives focus |
-| `blur` | Element loses focus |
+| Event       | Description                       |
+| ----------- | --------------------------------- |
+| `click`     | User clicks an element            |
+| `dblclick`  | User double-clicks an element     |
+| `focus`     | Element receives focus            |
+| `blur`      | Element loses focus               |
 | `mouseover` | Mouse pointer hovers over element |
-| `mouseout` | Mouse pointer leaves element |
-| `keydown` | User presses a key |
-| `submit` | Form is submitted |
-| `play` | Media begins playing |
-| `pause` | Media is paused |
+| `mouseout`  | Mouse pointer leaves element      |
+| `keydown`   | User presses a key                |
+| `submit`    | Form is submitted                 |
+| `play`      | Media begins playing              |
+| `pause`     | Media is paused                   |
 
 ### Event Objects
 
@@ -1314,22 +1316,22 @@ const person = {
 ### Dot Notation
 
 ```javascript
-person.age;           // 32
-person.bio();         // Calls the method
-person.name.first;    // Access nested properties
+person.age; // 32
+person.bio(); // Calls the method
+person.name.first; // Access nested properties
 ```
 
 ### Bracket Notation
 
 ```javascript
-person["age"];              // 32
-person["name"]["first"];    // Nested access
+person["age"]; // 32
+person["name"]["first"]; // Nested access
 
 // When property names are stored in variables
 function logProperty(propertyName) {
   console.log(person[propertyName]);
 }
-logProperty("name");  // ["Bob", "Smith"]
+logProperty("name"); // ["Bob", "Smith"]
 ```
 
 ### Setting Object Members
@@ -1369,8 +1371,8 @@ const person2 = {
   },
 };
 
-person1.introduceSelf();  // "Hi! I'm Chris."
-person2.introduceSelf();  // "Hi! I'm Deepti."
+person1.introduceSelf(); // "Hi! I'm Chris."
+person2.introduceSelf(); // "Hi! I'm Deepti."
 ```
 
 ### Constructors
@@ -1386,10 +1388,10 @@ function Person(name) {
 }
 
 const salva = new Person("Salva");
-salva.introduceSelf();  // "Hi! I'm Salva."
+salva.introduceSelf(); // "Hi! I'm Salva."
 
 const frankie = new Person("Frankie");
-frankie.introduceSelf();  // "Hi! I'm Frankie."
+frankie.introduceSelf(); // "Hi! I'm Frankie."
 ```
 
 ---
@@ -1422,8 +1424,8 @@ const element = document.querySelector(".myClass");
 const paragraphs = document.querySelectorAll("p");
 
 // Legacy methods
-const elementRef = document.getElementById('myId');
-const elementRefArray = document.getElementsByTagName('p');
+const elementRef = document.getElementById("myId");
+const elementRefArray = document.getElementsByTagName("p");
 ```
 
 ### Creating and Inserting Elements
@@ -1448,12 +1450,12 @@ linkPara.appendChild(text);
 sect.appendChild(linkPara);
 
 // Cloning
-const clone = linkPara.cloneNode();       // Shallow clone
+const clone = linkPara.cloneNode(); // Shallow clone
 const deepClone = linkPara.cloneNode(true); // Deep clone
 
 // Removing
-sect.removeChild(linkPara);               // Using parent
-linkPara.remove();                        // Modern method
+sect.removeChild(linkPara); // Using parent
+linkPara.remove(); // Modern method
 linkPara.parentNode.removeChild(linkPara); // Older browsers
 ```
 
@@ -1541,11 +1543,11 @@ button.addEventListener("click", (event) => {
 
 ### Key Browser Objects
 
-| Object | Description |
-|--------|-------------|
-| `window` | Represents the browser tab |
-| `document` | The page loaded in the window |
-| `navigator` | Browser state and identity |
+| Object      | Description                   |
+| ----------- | ----------------------------- |
+| `window`    | Represents the browser tab    |
+| `document`  | The page loaded in the window |
+| `navigator` | Browser state and identity    |
 
 ---
 
@@ -1628,10 +1630,10 @@ fetch(url)
 
 ### Core Response Methods
 
-| Method | Use Case |
-|--------|----------|
-| `response.text()` | Plain text files |
-| `response.json()` | JSON objects/arrays |
+| Method            | Use Case                     |
+| ----------------- | ---------------------------- |
+| `response.text()` | Plain text files             |
+| `response.json()` | JSON objects/arrays          |
 | `response.blob()` | Binary data (images, videos) |
 
 ### Error Handling
@@ -1724,9 +1726,9 @@ Fetch is simpler and recommended over XMLHttpRequest.
 ### Accessing JSON Data
 
 ```javascript
-superHeroes.homeTown;                    // "Metro City"
-superHeroes.members[1].powers[2];        // Third power of second hero
-superHeroes[0].powers[0];               // For top-level arrays
+superHeroes.homeTown; // "Metro City"
+superHeroes.members[1].powers[2]; // Third power of second hero
+superHeroes[0].powers[0]; // For top-level arrays
 ```
 
 ### JSON.parse() -- String to Object
@@ -1734,7 +1736,7 @@ superHeroes[0].powers[0];               // For top-level arrays
 ```javascript
 const jsonString = '{"name":"John","age":30}';
 const obj = JSON.parse(jsonString);
-console.log(obj.name);  // "John"
+console.log(obj.name); // "John"
 ```
 
 ### JSON.stringify() -- Object to String
@@ -1742,7 +1744,7 @@ console.log(obj.name);  // "John"
 ```javascript
 let myObj = { name: "Chris", age: 38 };
 let myString = JSON.stringify(myObj);
-console.log(myString);  // '{"name":"Chris","age":38}'
+console.log(myString); // '{"name":"Chris","age":38}'
 ```
 
 ### Complete Example: Fetching and Displaying JSON
@@ -1855,7 +1857,7 @@ function AuthorCredit(props) {
   src="./assets/zelda.png"
   alt="Portrait of Zelda Schiff"
   byline="Zelda Schiff is editor-in-chief of the Library Times."
-/>
+/>;
 ```
 
 **State (Internal Data):**
@@ -1864,20 +1866,18 @@ function AuthorCredit(props) {
 function CounterButton() {
   const [count, setCount] = useState(0);
   return (
-    <button onClick={() => setCount(count + 1)}>
-      Clicked {count} times
-    </button>
+    <button onClick={() => setCount(count + 1)}>Clicked {count} times</button>
   );
 }
 ```
 
 ### Rendering Approaches
 
-| Approach | Used By | Description |
-|----------|---------|-------------|
-| **Virtual DOM** | React, Vue | Stores DOM info in JS memory, diffs with real DOM, applies changes |
-| **Incremental DOM** | Angular | Doesn't create complete copy, ignores unchanged parts |
-| **Glimmer VM** | Ember | Transpiles templates into bytecode |
+| Approach            | Used By    | Description                                                        |
+| ------------------- | ---------- | ------------------------------------------------------------------ |
+| **Virtual DOM**     | React, Vue | Stores DOM info in JS memory, diffs with real DOM, applies changes |
+| **Incremental DOM** | Angular    | Doesn't create complete copy, ignores unchanged parts              |
+| **Glimmer VM**      | Ember      | Transpiles templates into bytecode                                 |
 
 ### Dependency Injection
 
@@ -2021,7 +2021,7 @@ Props pass data from parent to child components (unidirectional data flow):
 
 ```jsx
 // main.jsx
-<App subject="Clarice" />
+<App subject="Clarice" />;
 
 // App.jsx
 function App(props) {
@@ -2043,7 +2043,7 @@ import App from "./App.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <App subject="Clarice" />
-  </StrictMode>
+  </StrictMode>,
 );
 ```
 
@@ -2115,7 +2115,8 @@ function App(props) {
     <ul
       role="list"
       className="todo-list stack-large stack-exception"
-      aria-labelledby="list-heading">
+      aria-labelledby="list-heading"
+    >
       {taskList}
     </ul>
   );
@@ -2197,7 +2198,8 @@ function App(props) {
       <ul
         role="list"
         className="todo-list stack-large stack-exception"
-        aria-labelledby="list-heading">
+        aria-labelledby="list-heading"
+      >
         {taskList}
       </ul>
     </div>
@@ -2327,25 +2329,13 @@ function resetGame() {
 7. Useful string methods
 8. Arrays
 
-**Control Flow and Functions:**
-9. Conditionals
-10. Loops
-11. Functions
-12. Build your own function
-13. Function return values
+**Control Flow and Functions:** 9. Conditionals 10. Loops 11. Functions 12. Build your own function 13. Function return values
 
-**Events and DOM Manipulation:**
-14. Introduction to events
-15. Event bubbling
-16. Object basics
-17. DOM scripting
+**Events and DOM Manipulation:** 14. Introduction to events 15. Event bubbling 16. Object basics 17. DOM scripting
 
-**APIs and Data:**
-18. Making network requests
-19. Working with JSON
+**APIs and Data:** 18. Making network requests 19. Working with JSON
 
-**Error Handling:**
-20. JavaScript debugging and error handling
+**Error Handling:** 20. JavaScript debugging and error handling
 
 ### Practical Challenges
 
@@ -2387,27 +2377,27 @@ function resetGame() {
 
 ---
 
-*This reference was compiled from the following sources:*
+_This reference was compiled from the following sources:_
 
-1. *<https://www.w3schools.com/jsref/jsref_reference.asp>*
-2. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting>*
-3. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/What_is_JavaScript>*
-4. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/A_first_splash>*
-5. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Variables>*
-6. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Math>*
-7. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Strings>*
-8. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Useful_string_methods>*
-9. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Arrays>*
-10. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Conditionals>*
-11. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Loops>*
-12. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Functions>*
-13. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Build_your_own_function>*
-14. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Return_values>*
-15. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events>*
-16. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Object_basics>*
-17. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/React_components>*
-18. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/React_getting_started>*
-19. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/Main_features>*
-20. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting>*
-21. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests>*
-22. *<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON>*
+1. _<https://www.w3schools.com/jsref/jsref_reference.asp>_
+2. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting>_
+3. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/What_is_JavaScript>_
+4. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/A_first_splash>_
+5. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Variables>_
+6. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Math>_
+7. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Strings>_
+8. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Useful_string_methods>_
+9. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Arrays>_
+10. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Conditionals>_
+11. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Loops>_
+12. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Functions>_
+13. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Build_your_own_function>_
+14. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Return_values>_
+15. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events>_
+16. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Object_basics>_
+17. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/React_components>_
+18. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/React_getting_started>_
+19. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/Main_features>_
+20. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting>_
+21. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests>_
+22. _<https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON>_

@@ -1,6 +1,6 @@
 ---
-description: '.NET MAUI component and application patterns'
-applyTo: '**/*.xaml, **/*.cs'
+description: ".NET MAUI component and application patterns"
+applyTo: "**/*.xaml, **/*.cs"
 ---
 
 # .NET MAUI
@@ -60,19 +60,19 @@ applyTo: '**/*.xaml, **/*.cs'
 ## MAUI API and Performance Optimization
 
 - Prefer compiled bindings for performance and correctness.
-	- In XAML, set `x:DataType` on pages/views/templates.
-	- Prefer expression-based bindings in C# where possible.
-	- Consider enabling stricter XAML compilation in project settings (for example `MauiStrictXamlCompilation=true`), especially in CI.
+  - In XAML, set `x:DataType` on pages/views/templates.
+  - Prefer expression-based bindings in C# where possible.
+  - Consider enabling stricter XAML compilation in project settings (for example `MauiStrictXamlCompilation=true`), especially in CI.
 - Avoid deep layout nesting (especially nested StackLayouts). Prefer Grid for complex layouts.
 - Keep bindings intentional:
-	- Use `OneTime` when values don't change.
-	- Use `TwoWay` only for editable values.
-	- Avoid binding static constants; set them directly.
+  - Use `OneTime` when values don't change.
+  - Use `TwoWay` only for editable values.
+  - Avoid binding static constants; set them directly.
 - Update UI from background work using `Dispatcher.Dispatch()` or `Dispatcher.DispatchAsync()`:
-	- Prefer `BindableObject.Dispatcher` when you have a reference to a Page, View, or other BindableObject.
-	- Inject `IDispatcher` via DI when working in services or ViewModels without direct BindableObject access.
-	- Use `MainThread.BeginInvokeOnMainThread(...)` as a fallback only when no Dispatcher is available.
-	- **Avoid** obsolete `Device.BeginInvokeOnMainThread` patterns.
+  - Prefer `BindableObject.Dispatcher` when you have a reference to a Page, View, or other BindableObject.
+  - Inject `IDispatcher` via DI when working in services or ViewModels without direct BindableObject access.
+  - Use `MainThread.BeginInvokeOnMainThread(...)` as a fallback only when no Dispatcher is available.
+  - **Avoid** obsolete `Device.BeginInvokeOnMainThread` patterns.
 
 ## Resources and Assets
 

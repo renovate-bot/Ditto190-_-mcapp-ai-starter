@@ -1,6 +1,6 @@
 ---
-description: 'Complete manifest schema reference for PCF components with all available XML elements'
-applyTo: '**/*.xml'
+description: "Complete manifest schema reference for PCF components with all available XML elements"
+applyTo: "**/*.xml"
 ---
 
 # Manifest Schema Reference
@@ -20,6 +20,7 @@ The root element that contains the entire component definition.
 Refers to the resource file that implements the component logic.
 
 **Attributes:**
+
 - `path`: Path to the TypeScript/JavaScript implementation file
 - `order`: Loading order (typically "1")
 
@@ -30,6 +31,7 @@ Refers to the resource file that implements the component logic.
 Defines the component itself, including namespace, version, and display information.
 
 **Key Attributes:**
+
 - `namespace`: Namespace for the component
 - `constructor`: Constructor name
 - `version`: Semantic version (e.g., "1.0.0")
@@ -46,6 +48,7 @@ Defines the component itself, including namespace, version, and display informat
 Defines an input or output property for the component.
 
 **Key Attributes:**
+
 - `name`: Property name
 - `display-name-key`: Resource key for display name
 - `description-key`: Resource key for description
@@ -72,6 +75,7 @@ Defines a group of types that a property can accept.
 Defines a dataset property for working with tabular data.
 
 **Key Attributes:**
+
 - `name`: Dataset name
 - `display-name-key`: Resource key for display name
 - `description-key`: Resource key for description
@@ -91,6 +95,7 @@ Container for all resource definitions (code, CSS, images, localization).
 References a CSS stylesheet file.
 
 **Attributes:**
+
 - `path`: Path to CSS file
 - `order`: Loading order
 
@@ -101,6 +106,7 @@ References a CSS stylesheet file.
 References an image resource.
 
 **Attributes:**
+
 - `path`: Path to image file
 
 **Availability:** Model-driven apps, canvas apps, portals
@@ -110,6 +116,7 @@ References an image resource.
 References a resource file for localization.
 
 **Attributes:**
+
 - `path`: Path to .resx file
 - `version`: Version number
 
@@ -122,10 +129,12 @@ References a resource file for localization.
 Declares that the component uses a specific platform feature.
 
 **Key Attributes:**
+
 - `name`: Feature name (e.g., "Device.captureImage", "Device.getCurrentPosition", "Utility.lookupObjects", "WebAPI")
 - `required`: Whether feature is required (true/false)
 
 **Common Features:**
+
 - Device.captureAudio
 - Device.captureImage
 - Device.captureVideo
@@ -156,6 +165,7 @@ Declares external dependencies required by the component.
 Declares external services that the component uses.
 
 **Key Attributes:**
+
 - `enabled`: Whether external service usage is enabled (true/false)
 
 **Availability:** Model-driven apps, canvas apps
@@ -167,6 +177,7 @@ Declares external services that the component uses.
 References a platform-provided library (e.g., React, Fluent UI).
 
 **Key Attributes:**
+
 - `name`: Library name (e.g., "React", "Fluent")
 - `version`: Library version
 
@@ -179,6 +190,7 @@ References a platform-provided library (e.g., React, Fluent UI).
 Defines custom events that the component can raise.
 
 **Key Attributes:**
+
 - `name`: Event name
 - `display-name-key`: Resource key for display name
 - `description-key`: Resource key for description
@@ -198,21 +210,21 @@ Defines platform actions that the component can invoke.
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="SampleNamespace" 
-           constructor="SampleControl" 
-           version="1.0.0" 
-           display-name-key="Sample_Display_Key" 
-           description-key="Sample_Desc_Key" 
+  <control namespace="SampleNamespace"
+           constructor="SampleControl"
+           version="1.0.0"
+           display-name-key="Sample_Display_Key"
+           description-key="Sample_Desc_Key"
            control-type="standard">
-    
+
     <!-- Properties -->
-    <property name="sampleProperty" 
-              display-name-key="Property_Display_Key" 
-              description-key="Property_Desc_Key" 
-              of-type="SingleLine.Text" 
-              usage="bound" 
+    <property name="sampleProperty"
+              display-name-key="Property_Display_Key"
+              description-key="Property_Desc_Key"
+              of-type="SingleLine.Text"
+              usage="bound"
               required="true" />
-    
+
     <!-- Type Group Example -->
     <type-group name="numbers">
       <type>Whole.None</type>
@@ -220,22 +232,22 @@ Defines platform actions that the component can invoke.
       <type>FP</type>
       <type>Decimal</type>
     </type-group>
-    
+
     <property name="numericProperty"
               display-name-key="Numeric_Display_Key"
               of-type-group="numbers"
               usage="bound" />
-    
+
     <!-- Data Set Example -->
-    <data-set name="dataSetProperty" 
+    <data-set name="dataSetProperty"
               display-name-key="Dataset_Display_Key">
     </data-set>
-    
+
     <!-- Events -->
     <event name="onCustomEvent"
            display-name-key="Event_Display_Key"
            description-key="Event_Desc_Key" />
-    
+
     <!-- Resources -->
     <resources>
       <code path="index.ts" order="1" />
@@ -243,17 +255,17 @@ Defines platform actions that the component can invoke.
       <img path="img/icon.png" />
       <resx path="strings/SampleControl.1033.resx" version="1.0.0" />
     </resources>
-    
+
     <!-- Feature Usage -->
     <feature-usage>
       <uses-feature name="WebAPI" required="true" />
       <uses-feature name="Device.captureImage" required="false" />
     </feature-usage>
-    
+
     <!-- Platform Library -->
     <platform-library name="React" version="16.8.6" />
     <platform-library name="Fluent" version="8.29.0" />
-    
+
   </control>
 </manifest>
 ```
@@ -261,6 +273,7 @@ Defines platform actions that the component can invoke.
 ## Manifest Validation
 
 The manifest schema is validated during the build process:
+
 - Missing required elements will cause build errors
 - Invalid attribute values will be flagged
 - Use `pac pcf` commands to validate manifest structure

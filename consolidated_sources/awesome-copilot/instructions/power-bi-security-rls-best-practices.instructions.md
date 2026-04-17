@@ -1,16 +1,18 @@
 ---
-description: 'Comprehensive Power BI Row-Level Security (RLS) and advanced security patterns implementation guide with dynamic security, best practices, and governance strategies.'
-applyTo: '**/*.{pbix,dax,md,txt,json,csharp,powershell}'
+description: "Comprehensive Power BI Row-Level Security (RLS) and advanced security patterns implementation guide with dynamic security, best practices, and governance strategies."
+applyTo: "**/*.{pbix,dax,md,txt,json,csharp,powershell}"
 ---
 
 # Power BI Security and Row-Level Security Best Practices
 
 ## Overview
+
 This document provides comprehensive instructions for implementing robust security patterns in Power BI, focusing on Row-Level Security (RLS), dynamic security, and governance best practices based on Microsoft's official guidance.
 
 ## Row-Level Security Fundamentals
 
 ### 1. Basic RLS Implementation
+
 ```dax
 // Simple user-based filtering
 [EmailAddress] = USERNAME()
@@ -28,6 +30,7 @@ IF(
 ```
 
 ### 2. Dynamic RLS with Custom Data
+
 ```dax
 // Using CUSTOMDATA() for dynamic filtering
 VAR UserRole = CUSTOMDATA()
@@ -42,16 +45,17 @@ RETURN
 ```
 
 ### 3. Advanced Security Patterns
+
 ```dax
 // Hierarchical security with territory lookups
 =DimSalesTerritory[SalesTerritoryKey]=LOOKUPVALUE(
-    DimUserSecurity[SalesTerritoryID], 
-    DimUserSecurity[UserName], USERNAME(), 
+    DimUserSecurity[SalesTerritoryID],
+    DimUserSecurity[UserName], USERNAME(),
     DimUserSecurity[SalesTerritoryID], DimSalesTerritory[SalesTerritoryKey]
 )
 
 // Multiple condition security
-VAR UserTerritories = 
+VAR UserTerritories =
     FILTER(
         UserSecurity,
         UserSecurity[UserName] = USERNAME()
@@ -64,16 +68,18 @@ RETURN
 ## Embedded Analytics Security
 
 ### 1. Static RLS Implementation
+
 ```csharp
 // Static RLS with fixed roles
 var rlsidentity = new EffectiveIdentity(
-    username: "username@contoso.com", 
+    username: "username@contoso.com",
     roles: new List<string>{ "MyRole" },
     datasets: new List<string>{ datasetId.ToString()}
 );
 ```
 
 ### 2. Dynamic RLS with Custom Data
+
 ```csharp
 // Dynamic RLS with custom data
 var rlsidentity = new EffectiveIdentity(
@@ -85,22 +91,24 @@ var rlsidentity = new EffectiveIdentity(
 ```
 
 ### 3. Multi-Dataset Security
+
 ```json
 {
-    "accessLevel": "View",
-    "identities": [
-        {
-            "username": "France",
-            "roles": [ "CountryDynamic"],
-            "datasets": [ "fe0a1aeb-f6a4-4b27-a2d3-b5df3bb28bdc" ]
-        }
-    ]
+  "accessLevel": "View",
+  "identities": [
+    {
+      "username": "France",
+      "roles": ["CountryDynamic"],
+      "datasets": ["fe0a1aeb-f6a4-4b27-a2d3-b5df3bb28bdc"]
+    }
+  ]
 }
 ```
 
 ## Database-Level Security Integration
 
 ### 1. SQL Server RLS Integration
+
 ```sql
 -- Creating security schema and predicate function
 CREATE SCHEMA Security;
@@ -123,6 +131,7 @@ GO
 ```
 
 ### 2. Fabric Warehouse Security
+
 ```sql
 -- Creating schema for Security
 CREATE SCHEMA Security;
@@ -149,28 +158,31 @@ GO
 ## Advanced Security Patterns
 
 ### 1. Paginated Reports Security
+
 ```json
 {
-    "format": "PDF",
-    "paginatedReportConfiguration":{
-        "identities": [
-            {"username": "john@contoso.com"}
-        ]
-    }
+  "format": "PDF",
+  "paginatedReportConfiguration": {
+    "identities": [{ "username": "john@contoso.com" }]
+  }
 }
 ```
 
 ### 2. Power Pages Integration
+
 ```html
-{% powerbi authentication_type:"powerbiembedded" path:"https://app.powerbi.com/groups/00000000-0000-0000-0000-000000000000/reports/00000000-0000-0000-0000-000000000001/ReportSection" roles:"pagesuser" %}
+{% powerbi authentication_type:"powerbiembedded"
+path:"https://app.powerbi.com/groups/00000000-0000-0000-0000-000000000000/reports/00000000-0000-0000-0000-000000000001/ReportSection"
+roles:"pagesuser" %}
 ```
 
 ### 3. Multi-Tenant Security
+
 ```json
 {
   "datasets": [
     {
-      "id": "fff1a505-xxxx-xxxx-xxxx-e69f81e5b974",
+      "id": "fff1a505-xxxx-xxxx-xxxx-e69f81e5b974"
     }
   ],
   "reports": [
@@ -182,12 +194,8 @@ GO
   "identities": [
     {
       "username": "YourUsername",
-      "datasets": [
-        "fff1a505-xxxx-xxxx-xxxx-e69f81e5b974"
-      ],
-      "roles": [
-        "YourRole"
-      ]
+      "datasets": ["fff1a505-xxxx-xxxx-xxxx-e69f81e5b974"],
+      "roles": ["YourRole"]
     }
   ],
   "datasourceIdentities": [
@@ -210,6 +218,7 @@ GO
 ## Security Design Patterns
 
 ### 1. Partial RLS Implementation
+
 ```dax
 // Create summary table for partial RLS
 SalesRevenueSummary =
@@ -223,11 +232,12 @@ Salesperson Filter = [EmailAddress] = USERNAME()
 ```
 
 ### 2. Hierarchical Security
+
 ```dax
 // Manager can see all, others see their own
 VAR CurrentUser = USERNAME()
 VAR UserRole = LOOKUPVALUE(
-    UserRoles[Role], 
+    UserRoles[Role],
     UserRoles[Email], CurrentUser
 )
 RETURN
@@ -246,10 +256,11 @@ RETURN
 ```
 
 ### 3. Time-Based Security
+
 ```dax
 // Restrict access to recent data based on role
 VAR UserRole = LOOKUPVALUE(UserRoles[Role], UserRoles[Email], USERNAME())
-VAR CutoffDate = 
+VAR CutoffDate =
     SWITCH(
         UserRole,
         "Executive", DATE(1900,1,1),  // All historical data
@@ -264,14 +275,15 @@ RETURN
 ## Security Validation and Testing
 
 ### 1. Role Validation Patterns
+
 ```dax
 // Security testing measure
-Security Test = 
+Security Test =
 VAR CurrentUsername = USERNAME()
 VAR ExpectedRole = "TestRole"
-VAR TestResult = 
+VAR TestResult =
     IF(
-        HASONEVALUE(SecurityRoles[Role]) && 
+        HASONEVALUE(SecurityRoles[Role]) &&
         VALUES(SecurityRoles[Role]) = ExpectedRole,
         "PASS: Role applied correctly",
         "FAIL: Incorrect role or multiple roles"
@@ -281,22 +293,24 @@ RETURN
 ```
 
 ### 2. Data Exposure Audit
+
 ```dax
 // Audit measure to track data access
-Data Access Audit = 
+Data Access Audit =
 VAR AccessibleRows = COUNTROWS(FactTable)
 VAR TotalRows = CALCULATE(COUNTROWS(FactTable), ALL(FactTable))
 VAR AccessPercentage = DIVIDE(AccessibleRows, TotalRows) * 100
 RETURN
-    "User: " & USERNAME() & 
-    " | Accessible: " & FORMAT(AccessibleRows, "#,0") & 
-    " | Total: " & FORMAT(TotalRows, "#,0") & 
+    "User: " & USERNAME() &
+    " | Accessible: " & FORMAT(AccessibleRows, "#,0") &
+    " | Total: " & FORMAT(TotalRows, "#,0") &
     " | Access: " & FORMAT(AccessPercentage, "0.00") & "%"
 ```
 
 ## Governance and Administration
 
 ### 1. Automated Security Group Management
+
 ```powershell
 # Add security group to Power BI workspace
 # Sign in to Power BI
@@ -313,6 +327,7 @@ Add-PowerBIWorkspaceUser -Id $($pbiWorkspace.Id) -AccessRight Member -PrincipalT
 ```
 
 ### 2. Security Monitoring
+
 ```powershell
 # Monitor Power BI access patterns
 $workspaces = Get-PowerBIWorkspace
@@ -326,22 +341,23 @@ foreach ($workspace in $workspaces) {
 ```
 
 ### 3. Compliance Reporting
+
 ```dax
 // Compliance dashboard measures
-Users with Data Access = 
+Users with Data Access =
 CALCULATE(
     DISTINCTCOUNT(AuditLog[Username]),
     AuditLog[AccessType] = "DataAccess",
     AuditLog[Date] >= TODAY() - 30
 )
 
-High Privilege Users = 
+High Privilege Users =
 CALCULATE(
     DISTINCTCOUNT(UserRoles[Email]),
     UserRoles[Role] IN {"Admin", "Manager", "Executive"}
 )
 
-Security Violations = 
+Security Violations =
 CALCULATE(
     COUNTROWS(AuditLog),
     AuditLog[EventType] = "SecurityViolation",
@@ -354,10 +370,11 @@ CALCULATE(
 ### ✅ Security Best Practices
 
 #### 1. Principle of Least Privilege
+
 ```dax
 // Always default to restrictive access
-Default Security = 
-VAR UserPermissions = 
+Default Security =
+VAR UserPermissions =
     FILTER(
         UserAccess,
         UserAccess[Email] = USERNAME()
@@ -371,9 +388,10 @@ RETURN
 ```
 
 #### 2. Explicit Role Validation
+
 ```dax
 // Validate expected roles explicitly
-Role-Based Filter = 
+Role-Based Filter =
 VAR UserRole = LOOKUPVALUE(UserRoles[Role], UserRoles[Email], USERNAME())
 VAR AllowedRoles = {"Analyst", "Manager", "Executive"}
 RETURN
@@ -392,9 +410,10 @@ RETURN
 ### ❌ Security Anti-Patterns to Avoid
 
 #### 1. Overly Permissive Defaults
+
 ```dax
 // ❌ AVOID: This grants full access to unexpected users
-Bad Security Filter = 
+Bad Security Filter =
 IF(
     USERNAME() = "SpecificUser",
     [Type] = "Internal",
@@ -403,9 +422,10 @@ IF(
 ```
 
 #### 2. Complex Security Logic
+
 ```dax
 // ❌ AVOID: Overly complex security that's hard to audit
-Overly Complex Security = 
+Overly Complex Security =
 IF(
     OR(
         AND(USERNAME() = "User1", WEEKDAY(TODAY()) <= 5),
@@ -420,6 +440,7 @@ IF(
 ## Security Integration Patterns
 
 ### 1. Azure AD Integration
+
 ```csharp
 // Generate token with Azure AD user context
 var tokenRequest = new GenerateTokenRequestV2(
@@ -433,6 +454,7 @@ var embedToken = pbiClient.EmbedToken.GenerateToken(tokenRequest);
 ```
 
 ### 2. Service Principal Authentication
+
 ```csharp
 // Service principal with RLS for embedded scenarios
 public EmbedToken GetEmbedToken(Guid reportId, IList<Guid> datasetIds, [Optional] Guid targetWorkspaceId)
@@ -444,7 +466,7 @@ public EmbedToken GetEmbedToken(Guid reportId, IList<Guid> datasetIds, [Optional
        roles: new List<string>{ "MyRole" },
        datasets: new List<string>{ datasetId.ToString()}
     );
-    
+
     var tokenRequest = new GenerateTokenRequestV2(
         reports: new List<GenerateTokenRequestV2Report>() { new GenerateTokenRequestV2Report(reportId) },
         datasets: datasetIds.Select(datasetId => new GenerateTokenRequestV2Dataset(datasetId.ToString())).ToList(),
@@ -461,15 +483,16 @@ public EmbedToken GetEmbedToken(Guid reportId, IList<Guid> datasetIds, [Optional
 ## Security Monitoring and Auditing
 
 ### 1. Access Pattern Analysis
+
 ```dax
 // Identify unusual access patterns
-Unusual Access Pattern = 
-VAR UserAccessCount = 
+Unusual Access Pattern =
+VAR UserAccessCount =
     CALCULATE(
         COUNTROWS(AccessLog),
         AccessLog[Date] >= TODAY() - 7
     )
-VAR AvgUserAccess = 
+VAR AvgUserAccess =
     CALCULATE(
         AVERAGE(AccessLog[AccessCount]),
         ALL(AccessLog[Username]),
@@ -484,10 +507,11 @@ RETURN
 ```
 
 ### 2. Data Breach Detection
+
 ```dax
 // Detect potential data exposure
-Potential Data Exposure = 
-VAR UnexpectedAccess = 
+Potential Data Exposure =
+VAR UnexpectedAccess =
     CALCULATE(
         COUNTROWS(AccessLog),
         AccessLog[AccessResult] = "Denied",

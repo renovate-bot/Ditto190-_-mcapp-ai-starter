@@ -21,15 +21,11 @@
       "specification",
       {
         "group": "For skill creators",
-        "pages": [
-          "skill-creation/using-scripts"
-        ]
+        "pages": ["skill-creation/using-scripts"]
       },
       {
         "group": "For client implementors",
-        "pages": [
-          "integrate-skills"
-        ]
+        "pages": ["integrate-skills"]
       }
     ]
   },

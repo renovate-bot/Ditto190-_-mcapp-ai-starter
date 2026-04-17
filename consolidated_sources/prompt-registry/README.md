@@ -40,12 +40,12 @@ The extension automatically adds the Awesome Copilot source and syncs your selec
 
 ## 📚 Documentation
 
-| Audience | Description | Link |
-|----------|-------------|------|
-| **Users** | Installation, marketplace, sources, profiles, troubleshooting | [User Guide](./docs/user-guide/getting-started.md) |
-| **Authors** | Creating, validating, and publishing prompt collections | [Author Guide](./docs/author-guide/creating-source-bundle.md) |
-| **Contributors** | Development setup, architecture, testing, coding standards | [Contributor Guide](./docs/contributor-guide/development-setup.md) |
-| **Reference** | Commands, settings, adapter API, hub schema | [Reference Docs](./docs/reference/commands.md) |
+| Audience         | Description                                                   | Link                                                               |
+| ---------------- | ------------------------------------------------------------- | ------------------------------------------------------------------ |
+| **Users**        | Installation, marketplace, sources, profiles, troubleshooting | [User Guide](./docs/user-guide/getting-started.md)                 |
+| **Authors**      | Creating, validating, and publishing prompt collections       | [Author Guide](./docs/author-guide/creating-source-bundle.md)      |
+| **Contributors** | Development setup, architecture, testing, coding standards    | [Contributor Guide](./docs/contributor-guide/development-setup.md) |
+| **Reference**    | Commands, settings, adapter API, hub schema                   | [Reference Docs](./docs/reference/commands.md)                     |
 
 → [Full Documentation Index](./docs/README.md)
 
@@ -54,15 +54,18 @@ The extension automatically adds the Awesome Copilot source and syncs your selec
 ## 📦 Installation
 
 **From VS Code Marketplace:**
+
 1. Open VS Code → Press `Ctrl+Shift+X`
 2. Search "Prompt Registry" → Click **Install**
 
 **From VSIX:**
+
 ```bash
 code --install-extension prompt-registry-0.0.2.vsix
 ```
 
 **From Source:**
+
 ```bash
 git clone https://github.com/AmadeusITGroup/prompt-registry.git
 cd prompt-registry
@@ -72,6 +75,7 @@ code --install-extension prompt-registry-0.0.2.vsix
 ```
 
 **For custom VS Code instances** (with custom user-data-dir/extensions-dir):
+
 ```bash
 # After building the VSIX above, install to your custom VS Code instance
 code --user-data-dir "$ud" --extensions-dir "$ed" --install-extension prompt-registry-0.0.2.vsix
@@ -81,12 +85,12 @@ code --user-data-dir "$ud" --extensions-dir "$ed" --install-extension prompt-reg
 
 ## 🔌 Supported Sources
 
-| Source Type | Description |
-|-------------|-------------|
-| **Awesome Copilot** | Curated community collections |
-| **GitHub** | Direct from GitHub repositories |
-| **Local** | File system directories |
-| **APM** | APM package repositories |
+| Source Type         | Description                     |
+| ------------------- | ------------------------------- |
+| **Awesome Copilot** | Curated community collections   |
+| **GitHub**          | Direct from GitHub repositories |
+| **Local**           | File system directories         |
+| **APM**             | APM package repositories        |
 
 → [Source Configuration Guide](./docs/user-guide/sources.md)
 
@@ -107,11 +111,13 @@ Marketplace/Tree View → Registry Manager → Adapters (GitHub, Local, etc.)
 ## 🔧 Troubleshooting
 
 **Bundles not showing in Copilot?**
+
 - Check sync completed in extension logs
 - Run "Prompt Registry: Sync All Bundles"
 - Restart VS Code (`Ctrl+R`)
 
 **Installation fails?**
+
 - Verify network connection and repository access
 - Check bundle has valid `deployment-manifest.yml`
 
@@ -138,6 +144,7 @@ We welcome contributions! See [CONTRIBUTING.md](./CONTRIBUTING.md) for guideline
 - **Microsoft** - For GitHub Copilot and VS Code
 - **Awesome Copilot Community** - For curated prompt collections
 - **Contributors** - Everyone who has contributed to this project
+
 ---
 
 ## 🔗 Links

@@ -18,15 +18,15 @@ Add a new source to the `sources` array:
 ```yaml
 sources:
   # Existing sources...
-  
-  - id: "my-new-source"                    # Unique identifier
-    type: "github"                         # Source type
+
+  - id: "my-new-source" # Unique identifier
+    type: "github" # Source type
     repository: "myorg/new-prompt-bundles" # Repository location
-    name: "My New Source"                  # Display name
-    enabled: true                          # Enable immediately
-    priority: 75                           # Priority (0-100, higher = more priority)
+    name: "My New Source" # Display name
+    enabled: true # Enable immediately
+    priority: 75 # Priority (0-100, higher = more priority)
     config:
-      branch: "main"                       # Git branch
+      branch: "main" # Git branch
     metadata:
       description: "Additional prompt bundles for specialized workflows"
       homepage: "https://github.com/myorg/new-prompt-bundles"
@@ -36,17 +36,18 @@ sources:
 
 Choose the appropriate source type for organization we recommend github source type for versionned package:
 
-| Type | Use Case | Required Fields |
-|------|----------|-----------------|
-| `github` | GitHub repository | `repository` |
-| `awesome-copilot` | YAML collections | `repository` |
-| `apm` | APM packages | `url` |
+| Type              | Use Case          | Required Fields |
+| ----------------- | ----------------- | --------------- |
+| `github`          | GitHub repository | `repository`    |
+| `awesome-copilot` | YAML collections  | `repository`    |
+| `apm`             | APM packages      | `url`           |
 
 ### 4. Priority Guidelines
 
 Set priority based on source importance:
+
 - **90-100**: Critical organizational sources
-- **70-89**: Important team sources  
+- **70-89**: Important team sources
 - **50-69**: Community sources
 - **10-49**: Experimental sources
 - **1-9**: Deprecated sources
@@ -62,21 +63,21 @@ Add a new profile to the `profiles` array:
 ```yaml
 profiles:
   # Existing profiles...
-  
-  - id: "data-science"                     # Unique identifier
-    name: "Data Science Toolkit"          # Display name
+
+  - id: "data-science" # Unique identifier
+    name: "Data Science Toolkit" # Display name
     description: "Prompts for data analysis, ML, and visualization"
-    icon: "📊"                             # Optional icon/emoji
+    icon: "📊" # Optional icon/emoji
     bundles:
-      - id: "python-data"                  # Bundle from any source
-        version: "latest"                  # Version or "latest"
-        source: "my-new-source"            # Source ID
-        required: true                     # Mandatory bundle
+      - id: "python-data" # Bundle from any source
+        version: "latest" # Version or "latest"
+        source: "my-new-source" # Source ID
+        required: true # Mandatory bundle
       - id: "jupyter-helpers"
         version: "2.1.0"
         source: "official-bundles"
-        required: false                    # Optional bundle
-    path:                                  # Optional: organize in UI
+        required: false # Optional bundle
+    path: # Optional: organize in UI
       - "development"
       - "specialized"
 ```
@@ -84,6 +85,7 @@ profiles:
 ### 2. Bundle Requirements
 
 Each bundle in a profile needs:
+
 - **id**: Must match a bundle ID from one of the hub's sources
 - **version**: Semantic version or `"latest"`
 - **source**: Must reference a source ID defined in the hub
@@ -95,8 +97,8 @@ Use the `path` array to organize profiles in the UI:
 
 ```yaml
 path:
-  - "engineering"      # Top level
-  - "backend"          # Sub-category
+  - "engineering" # Top level
+  - "backend" # Sub-category
 ```
 
 This creates a hierarchy: Engineering → Backend → [Profile Name]
@@ -115,6 +117,7 @@ Ctrl+Shift+P → "Prompt Registry: Import Hub" → [Your hub URL]
 ### 2. Test Source Connectivity
 
 Ensure new sources are accessible:
+
 - GitHub/GitLab repos are public or you have access
 - HTTP URLs return valid bundle data
 - Local paths exist and contain valid bundles
@@ -122,6 +125,7 @@ Ensure new sources are accessible:
 ### 3. Verify Bundle References
 
 Check that profile bundles exist in their specified sources:
+
 - Bundle IDs match exactly
 - Versions are available
 - Sources contain the referenced bundles
@@ -145,12 +149,13 @@ metadata:
   name: "Engineering Team Hub"
   description: "Centralized prompt management for the engineering organization"
   maintainer: "Platform Team"
-  updatedAt: "2025-01-15T10:30:00Z"  # Update timestamp
+  updatedAt: "2025-01-15T10:30:00Z" # Update timestamp
 ```
 
 ### 3. Notify Users
 
 Users can sync the updated hub:
+
 - Right-click hub in Registry Explorer → "Sync Hub"
 - Or: `Ctrl+Shift+P` → "Prompt Registry: Sync Hub"
 
@@ -189,7 +194,7 @@ sources:
 
 profiles:
   # Existing profiles...
-  
+
   # New profile
   - id: "ml-engineer"
     name: "ML Engineer Toolkit"
@@ -216,16 +221,19 @@ profiles:
 ## Troubleshooting
 
 ### Source Not Loading
+
 - Verify repository exists and is accessible
 - Check branch name in config
 - Ensure repository contains valid bundles
 
 ### Profile Bundles Missing
+
 - Confirm bundle IDs exist in specified sources
 - Check version availability
 - Verify source is enabled and synced
 
 ### Permission Issues
+
 - Ensure you have write access to the hub repository
 - Check if the hub requires specific permissions for contributors
 

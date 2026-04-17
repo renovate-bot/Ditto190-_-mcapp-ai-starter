@@ -27,7 +27,7 @@ prompts:
       - react
       - component
       - typescript
-  
+
   - id: optimize-css
     name: Optimize CSS
     description: Refactor and optimize CSS for performance and maintainability
@@ -37,7 +37,7 @@ prompts:
       - css
       - performance
       - styling
-  
+
   - id: add-accessibility
     name: Add Accessibility Features
     description: Enhance components with ARIA labels and accessibility best practices
@@ -47,7 +47,7 @@ prompts:
       - accessibility
       - a11y
       - aria
-  
+
   - id: responsive-design
     name: Make Responsive
     description: Convert fixed layouts to responsive designs with mobile-first approach
@@ -57,7 +57,7 @@ prompts:
       - responsive
       - mobile
       - css
-  
+
   - id: typescript-standards
     name: TypeScript Best Practices
     description: Apply TypeScript coding standards and type safety guidelines

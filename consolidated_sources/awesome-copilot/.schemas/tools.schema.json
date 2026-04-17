@@ -39,7 +39,12 @@
             "description": "Category for grouping tools",
             "minLength": 1,
             "maxLength": 50,
-            "examples": ["MCP Servers", "VS Code Extensions", "CLI Tools", "Visual Studio Extensions"]
+            "examples": [
+              "MCP Servers",
+              "VS Code Extensions",
+              "CLI Tools",
+              "Visual Studio Extensions"
+            ]
           },
           "featured": {
             "type": "boolean",

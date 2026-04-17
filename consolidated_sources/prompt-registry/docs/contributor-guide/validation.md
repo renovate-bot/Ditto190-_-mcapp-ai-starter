@@ -6,26 +6,27 @@ For validation architecture details, see [Architecture: Validation](./architectu
 
 ### Validation Scripts
 
-| Script | Purpose | Time | Use When |
-|--------|---------|------|----------|
-| `./.github/workflows/scripts/quick-check.sh` | Fast iteration check | ~30s | During development |
-| `./.github/workflows/scripts/validate-locally.sh` | Full CI simulation | ~2-5min | Before pushing |
-| `npm run pretest` | Pre-test setup | ~1min | Before running tests |
-| `npm test` | All tests | ~2min | Verify functionality |
+| Script                                            | Purpose              | Time    | Use When             |
+| ------------------------------------------------- | -------------------- | ------- | -------------------- |
+| `./.github/workflows/scripts/quick-check.sh`      | Fast iteration check | ~30s    | During development   |
+| `./.github/workflows/scripts/validate-locally.sh` | Full CI simulation   | ~2-5min | Before pushing       |
+| `npm run pretest`                                 | Pre-test setup       | ~1min   | Before running tests |
+| `npm test`                                        | All tests            | ~2min   | Verify functionality |
 
 ### Essential Commands
 
-| Command | Purpose | When |
-|---------|---------|------|
-| `npm run lint` | Code style | During development |
-| `npm run compile` | Build | Before testing |
-| `npm run test:unit` | Unit tests | Fast feedback |
-| `npm test` | All tests | Before pushing |
-| `npm run package:full` | Production VSIX | Before release |
+| Command                | Purpose         | When               |
+| ---------------------- | --------------- | ------------------ |
+| `npm run lint`         | Code style      | During development |
+| `npm run compile`      | Build           | Before testing     |
+| `npm run test:unit`    | Unit tests      | Fast feedback      |
+| `npm test`             | All tests       | Before pushing     |
+| `npm run package:full` | Production VSIX | Before release     |
 
 ## 📋 Validation Workflow (Matches GitHub Actions)
 
 ### 1. **Security & Dependencies**
+
 ```bash
 # Install dependencies with audit
 npm ci --fund=false
@@ -33,6 +34,7 @@ npm audit --omit=dev --audit-level=moderate
 ```
 
 ### 2. **Code Quality**
+
 ```bash
 # Linting
 npm run lint
@@ -42,6 +44,7 @@ npm run compile
 ```
 
 ### 3. **Testing**
+
 ```bash
 # Compile tests
 npm run compile-tests
@@ -57,6 +60,7 @@ npm test
 ```
 
 ### 4. **Packaging**
+
 ```bash
 # Full production package with optimizations
 npm run package:full
@@ -68,6 +72,7 @@ npm run package:cleanup     # Restore dev config
 ```
 
 ### 5. **Validation**
+
 ```bash
 # Validate VSIX contents
 unzip -l *.vsix
@@ -79,18 +84,23 @@ ls -lh *.vsix
 ## 🔧 Development Workflow
 
 ### For Quick Iterations (30 seconds)
+
 ```bash
 ./.github/workflows/scripts/quick-check.sh
 ```
+
 Runs: `lint → compile → unit tests`
 
 ### Before Committing (2-5 minutes)
+
 ```bash
 ./.github/workflows/scripts/validate-locally.sh
 ```
+
 Runs: Full CI simulation including packaging
 
 ### Continuous Development
+
 ```bash
 # Terminal 1: Watch mode for auto-compilation
 npm run watch
@@ -100,11 +110,13 @@ npm run watch-tests
 ```
 
 ### Manual Quick Check
+
 ```bash
 npm run lint && npm run compile && npm run test:unit
 ```
 
 ### Full Manual Validation
+
 ```bash
 npm run lint
 npm run compile
@@ -115,18 +127,21 @@ npm run package:full
 ## 📊 Understanding Test Organization
 
 ### Unit Tests (`test:unit`)
+
 - Location: `test/{adapters,commands,services,utils}/`
 - Fast, no VS Code API needed
 - Mock dependencies
 - **~30 seconds**
 
 ### Integration Tests (`test:integration`)
+
 - Location: `test/integration/`
 - Requires VS Code environment
 - Tests real extension behavior
 - **~1-2 minutes**
 
 ### Coverage Reports
+
 ```bash
 # Unit test coverage
 npm run test:coverage:unit
@@ -141,27 +156,30 @@ open coverage/index.html
 ## 🎯 npm Script Cheatsheet
 
 ### Essential Commands
-| Command | Description |
-|---------|-------------|
-| `npm run lint` | ESLint validation |
-| `npm run compile` | Production build |
-| `npm run watch` | Dev mode with auto-compile |
-| `npm test` | Run all tests |
-| `npm run test:unit` | Unit tests only |
-| `npm run test:integration` | Integration tests |
-| `npm run package:full` | Create production VSIX |
+
+| Command                    | Description                |
+| -------------------------- | -------------------------- |
+| `npm run lint`             | ESLint validation          |
+| `npm run compile`          | Production build           |
+| `npm run watch`            | Dev mode with auto-compile |
+| `npm test`                 | Run all tests              |
+| `npm run test:unit`        | Unit tests only            |
+| `npm run test:integration` | Integration tests          |
+| `npm run package:full`     | Create production VSIX     |
 
 ### Development Helpers
-| Command | Description |
-|---------|-------------|
-| `npm run dev:setup` | Switch to dev-friendly config |
-| `npm run compile-tests` | Compile test files |
-| `npm run watch-tests` | Auto-compile tests |
-| `npm run coverage:clean` | Clean coverage reports |
+
+| Command                  | Description                   |
+| ------------------------ | ----------------------------- |
+| `npm run dev:setup`      | Switch to dev-friendly config |
+| `npm run compile-tests`  | Compile test files            |
+| `npm run watch-tests`    | Auto-compile tests            |
+| `npm run coverage:clean` | Clean coverage reports        |
 
 ### Version Management
-| Command | Description |
-|---------|-------------|
+
+| Command                      | Description                |
+| ---------------------------- | -------------------------- |
 | `npm run version:bump:patch` | Bump patch version (0.0.X) |
 | `npm run version:bump:minor` | Bump minor version (0.X.0) |
 | `npm run version:bump:major` | Bump major version (X.0.0) |
@@ -169,14 +187,18 @@ open coverage/index.html
 ## 🚨 Common Issues & Solutions
 
 ### Issue: Tests fail with "Cannot find module 'vscode'"
+
 **Solution:**
+
 ```bash
 npm run compile-tests
 # Ensures test fixtures are copied
 ```
 
 ### Issue: Integration tests fail on Linux
+
 **Solution:**
+
 ```bash
 # Install required dependencies
 sudo apt-get install -y xvfb libnss3-dev libatk-bridge2.0-dev
@@ -186,7 +208,9 @@ xvfb-run -a npm run test:integration
 ```
 
 ### Issue: VSIX package too large
+
 **Solution:**
+
 ```bash
 # Use production packaging
 npm run package:full
@@ -199,7 +223,9 @@ npm run package:full
 ```
 
 ### Issue: npm audit warnings
+
 **Solution:**
+
 ```bash
 # Check what's failing
 npm audit
@@ -214,6 +240,7 @@ npm audit --omit=dev
 ## 🎓 Workflow Examples
 
 ### Example 1: Fixing a Bug
+
 ```bash
 # 1. Update source files in src/
 # 2. Quick check
@@ -225,6 +252,7 @@ git commit -m "fix: ..."
 ```
 
 ### Example 2: Adding a Feature
+
 ```bash
 # 1. Create feature branch
 git checkout -b feature/new-feature
@@ -242,6 +270,7 @@ git push origin feature/new-feature
 ```
 
 ### Example 3: Pre-Release Checklist
+
 ```bash
 # 1. Bump version
 npm run version:bump:minor

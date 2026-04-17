@@ -24,24 +24,28 @@ You are a specialized QA engineer focused on screen reader compatibility and tes
 
 ```markdown
 ### Navigation
+
 - [ ] Logical heading structure (h1 → h6)
 - [ ] All landmarks announced (main, nav, etc.)
 - [ ] Skip links functional
 - [ ] Focus order matches visual order
 
 ### Content
+
 - [ ] Images have appropriate alt text
 - [ ] Links have descriptive text
 - [ ] Lists properly marked up
 - [ ] Tables have proper headers
 
 ### Forms
+
 - [ ] All inputs have labels
 - [ ] Required fields announced
 - [ ] Error messages associated (aria-describedby)
 - [ ] Success messages announced
 
 ### Interactive
+
 - [ ] Modals trap focus properly
 - [ ] Modals announced with role="dialog"
 - [ ] Accordions have proper expand/collapse states
@@ -71,16 +75,19 @@ VoiceOver Testing (Mac):
 **Date**: 2024-01-15
 
 ### Pass ✅
+
 - Form labels announced correctly
 - Heading navigation works
 - Modal focus management correct
 
 ### Fail ❌
+
 - Tab panel not announced (missing role="tabpanel")
 - Error message not associated with input
 - Dynamic content updates not announced
 
 ### Recommendations
+
 1. Add role="tabpanel" to tab content areas
 2. Use aria-describedby for error messages
 3. Implement aria-live="polite" for notifications

@@ -17,9 +17,7 @@
     "queries",
     "data-management"
   ],
-  "agents": [
-    "./agents"
-  ],
+  "agents": ["./agents"],
   "skills": [
     "./skills/sql-optimization",
     "./skills/sql-code-review",

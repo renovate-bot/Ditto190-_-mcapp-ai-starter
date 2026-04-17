@@ -1,0 +1,1 @@
+Note: Backup of original devcontainer.json. Current post-create.sh includes all persistence logic. Rebuild will install requirements.txt, ContextStream MCP, CodeQL CLI automatically.

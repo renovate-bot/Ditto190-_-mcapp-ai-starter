@@ -1,28 +1,48 @@
 # 🎯 Complete Agent Example: Expert React Frontend Engineer
 
 ## Overview
+
 Here's a **complete working agent** with all its associated data, prompts, instructions, tools, and skills.
 
 ---
 
 ## 1️⃣ THE AGENT FILE
+
 **Location**: `awesome-copilot/agents/expert-react-frontend-engineer.agent.md`
 
 ```yaml
 ---
 description: "Expert React 19.2 frontend engineer specializing in modern hooks, Server Components, Actions, TypeScript, and performance optimization"
 name: "Expert React Frontend Engineer"
-tools: [
-  "changes", "codebase", "edit/editFiles", "extensions", "fetch", 
-  "findTestFiles", "githubRepo", "new", "openSimpleBrowser", "problems", 
-  "runCommands", "runTasks", "runTests", "search", "searchResults", 
-  "terminalLastCommand", "terminalSelection", "testFailure", "usages", 
-  "vscodeAPI", "microsoft.docs.mcp"
-]
+tools:
+  [
+    "changes",
+    "codebase",
+    "edit/editFiles",
+    "extensions",
+    "fetch",
+    "findTestFiles",
+    "githubRepo",
+    "new",
+    "openSimpleBrowser",
+    "problems",
+    "runCommands",
+    "runTasks",
+    "runTests",
+    "search",
+    "searchResults",
+    "terminalLastCommand",
+    "terminalSelection",
+    "testFailure",
+    "usages",
+    "vscodeAPI",
+    "microsoft.docs.mcp",
+  ]
 ---
 ```
 
 **Key Characteristics**:
+
 - ✅ **Has a name**: "Expert React Frontend Engineer"
 - ✅ **Has a description**: Clear role definition
 - ✅ **Has tools**: 19 tools for working with code
@@ -35,6 +55,7 @@ tools: [
 The agent includes comprehensive instructions covering:
 
 ### Expertise Areas (740 lines)
+
 ```
 ✓ React 19.2 Features (Activity, useEffectEvent, cacheSignal)
 ✓ React 19 Core (use() hook, useFormStatus, useOptimistic)
@@ -53,6 +74,7 @@ The agent includes comprehensive instructions covering:
 ```
 
 ### Approach Guidelines
+
 ```
 • React 19.2 First → Use latest features with <Activity>, useEffectEvent()
 • Modern Hooks → Use use(), useFormStatus, useOptimistic, useActionState
@@ -67,6 +89,7 @@ The agent includes comprehensive instructions covering:
 ```
 
 ### Response Style
+
 ```
 ✓ Complete, working React 19.2 code
 ✓ Modern best practices
@@ -86,9 +109,10 @@ The agent includes comprehensive instructions covering:
 
 ## 3️⃣ RELATED INSTRUCTIONS (Context Rules)
 
-**Location**: `awesome-copilot/instructions/nextjs.instructions.md` 
+**Location**: `awesome-copilot/instructions/nextjs.instructions.md`
 
 Related instructions that enhance the agent:
+
 - `reactjs.instructions.md` - React core concepts
 - `typescript-5-es2022.instructions.md` - TypeScript patterns
 - `performance-optimization.instructions.md` - Performance tuning
@@ -106,6 +130,7 @@ Each instruction file contains detailed rules for that domain.
 Skills that this agent can invoke:
 
 ### Financial Analysis Skills (from Phase 1)
+
 ```
 📦 financial-ratio-analyzer/
   ├── SKILL.md                    (Metadata)
@@ -123,6 +148,7 @@ Skills that this agent can invoke:
 ```
 
 ### Design/Format Skills
+
 ```
 📦 corporate-brand-guidelines/
   ├── SKILL.md
@@ -134,6 +160,7 @@ Skills that this agent can invoke:
 ```
 
 ### Code Generation Skills
+
 ```
 📦 python-mcp-server-generator/
 📦 typescript-mcp-server-generator/
@@ -192,6 +219,7 @@ User: "Build me a React 19 form with optimistic updates"
 When you load this agent, you get:
 
 **Agent Card**:
+
 ```
 ┌─────────────────────────────────────────────┐
 │ 🚀 Expert React Frontend Engineer           │
@@ -207,8 +235,9 @@ When you load this agent, you get:
 ### When You Start Conversation
 
 **Agent responds with**:
+
 ```
-I'm your Expert React 19.2 Frontend Engineer. 
+I'm your Expert React 19.2 Frontend Engineer.
 
 I bring expertise in:
 ✓ React 19.2 latest features
@@ -228,6 +257,7 @@ What would you like to build?
 **You ask**: "Create a form that handles file upload with optimistic UI"
 
 **Agent provides**:
+
 ```typescript
 // From instructions: React 19.2 patterns, TypeScript, Accessibility
 // From tools: Creates actual file, runs tests, checks for issues
@@ -248,7 +278,7 @@ export function FileUploadForm() {
     // Optimistically update UI before server response
     const file = formData.get('file') as File;
     setUploadedFiles([...uploadedFiles, { ...file, status: 'pending' }]);
-    
+
     // Submit to server action
     await formAction(formData);
   }
@@ -264,7 +294,7 @@ export function FileUploadForm() {
       <button type="submit" disabled={isPending} aria-busy={isPending}>
         {isPending ? 'Uploading...' : 'Upload'}
       </button>
-      
+
       <ul aria-label="Uploaded files">
         {uploadedFiles.map(file => (
           <li key={file.id} aria-label={`${file.name} - ${file.status}`}>
@@ -278,6 +308,7 @@ export function FileUploadForm() {
 ```
 
 **Includes**:
+
 - ✅ `useOptimistic` (React 19 feature)
 - ✅ `useActionState` (React 19 feature)
 - ✅ `'use client'` directive
@@ -346,6 +377,7 @@ awesome-copilot/
 ## 8️⃣ HOW TO USE IT IN GITHUB COPILOT
 
 ### Option 1: VS Code (Local)
+
 ```
 1. Open any .js/.jsx/.ts/.tsx file
 2. Click "Copilot" icon in sidebar
@@ -355,6 +387,7 @@ awesome-copilot/
 ```
 
 ### Option 2: Claude Desktop (Mac/Windows)
+
 ```
 1. Configure awesome-copilot as MCP server
 2. Start Claude Desktop
@@ -363,6 +396,7 @@ awesome-copilot/
 ```
 
 ### Option 3: GitHub Copilot Chat
+
 ```
 1. Open GitHub Copilot Chat in VS Code
 2. Use @expert-react... agent mention
@@ -376,14 +410,14 @@ awesome-copilot/
 
 ### Agent System Components
 
-| Component | What It Does | Example |
-|-----------|-------------|---------|
-| **Agent File** | Defines agent metadata & links tools | expert-react-frontend-engineer.agent.md |
-| **Instructions** | Teaches agent domain knowledge | 700 lines on React 19.2 |
-| **Tools** | What the agent can do | edit, test, search, run |
-| **Skills** | Reusable utilities | components, tests, docs |
-| **Hooks** | Automation triggers | post-commit checks |
-| **Workflows** | CI/CD automation | deploy, test, scan |
+| Component        | What It Does                         | Example                                 |
+| ---------------- | ------------------------------------ | --------------------------------------- |
+| **Agent File**   | Defines agent metadata & links tools | expert-react-frontend-engineer.agent.md |
+| **Instructions** | Teaches agent domain knowledge       | 700 lines on React 19.2                 |
+| **Tools**        | What the agent can do                | edit, test, search, run                 |
+| **Skills**       | Reusable utilities                   | components, tests, docs                 |
+| **Hooks**        | Automation triggers                  | post-commit checks                      |
+| **Workflows**    | CI/CD automation                     | deploy, test, scan                      |
 
 ### Why It All Works Together
 
@@ -396,8 +430,9 @@ Agent (knows WHAT)
 ```
 
 The agent uses:
+
 - **Instructions** to understand React 19.2 best practices
-- **Tools*** to create, test, and validate code
+- **Tools\*** to create, test, and validate code
 - **Skills** as reusable modules for common tasks
 - **Hooks** for automation
 - **Workflows** for deployment
@@ -443,6 +478,7 @@ The agent uses:
 ## Summary
 
 **When you "don't see agents" in GitHub**:
+
 - They exist in the `awesome-copilot/agents/` directory
 - Each is a `.agent.md` file with metadata
 - They're configured to work with GitHub Copilot
@@ -450,6 +486,7 @@ The agent uses:
 - They get loaded into Claude, VS Code, or Claude Desktop
 
 **To use any agent**:
+
 1. Load awesome-copilot as a knowledge source
 2. Select the agent you want
 3. Ask it anything in its domain

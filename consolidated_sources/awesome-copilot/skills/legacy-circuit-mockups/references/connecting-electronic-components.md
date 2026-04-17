@@ -129,16 +129,16 @@ The 555 timer is a versatile integrated circuit used in timing, pulse generation
 
 ### 555 Pin Descriptions
 
-| Pin | Symbol | Function |
-|:---:|:---:|:---|
-| 1 | GND | Ground reference (0V) |
-| 2 | TRIG | Trigger input — starts timing cycle when voltage drops below ⅓ Vcc |
-| 3 | OUT | Output — provides high or low signal |
-| 4 | RESET | Reset input (active low) — forces output low when grounded |
-| 5 | CONT | Control voltage — provides access to internal voltage divider (⅔ Vcc) |
-| 6 | THRES | Threshold input — ends timing cycle when voltage exceeds ⅔ Vcc |
-| 7 | DISCH | Discharge — open collector output for discharging timing capacitor |
-| 8 | Vcc | Supply voltage (+4.5V to +16V) |
+| Pin | Symbol | Function                                                              |
+| :-: | :----: | :-------------------------------------------------------------------- |
+|  1  |  GND   | Ground reference (0V)                                                 |
+|  2  |  TRIG  | Trigger input — starts timing cycle when voltage drops below ⅓ Vcc    |
+|  3  |  OUT   | Output — provides high or low signal                                  |
+|  4  | RESET  | Reset input (active low) — forces output low when grounded            |
+|  5  |  CONT  | Control voltage — provides access to internal voltage divider (⅔ Vcc) |
+|  6  | THRES  | Threshold input — ends timing cycle when voltage exceeds ⅔ Vcc        |
+|  7  | DISCH  | Discharge — open collector output for discharging timing capacitor    |
+|  8  |  Vcc   | Supply voltage (+4.5V to +16V)                                        |
 
 ### 555 Internal Block Diagram
 

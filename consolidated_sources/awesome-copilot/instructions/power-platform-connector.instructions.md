@@ -1,12 +1,13 @@
 ---
 title: Power Platform Connectors Schema Development Instructions
-description: 'Comprehensive development guidelines for Power Platform Custom Connectors using JSON Schema definitions. Covers API definitions (Swagger 2.0), API properties, and settings configuration with Microsoft extensions.'
-applyTo: '**/*.{json,md}'
+description: "Comprehensive development guidelines for Power Platform Custom Connectors using JSON Schema definitions. Covers API definitions (Swagger 2.0), API properties, and settings configuration with Microsoft extensions."
+applyTo: "**/*.{json,md}"
 ---
 
 # Power Platform Connectors Schema Development Instructions
 
 ## Project Overview
+
 This workspace contains JSON Schema definitions for Power Platform Custom Connectors, specifically for the `paconn` (Power Apps Connector) tool. The schemas validate and provide IntelliSense for:
 
 - **API Definitions** (Swagger 2.0 format)
@@ -16,6 +17,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ## File Structure Understanding
 
 ### 1. apiDefinition.swagger.json
+
 - **Purpose**: This file contains Swagger 2.0 API definitions with Power Platform extensions.
 - **Key Features**:
   - Standard Swagger 2.0 properties including info, paths, definitions, and more.
@@ -25,6 +27,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
   - Security definitions that support OAuth2, API Key, and Basic Auth authentication methods.
 
 ### 2. apiProperties.json
+
 - **Purpose**: This file defines connector metadata, authentication configurations, and policy configurations.
 - **Key Components**:
   - **Connection Parameters**: These support various authentication types including OAuth, API Key, and Gateway configurations.
@@ -32,6 +35,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
   - **Connector Metadata**: This includes publisher information, capabilities, and branding elements.
 
 ### 3. settings.json
+
 - **Purpose**: This file provides environment and deployment configuration settings for the paconn tool.
 - **Configuration Options**:
   - Environment GUID targeting for specific Power Platform environments.
@@ -42,6 +46,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ## Development Guidelines
 
 ### When Working with API Definitions (Swagger)
+
 1. **Always validate against Swagger 2.0 spec** - The schema enforces strict Swagger 2.0 compliance
 
 2. **Microsoft Extensions for Operations**:
@@ -104,11 +109,13 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
    - You should leverage dynamic extensions for better user experience and data validation.
 
 10. **Power Platform Format Extensions**:
-   - `date-no-tz`: This represents a date-time that has no time-offset information.
-   - `html`: This format tells clients to emit an HTML editor when editing and an HTML viewer when viewing content.
-   - Standard formats include: `int32`, `int64`, `float`, `double`, `byte`, `binary`, `date`, `date-time`, `password`, `email`, `uri`, `uuid`.
+
+- `date-no-tz`: This represents a date-time that has no time-offset information.
+- `html`: This format tells clients to emit an HTML editor when editing and an HTML viewer when viewing content.
+- Standard formats include: `int32`, `int64`, `float`, `double`, `byte`, `binary`, `date`, `date-time`, `password`, `email`, `uri`, `uuid`.
 
 ### When Working with API Properties
+
 1. **Connection Parameters**:
    - You should choose appropriate parameter types such as `string`, `securestring`, or `oauthSetting`.
    - You should configure OAuth settings with correct identity providers.
@@ -127,6 +134,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
    - You should set meaningful `publisher` and `stackOwner` values to identify the connector's ownership.
 
 ### When Working with Settings
+
 1. **Environment Configuration**:
    - You should use proper GUID format for `environment` that matches the validation pattern.
    - You should set correct `powerAppsUrl` and `flowUrl` for your target environment.
@@ -140,11 +148,13 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ## Schema Validation Rules
 
 ### Required Properties
+
 - **API Definition**: `swagger: "2.0"`, `info` (with `title` and `version`), `paths`
 - **API Properties**: `properties` with `iconBrandColor`
 - **Settings**: No required properties (all optional with defaults)
 
 ### Pattern Validation
+
 - **Vendor Extensions**: Must match `^x-(?!ms-)` pattern for non-Microsoft extensions
 - **Path Items**: Must start with `/` for API paths
 - **Environment GUID**: Must match UUID format pattern `^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$`
@@ -152,6 +162,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 - **Host Pattern**: Must match `^[^{}/ :\\\\]+(?::\\d+)?$` (no spaces, protocols, or paths)
 
 ### Type Constraints
+
 - **Security Definitions**:
   - Up to two security definitions allowed in `securityDefinitions` object
   - Each individual security definition must be exactly one type (oneOf validation: `basic`, `apiKey`, `oauth2`)
@@ -163,6 +174,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 - **Trigger Types**: Must be `batch` or `single`
 
 ### Additional Validation Rules
+
 - **$ref References**: Should only point to `#/definitions/`, `#/parameters/`, or `#/responses/`
 - **Path Parameters**: Must be marked as `required: true`
 - **Info Object**: Description should be different from title
@@ -178,6 +190,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ### API Definition Examples
 
 #### Basic Operation with Microsoft Extensions
+
 ```json
 {
   "get": {
@@ -223,6 +236,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ```
 
 #### Trigger Operation Configuration
+
 ```json
 {
   "get": {
@@ -242,6 +256,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ```
 
 #### Dynamic Schema Example
+
 ```json
 {
   "name": "dynamicSchema",
@@ -261,6 +276,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ```
 
 #### File Picker Capability
+
 ```json
 {
   "x-ms-capabilities": {
@@ -291,6 +307,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ```
 
 #### Test Connection Capability (Note: Not Supported for Custom Connectors)
+
 ```json
 {
   "x-ms-capabilities": {
@@ -305,6 +322,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ```
 
 #### Operation Context for Simulation
+
 ```json
 {
   "x-ms-operation-context": {
@@ -321,6 +339,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ```
 
 ### Basic OAuth Configuration
+
 ```json
 {
   "type": "oauthSetting",
@@ -334,6 +353,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ```
 
 #### Multiple Security Definitions Example
+
 ```json
 {
   "securityDefinitions": {
@@ -359,6 +379,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 **Note**: Maximum of two security definitions can coexist, but "None" authentication cannot be combined with other methods.
 
 ### Dynamic Parameter Setup
+
 ```json
 {
   "x-ms-dynamic-values": {
@@ -370,6 +391,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ```
 
 ### Policy Template for Routing
+
 ```json
 {
   "templateId": "routerequesttoendpoint",
@@ -394,6 +416,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 ## Troubleshooting
 
 ### Common Schema Violations
+
 - **Missing required properties**: `swagger: "2.0"`, `info.title`, `info.version`, `paths`
 - **Invalid pattern formats**:
   - GUIDs must match exact format `^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$`
@@ -408,6 +431,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 - **Type 'file' in wrong context**: Only allowed in `formData` parameters, not in schemas
 
 ### API Definition Specific Issues
+
 - **Dynamic schema conflicts**: Can't use `x-ms-dynamic-schema` with fixed schema properties
 - **Trigger configuration errors**: `x-ms-trigger-metadata` requires both `kind` and `mode`
 - **Pagination setup**: `x-ms-pageable` requires `nextLinkName` property
@@ -420,6 +444,7 @@ This workspace contains JSON Schema definitions for Power Platform Custom Connec
 - **Trigger value configuration**: `x-ms-trigger-value` must have at least one property (`value-collection` or `value-path`)
 
 ### Validation Tools
+
 - Use JSON Schema validators to check your schema definitions for compliance.
 - Leverage VS Code's built-in schema validation to catch errors during development.
 - Test with paconn CLI before deployment using: `paconn validate --api-def apiDefinition.swagger.json`

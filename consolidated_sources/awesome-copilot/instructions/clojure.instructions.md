@@ -1,6 +1,6 @@
 ---
-description: 'Clojure-specific coding patterns, inline def usage, code block templates, and namespace handling for Clojure development.'
-applyTo: '**/*.{clj,cljs,cljc,bb,edn.mdx?}'
+description: "Clojure-specific coding patterns, inline def usage, code block templates, and namespace handling for Clojure development."
+applyTo: "**/*.{clj,cljs,cljc,bb,edn.mdx?}"
 ---
 
 # Clojure Development Instructions
@@ -13,6 +13,7 @@ applyTo: '**/*.{clj,cljs,cljc,bb,edn.mdx?}'
 - If there is no REPL connection, ask the user to connect the REPL instead of trying to start and connect it yourself.
 
 ### JSON Strings in REPL Tool Calls
+
 Do not over-escape JSON arguments when invoking REPL tools.
 
 ```json
@@ -24,6 +25,7 @@ Do not over-escape JSON arguments when invoking REPL tools.
 ```
 
 ## Docstrings in `defn`
+
 Docstrings belong immediately after the function name and before the argument vector.
 
 ```clojure
@@ -39,6 +41,7 @@ Docstrings belong immediately after the function name and before the argument ve
 ## Interactive Programming (a.k.a. REPL Driven Development)
 
 ### Align Data Structure Elements for Bracket Balancing
+
 **Always align multi-line elements vertically in all data structures: vectors, maps, lists, sets, all code (since Clojure code is data). Misalignment causes the bracket balancer to close brackets incorrectly, creating invalid forms.**
 
 ```clojure
@@ -66,6 +69,7 @@ Docstrings belong immediately after the function name and before the argument ve
 **Critical**: The bracket balancer relies on consistent indentation to determine structure.
 
 ### REPL Dependency Management
+
 Use `clojure.repl.deps/add-libs` for dynamic dependency loading during REPL sessions.
 
 ```clojure
@@ -88,18 +92,22 @@ Use `clojure.repl.deps/add-libs` for dynamic dependency loading during REPL sess
 **Never edit code files when the REPL is unavailable.** When REPL evaluation returns errors indicating that the REPL is unavailable, stop immediately and inform the user. Let the user restore REPL before continuing.
 
 #### Why This Matters
+
 - **Interactive Programming requires a working REPL** - You cannot verify behavior without evaluation
 - **Guessing creates bugs** - Code changes without testing introduce errors
 
 ## Structural Editing and REPL-First Habit
+
 - Develop changes in the REPL before touching files.
 - When editing Clojure files, always use structural editing tools such as **Insert Top Level Form**, **Replace Top Level Form**, **Create Clojure File**, and **Append Code**, and always read their instructions first.
 
 ### Creating New Files
+
 - Use the **Create Clojure File** tool with initial content
 - Follow Clojure naming rules: namespaces in kebab-case, file paths in matching snake_case (e.g., `my.project.ns` → `my/project/ns.clj`).
 
 ### Reloading Namespaces
+
 After editing files, reload the edited namespace in the REPL so updated definitions are active.
 
 ```clojure
@@ -107,6 +115,7 @@ After editing files, reload the edited namespace in the REPL so updated definiti
 ```
 
 ## Code Indentation Before Evaluation
+
 Consistent indentation is crucial to help the bracket balancer.
 
 ```clojure
@@ -142,6 +151,7 @@ Keep the `and` and `or` arguments on separate lines:
 Prefer inline def debugging over println/console.log.
 
 ### Inline `def` for Debugging
+
 - Inline `def` bindings keep intermediate state inspectable during REPL work.
 - Leave inline bindings in place when they continue to aid exploration.
 
@@ -163,6 +173,7 @@ You can also use "inline def" when showing the user code in the chat, to make it
 Prefer using the REPL and return values from your evaluations, over printing things to stdout.
 
 ## Reading from `stdin`
+
 - When Clojure code uses `(read-line)`, it will prompt the user through VS Code.
 - Avoid stdin reads in Babashka's nREPL because it lacks stdin support.
 - Ask the user to restart the REPL if it blocks.
@@ -185,6 +196,7 @@ Destructure keys directly in the parameter list.
 Among many benefits this keeps function signatures transparent.
 
 ### Avoid Shadowing Built-ins
+
 Rename incoming keys when necessary to avoid hiding core functions.
 
 ```clojure
@@ -197,6 +209,7 @@ Rename incoming keys when necessary to avoid hiding core functions.
 ```
 
 Common symbols to keep free:
+
 - `class`
 - `count`
 - `empty?`
@@ -217,6 +230,7 @@ Common symbols to keep free:
 - `update`
 
 ## Avoid Unnecessary Wrapper Functions
+
 Do not wrap core functions unless a name genuinely clarifies composition.
 
 ```clojure
@@ -228,12 +242,14 @@ Do not wrap core functions unless a name genuinely clarifies composition.
 Rich Comment Forms `(comment ...)` serve a different purpose than direct REPL evaluation. Use RCFs in file editing to **document usage patterns and examples** for functions you've already validated in the REPL.
 
 ### When to Use RCFs
+
 - **After REPL validation** - Document working examples in files
 - **Usage documentation** - Show how functions are intended to be used
 - **Exploration preservation** - Keep useful REPL discoveries in the codebase
 - **Example scenarios** - Demonstrate edge cases and typical usage
 
 ### RCF Patterns
+
 RCF = Rich Comment Forms.
 
 When files are loaded code in RCFs is not evaluated, making them perfect for documenting example usage, since humans easily can evaluate the code in there at will.
@@ -261,6 +277,7 @@ When files are loaded code in RCFs is not evaluated, making them perfect for doc
 ```
 
 ### RCF vs REPL Tool Usage
+
 ```clojure
 ;; In chat - show direct REPL evaluation:
 (in-ns 'my.namespace)
@@ -276,6 +293,7 @@ When files are loaded code in RCFs is not evaluated, making them perfect for doc
 ## Testing
 
 ### Run Tests from the REPL
+
 Reload the target namespace and execute tests from the REPL for immediate feedback.
 
 ```clojure
@@ -292,6 +310,7 @@ Reload the target namespace and execute tests from the REPL for immediate feedba
 Prefer running individual test vars from within the test namespace when investigating failures.
 
 ### Use REPL-First TDD Workflow
+
 Iterate with real data before editing files.
 
 ```clojure
@@ -311,15 +330,18 @@ Iterate with real data before editing files.
 ```
 
 #### Benefits
+
 - Verified behavior before committing changes
 - Incremental development with immediate feedback
 - Tests that capture known-good behavior
 - Start new work with failing tests to lock in intent
 
 ### Test Naming and Messaging
+
 Keep `deftest` names descriptive (area/thing style) without redundant `-test` suffixes.
 
 ### Test Assertion Message Style
+
 Attach expectation messages directly to `is`, using `testing` blocks only when grouping multiple related assertions.
 
 ```clojure
@@ -339,6 +361,7 @@ Attach expectation messages directly to `is`, using `testing` blocks only when g
 ```
 
 Guidelines:
+
 - Keep assertion messages explicit about expectations.
 - Use `testing` for grouping related checks.
 - Maintain kebab-case names like `line-marker-formatting` or `context-line-extraction`.
@@ -346,4 +369,3 @@ Guidelines:
 ## Happy Interactive Programming
 
 Remember to prefer the REPL in your work. Keep in mind that the user does not see what you evaluate. Nor the results. Communicate with the user in the chat about what you evaluate and what you get back.
-

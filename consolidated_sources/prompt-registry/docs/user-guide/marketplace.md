@@ -28,10 +28,10 @@ Ctrl+Shift+P → "Prompt Registry: Update All Bundles"
 
 Auto-update settings in `File → Preferences → Settings → Prompt Registry`:
 
-| Setting | Default |
-|---------|---------|
-| `updateCheck.enabled` | `true` |
-| `updateCheck.frequency` | `daily` |
+| Setting                  | Default |
+| ------------------------ | ------- |
+| `updateCheck.enabled`    | `true`  |
+| `updateCheck.frequency`  | `daily` |
 | `updateCheck.autoUpdate` | `false` |
 
 ## Uninstalling

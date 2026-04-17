@@ -1,7 +1,7 @@
 ---
-name: 'OSPO Organization Health Report'
-description: 'Comprehensive weekly health report for a GitHub organization. Surfaces stale issues/PRs, merge time analysis, contributor leaderboards, and actionable items needing human attention.'
-labels: ['ospo', 'reporting', 'org-health']
+name: "OSPO Organization Health Report"
+description: "Comprehensive weekly health report for a GitHub organization. Surfaces stale issues/PRs, merge time analysis, contributor leaderboards, and actionable items needing human attention."
+labels: ["ospo", "reporting", "org-health"]
 on:
   schedule:
     - cron: "0 10 * * 1"
@@ -72,17 +72,17 @@ avoid per-repo iteration for basic aggregates.
 
 Collect the following using search queries:
 
-| Metric | Search Query |
-|--------|-------------|
-| Total open issues | `org:<ORG> is:issue is:open` |
-| Total open PRs | `org:<ORG> is:pr is:open` |
-| Issues opened (last 30d) | `org:<ORG> is:issue created:>={SINCE}` |
-| Issues closed (last 30d) | `org:<ORG> is:issue is:closed closed:>={SINCE}` |
-| PRs opened (last 30d) | `org:<ORG> is:pr created:>={SINCE}` |
-| PRs merged (last 30d) | `org:<ORG> is:pr is:merged merged:>={SINCE}` |
+| Metric                         | Search Query                                             |
+| ------------------------------ | -------------------------------------------------------- |
+| Total open issues              | `org:<ORG> is:issue is:open`                             |
+| Total open PRs                 | `org:<ORG> is:pr is:open`                                |
+| Issues opened (last 30d)       | `org:<ORG> is:issue created:>={SINCE}`                   |
+| Issues closed (last 30d)       | `org:<ORG> is:issue is:closed closed:>={SINCE}`          |
+| PRs opened (last 30d)          | `org:<ORG> is:pr created:>={SINCE}`                      |
+| PRs merged (last 30d)          | `org:<ORG> is:pr is:merged merged:>={SINCE}`             |
 | PRs closed unmerged (last 30d) | `org:<ORG> is:pr is:closed is:unmerged closed:>={SINCE}` |
-| Stale issues (60+ days) | `org:<ORG> is:issue is:open updated:<={60_DAYS_AGO}` |
-| Stale PRs (30+ days) | `org:<ORG> is:pr is:open updated:<={30_DAYS_AGO}` |
+| Stale issues (60+ days)        | `org:<ORG> is:issue is:open updated:<={60_DAYS_AGO}`     |
+| Stale PRs (30+ days)           | `org:<ORG> is:pr is:open updated:<={30_DAYS_AGO}`        |
 
 **Performance tip:** Add 1–2 second delays between search API calls to
 stay well within rate limits.
@@ -110,6 +110,7 @@ merge_time = merged_at - created_at (in hours)
 ```
 
 Then compute percentiles:
+
 - **p50** (median merge time)
 - **p75**
 - **p95**
@@ -146,17 +147,21 @@ Report median first response time for issues and PRs separately.
 ## Step 6 — Repository Activity & Contributor Leaderboard
 
 ### Top 10 Active Repos
+
 List all non-archived repos in the org. For each, count pushes / commits /
 issues+PRs opened in the last 30 days. Sort by total activity, keep top 10.
 
 ### Contributor Leaderboard
+
 From the top 10 active repos, aggregate commit authors over the last 30
 days. Rank by commit count, keep top 10. Award:
+
 - 🥇 for #1
 - 🥈 for #2
 - 🥉 for #3
 
 ### Inactive Repos
+
 Repos with 0 pushes, 0 issues, 0 PRs in the last 30 days. List them
 (name + last push date) so the org can decide whether to archive.
 
@@ -164,18 +169,19 @@ Repos with 0 pushes, 0 issues, 0 PRs in the last 30 days. List them
 
 Compute velocity indicators and assign status:
 
-| Indicator | 🟢 Green | 🟡 Yellow | 🔴 Red |
-|-----------|----------|-----------|--------|
-| Issue close rate | closed ≥ opened | closed ≥ 70% opened | closed < 70% opened |
-| PR merge rate | merged ≥ opened | merged ≥ 60% opened | merged < 60% opened |
-| Median merge time | < 24h | 24–72h | > 72h |
-| Median first response | < 24h | 24–72h | > 72h |
-| Stale issue count | < 10 | 10–50 | > 50 |
-| Stale PR count | < 5 | 5–20 | > 20 |
+| Indicator             | 🟢 Green        | 🟡 Yellow           | 🔴 Red              |
+| --------------------- | --------------- | ------------------- | ------------------- |
+| Issue close rate      | closed ≥ opened | closed ≥ 70% opened | closed < 70% opened |
+| PR merge rate         | merged ≥ opened | merged ≥ 60% opened | merged < 60% opened |
+| Median merge time     | < 24h           | 24–72h              | > 72h               |
+| Median first response | < 24h           | 24–72h              | > 72h               |
+| Stale issue count     | < 10            | 10–50               | > 50                |
+| Stale PR count        | < 5             | 5–20                | > 20                |
 
 ## Step 8 — Wins & Shoutouts
 
 Celebrate positive signals:
+
 - PRs merged with fast turnaround (< 4 hours)
 - Issues closed quickly (< 24 hours from open to close)
 - Top contributors (from leaderboard)

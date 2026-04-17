@@ -3,6 +3,7 @@
 ## What is ContextStream?
 
 ContextStream provides:
+
 - **Persistent memory** across AI sessions
 - **Semantic code search** (find by meaning, not keywords)
 - **Knowledge graphs** of decisions, code, and docs
@@ -12,7 +13,8 @@ ContextStream provides:
 ## MCP Configuration
 
 ✅ **Already configured** in `.vscode/mcp.json`:
-- Server: `contextstream` 
+
+- Server: `contextstream`
 - Command: `npx -y @contextstream/mcp-server@latest`
 - API URL: `https://api.contextstream.io`
 - API Key: Prompted on first use (secure input)
@@ -25,6 +27,7 @@ ContextStream provides:
 4. When VS Code prompts for `CONTEXTSTREAM_API_KEY`, paste it
 
 **Or use the setup wizard:**
+
 ```bash
 npx @contextstream/mcp-server@latest setup
 ```
@@ -34,8 +37,10 @@ npx @contextstream/mcp-server@latest setup
 Once the MCP server is running, initialize your workspace:
 
 ### Step 1: Initialize Session
+
 Ask your AI assistant (or invoke tool directly):
-```
+
+````
 "Initialize ContextStream for this workspace"
 "```
 
@@ -45,8 +50,10 @@ Ask your AI assistant (or invoke tool directly):
 
 ### Step 2: Index Project (Enable Semantic Search)
 Ask your AI:
-```
+````
+
 "Index this project for ContextStream semantic search"
+
 ```
 
 **Tool:** `mcp_io_github_con_project`
@@ -58,10 +65,12 @@ Indexing runs in background (30-60 seconds for typical repos).
 ### Step 3: Test It
 Try these queries:
 ```
+
 "What services are in docker-compose.yml?"
 "Show me n8n configuration"
 "What decisions have we made about authentication?"
-```
+
+````
 
 ## Tools Available
 
@@ -92,9 +101,10 @@ ContextStream is already exposed to Agent mode via:
 "github.copilot.chat.askAgent.additionalTools": [
     "mcp_io_github_con_context"  // ✅ Already configured
 ]
-```
+````
 
 Agent mode can autonomously:
+
 - Search your codebase semantically
 - Retrieve past decisions and lessons
 - Understand project architecture
@@ -103,6 +113,7 @@ Agent mode can autonomously:
 ## Lessons Learned System
 
 ContextStream automatically captures lessons when you:
+
 - Express frustration ("NO! Don't do that!")
 - Correct mistakes ("That's wrong, use X instead")
 - State preferences ("I prefer TypeScript strict mode")
@@ -113,12 +124,14 @@ Lessons are auto-surfaced in future sessions to prevent repeated mistakes.
 ## Best Practices
 
 ### ✅ DO:
+
 - Let AI call `context_smart` at start of each response
 - Use `search(mode="hybrid")` BEFORE local file reads
 - Capture important decisions with `session(action="capture")`
 - Initialize workspace once per project
 
 ### ❌ DON'T:
+
 - Skip initialization (tools won't work without setup)
 - Use local grep/search when ContextStream is available
 - Forget to index large repos (semantic search needs it)
@@ -127,15 +140,19 @@ Lessons are auto-surfaced in future sessions to prevent repeated mistakes.
 ## Troubleshooting
 
 ### "ContextStream could not resolve a workspace"
+
 **Solution:** Run `session_init` with your workspace folder path first.
 
 ### "Project index not found"
+
 **Solution:** Run `project(action="ingest_local")` to build the index.
 
 ### API Key Prompt
+
 **Solution:** Get key from [contextstream.io/dashboard](https://contextstream.io/dashboard), paste when prompted.
 
 ### Tools Not Appearing
+
 **Solution:** Restart VS Code after editing `mcp.json`.
 
 ## Documentation
@@ -148,6 +165,7 @@ Lessons are auto-surfaced in future sessions to prevent repeated mistakes.
 ## Token Efficiency (v0.4.x)
 
 ContextStream v0.4.x uses ~11 consolidated domain tools with action dispatch:
+
 - **~75% token reduction** vs previous versions
 - **Progressive mode available:** Add `"CONTEXTSTREAM_PROGRESSIVE_MODE": "true"` to env for ~2 meta-tools (most compact)
 
@@ -166,7 +184,8 @@ cat .vscode/mcp.json
 
 ---
 
-**Status:** 
+**Status:**
+
 - ✅ MCP server configured in workspace
 - ⏳ Needs: API key + workspace initialization
 - ⏳ Needs: Project indexing for semantic search

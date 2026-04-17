@@ -1,5 +1,5 @@
 ---
-description: 'Best practices and patterns for building Model Context Protocol (MCP) servers in Go using the official github.com/modelcontextprotocol/go-sdk package.'
+description: "Best practices and patterns for building Model Context Protocol (MCP) servers in Go using the official github.com/modelcontextprotocol/go-sdk package."
 applyTo: "**/*.go, **/go.mod, **/go.sum"
 ---
 
@@ -45,7 +45,7 @@ func SearchTool(ctx context.Context, req *mcp.CallToolRequest, input ToolInput) 
 ) {
     // Implement tool logic
     results := performSearch(ctx, input.Query, input.Limit)
-    
+
     return nil, ToolOutput{
         Results: results,
         Count:   len(results),
@@ -53,7 +53,7 @@ func SearchTool(ctx context.Context, req *mcp.CallToolRequest, input ToolInput) 
 }
 
 // Register the tool
-mcp.AddTool(server, 
+mcp.AddTool(server,
     &mcp.Tool{
         Name:        "search",
         Description: "Search for information",
@@ -72,7 +72,7 @@ func GetResource(ctx context.Context, req *mcp.ReadResourceRequest) (*mcp.ReadRe
     if err != nil {
         return nil, err
     }
-    
+
     return &mcp.ReadResourceResult{
         Contents: []any{
             &mcp.TextResourceContents{
@@ -182,18 +182,18 @@ func MyTool(ctx context.Context, req *mcp.CallToolRequest, input MyInput) (
     if ctx.Err() != nil {
         return nil, MyOutput{}, ctx.Err()
     }
-    
+
     // Return errors for invalid input
     if input.Query == "" {
         return nil, MyOutput{}, fmt.Errorf("query cannot be empty")
     }
-    
+
     // Perform operation
     result, err := performOperation(ctx, input)
     if err != nil {
         return nil, MyOutput{}, fmt.Errorf("operation failed: %w", err)
     }
-    
+
     return nil, result, nil
 }
 ```
@@ -260,12 +260,12 @@ Test your MCP tools using standard Go testing patterns:
 func TestSearchTool(t *testing.T) {
     ctx := context.Background()
     input := ToolInput{Query: "test", Limit: 10}
-    
+
     result, output, err := SearchTool(ctx, nil, input)
     if err != nil {
         t.Fatalf("SearchTool failed: %v", err)
     }
-    
+
     if len(output.Results) == 0 {
         t.Error("Expected results, got none")
     }

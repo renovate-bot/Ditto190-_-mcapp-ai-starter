@@ -78,11 +78,11 @@ if __name__ == '__main__':
 
 ### Understanding the Code
 
-| Component | Purpose |
-|-----------|---------|
-| `Flask(__name__)` | Creates a Flask application instance; `__name__` helps Flask locate resources |
-| `@app.route('/')` | A decorator that maps a URL path to a Python function |
-| `app.run(debug=True)` | Starts the development server with auto-reload and debugger |
+| Component             | Purpose                                                                       |
+| --------------------- | ----------------------------------------------------------------------------- |
+| `Flask(__name__)`     | Creates a Flask application instance; `__name__` helps Flask locate resources |
+| `@app.route('/')`     | A decorator that maps a URL path to a Python function                         |
+| `app.run(debug=True)` | Starts the development server with auto-reload and debugger                   |
 
 ### Running the Application
 
@@ -140,13 +140,13 @@ def show_subpath(subpath):
 
 ### URL Converters
 
-| Converter | Description | Example |
-|-----------|-------------|---------|
-| `string` | Accepts any text without slashes (default) | `/user/<username>` |
-| `int` | Accepts positive integers | `/post/<int:post_id>` |
-| `float` | Accepts positive floating-point values | `/price/<float:amount>` |
-| `path` | Accepts text including slashes | `/file/<path:filepath>` |
-| `uuid` | Accepts UUID strings | `/item/<uuid:item_id>` |
+| Converter | Description                                | Example                 |
+| --------- | ------------------------------------------ | ----------------------- |
+| `string`  | Accepts any text without slashes (default) | `/user/<username>`      |
+| `int`     | Accepts positive integers                  | `/post/<int:post_id>`   |
+| `float`   | Accepts positive floating-point values     | `/price/<float:amount>` |
+| `path`    | Accepts text including slashes             | `/file/<path:filepath>` |
+| `uuid`    | Accepts UUID strings                       | `/item/<uuid:item_id>`  |
 
 ### URL Building with `url_for()`
 
@@ -207,26 +207,26 @@ def hello(name=None):
 ```html
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Hello</title>
-</head>
-<body>
+  </head>
+  <body>
     {% if name %}
-        <h1>Hello, {{ name }}!</h1>
+    <h1>Hello, {{ name }}!</h1>
     {% else %}
-        <h1>Hello, World!</h1>
+    <h1>Hello, World!</h1>
     {% endif %}
-</body>
+  </body>
 </html>
 ```
 
 ### Template Syntax
 
-| Syntax | Purpose | Example |
-|--------|---------|---------|
-| `{{ ... }}` | Expression output | `{{ user.name }}` |
+| Syntax      | Purpose                  | Example                       |
+| ----------- | ------------------------ | ----------------------------- |
+| `{{ ... }}` | Expression output        | `{{ user.name }}`             |
 | `{% ... %}` | Statement (control flow) | `{% if user %}...{% endif %}` |
-| `{# ... #}` | Comment (not rendered) | `{# This is a comment #}` |
+| `{# ... #}` | Comment (not rendered)   | `{# This is a comment #}`     |
 
 ### Template Inheritance
 
@@ -235,39 +235,34 @@ def hello(name=None):
 ```html
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>{% block title %}Default Title{% endblock %}</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        {% block header %}
-            <h1>My Website</h1>
-        {% endblock %}
+      {% block header %}
+      <h1>My Website</h1>
+      {% endblock %}
     </header>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+    <main>{% block content %}{% endblock %}</main>
 
     <footer>
-        {% block footer %}
-            <p>Footer content</p>
-        {% endblock %}
+      {% block footer %}
+      <p>Footer content</p>
+      {% endblock %}
     </footer>
-</body>
+  </body>
 </html>
 ```
 
 **Child template (`home.html`):**
 
 ```html
-{% extends "base.html" %}
-
-{% block title %}Home Page{% endblock %}
-
-{% block content %}
-    <h2>Welcome!</h2>
-    <p>This is the home page.</p>
+{% extends "base.html" %} {% block title %}Home Page{% endblock %} {% block
+content %}
+<h2>Welcome!</h2>
+<p>This is the home page.</p>
 {% endblock %}
 ```
 
@@ -276,20 +271,20 @@ def hello(name=None):
 ```html
 <!-- For loop -->
 <ul>
-{% for item in navigation %}
-    <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
-{% endfor %}
+  {% for item in navigation %}
+  <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+  {% endfor %}
 </ul>
 
 <!-- Conditionals -->
 {% if users %}
-    <ul>
-    {% for user in users %}
-        <li>{{ user.username }}</li>
-    {% endfor %}
-    </ul>
+<ul>
+  {% for user in users %}
+  <li>{{ user.username }}</li>
+  {% endfor %}
+</ul>
 {% else %}
-    <p>No users found.</p>
+<p>No users found.</p>
 {% endif %}
 ```
 
@@ -319,18 +314,18 @@ def login():
 
 ### Request Object Attributes
 
-| Attribute | Description |
-|-----------|-------------|
-| `request.method` | The HTTP method (GET, POST, etc.) |
-| `request.form` | Form data from POST/PUT requests |
-| `request.args` | URL query string parameters |
-| `request.files` | Uploaded files |
-| `request.cookies` | Request cookies |
-| `request.headers` | Request headers |
-| `request.json` | Parsed JSON data (if content type is JSON) |
-| `request.data` | Raw request data as bytes |
-| `request.url` | The full URL of the request |
-| `request.path` | The URL path (without query string) |
+| Attribute         | Description                                |
+| ----------------- | ------------------------------------------ |
+| `request.method`  | The HTTP method (GET, POST, etc.)          |
+| `request.form`    | Form data from POST/PUT requests           |
+| `request.args`    | URL query string parameters                |
+| `request.files`   | Uploaded files                             |
+| `request.cookies` | Request cookies                            |
+| `request.headers` | Request headers                            |
+| `request.json`    | Parsed JSON data (if content type is JSON) |
+| `request.data`    | Raw request data as bytes                  |
+| `request.url`     | The full URL of the request                |
+| `request.path`    | The URL path (without query string)        |
 
 ### Query String Parameters
 
@@ -379,16 +374,16 @@ def api_data():
 
 ```html
 <form method="POST" action="/submit">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required />
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required />
 
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" required></textarea>
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" required></textarea>
 
-    <button type="submit">Submit</button>
+  <button type="submit">Submit</button>
 </form>
 ```
 
@@ -421,9 +416,12 @@ Flask serves static files from the `static/` folder by default.
 ### Serving Static Files
 
 ```html
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/style.css') }}"
+/>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" />
 ```
 
 ### Static File Organization
@@ -539,17 +537,17 @@ def moved():
 
 Common Flask extensions for building web applications:
 
-| Extension | Purpose |
-|-----------|---------|
-| **Flask-SQLAlchemy** | Database ORM integration |
-| **Flask-WTF** | Form handling with WTForms and CSRF protection |
-| **Flask-Login** | User session management and authentication |
-| **Flask-Mail** | Email sending support |
-| **Flask-Migrate** | Database migration management via Alembic |
-| **Flask-RESTful** | Building REST APIs |
-| **Flask-CORS** | Cross-Origin Resource Sharing support |
-| **Flask-Caching** | Response caching |
-| **Flask-Limiter** | Rate limiting for API endpoints |
+| Extension            | Purpose                                        |
+| -------------------- | ---------------------------------------------- |
+| **Flask-SQLAlchemy** | Database ORM integration                       |
+| **Flask-WTF**        | Form handling with WTForms and CSRF protection |
+| **Flask-Login**      | User session management and authentication     |
+| **Flask-Mail**       | Email sending support                          |
+| **Flask-Migrate**    | Database migration management via Alembic      |
+| **Flask-RESTful**    | Building REST APIs                             |
+| **Flask-CORS**       | Cross-Origin Resource Sharing support          |
+| **Flask-Caching**    | Response caching                               |
+| **Flask-Limiter**    | Rate limiting for API endpoints                |
 
 ---
 

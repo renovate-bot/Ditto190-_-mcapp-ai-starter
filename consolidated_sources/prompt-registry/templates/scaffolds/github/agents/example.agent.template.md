@@ -1,7 +1,7 @@
 ---
 name: code-architect-agent
 description: Specialized agent for system design and architecture decisions
-tools: ['fetch', 'githubRepo', 'search']
+tools: ["fetch", "githubRepo", "search"]
 handoffs:
   - label: Implement Plan
     agent: agent
@@ -62,4 +62,4 @@ Validate against SOLID principles, identify potential issues, suggest improvemen
 - I provide guidance based on industry practices, recognizing your domain expertise
 - I defer to domain experts for technology-specific details (e.g., specific framework APIs)
 
-*Replace this content with your own agent definition.*
+_Replace this content with your own agent definition._

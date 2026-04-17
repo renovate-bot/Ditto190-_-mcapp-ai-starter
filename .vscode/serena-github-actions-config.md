@@ -1,6 +1,7 @@
 # Serena + GitHub Actions MCP Integration Plan
 
 ## Overview
+
 This document outlines the configuration strategy for integrating Serena's symbolic code tools with GitHub Actions MCP for automated workflow management.
 
 ## Architecture
@@ -48,6 +49,7 @@ This document outlines the configuration strategy for integrating Serena's symbo
 ### 1. **Automated Code Analysis → Workflow Creation**
 
 **Workflow:**
+
 ```
 User: "Analyze Python modules and create a CI workflow"
 
@@ -63,6 +65,7 @@ Plan Agent:
 ### 2. **Symbol-Aware GitHub Actions**
 
 **Workflow:**
+
 ```
 User: "Create a workflow that runs tests for changed functions"
 
@@ -76,6 +79,7 @@ Plan Agent:
 ### 3. **Documentation Generation from Symbols**
 
 **Workflow:**
+
 ```
 User: "Generate AGENTS.md from codebase and trigger deployment"
 
@@ -92,6 +96,7 @@ Plan Agent:
 ### Agent Tool Assignments
 
 #### Plan Agent (Architecture + Automation)
+
 ```json
 "github.copilot.chat.planAgent.additionalTools": [
     "memory",
@@ -110,6 +115,7 @@ Plan Agent:
 ```
 
 #### Ask Agent (Quick Lookups)
+
 ```json
 "github.copilot.chat.askAgent.additionalTools": [
     "github_support_docs_search",
@@ -122,6 +128,7 @@ Plan Agent:
 ```
 
 #### Edit Agent (Code Modifications)
+
 ```json
 "github.copilot.chat.editAgent.additionalTools": [
     "mcp_oraios_serena_replace_symbol_body",
@@ -136,6 +143,7 @@ Plan Agent:
 ## Workflow Templates
 
 ### Template 1: Symbol Analysis + CI/CD
+
 ```yaml
 name: Symbol-Aware Testing
 on:
@@ -147,14 +155,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       # Serena identifies changed symbols
       - name: Get changed symbols
         id: symbols
         run: |
           # Agent uses Serena to find changed functions
           # Outputs: changed_functions.json
-      
+
       # Run only affected tests
       - name: Run targeted tests
         run: |
@@ -162,28 +170,29 @@ jobs:
 ```
 
 ### Template 2: Auto-Documentation
+
 ```yaml
 name: Generate AGENTS.md
 on:
   push:
     branches: [main]
     paths:
-      - 'src/**/*.py'
-      - 'generateagents-mcp/**'
+      - "src/**/*.py"
+      - "generateagents-mcp/**"
 
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       # Use GenerateAgents MCP
       - name: Generate AGENTS.md
         run: |
           npx generateagents-mcp generate \
             --repo ${{ github.workspace }} \
             --style comprehensive
-      
+
       # Commit back
       - name: Commit docs
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -193,11 +202,12 @@ jobs:
 ```
 
 ### Template 3: Workflow Health Monitor (Your Existing Pattern)
+
 ```yaml
 name: Workflow Health Monitor
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
+    - cron: "0 */6 * * *" # Every 6 hours
   workflow_dispatch:
 
 jobs:
@@ -208,12 +218,12 @@ jobs:
         run: |
           # Uses GitHub Actions MCP: actions_list()
           # Uses Serena: write_memory() to log issues
-          
+
       - name: Analyze patterns
         run: |
           # Uses Serena: search_for_pattern() in .github/workflows/
           # Identifies anti-patterns
-          
+
       - name: Create issue if failures
         if: failure()
         run: |
@@ -244,16 +254,19 @@ Serena uses project-scoped memories. Create these in your workspace:
 ## Expected Benefits
 
 ### Context Reduction
+
 - **Before:** Load entire codebase (200k+ tokens)
 - **After:** Symbolic navigation (~5k tokens per query)
 - **Savings:** 97% reduction in read operations
 
 ### Workflow Precision
+
 - **Before:** Run all tests on every change
 - **After:** Run only tests for changed symbols
 - **Savings:** 80% faster CI/CD
 
 ### Knowledge Retention
+
 - **Before:** Re-analyze architecture every time
 - **After:** Serena memories cache patterns
 - **Savings:** 10x faster subsequent queries
@@ -261,19 +274,22 @@ Serena uses project-scoped memories. Create these in your workspace:
 ## Example Commands
 
 ### For Plan Agent
+
 ```
-@plan Use Serena to analyze the GenerateAgents.md Python codebase, 
-      identify all DSPy modules, and create a GitHub Actions workflow 
+@plan Use Serena to analyze the GenerateAgents.md Python codebase,
+      identify all DSPy modules, and create a GitHub Actions workflow
       that runs tests only for changed modules
 ```
 
-### For Ask Agent  
+### For Ask Agent
+
 ```
 @ask What are the main classes in generateagents-mcp/server.py?
      (Uses Serena: get_symbols_overview)
 ```
 
 ### For Edit Agent
+
 ```
 @edit Refactor the CLI argument parser in GenerateAgents.md/cli.py
       (Uses Serena symbolic editing + creates PR via GitHub Actions MCP)

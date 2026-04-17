@@ -13,14 +13,14 @@ copilot plugin install typescript-mcp-development@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                                       | Description                                                                                          |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `/typescript-mcp-development:typescript-mcp-server-generator` | Generate a complete MCP server project in TypeScript with tools, resources, and proper configuration |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent                   | Description                                                                        |
+| ----------------------- | ---------------------------------------------------------------------------------- |
 | `typescript-mcp-expert` | Expert assistant for developing Model Context Protocol (MCP) servers in TypeScript |
 
 ## Source

@@ -8,13 +8,13 @@ Remediate common accessibility problems with WCAG-compliant solutions.
 
 ```html
 <\!-- ❌ Bad -->
-<img src="logo.png">
+<img src="logo.png" />
 
 <\!-- ✅ Good - Descriptive alt -->
-<img src="logo.png" alt="Company Name Logo">
+<img src="logo.png" alt="Company Name Logo" />
 
 <\!-- ✅ Good - Decorative image -->
-<img src="decoration.png" alt="" role="presentation">
+<img src="decoration.png" alt="" role="presentation" />
 ```
 
 ### Poor Color Contrast
@@ -37,11 +37,11 @@ Remediate common accessibility problems with WCAG-compliant solutions.
 
 ```html
 <\!-- ❌ Bad -->
-<input type="email" placeholder="Email">
+<input type="email" placeholder="Email" />
 
 <\!-- ✅ Good - Explicit label -->
 <label for="email">Email Address</label>
-<input id="email" type="email" required aria-required="true">
+<input id="email" type="email" required aria-required="true" />
 ```
 
 ### Keyboard Navigation
@@ -54,11 +54,12 @@ Remediate common accessibility problems with WCAG-compliant solutions.
 <button type="submit">Submit</button>
 
 <\!-- ✅ Good - keyboard event handlers -->
-<div 
-  role="button" 
+<div
+  role="button"
   tabindex="0"
   onclick="submit()"
-  onkeypress="handleKeyPress(event)">
+  onkeypress="handleKeyPress(event)"
+>
   Submit
 </div>
 ```

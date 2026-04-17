@@ -1,48 +1,48 @@
 {
-    "version": "1.0.0",
-    "description": "APM Package Scaffold",
-    "templates": {
-        "apm-manifest": {
-            "path": "apm.yml.template",
-            "description": "Package manifest",
-            "required": true,
-            "variables": ["name", "description", "author", "tags"]
-        },
-        "readme": {
-            "path": "README.md.template",
-            "description": "Project documentation",
-            "required": true,
-            "variables": ["name", "description"]
-        },
-        "package-json": {
-            "path": "package.template.json",
-            "description": "Node.js package config",
-            "required": true,
-            "variables": ["packageName", "author"]
-        },
-        "validation-script": {
-            "path": "validate-apm.js",
-            "description": "Validation script",
-            "required": true,
-            "variables": []
-        },
-        "workflow": {
-            "path": "workflows/validate-apm.yml",
-            "description": "GitHub Actions workflow for validation",
-            "required": true,
-            "variables": ["githubRunner"]
-        },
-        "example-prompt": {
-            "path": ".apm/prompts/example.prompt.md.template",
-            "description": "Example prompt",
-            "required": true,
-            "variables": ["name"]
-        },
-        "coding-standards": {
-            "path": ".apm/instructions/coding-standards.instructions.md.template",
-            "description": "Example instruction",
-            "required": true,
-            "variables": []
-        }
+  "version": "1.0.0",
+  "description": "APM Package Scaffold",
+  "templates": {
+    "apm-manifest": {
+      "path": "apm.yml.template",
+      "description": "Package manifest",
+      "required": true,
+      "variables": ["name", "description", "author", "tags"]
+    },
+    "readme": {
+      "path": "README.md.template",
+      "description": "Project documentation",
+      "required": true,
+      "variables": ["name", "description"]
+    },
+    "package-json": {
+      "path": "package.template.json",
+      "description": "Node.js package config",
+      "required": true,
+      "variables": ["packageName", "author"]
+    },
+    "validation-script": {
+      "path": "validate-apm.js",
+      "description": "Validation script",
+      "required": true,
+      "variables": []
+    },
+    "workflow": {
+      "path": "workflows/validate-apm.yml",
+      "description": "GitHub Actions workflow for validation",
+      "required": true,
+      "variables": ["githubRunner"]
+    },
+    "example-prompt": {
+      "path": ".apm/prompts/example.prompt.md.template",
+      "description": "Example prompt",
+      "required": true,
+      "variables": ["name"]
+    },
+    "coding-standards": {
+      "path": ".apm/instructions/coding-standards.instructions.md.template",
+      "description": "Example instruction",
+      "required": true,
+      "variables": []
     }
+  }
 }

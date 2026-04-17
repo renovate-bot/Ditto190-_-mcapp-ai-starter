@@ -92,12 +92,12 @@ async def main():
 
     prompt = f"""
     Use the Playwright MCP server to analyze the accessibility of this webpage: {url}
-    
+
     Please:
     1. Navigate to the URL using playwright-browser_navigate
     2. Take an accessibility snapshot using playwright-browser_snapshot
     3. Analyze the snapshot and provide a detailed accessibility report
-    
+
     Format the report with emoji indicators:
     - 📊 Accessibility Report header
     - ✅ What's Working Well (table with Category, Status, Details)
@@ -143,7 +143,7 @@ async def main():
         test_generation_prompt = f"""
         Based on the accessibility report you just generated for {url},
         create Playwright accessibility tests in {language}.
-        
+
         Include tests for: lang attribute, title, heading hierarchy, alt text,
         landmarks, skip navigation, focus indicators, and touch targets.
         Use Playwright's accessibility testing features with helpful comments.
@@ -244,7 +244,7 @@ Would you like to generate Playwright accessibility tests? (y/n): y
 Detecting project language...
 TypeScript detected (package.json found)
 
-Confirm language for tests (or enter a different one): 
+Confirm language for tests (or enter a different one):
 
 Generating accessibility tests...
 [Generated test file output...]

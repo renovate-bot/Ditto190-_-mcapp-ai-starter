@@ -16,6 +16,7 @@ Advanced financial modeling toolkit providing DCF valuation, sensitivity analysi
 ### 1. Discounted Cash Flow (DCF) Analysis
 
 Complete valuation models with:
+
 - Multi-stage growth scenarios
 - Free Cash Flow projections
 - WACC (Weighted Average Cost of Capital) calculation
@@ -24,6 +25,7 @@ Complete valuation models with:
 - Sensitivity analysis on key assumptions
 
 **Supported Model Types**
+
 - Stable growth companies
 - High-growth startups (J-curve projections)
 - Mature businesses with decline scenarios
@@ -32,6 +34,7 @@ Complete valuation models with:
 ### 2. Sensitivity Analysis
 
 Identify key value drivers:
+
 - One-way variable sensitivity
 - Multi-variable sensitivity tables
 - Tornado charts ranking driver importance
@@ -41,6 +44,7 @@ Identify key value drivers:
 ### 3. Monte Carlo Simulation
 
 Model uncertainty and risk:
+
 - Probability distributions for uncertain variables
 - Correlation matrix support
 - Thousands of iterations generating outcome distributions
@@ -50,6 +54,7 @@ Model uncertainty and risk:
 ### 4. Scenario Planning
 
 Compare strategic alternatives:
+
 - Best/Base/Worst case scenarios
 - Economic environment modeling
 - Strategic initiative impact assessment
@@ -59,7 +64,9 @@ Compare strategic alternatives:
 ## Key Components
 
 ### SKILL.md
+
 Comprehensive documentation including:
+
 - Detailed methodology descriptions
 - Model type examples
 - Input data requirements
@@ -71,10 +78,12 @@ Comprehensive documentation including:
 ### Scripts
 
 #### dcf_model.py
+
 Complete DCF valuation engine with:
 
 **`DCFAssumptions` NamedTuple**
 Typed container for all DCF assumptions:
+
 - Revenue growth rates (list)
 - EBITDA margins (list)
 - Tax rate (float)
@@ -85,6 +94,7 @@ Typed container for all DCF assumptions:
 
 **`DCFResults` Dataclass**
 Structured output with:
+
 - FCF projections (list)
 - Terminal value (float)
 - PV of FCF (float)
@@ -93,6 +103,7 @@ Structured output with:
 - Optional equity value (float)
 
 **Key Functions**
+
 ```python
 def build_dcf_model(
     current_revenue: float,
@@ -100,6 +111,7 @@ def build_dcf_model(
     forecast_years: int = 5,
 ) -> DCFResults
 ```
+
 Builds complete multi-year DCF model with terminal value.
 
 ```python
@@ -112,9 +124,11 @@ def calculate_wacc(
     debt: float,
 ) -> float
 ```
+
 Calculates Weighted Average Cost of Capital using CAPM.
 
 **Test Output**:
+
 ```
 DCF Valuation Results
 ==================================================
@@ -138,6 +152,7 @@ WACC Calculation Example: 9.93%
 ## Input Data Requirements
 
 ### Historical Data (3-5 years)
+
 - Revenue and growth rates
 - Operating margins (EBITDA, EBIT, Net)
 - Tax rates
@@ -145,6 +160,7 @@ WACC Calculation Example: 9.93%
 - Working capital requirements
 
 ### Forward Assumptions
+
 - Revenue growth rates for explicit forecast period
 - Operating margin progression
 - Capex as % of revenue
@@ -153,6 +169,7 @@ WACC Calculation Example: 9.93%
 - Risk-free rate, beta, market risk premium
 
 ### Optional Data
+
 - Debt levels for WACC calculation
 - Market cap for comparables
 - Stock price for valuation metrics
@@ -161,6 +178,7 @@ WACC Calculation Example: 9.93%
 ## Output Formats
 
 ### DCF Model Results
+
 ```
 Enterprise Value: $500M
 Equity Value: $450M
@@ -170,18 +188,21 @@ Sensitivity to WACC: ±$50M per 1% change
 ```
 
 ### Sensitivity Analysis Output
+
 - Data tables showing value ranges
 - Tornado diagrams showing driver importance
 - Break-even values for assumptions
 - Graphical relationships
 
 ### Scenario Comparison
+
 - Side-by-side scenario analysis
 - Probability-weighted outcomes
 - Decision trees
 - Variance analysis vs base case
 
 ### Monte Carlo Output
+
 - Probability distribution graphs
 - Statistical summary (mean, median, std dev)
 - Confidence intervals
@@ -190,6 +211,7 @@ Sensitivity to WACC: ±$50M per 1% change
 ## Integration Points
 
 ### With GitHub Copilot
+
 ```
 "Build a DCF model for this company"
 "What's the sensitivity of valuation to WACC?"
@@ -198,6 +220,7 @@ Sensitivity to WACC: ±$50M per 1% change
 ```
 
 ### With n8n Workflows
+
 - Import financial data from PostgreSQL
 - Calculate DCF and scenarios
 - Generate valuation reports
@@ -205,6 +228,7 @@ Sensitivity to WACC: ±$50M per 1% change
 - Create comparison analyses
 
 ### With Claude
+
 - Complex valuation analysis
 - Merger & acquisition pricing
 - Private equity transaction modeling
@@ -214,6 +238,7 @@ Sensitivity to WACC: ±$50M per 1% change
 ## Model Quality Standards
 
 Automatically validates:
+
 - Income statement balancing
 - Cash flow reconciliation
 - Terminal value reasonableness (3-5% growth)
@@ -224,17 +249,20 @@ Automatically validates:
 ## Important Notes
 
 **Assumptions Drive Results**
+
 - Valuation highly sensitive to growth and discount rate assumptions
 - Use multiple scenarios for conservative/aggressive cases
 - Sensitivity analysis critical for understanding drivers
 
 **Not Investment Advice**
+
 - No guarantee of future performance
 - Doesn't include qualitative factors (management, competitive position)
 - Tax implications may be jurisdiction-specific
 - Regulatory changes can significantly impact results
 
 **Professional Context**
+
 - Used by investment bankers for M&A fairness opinions
 - Private equity analysis for LBO underwriting
 - Corporate finance for strategic investment evaluation
@@ -248,6 +276,7 @@ Python 3.12+
 
 No external dependencies required for base functionality.
 Optional for advanced features:
+
 - numpy: Numerical optimization
 - scipy: Statistical distributions
 - pandas: Data manipulation
@@ -256,6 +285,7 @@ Optional for advanced features:
 ## Validation
 
 Scripts pass:
+
 - ✓ Type checking (mypy)
 - ✓ Linting (pylint/ruff)
 - ✓ Mathematical accuracy validation

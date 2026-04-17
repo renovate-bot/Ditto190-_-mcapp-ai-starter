@@ -1,10 +1,10 @@
 ---
-title: 'Understanding Copilot Context'
-description: 'Learn how GitHub Copilot uses context from your code, workspace, and conversation to generate relevant suggestions.'
+title: "Understanding Copilot Context"
+description: "Learn how GitHub Copilot uses context from your code, workspace, and conversation to generate relevant suggestions."
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: '2025-11-28'
-estimatedReadingTime: '8 minutes'
+lastUpdated: "2025-11-28"
+estimatedReadingTime: "8 minutes"
 tags:
   - context
   - fundamentals
@@ -69,7 +69,7 @@ Context directly impacts the relevance, accuracy, and usefulness of GitHub Copil
 // user.ts
 function getUserById(id: string) {
   // Copilot might suggest generic database code
-  const user = db.query('SELECT * FROM users WHERE id = ?', [id]);
+  const user = db.query("SELECT * FROM users WHERE id = ?", [id]);
   return user;
 }
 ```
@@ -78,14 +78,17 @@ function getUserById(id: string) {
 
 ```typescript
 // database.ts (open in another tab)
-export async function queryOne<T>(sql: string, params: any[]): Promise<T | null> {
+export async function queryOne<T>(
+  sql: string,
+  params: any[],
+): Promise<T | null> {
   // ... implementation
 }
 
 // user.ts (current file)
 function getUserById(id: string) {
   // Copilot now suggests using the existing utility
-  return queryOne<User>('SELECT * FROM users WHERE id = ?', [id]);
+  return queryOne<User>("SELECT * FROM users WHERE id = ?", [id]);
 }
 ```
 
@@ -153,6 +156,7 @@ A: In GitHub Copilot Chat, you can see which files are being referenced in respo
 **Q: Can I control what context is included?**
 
 A: Yes, you have several ways to control context:
+
 - Open/close files to change what's available to Copilot
 - Use `#` mentions to explicitly reference specific files, symbols or functions
 - Configure `.gitignore` to exclude files from workspace context

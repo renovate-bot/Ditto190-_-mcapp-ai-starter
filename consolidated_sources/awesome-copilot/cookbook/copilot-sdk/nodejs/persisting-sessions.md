@@ -24,8 +24,8 @@ await client.start();
 
 // Create session with a memorable ID
 const session = await client.createSession({
-    sessionId: "user-123-conversation",
-    model: "gpt-5",
+  sessionId: "user-123-conversation",
+  model: "gpt-5",
 });
 
 await session.sendAndWait({ prompt: "Let's discuss TypeScript generics" });
@@ -80,7 +80,7 @@ Retrieve all messages from a session:
 ```typescript
 const messages = await session.getMessages();
 for (const msg of messages) {
-    console.log(`[${msg.type}]`, msg.data);
+  console.log(`[${msg.type}]`, msg.data);
 }
 ```
 

@@ -1,27 +1,30 @@
 #!/usr/bin/env node
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-console.log('Applying essential post-compilation fixes...');
+console.log("Applying essential post-compilation fixes...");
 
 // Fix test runner path - this is essential for tests to work
-const runTestsPath = path.join(__dirname, 'test', 'runExtensionTests.js');
+const runTestsPath = path.join(__dirname, "test", "runExtensionTests.js");
 if (fs.existsSync(runTestsPath)) {
-    console.log('Fixing test runner path...');
-    let content = fs.readFileSync(runTestsPath, 'utf8');
-    content = content.replace(/test-dist\/src\/test\/index\.js/g, 'test-dist/test/index.js');
-    fs.writeFileSync(runTestsPath, content);
+  console.log("Fixing test runner path...");
+  let content = fs.readFileSync(runTestsPath, "utf8");
+  content = content.replace(
+    /test-dist\/src\/test\/index\.js/g,
+    "test-dist/test/index.js",
+  );
+  fs.writeFileSync(runTestsPath, content);
 }
 
 // Ensure test-dist/test directory exists
-const testDir = path.join(__dirname, 'test-dist', 'test');
+const testDir = path.join(__dirname, "test-dist", "test");
 fs.mkdirSync(testDir, { recursive: true });
 
 // Create basic test index.js if it doesn't exist
-const indexPath = path.join(testDir, 'index.js');
+const indexPath = path.join(testDir, "index.js");
 if (!fs.existsSync(indexPath)) {
-    console.log('Creating basic test index.js...');
-    const indexContent = `const path = require('path');
+  console.log("Creating basic test index.js...");
+  const indexContent = `const path = require('path');
 const { glob } = require('glob');
 
 exports.run = function() {
@@ -59,9 +62,9 @@ exports.run = function() {
     });
   })();
 }`;
-    fs.writeFileSync(indexPath, indexContent);
+  fs.writeFileSync(indexPath, indexContent);
 } else {
-    console.log('Test index.js already exists');
+  console.log("Test index.js already exists");
 }
 
-console.log('Essential post-compilation fixes completed!');
+console.log("Essential post-compilation fixes completed!");

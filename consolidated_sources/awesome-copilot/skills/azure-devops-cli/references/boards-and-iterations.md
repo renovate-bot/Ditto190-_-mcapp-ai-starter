@@ -1,6 +1,7 @@
 # Work Items, Area Paths & Iterations
 
 ## Table of Contents
+
 - [Work Items (Boards)](#work-items-boards)
 - [Area Paths](#area-paths)
 - [Iterations](#iterations)

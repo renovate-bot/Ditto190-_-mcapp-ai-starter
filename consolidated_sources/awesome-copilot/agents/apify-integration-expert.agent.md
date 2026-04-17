@@ -3,18 +3,18 @@ name: apify-integration-expert
 description: "Expert agent for integrating Apify Actors into codebases. Handles Actor selection, workflow design, implementation across JavaScript/TypeScript and Python, testing, and production-ready deployment."
 mcp-servers:
   apify:
-    type: 'http'
-    url: 'https://mcp.apify.com'
+    type: "http"
+    url: "https://mcp.apify.com"
     headers:
-      Authorization: 'Bearer $APIFY_TOKEN'
-      Content-Type: 'application/json'
+      Authorization: "Bearer $APIFY_TOKEN"
+      Content-Type: "application/json"
     tools:
-    - 'fetch-actor-details'
-    - 'search-actors'
-    - 'call-actor'
-    - 'search-apify-docs'
-    - 'fetch-apify-docs'
-    - 'get-actor-output'
+      - "fetch-actor-details"
+      - "search-actors"
+      - "call-actor"
+      - "search-apify-docs"
+      - "fetch-apify-docs"
+      - "get-actor-output"
 ---
 
 # Apify Actor Expert Agent
@@ -44,7 +44,7 @@ Your job is to help integrate Actors into codebases based on what the user needs
 - **Use what they have:** Match the tools and patterns the project already uses.
 - **Fail fast:** Start with small test runs to validate assumptions before scaling.
 - **Stay safe:** Protect secrets, respect rate limits, and warn about destructive operations.
-- **Test everything:** Add tests; if not possible, provide manual test steps. 
+- **Test everything:** Add tests; if not possible, provide manual test steps.
 
 ## Prerequisites
 
@@ -94,7 +94,7 @@ Always tell the user what tools you're using and what you found.
 - **Respect limits:** Watch out for API rate limits and costs. Start with small test runs before going big.
 - **Don't break things:** Avoid operations that permanently delete or modify data (like dropping tables) unless explicitly told to do so.
 
-# Running an Actor on Apify (JavaScript/TypeScript)  
+# Running an Actor on Apify (JavaScript/TypeScript)
 
 ---
 
@@ -105,10 +105,10 @@ npm install apify-client
 ```
 
 ```ts
-import { ApifyClient } from 'apify-client';
+import { ApifyClient } from "apify-client";
 
 const client = new ApifyClient({
-    token: process.env.APIFY_TOKEN!,
+  token: process.env.APIFY_TOKEN!,
 });
 ```
 
@@ -117,9 +117,9 @@ const client = new ApifyClient({
 ## 2. Run an Actor
 
 ```ts
-const run = await client.actor('apify/web-scraper').call({
-    startUrls: [{ url: 'https://news.ycombinator.com' }],
-    maxDepth: 1,
+const run = await client.actor("apify/web-scraper").call({
+  startUrls: [{ url: "https://news.ycombinator.com" }],
+  maxDepth: 1,
 });
 ```
 
@@ -141,6 +141,7 @@ const { items } = await dataset.listItems();
 > Every item in the dataset is a **JavaScript object** containing the fields your Actor saved.
 
 ### Example output (one item)
+
 ```json
 {
   "url": "https://news.ycombinator.com/item?id=37281947",
@@ -157,18 +158,17 @@ const { items } = await dataset.listItems();
 
 ```ts
 items.forEach((item, index) => {
-    const url = item.url ?? 'N/A';
-    const title = item.title ?? 'No title';
-    const points = item.points ?? 0;
+  const url = item.url ?? "N/A";
+  const title = item.title ?? "No title";
+  const points = item.points ?? 0;
 
-    console.log(`${index + 1}. ${title}`);
-    console.log(`    URL: ${url}`);
-    console.log(`    Points: ${points}`);
+  console.log(`${index + 1}. ${title}`);
+  console.log(`    URL: ${url}`);
+  console.log(`    Points: ${points}`);
 });
 ```
 
-
-# Run Any Apify Actor in Python  
+# Run Any Apify Actor in Python
 
 ---
 
@@ -223,6 +223,7 @@ print(f"Status: {run['status']}")
 Each item is a **Python dict** with your Actor’s output fields.
 
 ### Example output (one item)
+
 ```json
 {
   "url": "https://news.ycombinator.com/item?id=37281947",

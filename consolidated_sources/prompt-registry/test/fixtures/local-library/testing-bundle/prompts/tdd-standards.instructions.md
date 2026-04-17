@@ -21,30 +21,31 @@ Follow Test-Driven Development principles: Write tests first, then implement.
 
 ```javascript
 // ✅ Good: Descriptive, focused
-describe('User Service', () => {
-  describe('createUser', () => {
-    it('should create user with valid data', async () => {
-      const userData = { email: 'test@example.com', name: 'Test' };
+describe("User Service", () => {
+  describe("createUser", () => {
+    it("should create user with valid data", async () => {
+      const userData = { email: "test@example.com", name: "Test" };
       const user = await userService.createUser(userData);
-      expect(user).toHaveProperty('id');
+      expect(user).toHaveProperty("id");
       expect(user.email).toBe(userData.email);
     });
-    
-    it('should throw error when email is invalid', async () => {
-      const userData = { email: 'invalid', name: 'Test' };
-      await expect(userService.createUser(userData))
-        .rejects.toThrow('Invalid email');
+
+    it("should throw error when email is invalid", async () => {
+      const userData = { email: "invalid", name: "Test" };
+      await expect(userService.createUser(userData)).rejects.toThrow(
+        "Invalid email",
+      );
     });
   });
 });
 
 // ❌ Bad: Vague, multiple assertions
-it('should work', async () => {
-  const user = await createUser({ email: 'test@example.com' });
+it("should work", async () => {
+  const user = await createUser({ email: "test@example.com" });
   expect(user).toBeDefined();
-  expect(user.name).toBe('Test');
-  const updated = await updateUser(user.id, { name: 'New' });
-  expect(updated.name).toBe('New');
+  expect(user.name).toBe("Test");
+  const updated = await updateUser(user.id, { name: "New" });
+  expect(updated.name).toBe("New");
 });
 ```
 

@@ -35,6 +35,7 @@ This project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participatin
 ### Quick Start
 
 1. **Fork the repository**
+
    ```bash
    # Click "Fork" on GitHub, then clone your fork
    git clone https://github.com/YOUR_USERNAME/prompt-registry.git
@@ -42,16 +43,19 @@ This project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participatin
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Build the extension**
+
    ```bash
    npm run compile
    ```
 
 4. **Run tests**
+
    ```bash
    npm test
    ```
@@ -67,31 +71,34 @@ This project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participatin
 ### Environment Configuration
 
 1. **TypeScript Compilation**
+
    ```bash
    # Watch mode for development
    npm run watch
-   
+
    # Single compilation
    npm run compile
    ```
 
 2. **Testing**
+
    ```bash
    # Run all tests
    npm run test:all
-   
+
    # Run unit tests only
    npm run test:unit
-   
+
    # Run with coverage
    npm run test:coverage
    ```
 
 3. **Linting**
+
    ```bash
    # Check code style
    npm run lint
-   
+
    # Auto-fix issues
    npm run lint -- --fix
    ```
@@ -144,18 +151,20 @@ prompt-registry/
 
 The extension includes a scaffolding system for creating new prompt projects:
 
-| Scaffold Type | Description | Template Location |
-|--------------|-------------|-------------------|
-| **GitHub** | Full-featured template with GitHub Releases CI for automated collection publishing | `templates/scaffolds/github/` |
-| **APM** | APM package template | `templates/scaffolds/apm/` |
+| Scaffold Type | Description                                                                        | Template Location             |
+| ------------- | ---------------------------------------------------------------------------------- | ----------------------------- |
+| **GitHub**    | Full-featured template with GitHub Releases CI for automated collection publishing | `templates/scaffolds/github/` |
+| **APM**       | APM package template                                                               | `templates/scaffolds/apm/`    |
 
 **GitHub Scaffold Features:**
+
 - GitHub Actions workflows for automated publishing
 - Collection validation scripts
 - Example prompts, instructions, and agents
 - Pre-commit hooks for validation
 
 When contributing to scaffolding:
+
 - Templates use `{{variable}}` syntax for substitution
 - Test changes with `npm run test:unit` (scaffold tests in `test/commands/`)
 - Ensure all generated files are valid and functional
@@ -198,18 +207,18 @@ We welcome all types of contributions:
 ```typescript
 // ✅ Good: Type-safe, clear naming
 export interface Bundle {
-    id: string;
-    name: string;
-    version: string;
+  id: string;
+  name: string;
+  version: string;
 }
 
 async function fetchBundle(bundleId: string): Promise<Bundle> {
-    // Implementation
+  // Implementation
 }
 
 // ❌ Bad: Any types, unclear names
 async function fetch(id: any): Promise<any> {
-    // Implementation
+  // Implementation
 }
 ```
 
@@ -224,44 +233,47 @@ async function fetch(id: any): Promise<any> {
 ### Code Organization
 
 1. **Imports**: Group by external, internal, types
+
    ```typescript
    // External
-   import * as vscode from 'vscode';
-   import axios from 'axios';
-   
+   import * as vscode from "vscode";
+   import axios from "axios";
+
    // Internal
-   import { Logger } from '../utils/logger';
-   
+   import { Logger } from "../utils/logger";
+
    // Types
-   import { Bundle } from '../types/registry';
+   import { Bundle } from "../types/registry";
    ```
 
 2. **Exports**: Prefer named exports
+
    ```typescript
    // ✅ Good
-   export class GitHubAdapter { }
-   export function parseManifest() { }
-   
+   export class GitHubAdapter {}
+   export function parseManifest() {}
+
    // ❌ Avoid (unless single export)
-   export default class GitHubAdapter { }
+   export default class GitHubAdapter {}
    ```
 
 3. **Error Handling**: Always use try-catch for async
    ```typescript
    async function fetchData(): Promise<void> {
-       try {
-           const data = await api.fetch();
-           // Process data
-       } catch (error) {
-           logger.error('Failed to fetch', error as Error);
-           throw new Error('Fetch failed');
-       }
+     try {
+       const data = await api.fetch();
+       // Process data
+     } catch (error) {
+       logger.error("Failed to fetch", error as Error);
+       throw new Error("Fetch failed");
+     }
    }
    ```
 
 ### Documentation
 
 1. **JSDoc Comments**: For public APIs
+
    ```typescript
    /**
     * Fetches bundles from a registry source
@@ -277,7 +289,7 @@ async function fetch(id: any): Promise<any> {
 2. **Inline Comments**: For complex logic
    ```typescript
    // Use path.join for cross-platform compatibility
-   const bundlePath = path.join(baseDir, 'bundles', bundleId);
+   const bundlePath = path.join(baseDir, "bundles", bundleId);
    ```
 
 ---
@@ -287,22 +299,24 @@ async function fetch(id: any): Promise<any> {
 ### Test Structure
 
 ```typescript
-import * as assert from 'assert';
-import { GitHubAdapter } from '../../src/adapters/GitHubAdapter';
+import * as assert from "assert";
+import { GitHubAdapter } from "../../src/adapters/GitHubAdapter";
 
-suite('GitHubAdapter', () => {
-    suite('Constructor', () => {
-        test('should accept valid URL', () => {
-            const adapter = new GitHubAdapter({ url: 'https://github.com/user/repo' });
-            assert.ok(adapter);
-        });
-        
-        test('should reject invalid URL', () => {
-            assert.throws(() => {
-                new GitHubAdapter({ url: 'invalid' });
-            });
-        });
+suite("GitHubAdapter", () => {
+  suite("Constructor", () => {
+    test("should accept valid URL", () => {
+      const adapter = new GitHubAdapter({
+        url: "https://github.com/user/repo",
+      });
+      assert.ok(adapter);
     });
+
+    test("should reject invalid URL", () => {
+      assert.throws(() => {
+        new GitHubAdapter({ url: "invalid" });
+      });
+    });
+  });
 });
 ```
 
@@ -387,7 +401,7 @@ and error handling.
 ### Guidelines
 
 - **Subject**: 50 chars max, imperative mood ("add" not "added")
-- **Body**: Wrap at 72 chars, explain *what* and *why*
+- **Body**: Wrap at 72 chars, explain _what_ and _why_
 - **Footer**: Reference issues (`Closes #123`, `Fixes #456`)
 
 ---
@@ -397,12 +411,14 @@ and error handling.
 ### Before Submitting
 
 1. **Update from main**
+
    ```bash
    git fetch upstream
    git rebase upstream/main
    ```
 
 2. **Run all checks**
+
    ```bash
    npm run lint
    npm run compile
@@ -417,20 +433,24 @@ and error handling.
 
 ```markdown
 ## Description
+
 Brief description of changes
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Testing
+
 - [ ] Unit tests added/updated
 - [ ] Manual testing completed
 - [ ] All tests passing
 
 ## Checklist
+
 - [ ] Code follows style guidelines
 - [ ] Self-review completed
 - [ ] Comments added for complex code
@@ -502,12 +522,15 @@ We use [Semantic Versioning](https://semver.org/):
 ### Common Issues
 
 **Issue**: "Cannot find module 'vscode'"
+
 - **Solution**: Run `npm install`, ensure you're in VS Code
 
 **Issue**: Tests failing with "suite is not defined"
+
 - **Solution**: Check test file uses correct mocha setup
 
 **Issue**: Extension not loading
+
 - **Solution**: Check `package.json` activation events, rebuild
 
 ### Performance Considerations
@@ -537,6 +560,7 @@ We use [Semantic Versioning](https://semver.org/):
 ### Recognition
 
 Contributors are recognized in:
+
 - GitHub contributors page
 - Release notes
 - Project README (major contributors)
@@ -548,6 +572,7 @@ Contributors are recognized in:
 ### Contributor License Agreement
 
 By contributing, you agree that:
+
 - Your contributions are your own work
 - You grant us rights to use your contribution
 - Your contribution is licensed under the Apache License 2.0

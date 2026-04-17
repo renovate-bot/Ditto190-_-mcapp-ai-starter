@@ -49,7 +49,7 @@ interface ComponentNameProps {
 
 /**
  * ComponentName - Brief description
- * 
+ *
  * @param props - Component properties
  * @returns React component
  */

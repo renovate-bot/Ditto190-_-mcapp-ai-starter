@@ -1,97 +1,84 @@
 {
-    "servers": {
-        "io.github.github/github-mcp-server": {
-            "type": "http",
-            "url": "https://api.githubcopilot.com/mcp/",
-            "headers": {
-                "Authorization": "${input:Authorization}"
-            }
-        },
-        "github": {
-            "type": "http",
-            "url": "https://api.githubcopilot.com/mcp/"
-        },
-        "github_support_docs_search": {
-            "type": "http",
-            "url": "https://api.githubcopilot.com/mcp/x/github_support_docs_search"
-        },
-        "com.supabase/mcp": {
-            "type": "http",
-            "url": "https://mcp.supabase.com/mcp"
-        },
-        "io.github.upstash/context7": {
-            "type": "stdio",
-            "command": "npx",
-            "args": [
-                "@upstash/context7-mcp@1.0.31"
-            ],
-            "env": {
-                "CONTEXT7_API_KEY": "${input:CONTEXT7_API_KEY}"
-            }
-        },
-        "sequentialthinking": {
-            "type": "stdio",
-            "command": "npx",
-            "args": [
-                "-y",
-                "@modelcontextprotocol/server-sequential-thinking"
-            ]
-        },
-        "memory": {
-            "type": "stdio",
-            "command": "npx",
-            "args": [
-                "-y",
-                "@modelcontextprotocol/server-memory"
-            ]
-        },
-        "time": {
-            "type": "stdio",
-            "command": "uvx",
-            "args": [
-                "mcp-server-time"
-            ]
-        },
-        "contextstream": {
-            "type": "stdio",
-            "command": "npx",
-            "args": [
-                "-y",
-                "@contextstream/mcp-server@0.4.63"
-            ],
-            "env": {
-                "CONTEXTSTREAM_API_URL": "https://api.contextstream.io",
-                "CONTEXTSTREAM_API_KEY": "${input:CONTEXTSTREAM_API_KEY}",
-                "NODE_OPTIONS": "--max-old-space-size=4096"
-            }
-        },
-        "awesome-copilot": {
-            "type": "stdio",
-            "command": "bash",
-            "args": [
-                "-lc",
-                "if [ ! -d /workspaces/mcp-dotnet-samples ]; then git clone https://github.com/microsoft/mcp-dotnet-samples /workspaces/mcp-dotnet-samples; fi && dotnet run --project /workspaces/mcp-dotnet-samples/awesome-copilot/src/McpSamples.AwesomeCopilot.HybridApp --no-launch-profile"
-            ]
-        }
+  "servers": {
+    "io.github.github/github-mcp-server": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "${input:Authorization}"
+      }
     },
-    "inputs": [
-        {
-            "id": "Authorization",
-            "type": "promptString",
-            "description": "GitHub Personal Access Token (PAT) or GitHub App installation token for authentication",
-            "password": true
-        },
-        {
-            "id": "CONTEXT7_API_KEY",
-            "type": "promptString",
-            "description": "API key for Context7 authentication",
-            "password": true
-        },
-        {
-            "id": "CONTEXTSTREAM_API_KEY",
-            "type": "promptString",
-            "description": "API key for ContextStream authentication",
-            "password": true
-        }
-    ]
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "github_support_docs_search": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/x/github_support_docs_search"
+    },
+    "com.supabase/mcp": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp"
+    },
+    "io.github.upstash/context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@upstash/context7-mcp@1.0.31"],
+      "env": {
+        "CONTEXT7_API_KEY": "${input:CONTEXT7_API_KEY}"
+      }
+    },
+    "sequentialthinking": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "memory": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "time": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp-server-time"]
+    },
+    "contextstream": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@contextstream/mcp-server@0.4.63"],
+      "env": {
+        "CONTEXTSTREAM_API_URL": "https://api.contextstream.io",
+        "CONTEXTSTREAM_API_KEY": "${input:CONTEXTSTREAM_API_KEY}",
+        "NODE_OPTIONS": "--max-old-space-size=4096"
+      }
+    },
+    "awesome-copilot": {
+      "type": "stdio",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "if [ ! -d /workspaces/mcp-dotnet-samples ]; then git clone https://github.com/microsoft/mcp-dotnet-samples /workspaces/mcp-dotnet-samples; fi && dotnet run --project /workspaces/mcp-dotnet-samples/awesome-copilot/src/McpSamples.AwesomeCopilot.HybridApp --no-launch-profile"
+      ]
+    }
+  },
+  "inputs": [
+    {
+      "id": "Authorization",
+      "type": "promptString",
+      "description": "GitHub Personal Access Token (PAT) or GitHub App installation token for authentication",
+      "password": true
+    },
+    {
+      "id": "CONTEXT7_API_KEY",
+      "type": "promptString",
+      "description": "API key for Context7 authentication",
+      "password": true
+    },
+    {
+      "id": "CONTEXTSTREAM_API_KEY",
+      "type": "promptString",
+      "description": "API key for ContextStream authentication",
+      "password": true
+    }
+  ]
 }

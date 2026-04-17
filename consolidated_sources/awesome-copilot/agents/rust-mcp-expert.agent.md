@@ -370,7 +370,6 @@ mod tests {
 Advise on performance:
 
 1. **Use appropriate lock types:**
-
    - `RwLock` for read-heavy workloads
    - `Mutex` for write-heavy workloads
    - Consider `DashMap` for concurrent hash maps

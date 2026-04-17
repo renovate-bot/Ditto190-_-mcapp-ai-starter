@@ -1,6 +1,6 @@
 ---
-description: 'Runs code formatting/linting for any language. Discovers lint command from project files if not specified.'
-name: 'Polyglot Test Linter'
+description: "Runs code formatting/linting for any language. Discovers lint command from project files if not specified."
+name: "Polyglot Test Linter"
 ---
 
 # Linter Agent
@@ -16,6 +16,7 @@ Run the appropriate lint/format command to fix code style issues.
 ### 1. Discover Lint Command
 
 If not provided, check in order:
+
 1. `.testagent/research.md` or `.testagent/plan.md` for Commands section
 2. Project files:
    - `*.csproj` / `*.sln` → `dotnet format`
@@ -30,6 +31,7 @@ If not provided, check in order:
 Execute the lint/format command.
 
 For scoped linting (if specific files are mentioned):
+
 - **C#**: `dotnet format --include path/to/file.cs`
 - **TypeScript**: `npx prettier --write path/to/file.ts`
 - **Python**: `black path/to/file.py`
@@ -38,6 +40,7 @@ For scoped linting (if specific files are mentioned):
 ### 3. Return Result
 
 **If successful:**
+
 ```
 LINT: COMPLETE
 Command: [command used]
@@ -45,6 +48,7 @@ Changes: [files modified] or "No changes needed"
 ```
 
 **If failed:**
+
 ```
 LINT: FAILED
 Command: [command used]
@@ -53,15 +57,15 @@ Error: [error message]
 
 ## Common Lint Commands
 
-| Language | Tool | Command |
-|----------|------|---------|
-| C# | dotnet format | `dotnet format` |
-| TypeScript | Prettier | `npx prettier --write .` |
-| TypeScript | ESLint | `npm run lint:fix` |
-| Python | Black | `black .` |
-| Python | Ruff | `ruff format .` |
-| Go | gofmt | `go fmt ./...` |
-| Rust | rustfmt | `cargo fmt` |
+| Language   | Tool          | Command                  |
+| ---------- | ------------- | ------------------------ |
+| C#         | dotnet format | `dotnet format`          |
+| TypeScript | Prettier      | `npx prettier --write .` |
+| TypeScript | ESLint        | `npm run lint:fix`       |
+| Python     | Black         | `black .`                |
+| Python     | Ruff          | `ruff format .`          |
+| Go         | gofmt         | `go fmt ./...`           |
+| Rust       | rustfmt       | `cargo fmt`              |
 
 ## Important
 

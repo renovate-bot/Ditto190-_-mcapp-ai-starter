@@ -27,7 +27,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Full history needed for git-based last updated dates
+          fetch-depth: 0 # Full history needed for git-based last updated dates
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

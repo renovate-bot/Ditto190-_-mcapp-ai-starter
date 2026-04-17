@@ -1,10 +1,10 @@
 ---
-title: 'GitHub Copilot Terminology Glossary'
-description: 'A quick reference guide defining common GitHub Copilot and platform-specific terms.'
+title: "GitHub Copilot Terminology Glossary"
+description: "A quick reference guide defining common GitHub Copilot and platform-specific terms."
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: '2025-12-15'
-estimatedReadingTime: '8 minutes'
+lastUpdated: "2025-12-15"
+estimatedReadingTime: "8 minutes"
 tags:
   - glossary
   - terminology
@@ -81,6 +81,7 @@ See [Instruction](#instruction). The term "custom" emphasizes that these are use
 YAML metadata placed at the beginning of Markdown files (between `---` delimiters) that provides structured information about the file and controls its behavior. In this repository, front matter typically includes fields like `name`, `description`, `mode`, `model`, `tools`, and `applyTo`.
 
 The front matter is what controls:
+
 - **Tool access**: Which built-in and MCP tools the customization can use
 - **Model selection**: Which AI model powers the customization
 - **Scope**: Where the customization applies (e.g., `applyTo` patterns for instructions)
@@ -88,12 +89,13 @@ The front matter is what controls:
 **Note**: Not all fields are common across all customization types. Refer to the specific documentation for agents, skills, or instructions to see which fields apply to each type.
 
 **Example**:
+
 ```yaml
 ---
-name: 'React Component Generator'
-description: 'Generate modern React components with TypeScript'
-mode: 'agent'
-tools: ['codebase']
+name: "React Component Generator"
+description: "Generate modern React components with TypeScript"
+mode: "agent"
+tools: ["codebase"]
 ---
 ```
 
@@ -108,6 +110,7 @@ An emerging industry standard file format for defining portable AI coding instru
 Unlike tool-specific customization files (`.agent.md`, `.prompt.md`, `.instructions.md`), `AGENTS.md` aims to provide a standardized, platform-agnostic way to define AI behavior that can be consumed by multiple tools.
 
 **Key characteristics**:
+
 - Platform-agnostic format for cross-tool compatibility
 - Typically contains project context, coding standards, and architectural guidelines
 - Located at repository root or in `.github/` directory
@@ -155,6 +158,7 @@ If you have existing prompts, consider migrating them to skills. See [Creating E
 A self-contained folder containing a `SKILL.md` file and optional bundled assets (reference documents, templates, scripts) that packages a reusable capability for GitHub Copilot. Skills follow the open [Agent Skills specification](https://agentskills.io/home) and can be invoked by users via `/command` or discovered and invoked by agents automatically.
 
 **Key advantages**:
+
 - **Agent discovery**: Extended frontmatter lets agents find and invoke skills automatically
 - **Bundled assets**: Reference files, templates, and scripts provide richer context
 - **Cross-platform**: Portable across coding agent systems via the Agent Skills specification
@@ -200,6 +204,7 @@ A shell command or script that runs automatically in response to lifecycle event
 The autonomous GitHub Copilot agent that works on issues in a cloud environment without continuous human guidance. You assign an issue to Copilot, it spins up a dev environment, implements a solution, runs tests, and opens a pull request for review.
 
 **Key characteristics**:
+
 - Runs in an isolated cloud environment
 - Uses your repository's instructions, agents, skills, and hooks
 - Always produces a PR—it can't merge or deploy
@@ -237,8 +242,9 @@ Capabilities that GitHub Copilot can invoke to perform actions or retrieve infor
 Agents and skills can specify which tools they require or recommend in their front matter.
 
 **Example front matter**:
+
 ```yaml
-tools: ['codebase', 'terminalCommand', 'github']
+tools: ["codebase", "terminalCommand", "github"]
 ```
 
 **Related terms**: [MCP](#mcp-model-context-protocol), [Built-in Tool](#built-in-tool), [Agent](#agent)

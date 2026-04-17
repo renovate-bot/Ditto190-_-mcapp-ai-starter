@@ -1,5 +1,5 @@
 ---
-applyTo: ['*']
+applyTo: ["*"]
 description: "Comprehensive best practices for adopting new Java 21 features since the release of Java 17."
 ---
 
@@ -14,9 +14,11 @@ These instructions help GitHub Copilot assist developers in upgrading Java proje
 **Enhanced switch Expressions and Statements**
 
 When working with switch constructs:
+
 - Suggest converting traditional switch to pattern matching where appropriate
 - Use pattern matching for type checking and destructuring
 - Example upgrade patterns:
+
 ```java
 // Old approach (Java 17)
 public String processObject(Object obj) {
@@ -42,6 +44,7 @@ public String processObject(Object obj) {
 ```
 
 - Support guarded patterns:
+
 ```java
 switch (obj) {
     case String s when s.length() > 10 -> "Long string: " + s;
@@ -57,9 +60,11 @@ switch (obj) {
 **Destructuring Records in Pattern Matching**
 
 When working with records:
+
 - Suggest using record patterns for destructuring
 - Combine with switch expressions for powerful data processing
 - Example usage:
+
 ```java
 public record Point(int x, int y) {}
 public record ColoredPoint(Point point, Color color) {}
@@ -68,7 +73,7 @@ public record ColoredPoint(Point point, Color color) {}
 public String describe(Object obj) {
     return switch (obj) {
         case Point(var x, var y) -> "Point at (" + x + ", " + y + ")";
-        case ColoredPoint(Point(var x, var y), var color) -> 
+        case ColoredPoint(Point(var x, var y), var color) ->
             "Colored point at (" + x + ", " + y + ") in " + color;
         default -> "Unknown shape";
     };
@@ -76,11 +81,12 @@ public String describe(Object obj) {
 ```
 
 - Use in complex pattern matching:
+
 ```java
 // Nested record patterns
 switch (shape) {
-    case Rectangle(ColoredPoint(Point(var x1, var y1), var c1), 
-                   ColoredPoint(Point(var x2, var y2), var c2)) 
+    case Rectangle(ColoredPoint(Point(var x1, var y1), var c1),
+                   ColoredPoint(Point(var x2, var y2), var c2))
         when c1 == c2 -> "Monochrome rectangle";
     case Rectangle r -> "Multi-colored rectangle";
 }
@@ -91,9 +97,11 @@ switch (shape) {
 **Lightweight Concurrency**
 
 When working with concurrency:
+
 - Suggest Virtual Threads for high-throughput, concurrent applications
 - Use `Thread.ofVirtual()` for creating virtual threads
 - Example migration patterns:
+
 ```java
 // Old platform thread approach
 ExecutorService executor = Executors.newFixedThreadPool(100);
@@ -112,15 +120,16 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 ```
 
 - Use structured concurrency patterns:
+
 ```java
 // Structured concurrency (Preview)
 try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
     Future<String> user = scope.fork(() -> fetchUser(userId));
     Future<String> order = scope.fork(() -> fetchOrder(orderId));
-    
+
     scope.join();           // Join all subtasks
     scope.throwIfFailed();  // Propagate errors
-    
+
     return processResults(user.resultNow(), order.resultNow());
 }
 ```
@@ -130,9 +139,11 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
 **Safe String Interpolation**
 
 When working with string formatting:
+
 - Suggest String Templates for safe string interpolation (preview feature)
 - Enable preview features with `--enable-preview`
 - Example usage:
+
 ```java
 // Traditional concatenation
 String message = "Hello, " + name + "! You have " + count + " messages.";
@@ -143,7 +154,7 @@ String message = STR."Hello, \{name}! You have \{count} messages.";
 // Safe HTML generation
 String html = HTML."<p>User: \{username}</p>";
 
-// Safe SQL queries  
+// Safe SQL queries
 PreparedStatement stmt = SQL."SELECT * FROM users WHERE id = \{userId}";
 ```
 
@@ -152,9 +163,11 @@ PreparedStatement stmt = SQL."SELECT * FROM users WHERE id = \{userId}";
 **Enhanced Collection Interfaces**
 
 When working with collections:
+
 - Use new `SequencedCollection`, `SequencedSet`, `SequencedMap` interfaces
 - Access first/last elements uniformly across collection types
 - Example usage:
+
 ```java
 // New methods available on Lists, Deques, LinkedHashSet, etc.
 List<String> list = List.of("first", "middle", "last");
@@ -174,9 +187,11 @@ String firstElement = set.getFirst();
 **Simplified Pattern Matching**
 
 When working with pattern matching:
+
 - Use unnamed patterns `_` for values you don't need
 - Simplify switch expressions and record patterns
 - Example usage:
+
 ```java
 // Ignore unused variables
 switch (ball) {
@@ -204,9 +219,11 @@ try {
 **Improved Context Propagation**
 
 When working with thread-local data:
+
 - Consider Scoped Values as a modern alternative to ThreadLocal
 - Better performance and clearer semantics for virtual threads
 - Example usage:
+
 ```java
 // Define scoped value
 private static final ScopedValue<String> USER_ID = ScopedValue.newInstance();
@@ -229,9 +246,11 @@ public void processRequest() {
 ### UTF-8 by Default (JEP 400 - Standard in 18)
 
 When working with file I/O:
+
 - UTF-8 is now the default charset on all platforms
 - Remove explicit charset specifications where UTF-8 was intended
 - Example simplification:
+
 ```java
 // Old explicit UTF-8 specification
 Files.readString(path, StandardCharsets.UTF_8);
@@ -245,9 +264,11 @@ Files.writeString(path, content);  // Uses UTF-8 by default
 ### Simple Web Server (JEP 408 - Standard in 18)
 
 When needing basic HTTP server:
+
 - Use built-in `jwebserver` command or `com.sun.net.httpserver` enhancements
 - Great for testing and development
 - Example usage:
+
 ```java
 // Command line
 $ jwebserver -p 8080 -d /path/to/files
@@ -261,14 +282,17 @@ server.start();
 ### Internet-Address Resolution SPI (JEP 418 - Standard in 19)
 
 When working with custom DNS resolution:
+
 - Implement `InetAddressResolverProvider` for custom address resolution
 - Useful for service discovery and testing scenarios
 
 ### Key Encapsulation Mechanism API (JEP 452 - Standard in 21)
 
 When working with post-quantum cryptography:
+
 - Use KEM API for key encapsulation mechanisms
 - Example usage:
+
 ```java
 KeyPairGenerator kpg = KeyPairGenerator.getInstance("ML-KEM");
 KeyPair kp = kpg.generateKeyPair();
@@ -283,9 +307,11 @@ KEM.Encapsulated encapsulated = encapsulator.encapsulate();
 ### Finalization Deprecation (JEP 421 - Deprecated in 18)
 
 When encountering `finalize()` methods:
+
 - Remove finalize methods and use alternatives
 - Suggest Cleaner API or try-with-resources
 - Example migration:
+
 ```java
 // Deprecated finalize approach
 @Override
@@ -302,11 +328,11 @@ public MyResource() {
 
 private static class CleanupTask implements Runnable {
     private final long nativeResource;
-    
+
     CleanupTask(long nativeResource) {
         this.nativeResource = nativeResource;
     }
-    
+
     public void run() {
         cleanup(nativeResource);
     }
@@ -316,6 +342,7 @@ private static class CleanupTask implements Runnable {
 ### Dynamic Agent Loading (JEP 451 - Warnings in 21)
 
 When working with agents or instrumentation:
+
 - Add `-XX:+EnableDynamicAgentLoading` to suppress warnings if needed
 - Consider loading agents at startup instead of dynamically
 - Update tooling to use startup agent loading
@@ -325,8 +352,10 @@ When working with agents or instrumentation:
 ### Preview Features
 
 For projects using preview features:
+
 - Add `--enable-preview` to compiler and runtime
 - Maven configuration:
+
 ```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
@@ -349,6 +378,7 @@ For projects using preview features:
 ```
 
 - Gradle configuration:
+
 ```kotlin
 java {
     toolchain {
@@ -368,8 +398,10 @@ tasks.withType<Test> {
 ### Virtual Threads Configuration
 
 For applications using Virtual Threads:
+
 - No special JVM flags required (standard feature in 21)
 - Consider these system properties for debugging:
+
 ```bash
 -Djdk.virtualThreadScheduler.parallelism=N  # Set carrier thread count
 -Djdk.virtualThreadScheduler.maxPoolSize=N  # Set max pool size
@@ -380,6 +412,7 @@ For applications using Virtual Threads:
 ### Generational ZGC (JEP 439 - Available in 21)
 
 When configuring garbage collection:
+
 - Try Generational ZGC for better performance
 - Enable with: `-XX:+UseZGC -XX:+ZGenerational`
 - Monitor allocation patterns and GC behavior
@@ -389,7 +422,7 @@ When configuring garbage collection:
 ### Step-by-Step Upgrade Process
 
 1. **Update Build Tools**: Ensure Maven/Gradle supports JDK 21
-2. **Language Feature Adoption**: 
+2. **Language Feature Adoption**:
    - Start with pattern matching for switch (standard)
    - Add record patterns where beneficial
    - Consider Virtual Threads for I/O heavy applications
@@ -400,6 +433,7 @@ When configuring garbage collection:
 ### Code Review Checklist
 
 When reviewing code for Java 21 upgrade:
+
 - [ ] Convert appropriate instanceof chains to switch expressions
 - [ ] Use record patterns for data destructuring
 - [ ] Replace ThreadLocal with ScopedValues where appropriate
@@ -412,6 +446,7 @@ When reviewing code for Java 21 upgrade:
 ### Common Migration Patterns
 
 1. **Switch Enhancement**:
+
    ```java
    // From instanceof chains to switch expressions
    if (obj instanceof String s) return processString(s);
@@ -425,6 +460,7 @@ When reviewing code for Java 21 upgrade:
    ```
 
 2. **Virtual Thread Adoption**:
+
    ```java
    // From platform threads to virtual threads
    Executors.newFixedThreadPool(200)

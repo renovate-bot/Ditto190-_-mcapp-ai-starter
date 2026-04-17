@@ -13,14 +13,14 @@ copilot plugin install technical-spike@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                   | Description                                                                                                                     |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `/technical-spike:create-technical-spike` | Create time-boxed technical spike documents for researching and resolving critical development decisions before implementation. |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent                      | Description                                                                                                                     |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `research-technical-spike` | Systematically research and validate technical spike documents through exhaustive investigation and controlled experimentation. |
 
 ## Source

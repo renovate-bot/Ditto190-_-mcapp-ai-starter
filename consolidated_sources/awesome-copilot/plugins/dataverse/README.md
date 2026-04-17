@@ -13,8 +13,8 @@ copilot plugin install dataverse@awesome-copilot
 
 ### Skills
 
-| Skill | Description |
-|-------|-------------|
+| Skill                      | Description                                                                                |
+| -------------------------- | ------------------------------------------------------------------------------------------ |
 | `/dataverse:mcp-configure` | Configure Dataverse MCP server for GitHub Copilot with global or project-scoped settings.. |
 
 ## Source

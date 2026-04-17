@@ -1,10 +1,10 @@
 ---
-title: 'Automating with Hooks'
-description: 'Learn how to use hooks to automate lifecycle events like formatting, linting, and governance checks during Copilot agent sessions.'
+title: "Automating with Hooks"
+description: "Learn how to use hooks to automate lifecycle events like formatting, linting, and governance checks during Copilot agent sessions."
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: '2026-02-26'
-estimatedReadingTime: '8 minutes'
+lastUpdated: "2026-02-26"
+estimatedReadingTime: "8 minutes"
 tags:
   - hooks
   - automation
@@ -25,6 +25,7 @@ This article explains how hooks work, how to configure them, and practical patte
 Hooks are shell commands or scripts that run automatically in response to lifecycle events during a Copilot agent session. They execute outside the AI model, they're deterministic, repeatable, and under your full control.
 
 **Key characteristics**:
+
 - Hooks run as shell commands on the user's machine
 - They execute synchronously—the agent waits for them to complete
 - They can block actions (e.g., prevent commits that fail linting)
@@ -34,14 +35,14 @@ Hooks are shell commands or scripts that run automatically in response to lifecy
 
 ### When to Use Hooks vs Other Customizations
 
-| Use Case | Best Tool |
-|----------|-----------|
-| Run a linter after every code change | **Hook** |
-| Teach Copilot your coding standards | **Instruction** |
-| Automate a multi-step workflow | **Skill** or **Agent** |
-| Scan prompts for sensitive data | **Hook** |
-| Format code before committing | **Hook** |
-| Generate tests for new code | **Skill** |
+| Use Case                             | Best Tool              |
+| ------------------------------------ | ---------------------- |
+| Run a linter after every code change | **Hook**               |
+| Teach Copilot your coding standards  | **Instruction**        |
+| Automate a multi-step workflow       | **Skill** or **Agent** |
+| Scan prompts for sensitive data      | **Hook**               |
+| Format code before committing        | **Hook**               |
+| Generate tests for new code          | **Skill**              |
 
 Hooks are ideal for **deterministic automation** that must happen reliably—things you don't want to depend on the AI remembering to do.
 
@@ -59,7 +60,6 @@ hooks/
 ```
 
 > Note: Not all of these files are required for a generalised hook implementation. In your own repository, hooks are stored as JSON files in `.github/hooks/` (e.g., `.github/hooks/my-hook.json`). The folder structure above with README.md is specific to the Awesome Copilot repository for documentation purposes.
-
 
 ### hooks.json
 
@@ -85,16 +85,16 @@ The configuration defines which events trigger which commands:
 
 Hooks can trigger on several lifecycle events:
 
-| Event | When It Fires | Common Use Cases |
-|-------|---------------|------------------|
-| `sessionStart` | Agent session begins or resumes | Initialize environments, log session starts, validate project state |
-| `sessionEnd` | Agent session completes or is terminated | Clean up temp files, generate reports, send notifications |
-| `userPromptSubmitted` | User submits a prompt | Log requests for auditing and compliance |
-| `preToolUse` | Before the agent uses any tool (e.g., `bash`, `edit`) | **Approve or deny** tool executions, block dangerous commands, enforce security policies |
-| `postToolUse` | After a tool completes execution | Log results, track usage, format code after edits, send failure alerts |
-| `agentStop` | Main agent finishes responding to a prompt | Run final linters/formatters, validate complete changes |
-| `subagentStop` | A subagent completes before returning results | Audit subagent outputs, log subagent activity |
-| `errorOccurred` | An error occurs during agent execution | Log errors for debugging, send notifications, track error patterns |
+| Event                 | When It Fires                                         | Common Use Cases                                                                         |
+| --------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `sessionStart`        | Agent session begins or resumes                       | Initialize environments, log session starts, validate project state                      |
+| `sessionEnd`          | Agent session completes or is terminated              | Clean up temp files, generate reports, send notifications                                |
+| `userPromptSubmitted` | User submits a prompt                                 | Log requests for auditing and compliance                                                 |
+| `preToolUse`          | Before the agent uses any tool (e.g., `bash`, `edit`) | **Approve or deny** tool executions, block dangerous commands, enforce security policies |
+| `postToolUse`         | After a tool completes execution                      | Log results, track usage, format code after edits, send failure alerts                   |
+| `agentStop`           | Main agent finishes responding to a prompt            | Run final linters/formatters, validate complete changes                                  |
+| `subagentStop`        | A subagent completes before returning results         | Audit subagent outputs, log subagent activity                                            |
+| `errorOccurred`       | An error occurs during agent execution                | Log errors for debugging, send notifications, track error patterns                       |
 
 > **Key insight**: The `preToolUse` hook is the most powerful — it can **approve or deny** individual tool executions. This enables fine-grained security policies like blocking specific shell commands or requiring approval for sensitive file operations.
 
@@ -133,9 +133,9 @@ The README provides metadata and documentation for the Awesome Copilot repositor
 
 ```markdown
 ---
-name: 'Auto Format'
-description: 'Automatically formats code using project formatters before commits'
-tags: ['formatting', 'code-quality']
+name: "Auto Format"
+description: "Automatically formats code using project formatters before commits"
+tags: ["formatting", "code-quality"]
 ---
 
 # Auto Format
@@ -308,6 +308,7 @@ echo "Pre-commit checks passed ✅"
 ```
 
 **Tips for hook scripts**:
+
 - Use `set -euo pipefail` to fail fast on errors
 - Keep scripts focused—one responsibility per script
 - Make scripts executable: `chmod +x scripts/pre-commit-check.sh`

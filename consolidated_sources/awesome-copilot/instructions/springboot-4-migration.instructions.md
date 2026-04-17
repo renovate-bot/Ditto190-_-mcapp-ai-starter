@@ -10,6 +10,7 @@ applyTo: "**/*.java, **/*.kt, **/build.gradle.kts, **/build.gradle, **/settings.
 This guide provides comprehensive GitHub Copilot instructions for upgrading Spring Boot projects from version 3.x to 4.0, with emphasis on Gradle Kotlin DSL, version catalogs (`libs.versions.toml`), and Kotlin-specific considerations.
 
 **Key architectural changes in Spring Boot 4.0:**
+
 - Modular dependency structure with focused, smaller modules
 - Spring Framework 7.x required
 - Jakarta EE 11 (Servlet 6.1 baseline)
@@ -61,6 +62,7 @@ Remove all deprecated API usage from Spring Boot 3.x. These will be compilation 
 ### 3. Review Dependency Changes
 
 Compare your dependencies against:
+
 - [Spring Boot 3.5.x Dependency Versions](https://docs.spring.io/spring-boot/3.5/appendix/dependency-versions/coordinates.html)
 - [Spring Boot 4.0.x Dependency Versions](https://docs.spring.io/spring-boot/4.0/appendix/dependency-versions/coordinates.html)
 
@@ -81,6 +83,7 @@ Most technologies covered by Spring Boot now have **dedicated test starter compa
 **Complete Starter Reference:** For comprehensive tables of all available starters (Core, Web, Database, Spring Data, Messaging, Security, Templating, Production-Ready, etc.) and their test companions, refer to the [official Spring Boot 4.0 Migration Guide](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-4.0-Migration-Guide#starters).
 
 **libs.versions.toml:**
+
 ```toml
 [versions]
 springBoot = "4.0.0"
@@ -98,6 +101,7 @@ spring-boot-starter-security-test = { module = "org.springframework.boot:spring-
 ```
 
 **build.gradle.kts:**
+
 ```kotlin
 dependencies {
     implementation(libs.spring.boot.starter.webmvc)
@@ -115,6 +119,7 @@ dependencies {
 For rapid migration, use **classic starters** that bundle all auto-configuration (like Spring Boot 3.x):
 
 **libs.versions.toml:**
+
 ```toml
 [libraries]
 spring-boot-starter-classic = { module = "org.springframework.boot:spring-boot-starter-classic", version.ref = "springBoot" }
@@ -122,6 +127,7 @@ spring-boot-starter-test-classic = { module = "org.springframework.boot:spring-b
 ```
 
 **build.gradle.kts:**
+
 ```kotlin
 dependencies {
     implementation(libs.spring.boot.starter.classic)
@@ -136,6 +142,7 @@ dependencies {
 For explicit control over transitive dependencies:
 
 **libs.versions.toml:**
+
 ```toml
 [libraries]
 spring-boot-webmvc = { module = "org.springframework.boot:spring-boot-webmvc", version.ref = "springBoot" }
@@ -146,16 +153,17 @@ spring-boot-webmvc-test = { module = "org.springframework.boot:spring-boot-webmv
 
 Update these starter names in your `libs.versions.toml`:
 
-| Spring Boot 3.x | Spring Boot 4.0 | Notes |
-|----------------|-----------------|-------|
-| `spring-boot-starter-web` | `spring-boot-starter-webmvc` | Explicit naming |
-| `spring-boot-starter-web-services` | `spring-boot-starter-webservices` | Hyphen removed |
-| `spring-boot-starter-aop` | `spring-boot-starter-aspectj` | Only needed if using `org.aspectj.lang.annotation` |
-| `spring-boot-starter-oauth2-authorization-server` | `spring-boot-starter-security-oauth2-authorization-server` | Security namespace |
-| `spring-boot-starter-oauth2-client` | `spring-boot-starter-security-oauth2-client` | Security namespace |
-| `spring-boot-starter-oauth2-resource-server` | `spring-boot-starter-security-oauth2-resource-server` | Security namespace |
+| Spring Boot 3.x                                   | Spring Boot 4.0                                            | Notes                                              |
+| ------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------- |
+| `spring-boot-starter-web`                         | `spring-boot-starter-webmvc`                               | Explicit naming                                    |
+| `spring-boot-starter-web-services`                | `spring-boot-starter-webservices`                          | Hyphen removed                                     |
+| `spring-boot-starter-aop`                         | `spring-boot-starter-aspectj`                              | Only needed if using `org.aspectj.lang.annotation` |
+| `spring-boot-starter-oauth2-authorization-server` | `spring-boot-starter-security-oauth2-authorization-server` | Security namespace                                 |
+| `spring-boot-starter-oauth2-client`               | `spring-boot-starter-security-oauth2-client`               | Security namespace                                 |
+| `spring-boot-starter-oauth2-resource-server`      | `spring-boot-starter-security-oauth2-resource-server`      | Security namespace                                 |
 
 **Migration Example (libs.versions.toml):**
+
 ```toml
 [libraries]
 # Old (Spring Boot 3.x)
@@ -194,10 +202,12 @@ If not using AspectJ, remove the dependency.
 **Undertow is completely removed** - not compatible with Servlet 6.1 baseline.
 
 **Migration:**
+
 - Use **Tomcat** (default) or **Jetty**
 - Do **not** deploy Spring Boot 4.0 apps to non-Servlet 6.1 containers
 
 **libs.versions.toml:**
+
 ```toml
 [libraries]
 # Remove Undertow
@@ -208,6 +218,7 @@ spring-boot-starter-jetty = { module = "org.springframework.boot:spring-boot-sta
 ```
 
 **build.gradle.kts:**
+
 ```kotlin
 dependencies {
     implementation(libs.spring.boot.starter.webmvc) {
@@ -224,6 +235,7 @@ dependencies {
 **Maintained by respective teams**, no longer in Spring Boot dependency management.
 
 **Migration (libs.versions.toml):**
+
 ```toml
 [versions]
 hazelcast-spring-session = "3.x.x" # Check Hazelcast documentation
@@ -242,6 +254,7 @@ spring-session-mongodb = { module = "org.springframework.session:spring-session-
 Spring Pulsar dropped Reactor support - reactive Pulsar client removed.
 
 **Migration:**
+
 - Use imperative Pulsar client
 - Or migrate to alternative reactive messaging (Kafka, RabbitMQ)
 
@@ -252,6 +265,7 @@ Spring Pulsar dropped Reactor support - reactive Pulsar client removed.
 **Spock does not yet support Groovy 5** (required for Spring Boot 4.0).
 
 **Migration:**
+
 - Use JUnit 5 with Kotlin
 - Or wait for Spock Groovy 5 compatibility
 
@@ -262,6 +276,7 @@ Spring Pulsar dropped Reactor support - reactive Pulsar client removed.
 Embedded launch scripts for "fully executable" jars removed (Unix-specific, limited use).
 
 **build.gradle.kts (remove):**
+
 ```kotlin
 // Remove this configuration
 tasks.bootJar {
@@ -270,6 +285,7 @@ tasks.bootJar {
 ```
 
 **Alternatives:**
+
 - Use `java -jar app.jar` directly
 - Use Gradle Application Plugin for native launchers
 - Use systemd service files
@@ -279,6 +295,7 @@ tasks.bootJar {
 The classic uber-jar loader has been removed. Remove any loader implementation configuration from your build.
 
 **Maven (pom.xml) - remove:**
+
 ```xml
 <build>
     <plugins>
@@ -294,6 +311,7 @@ The classic uber-jar loader has been removed. Remove any loader implementation c
 ```
 
 **Gradle (build.gradle.kts) - remove:**
+
 ```kotlin
 tasks.bootJar {
     loaderImplementation = org.springframework.boot.loader.tools.LoaderImplementation.CLASSIC // REMOVE THIS
@@ -306,13 +324,14 @@ tasks.bootJar {
 
 Jackson 3 changes **group ID and package names**:
 
-| Component | Old (Jackson 2) | New (Jackson 3) |
-|-----------|----------------|-----------------|
-| Group ID | `com.fasterxml.jackson` | `tools.jackson` |
-| Packages | `com.fasterxml.jackson.*` | `tools.jackson.*` |
-| Exception | `jackson-annotations` | Still uses `com.fasterxml.jackson.core` group |
+| Component | Old (Jackson 2)           | New (Jackson 3)                               |
+| --------- | ------------------------- | --------------------------------------------- |
+| Group ID  | `com.fasterxml.jackson`   | `tools.jackson`                               |
+| Packages  | `com.fasterxml.jackson.*` | `tools.jackson.*`                             |
+| Exception | `jackson-annotations`     | Still uses `com.fasterxml.jackson.core` group |
 
 **libs.versions.toml:**
+
 ```toml
 [versions]
 jackson = "3.0.1" # Managed by Spring Boot 4.0
@@ -330,15 +349,16 @@ jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations
 
 Update imports and annotations:
 
-| Spring Boot 3.x | Spring Boot 4.0 |
-|----------------|-----------------|
+| Spring Boot 3.x                         | Spring Boot 4.0               |
+| --------------------------------------- | ----------------------------- |
 | `Jackson2ObjectMapperBuilderCustomizer` | `JsonMapperBuilderCustomizer` |
-| `JsonObjectSerializer` | `ObjectValueSerializer` |
-| `JsonValueDeserializer` | `ObjectValueDeserializer` |
-| `@JsonComponent` | `@JacksonComponent` |
-| `@JsonMixin` | `@JacksonMixin` |
+| `JsonObjectSerializer`                  | `ObjectValueSerializer`       |
+| `JsonValueDeserializer`                 | `ObjectValueDeserializer`     |
+| `@JsonComponent`                        | `@JacksonComponent`           |
+| `@JsonMixin`                            | `@JacksonMixin`               |
 
 **Migration Example:**
+
 ```kotlin
 // Old (Spring Boot 3.x)
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -380,6 +400,7 @@ class JacksonConfig {
 ### Configuration Property Changes
 
 **application.yml migration:**
+
 ```yaml
 # Old (Spring Boot 3.x)
 spring:
@@ -404,12 +425,14 @@ spring:
 For gradual migration, use the **temporary compatibility module** (deprecated, will be removed):
 
 **libs.versions.toml:**
+
 ```toml
 [libraries]
 spring-boot-jackson2 = { module = "org.springframework.boot:spring-boot-jackson2", version.ref = "springBoot" }
 ```
 
 **build.gradle.kts:**
+
 ```kotlin
 dependencies {
     implementation(libs.spring.boot.jackson2)
@@ -417,6 +440,7 @@ dependencies {
 ```
 
 **application.yml:**
+
 ```yaml
 spring:
   jackson:
@@ -434,11 +458,13 @@ spring:
 Spring Boot 4.0 adds **JSpecify nullability annotations** throughout the codebase.
 
 **Impact:**
+
 - Kotlin null-safety may flag new warnings/errors
 - Null checkers (SpotBugs, NullAway) may report new issues
 - **RestClient methods like `body()` are now explicitly marked as nullable** - always check for null or use `Objects.requireNonNull()`
 
 **Migration for Kotlin:**
+
 ```kotlin
 // Explicit nullable types may be required
 fun processUser(id: String?): User? {
@@ -457,10 +483,12 @@ if (body != null) {
 ```
 
 **Actuator endpoint parameters:**
+
 - Cannot use `javax.annotations.NonNull` or `org.springframework.lang.Nullable`
 - Use `org.jspecify.annotations.Nullable` instead
 
 **libs.versions.toml:**
+
 ```toml
 [libraries]
 jspecify = { module = "org.jspecify:jspecify", version = "1.0.0" }
@@ -471,11 +499,13 @@ jspecify = { module = "org.jspecify:jspecify", version = "1.0.0" }
 #### BootstrapRegistry
 
 **Old import:**
+
 ```kotlin
 import org.springframework.boot.BootstrapRegistry
 ```
 
 **New import:**
+
 ```kotlin
 import org.springframework.boot.bootstrap.BootstrapRegistry
 ```
@@ -483,16 +513,19 @@ import org.springframework.boot.bootstrap.BootstrapRegistry
 #### EnvironmentPostProcessor
 
 **Old import:**
+
 ```kotlin
 import org.springframework.boot.env.EnvironmentPostProcessor
 ```
 
 **New import:**
+
 ```kotlin
 import org.springframework.boot.EnvironmentPostProcessor
 ```
 
 **Update `META-INF/spring.factories`:**
+
 ```properties
 # Old
 org.springframework.boot.env.EnvironmentPostProcessor=com.example.MyPostProcessor
@@ -506,11 +539,13 @@ org.springframework.boot.EnvironmentPostProcessor=com.example.MyPostProcessor
 #### Entity Scan
 
 **Old import:**
+
 ```kotlin
 import org.springframework.boot.autoconfigure.domain.EntityScan
 ```
 
 **New import:**
+
 ```kotlin
 import org.springframework.boot.persistence.autoconfigure.EntityScan
 ```
@@ -522,6 +557,7 @@ import org.springframework.boot.persistence.autoconfigure.EntityScan
 Log files now default to **UTF-8** (harmonized with Log4j2):
 
 **logback-spring.xml (explicit configuration):**
+
 ```xml
 <configuration>
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
@@ -541,6 +577,7 @@ Log files now default to **UTF-8** (harmonized with Log4j2):
 #### Live Reload Disabled by Default
 
 **application.yml:**
+
 ```yaml
 spring:
   devtools:
@@ -549,12 +586,14 @@ spring:
 ```
 
 **libs.versions.toml:**
+
 ```toml
 [libraries]
 spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools", version.ref = "springBoot" }
 ```
 
 **build.gradle.kts:**
+
 ```kotlin
 dependencies {
     developmentOnly(libs.spring.boot.devtools)
@@ -566,6 +605,7 @@ dependencies {
 **Breaking change:** No longer calls adapter/predicate methods by default when source is `null`.
 
 **Migration pattern:**
+
 ```kotlin
 // Old behavior (Spring Boot 3.x)
 map.from(source::method).to(destination::method)
@@ -589,6 +629,7 @@ map.from(source::method).always().to(destination::method)
 ### Gradle Plugin Updates
 
 **build.gradle.kts:**
+
 ```kotlin
 plugins {
     kotlin("jvm") version "2.2.0" // Minimum 2.2.0
@@ -604,6 +645,7 @@ plugins {
 Optional dependencies are **no longer included in uber jars by default**.
 
 **build.gradle.kts (include optionals explicitly):**
+
 ```kotlin
 tasks.bootJar {
     includeOptional = true // If needed
@@ -636,6 +678,7 @@ class RetryConfig {
 **Migration Option 2: Explicit Spring Retry Version (Temporary)**
 
 **libs.versions.toml:**
+
 ```toml
 [versions]
 spring-retry = "2.0.5" # Explicit version required
@@ -651,6 +694,7 @@ spring-retry = { module = "org.springframework.retry:spring-retry", version.ref 
 Now part of Spring Security - explicit version management removed.
 
 **libs.versions.toml (before - Spring Boot 3.x):**
+
 ```toml
 [versions]
 spring-authorization-server = "1.3.0" # No longer works
@@ -660,6 +704,7 @@ spring-security-oauth2-authorization-server = { module = "org.springframework.se
 ```
 
 **Migration (Spring Boot 4.0):**
+
 ```toml
 [versions]
 spring-security = "7.0.0" # Use Spring Security version instead
@@ -670,6 +715,7 @@ spring-security-oauth2-authorization-server = { module = "org.springframework.se
 ```
 
 Or rely on Spring Boot dependency management (recommended):
+
 ```kotlin
 dependencies {
     implementation("org.springframework.security:spring-security-oauth2-authorization-server")
@@ -686,6 +732,7 @@ dependencies {
 **Note:** Higher-level clients (`ElasticsearchClient` and Spring Data's `ReactiveElasticsearchClient`) **remain unchanged** and have been updated internally to use the new low-level client.
 
 **Imports:**
+
 ```kotlin
 // Old (Spring Boot 3.x)
 import org.elasticsearch.client.RestClient
@@ -699,6 +746,7 @@ import org.springframework.boot.autoconfigure.elasticsearch.Rest5ClientBuilderCu
 ```
 
 **Configuration:**
+
 ```kotlin
 @Configuration
 class ElasticsearchConfig {
@@ -730,6 +778,7 @@ class ElasticsearchConfig {
 Sniffer now included in `co.elastic.clients:elasticsearch-java` module.
 
 **libs.versions.toml:**
+
 ```toml
 [libraries]
 # Remove these - no longer managed
@@ -743,6 +792,7 @@ elasticsearch-java = { module = "co.elastic.clients:elasticsearch-java", version
 ### Hibernate Dependency Changes
 
 **libs.versions.toml:**
+
 ```toml
 [libraries]
 # Renamed module (hibernate-jpamodelgen replaced by hibernate-processor)
@@ -763,6 +813,7 @@ hibernate-processor = { module = "org.hibernate.orm:hibernate-processor", versio
 **Major reorganization:** Non-Spring Data properties moved to `spring.mongodb.*`:
 
 **application.yml migration:**
+
 ```yaml
 # Old (Spring Boot 3.x)
 spring:
@@ -842,6 +893,7 @@ management:
 ```
 
 **Key changes:**
+
 - **UUID representation**: **MANDATORY** - No default provided, must explicitly configure `spring.mongodb.representation.uuid` (e.g., `STANDARD`, `JAVA_LEGACY`, `PYTHON_LEGACY`, `C_SHARP_LEGACY`)
 - **BigDecimal representation**: **MANDATORY** - No default provided, must explicitly configure `spring.data.mongodb.representation.big-decimal` (e.g., `DECIMAL128`, `STRING`)
 - **Management properties**: `mongo` → `mongodb`
@@ -850,6 +902,7 @@ management:
 ### Spring Session Property Renames
 
 **application.yml migration:**
+
 ```yaml
 # Old (Spring Boot 3.x)
 spring:
@@ -874,6 +927,7 @@ spring:
 ### Persistence Module Property Change
 
 **application.yml migration:**
+
 ```yaml
 # Old (Spring Boot 3.x)
 spring:
@@ -895,6 +949,7 @@ spring:
 `PathRequest#toStaticResources()` now includes `/fonts/**` by default.
 
 **Security configuration (exclude fonts if needed):**
+
 ```kotlin
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest
 import org.springframework.boot.autoconfigure.security.StaticResourceLocation
@@ -924,6 +979,7 @@ class SecurityConfig {
 `HttpMessageConverters` deprecated due to framework improvements (conflated client/server converters).
 
 **Migration:**
+
 ```kotlin
 // Old (Spring Boot 3.x)
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters
@@ -968,6 +1024,7 @@ class WebConfig {
 **Solution:** Use `spring-boot-jackson2` compatibility module **either in place of or alongside** `spring-boot-jackson`:
 
 **libs.versions.toml:**
+
 ```toml
 [libraries]
 spring-boot-starter-jersey = { module = "org.springframework.boot:spring-boot-starter-jersey", version.ref = "springBoot" }
@@ -977,6 +1034,7 @@ spring-boot-jackson = { module = "org.springframework.boot:spring-boot-jackson",
 ```
 
 **build.gradle.kts:**
+
 ```kotlin
 dependencies {
     implementation(libs.spring.boot.starter.jersey)
@@ -1031,6 +1089,7 @@ class KafkaStreamsConfig {
 ### Kafka Retry Property Change
 
 **application.yml migration:**
+
 ```yaml
 # Old (Spring Boot 3.x)
 spring:
@@ -1099,6 +1158,7 @@ class RabbitConfig {
 `MockitoTestExecutionListener` removed (deprecated in 3.4).
 
 **Migration to MockitoExtension:**
+
 ```kotlin
 // Old (Spring Boot 3.x)
 import org.springframework.boot.test.context.SpringBootTest
@@ -1225,16 +1285,19 @@ class RestApiTest {
 **TestRestTemplate package change (if still using):**
 
 **IMPORTANT:** If continuing to use `TestRestTemplate`, you must:
+
 1. Add the `spring-boot-resttestclient` test dependency
 2. **Update the package import** (class moved to new package)
 
 **libs.versions.toml:**
+
 ```toml
 [libraries]
 spring-boot-resttestclient = { module = "org.springframework.boot:spring-boot-resttestclient", version.ref = "springBoot" }
 ```
 
 **build.gradle.kts:**
+
 ```kotlin
 dependencies {
     testImplementation(libs.spring.boot.resttestclient)
@@ -1242,6 +1305,7 @@ dependencies {
 ```
 
 **Update package import (required):**
+
 ```kotlin
 // Old package import - will cause compilation failure
 // import org.springframework.boot.test.web.client.TestRestTemplate
@@ -1269,6 +1333,7 @@ import org.springframework.boot.test.context.PropertyMapping.Skip
 Spring Boot 4.0 modularizes production-ready features into focused modules:
 
 **libs.versions.toml:**
+
 ```toml
 [libraries]
 # Health monitoring
@@ -1295,6 +1360,7 @@ spring-boot-zipkin = { module = "org.springframework.boot:spring-boot-zipkin", v
 ```
 
 **build.gradle.kts (example observability stack):**
+
 ```kotlin
 dependencies {
     // Actuator with metrics and tracing
@@ -1318,6 +1384,7 @@ dependencies {
 Liveness and readiness probes now **enabled by default**.
 
 **application.yml (disable if needed):**
+
 ```yaml
 management:
   endpoint:
@@ -1327,6 +1394,7 @@ management:
 ```
 
 **Automatically exposes:**
+
 - `/actuator/health/liveness`
 - `/actuator/health/readiness`
 
@@ -1335,6 +1403,7 @@ management:
 ### Kotlin Compiler Configuration
 
 **build.gradle.kts:**
+
 ```kotlin
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -1375,6 +1444,7 @@ tasks.withType<Test> {
 ### Java Preview Features (if using Java 25)
 
 **build.gradle.kts:**
+
 ```kotlin
 tasks.withType<JavaCompile> {
     options.compilerArgs.add("--enable-preview")

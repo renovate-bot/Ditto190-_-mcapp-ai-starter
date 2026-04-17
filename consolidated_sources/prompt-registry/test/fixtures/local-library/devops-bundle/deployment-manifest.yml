@@ -17,21 +17,21 @@ prompts:
     file: prompts/create-dockerfile.prompt.md
     type: prompt
     tags: [docker, containers]
-  
+
   - id: write-github-actions
     name: GitHub Actions Workflow
     description: Create GitHub Actions CI/CD workflows
     file: prompts/github-actions.prompt.md
     type: prompt
     tags: [cicd, github, automation]
-  
+
   - id: terraform-module
     name: Terraform Module
     description: Design Infrastructure as Code with Terraform
     file: prompts/terraform-module.prompt.md
     type: prompt
     tags: [terraform, iac, infrastructure]
-  
+
   - id: devops-agent
     name: DevOps Engineer
     description: Expert DevOps engineer for automation and infrastructure

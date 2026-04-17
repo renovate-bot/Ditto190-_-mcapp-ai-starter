@@ -60,6 +60,7 @@ The bundle installation function does not properly validate bundle IDs,
 allowing path traversal via specially crafted bundle IDs.
 
 **Reproduction**:
+
 1. Install a bundle with ID: `../../etc/passwd`
 2. The installer writes files outside the intended directory
 
@@ -87,12 +88,12 @@ Validate bundle IDs against a whitelist of allowed characters:
 
 We use the following severity levels:
 
-| Severity | Description | Response Time |
-|----------|-------------|---------------|
-| **Critical** | Remote code execution, full system compromise | 24-48 hours |
-| **High** | Privilege escalation, data exfiltration | 1 week |
-| **Medium** | DoS, limited data exposure | 2-4 weeks |
-| **Low** | Minor information disclosure | Next release |
+| Severity     | Description                                   | Response Time |
+| ------------ | --------------------------------------------- | ------------- |
+| **Critical** | Remote code execution, full system compromise | 24-48 hours   |
+| **High**     | Privilege escalation, data exfiltration       | 1 week        |
+| **Medium**   | DoS, limited data exposure                    | 2-4 weeks     |
+| **Low**      | Minor information disclosure                  | Next release  |
 
 ### What to Expect
 
@@ -193,6 +194,7 @@ This project undergoes regular security audits:
 - **Status**: ✅ Passed
 
 Key findings:
+
 - ✅ No XSS vulnerabilities
 - ✅ No path traversal risks
 - ✅ No command injection
@@ -210,6 +212,7 @@ We monitor dependencies for vulnerabilities:
 - **Security Advisories**: Monitored via GitHub
 
 To check dependencies:
+
 ```bash
 npm audit
 npm audit fix
@@ -255,7 +258,7 @@ We recognize security researchers who responsibly disclose vulnerabilities:
 
 <!-- Security researchers will be listed here -->
 
-*No security reports yet - help us keep it that way!*
+_No security reports yet - help us keep it that way!_
 
 ---
 

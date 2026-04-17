@@ -15,10 +15,6 @@
     "server-development",
     "ktor"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/kotlin-mcp-server-generator"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/kotlin-mcp-server-generator"]
 }

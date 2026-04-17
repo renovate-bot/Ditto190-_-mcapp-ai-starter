@@ -48,21 +48,21 @@ flowchart TD
     C -->|Cancel| Z[Abort]
     C -->|User| D[User Scope Flow]
     C -->|Repository| E[Repository Scope Flow]
-    
+
     D --> F[Check source type]
     E --> G[Check Scope Conflict]
-    
+
     G --> H{Conflict?}
     H -->|Yes| I[Show Migration Dialog]
     H -->|No| J[Continue Installation]
-    
+
     I --> K{User Choice}
     K -->|Migrate| L[Uninstall from old scope]
     K -->|Cancel| Z
     L --> J
-    
+
     J --> F
-    
+
     F -->|awesome-copilot| M[downloadBundle]
     F -->|other| N[getDownloadUrl]
     M --> O[Get zip Buffer or download URL]
@@ -70,10 +70,10 @@ flowchart TD
     O --> P[Extract to temp directory]
     P --> Q[Validate deployment-manifest.yml]
     Q --> R{Scope?}
-    
+
     R -->|User| S[Copy to user installation directory]
     R -->|Repository| T[Copy to .github/ directories]
-    
+
     S --> U[Sync to Copilot directory]
     T --> V[Update Lockfile]
     V --> W{Commit Mode?}
@@ -88,11 +88,11 @@ flowchart TD
 
 When a user initiates installation, a QuickPick dialog presents three options:
 
-| Option | Scope | Commit Mode | Description |
-|--------|-------|-------------|-------------|
-| Repository - Commit to Git (Recommended) | `repository` | `commit` | Tracked in version control |
-| Repository - Local Only | `repository` | `local-only` | Excluded via `.git/info/exclude` |
-| User Profile | `user` | N/A | Available everywhere |
+| Option                                   | Scope        | Commit Mode  | Description                      |
+| ---------------------------------------- | ------------ | ------------ | -------------------------------- |
+| Repository - Commit to Git (Recommended) | `repository` | `commit`     | Tracked in version control       |
+| Repository - Local Only                  | `repository` | `local-only` | Excluded via `.git/info/exclude` |
+| User Profile                             | `user`       | N/A          | Available everywhere             |
 
 Repository options are disabled when no workspace is open.
 
@@ -125,13 +125,13 @@ flowchart LR
 
 Files are placed in `.github/` subdirectories based on type:
 
-| File Type | Target Directory |
-|-----------|------------------|
-| Prompts (`.prompt.md`) | `.github/prompts/` |
-| Instructions (`.instructions.md`) | `.github/instructions/` |
-| Agents (`.agent.md`) | `.github/agents/` |
-| Skills | `.github/skills/<skill-name>/` |
-| MCP Servers | `.vscode/mcp.json` |
+| File Type                         | Target Directory               |
+| --------------------------------- | ------------------------------ |
+| Prompts (`.prompt.md`)            | `.github/prompts/`             |
+| Instructions (`.instructions.md`) | `.github/instructions/`        |
+| Agents (`.agent.md`)              | `.github/agents/`              |
+| Skills                            | `.github/skills/<skill-name>/` |
+| MCP Servers                       | `.vscode/mcp.json`             |
 
 ### Git Exclude Management
 
@@ -152,9 +152,9 @@ This file is local to the user's machine and not committed to Git.
 
 The `LockfileManager` singleton manages repository-scoped bundles using a dual-lockfile architecture:
 
-| Lockfile | Purpose | Git Tracking |
-|----------|---------|--------------|
-| `prompt-registry.lock.json` | Committed bundles | Tracked (commit to Git) |
+| Lockfile                          | Purpose            | Git Tracking                     |
+| --------------------------------- | ------------------ | -------------------------------- |
+| `prompt-registry.lock.json`       | Committed bundles  | Tracked (commit to Git)          |
 | `prompt-registry.local.lock.json` | Local-only bundles | Excluded via `.git/info/exclude` |
 
 ### Dual-Lockfile Architecture
@@ -234,9 +234,7 @@ Both lockfiles use the same schema structure. The `commitMode` field is deprecat
       "sourceId": "github-a1b2c3d4e5f6",
       "sourceType": "github",
       "installedAt": "...",
-      "files": [
-        { "path": ".github/prompts/...", "checksum": "sha256..." }
-      ]
+      "files": [{ "path": ".github/prompts/...", "checksum": "sha256..." }]
     }
   },
   "sources": {
@@ -254,10 +252,10 @@ Both lockfiles use the same schema structure. The `commitMode` field is deprecat
 
 SourceIds uniquely identify sources in the lockfile. The format depends on the source origin:
 
-| Source Origin | Format | Example |
-|---------------|--------|---------|
-| Hub source | `{type}-{12-char-hash}` | `github-a1b2c3d4e5f6` |
-| Non-hub source | `{source.id}` | `my-local-source` |
+| Source Origin  | Format                  | Example               |
+| -------------- | ----------------------- | --------------------- |
+| Hub source     | `{type}-{12-char-hash}` | `github-a1b2c3d4e5f6` |
+| Non-hub source | `{source.id}`           | `my-local-source`     |
 
 For hub sources, the sourceId is generated using `generateHubSourceId(type, url)` from `src/utils/sourceIdUtils.ts`:
 
@@ -267,6 +265,7 @@ For hub sources, the sourceId is generated using `generateHubSourceId(type, url)
 4. Format as `{type}-{hash}`
 
 This ensures:
+
 - **Determinism**: Same source always produces the same ID
 - **Portability**: SourceIds don't depend on hub configuration
 - **Collision resistance**: 12 hex chars (48 bits) provides sufficient uniqueness
@@ -286,6 +285,7 @@ Hub entries in the lockfile use URL-based keys instead of user-defined hub IDs:
 ```
 
 The key is generated using `generateHubKey(url, branch?)`:
+
 - Hash the normalized URL using SHA256
 - Take the first 12 characters
 - Append `-{branch}` if branch is not `main` or `master`
@@ -318,12 +318,12 @@ All bundle metadata (version, sourceId, files, etc.) is preserved during the mov
 
 The dual-lockfile architecture maintains backward compatibility with existing lockfiles:
 
-| Scenario | Behavior |
-|----------|----------|
-| Read lockfile with `commitMode` field | Field is ignored; file location determines mode |
-| Write new bundle entry | `commitMode` field is not included |
-| Update existing entry | Entry is rewritten without `commitMode` field |
-| Local-only bundle in main lockfile | Continues to work; migrates on next modification |
+| Scenario                              | Behavior                                         |
+| ------------------------------------- | ------------------------------------------------ |
+| Read lockfile with `commitMode` field | Field is ignored; file location determines mode  |
+| Write new bundle entry                | `commitMode` field is not included               |
+| Update existing entry                 | Entry is rewritten without `commitMode` field    |
+| Local-only bundle in main lockfile    | Continues to work; migrates on next modification |
 
 **Migration path for existing lockfiles:**
 
@@ -355,6 +355,7 @@ flowchart TD
 ```
 
 The `RepositoryActivationService` accepts a `SetupStateManager` dependency:
+
 - If setup is incomplete, detection is deferred and logged
 - If `SetupStateManager` is unavailable, detection proceeds (fail-open behavior)
 - After setup completes, detection is triggered automatically
@@ -406,16 +407,16 @@ prompts:
 
 ## Key Components
 
-| Component | Responsibility |
-|-----------|----------------|
-| `ScopeServiceFactory` | Returns appropriate scope service based on `InstallationScope` |
-| `UserScopeService` | Handles user-level file placement and Copilot sync |
-| `RepositoryScopeService` | Handles repository-level file placement and git exclude |
-| `LockfileManager` | Manages lockfile CRUD operations |
-| `ScopeConflictResolver` | Detects and handles scope conflicts |
-| `RepositoryActivationService` | Handles lockfile detection on workspace open |
-| `LocalModificationWarningService` | Detects local file changes before updates |
-| `BundleScopeCommands` | Context menu commands for scope management |
+| Component                         | Responsibility                                                 |
+| --------------------------------- | -------------------------------------------------------------- |
+| `ScopeServiceFactory`             | Returns appropriate scope service based on `InstallationScope` |
+| `UserScopeService`                | Handles user-level file placement and Copilot sync             |
+| `RepositoryScopeService`          | Handles repository-level file placement and git exclude        |
+| `LockfileManager`                 | Manages lockfile CRUD operations                               |
+| `ScopeConflictResolver`           | Detects and handles scope conflicts                            |
+| `RepositoryActivationService`     | Handles lockfile detection on workspace open                   |
+| `LocalModificationWarningService` | Detects local file changes before updates                      |
+| `BundleScopeCommands`             | Context menu commands for scope management                     |
 
 ## See Also
 

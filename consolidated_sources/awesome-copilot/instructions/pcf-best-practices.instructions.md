@@ -1,6 +1,6 @@
 ---
-description: 'Best practices and guidance for developing PCF code components'
-applyTo: '**/*.{ts,tsx,js,json,xml,pcfproj,csproj,css,html}'
+description: "Best practices and guidance for developing PCF code components"
+applyTo: "**/*.{ts,tsx,js,json,xml,pcfproj,csproj,css,html}"
 ---
 
 # Best Practices and Guidance for Code Components
@@ -141,13 +141,13 @@ Additionally, you can add files to ignore by adding to the `.eslintrc.json`:
 Currently, the code component templates used with `pac pcf init` won't use tree-shaking, which is the process where `webpack` detects modules imported that aren't used and removes them. If you import from Fluent UI using the following command, it imports and bundles the entire library:
 
 ```typescript
-import { Button } from '@fluentui/react'
+import { Button } from "@fluentui/react";
 ```
 
 To avoid importing and bundling the entire library, you can use path-based imports where the specific library component is imported using the explicit path:
 
 ```typescript
-import { Button } from '@fluentui/react/lib/Button';
+import { Button } from "@fluentui/react/lib/Button";
 ```
 
 Using the specific path reduces your bundle size both in development and release builds.

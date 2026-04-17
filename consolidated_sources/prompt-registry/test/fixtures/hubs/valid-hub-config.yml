@@ -15,7 +15,7 @@ sources:
     priority: 100
     config:
       branch: "main"
-    
+
   - id: "community-prompts"
     name: "Community Prompts"
     type: "github"
@@ -46,7 +46,7 @@ profiles:
     active: false
     createdAt: "2025-11-17T00:00:00Z"
     updatedAt: "2025-11-17T00:00:00Z"
-    
+
   - id: "frontend-specialist"
     name: "Frontend Specialist"
     description: "Focused on frontend development"

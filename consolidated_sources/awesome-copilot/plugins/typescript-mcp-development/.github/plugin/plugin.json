@@ -14,10 +14,6 @@
     "nodejs",
     "server-development"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/typescript-mcp-server-generator"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/typescript-mcp-server-generator"]
 }

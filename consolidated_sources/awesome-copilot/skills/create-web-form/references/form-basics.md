@@ -40,9 +40,9 @@ The `<form>` element formally defines a form container and its behavior.
 
 **Attributes:**
 
-| Attribute | Description |
-|-----------|-------------|
-| `action`  | The URL where form data is sent when submitted |
+| Attribute | Description                                        |
+| --------- | -------------------------------------------------- |
+| `action`  | The URL where form data is sent when submitted     |
 | `method`  | The HTTP method for sending data (`get` or `post`) |
 
 Both attributes are optional but it is standard practice to always set them.
@@ -77,9 +77,9 @@ Both attributes are optional but it is standard practice to always set them.
 
 The `type` attribute defines how the input appears and behaves.
 
-| Type    | Description |
-|---------|-------------|
-| `text`  | Basic single-line text field (default); accepts any text |
+| Type    | Description                                                                                                       |
+| ------- | ----------------------------------------------------------------------------------------------------------------- |
+| `text`  | Basic single-line text field (default); accepts any text                                                          |
 | `email` | Single-line field that validates for well-formed email addresses; shows an appropriate keyboard on mobile devices |
 
 `<input>` is a **void element** -- it has no closing tag.
@@ -112,11 +112,11 @@ by default this element is filled with this text
 
 **`type` attribute values:**
 
-| Value    | Description |
-|----------|-------------|
-| `submit` | Sends form data to the URL defined in in the `<form>` element's `action` attribute (default) |
+| Value    | Description                                                                                         |
+| -------- | --------------------------------------------------------------------------------------------------- |
+| `submit` | Sends form data to the URL defined in in the `<form>` element's `action` attribute (default)        |
 | `reset`  | Resets all widgets to their default values (considered a UX anti-pattern -- avoid unless necessary) |
-| `button` | Does nothing by default; useful for custom JavaScript functionality |
+| `button` | Does nothing by default; useful for custom JavaScript functionality                                 |
 
 The `<button>` element is preferred over `<input type="submit">` because `<button>` allows full HTML content inside it, enabling more complex designs, while `<input>` only allows plain text.
 
@@ -286,8 +286,7 @@ The `<label>` element is the formal way to define a label for an HTML form widge
 **Method 1: Using the `for` attribute (recommended)**
 
 ```html
-<label for="name">Name:</label>
-<input type="text" id="name" name="user_name" />
+<label for="name">Name:</label> <input type="text" id="name" name="user_name" />
 ```
 
 A screen reader would announce: "Name, edit text."
@@ -338,7 +337,7 @@ Recommended structural elements for organizing form content:
 - `<p>` and `<div>` elements for wrapping labels and widgets
 - `<section>` elements to organize complex forms into logical groups
 - HTML headings (`<h1>`, `<h2>`, etc.) for sectioning
-- If a form has required fields, include a statement explaining the notation (e.g., "* required") before the form begins
+- If a form has required fields, include a statement explaining the notation (e.g., "\* required") before the form begins
 
 ### Building a Form Structure -- Payment Form Example
 
@@ -412,7 +411,8 @@ Recommended structural elements for organizing form content:
         name="expiration"
         required
         placeholder="MM/YY"
-        pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$" />
+        pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$"
+      />
     </p>
   </section>
 
@@ -427,16 +427,16 @@ Recommended structural elements for organizing form content:
 
 ### Important Attributes Reference
 
-| Attribute     | Element        | Purpose |
-|---------------|----------------|---------|
-| `for`         | `<label>`      | Associates a label with a form control by matching the control's `id` |
-| `id`          | Form control   | Unique identifier for associating with labels |
-| `name`        | Form control   | Identifies data submitted with the form |
-| `required`    | Form control   | Marks a field as required for submission |
-| `placeholder` | `<input>`      | Shows example format inside the field (e.g., "MM/YY") |
-| `pattern`     | `<input>`      | Regular expression for client-side validation |
-| `form`        | Form control   | Associates a control with a `<form>`, even if the control is outside it |
-| `type`        | `<input>`, `<button>` | Specifies input behavior (text, email, password, tel, etc.) |
+| Attribute     | Element               | Purpose                                                                 |
+| ------------- | --------------------- | ----------------------------------------------------------------------- |
+| `for`         | `<label>`             | Associates a label with a form control by matching the control's `id`   |
+| `id`          | Form control          | Unique identifier for associating with labels                           |
+| `name`        | Form control          | Identifies data submitted with the form                                 |
+| `required`    | Form control          | Marks a field as required for submission                                |
+| `placeholder` | `<input>`             | Shows example format inside the field (e.g., "MM/YY")                   |
+| `pattern`     | `<input>`             | Regular expression for client-side validation                           |
+| `form`        | Form control          | Associates a control with a `<form>`, even if the control is outside it |
+| `type`        | `<input>`, `<button>` | Specifies input behavior (text, email, password, tel, etc.)             |
 
 ### Key Best Practices for Accessible Form Structure
 

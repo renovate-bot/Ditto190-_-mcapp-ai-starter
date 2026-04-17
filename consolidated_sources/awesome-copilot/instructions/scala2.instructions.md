@@ -1,6 +1,6 @@
 ---
-description: 'Scala 2.12/2.13 programming language coding conventions and best practices following Databricks style guide for functional programming, type safety, and production code quality.'
-applyTo: '**.scala, **/build.sbt, **/build.sc'
+description: "Scala 2.12/2.13 programming language coding conventions and best practices following Databricks style guide for functional programming, type safety, and production code quality."
+applyTo: "**.scala, **/build.sbt, **/build.sc"
 ---
 
 # Scala Best Practices
@@ -10,9 +10,11 @@ Based on the [Databricks Scala Style Guide](https://github.com/databricks/scala-
 ## Core Principles
 
 ### Write Simple Code
+
 Code is written once but read and modified multiple times. Optimize for long-term readability and maintainability by writing simple code.
 
 ### Immutability by Default
+
 - Always prefer `val` over `var`
 - Use immutable collections from `scala.collection.immutable`
 - Case class constructor parameters should NOT be mutable
@@ -35,6 +37,7 @@ val updatedUsers = users.map(u => u.copy(age = u.age + 1))
 ```
 
 ### Pure Functions
+
 - Functions should be deterministic and side-effect free
 - Separate pure logic from effects
 - Use explicit types for methods with effects

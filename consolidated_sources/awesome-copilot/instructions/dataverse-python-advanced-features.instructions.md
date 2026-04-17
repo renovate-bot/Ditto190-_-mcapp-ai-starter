@@ -1,11 +1,13 @@
 # Dataverse SDK for Python - Advanced Features Guide
 
 ## Overview
+
 Comprehensive guide to advanced Dataverse SDK features including enums, complex filtering, SQL queries, metadata operations, and production patterns. Based on official Microsoft walkthrough examples.
 
 ## 1. Working with Option Sets & Picklists
 
 ### Using IntEnum for Type Safety
+
 ```python
 from enum import IntEnum
 from PowerPlatform.Dataverse.client import DataverseClient
@@ -31,6 +33,7 @@ ids = client.create("new_tasktable", record_data)
 ```
 
 ### Handling Formatted Values
+
 ```python
 # When retrieving records, picklist values are returned as integers
 record = client.get("new_tasktable", record_id)
@@ -43,6 +46,7 @@ print(f"Priority (Formatted): {priority_formatted}")
 ```
 
 ### Creating Tables with Enum Columns
+
 ```python
 from enum import IntEnum
 
@@ -80,6 +84,7 @@ print(f"Created table with {len(columns)} columns including enums")
 ## 2. Advanced Filtering & Querying
 
 ### Complex OData Filters
+
 ```python
 # Simple equality
 filter1 = "name eq 'Contoso'"
@@ -110,6 +115,7 @@ results = client.get("account", filter=filter10, select=["name", "creditlimit"])
 ```
 
 ### Retrieve with Related Records (Expand)
+
 ```python
 # Expand parent account information
 accounts = client.get(
@@ -126,10 +132,11 @@ for page in accounts:
 ```
 
 ### SQL Queries for Complex Analysis
+
 ```python
 # SQL queries are read-only but powerful for analytics
 sql = """
-SELECT 
+SELECT
     a.name as AccountName,
     a.creditlimit,
     COUNT(c.contactid) as ContactCount
@@ -146,6 +153,7 @@ for row in results:
 ```
 
 ### Paging with SQL Queries
+
 ```python
 # SQL queries return paginated results by default
 sql = "SELECT TOP 10000 name, creditlimit FROM account ORDER BY name"
@@ -163,6 +171,7 @@ print(f"Total: {len(all_results)} rows")
 ## 3. Metadata Operations
 
 ### Creating Complex Tables
+
 ```python
 from enum import IntEnum
 from datetime import datetime
@@ -197,6 +206,7 @@ print(f"  Columns: {', '.join(table_info.get('columns_created', []))}")
 ```
 
 ### Inspecting Table Metadata
+
 ```python
 # Get detailed table information
 table_info = client.get_table_info("account")
@@ -210,6 +220,7 @@ print(f"Primary Name: {table_info.get('primary_name_attribute')}")
 ```
 
 ### Listing All Tables in Organization
+
 ```python
 # Retrieve all tables (may be large result set)
 all_tables = []
@@ -227,6 +238,7 @@ for table in custom_tables[:5]:
 ```
 
 ### Managing Columns Dynamically
+
 ```python
 # Add columns to existing table
 client.create_columns("new_TaskTable", {
@@ -250,6 +262,7 @@ client.delete_table("new_TaskTable")
 ## 4. Single vs. Multiple Record Operations
 
 ### Single Record Operations
+
 ```python
 # Create single
 record_id = client.create("account", {"name": "Contoso"})[0]
@@ -267,6 +280,7 @@ client.delete("account", record_id)
 ### Multiple Record Operations
 
 #### Create Multiple Records
+
 ```python
 # Create list of records
 records = [
@@ -280,6 +294,7 @@ print(f"Created {len(created_ids)} records: {created_ids}")
 ```
 
 #### Update Multiple Records (Broadcast)
+
 ```python
 # Apply same update to multiple records
 account_ids = ["id1", "id2", "id3"]
@@ -291,6 +306,7 @@ print(f"Updated {len(account_ids)} records with same data")
 ```
 
 #### Delete Multiple Records
+
 ```python
 # Delete multiple records with optimized bulk delete
 record_ids = ["id1", "id2", "id3", "id4", "id5"]
@@ -303,6 +319,7 @@ print(f"Deleted {len(record_ids)} records")
 ## 5. Data Manipulation Patterns
 
 ### Retrieve, Modify, Update Pattern
+
 ```python
 # Retrieve single record
 account = client.get("account", record_id)
@@ -317,6 +334,7 @@ print(f"Updated creditlimit: {original_amount} → {new_amount}")
 ```
 
 ### Batch Processing Pattern
+
 ```python
 # Retrieve in batches with paging
 batch_size = 100
@@ -331,7 +349,7 @@ for page in client.get("account", top=batch_size, filter="statecode eq 0"):
                 "id": account['accountid'],
                 "accountmanagerid": "senior-manager-guid"
             })
-    
+
     # Batch update
     for update in batch_updates:
         client.update("account", update['id'], {"accountmanagerid": update['accountmanagerid']})
@@ -341,6 +359,7 @@ print(f"Processed {processed} accounts")
 ```
 
 ### Conditional Operations Pattern
+
 ```python
 from PowerPlatform.Dataverse.core.errors import DataverseError
 
@@ -353,7 +372,7 @@ def safe_update(table, record_id, data, check_field=None, check_value=None):
             if record.get(check_field) != check_value:
                 print(f"Condition not met: {check_field} != {check_value}")
                 return False
-        
+
         client.update(table, record_id, data)
         return True
     except DataverseError as e:
@@ -369,6 +388,7 @@ safe_update("account", account_id, {"creditlimit": 100000}, "statecode", 0)
 ## 6. Formatted Values & Display
 
 ### Retrieving Formatted Values
+
 ```python
 # When you retrieve a record with option set or money fields,
 # you can request formatted values for display
@@ -398,6 +418,7 @@ print(f"Industry: {industry_formatted or industry}")  # "Technology" or 1
 ## 7. Performance Optimization
 
 ### Column Selection Strategy
+
 ```python
 # ❌ Retrieve all columns (slow, uses more bandwidth)
 account = client.get("account", record_id)
@@ -411,6 +432,7 @@ account = client.get(
 ```
 
 ### Filtering on Server
+
 ```python
 # ❌ Retrieve all, filter locally (inefficient)
 all_accounts = []
@@ -425,6 +447,7 @@ for page in client.get("account", filter="creditlimit gt 100000"):
 ```
 
 ### Paging Large Result Sets
+
 ```python
 # ❌ Load all results at once (memory intensive)
 all_accounts = list(client.get("account"))
@@ -439,6 +462,7 @@ for page in client.get("account", top=1000):
 ```
 
 ### Batch Operations
+
 ```python
 # ❌ Individual creates in loop (slow)
 for account_data in accounts:
@@ -453,6 +477,7 @@ created_ids = client.create("account", accounts)
 ## 8. Error Handling in Advanced Scenarios
 
 ### Handling Metadata Errors
+
 ```python
 from PowerPlatform.Dataverse.core.errors import MetadataError
 
@@ -464,6 +489,7 @@ except MetadataError as e:
 ```
 
 ### Handling Validation Errors
+
 ```python
 from PowerPlatform.Dataverse.core.errors import ValidationError
 
@@ -475,6 +501,7 @@ except ValidationError as e:
 ```
 
 ### Handling HTTP Errors
+
 ```python
 from PowerPlatform.Dataverse.core.errors import HttpError
 
@@ -490,6 +517,7 @@ except HttpError as e:
 ```
 
 ### Handling SQL Errors
+
 ```python
 from PowerPlatform.Dataverse.core.errors import SQLParseError
 
@@ -504,6 +532,7 @@ except SQLParseError as e:
 ## 9. Working with Relationships
 
 ### Creating Related Records
+
 ```python
 # Create parent account
 parent_ids = client.create("account", {
@@ -523,6 +552,7 @@ print(f"Created {len(child_ids)} child accounts")
 ```
 
 ### Querying Related Records
+
 ```python
 # Get account with child accounts
 account = client.get("account", account_id)
@@ -544,6 +574,7 @@ for page in children:
 ## 10. Cleanup & Housekeeping
 
 ### Clearing SDK Cache
+
 ```python
 # After bulk operations, clear metadata cache
 client.flush_cache()
@@ -555,6 +586,7 @@ client.flush_cache()
 ```
 
 ### Safe Table Deletion
+
 ```python
 from PowerPlatform.Dataverse.core.errors import MetadataError
 
@@ -566,15 +598,15 @@ def delete_table_safe(table_name):
         if not table_info:
             print(f"Table {table_name} not found")
             return False
-        
+
         # Delete
         client.delete_table(table_name)
         print(f"✓ Deleted table: {table_name}")
-        
+
         # Clear cache
         client.flush_cache()
         return True
-        
+
     except MetadataError as e:
         print(f"❌ Failed to delete table: {e}")
         return False
@@ -621,7 +653,7 @@ try:
         }
     )
     print(f"✓ Created table: {table_info['table_schema_name']}")
-    
+
     # 2. Create records
     print("\nCreating tasks...")
     tasks = [
@@ -649,7 +681,7 @@ try:
     ]
     task_ids = client.create("new_ProjectTask", tasks)
     print(f"✓ Created {len(task_ids)} tasks")
-    
+
     # 3. Query and filter
     print("\nQuerying high-priority tasks...")
     high_priority = client.get(
@@ -660,7 +692,7 @@ try:
     for page in high_priority:
         for task in page:
             print(f"  - {task['new_title']}: {task['new_estimatedhours']} hours")
-    
+
     # 4. Update records
     print("\nUpdating task status...")
     client.update("new_ProjectTask", task_ids[1], {
@@ -668,15 +700,15 @@ try:
         "new_EstimatedHours": 85.5
     })
     print("✓ Updated task status")
-    
+
     # 5. Cleanup
     print("\nCleaning up...")
     client.delete_table("new_ProjectTask")
     print("✓ Deleted table")
-    
+
     # Clear cache
     client.flush_cache()
-    
+
 except (MetadataError, DataverseError) as e:
     print(f"❌ Error: {e}")
 ```
@@ -684,6 +716,7 @@ except (MetadataError, DataverseError) as e:
 ---
 
 ## Reference
+
 - [Official Walkthrough Example](https://github.com/microsoft/PowerPlatform-DataverseClient-Python/blob/main/examples/advanced/walkthrough.py)
 - [OData Filter Syntax](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/query-data-web-api)
 - [Table/Column Metadata](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/create-update-entity-definitions-using-web-api)

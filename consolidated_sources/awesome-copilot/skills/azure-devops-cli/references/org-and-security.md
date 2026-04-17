@@ -1,6 +1,7 @@
 # Organization, Security & Administration
 
 ## Table of Contents
+
 - [Projects](#projects)
 - [Extension Management](#extension-management)
 - [Service Endpoints](#service-endpoints)

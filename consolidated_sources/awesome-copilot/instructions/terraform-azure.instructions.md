@@ -1,6 +1,6 @@
 ---
-description: 'Create or modify solutions built using Terraform on Azure.'
-applyTo: '**/*.terraform, **/*.tf, **/*.tfvars, **/*.tflint.hcl, **/*.tfstate, **/*.tf.json, **/*.tfvars.json'
+description: "Create or modify solutions built using Terraform on Azure."
+applyTo: "**/*.terraform, **/*.tf, **/*.tfvars, **/*.tflint.hcl, **/*.tfstate, **/*.tf.json, **/*.tfvars.json"
 ---
 
 # Azure Terraform Best Practices
@@ -109,7 +109,7 @@ Follow AVM-aligned coding standards in solution code to maintain consistency:
 
 ## 6. Secrets
 
-The best secret is one that does not need to be stored.  e.g. use Managed Identities rather than passwords or keys.
+The best secret is one that does not need to be stored. e.g. use Managed Identities rather than passwords or keys.
 
 Use `ephemeral` secrets with write-only parameters when supported (Terraform v1.11+) to avoid storing secrets in state files. Consult module documentation for availability.
 
@@ -151,7 +151,7 @@ locals {
     Owner       = var.owner
     CreatedBy   = "terraform"
   }
-  
+
   resource_name_prefix = "${var.project_name}-${var.environment}"
   location_short       = substr(var.location, 0, 3)
 }
@@ -159,7 +159,7 @@ locals {
 
 ## 9. Follow recommended Terraform practices
 
-- **Redundant depends_on Detection**: Search and remove `depends_on` where the dependent resource is already referenced implicitly in the same resource block. Retain `depends_on` only where it is explicitly required.  Never depend on module outputs.
+- **Redundant depends_on Detection**: Search and remove `depends_on` where the dependent resource is already referenced implicitly in the same resource block. Retain `depends_on` only where it is explicitly required. Never depend on module outputs.
 
 - **Iteration**: Use `count` for 0-1 resources, `for_each` for multiple resources. Prefer maps for stable resource addresses. Align with TFNFR7.
 
@@ -175,7 +175,7 @@ Use a consistent folder structure for Terraform configurations.
 
 Use tfvars to modify environmental differences. In general, aim to keep environments similar whilst cost optimising for non-production environments.
 
-Antipattern - branch per environment, repository per environment, folder per environment - or similar layouts that make it hard to test the root folder logic between environments.  
+Antipattern - branch per environment, repository per environment, folder per environment - or similar layouts that make it hard to test the root folder logic between environments.
 
 Be aware of tools such as Terragrunt which may influence this design.
 
@@ -220,7 +220,7 @@ Follow AVM specifications TFNFR1, TFNFR2, TFNFR3, and TFNFR4 for consistent file
 
 - Validate existing VNet/subnet IDs before creating new network resources (for example, is this solution being deployed into an existing hub & spoke landing zone)
 - Use NSGs and ASGs appropriately
-- Implement private endpoints for PaaS services when required, use resource firewall restrictions to restrict public access otherwise.  Comment exceptions where public endpoints are required.
+- Implement private endpoints for PaaS services when required, use resource firewall restrictions to restrict public access otherwise. Comment exceptions where public endpoints are required.
 
 ### Security and Compliance
 
@@ -245,7 +245,7 @@ Follow AVM specifications TFNFR1, TFNFR2, TFNFR3, and TFNFR4 for consistent file
 
 - Do an inventory of existing resources and offer to remove unused resource blocks.
 - Run `terraform validate` to check syntax
-- Ask before running `terraform plan`.  Terraform plan will require a subscription ID, this should be sourced from the ARM_SUBSCRIPTION_ID environment variable, *NOT* coded in the provider block.
+- Ask before running `terraform plan`. Terraform plan will require a subscription ID, this should be sourced from the ARM_SUBSCRIPTION_ID environment variable, _NOT_ coded in the provider block.
 - Test configurations in non-production environments first
 - Ensure idempotency (multiple applies produce same result)
 

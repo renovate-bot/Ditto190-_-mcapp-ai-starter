@@ -16,10 +16,6 @@
     "rails",
     "gem"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/ruby-mcp-server-generator"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/ruby-mcp-server-generator"]
 }

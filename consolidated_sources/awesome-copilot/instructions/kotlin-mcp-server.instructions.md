@@ -1,5 +1,5 @@
 ---
-description: 'Best practices and patterns for building Model Context Protocol (MCP) servers in Kotlin using the official io.modelcontextprotocol:kotlin-sdk library.'
+description: "Best practices and patterns for building Model Context Protocol (MCP) servers in Kotlin using the official io.modelcontextprotocol:kotlin-sdk library."
 applyTo: "**/*.kt, **/*.kts, **/build.gradle.kts, **/settings.gradle.kts"
 ---
 
@@ -69,10 +69,10 @@ server.addTool(
     val query = request.params.arguments["query"] as? String
         ?: throw IllegalArgumentException("query is required")
     val limit = (request.params.arguments["limit"] as? Number)?.toInt() ?: 10
-    
+
     // Perform search
     val results = performSearch(query, limit)
-    
+
     CallToolResult(
         content = listOf(
             TextContent(
@@ -99,7 +99,7 @@ server.addResource(
     mimeType = "text/plain"
 ) { request: ReadResourceRequest ->
     val content = loadResourceContent(request.uri)
-    
+
     ReadResourceResult(
         contents = listOf(
             TextResourceContents(
@@ -135,7 +135,7 @@ server.addPrompt(
 ) { request: GetPromptRequest ->
     val topic = request.params.arguments?.get("topic") as? String
         ?: throw IllegalArgumentException("topic is required")
-    
+
     GetPromptResult(
         description = "Analyze the given topic",
         messages = listOf(
@@ -211,9 +211,9 @@ server.addTool(
     coroutineScope {
         val source1 = async { searchSource1(query) }
         val source2 = async { searchSource2(query) }
-        
+
         val results = source1.await() + source2.await()
-        
+
         CallToolResult(
             content = listOf(TextContent(text = results.joinToString("\n")))
         )
@@ -233,11 +233,11 @@ server.addTool(
     try {
         val input = request.params.arguments["input"] as? String
             ?: throw IllegalArgumentException("input is required")
-        
+
         require(input.isNotBlank()) { "input cannot be blank" }
-        
+
         val result = processInput(input)
-        
+
         CallToolResult(
             content = listOf(TextContent(text = result))
         )
@@ -305,16 +305,16 @@ repositories {
 
 dependencies {
     implementation("io.modelcontextprotocol:kotlin-sdk:0.7.2")
-    
+
     // For client transport
     implementation("io.ktor:ktor-client-cio:3.0.0")
-    
+
     // For server transport
     implementation("io.ktor:ktor-server-netty:3.0.0")
-    
+
     // For JSON serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-    
+
     // For coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
 }
@@ -332,7 +332,7 @@ kotlin {
         nodejs()
     }
     wasmJs()
-    
+
     sourceSets {
         commonMain.dependencies {
             implementation("io.modelcontextprotocol:kotlin-sdk:0.7.2")
@@ -382,16 +382,16 @@ class ServerTest {
     @Test
     fun testSearchTool() = runTest {
         val server = createTestServer()
-        
+
         val request = CallToolRequest(
             params = CallToolParams(
                 name = "search",
                 arguments = mapOf("query" to "test", "limit" to 5)
             )
         )
-        
+
         val result = server.callTool(request)
-        
+
         assertEquals(false, result.isError)
         assert(result.content.isNotEmpty())
     }
@@ -414,7 +414,7 @@ server.addTool(
     description = "Operation with logging"
 ) { request ->
     logger.info { "Tool called with args: ${request.params.arguments}" }
-    
+
     try {
         val result = performOperation(request)
         logger.info { "Operation succeeded" }
