@@ -332,6 +332,42 @@ locally inside Docker (no API key needed). To enable cloud providers:
 
 ---
 
+## 🖥️ Shadcn Codespace Dashboard (Foundation)
+
+A **Shadcn/UI-based dashboard skeleton** has been added at `ui/shadcn-dashboard/`
+to serve as the foundation for a future Codespace VM status & capacity panel.
+
+**What's included now:**
+- Vite + React + Tailwind CSS + shadcn/ui project skeleton
+- Placeholder "Codespace Status" page with mocked RAM, disk, Docker, and
+  service-health metrics (all clearly marked as mock data)
+- Sidebar navigation shell
+- Full inline `TODO` markers showing exactly where real metrics will be wired
+
+**What's NOT built yet (intentional):**
+- Live metric fetching (no backend API yet)
+- Working action buttons (disabled, pending API)
+- Auth / access control
+
+**To run the dashboard inside your Codespace:**
+
+```bash
+cd ui/shadcn-dashboard
+npm install
+npm run dev
+# → Open port 5173 in your Codespace Ports tab
+```
+
+**Shadcn upstream resources** referenced and documented in the dashboard:
+- [shadcn-admin](https://github.com/Ditto190/shadcn-admin) — full admin layout + Recharts charts
+- [shadcn-vue-modme](https://github.com/Ditto190/shadcn-vue-modme) — Vue 3 reference
+- [awesome-shadcn-ui-modme](https://github.com/Ditto190/awesome-shadcn-ui-modme) — component showcase
+- [shadcn-ui-sidebar-modme](https://github.com/Ditto190/shadcn-ui-sidebar-modme) — sidebar patterns
+
+📖 Full agent/developer guide: [`docs/shadcn-dashboard-foundation.md`](docs/shadcn-dashboard-foundation.md)
+
+---
+
 ## 🧭 Next Steps — What to do after opening your Codespace
 
 ### Step 1 — Start the AI stack
