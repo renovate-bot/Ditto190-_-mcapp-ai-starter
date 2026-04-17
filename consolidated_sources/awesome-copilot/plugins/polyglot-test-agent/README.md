@@ -13,27 +13,27 @@ copilot plugin install polyglot-test-agent@awesome-copilot
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
-| `polyglot-test-generator` | Orchestrates comprehensive test generation using Research-Plan-Implement pipeline. Use when asked to generate tests, write unit tests, improve test coverage, or add tests. |
-| `polyglot-test-researcher` | Analyzes codebases to understand structure, testing patterns, and testability. Identifies source files, existing tests, build commands, and testing framework. |
-| `polyglot-test-planner` | Creates structured test implementation plans from research findings. Organizes tests into phases by priority and complexity. |
-| `polyglot-test-implementer` | Implements a single phase from the test plan. Writes test files and verifies they compile and pass. |
-| `polyglot-test-builder` | Runs build/compile commands for any language and reports results. |
-| `polyglot-test-tester` | Runs test commands for any language and reports results. |
-| `polyglot-test-fixer` | Fixes compilation errors in source or test files. |
-| `polyglot-test-linter` | Runs code formatting/linting for any language. |
+| Agent                       | Description                                                                                                                                                                 |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `polyglot-test-generator`   | Orchestrates comprehensive test generation using Research-Plan-Implement pipeline. Use when asked to generate tests, write unit tests, improve test coverage, or add tests. |
+| `polyglot-test-researcher`  | Analyzes codebases to understand structure, testing patterns, and testability. Identifies source files, existing tests, build commands, and testing framework.              |
+| `polyglot-test-planner`     | Creates structured test implementation plans from research findings. Organizes tests into phases by priority and complexity.                                                |
+| `polyglot-test-implementer` | Implements a single phase from the test plan. Writes test files and verifies they compile and pass.                                                                         |
+| `polyglot-test-builder`     | Runs build/compile commands for any language and reports results.                                                                                                           |
+| `polyglot-test-tester`      | Runs test commands for any language and reports results.                                                                                                                    |
+| `polyglot-test-fixer`       | Fixes compilation errors in source or test files.                                                                                                                           |
+| `polyglot-test-linter`      | Runs code formatting/linting for any language.                                                                                                                              |
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                     | Description                                                                                                                                 |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/polyglot-test-agent:unit-test-generation` | Best practices and guidelines for generating comprehensive, parameterized unit tests with 80% code coverage across any programming language |
 
 ### Skills
 
-| Skill | Description |
-|-------|-------------|
+| Skill                 | Description                                                                                                                                                                    |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `polyglot-test-agent` | Generates comprehensive, workable unit tests for any programming language using a multi-agent pipeline. Supports C#, TypeScript, JavaScript, Python, Go, Rust, Java, and more. |
 
 ## Supported Languages

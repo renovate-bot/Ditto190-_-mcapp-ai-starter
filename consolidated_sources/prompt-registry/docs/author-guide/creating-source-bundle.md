@@ -24,13 +24,13 @@ my-collection/
 ## Collection Manifest
 
 ```yaml
-id: my-collection                    # lowercase, numbers, hyphens
+id: my-collection # lowercase, numbers, hyphens
 name: My Collection
 description: What this collection does
 tags: [productivity, coding]
 items:
   - path: prompts/task-helper.prompt.md
-    kind: prompt                     # prompt | instruction | chat-mode | agent
+    kind: prompt # prompt | instruction | chat-mode | agent
   - path: instructions/standards.instructions.md
     kind: instruction
 ```
@@ -39,11 +39,11 @@ See [Collection Schema](./collection-schema.md) for full reference.
 
 ## Resource Types
 
-| Type | Extension | Purpose |
-|------|-----------|---------|
-| Prompt | `.prompt.md` | Reusable prompt templates |
-| Instruction | `.instructions.md` | System guidelines |
-| Agent | `.agent.md` | Autonomous task patterns |
+| Type        | Extension          | Purpose                   |
+| ----------- | ------------------ | ------------------------- |
+| Prompt      | `.prompt.md`       | Reusable prompt templates |
+| Instruction | `.instructions.md` | System guidelines         |
+| Agent       | `.agent.md`        | Autonomous task patterns  |
 
 ## Testing Locally
 

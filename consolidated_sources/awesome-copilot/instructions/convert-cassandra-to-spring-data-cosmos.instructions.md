@@ -1,6 +1,6 @@
 ---
-description: 'Step-by-step guide for converting Spring Boot Cassandra applications to use Azure Cosmos DB with Spring Data Cosmos'
-applyTo: '**/*.java,**/pom.xml,**/build.gradle,**/application*.properties,**/application*.yml,**/application*.conf'
+description: "Step-by-step guide for converting Spring Boot Cassandra applications to use Azure Cosmos DB with Spring Data Cosmos"
+applyTo: "**/*.java,**/pom.xml,**/build.gradle,**/application*.properties,**/application*.yml,**/application*.conf"
 ---
 
 # Comprehensive Guide: Converting Spring Boot Cassandra Applications to use Azure Cosmos DB with Spring Data Cosmos (spring-data-cosmos)
@@ -8,6 +8,7 @@ applyTo: '**/*.java,**/pom.xml,**/build.gradle,**/application*.properties,**/app
 ## Applicability
 
 This guide applies to:
+
 - ✅ Spring Boot 2.x - 3.x applications (both reactive and non-reactive)
 - ✅ Maven and Gradle-based projects
 - ✅ Applications using Spring Data Cassandra, Cassandra DAOs, or DataStax drivers
@@ -16,6 +17,7 @@ This guide applies to:
 - ✅ Both synchronous and reactive (Spring WebFlux) applications
 
 This guide does NOT cover:
+
 - ❌ Non-Spring frameworks (Jakarta EE, Micronaut, Quarkus, plain Java)
 - ❌ Complex Cassandra features (materialized views, UDTs, counters, custom types)
 - ❌ Bulk data migration (code conversion only - data must be migrated separately)
@@ -39,6 +41,7 @@ This guide provides step-by-step instructions for converting reactive Spring Boo
 **CRITICAL**: Before running your application, ensure the database exists in your Cosmos DB account.
 
 ### Option 1: Manual Database Creation (Recommended for first run)
+
 1. Go to Azure Portal → Your Cosmos DB account
 2. Navigate to "Data Explorer"
 3. Click "New Database"
@@ -49,19 +52,24 @@ This guide provides step-by-step instructions for converting reactive Spring Boo
 6. Click OK
 
 ### Option 2: Automatic Creation
+
 Spring Data Cosmos can auto-create the database on first connection, but this requires:
+
 - Proper RBAC permissions (Cosmos DB Built-in Data Contributor role)
 - May fail if permissions are insufficient
 
 ### Container (Collection) Creation
+
 Containers will be auto-created by Spring Data Cosmos when the application starts, using the `@Container` annotation settings from your entities. No manual container creation is needed unless you want to configure specific throughput or indexing policies.
 
 ## Authentication with Azure Cosmos DB
 
 ### Using DefaultAzureCredential (Recommended)
+
 The `DefaultAzureCredential` authentication method is the recommended approach for both development and production:
 
 **How it works**:
+
 1. Tries multiple credential sources in order:
    - Environment variables
    - Workload Identity (for AKS)
@@ -71,6 +79,7 @@ The `DefaultAzureCredential` authentication method is the recommended approach f
    - Azure Developer CLI
 
 **Setup for local development**:
+
 ```bash
 # Login via Azure CLI
 az login
@@ -79,6 +88,7 @@ az login
 ```
 
 **Configuration** (no key required):
+
 ```java
 @Bean
 public CosmosClientBuilder getCosmosClientBuilder() {
@@ -89,6 +99,7 @@ public CosmosClientBuilder getCosmosClientBuilder() {
 ```
 
 **Properties file** (application-cosmos.properties or application.properties):
+
 ```properties
 azure.cosmos.uri=https://<your-cosmos-account-name>.documents.azure.com:443/
 azure.cosmos.database=<your-database-name>
@@ -99,9 +110,11 @@ azure.cosmos.populate-query-metrics=false
 **Note**: Replace `<your-cosmos-account-name>` and `<your-database-name>` with your actual values.
 
 ### RBAC Permissions Required
+
 When using DefaultAzureCredential, your Azure identity needs appropriate RBAC permissions:
 
 **Common startup error**:
+
 ```
 Request blocked by Auth: Request for Read DatabaseAccount is blocked because principal
 [xxx] does not have required RBAC permissions to perform action
@@ -109,6 +122,7 @@ Request blocked by Auth: Request for Read DatabaseAccount is blocked because pri
 ```
 
 **Solution**: Assign the "Cosmos DB Built-in Data Contributor" role:
+
 ```bash
 # Get your user's object ID
 PRINCIPAL_ID=$(az ad signed-in-user show --query id -o tsv)
@@ -125,6 +139,7 @@ az cosmosdb sql role assignment create \
 **Alternative**: If you're logged in with `az login`, your account should already have permissions if you're the owner/contributor of the Cosmos DB account.
 
 ### Key-Based Authentication (Local Emulator Only)
+
 Only use key-based authentication for local emulator development:
 
 ```java
@@ -146,8 +161,10 @@ public CosmosClientBuilder getCosmosClientBuilder() {
 ## Critical Lessons Learned
 
 ### Java Version Requirements (Spring Boot 3.x)
+
 **Problem**: Spring Boot 3.0+ requires Java 17 or higher. Using Java 11 causes build failures.
 **Error**:
+
 ```
 No matching variant of org.springframework.boot:spring-boot-gradle-plugin:3.0.5 was found.
 Incompatible because this component declares a component compatible with Java 17
@@ -155,6 +172,7 @@ and the consumer needed a component compatible with Java 11
 ```
 
 **Solution**:
+
 ```bash
 # Check Java version
 java -version
@@ -169,6 +187,7 @@ echo $JAVA_HOME
 ```
 
 **For Gradle projects**, always run with correct JAVA_HOME:
+
 ```bash
 export JAVA_HOME=/path/to/java-17
 ./gradlew clean build
@@ -178,12 +197,15 @@ export JAVA_HOME=/path/to/java-17
 ### Gradle-Specific Issues
 
 #### Issue 1: Old Configuration File Conflicts
+
 **Problem**: When renaming or replacing Cassandra configuration files, the old file may still exist, causing compilation errors:
+
 ```
 error: class CosmosConfiguration is public, should be declared in a file named CosmosConfiguration.java
 ```
 
 **Solution**: Explicitly delete the old Cassandra configuration file(s):
+
 ```bash
 # Find and remove old Cassandra config files
 find src/main/java -name "*CassandraConfig*.java" -o -name "*CassandraConfiguration*.java"
@@ -192,7 +214,9 @@ rm src/main/java/<path-to-old-config>/CassandraConfig.java
 ```
 
 #### Issue 2: Repository findAllById Returns Iterable
+
 **Problem**: CosmosRepository's `findAllById()` returns `Iterable<Entity>`, not `List<Entity>`. Calling `.stream()` directly fails:
+
 ```
 error: cannot find symbol
   symbol:   method stream()
@@ -200,6 +224,7 @@ error: cannot find symbol
 ```
 
 **Solution**: Handle Iterable properly:
+
 ```java
 // WRONG - Iterable doesn't have stream() method
 var entities = repository.findAllById(ids).stream()...
@@ -220,31 +245,39 @@ List<YourEntity> entities = StreamSupport.stream(
 ```
 
 ### package-info.java javax.annotation Issues
+
 **Problem**: `package-info.java` using `javax.annotation.ParametersAreNonnullByDefault` causes compilation errors in Java 11+:
+
 ```
 error: cannot find symbol
 import javax.annotation.ParametersAreNonnullByDefault;
 ```
 
 **Solution**: Remove or simplify the package-info.java file:
+
 ```java
 // Simple version - just package declaration
 package com.your.package;
 ```
 
 ### Entity Constructor Issues
+
 **Problem**: Using Lombok `@NoArgsConstructor` with manual constructors causes duplicate constructor compilation errors.
 **Solution**: Choose one approach:
+
 - Option 1: Remove `@NoArgsConstructor` and keep manual constructors
 - Option 2: Remove manual constructors and rely on Lombok annotations
 - **Best Practice**: For Cosmos entities with initialization logic (like setting partition keys), remove `@NoArgsConstructor` and use manual constructors only.
 
 ### Business Object Constructor Removal
+
 **Problem**: Removing `@AllArgsConstructor` or custom constructors from entity classes breaks existing code that uses those constructors.
 **Impact**: Mapping utilities, data seeders, and test files will fail to compile.
 **Solution**:
+
 - After removing or modifying constructors, search ALL files for constructor calls to those entities
 - Replace with default constructor + setter pattern:
+
   ```java
   // Before - using all-args constructor
   MyEntity entity = new MyEntity(id, field1, field2, field3);
@@ -256,9 +289,12 @@ package com.your.package;
   entity.setField2(field2);
   entity.setField3(field3);
   ```
+
 ### Data Seeder Constructor Calls
+
 **Problem**: Data seeding or initialization code uses entity constructors that may not exist after entity conversion to Cosmos annotations.
 **Solution**: Update all entity instantiations in data seeding components to use setters:
+
 ```java
 // Before - constructor-based initialization
 MyEntity entity1 = new MyEntity("entity-1", "value1", "value2");
@@ -271,14 +307,17 @@ entity1.setField2("value2");
 ```
 
 **Common files to check**: DataSeeder, DatabaseInitializer, TestDataLoader, or any `@Component` implementing `CommandLineRunner`
+
 ```java
 OwnerEntity owner1 = new OwnerEntity();
 owner1.setId("owner-1");
 ```
 
 ### Test File Updates Required
+
 **Problem**: Test files reference old Cassandra DAOs and use UUID constructors.
 **Critical Files to Update**:
+
 1. Remove `MockReactiveResultSet.java` (Cassandra-specific)
 2. Update `*ReactiveServicesTest.java` - replace DAO references with Cosmos repositories
 3. Update `*ReactiveControllerTest.java` - replace DAO references with Cosmos repositories
@@ -286,9 +325,11 @@ owner1.setId("owner-1");
 5. Replace constructor calls: `new Owner(UUID.fromString(...))` with setter pattern
 
 ### Application Startup and DefaultAzureCredential Behavior
+
 **Important**: DefaultAzureCredential tries multiple authentication methods in sequence, which is normal and expected.
 
 **Expected startup log pattern**:
+
 ```
 INFO c.azure.identity.ChainedTokenCredential : Azure Identity => Attempted credential EnvironmentCredential is unavailable.
 INFO c.azure.identity.ChainedTokenCredential : Azure Identity => Attempted credential WorkloadIdentityCredential is unavailable.
@@ -301,12 +342,14 @@ INFO c.azure.identity.ChainedTokenCredential : Azure Identity => Attempted crede
 ```
 
 **Key points**:
+
 - The "unavailable" messages are **NORMAL** - it's trying each credential source in order
 - Once it finds one that works (e.g., AzureCliCredential or AzureDeveloperCliCredential), it will use that
 - **Do not interrupt the startup process** - it takes 10-15 seconds to cycle through credential sources
 - Application typically takes 30-60 seconds total to fully start and connect to Cosmos DB
 
 **Success indicators**:
+
 ```
 INFO c.a.c.i.RxDocumentClientImpl : Initializing DocumentClient [1] with serviceEndpoint [https://your-account.documents.azure.com:443/]
 INFO c.a.c.i.GlobalEndpointManager : db account retrieved {...}
@@ -318,6 +361,7 @@ INFO com.your.app.Application : Started Application in X.XXX seconds
 **Troubleshooting startup failures**:
 
 1. **If all credentials are "unavailable"**:
+
    ```bash
    # Re-authenticate with Azure CLI
    az login
@@ -327,14 +371,17 @@ INFO com.your.app.Application : Started Application in X.XXX seconds
    ```
 
 2. **If you see permission errors**:
+
    ```
    Request blocked by Auth: principal [xxx] does not have required RBAC permissions
    ```
+
    - Ensure database exists in Cosmos DB account (see Database Setup section)
    - Verify RBAC permissions (see Authentication section)
    - Check that you're logged into the correct Azure subscription
 
 3. **Port already in use**:
+
    ```bash
    # Find and kill the process
    lsof -ti:8944 | xargs kill -9
@@ -344,8 +391,10 @@ INFO com.your.app.Application : Started Application in X.XXX seconds
    ```
 
 ### Application Startup Patience
+
 **Problem**: Application takes 30-60 seconds to fully start (compilation + Spring Boot + Cosmos DB connection).
 **Solution**:
+
 - For Gradle: `./gradlew bootRun` (runs in foreground by default)
 - For Maven: `mvn spring-boot:run`
 - Use background execution if needed: `nohup ./gradlew bootRun > app.log 2>&1 &`
@@ -354,8 +403,10 @@ INFO com.your.app.Application : Started Application in X.XXX seconds
 - Wait for Tomcat to start and show the port number before testing endpoints
 
 ### Port Configuration
+
 **Problem**: Application may not run on default port 8080.
 **Solution**:
+
 - Check actual port: `ss -tlnp | grep java`
 - Test connectivity: `curl http://localhost:<port>/petclinic/api/owners`
 - Common ports: 8080, 9966, 9967
@@ -365,6 +416,7 @@ INFO com.your.app.Application : Started Application in X.XXX seconds
 During this conversion, we encountered over 100 compilation errors. Here's the systematic approach that resolved them:
 
 ### Step 1: Identify Residual Cassandra Files
+
 **Problem**: Old Cassandra-specific files cause compilation errors after dependencies are removed.
 **Solution**: Delete all Cassandra-specific files systematically:
 
@@ -387,6 +439,7 @@ find . -name "MockReactiveResultSet.java"
 ```
 
 ### Step 2: Run Incremental Compilation Checks
+
 **Approach**: After each major change, compile to identify remaining issues:
 
 ```bash
@@ -404,6 +457,7 @@ mvn compile 2>&1 | grep -E "(new Owner|new Pet|new Vet|new Visit)"
 ```
 
 ### Step 3: Fix Constructor-Related Errors Systematically
+
 **Pattern**: Search for all constructor calls in specific file types:
 
 ```bash
@@ -418,6 +472,7 @@ grep -rn "new Owner\|new Pet\|new Vet\|new Visit" src/test/java/
 ```
 
 ### Step 4: Update Tests Last
+
 **Rationale**: Fix application code before test code to see all issues clearly:
 
 1. First: Update test repository mocks (DAO → Cosmos Repository)
@@ -426,7 +481,9 @@ grep -rn "new Owner\|new Pet\|new Vet\|new Visit" src/test/java/
 4. Finally: Run tests to verify: `mvn test`
 
 ### Step 5: Verify Zero Compilation Errors
+
 **Final Check**:
+
 ```bash
 # Clean and full compile
 mvn clean compile
@@ -442,6 +499,7 @@ mvn test
 ```
 
 **Success Indicators**:
+
 - `mvn compile`: BUILD SUCCESS
 - `mvn test`: All tests pass (even if some are skipped)
 - No ERROR messages in output
@@ -453,6 +511,7 @@ mvn test
 ### 1. Update Maven Dependencies
 
 #### Remove Cassandra Dependencies
+
 ```xml
 <!-- REMOVE these Cassandra dependencies -->
 <dependency>
@@ -466,6 +525,7 @@ mvn test
 ```
 
 #### Add Azure Cosmos Dependencies
+
 ```xml
 <!-- Azure Spring Data Cosmos (Java 11 compatible) -->
 <dependency>
@@ -483,6 +543,7 @@ mvn test
 ```
 
 #### Critical: Add Version Management for Compatibility
+
 Spring Boot 2.3.x has version conflicts with Azure libraries. Add this to your `<dependencyManagement>` section:
 
 ```xml
@@ -534,6 +595,7 @@ Spring Boot 2.3.x has version conflicts with Azure libraries. Add this to your `
 ### 2. Configuration Setup
 
 #### Create Cosmos Configuration Class
+
 Replace your Cassandra configuration with:
 
 ```java
@@ -578,10 +640,12 @@ public class CosmosConfiguration extends AbstractCosmosConfiguration {
 ```
 
 **Critical Notes:**
+
 - **BOTH annotations required**: @EnableCosmosRepositories AND @EnableReactiveCosmosRepositories
 - Missing @EnableReactiveCosmosRepositories will cause "No qualifying bean" errors for reactive repositories
 
 #### Application Properties
+
 Add cosmos profile configuration:
 
 ```properties
@@ -595,6 +659,7 @@ azure.cosmos.database=your-database-name
 #### Convert from Cassandra to Cosmos Annotations
 
 **Before (Cassandra):**
+
 ```java
 @Table(value = "entity_table")
 public class EntityName {
@@ -610,6 +675,7 @@ public class EntityName {
 ```
 
 **After (Cosmos):**
+
 ```java
 @Container(containerName = "entities")
 public class EntityName {
@@ -629,6 +695,7 @@ public class EntityName {
 ```
 
 #### Key Changes:
+
 - Replace `@Table` with `@Container(containerName = "...")`
 - Change `@PartitionKey` to Cosmos partition key strategy
 - Convert all IDs from `UUID` to `String`
@@ -642,6 +709,7 @@ public class EntityName {
 **If your application uses DAOs or custom data access classes:**
 
 **Before (Cassandra DAO pattern):**
+
 ```java
 @Repository
 public class EntityReactiveDao {
@@ -650,6 +718,7 @@ public class EntityReactiveDao {
 ```
 
 **After (Cosmos Repository):**
+
 ```java
 @Repository
 public interface EntityCosmosRepository extends ReactiveCosmosRepository<EntityName, String> {
@@ -665,6 +734,7 @@ public interface EntityCosmosRepository extends ReactiveCosmosRepository<EntityN
 **If your application uses Spring Data Cassandra repositories:**
 
 **Before:**
+
 ```java
 @Repository
 public interface EntityCassandraRepository extends ReactiveCassandraRepository<EntityName, UUID> {
@@ -673,6 +743,7 @@ public interface EntityCassandraRepository extends ReactiveCassandraRepository<E
 ```
 
 **After:**
+
 ```java
 @Repository
 public interface EntityCosmosRepository extends ReactiveCosmosRepository<EntityName, String> {
@@ -681,11 +752,13 @@ public interface EntityCosmosRepository extends ReactiveCosmosRepository<EntityN
 ```
 
 **If your application uses direct CqlSession or Cassandra driver:**
+
 - Replace direct driver calls with repository pattern
 - Convert CQL queries to Cosmos SQL syntax
 - Implement repository interfaces as shown above
 
 #### Key Points:
+
 - **CRITICAL**: Use `ReactiveCosmosRepository<Entity, String>` for reactive programming (NOT CosmosRepository)
 - Use `CosmosRepository<Entity, String>` for non-reactive applications
 - **Repository Interface Change**: If converting from existing Cassandra repositories/DAOs, ensure all repository interfaces extend ReactiveCosmosRepository
@@ -740,11 +813,13 @@ public class EntityReactiveServices {
 ```
 
 **If your application uses direct repository injection in controllers:**
+
 - Consider adding a service layer for better separation of concerns
 - Update controller dependencies to use new Cosmos repositories
 - Ensure proper reactive type handling throughout the call chain
 
 **Common Issues:**
+
 - **Compilation Error**: "Cannot resolve method" when using Iterable return types
 - **Runtime Error**: Attempting to call .collectList() or .block() unnecessarily
 - **Performance**: Blocking reactive streams defeats the purpose of reactive programming
@@ -756,6 +831,7 @@ public class EntityReactiveServices {
 **If your application has REST controllers:**
 
 **Before:**
+
 ```java
 @GetMapping("/entities/{entityId}")
 public Mono<EntityDto> getEntity(@PathVariable UUID entityId) {
@@ -764,6 +840,7 @@ public Mono<EntityDto> getEntity(@PathVariable UUID entityId) {
 ```
 
 **After:**
+
 ```java
 @GetMapping("/entities/{entityId}")
 public Mono<EntityDto> getEntity(@PathVariable String entityId) {
@@ -772,6 +849,7 @@ public Mono<EntityDto> getEntity(@PathVariable String entityId) {
 ```
 
 **If your application doesn't use controllers:**
+
 - Apply the same UUID → String conversion principles to your data access layer
 - Update any external APIs or interfaces that accept/return entity IDs
 
@@ -807,6 +885,7 @@ public class MappingUtils {
 ```
 
 **If your application doesn't use explicit mapping:**
+
 - Ensure consistent ID type usage throughout your codebase
 - Update any object construction or copying logic to handle String IDs
 
@@ -816,7 +895,7 @@ public class MappingUtils {
 
 **Critical**: All test files must be updated to work with String IDs and Cosmos repositories:
 
-```java
+````java
 **If your application has unit tests:**
 
 ```java
@@ -842,17 +921,20 @@ class EntityReactiveServicesTest {
             .verifyComplete();
     }
 }
-```
+````
 
 **If your application has integration tests:**
+
 - Update test data setup to use String IDs
 - Replace Cassandra test containers with Cosmos DB emulator (if available)
 - Update test queries to use Cosmos SQL syntax instead of CQL
 
 **If your application doesn't have tests:**
+
 - Consider adding basic tests to verify the conversion works correctly
 - Focus on testing ID conversion and basic CRUD operations
-```
+
+````
 
 ### 9. Common Issues and Solutions
 
@@ -903,7 +985,7 @@ class EntityReactiveServicesTest {
    az login
    # Verify login
    az account show
-   ```
+````
 
 2. **For Azure-hosted applications**: Ensure Managed Identity is enabled and has proper RBAC permissions
 
@@ -911,11 +993,13 @@ class EntityReactiveServicesTest {
    - Environment variables → Workload Identity → Managed Identity → Azure CLI → PowerShell → Developer CLI
 
 #### Issue 8: Database not found errors
+
 **Problem**: Application fails to start with database not found errors
 **Error**: `Database 'your-database-name' not found` or `Resource Not Found`
 **Root Cause**: Database doesn't exist in Cosmos DB account
 
 **Solution**: Create the database before first run (see Database Setup section):
+
 ```bash
 # Via Azure CLI
 az cosmosdb sql database create \
@@ -930,8 +1014,10 @@ az cosmosdb sql database create \
 **Note**: Containers (collections) will be auto-created from entity `@Container` annotations, but the database itself may need to exist first depending on your RBAC permissions.
 
 #### Issue 9: RBAC permission errors
+
 **Problem**: Application fails with permission denied errors
 **Error**:
+
 ```
 Request blocked by Auth: principal [xxx] does not have required RBAC permissions
 to perform action [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/write]
@@ -940,6 +1026,7 @@ to perform action [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/write]
 **Root Cause**: Your Azure identity lacks required Cosmos DB permissions
 
 **Solution**: Assign "Cosmos DB Built-in Data Contributor" role:
+
 ```bash
 # Get resource group
 RESOURCE_GROUP=$(az cosmosdb show --name your-cosmos-account --query resourceGroup -o tsv 2>/dev/null)
@@ -959,12 +1046,14 @@ az cosmosdb sql role assignment create \
 **Alternative**: Portal → Cosmos DB → Access Control (IAM) → Add role assignment → "Cosmos DB Built-in Data Contributor"
 
 #### Issue 10: Partition key strategy differences
+
 **Problem**: Cassandra clustering keys don't map directly to Cosmos partition keys
 **Error**: Cross-partition queries or poor performance
 **Root Cause**: Different data distribution strategies
 **Solution**: Choose appropriate partition key based on query patterns, typically the most frequently queried field
 
 #### Issue 10: UUID to String conversion issues
+
 **Problem**: Test files and controllers still using UUID types
 **Error**: `Cannot convert UUID to String` or type mismatch errors
 **Root Cause**: Not all occurrences of UUID were converted to String
@@ -997,21 +1086,23 @@ public class DataSeeder implements CommandLineRunner {
 ```
 
 **If your application has existing data migration needs:**
+
 - Create migration scripts to export from Cassandra and import to Cosmos DB
 - Consider data transformation needs (UUID to String conversion)
 - Plan for any schema differences between Cassandra and Cosmos data models
 
 **If your application doesn't need data seeding:**
+
 - Skip this step and proceed to verification
 
 ### 11. Application Profiles
 
 #### Update application.yml for Cosmos profile
+
 ```yaml
 spring:
   profiles:
     active: cosmos
-
 ---
 spring:
   profiles: cosmos
@@ -1079,21 +1170,25 @@ grep -E "(NoSuchMethodError|NoClassDefFoundError|reactor|netty)" application.log
 Based on real conversion experience, you'll likely encounter these errors in this order:
 
 ### **Phase 1: Compilation Errors**
+
 1. **Missing dependencies** → Add azure-spring-data-cosmos and azure-identity
 2. **Configuration class errors** → Create CosmosConfiguration (if not already present)
 3. **Entity annotation errors** → Convert @Table to @Container, etc.
 4. **Repository interface errors** → Change to ReactiveCosmosRepository (if using repository pattern)
 
 ### **Phase 2: Bean Creation Errors**
+
 5. **"No qualifying bean of type ReactiveCosmosRepository"** → Add @EnableReactiveCosmosRepositories
 6. **Service layer type mismatches** → Change Iterable to Flux, Optional to Mono (if using service layer)
 
 ### **Phase 3: Runtime Version Conflicts** (Most Complex)
+
 7. **NoClassDefFoundError: reactor.core.publisher.Sinks** → Add reactor-core 3.4.32 override
 8. **NoSuchMethodError: Epoll.isTcpFastOpenClientSideAvailable** → Add netty-bom 4.1.101.Final override
 9. **NoSuchMethodError: SSLContext.setCurvesList** → Add netty-tcnative-boringssl-static 2.0.62.Final override
 
 ### **Phase 4: Authentication & Connection**
+
 10. **ManagedIdentityCredential authentication unavailable** → Run `az login --use-device-code`
 11. **Application starts successfully** → Connected to Cosmos DB!
 

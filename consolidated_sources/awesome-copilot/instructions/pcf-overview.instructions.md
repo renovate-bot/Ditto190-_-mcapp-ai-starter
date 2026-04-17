@@ -1,6 +1,6 @@
 ---
-description: 'Power Apps Component Framework overview and fundamentals'
-applyTo: '**/*.{ts,tsx,js,json,xml,pcfproj,csproj}'
+description: "Power Apps Component Framework overview and fundamentals"
+applyTo: "**/*.{ts,tsx,js,json,xml,pcfproj,csproj}"
 ---
 
 # Power Apps Component Framework Overview
@@ -10,6 +10,7 @@ Power Apps component framework empowers professional developers and app makers t
 ## Key Capabilities
 
 You can use PCF to:
+
 - Replace a column on a form that displays a numeric text value with a `dial` or `slider` code component
 - Transform a list into an entirely different visual experience bound to the dataset, like a `Calendar` or `Map`
 
@@ -21,11 +22,13 @@ You can use PCF to:
 ## How PCF Differs from Web Resources
 
 Unlike HTML web resources, code components are:
+
 - Rendered as part of the same context
 - Loaded at the same time as any other components
 - Provide a seamless experience for the user
 
 Code components can be:
+
 - Used across the full breadth of Power Apps capabilities
 - Reused many times across different tables and forms
 - Bundled with all HTML, CSS, and TypeScript files into a single solution package
@@ -35,6 +38,7 @@ Code components can be:
 ## Key Advantages
 
 ### Rich Framework APIs
+
 - Component lifecycle management
 - Contextual data and metadata access
 - Seamless server access via Web API
@@ -43,6 +47,7 @@ Code components can be:
 - User experience elements: dialogs, lookups, full-page rendering
 
 ### Development Benefits
+
 - Support for modern web practices
 - Optimized for performance
 - High reusability
@@ -54,12 +59,15 @@ Code components can be:
 Power Apps component framework licensing is based on the type of data and connections used:
 
 ### Premium Code Components
+
 Code components that connect to external services or data directly via the user's browser client (not through connectors):
+
 - Considered premium components
 - Apps using these become premium
 - End-users require Power Apps licenses
 
 Declare as premium by adding to manifest:
+
 ```xml
 <external-service-usage enabled="true">
   <domain>www.microsoft.com</domain>
@@ -67,7 +75,9 @@ Declare as premium by adding to manifest:
 ```
 
 ### Standard Code Components
+
 Code components that don't connect to external services or data:
+
 - Apps using these with standard features remain standard
 - End-users require minimum Office 365 license
 

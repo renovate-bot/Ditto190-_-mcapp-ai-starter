@@ -20,6 +20,7 @@ python split-excalidraw-library.py <path-to-library-directory>
 ### Step-by-Step Workflow
 
 1. **Create library directory**:
+
    ```bash
    mkdir -p skills/excalidraw-diagram-generator/libraries/aws-architecture-icons
    ```
@@ -81,16 +82,19 @@ skills/excalidraw-diagram-generator/libraries/aws-architecture-icons/
 ### Troubleshooting
 
 **Error: File not found**
+
 - Check that the file path is correct
 - Make sure the file has a `.excalidrawlib` extension
 
 **Error: Invalid library file format**
+
 - Ensure the file is a valid Excalidraw library file
 - Check that it contains a `libraryItems` array
 
 ### License Considerations
 
 When using third-party icon libraries:
+
 - **AWS Architecture Icons**: Subject to AWS Content License
 - **GCP Icons**: Subject to Google's terms
 - **Other libraries**: Check each library's license
@@ -114,9 +118,10 @@ python add-icon-to-diagram.py <diagram-path> <icon-name> <x> <y> [OPTIONS]
 ```
 
 **Options**
+
 - `--library-path PATH` : Path to the icon library directory (default: `aws-architecture-icons`)
 - `--label TEXT` : Add a text label below the icon
--- `--use-edit-suffix` : Edit via `.excalidraw.edit` to avoid editor overwrite issues (enabled by default; pass `--no-use-edit-suffix` to disable)
+  -- `--use-edit-suffix` : Edit via `.excalidraw.edit` to avoid editor overwrite issues (enabled by default; pass `--no-use-edit-suffix` to disable)
 
 ### Examples
 
@@ -163,10 +168,11 @@ python add-arrow.py <diagram-path> <from-x> <from-y> <to-x> <to-y> [OPTIONS]
 ```
 
 **Options**
+
 - `--style {solid|dashed|dotted}` : Line style (default: `solid`)
 - `--color HEX` : Arrow color (default: `#1e1e1e`)
 - `--label TEXT` : Add a text label on the arrow
--- `--use-edit-suffix` : Edit via `.excalidraw.edit` to avoid editor overwrite issues (enabled by default; pass `--no-use-edit-suffix` to disable)
+  -- `--use-edit-suffix` : Edit via `.excalidraw.edit` to avoid editor overwrite issues (enabled by default; pass `--no-use-edit-suffix` to disable)
 
 ### Examples
 

@@ -1,6 +1,6 @@
 ---
-description: 'Application lifecycle management (ALM) for PCF code components'
-applyTo: '**/*.{ts,tsx,js,json,xml,pcfproj,csproj,sln}'
+description: "Application lifecycle management (ALM) for PCF code components"
+applyTo: "**/*.{ts,tsx,js,json,xml,pcfproj,csproj,sln}"
 ---
 
 # Code Components Application Lifecycle Management (ALM)
@@ -57,11 +57,11 @@ For `pac pcf push` to result in a release build, the `PcfBuildMode` is set insid
 
 ### Build Commands
 
-| Command | Default Behavior | With PcfBuildMode=production |
-|---------|-----------------|------------------------------|
-| npm start watch | Always development |   |
-| pac pcf push | Development build | Release build |
-| npm run build | Development build | `npm run build -- --buildMode production` |
+| Command         | Default Behavior   | With PcfBuildMode=production              |
+| --------------- | ------------------ | ----------------------------------------- |
+| npm start watch | Always development |                                           |
+| pac pcf push    | Development build  | Release build                             |
+| npm run build   | Development build  | `npm run build -- --buildMode production` |
 
 More information: [Package a code component](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/import-custom-controls#package-a-code-component).
 
@@ -80,12 +80,12 @@ The `SolutionPackagerType` is included in the `.cdsproj` file created by `pac so
 
 ### Build Configuration Results
 
-| Command | SolutionPackageType | Result |
-|---------|-------------------|---------|
-| msbuild | Managed | Development build inside Managed Solution |
-| msbuild /p:configuration=Release | Managed | Release build inside Managed Solution |
-| msbuild | Unmanaged | Development build inside Unmanaged Solution |
-| msbuild /p:configuration=Release | Unmanaged | Release build inside Unmanaged Solution |
+| Command                          | SolutionPackageType | Result                                      |
+| -------------------------------- | ------------------- | ------------------------------------------- |
+| msbuild                          | Managed             | Development build inside Managed Solution   |
+| msbuild /p:configuration=Release | Managed             | Release build inside Managed Solution       |
+| msbuild                          | Unmanaged           | Development build inside Unmanaged Solution |
+| msbuild /p:configuration=Release | Unmanaged           | Release build inside Unmanaged Solution     |
 
 More information: [Package a code component](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/import-custom-controls#package-a-code-component).
 
@@ -143,7 +143,7 @@ Once a solution that contains a code component is unpacked using `SolutionPackag
     └── Solution.xml
 ```
 
-Under the `Controls` folder, you can see there are subfolders for each code component included in the solution. When committing this folder structure to the source control, you would exclude the files marked with an asterisk (*) above, because they will be output when the `pcfproj` project is built for the corresponding component.
+Under the `Controls` folder, you can see there are subfolders for each code component included in the solution. When committing this folder structure to the source control, you would exclude the files marked with an asterisk (\*) above, because they will be output when the `pcfproj` project is built for the corresponding component.
 
 The only files that are required are the `*.data.xml` files since they contain metadata that describes the resources required by the packaging process.
 
@@ -217,12 +217,12 @@ It's recommended that the MAJOR and MINOR version of the code component's versio
 
 A [Dataverse solution has four parts](https://learn.microsoft.com/en-us/powerapps/maker/data-platform/update-solutions#understanding-version-numbers-for-updates): `MAJOR.MINOR.BUILD.REVISION`.
 
-| Code Component | Dataverse Solution | Notes |
-|----------------|-------------------|--------|
-| MAJOR | MAJOR | Set using Pipeline Variable or last committed value |
-| MINOR | MINOR | Set using Pipeline Variable or last committed value |
-| PATCH | BUILD | $(Build.BuildId) |
-| --- | REVISION | $(Rev:r) |
+| Code Component | Dataverse Solution | Notes                                               |
+| -------------- | ------------------ | --------------------------------------------------- |
+| MAJOR          | MAJOR              | Set using Pipeline Variable or last committed value |
+| MINOR          | MINOR              | Set using Pipeline Variable or last committed value |
+| PATCH          | BUILD              | $(Build.BuildId)                                    |
+| ---            | REVISION           | $(Rev:r)                                            |
 
 ## Canvas Apps ALM Considerations
 

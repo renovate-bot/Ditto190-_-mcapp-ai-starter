@@ -12,26 +12,26 @@ Implement comprehensive input validation to prevent security vulnerabilities and
 ## Using Joi/Zod
 
 ```javascript
-const Joi = require('joi');
+const Joi = require("joi");
 
 const userSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().min(8).pattern(/[A-Z]/).pattern(/[0-9]/).required(),
   age: Joi.number().integer().min(13).max(120),
-  role: Joi.string().valid('user', 'admin').default('user')
+  role: Joi.string().valid("user", "admin").default("user"),
 });
 
 // Middleware
 const validate = (schema) => (req, res, next) => {
   const { error, value } = schema.validate(req.body, { abortEarly: false });
-  
+
   if (error) {
     return res.status(400).json({
       success: false,
-      errors: error.details.map(d => d.message)
+      errors: error.details.map((d) => d.message),
     });
   }
-  
+
   req.validated = value;
   next();
 };

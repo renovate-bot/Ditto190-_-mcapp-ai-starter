@@ -1,19 +1,23 @@
 #!/usr/bin/env node
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const { listCollectionFiles, validateAllCollections, generateMarkdown } = require('../dist');
+const {
+  listCollectionFiles,
+  validateAllCollections,
+  generateMarkdown,
+} = require("../dist");
 
 function parseArgs(argv) {
   const out = { verbose: false, collectionFiles: [], outputMarkdown: null };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    if (arg === '--verbose') {
+    if (arg === "--verbose") {
       out.verbose = true;
-    } else if (arg === '--output-markdown' && argv[i + 1]) {
+    } else if (arg === "--output-markdown" && argv[i + 1]) {
       out.outputMarkdown = argv[i + 1];
       i++;
-    } else if (arg === '--collection-file' && argv[i + 1]) {
+    } else if (arg === "--collection-file" && argv[i + 1]) {
       out.collectionFiles.push(argv[i + 1]);
       i++;
     }
@@ -24,13 +28,16 @@ function parseArgs(argv) {
 const repoRoot = process.cwd();
 const args = parseArgs(process.argv.slice(2));
 
-const collectionsDir = path.join(repoRoot, 'collections');
+const collectionsDir = path.join(repoRoot, "collections");
 if (!fs.existsSync(collectionsDir)) {
-  console.error('❌ collections/ directory not found');
+  console.error("❌ collections/ directory not found");
   process.exit(1);
 }
 
-const files = args.collectionFiles.length > 0 ? args.collectionFiles : listCollectionFiles(repoRoot);
+const files =
+  args.collectionFiles.length > 0
+    ? args.collectionFiles
+    : listCollectionFiles(repoRoot);
 console.log(`Found ${files.length} collection(s)`);
 
 // Use validateAllCollections for complete validation including duplicate detection
@@ -54,9 +61,11 @@ result.fileResults.forEach((fileResult) => {
 });
 
 // Show cross-collection errors (duplicates)
-const crossCollectionErrors = result.errors.filter((e) => e.includes('Duplicate collection'));
+const crossCollectionErrors = result.errors.filter((e) =>
+  e.includes("Duplicate collection"),
+);
 if (crossCollectionErrors.length > 0) {
-  console.error('\n❌ Cross-collection errors:');
+  console.error("\n❌ Cross-collection errors:");
   crossCollectionErrors.forEach((e) => console.error(`  - ${e}`));
 }
 

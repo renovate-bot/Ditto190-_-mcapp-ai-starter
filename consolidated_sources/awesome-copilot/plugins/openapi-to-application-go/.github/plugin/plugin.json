@@ -7,17 +7,7 @@
   },
   "repository": "https://github.com/github/awesome-copilot",
   "license": "MIT",
-  "keywords": [
-    "openapi",
-    "code-generation",
-    "api",
-    "go",
-    "golang"
-  ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/openapi-to-application-code"
-  ]
+  "keywords": ["openapi", "code-generation", "api", "go", "golang"],
+  "agents": ["./agents"],
+  "skills": ["./skills/openapi-to-application-code"]
 }

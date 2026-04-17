@@ -25,35 +25,35 @@ high-quality implementation.
 - Edit markers in the code file or prompt - like:
 
 ```text
- ${openMarker} 
- ()=> shorthand code 
+ ${openMarker}
+ ()=> shorthand code
  ${closeMarker}
 ```
 
 - Use the shorthand to edit, or sometimes essentially create the contents of a code file.
 - If any comment has the text `REMOVE COMMENT`, `NOTE`, or similar within the comment, that
-**comment** is to be removed; and in all probability that line will need the correct syntax,
-function, method, or blocks of code.
+  **comment** is to be removed; and in all probability that line will need the correct syntax,
+  function, method, or blocks of code.
 - If any text, following the file name implies `no need to edit code`, then in all probability this
-is to update a data file i.e. `JSON` or `XML` and means the edits should be focused on formatting
-the data.
+  is to update a data file i.e. `JSON` or `XML` and means the edits should be focused on formatting
+  the data.
 - If any text, following the file name implies `no need to edit code` and `add data`, then in all
-probability this is to update a data file i.e. `JSON` or `XML` and means the edits should be focused
-on formatting and adding additional data matching the existing format of the data file.
+  probability this is to update a data file i.e. `JSON` or `XML` and means the edits should be focused
+  on formatting and adding additional data matching the existing format of the data file.
 
 ### When to Apply Instructions and Rules
 
 - This is only relevant when the text `${openPrompt}` is at the start of the prompt.
   - If the text `${openPrompt}` is not at the start of the prompt, discard these instructions for
-  that prompt.
+    that prompt.
 - The `${REQUIRED_FILE}` will have two markers:
   1. Opening `${openMarker}`
   2. Closing `${closeMarker}`
   - Call these `edit markers`.
 - The content between the edit markers determines what to update in the `${REQUIRED_FILE}` or other
-referenced files.
+  referenced files.
 - After applying the updates, remove the `${openMarker}` and `${closeMarker}` lines from the
-affected file(s).
+  affected file(s).
 
 #### Prompt Back Following Rules
 
@@ -77,7 +77,7 @@ affected file(s).
 
 - **`()=>`** = 90% comment and 10% pseudo code blocks of mixed languages.
   - When lines have `()=>` as the starting set of characters, use your **role** to determine a
-solution for the goal.
+    solution for the goal.
 
 ## Variables
 
@@ -93,8 +93,8 @@ solution for the goal.
 
 ```bash
 [user prompt]
-UPDATE CODE FROM SHORTHAND 
-#file:script.js 
+UPDATE CODE FROM SHORTHAND
+#file:script.js
 Use #file:index.html:94-99 to see where converted
 markdown to html will be parsed `id="a"`.
 ```

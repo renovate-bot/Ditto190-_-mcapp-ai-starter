@@ -1,4 +1,12 @@
 {
+  "scripts": {
+    "session:pre-end": "bash scripts/session-pre-end.sh",
+    "session:end": "bash scripts/session-end.sh",
+    "session:bundle": "bash scripts/session-end.sh --archive",
+    "session:checkpoint": "bash scripts/session-checkpoint.sh",
+    "ci:checkpoint-fast-review": "bash scripts/checkpoint-fast-review.sh",
+    "install:blackbox": "bash scripts/install-blackbox.sh"
+  },
   "devDependencies": {
     "n8n-mcp": "^2.35.6"
   }

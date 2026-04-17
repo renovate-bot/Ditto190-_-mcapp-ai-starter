@@ -50,6 +50,7 @@ Compare resources and flag groups that look like potential duplicates. Consider 
 - **Cross-type overlap** — an agent and an instruction (or instruction and skill) that cover the same topic so thoroughly that one may make the other redundant
 
 Be pragmatic. Resources that cover related but distinct topics are NOT duplicates. For example:
+
 - `react.instructions.md` (general React coding standards) and `react-testing.agent.md` (React testing agent) are **not** duplicates — they serve different purposes.
 - `python-fastapi.instructions.md` and `python-flask.instructions.md` are **not** duplicates — they target different frameworks.
 - `code-review.agent.md` and `code-review.instructions.md` that both do the same style of code review **are** potential duplicates worth flagging.
@@ -63,6 +64,7 @@ Search for issues with label "duplicate-review" that are closed
 ```
 
 Read the comments and body of those past issues to find any pairs or groups that reviewers have explicitly marked as **"accepted"** or **"not duplicates"**. Look for phrases like:
+
 - "accepted as-is"
 - "not duplicates"
 - "intentionally separate"
@@ -94,9 +96,9 @@ Review each group below. If the resources are intentionally separate, check the 
 
 - [ ] Reviewed — these are intentionally separate
 
-| Resource | Type | Description |
-|----------|------|-------------|
-| `agents/foo.agent.md` | Agent | Does X for Y |
+| Resource                           | Type        | Description       |
+| ---------------------------------- | ----------- | ----------------- |
+| `agents/foo.agent.md`              | Agent       | Does X for Y      |
 | `instructions/foo.instructions.md` | Instruction | Also does X for Y |
 
 **Why flagged:** <Brief explanation of the similarity>

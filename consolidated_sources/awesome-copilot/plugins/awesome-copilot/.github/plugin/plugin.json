@@ -14,9 +14,7 @@
     "prompt-engineering",
     "agents"
   ],
-  "agents": [
-    "./agents"
-  ],
+  "agents": ["./agents"],
   "skills": [
     "./skills/suggest-awesome-github-copilot-skills",
     "./skills/suggest-awesome-github-copilot-instructions",

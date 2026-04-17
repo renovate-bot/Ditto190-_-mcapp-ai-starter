@@ -1,6 +1,6 @@
 /**
  * @prompt-registry/collection-scripts
- * 
+ *
  * Shared scripts for building, validating, and publishing Copilot prompt collections.
  * @module @prompt-registry/collection-scripts
  */
@@ -16,7 +16,7 @@ export type {
   ValidationRules,
   VersionInfo,
   BundleInfo,
-} from './types';
+} from "./types";
 
 // Validation exports
 export {
@@ -31,17 +31,17 @@ export {
   validateCollectionFile,
   validateAllCollections,
   generateMarkdown,
-} from './validate';
+} from "./validate";
 
 // Collection utilities exports
 export {
   listCollectionFiles,
   readCollection,
   resolveCollectionItemPaths,
-} from './collections';
+} from "./collections";
 
 // Bundle ID exports
-export { generateBundleId } from './bundle-id';
+export { generateBundleId } from "./bundle-id";
 
 // CLI utilities exports
 export {
@@ -49,14 +49,14 @@ export {
   parseMultiArg,
   hasFlag,
   getPositionalArg,
-} from './cli';
+} from "./cli";
 
 // Skills exports
 export type {
   SkillMetadata,
   SkillValidationResult,
   AllSkillsValidationResult,
-} from './skills';
+} from "./skills";
 
 export {
   SKILL_NAME_MAX_LENGTH,
@@ -70,4 +70,4 @@ export {
   validateAllSkills,
   generateSkillContent,
   createSkill,
-} from './skills';
+} from "./skills";

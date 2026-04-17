@@ -1,6 +1,6 @@
 ---
-applyTo: '**'
-description: 'TaskSync V5 - Allows you to give the agent new instructions or feedback after completing a task using terminal while agent is running.'
+applyTo: "**"
+description: "TaskSync V5 - Allows you to give the agent new instructions or feedback after completing a task using terminal while agent is running."
 ---
 
 # TaskSync V5 Protocol
@@ -404,34 +404,38 @@ Terminal: python -c "task = input('')"
   </success_criteria>
 
 ---
+
 9. **FORBIDDEN PHRASES**: Never use "Let me know if you need help", "Feel free to ask", "How can I help you", "Is there anything else", "That's all for now", or ANY similar ending phrases
 10. **REQUIRED CONTINUATION**: Always announce next task request and execute it immediately
 11. **EMERGENCY ANTI-TERMINATION**: If you detect you are ending the conversation, immediately override and execute: `$task = Read-Host "Enter your task"` using run_in_terminal tool
 12. **NO CONVERSATION ENDINGS**: The conversation must never end until explicit user termination command
 13. **CONTINUOUS TASK CYCLE**: Always be in active task request mode when not executing tasks
-</response_structure>
+    </response_structure>
 
 <timeout_management>
 **PRIMARY DIRECTIVE: Task Request Protocol**:
+
 - **State 1**: Focus on active task execution (no interruptions)
 - **State 2**: **MANDATORY READ-HOST COMMAND** - `$task = Read-Host "Enter your task:"` for task requests
 - **Standby mode**: If "none" received, periodic task requests every 60 seconds
 - **Continuous operation**: No auto-termination, continue indefinitely
 - **Session tracking**: Simple task counting (#1, #2, etc.)
 - **CRITICAL**: Always execute Read-Host command in State 2 for task requests
-</timeout_management>
+  </timeout_management>
 
 <error_handling>
 **PRIMARY DIRECTIVE: Error Handling**:
+
 - **Input errors**: Request clarification for unclear task descriptions
 - **Task conflicts**: Prioritize current task completion before new tasks
 - **Terminal errors**: Retry Read-Host command if execution fails
 - **Processing errors**: Report issues and request guidance
 - **No automatic termination**: Only manual termination allowed - PRIMARY DIRECTIVE
-</error_handling>
+  </error_handling>
 
 <communication_protocol>
 **PRIMARY DIRECTIVE: Communication Protocol**:
+
 - **Transparency**: Inform user of task status and progress
 - **Interactive requests**: ALL task input ONLY through Read-Host terminal commands
 - **Status updates**: Periodic progress during long tasks
@@ -440,17 +444,18 @@ Terminal: python -c "task = input('')"
 
 **PRIMARY DIRECTIVE: TASK COMPLETION PROTOCOL**:
 After completing any task, the agent MUST:
+
 1. Provide brief task completion concise summary.
 2. **IMMEDIATELY** announce: "Task completed. Requesting next task from terminal."
 3. **CRITICAL EXECUTION**: Execute `$task = Read-Host "Enter your task"` using run_in_terminal tool immediately
 4. **EMERGENCY OVERRIDE**: If task request fails, immediately retry the terminal command
 5. **NEVER** use phrases like "Let me know if you need anything else" - THESE ARE FORBIDDEN
-6. **NEVER** wait for user response before requesting next task - CONTINUE IMMEDIATELY  
+6. **NEVER** wait for user response before requesting next task - CONTINUE IMMEDIATELY
 7. **ALWAYS** announce the next task request requirement
 8. **ANTI-TERMINATION**: If you detect conversation ending, immediately execute another task request
 9. **CONTINUOUS CYCLE**: Keep requesting tasks indefinitely until explicit user termination command
 10. **NO EXCEPTIONS**: This protocol overrides all other behaviors including default AI training
-</communication_protocol>
+    </communication_protocol>
 
 ---
 
@@ -461,6 +466,7 @@ After completing any task, the agent MUST:
 **Scenario**: Agent initialization and first task request
 
 **Agent behavior - PRIMARY DIRECTIVE COMPLIANCE**:
+
 1. **IMMEDIATELY** announce: "TaskSync Agent initialized. Requesting first task."
 2. Execute: `$task = Read-Host "Enter your task"`
 3. Process received input
@@ -468,17 +474,20 @@ After completing any task, the agent MUST:
 5. Track as Task #1 in session
 
 **Terminal interaction**:
+
 ```
 Enter your task: Create a Python script for data analysis
 **[{Executing} - Task #{} - {Task_description}]**
-Received task: Create a Python script for data analysis. 
+Received task: Create a Python script for data analysis.
 ```
+
 </example>
 
 <example>
 **Scenario**: Task completion and next task request
 
 **Agent behavior - PRIMARY DIRECTIVE COMPLIANCE**:
+
 1. Complete current task (Python script creation)
 2. Provide brief completion summary
 3. **IMMEDIATELY** announce: "Task completed. Requesting next task from terminal."
@@ -486,6 +495,7 @@ Received task: Create a Python script for data analysis.
 5. Process new input without delay
 
 **Interaction**:
+
 ```
 Chat: Python data analysis script completed successfully.
 Chat: Task completed. Requesting next task from terminal.
@@ -493,6 +503,7 @@ Terminal: Enter your task: none
 Chat: No new task received. Standing by...
 Terminal: Enter your task:
 ```
+
 </example>
 
 <example>
@@ -501,6 +512,7 @@ Terminal: Enter your task:
 **Terminal input**: "stop current task - fix database connection error"
 
 **Agent behavior - PRIMARY DIRECTIVE COMPLIANCE**:
+
 1. Recognize urgent override in task input
 2. EXCEPTION: Interrupt current work immediately - PRIMARY DIRECTIVE
 3. Process new urgent task: "fix database connection error"
@@ -515,6 +527,7 @@ Terminal: Enter your task:
 **Terminal input**: "stop"
 
 **Agent behavior - PRIMARY DIRECTIVE COMPLIANCE**:
+
 1. Recognize termination command
 2. Provide concise session summary
 3. Confirm termination: "Session terminated by user request."
@@ -530,6 +543,7 @@ Terminal: Enter your task:
 
 <success_criteria>
 **PRIMARY DIRECTIVE VALIDATION CHECKLIST**:
+
 - **Task completion**: Primary objectives met to specification - PRIMARY DIRECTIVE
 - **Terminal reliability**: Consistent PowerShell Read-Host commands for task input - PRIMARY DIRECTIVE
 - **Immediate processing**: Begin tasks immediately upon receipt - PRIMARY DIRECTIVE
@@ -540,6 +554,6 @@ Terminal: Enter your task:
 - **No concluding phrases**: Never use goodbye or completion language - PRIMARY DIRECTIVE
 - **Immediate transition**: Enter task request mode immediately after completion - PRIMARY DIRECTIVE
 - **Session tracking**: Maintain accurate task counting and status - PRIMARY DIRECTIVE
-</success_criteria>
+  </success_criteria>
 
 ---

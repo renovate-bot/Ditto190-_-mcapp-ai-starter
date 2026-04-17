@@ -1,7 +1,7 @@
 ---
-name: 'OSPO Contributors Report'
-description: 'Monthly contributor activity metrics across an organization''s repositories.'
-labels: ['ospo', 'reporting', 'contributors']
+name: "OSPO Contributors Report"
+description: "Monthly contributor activity metrics across an organization's repositories."
+labels: ["ospo", "reporting", "contributors"]
 on:
   schedule:
     - cron: "3 2 1 * *"
@@ -111,21 +111,21 @@ Build a markdown report with the following structure:
 
 ### Summary Table
 
-| Metric | Value |
-|---|---|
-| Total Contributors | count |
-| Total Contributions (Commits) | count |
-| New Contributors | count |
-| Returning Contributors | count |
-| % New Contributors | percentage |
+| Metric                        | Value      |
+| ----------------------------- | ---------- |
+| Total Contributors            | count      |
+| Total Contributions (Commits) | count      |
+| New Contributors              | count      |
+| Returning Contributors        | count      |
+| % New Contributors            | percentage |
 
 ### Contributors Detail Table
 
 Sort contributors by commit count descending.
 
-| # | Username | Contribution Count | New Contributor | Sponsor URL | Commits |
-|---|---|---|---|---|---|
-| 1 | @username | 42 | Yes | [Sponsor](url) | [View](commits-url) |
+| #   | Username  | Contribution Count | New Contributor | Sponsor URL    | Commits             |
+| --- | --------- | ------------------ | --------------- | -------------- | ------------------- |
+| 1   | @username | 42                 | Yes             | [Sponsor](url) | [View](commits-url) |
 
 - The **Username** column should link to the contributor's GitHub profile.
 - The **Sponsor URL** column should show "N/A" if `sponsor_info` is false or the user has no Sponsors page.

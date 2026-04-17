@@ -38,39 +38,43 @@ test/
 
 ## Test Types
 
-| Type | Suffix | Purpose |
-|------|--------|---------|
-| Unit | `.test.ts` | Single component isolation |
-| Property | `.property.test.ts` | Invariant testing with fast-check |
-| Integration | `.integration.test.ts` | Multi-component interaction |
-| E2E | `test/e2e/*.test.ts` | Full workflow validation |
+| Type        | Suffix                 | Purpose                           |
+| ----------- | ---------------------- | --------------------------------- |
+| Unit        | `.test.ts`             | Single component isolation        |
+| Property    | `.property.test.ts`    | Invariant testing with fast-check |
+| Integration | `.integration.test.ts` | Multi-component interaction       |
+| E2E         | `test/e2e/*.test.ts`   | Full workflow validation          |
 
 ## Writing Tests
 
 ### Basic Pattern
 
 ```typescript
-import * as assert from 'assert';
-import * as sinon from 'sinon';
+import * as assert from "assert";
+import * as sinon from "sinon";
 
-suite('ComponentName', () => {
-    let sandbox: sinon.SinonSandbox;
+suite("ComponentName", () => {
+  let sandbox: sinon.SinonSandbox;
 
-    setup(() => { sandbox = sinon.createSandbox(); });
-    teardown(() => { sandbox.restore(); });
+  setup(() => {
+    sandbox = sinon.createSandbox();
+  });
+  teardown(() => {
+    sandbox.restore();
+  });
 
-    suite('methodName()', () => {
-        test('should handle expected case', async () => {
-            // Arrange
-            const input = createTestInput();
-            
-            // Act
-            const result = await component.method(input);
-            
-            // Assert
-            assert.strictEqual(result.status, 'success');
-        });
+  suite("methodName()", () => {
+    test("should handle expected case", async () => {
+      // Arrange
+      const input = createTestInput();
+
+      // Act
+      const result = await component.method(input);
+
+      // Assert
+      assert.strictEqual(result.status, "success");
     });
+  });
 });
 ```
 
@@ -80,37 +84,39 @@ The project provides shared utilities in `test/helpers/`:
 
 ```typescript
 import {
-    BundleBuilder,
-    createMockInstalledBundle,
-    createMockUpdateCheckResult
-} from '../helpers/bundleTestHelpers';
+  BundleBuilder,
+  createMockInstalledBundle,
+  createMockUpdateCheckResult,
+} from "../helpers/bundleTestHelpers";
 
 import {
-    BundleGenerators,
-    PropertyTestConfig,
-    ErrorCheckers
-} from '../helpers/propertyTestHelpers';
+  BundleGenerators,
+  PropertyTestConfig,
+  ErrorCheckers,
+} from "../helpers/propertyTestHelpers";
 
 import {
-    LockfileBuilder,
-    createMockLockfile,
-    LockfileGenerators
-} from '../helpers/lockfileTestHelpers';
+  LockfileBuilder,
+  createMockLockfile,
+  LockfileGenerators,
+} from "../helpers/lockfileTestHelpers";
 
 import {
-    setupReleaseMocks,
-    createBundleZip,
-    createMockGitHubSource
-} from '../helpers/repositoryFixtureHelpers';
+  setupReleaseMocks,
+  createBundleZip,
+  createMockGitHubSource,
+} from "../helpers/repositoryFixtureHelpers";
 
 // Create test bundles
-const bundle = BundleBuilder.github('owner', 'repo').withVersion('1.0.0').build();
-const installed = createMockInstalledBundle('bundle-id', '1.0.0');
+const bundle = BundleBuilder.github("owner", "repo")
+  .withVersion("1.0.0")
+  .build();
+const installed = createMockInstalledBundle("bundle-id", "1.0.0");
 
 // Create test lockfiles
 const lockfile = new LockfileBuilder()
-    .withBundle('bundle-id', { version: '1.0.0', sourceId: 'source-1' })
-    .build();
+  .withBundle("bundle-id", { version: "1.0.0", sourceId: "source-1" })
+  .build();
 ```
 
 ### Property-Based Tests
@@ -118,19 +124,25 @@ const lockfile = new LockfileBuilder()
 Use fast-check for property-based testing:
 
 ```typescript
-import * as fc from 'fast-check';
-import { PropertyTestConfig, BundleGenerators } from '../helpers/propertyTestHelpers';
+import * as fc from "fast-check";
+import {
+  PropertyTestConfig,
+  BundleGenerators,
+} from "../helpers/propertyTestHelpers";
 
-test('property: version parsing is consistent', async function() {
-    this.timeout(PropertyTestConfig.TIMEOUT);
-    
-    await fc.assert(
-        fc.asyncProperty(BundleGenerators.version(), async (version) => {
-            const parsed = parseVersion(version);
-            return parsed !== null;
-        }),
-        { numRuns: PropertyTestConfig.RUNS.STANDARD, ...PropertyTestConfig.FAST_CHECK_OPTIONS }
-    );
+test("property: version parsing is consistent", async function () {
+  this.timeout(PropertyTestConfig.TIMEOUT);
+
+  await fc.assert(
+    fc.asyncProperty(BundleGenerators.version(), async (version) => {
+      const parsed = parseVersion(version);
+      return parsed !== null;
+    }),
+    {
+      numRuns: PropertyTestConfig.RUNS.STANDARD,
+      ...PropertyTestConfig.FAST_CHECK_OPTIONS,
+    },
+  );
 });
 ```
 
@@ -139,16 +151,16 @@ test('property: version parsing is consistent', async function() {
 Use nock for HTTP request mocking:
 
 ```typescript
-import nock from 'nock';
+import nock from "nock";
 
 setup(() => {
-    nock('https://api.github.com')
-        .get('/repos/owner/repo/releases')
-        .reply(200, mockReleases);
+  nock("https://api.github.com")
+    .get("/repos/owner/repo/releases")
+    .reply(200, mockReleases);
 });
 
 teardown(() => {
-    nock.cleanAll();
+  nock.cleanAll();
 });
 ```
 
@@ -156,15 +168,15 @@ teardown(() => {
 
 Test fixtures are in `test/fixtures/`:
 
-| Directory | Contents |
-|-----------|----------|
-| `github/` | GitHub API mock responses |
-| `gitlab/` | GitLab API mock responses |
-| `http/` | HTTP registry mock data |
-| `hubs/` | Hub configuration files |
-| `local-library/` | Local bundle fixtures |
+| Directory                | Contents                         |
+| ------------------------ | -------------------------------- |
+| `github/`                | GitHub API mock responses        |
+| `gitlab/`                | GitLab API mock responses        |
+| `http/`                  | HTTP registry mock data          |
+| `hubs/`                  | Hub configuration files          |
+| `local-library/`         | Local bundle fixtures            |
 | `collections-validator/` | Collection validation test cases |
-| `apm/` | APM package fixtures |
+| `apm/`                   | APM package fixtures             |
 
 ## Running Tests
 

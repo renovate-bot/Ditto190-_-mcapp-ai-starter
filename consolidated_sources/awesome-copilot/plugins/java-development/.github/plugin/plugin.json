@@ -7,14 +7,7 @@
   },
   "repository": "https://github.com/github/awesome-copilot",
   "license": "MIT",
-  "keywords": [
-    "java",
-    "springboot",
-    "quarkus",
-    "jpa",
-    "junit",
-    "javadoc"
-  ],
+  "keywords": ["java", "springboot", "quarkus", "jpa", "junit", "javadoc"],
   "skills": [
     "./skills/java-docs",
     "./skills/java-junit",

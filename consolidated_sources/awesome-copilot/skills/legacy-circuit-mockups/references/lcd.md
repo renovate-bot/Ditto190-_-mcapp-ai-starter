@@ -72,10 +72,10 @@ The FIT0127 designation is commonly associated with **16x2 character LCD modules
 
 ### 6.1 RS (Register Select)
 
-| RS | Function             |
-| -- | -------------------- |
-| 0  | Instruction register |
-| 1  | Data register        |
+| RS  | Function             |
+| --- | -------------------- |
+| 0   | Instruction register |
+| 1   | Data register        |
 
 ### 6.2 R/W
 
@@ -86,8 +86,8 @@ The FIT0127 designation is commonly associated with **16x2 character LCD modules
 
 ### 6.3 Enable (E)
 
-* Data is latched on the **falling edge** of E
-* E must be pulsed HIGH  LOW for each transfer
+- Data is latched on the **falling edge** of E
+- E must be pulsed HIGH  LOW for each transfer
 
 ---
 
@@ -95,14 +95,14 @@ The FIT0127 designation is commonly associated with **16x2 character LCD modules
 
 ### 7.1 8-bit Mode
 
-* Uses D0-D7
-* Faster operation
+- Uses D0-D7
+- Faster operation
 
 ### 7.2 4-bit Mode
 
-* Uses D4-D7 only
-* Data transferred in two nibbles (high first)
-* Saves I/O pins
+- Uses D4-D7 only
+- Data transferred in two nibbles (high first)
+- Saves I/O pins
 
 ---
 
@@ -117,8 +117,8 @@ The FIT0127 designation is commonly associated with **16x2 character LCD modules
 
 ### 8.2 CGRAM (Character Generator RAM)
 
-* Supports up to **8 custom characters**
-* Each character uses 8 bytes
+- Supports up to **8 custom characters**
+- Each character uses 8 bytes
 
 ---
 
@@ -174,9 +174,9 @@ R/W  Grounded (write-only)
 
 ## 13. Contrast and Backlight Control
 
-* Contrast adjusted via potentiometer on VO pin
-* Backlight may require series resistor
-* PWM dimming supported via external control
+- Contrast adjusted via potentiometer on VO pin
+- Backlight may require series resistor
+- PWM dimming supported via external control
 
 ---
 
@@ -192,17 +192,17 @@ R/W  Grounded (write-only)
 
 ## 15. Common Use Cases
 
-* Status displays
-* Debug output for SBCs
-* User interfaces for embedded systems
-* Retrocomputer front panels
+- Status displays
+- Debug output for SBCs
+- User interfaces for embedded systems
+- Retrocomputer front panels
 
 ---
 
 ## 16. References
 
-* <https://static6.arrow.com/aropdfconversion/1f68489996f057bb6611f71d5fdb5f60f44faa72/pgurl_58439499065092.pdf>
-* <https://cdn.sparkfun.com/assets/9/5/f/7/b/HD44780.pdf>
-* <https://predictabledesigns.com/introduction-embedded-electronic-displays/>
+- <https://static6.arrow.com/aropdfconversion/1f68489996f057bb6611f71d5fdb5f60f44faa72/pgurl_58439499065092.pdf>
+- <https://cdn.sparkfun.com/assets/9/5/f/7/b/HD44780.pdf>
+- <https://predictabledesigns.com/introduction-embedded-electronic-displays/>
 
 ---

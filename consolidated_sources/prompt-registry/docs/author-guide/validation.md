@@ -9,21 +9,22 @@ Ctrl+Shift+P → "Prompt Registry: Validate Collections"
 ```
 
 Validates all `.collection.yml` files in your `collections/` directory, including:
+
 - Schema validation (required fields, formats)
 - File reference checking (all referenced files exist)
 - Duplicate detection (no duplicate IDs or names across collections)
 
 ## What Gets Validated
 
-| Check | Description |
-|-------|-------------|
-| Required fields | `id`, `name`, `description`, `items` |
-| ID format | Lowercase letters, numbers, hyphens only |
-| Item paths | Valid relative paths |
-| Item kinds | One of: `prompt`, `instruction`, `agent`, `skill` |
-| File references | Referenced files exist |
-| Duplicate IDs | No two collections share the same ID |
-| Duplicate names | No two collections share the same name |
+| Check           | Description                                       |
+| --------------- | ------------------------------------------------- |
+| Required fields | `id`, `name`, `description`, `items`              |
+| ID format       | Lowercase letters, numbers, hyphens only          |
+| Item paths      | Valid relative paths                              |
+| Item kinds      | One of: `prompt`, `instruction`, `agent`, `skill` |
+| File references | Referenced files exist                            |
+| Duplicate IDs   | No two collections share the same ID              |
+| Duplicate names | No two collections share the same name            |
 
 ## Common Errors
 

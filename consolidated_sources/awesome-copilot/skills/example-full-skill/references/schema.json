@@ -1,78 +1,63 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "AgentSkill Example Input Schema",
-    "description": "Schema for validating input data to the example-full-skill",
-    "type": "object",
-    "required": [
-        "items"
-    ],
-    "properties": {
-        "items": {
-            "type": "array",
-            "description": "Array of items to process",
-            "items": {
-                "type": "object",
-                "required": [
-                    "id",
-                    "name",
-                    "email",
-                    "status"
-                ],
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "Unique identifier",
-                        "minLength": 1,
-                        "maxLength": 64
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "Display name",
-                        "minLength": 1,
-                        "maxLength": 256
-                    },
-                    "email": {
-                        "type": "string",
-                        "format": "email",
-                        "description": "Valid email address"
-                    },
-                    "status": {
-                        "type": "string",
-                        "enum": [
-                            "active",
-                            "inactive",
-                            "pending"
-                        ],
-                        "description": "Current status"
-                    },
-                    "metadata": {
-                        "type": "object",
-                        "description": "Optional metadata",
-                        "additionalProperties": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "minItems": 1
-        },
-        "options": {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AgentSkill Example Input Schema",
+  "description": "Schema for validating input data to the example-full-skill",
+  "type": "object",
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "description": "Array of items to process",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "email", "status"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Valid email address"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "inactive", "pending"],
+            "description": "Current status"
+          },
+          "metadata": {
             "type": "object",
-            "description": "Processing options",
-            "properties": {
-                "format": {
-                    "type": "string",
-                    "enum": [
-                        "json",
-                        "csv",
-                        "table"
-                    ],
-                    "default": "json"
-                },
-                "validate": {
-                    "type": "boolean",
-                    "default": true
-                }
-            }
+            "description": "Optional metadata",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "options": {
+      "type": "object",
+      "description": "Processing options",
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": ["json", "csv", "table"],
+          "default": "json"
+        },
+        "validate": {
+          "type": "boolean",
+          "default": true
         }
+      }
     }
+  }
 }

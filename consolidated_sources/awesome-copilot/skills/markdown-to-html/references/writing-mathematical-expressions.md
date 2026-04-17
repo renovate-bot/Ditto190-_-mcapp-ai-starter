@@ -30,7 +30,7 @@ This sentence uses $\` and \`$ delimiters to show math inline: $`\sqrt{3x-1}+(1+
 
 To add a math expression as a block, start a new line and delimit the expression with two dollar symbols `$$`.
 
->  [!TIP] If you're writing in an .md file, you will need to use specific formatting to create a line break, such as ending the line with a backslash as shown in the example below. For more information on line breaks in Markdown, see [Basic writing and formatting syntax](https://docs.github.com/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#line-breaks).
+> [!TIP] If you're writing in an .md file, you will need to use specific formatting to create a line break, such as ending the line with a backslash as shown in the example below. For more information on line breaks in Markdown, see [Basic writing and formatting syntax](https://docs.github.com/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#line-breaks).
 
 ```text
 **The Cauchy-Schwarz Inequality**\
@@ -53,7 +53,7 @@ Alternatively, you can use the <code>\`\`\`math</code> code block syntax to disp
 
 To display a dollar sign as a character in the same line as a mathematical expression, you need to escape the non-delimiter `$` to ensure the line renders correctly.
 
-* Within a math expression, add a `\` symbol before the explicit `$`.
+- Within a math expression, add a `\` symbol before the explicit `$`.
 
   ```text
   This expression uses `\$` to display a dollar sign: $`\sqrt{\$4}`$
@@ -61,7 +61,7 @@ To display a dollar sign as a character in the same line as a mathematical expre
 
   ![Screenshot of rendered Markdown showing how a backslash before a dollar sign displays the sign as part of a mathematical expression.](https://docs.github.com/assets/images/help/writing/dollar-sign-within-math-expression.png)
 
-* Outside a math expression, but on the same line, use span tags around the explicit `$`.
+- Outside a math expression, but on the same line, use span tags around the explicit `$`.
 
   ```text
   To split <span>$</span>100 in half, we calculate $100/2$
@@ -71,6 +71,6 @@ To display a dollar sign as a character in the same line as a mathematical expre
 
 ## Further reading
 
-* [The MathJax website](http://mathjax.org)
-* [Getting started with writing and formatting on GitHub](https://docs.github.com/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github)
-* [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+- [The MathJax website](http://mathjax.org)
+- [Getting started with writing and formatting on GitHub](https://docs.github.com/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github)
+- [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)

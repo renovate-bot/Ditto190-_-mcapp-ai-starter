@@ -14,10 +14,6 @@
     "fastmcp",
     "server-development"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/python-mcp-server-generator"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/python-mcp-server-generator"]
 }

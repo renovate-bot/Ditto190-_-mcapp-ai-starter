@@ -4,13 +4,13 @@
 
 ### Screen Sizes
 
-| Device | Size | Design At |
-| ------ | ---- | --------- |
-| iPhone SE | 375×667 | Small mobile |
-| iPhone 14/15 | 390×844 | Standard mobile |
-| iPhone 14 Pro Max | 430×932 | Large mobile |
-| Android small | 360×640 | Minimum target |
-| Android large | 412×915 | Large Android |
+| Device            | Size    | Design At       |
+| ----------------- | ------- | --------------- |
+| iPhone SE         | 375×667 | Small mobile    |
+| iPhone 14/15      | 390×844 | Standard mobile |
+| iPhone 14 Pro Max | 430×932 | Large mobile    |
+| Android small     | 360×640 | Minimum target  |
+| Android large     | 412×915 | Large Android   |
 
 ### Safe Areas
 
@@ -46,12 +46,12 @@
 
 ### Navigation Patterns
 
-| Pattern | When to Use |
-| ------- | ----------- |
-| Tab Bar | 3-5 top-level destinations |
-| Navigation Bar | Hierarchical content |
-| Sidebar | iPad, rich content apps |
-| Search | Content discovery |
+| Pattern        | When to Use                |
+| -------------- | -------------------------- |
+| Tab Bar        | 3-5 top-level destinations |
+| Navigation Bar | Hierarchical content       |
+| Sidebar        | iPad, rich content apps    |
+| Search         | Content discovery          |
 
 ### Tab Bar Specifications
 
@@ -83,30 +83,30 @@
 
 ### Typography (SF Pro)
 
-| Style | Size | Weight |
-| ----- | ---- | ------ |
-| Large Title | 34pt | Bold |
-| Title 1 | 28pt | Bold |
-| Title 2 | 22pt | Bold |
-| Title 3 | 20pt | Semibold |
-| Headline | 17pt | Semibold |
-| Body | 17pt | Regular |
-| Callout | 16pt | Regular |
-| Subhead | 15pt | Regular |
-| Footnote | 13pt | Regular |
-| Caption | 12pt | Regular |
+| Style       | Size | Weight   |
+| ----------- | ---- | -------- |
+| Large Title | 34pt | Bold     |
+| Title 1     | 28pt | Bold     |
+| Title 2     | 22pt | Bold     |
+| Title 3     | 20pt | Semibold |
+| Headline    | 17pt | Semibold |
+| Body        | 17pt | Regular  |
+| Callout     | 16pt | Regular  |
+| Subhead     | 15pt | Regular  |
+| Footnote    | 13pt | Regular  |
+| Caption     | 12pt | Regular  |
 
 ### iOS Colors (System)
 
-| Color | Light | Dark |
-| ----- | ----- | ---- |
-| Label | #000000 | #FFFFFF |
+| Color           | Light         | Dark          |
+| --------------- | ------------- | ------------- |
+| Label           | #000000       | #FFFFFF       |
 | Secondary Label | #3C3C43 @ 60% | #EBEBF5 @ 60% |
-| Tertiary Label | #3C3C43 @ 30% | #EBEBF5 @ 30% |
-| System Blue | #007AFF | #0A84FF |
-| System Green | #34C759 | #30D158 |
-| System Red | #FF3B30 | #FF453A |
-| System Orange | #FF9500 | #FF9F0A |
+| Tertiary Label  | #3C3C43 @ 30% | #EBEBF5 @ 30% |
+| System Blue     | #007AFF       | #0A84FF       |
+| System Green    | #34C759       | #30D158       |
+| System Red      | #FF3B30       | #FF453A       |
+| System Orange   | #FF9500       | #FF9F0A       |
 
 ### iOS-Specific Patterns
 
@@ -128,12 +128,12 @@
 
 ### Android Navigation Patterns
 
-| Pattern | When to Use |
-| ------- | ----------- |
-| Bottom Navigation | 3-5 top destinations |
+| Pattern           | When to Use                    |
+| ----------------- | ------------------------------ |
+| Bottom Navigation | 3-5 top destinations           |
 | Navigation Drawer | 5+ destinations, less frequent |
-| Navigation Rail | Tablet landscape |
-| Tabs | Related content groups |
+| Navigation Rail   | Tablet landscape               |
+| Tabs              | Related content groups         |
 
 ### Bottom Navigation
 
@@ -172,48 +172,48 @@
 
 ### Typography (Roboto)
 
-| Style | Size | Weight | Tracking |
-| ----- | ---- | ------ | -------- |
-| Display Large | 57sp | Regular | -0.25 |
-| Display Medium | 45sp | Regular | 0 |
-| Display Small | 36sp | Regular | 0 |
-| Headline Large | 32sp | Regular | 0 |
-| Headline Medium | 28sp | Regular | 0 |
-| Headline Small | 24sp | Regular | 0 |
-| Title Large | 22sp | Regular | 0 |
-| Title Medium | 16sp | Medium | 0.15 |
-| Title Small | 14sp | Medium | 0.1 |
-| Body Large | 16sp | Regular | 0.5 |
-| Body Medium | 14sp | Regular | 0.25 |
-| Body Small | 12sp | Regular | 0.4 |
-| Label Large | 14sp | Medium | 0.1 |
-| Label Medium | 12sp | Medium | 0.5 |
-| Label Small | 11sp | Medium | 0.5 |
+| Style           | Size | Weight  | Tracking |
+| --------------- | ---- | ------- | -------- |
+| Display Large   | 57sp | Regular | -0.25    |
+| Display Medium  | 45sp | Regular | 0        |
+| Display Small   | 36sp | Regular | 0        |
+| Headline Large  | 32sp | Regular | 0        |
+| Headline Medium | 28sp | Regular | 0        |
+| Headline Small  | 24sp | Regular | 0        |
+| Title Large     | 22sp | Regular | 0        |
+| Title Medium    | 16sp | Medium  | 0.15     |
+| Title Small     | 14sp | Medium  | 0.1      |
+| Body Large      | 16sp | Regular | 0.5      |
+| Body Medium     | 14sp | Regular | 0.25     |
+| Body Small      | 12sp | Regular | 0.4      |
+| Label Large     | 14sp | Medium  | 0.1      |
+| Label Medium    | 12sp | Medium  | 0.5      |
+| Label Small     | 11sp | Medium  | 0.5      |
 
 ### Material Colors
 
-| Role | Purpose |
-| ---- | ------- |
-| Primary | Main brand color |
-| On Primary | Text/icons on primary |
+| Role              | Purpose                       |
+| ----------------- | ----------------------------- |
+| Primary           | Main brand color              |
+| On Primary        | Text/icons on primary         |
 | Primary Container | Filled buttons, active states |
-| Secondary | Less prominent components |
-| Tertiary | Contrast, balance |
-| Error | Error states |
-| Surface | Card backgrounds |
-| On Surface | Text on surfaces |
-| Outline | Borders, dividers |
+| Secondary         | Less prominent components     |
+| Tertiary          | Contrast, balance             |
+| Error             | Error states                  |
+| Surface           | Card backgrounds              |
+| On Surface        | Text on surfaces              |
+| Outline           | Borders, dividers             |
 
 ### Elevation (Shadows)
 
-| Level | Elevation | Use Case |
-| ----- | --------- | -------- |
-| 0 | 0dp | Flat surfaces |
-| 1 | 1dp | Cards, raised buttons |
-| 2 | 3dp | Elevated cards |
-| 3 | 6dp | FAB resting |
-| 4 | 8dp | Dialogs, pickers |
-| 5 | 12dp | FAB pressed |
+| Level | Elevation | Use Case              |
+| ----- | --------- | --------------------- |
+| 0     | 0dp       | Flat surfaces         |
+| 1     | 1dp       | Cards, raised buttons |
+| 2     | 3dp       | Elevated cards        |
+| 3     | 6dp       | FAB resting           |
+| 4     | 8dp       | Dialogs, pickers      |
+| 5     | 12dp      | FAB pressed           |
 
 ### Android-Specific Patterns
 
@@ -228,14 +228,14 @@
 
 ### Breakpoints
 
-| Name | Width | Typical Device |
-| ---- | ----- | -------------- |
-| xs | <576px | Mobile portrait |
-| sm | 576-767px | Mobile landscape |
-| md | 768-991px | Tablet |
-| lg | 992-1199px | Small desktop |
-| xl | 1200-1399px | Desktop |
-| xxl | ≥1400px | Large desktop |
+| Name | Width       | Typical Device   |
+| ---- | ----------- | ---------------- |
+| xs   | <576px      | Mobile portrait  |
+| sm   | 576-767px   | Mobile landscape |
+| md   | 768-991px   | Tablet           |
+| lg   | 992-1199px  | Small desktop    |
+| xl   | 1200-1399px | Desktop          |
+| xxl  | ≥1400px     | Large desktop    |
 
 ### Grid System
 
@@ -251,12 +251,12 @@ Mobile (base):
   Body: 16px
   H1: 28-32px
   H2: 22-24px
-  
+
 Tablet:
   Body: 16px
   H1: 32-40px
   H2: 24-28px
-  
+
 Desktop:
   Body: 16-18px
   H1: 40-56px
@@ -274,13 +274,13 @@ Desktop:
 
 ### Responsive Patterns
 
-| Pattern | Description |
-| ------- | ----------- |
-| Stack | Columns become rows on mobile |
-| Reflow | Content reorders based on priority |
-| Reveal | More content shown at larger sizes |
-| Off-canvas | Navigation slides in on mobile |
-| Scale | Elements scale proportionally |
+| Pattern    | Description                        |
+| ---------- | ---------------------------------- |
+| Stack      | Columns become rows on mobile      |
+| Reflow     | Content reorders based on priority |
+| Reveal     | More content shown at larger sizes |
+| Off-canvas | Navigation slides in on mobile     |
+| Scale      | Elements scale proportionally      |
 
 ---
 
@@ -341,13 +341,13 @@ Desktop allows for:
 
 ### Platform-Specific Adaptations
 
-| Aspect | iOS | Android | Web |
-| ------ | --- | ------- | --- |
-| Back | Left nav | Left or gesture | Browser back |
-| Primary action | Right nav | FAB | Top right button |
-| Lists | Swipe actions | Long press | Hover actions |
-| Menus | Action sheets | Bottom sheet | Dropdown/context |
-| Alerts | Centered modal | Centered modal | Various positions |
+| Aspect         | iOS            | Android         | Web               |
+| -------------- | -------------- | --------------- | ----------------- |
+| Back           | Left nav       | Left or gesture | Browser back      |
+| Primary action | Right nav      | FAB             | Top right button  |
+| Lists          | Swipe actions  | Long press      | Hover actions     |
+| Menus          | Action sheets  | Bottom sheet    | Dropdown/context  |
+| Alerts         | Centered modal | Centered modal  | Various positions |
 
 ### Design Tokens Across Platforms
 

@@ -18,13 +18,13 @@ The DCP is the **runtime engine** that Aspire uses in `aspire run` mode. Key fac
 
 ### DCP vs Kubernetes
 
-| Aspect | DCP (local dev) | Kubernetes (production) |
-|---|---|---|
-| API | Kubernetes-compatible | Full Kubernetes API |
-| Scope | Single machine | Cluster |
-| Networking | Local proxy, auto ports | Service mesh, ingress |
-| Storage | Local volumes | PVCs, cloud storage |
-| Purpose | Developer inner loop | Production deployment |
+| Aspect     | DCP (local dev)         | Kubernetes (production) |
+| ---------- | ----------------------- | ----------------------- |
+| API        | Kubernetes-compatible   | Full Kubernetes API     |
+| Scope      | Single machine          | Cluster                 |
+| Networking | Local proxy, auto ports | Service mesh, ingress   |
+| Storage    | Local volumes           | PVCs, cloud storage     |
+| Purpose    | Developer inner loop    | Production deployment   |
 
 The Kubernetes-compatible API means Aspire understands the same resource abstractions, but DCP is **not** a Kubernetes distribution — it's a lightweight local runtime.
 
@@ -56,6 +56,7 @@ IResource (interface)
 ### Resource properties
 
 Every resource has:
+
 - **Name** — unique identifier within the AppHost
 - **State** — lifecycle state (Starting, Running, FailedToStart, Stopping, Stopped, etc.)
 - **Annotations** — metadata attached to the resource
@@ -66,15 +67,15 @@ Every resource has:
 
 Annotations are metadata bags attached to resources. Common built-in annotations:
 
-| Annotation | Purpose |
-|---|---|
-| `EndpointAnnotation` | Defines an HTTP/HTTPS/TCP endpoint |
-| `EnvironmentCallbackAnnotation` | Deferred env var resolution |
-| `HealthCheckAnnotation` | Health check configuration |
-| `ContainerImageAnnotation` | Docker image details |
-| `VolumeAnnotation` | Volume mount configuration |
-| `CommandLineArgsCallbackAnnotation` | Dynamic CLI arguments |
-| `ManifestPublishingCallbackAnnotation` | Custom publish behavior |
+| Annotation                             | Purpose                            |
+| -------------------------------------- | ---------------------------------- |
+| `EndpointAnnotation`                   | Defines an HTTP/HTTPS/TCP endpoint |
+| `EnvironmentCallbackAnnotation`        | Deferred env var resolution        |
+| `HealthCheckAnnotation`                | Health check configuration         |
+| `ContainerImageAnnotation`             | Docker image details               |
+| `VolumeAnnotation`                     | Volume mount configuration         |
+| `CommandLineArgsCallbackAnnotation`    | Dynamic CLI arguments              |
+| `ManifestPublishingCallbackAnnotation` | Custom publish behavior            |
 
 ### Resource lifecycle states
 
@@ -118,6 +119,7 @@ ConnectionStrings__<resource-name>=<connection-string>
 ```
 
 Examples:
+
 ```
 ConnectionStrings__cache=localhost:6379
 ConnectionStrings__catalog=Host=localhost;Port=5432;Database=catalog;Username=postgres;Password=...
@@ -133,6 +135,7 @@ services__<resource-name>__<scheme>__0=<url>
 ```
 
 Examples:
+
 ```
 services__api__http__0=http://localhost:5234
 services__api__https__0=https://localhost:7234
@@ -148,6 +151,7 @@ var api = builder.AddProject<Projects.Api>("api")
 ```
 
 This does:
+
 1. Adds `ConnectionStrings__cache=localhost:<auto-port>` to the API's environment
 2. Creates a dependency edge in the DAG (API depends on Redis)
 3. In the API service, `builder.Configuration.GetConnectionString("cache")` returns the connection string
@@ -156,14 +160,14 @@ This does:
 
 All languages use the same env var pattern:
 
-| Language | How to read |
-|---|---|
-| C# | `builder.Configuration.GetConnectionString("cache")` |
-| Python | `os.environ["ConnectionStrings__cache"]` |
-| JavaScript | `process.env.ConnectionStrings__cache` |
-| Go | `os.Getenv("ConnectionStrings__cache")` |
-| Java | `System.getenv("ConnectionStrings__cache")` |
-| Rust | `std::env::var("ConnectionStrings__cache")` |
+| Language   | How to read                                          |
+| ---------- | ---------------------------------------------------- |
+| C#         | `builder.Configuration.GetConnectionString("cache")` |
+| Python     | `os.environ["ConnectionStrings__cache"]`             |
+| JavaScript | `process.env.ConnectionStrings__cache`               |
+| Go         | `os.Getenv("ConnectionStrings__cache")`              |
+| Java       | `System.getenv("ConnectionStrings__cache")`          |
+| Rust       | `std::env::var("ConnectionStrings__cache")`          |
 
 ---
 
@@ -234,6 +238,7 @@ Aspire auto-injects `OTEL_EXPORTER_OTLP_ENDPOINT` via `.WithReference()` for the
 ### ServiceDefaults pattern
 
 The `ServiceDefaults` project is a shared configuration library that standardizes:
+
 - OpenTelemetry setup (tracing, metrics, logging)
 - Health check endpoints (`/health`, `/alive`)
 - Resilience policies (retries, circuit breakers via Polly)
@@ -252,6 +257,7 @@ app.MapDefaultEndpoints();      // maps /health and /alive
 ### Built-in health checks
 
 Every integration adds health checks automatically on the client side:
+
 - Redis: `PING` command
 - PostgreSQL: `SELECT 1`
 - MongoDB: `ping` command
@@ -303,13 +309,13 @@ builder.Eventing.Subscribe<BeforeResourceStartedEvent>("db", async (evt, ct) =>
 
 ### Available events
 
-| Event | When |
-|---|---|
-| `BeforeResourceStartedEvent` | Before a resource starts |
-| `ResourceReadyEvent` | Resource is healthy and ready |
-| `ResourceStateChangedEvent` | Any state transition |
-| `BeforeStartEvent` | Before the entire application starts |
-| `AfterEndpointsAllocatedEvent` | After all ports are assigned |
+| Event                          | When                                 |
+| ------------------------------ | ------------------------------------ |
+| `BeforeResourceStartedEvent`   | Before a resource starts             |
+| `ResourceReadyEvent`           | Resource is healthy and ready        |
+| `ResourceStateChangedEvent`    | Any state transition                 |
+| `BeforeStartEvent`             | Before the entire application starts |
+| `AfterEndpointsAllocatedEvent` | After all ports are assigned         |
 
 ---
 
@@ -334,6 +340,7 @@ var db = builder.AddPostgres("db", password: dbPassword);
 ### Configuration sources
 
 Parameters are resolved from (in priority order):
+
 1. Command-line arguments
 2. Environment variables
 3. User secrets (`dotnet user-secrets`)

@@ -1,6 +1,6 @@
 ---
-description: 'Expert assistance for Joyride User Script projects - REPL-driven ClojureScript and user space automation of VS Code'
-applyTo: '**'
+description: "Expert assistance for Joyride User Script projects - REPL-driven ClojureScript and user space automation of VS Code"
+applyTo: "**"
 ---
 
 # Joyride User Scripts Project Assistant
@@ -67,6 +67,7 @@ To load namespaces/files into the REPL, instead of `load-file` (which isn't impl
 When using the **Joyride evaluation** tool, always specify the correct namespace parameter. Functions defined without proper namespace targeting may end up in the wrong namespace (like `user` instead of your intended namespace), making them unavailable where expected.
 
 ### VS Code API Access
+
 ```clojure
 (require '["vscode" :as vscode])
 
@@ -77,6 +78,7 @@ When using the **Joyride evaluation** tool, always specify the correct namespace
 ```
 
 ### Joyride Core API
+
 ```clojure
 (require '[joyride.core :as joyride])
 
@@ -91,23 +93,27 @@ joyride/load-file                 ; Similar to Clojure `load-file`, but is async
 ```
 
 ### Async Operation Handling
+
 The evaluation tool has an `awaitResult` parameter for handling async operations:
 
 - **`awaitResult: false` (default)**: Returns immediately, suitable for synchronous operations or fire-and-forget async evaluations
 - **`awaitResult: true`**: Waits for async operations to complete before returning results, returns the resolved value of the promise
 
 **When to use `awaitResult: true`:**
+
 - User input dialogs where you need the response (`showInputBox`, `showQuickPick`)
 - File operations where you need the results (`findFiles`, `readFile`)
 - Extension API calls that return promises
 - Information messages with buttons where you need to know which was clicked
 
 **When to use `awaitResult: false` (default):**
+
 - Synchronous operations
 - Fire-and-forget async operations like simple information messages
 - Side-effect async operations where you don't need the return value
 
 ### Promise Handling
+
 ```clojure
 (require '[promesa.core :as p])
 
@@ -129,6 +135,7 @@ The evaluation tool has an `awaitResult` parameter for handling async operations
 ```
 
 ### Extension APIs
+
 ```clojure
 ;; How to access other extensions safely
 (when-let [ext (vscode/extensions.getExtension "ms-python.python")]
@@ -152,6 +159,7 @@ The evaluation tool has an `awaitResult` parameter for handling async operations
 Joyride Flares provide a convenient way to create WebView panels and sidebar views.
 
 ### Basic Usage
+
 ```clojure
 (require '[joyride.flare :as flare])
 
@@ -176,6 +184,7 @@ Joyride Flares provide a convenient way to create WebView panels and sidebar vie
 **Note**: `flare!+` returns a promise, use `awaitResult: true`.
 
 ### Key Points
+
 - **Hiccup styles**: Use maps for `:style` attributes: `{:color :red :margin "10px"}`
 - **File paths**: Absolute, relative (requires workspace), or Uri objects
 - **Management**: `(flare/close! key)`, `(flare/ls)`, `(flare/close-all!)`
@@ -188,6 +197,7 @@ Joyride Flares provide a convenient way to create WebView panels and sidebar vie
 ## Common User Patterns
 
 ### Script Execution Guard
+
 ```clojure
 ;; Essential pattern - only run when invoked as script, not when loaded in REPL
 (when (= (joyride/invoked-script) joyride/*file*)
@@ -195,6 +205,7 @@ Joyride Flares provide a convenient way to create WebView panels and sidebar vie
 ```
 
 ### Managing Disposables
+
 ```clojure
 ;; Always register disposables with extension context
 (let [disposable (vscode/workspace.onDidOpenTextDocument handler)]

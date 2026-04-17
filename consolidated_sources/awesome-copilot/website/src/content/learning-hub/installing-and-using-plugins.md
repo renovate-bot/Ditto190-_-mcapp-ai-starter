@@ -1,10 +1,10 @@
 ---
-title: 'Installing and Using Plugins'
-description: 'Learn how to find, install, and manage plugins that extend GitHub Copilot CLI with reusable agents, skills, hooks, and integrations.'
+title: "Installing and Using Plugins"
+description: "Learn how to find, install, and manage plugins that extend GitHub Copilot CLI with reusable agents, skills, hooks, and integrations."
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: '2026-02-26'
-estimatedReadingTime: '8 minutes'
+lastUpdated: "2026-02-26"
+estimatedReadingTime: "8 minutes"
 tags:
   - plugins
   - copilot-cli
@@ -26,13 +26,13 @@ This article explains what plugins contain, how to find and install them, and ho
 
 A plugin bundles one or more of the following components:
 
-| Component | What It Does | File Location |
-|-----------|-------------|---------------|
-| **Custom Agents** | Specialized AI assistants with tailored expertise | `agents/*.agent.md` |
-| **Skills** | Discrete callable capabilities with bundled resources | `skills/*/SKILL.md` |
-| **Hooks** | Event handlers that intercept agent behavior | `hooks.json` or `hooks/` |
-| **MCP Servers** | Model Context Protocol integrations for external tools | `.mcp.json` or `.github/mcp.json` |
-| **LSP Servers** | Language Server Protocol integrations | `lsp.json` or `.github/lsp.json` |
+| Component         | What It Does                                           | File Location                     |
+| ----------------- | ------------------------------------------------------ | --------------------------------- |
+| **Custom Agents** | Specialized AI assistants with tailored expertise      | `agents/*.agent.md`               |
+| **Skills**        | Discrete callable capabilities with bundled resources  | `skills/*/SKILL.md`               |
+| **Hooks**         | Event handlers that intercept agent behavior           | `hooks.json` or `hooks/`          |
+| **MCP Servers**   | Model Context Protocol integrations for external tools | `.mcp.json` or `.github/mcp.json` |
+| **LSP Servers**   | Language Server Protocol integrations                  | `lsp.json` or `.github/lsp.json`  |
 
 A plugin might include all of these or just one — for example, a plugin could provide a single specialized agent, or an entire development toolkit with multiple agents, skills, hooks, and MCP server configurations working together.
 
@@ -63,13 +63,8 @@ The `plugin.json` manifest declares what the plugin contains:
   "name": "my-plugin",
   "description": "API development toolkit with specialized agents and migration skills",
   "version": "1.0.0",
-  "agents": [
-    "./agents/api-architect.md",
-    "./agents/test-specialist.md"
-  ],
-  "skills": [
-    "./skills/database-migrations/"
-  ]
+  "agents": ["./agents/api-architect.md", "./agents/test-specialist.md"],
+  "skills": ["./skills/database-migrations/"]
 }
 ```
 
@@ -77,13 +72,13 @@ The `plugin.json` manifest declares what the plugin contains:
 
 You might wonder: why not just copy agent files into your project manually? Plugins provide several advantages:
 
-| Feature | Manual Configuration | Plugin |
-|---------|---------------------|--------|
-| **Scope** | Single repository | Any project |
-| **Sharing** | Manual copy/paste | `copilot plugin install` command |
-| **Versioning** | Git history | Marketplace versions |
-| **Discovery** | Searching repositories | Marketplace browsing |
-| **Updates** | Manual tracking | `copilot plugin update` |
+| Feature        | Manual Configuration   | Plugin                           |
+| -------------- | ---------------------- | -------------------------------- |
+| **Scope**      | Single repository      | Any project                      |
+| **Sharing**    | Manual copy/paste      | `copilot plugin install` command |
+| **Versioning** | Git history            | Marketplace versions             |
+| **Discovery**  | Searching repositories | Marketplace browsing             |
+| **Updates**    | Manual tracking        | `copilot plugin update`          |
 
 Plugins are especially valuable when you want to:
 

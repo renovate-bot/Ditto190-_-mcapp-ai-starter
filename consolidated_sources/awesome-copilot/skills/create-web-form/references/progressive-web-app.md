@@ -16,27 +16,27 @@ A **Progressive Web App (PWA)** is an app built using web platform technologies 
 
 ### Main Guides
 
-| Guide | Description |
-|-------|-------------|
-| **What is a Progressive Web App?** | Comparison with traditional websites and platform-specific apps; introduction to main PWA features |
-| **Making PWAs Installable** | Requirements for installability, device installation process, customizing the install experience |
-| **Installing and Uninstalling Web Apps** | How users install and uninstall PWAs on their devices |
-| **Offline and Background Operation** | Technologies enabling offline functionality, intermittent network connectivity management, background task execution |
-| **Caching** | APIs for local resource caching, common caching strategies for offline functionality |
-| **Best Practices for PWAs** | Cross-browser and device adaptation, accessibility, performance optimization, OS integration |
+| Guide                                    | Description                                                                                                          |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **What is a Progressive Web App?**       | Comparison with traditional websites and platform-specific apps; introduction to main PWA features                   |
+| **Making PWAs Installable**              | Requirements for installability, device installation process, customizing the install experience                     |
+| **Installing and Uninstalling Web Apps** | How users install and uninstall PWAs on their devices                                                                |
+| **Offline and Background Operation**     | Technologies enabling offline functionality, intermittent network connectivity management, background task execution |
+| **Caching**                              | APIs for local resource caching, common caching strategies for offline functionality                                 |
+| **Best Practices for PWAs**              | Cross-browser and device adaptation, accessibility, performance optimization, OS integration                         |
 
 ### How-To Implementation Features
 
-| Feature | Purpose |
-|---------|---------|
-| Create a standalone app | Launch in a dedicated window instead of a browser tab |
-| Define app icons | Customize icons for the installed PWA |
-| Customize app colors | Set background and theme colors |
-| Display badges | Show badges on the app icon (e.g., notification counts) |
-| Expose app shortcuts | Access common actions from the OS shortcut menu |
-| Share data between apps | Use OS app-sharing mechanisms |
-| Trigger installation | Provide custom UI to invite user installation |
-| Associate files | Connect file types to the PWA for handling |
+| Feature                 | Purpose                                                 |
+| ----------------------- | ------------------------------------------------------- |
+| Create a standalone app | Launch in a dedicated window instead of a browser tab   |
+| Define app icons        | Customize icons for the installed PWA                   |
+| Customize app colors    | Set background and theme colors                         |
+| Display badges          | Show badges on the app icon (e.g., notification counts) |
+| Expose app shortcuts    | Access common actions from the OS shortcut menu         |
+| Share data between apps | Use OS app-sharing mechanisms                           |
+| Trigger installation    | Provide custom UI to invite user installation           |
+| Associate files         | Connect file types to the PWA for handling              |
 
 ### Core Technologies and APIs
 
@@ -66,12 +66,12 @@ A **Progressive Web App (PWA)** is an app built using web platform technologies 
 
 #### Other Essential Web APIs
 
-| API | Purpose |
-|-----|---------|
-| **IndexedDB** | Client-side storage for structured data and files |
-| **Badging API** | Application icon badge notifications |
-| **Notifications API** | OS-level notification display |
-| **Web Share API** | Share content to user-selected apps |
+| API                             | Purpose                                                                         |
+| ------------------------------- | ------------------------------------------------------------------------------- |
+| **IndexedDB**                   | Client-side storage for structured data and files                               |
+| **Badging API**                 | Application icon badge notifications                                            |
+| **Notifications API**           | OS-level notification display                                                   |
+| **Web Share API**               | Share content to user-selected apps                                             |
 | **Window Controls Overlay API** | Desktop PWA window customization (hide title bar, display app over full window) |
 
 ### Essential PWA Checklist
@@ -147,32 +147,32 @@ A game information listing app (from the js13kGames 2017 competition) that explo
 
 The web app manifest describes PWA characteristics, customizes its appearance, and enables deeper OS integration. The following members can be defined in the manifest JSON file:
 
-| Member | Status | Description |
-|--------|--------|-------------|
-| `name` | Standard | Full name of the application |
-| `short_name` | Standard | Short name for limited-space contexts |
-| `description` | Standard | Description of the application |
-| `start_url` | Standard | URL that loads when the app is launched |
-| `scope` | Standard | Navigation scope of the PWA |
-| `display` | Standard | Display mode (fullscreen, standalone, minimal-ui, browser) |
-| `display_override` | Experimental | Override display mode preferences |
-| `orientation` | Standard | Default orientation for the app |
-| `icons` | Standard | Array of icon objects for various contexts |
-| `screenshots` | Standard | Screenshots for app stores and install UI |
-| `background_color` | Standard | Background color for the splash screen |
-| `theme_color` | Standard | Default theme color for the application |
-| `categories` | Standard | Expected application categories |
-| `id` | Standard | Unique identifier for the application |
-| `shortcuts` | Standard | Quick-access shortcuts to key tasks |
-| `file_handlers` | Experimental | File types the app can handle |
-| `launch_handler` | Experimental | Control how the app is launched |
-| `protocol_handlers` | Experimental | URL protocols the app can handle |
-| `share_target` | Experimental | Define how the app receives shared data |
-| `scope_extensions` | Experimental | Extend the navigation scope |
-| `note_taking` | Experimental | Note-taking app integration |
-| `related_applications` | Experimental | Related native applications |
-| `prefer_related_applications` | Experimental | Prefer native app over PWA |
-| `serviceworker` | Experimental / Non-standard | Service worker registration info |
+| Member                        | Status                      | Description                                                |
+| ----------------------------- | --------------------------- | ---------------------------------------------------------- |
+| `name`                        | Standard                    | Full name of the application                               |
+| `short_name`                  | Standard                    | Short name for limited-space contexts                      |
+| `description`                 | Standard                    | Description of the application                             |
+| `start_url`                   | Standard                    | URL that loads when the app is launched                    |
+| `scope`                       | Standard                    | Navigation scope of the PWA                                |
+| `display`                     | Standard                    | Display mode (fullscreen, standalone, minimal-ui, browser) |
+| `display_override`            | Experimental                | Override display mode preferences                          |
+| `orientation`                 | Standard                    | Default orientation for the app                            |
+| `icons`                       | Standard                    | Array of icon objects for various contexts                 |
+| `screenshots`                 | Standard                    | Screenshots for app stores and install UI                  |
+| `background_color`            | Standard                    | Background color for the splash screen                     |
+| `theme_color`                 | Standard                    | Default theme color for the application                    |
+| `categories`                  | Standard                    | Expected application categories                            |
+| `id`                          | Standard                    | Unique identifier for the application                      |
+| `shortcuts`                   | Standard                    | Quick-access shortcuts to key tasks                        |
+| `file_handlers`               | Experimental                | File types the app can handle                              |
+| `launch_handler`              | Experimental                | Control how the app is launched                            |
+| `protocol_handlers`           | Experimental                | URL protocols the app can handle                           |
+| `share_target`                | Experimental                | Define how the app receives shared data                    |
+| `scope_extensions`            | Experimental                | Extend the navigation scope                                |
+| `note_taking`                 | Experimental                | Note-taking app integration                                |
+| `related_applications`        | Experimental                | Related native applications                                |
+| `prefer_related_applications` | Experimental                | Prefer native app over PWA                                 |
+| `serviceworker`               | Experimental / Non-standard | Service worker registration info                           |
 
 ### Service Worker APIs
 
@@ -195,12 +195,12 @@ The web app manifest describes PWA characteristics, customizes its appearance, a
 
 ### Other Web APIs for PWAs
 
-| API | Purpose |
-|-----|---------|
-| **IndexedDB** | Client-side storage for structured data and files |
-| **Badging API** | Set application icon badges for notification indicators |
-| **Notifications API** | Display OS-level system notifications |
-| **Web Share API** | Share text, links, files, and content to user-selected apps |
+| API                             | Purpose                                                                         |
+| ------------------------------- | ------------------------------------------------------------------------------- |
+| **IndexedDB**                   | Client-side storage for structured data and files                               |
+| **Badging API**                 | Set application icon badges for notification indicators                         |
+| **Notifications API**           | Display OS-level system notifications                                           |
+| **Web Share API**               | Share text, links, files, and content to user-selected apps                     |
 | **Window Controls Overlay API** | Hide the title bar and display the app over the full window area (desktop PWAs) |
 
 ### Key MDN Reference Paths

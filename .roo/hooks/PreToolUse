@@ -1,0 +1,3 @@
+#!/bin/bash
+# ContextStream pre-tool-use Hook Wrapper for Cline/Roo/Kilo Code
+exec node "/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js" hook pre-tool-use

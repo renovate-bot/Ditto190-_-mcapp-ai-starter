@@ -14,10 +14,6 @@
     "dotnet",
     "server-development"
   ],
-  "agents": [
-    "./agents"
-  ],
-  "skills": [
-    "./skills/csharp-mcp-server-generator"
-  ]
+  "agents": ["./agents"],
+  "skills": ["./skills/csharp-mcp-server-generator"]
 }

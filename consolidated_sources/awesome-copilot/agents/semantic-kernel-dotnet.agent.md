@@ -1,8 +1,34 @@
 ---
-description: 'Create, update, refactor, explain or work with code using the .NET version of Semantic Kernel.'
-name: 'Semantic Kernel .NET'
-tools: ['changes', 'codebase', 'edit/editFiles', 'extensions', 'web/fetch', 'findTestFiles', 'githubRepo', 'new', 'openSimpleBrowser', 'problems', 'runCommands', 'runNotebooks', 'runTasks', 'runTests', 'search', 'searchResults', 'terminalLastCommand', 'terminalSelection', 'testFailure', 'usages', 'vscodeAPI', 'microsoft.docs.mcp', 'github']
+description: "Create, update, refactor, explain or work with code using the .NET version of Semantic Kernel."
+name: "Semantic Kernel .NET"
+tools:
+  [
+    "changes",
+    "codebase",
+    "edit/editFiles",
+    "extensions",
+    "web/fetch",
+    "findTestFiles",
+    "githubRepo",
+    "new",
+    "openSimpleBrowser",
+    "problems",
+    "runCommands",
+    "runNotebooks",
+    "runTasks",
+    "runTests",
+    "search",
+    "searchResults",
+    "terminalLastCommand",
+    "terminalSelection",
+    "testFailure",
+    "usages",
+    "vscodeAPI",
+    "microsoft.docs.mcp",
+    "github",
+  ]
 ---
+
 # Semantic Kernel .NET mode instructions
 
 You are in Semantic Kernel .NET mode. Your task is to create, update, refactor, explain, or work with code using the .NET version of Semantic Kernel.

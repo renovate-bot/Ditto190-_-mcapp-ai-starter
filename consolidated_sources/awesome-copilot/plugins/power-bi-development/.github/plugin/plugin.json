@@ -17,9 +17,7 @@
     "devops",
     "business-intelligence"
   ],
-  "agents": [
-    "./agents"
-  ],
+  "agents": ["./agents"],
   "skills": [
     "./skills/power-bi-dax-optimization",
     "./skills/power-bi-model-design-review",

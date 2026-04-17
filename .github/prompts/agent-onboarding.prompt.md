@@ -1,6 +1,6 @@
 ---
 name: agent-onboarding
-description: 'Guide a new contributor through repository setup, checks, and first-run commands for this workspace.'
+description: "Guide a new contributor through repository setup, checks, and first-run commands for this workspace."
 argument-hint: Optionally specify a focus area (e.g., generateagents, n8n, prompt-registry)
 agent: agent
 ---

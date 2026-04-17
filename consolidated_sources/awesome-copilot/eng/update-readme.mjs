@@ -4,26 +4,26 @@ import fs from "fs";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import {
-    AGENTS_DIR,
-    AKA_INSTALL_URLS,
-    DOCS_DIR,
-    HOOKS_DIR,
-    INSTRUCTIONS_DIR,
-    PLUGINS_DIR,
-    repoBaseUrl,
-    ROOT_FOLDER,
-    SKILLS_DIR,
-    TEMPLATES,
-    vscodeInsidersInstallImage,
-    vscodeInstallImage,
-    WORKFLOWS_DIR,
+  AGENTS_DIR,
+  AKA_INSTALL_URLS,
+  DOCS_DIR,
+  HOOKS_DIR,
+  INSTRUCTIONS_DIR,
+  PLUGINS_DIR,
+  repoBaseUrl,
+  ROOT_FOLDER,
+  SKILLS_DIR,
+  TEMPLATES,
+  vscodeInsidersInstallImage,
+  vscodeInstallImage,
+  WORKFLOWS_DIR,
 } from "./constants.mjs";
 import {
-    extractMcpServerConfigs,
-    parseFrontmatter,
-    parseSkillMetadata,
-    parseHookMetadata,
-    parseWorkflowMetadata,
+  extractMcpServerConfigs,
+  parseFrontmatter,
+  parseSkillMetadata,
+  parseHookMetadata,
+  parseWorkflowMetadata,
 } from "./yaml-parser.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -183,8 +183,8 @@ function extractTitle(filePath) {
           filePath.includes(".prompt.md")
             ? ".prompt.md"
             : filePath.includes(".agent.md")
-            ? ".agent.md"
-            : ".instructions.md"
+              ? ".agent.md"
+              : ".instructions.md",
         );
         return basename
           .replace(/[-_]/g, " ")
@@ -214,7 +214,7 @@ function extractTitle(filePath) {
     path
       .basename(filePath, path.extname(filePath))
       .replace(/[-_]/g, " ")
-      .replace(/\b\w/g, (l) => l.toUpperCase())
+      .replace(/\b\w/g, (l) => l.toUpperCase()),
   );
 }
 
@@ -231,7 +231,7 @@ function extractDescription(filePath) {
       return null;
     },
     filePath,
-    null
+    null,
   );
 }
 
@@ -272,10 +272,10 @@ function makeBadges(link, type) {
   const aka = AKA_INSTALL_URLS[type] || AKA_INSTALL_URLS.instructions;
 
   const vscodeUrl = `${aka}?url=${encodeURIComponent(
-    `vscode:chat-${type}/install?url=${repoBaseUrl}/${link}`
+    `vscode:chat-${type}/install?url=${repoBaseUrl}/${link}`,
   )}`;
   const insidersUrl = `${aka}?url=${encodeURIComponent(
-    `vscode-insiders:chat-${type}/install?url=${repoBaseUrl}/${link}`
+    `vscode-insiders:chat-${type}/install?url=${repoBaseUrl}/${link}`,
   )}`;
 
   return `[![Install in VS Code](${vscodeInstallImage})](${vscodeUrl})<br />[![Install in VS Code Insiders](${vscodeInsidersInstallImage})](${insidersUrl})`;
@@ -330,7 +330,7 @@ function generateInstructionsSection(instructionsDir) {
     if (customDescription && customDescription !== "null") {
       // Use the description from frontmatter, table-safe
       instructionsContent += `| [${title}](../${link})<br />${badges} | ${formatTableCell(
-        customDescription
+        customDescription,
       )} |\n`;
     } else {
       // Fallback to the default approach - use last word of title for description, removing trailing 's' if present
@@ -514,7 +514,7 @@ function generateHooksSection(hooksDir) {
         : "None";
 
     content += `| [${hook.name}](${link}) | ${formatTableCell(
-      hook.description
+      hook.description,
     )} | ${events} | ${assetsList} |\n`;
   }
 
@@ -566,10 +566,11 @@ function generateWorkflowsSection(workflowsDir) {
   // Generate table rows for each workflow
   for (const workflow of workflowEntries) {
     const link = `../workflows/${workflow.file}`;
-    const triggers = workflow.triggers.length > 0 ? workflow.triggers.join(", ") : "N/A";
+    const triggers =
+      workflow.triggers.length > 0 ? workflow.triggers.join(", ") : "N/A";
 
     content += `| [${workflow.name}](${link}) | ${formatTableCell(
-      workflow.description
+      workflow.description,
     )} | ${triggers} |\n`;
   }
 
@@ -627,7 +628,7 @@ function generateSkillsSection(skillsDir) {
         : "None";
 
     content += `| [${skill.name}](${link}) | ${formatTableCell(
-      skill.description
+      skill.description,
     )} | ${assetsList} |\n`;
   }
 
@@ -672,7 +673,7 @@ function generateUnifiedModeSection(cfg) {
 
   entries.sort((a, b) => a.title.localeCompare(b.title));
   console.log(
-    `Unified mode generator: ${entries.length} files for extension ${extension}`
+    `Unified mode generator: ${entries.length} files for extension ${extension}`,
   );
   if (entries.length === 0) return "";
 
@@ -764,7 +765,7 @@ function generatePluginsSection(pluginsDir) {
   const sortedEntries = [...featuredPlugins, ...regularPlugins];
 
   console.log(
-    `Found ${pluginEntries.length} plugins (${featuredPlugins.length} featured)`
+    `Found ${pluginEntries.length} plugins (${featuredPlugins.length} featured)`,
   );
 
   // If no plugins, return empty string
@@ -779,10 +780,11 @@ function generatePluginsSection(pluginsDir) {
   // Generate table rows for each plugin
   for (const entry of sortedEntries) {
     const { plugin, dir, name, isFeatured } = entry;
-    const description = formatTableCell(
-      plugin.description || "No description"
-    );
-    const itemCount = (plugin.agents || []).length + (plugin.commands || []).length + (plugin.skills || []).length;
+    const description = formatTableCell(plugin.description || "No description");
+    const itemCount =
+      (plugin.agents || []).length +
+      (plugin.commands || []).length +
+      (plugin.skills || []).length;
     const keywords = plugin.keywords ? plugin.keywords.join(", ") : "";
 
     const link = `../plugins/${dir}/README.md`;
@@ -823,10 +825,13 @@ function generateFeaturedPluginsSection(pluginsDir) {
 
           const name = plugin.name || dir;
           const description = formatTableCell(
-            plugin.description || "No description"
+            plugin.description || "No description",
           );
           const keywords = plugin.keywords ? plugin.keywords.join(", ") : "";
-          const itemCount = (plugin.agents || []).length + (plugin.commands || []).length + (plugin.skills || []).length;
+          const itemCount =
+            (plugin.agents || []).length +
+            (plugin.commands || []).length +
+            (plugin.skills || []).length;
 
           return {
             dir,
@@ -839,7 +844,7 @@ function generateFeaturedPluginsSection(pluginsDir) {
           };
         },
         pluginDir,
-        null
+        null,
       );
     })
     .filter((entry) => entry !== null);
@@ -876,14 +881,14 @@ function writeFileIfChanged(filePath, content) {
     const original = fs.readFileSync(filePath, "utf8");
     if (original === content) {
       console.log(
-        `${path.basename(filePath)} is already up to date. No changes needed.`
+        `${path.basename(filePath)} is already up to date. No changes needed.`,
       );
       return;
     }
   }
   fs.writeFileSync(filePath, content);
   console.log(
-    `${path.basename(filePath)} ${exists ? "updated" : "created"} successfully!`
+    `${path.basename(filePath)} ${exists ? "updated" : "created"} successfully!`,
   );
 }
 
@@ -893,7 +898,7 @@ function buildCategoryReadme(
   dirPath,
   headerLine,
   usageLine,
-  registryNames = []
+  registryNames = [],
 ) {
   const section = sectionBuilder(dirPath, registryNames);
   if (section && section.trim()) {
@@ -915,23 +920,20 @@ async function main() {
     // Compose headers for standalone files by converting section headers to H1
     const instructionsHeader = TEMPLATES.instructionsSection.replace(
       /^##\s/m,
-      "# "
+      "# ",
     );
     const agentsHeader = TEMPLATES.agentsSection.replace(/^##\s/m, "# ");
     const hooksHeader = TEMPLATES.hooksSection.replace(/^##\s/m, "# ");
     const workflowsHeader = TEMPLATES.workflowsSection.replace(/^##\s/m, "# ");
     const skillsHeader = TEMPLATES.skillsSection.replace(/^##\s/m, "# ");
-    const pluginsHeader = TEMPLATES.pluginsSection.replace(
-      /^##\s/m,
-      "# "
-    );
+    const pluginsHeader = TEMPLATES.pluginsSection.replace(/^##\s/m, "# ");
 
     const instructionsReadme = buildCategoryReadme(
       generateInstructionsSection,
       INSTRUCTIONS_DIR,
       instructionsHeader,
       TEMPLATES.instructionsUsage,
-      registryNames
+      registryNames,
     );
     // Generate agents README
     const agentsReadme = buildCategoryReadme(
@@ -939,7 +941,7 @@ async function main() {
       AGENTS_DIR,
       agentsHeader,
       TEMPLATES.agentsUsage,
-      registryNames
+      registryNames,
     );
 
     // Generate hooks README
@@ -948,7 +950,7 @@ async function main() {
       HOOKS_DIR,
       hooksHeader,
       TEMPLATES.hooksUsage,
-      registryNames
+      registryNames,
     );
 
     // Generate workflows README
@@ -957,7 +959,7 @@ async function main() {
       WORKFLOWS_DIR,
       workflowsHeader,
       TEMPLATES.workflowsUsage,
-      registryNames
+      registryNames,
     );
 
     // Generate skills README
@@ -966,7 +968,7 @@ async function main() {
       SKILLS_DIR,
       skillsHeader,
       TEMPLATES.skillsUsage,
-      registryNames
+      registryNames,
     );
 
     // Generate plugins README
@@ -975,7 +977,7 @@ async function main() {
       PLUGINS_DIR,
       pluginsHeader,
       TEMPLATES.pluginsUsage,
-      registryNames
+      registryNames,
     );
 
     // Ensure docs directory exists for category outputs
@@ -986,16 +988,16 @@ async function main() {
     // Write category outputs into docs folder
     writeFileIfChanged(
       path.join(DOCS_DIR, "README.instructions.md"),
-      instructionsReadme
+      instructionsReadme,
     );
     writeFileIfChanged(path.join(DOCS_DIR, "README.agents.md"), agentsReadme);
     writeFileIfChanged(path.join(DOCS_DIR, "README.hooks.md"), hooksReadme);
-    writeFileIfChanged(path.join(DOCS_DIR, "README.workflows.md"), workflowsReadme);
-    writeFileIfChanged(path.join(DOCS_DIR, "README.skills.md"), skillsReadme);
     writeFileIfChanged(
-      path.join(DOCS_DIR, "README.plugins.md"),
-      pluginsReadme
+      path.join(DOCS_DIR, "README.workflows.md"),
+      workflowsReadme,
     );
+    writeFileIfChanged(path.join(DOCS_DIR, "README.skills.md"), skillsReadme);
+    writeFileIfChanged(path.join(DOCS_DIR, "README.plugins.md"), pluginsReadme);
 
     // Plugin READMEs are authoritative (already exist in each plugin folder)
 
@@ -1039,9 +1041,7 @@ async function main() {
         writeFileIfChanged(mainReadmePath, readmeContent);
         console.log("Main README.md updated with featured plugins");
       } else {
-        console.warn(
-          "README.md not found, skipping featured plugins update"
-        );
+        console.warn("README.md not found, skipping featured plugins update");
       }
     } else {
       console.log("No featured plugins found to add to README.md");

@@ -1,9 +1,10 @@
 ---
-description: 'TypeScript patterns for Azure Functions'
-applyTo: '**/*.ts, **/*.js, **/*.json'
+description: "TypeScript patterns for Azure Functions"
+applyTo: "**/*.ts, **/*.js, **/*.json"
 ---
 
 ## Guidance for Code Generation
+
 - Generate modern TypeScript code for Node.js
 - Use `async/await` for asynchronous code
 - Whenever possible, use Node.js v20 built-in modules instead of external packages

@@ -90,17 +90,17 @@ Edit the `HARDCODED_DEFAULT_HUBS` array in `src/config/defaultHubs.ts`:
 
 ```typescript
 const HARDCODED_DEFAULT_HUBS: DefaultHubConfig[] = [
-    {
-        name: 'My Custom Hub',
-        description: 'Description here',
-        icon: 'repo',
-        reference: {
-            type: 'github',
-            location: 'owner/repository',
-            ref: 'main'
-        },
-        enabled: true
-    }
+  {
+    name: "My Custom Hub",
+    description: "Description here",
+    icon: "repo",
+    reference: {
+      type: "github",
+      location: "owner/repository",
+      ref: "main",
+    },
+    enabled: true,
+  },
 ];
 ```
 
@@ -111,7 +111,7 @@ When a hub is offered during first-run:
 1. **Reference Validation**: Validates the hub reference format
 2. **Fetch Attempt**: Attempts to fetch `hub-config.yml` from the specified location
 3. **Authentication**: For GitHub URLs, automatically includes user's GitHub token
-4. **Success/Failure**: 
+4. **Success/Failure**:
    - ✓ Success: Hub is shown in the selector
    - ✗ Failure: Hub is hidden from selector (logged for debugging)
 
@@ -135,13 +135,13 @@ See [VS Code Codicons](https://microsoft.github.io/vscode-codicons/dist/codicon.
 To test hub verification locally:
 
 ```typescript
-import { HubManager } from '../services/HubManager';
-import { getEnabledDefaultHubs } from './defaultHubs';
+import { HubManager } from "../services/HubManager";
+import { getEnabledDefaultHubs } from "./defaultHubs";
 
 const hubs = getEnabledDefaultHubs();
 for (const hub of hubs) {
-    const isAvailable = await hubManager.verifyHubAvailability(hub.reference);
-    console.log(`${hub.name}: ${isAvailable ? '✓' : '✗'}`);
+  const isAvailable = await hubManager.verifyHubAvailability(hub.reference);
+  console.log(`${hub.name}: ${isAvailable ? "✓" : "✗"}`);
 }
 ```
 

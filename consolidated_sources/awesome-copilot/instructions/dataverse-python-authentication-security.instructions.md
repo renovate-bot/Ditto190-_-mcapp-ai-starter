@@ -1,5 +1,5 @@
 ---
-applyTo: '**'
+applyTo: "**"
 ---
 
 # Dataverse SDK for Python — Authentication & Security Patterns
@@ -13,6 +13,7 @@ The Dataverse SDK for Python uses Azure Identity credentials for token-based aut
 ### Why Token-Based Authentication?
 
 **Advantages over connection strings**:
+
 - Establishes specific permissions needed by your app (principle of least privilege)
 - Credentials are scoped only to intended apps
 - With managed identity, no secrets to store or compromise
@@ -42,6 +43,7 @@ records = client.get("account")
 ```
 
 **When to use**:
+
 - ✅ Interactive development and testing
 - ✅ Desktop applications with UI
 - ❌ Background services or scheduled jobs
@@ -72,12 +74,14 @@ records = client.get("account")
 ```
 
 **Advantages**:
+
 - Single code path works everywhere
 - No environment-specific logic needed
 - Automatically detects available credentials
 - Preferred for production apps
 
 **Credential chain**:
+
 1. Environment variables (`AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_CLIENT_SECRET`)
 2. Visual Studio Code login
 3. Azure CLI (`az login`)
@@ -110,12 +114,14 @@ records = client.get("account")
 ```
 
 **Setup steps**:
+
 1. Create app registration in Azure AD
 2. Create client secret (keep secure!)
 3. Grant Dataverse permissions to the app
 4. Store credentials in environment variables or secure vault
 
 **Security concerns**:
+
 - ⚠️ Never hardcode credentials in source code
 - ⚠️ Store secrets in Azure Key Vault or environment variables
 - ⚠️ Rotate credentials regularly
@@ -143,12 +149,14 @@ records = client.get("account")
 ```
 
 **Benefits**:
+
 - ✅ No secrets to manage
 - ✅ Automatic token refresh
 - ✅ Highly secure
 - ✅ Built-in to Azure services
 
 **Setup**:
+
 1. Enable managed identity on Azure resource (App Service, VM, etc.)
 2. Grant Dataverse permissions to the managed identity
 3. Code automatically uses the identity
@@ -290,6 +298,7 @@ credential = ClientSecretCredential(
 ### 2. Store Secrets Securely
 
 **Development**:
+
 ```bash
 # .env file (git-ignored)
 AZURE_TENANT_ID=your-tenant-id
@@ -298,6 +307,7 @@ AZURE_CLIENT_SECRET=your-secret-key
 ```
 
 **Production**:
+
 ```python
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
@@ -372,10 +382,10 @@ from PowerPlatform.Dataverse.client import DataverseClient
 def get_client_for_tenant(tenant_id: str) -> DataverseClient:
     """Get DataverseClient for specific tenant."""
     credential = DefaultAzureCredential()
-    
+
     # Dataverse URL contains tenant-specific org
     base_url = f"https://{get_org_for_tenant(tenant_id)}.crm.dynamics.com"
-    
+
     return DataverseClient(
         base_url=base_url,
         credential=credential
@@ -410,7 +420,7 @@ except DataverseError as e:
 from azure.identity import DefaultAzureCredential
 
 try:
-    cred = DefaultAzureCredential(exclude_cli_credential=False, 
+    cred = DefaultAzureCredential(exclude_cli_credential=False,
                                   exclude_powershell_credential=False)
     # Force re-authentication
     import subprocess
@@ -419,7 +429,7 @@ except Exception as e:
     print(f"Authentication failed: {e}")
 ```
 
-### Error: "Invalid Tenant" 
+### Error: "Invalid Tenant"
 
 ```python
 # Verify tenant ID
@@ -462,18 +472,18 @@ client.get("contact")
 ```python
 class DataverseSession:
     """Manages DataverseClient lifecycle."""
-    
+
     def __init__(self, base_url: str):
         from azure.identity import DefaultAzureCredential
-        
+
         self.client = DataverseClient(
             base_url=base_url,
             credential=DefaultAzureCredential()
         )
-    
+
     def __enter__(self):
         return self.client
-    
+
     def __exit__(self, exc_type, exc_val, exc_tb):
         # Cleanup if needed
         pass
@@ -499,12 +509,12 @@ from PowerPlatform.Dataverse.client import DataverseClient
 def get_user_client(user_username: str) -> DataverseClient:
     # User must already be authenticated
     credential = InteractiveBrowserCredential()
-    
+
     client = DataverseClient(
         base_url="https://myorg.crm.dynamics.com",
         credential=credential
     )
-    
+
     # User only sees records they have access to
     return client
 ```
@@ -512,6 +522,7 @@ def get_user_client(user_username: str) -> DataverseClient:
 ### Security Roles
 
 Assign minimal required roles:
+
 - **System Administrator**: Full access (avoid for apps)
 - **Sales Manager**: Sales tables + reporting
 - **Service Representative**: Service cases + knowledge

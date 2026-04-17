@@ -5,6 +5,7 @@ Copy-paste templates for consistent code review feedback.
 ## Required Changes
 
 ### Security Issue
+
 ```
 [REQUIRED] 🔴 Security: [Brief description of the issue]
 
@@ -16,6 +17,7 @@ Reference: [Link to relevant documentation]
 ```
 
 ### Critical Bug
+
 ```
 [REQUIRED] 🔴 Bug: [Brief description]
 
@@ -30,6 +32,7 @@ This will cause [describe the failure scenario].
 ```
 
 ### Breaking Change
+
 ```
 [REQUIRED] 🔴 Breaking Change: This modifies the public API
 
@@ -43,6 +46,7 @@ Please either:
 ## Suggestions
 
 ### Refactoring
+
 ```
 [SUGGESTION] 🟡 Refactor: Consider extracting this into a separate function
 
@@ -61,6 +65,7 @@ function functionName(params) {
 ```
 
 ### Performance
+
 ```
 [SUGGESTION] 🟡 Performance: [Brief description]
 
@@ -73,6 +78,7 @@ This matters when [explain when it becomes a problem].
 ```
 
 ### Naming
+
 ```
 [SUGGESTION] 🟢 Naming: Consider renaming `oldName` to `newName`
 
@@ -82,6 +88,7 @@ A more descriptive name would help future readers understand the code faster.
 ```
 
 ### Error Handling
+
 ```
 [SUGGESTION] 🟡 Error Handling: Consider adding error handling here
 
@@ -100,6 +107,7 @@ try {
 ## Questions
 
 ### Clarification
+
 ```
 [QUESTION] 💬 Could you explain the reasoning behind [specific decision]?
 
@@ -109,6 +117,7 @@ Is this because of [possible reason A] or [possible reason B]?
 ```
 
 ### Business Logic
+
 ```
 [QUESTION] 💬 Business Logic: Is this the expected behavior?
 
@@ -118,6 +127,7 @@ Is this intentional? The ticket mentions [what ticket says], which seems differe
 ```
 
 ### Testing
+
 ```
 [QUESTION] 💬 Testing: How should we test this scenario?
 
@@ -127,6 +137,7 @@ I notice there's no test for [specific case]. Should we add one, or is this cove
 ## Praise
 
 ### Good Practice
+
 ```
 [PRAISE] ✨ Great job on [specific thing]!
 
@@ -136,6 +147,7 @@ This [explain why it's good]:
 ```
 
 ### Learning Opportunity
+
 ```
 [PRAISE] ✨ Nice use of [pattern/technique]!
 
@@ -145,6 +157,7 @@ For others reading: this is a good example of [explain the pattern] which helps 
 ## Nits (Minor)
 
 ### Style
+
 ```
 [NIT] Consider [minor style suggestion].
 
@@ -152,6 +165,7 @@ Not blocking, just a preference for consistency with [reference].
 ```
 
 ### Documentation
+
 ```
 [NIT] A brief comment here would help explain [what needs explaining].
 
@@ -162,11 +176,11 @@ Something like: `// [suggested comment]`
 
 ## Emoji Legend
 
-| Emoji | Meaning |
-|-------|---------|
-| 🔴 | Blocker - must fix |
-| 🟠 | Major - should fix |
-| 🟡 | Minor - recommended |
-| 🟢 | Suggestion - optional |
-| 💬 | Question - needs response |
-| ✨ | Praise - good job! |
+| Emoji | Meaning                   |
+| ----- | ------------------------- |
+| 🔴    | Blocker - must fix        |
+| 🟠    | Major - should fix        |
+| 🟡    | Minor - recommended       |
+| 🟢    | Suggestion - optional     |
+| 💬    | Question - needs response |
+| ✨    | Praise - good job!        |

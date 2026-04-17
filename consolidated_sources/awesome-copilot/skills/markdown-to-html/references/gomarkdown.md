@@ -61,22 +61,22 @@ doc := p.Parse(md)
 
 ### Available Parser Extensions
 
-| Extension | Description |
-|-----------|-------------|
-| `parser.CommonExtensions` | Tables, fenced code, autolinks, strikethrough |
-| `parser.Tables` | Pipe tables support |
-| `parser.FencedCode` | Fenced code blocks with language |
-| `parser.Autolink` | Auto-detect URLs |
-| `parser.Strikethrough` | ~~strikethrough~~ text |
-| `parser.SpaceHeadings` | Require space after # in headings |
-| `parser.HeadingIDs` | Custom heading IDs {#id} |
-| `parser.AutoHeadingIDs` | Auto-generate heading IDs |
-| `parser.Footnotes` | Footnote support |
-| `parser.NoEmptyLineBeforeBlock` | No blank line required before blocks |
-| `parser.HardLineBreak` | Newlines become `<br>` |
-| `parser.MathJax` | MathJax support |
-| `parser.SuperSubscript` | Super^script^ and sub~script~ |
-| `parser.Mmark` | Mmark syntax support |
+| Extension                       | Description                                   |
+| ------------------------------- | --------------------------------------------- |
+| `parser.CommonExtensions`       | Tables, fenced code, autolinks, strikethrough |
+| `parser.Tables`                 | Pipe tables support                           |
+| `parser.FencedCode`             | Fenced code blocks with language              |
+| `parser.Autolink`               | Auto-detect URLs                              |
+| `parser.Strikethrough`          | ~~strikethrough~~ text                        |
+| `parser.SpaceHeadings`          | Require space after # in headings             |
+| `parser.HeadingIDs`             | Custom heading IDs {#id}                      |
+| `parser.AutoHeadingIDs`         | Auto-generate heading IDs                     |
+| `parser.Footnotes`              | Footnote support                              |
+| `parser.NoEmptyLineBeforeBlock` | No blank line required before blocks          |
+| `parser.HardLineBreak`          | Newlines become `<br>`                        |
+| `parser.MathJax`                | MathJax support                               |
+| `parser.SuperSubscript`         | Super^script^ and sub~script~                 |
+| `parser.Mmark`                  | Mmark syntax support                          |
 
 ## HTML Renderer Configuration
 
@@ -107,18 +107,18 @@ html := markdown.ToHTML(md, p, renderer)
 
 ### Available HTML Flags
 
-| Flag | Description |
-|------|-------------|
-| `html.CommonFlags` | Common sensible defaults |
-| `html.HrefTargetBlank` | Add `target="_blank"` to links |
-| `html.CompletePage` | Generate complete HTML document |
-| `html.UseXHTML` | Use XHTML output |
-| `html.FootnoteReturnLinks` | Add return links in footnotes |
-| `html.FootnoteNoHRTag` | No `<hr>` before footnotes |
-| `html.Smartypants` | Smart punctuation |
-| `html.SmartypantsFractions` | Smart fractions (1/2 → ½) |
-| `html.SmartypantsDashes` | Smart dashes (-- → –) |
-| `html.SmartypantsLatexDashes` | LaTeX-style dashes |
+| Flag                          | Description                     |
+| ----------------------------- | ------------------------------- |
+| `html.CommonFlags`            | Common sensible defaults        |
+| `html.HrefTargetBlank`        | Add `target="_blank"` to links  |
+| `html.CompletePage`           | Generate complete HTML document |
+| `html.UseXHTML`               | Use XHTML output                |
+| `html.FootnoteReturnLinks`    | Add return links in footnotes   |
+| `html.FootnoteNoHRTag`        | No `<hr>` before footnotes      |
+| `html.Smartypants`            | Smart punctuation               |
+| `html.SmartypantsFractions`   | Smart fractions (1/2 → ½)       |
+| `html.SmartypantsDashes`      | Smart dashes (-- → –)           |
+| `html.SmartypantsLatexDashes` | LaTeX-style dashes              |
 
 ### Renderer Options
 
@@ -147,8 +147,8 @@ import (
 
 func mdToHTML(md []byte) []byte {
     // Parser with extensions
-    extensions := parser.CommonExtensions | 
-                  parser.AutoHeadingIDs | 
+    extensions := parser.CommonExtensions |
+                  parser.AutoHeadingIDs |
                   parser.NoEmptyLineBeforeBlock
     p := parser.NewWithExtensions(extensions)
     doc := p.Parse(md)
@@ -188,12 +188,12 @@ safeHTML := p.SanitizeBytes(unsafeHTML)
 
 ### Bluemonday Policies
 
-| Policy | Description |
-|--------|-------------|
-| `UGCPolicy()` | User-generated content (most common) |
-| `StrictPolicy()` | Strip all HTML |
-| `StripTagsPolicy()` | Strip tags, keep text |
-| `NewPolicy()` | Build custom policy |
+| Policy              | Description                          |
+| ------------------- | ------------------------------------ |
+| `UGCPolicy()`       | User-generated content (most common) |
+| `StrictPolicy()`    | Strip all HTML                       |
+| `StripTagsPolicy()` | Strip tags, keep text                |
+| `NewPolicy()`       | Build custom policy                  |
 
 ## Working with AST
 

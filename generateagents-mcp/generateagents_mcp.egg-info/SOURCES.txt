@@ -7,3 +7,8 @@ generateagents_mcp.egg-info/dependency_links.txt
 generateagents_mcp.egg-info/entry_points.txt
 generateagents_mcp.egg-info/requires.txt
 generateagents_mcp.egg-info/top_level.txt
+tests/test_agentspec_integration.py
+tests/test_agentspec_mvp.py
+tests/test_mcp_server_integration.py
+tests/test_mvp_integration.py
+tests/test_validation_cascade.py

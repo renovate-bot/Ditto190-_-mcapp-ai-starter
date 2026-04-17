@@ -27,11 +27,13 @@ Helper script to run a single test file with automatic TypeScript to JavaScript 
 #### Usage
 
 **Run a single test (auto-compiles if needed):**
+
 ```bash
 npm run test:one -- test/path/to/file.test.ts
 ```
 
 **Run without recompiling (faster if tests are already compiled):**
+
 ```bash
 npm run test:one -- test/path/to/file.test.ts --no-compile
 ```
@@ -63,14 +65,17 @@ LOG_LEVEL=ERROR npm run test:one -- test/services/RegistryManager.test.ts
 #### Troubleshooting
 
 **Test file not found:**
+
 - Ensure the path starts with `test/` and ends with `.test.ts`
 - Check that the file exists in the test directory
 
 **Compilation errors:**
+
 - Run `npm run compile-tests` manually to see detailed errors
 - Check TypeScript syntax in your test file
 
 **Test fails to run:**
+
 - Verify the compiled file exists in `test-dist/test/`
 - Try running with full compilation: remove `--no-compile` flag
 
@@ -96,16 +101,19 @@ Automatically synchronizes version references across the project to match `packa
 #### Usage
 
 **Sync documentation with current package.json version:**
+
 ```bash
 ./scripts/update-version.sh
 ```
 
 **Update to a specific version:**
+
 ```bash
 ./scripts/update-version.sh 2.1.0
 ```
 
 **Using npm scripts (recommended):**
+
 ```bash
 # Bump patch version (0.0.1 → 0.0.2)
 npm run version:bump:patch
@@ -166,6 +174,7 @@ git push origin v0.0.2
 The script can be integrated into your release workflow:
 
 **GitHub Actions example:**
+
 ```yaml
 name: Release
 
@@ -173,7 +182,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to release (e.g., 2.1.0)'
+        description: "Version to release (e.g., 2.1.0)"
         required: true
 
 jobs:
@@ -181,16 +190,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
-      
+          node-version: "20.x"
+
       - name: Update version
         run: |
           ./scripts/update-version.sh ${{ github.event.inputs.version }}
-          
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
@@ -213,6 +222,7 @@ jobs:
 #### Troubleshooting
 
 **Script fails with "grep: invalid option -- 'P'"**
+
 - Your grep doesn't support Perl regex. Install GNU grep:
   ```bash
   # macOS
@@ -221,11 +231,13 @@ jobs:
   ```
 
 **Version not updating in all files**
+
 - Check if the old version exists in the files
 - Review the regex patterns in the script
 - Manually verify the file formats match expectations
 
 **Permission denied**
+
 - Make the script executable:
   ```bash
   chmod +x scripts/update-version.sh

@@ -3,12 +3,14 @@
 Always apply these security best practices to all code:
 
 ## Input Validation
+
 - Validate and sanitize ALL user input
 - Use allowlists over denylists
 - Implement proper data type checking
 - Limit input length and format
 
 ## Authentication & Sessions
+
 - Use strong password hashing (bcrypt, Argon2)
 - Implement secure session management
 - Use HTTPS for all authenticated routes
@@ -16,6 +18,7 @@ Always apply these security best practices to all code:
 - Implement rate limiting
 
 ## Data Protection
+
 - Never store passwords in plain text
 - Encrypt sensitive data at rest
 - Use HTTPS for data in transit
@@ -23,12 +26,14 @@ Always apply these security best practices to all code:
 - Use parameterized queries
 
 ## Error Handling
+
 - Don't expose stack traces to users
 - Log security events
 - Use generic error messages
 - Implement proper exception handling
 
 ## Dependencies
+
 - Keep dependencies updated
 - Audit packages for vulnerabilities
 - Use tools like npm audit, Snyk

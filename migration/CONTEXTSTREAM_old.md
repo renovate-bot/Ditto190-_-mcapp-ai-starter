@@ -1,0 +1,112 @@
+# ContextStream MCP — Project Configuration (auto-captured)
+
+## Summary
+
+This file documents the ContextStream MCP setup performed on this machine for this repository.
+
+- Setup command run: `npx --prefer-online -y @contextstream/mcp-server@latest setup`
+- ContextStream API URL used: <https://api.contextstream.io>
+- Auto-update: enabled
+- Editors configured: Codex CLI, GitHub Copilot (VS Code), OpenCode, Cursor / VS Code
+- Project added: `workspace` (project id: 03877a94-610b-412d-8b2c-2b577d15c63e)
+- Workspace created: `mcpapp-monorepo` (workspace id: e76de4e7-5d4b-40c0-9023-10172088310c)
+- Context Pack: enabled (Pro+)
+
+## Files created or updated by setup
+
+- Project rules and editor rules updated:
+  - `C:\Users\dylan.a.thomas\Projects\workspace\AGENTS.md` (ContextStream block replaced)
+  - `C:\Users\dylan.a.thomas\Projects\workspace\.cursorrules` (ContextStream block replaced)
+- MCP config files written/updated:
+  - Global Codex CLI config: `C:\Users\dylan.a.thomas\.codex\config.toml`
+  - GitHub Copilot + VS Code:
+    - `~/.copilot/mcp-config.json` (created/updated)
+    - `.vscode/mcp.json` (project) — includes `contextstream` server entry
+- Note: If you installed the Rust runtime, replace Node command with `contextstream-mcp` in generated config files.
+
+## Hooks installed (project)
+
+- Installed by setup (Cursor / VS Code):
+  - `pre-tool-use` (installed) — WARNING: this hook blocks local discovery tools when enabled.
+  - `on-save-intent` (installed)
+- Editors without lifecycle hooks (rules-only enforcement): Codex CLI, GitHub Copilot (VS Code), OpenCode
+- To disable hooks globally for the editor runtime:
+  - Set environment variable: `CONTEXTSTREAM_HOOK_ENABLED=false`
+  - Or run: `contextstream-mcp update-hooks --scope=project --path=. --remove=<hook-name>`
+
+## Indexing summary
+
+- Index run during setup (project path: `C:\Users\dylan.a.thomas\Projects\workspace`)
+- Found: 28 files
+- Index result summary: 5 created, 3 updated, 1 appended, 3 skipped
+- Context Pack: enabled
+- Background indexing completed during setup (if indexing still in progress, wait a moment or rerun index)
+
+## Important environment variables & runtime flags
+
+(Used by MCP and recommended for configs)
+
+- CONTEXTSTREAM_API_URL (e.g. <https://api.contextstream.io>)
+- CONTEXTSTREAM_API_KEY or CONTEXTSTREAM_JWT (auth)
+- CONTEXTSTREAM_TOOLSET (light|standard|complete)
+- CONTEXTSTREAM_PROGRESSIVE_MODE (true|false)
+- CONTEXTSTREAM_SCHEMA_MODE (compact|full)
+- CONTEXTSTREAM_CONTEXT_PACK (true|false)
+- MCP_HTTP_HOST / MCP_HTTP_PORT / MCP_HTTP_PATH (when self-hosting)
+
+## Useful commands (run locally)
+
+- Preview wizard changes:
+  - `contextstream-mcp setup --dry-run`
+- Run setup wizard (node installer):
+  - `npx --prefer-online -y @contextstream/mcp-server@latest setup`
+- Show hook help:
+  - `contextstream-mcp hook --help`
+- Enable a hook:
+  - `contextstream-mcp hook post-write`
+- Update hooks for project:
+  - `contextstream-mcp update-hooks --scope=project --path=.`
+- Show version:
+  - `contextstream-mcp --version`
+- Start HTTP gateway (self-hosting):
+  - `contextstream-mcp http`
+- Re-index project (if needed via MCP CLI / API) — see docs:
+  - `contextstream-mcp project index` (or use the setup UI/CLI flow)
+
+## How to disable `pre-tool-use` (if you prefer discovery)
+
+1. Disable globally via env var:
+   - `setx CONTEXTSTREAM_HOOK_ENABLED false` (Windows) then restart editor
+2. Or remove via update-hooks (project):
+   - `contextstream-mcp update-hooks --scope=project --path=. --remove pre-tool-use`
+3. Or use the hook stop command (if available in your runtime):
+   - `contextstream-mcp hook stop pre-tool-use`  (check `hook --help` for exact usage)
+
+## Verification / smoke tests
+
+1. Confirm server version:
+   - `contextstream-mcp --version`
+2. Confirm hook help:
+   - `contextstream-mcp hook --help`
+3. Confirm VS Code/Copilot config entries exist:
+   - `type .vscode\mcp.json` and `type %USERPROFILE%\.copilot\mcp-config.json`
+4. In IDE, perform a semantic search (via your AI assistant): `search(mode="hybrid", query="auth")` — should return project snippets
+5. Make a small file edit and save; verify logs show `post-write` indexing activity (if enabled)
+
+## Notes / next steps
+
+- If you want to remove `pre-tool-use` (you earlier requested excluding it), follow the disable steps above.
+- Consider committing the edited rules files and `.vscode/mcp.json` to source control if you want team-shared behavior.
+- Connect integrations (GitHub, Slack, Notion) from <https://contextstream.io/settings/integrations> to enrich context.
+
+---
+
+Captured terminal excerpt (sanitized)
+
+- Workspace: `mcpapp-monorepo` (e76de4e7-5d4b-40c0-9023-10172088310c)
+- Project: `workspace` (03877a94-610b-412d-8b2c-2b577d15c63e)
+- Editors configured: Codex CLI, GitHub Copilot (VS Code), OpenCode, Cursor / VS Code
+- Hooks installed (Cursor): `pre-tool-use`, `on-save-intent`
+- Indexing: Found 28 files, indexing complete (5 created, 3 updated, 1 appended, 3 skipped)
+
+Generated by assistant on 2026-04-04

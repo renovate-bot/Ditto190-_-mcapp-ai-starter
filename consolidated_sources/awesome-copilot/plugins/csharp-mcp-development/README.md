@@ -13,14 +13,14 @@ copilot plugin install csharp-mcp-development@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                               | Description                                                                                |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | `/csharp-mcp-development:csharp-mcp-server-generator` | Generate a complete MCP server project in C# with tools, prompts, and proper configuration |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent               | Description                                                                |
+| ------------------- | -------------------------------------------------------------------------- |
 | `csharp-mcp-expert` | Expert assistant for developing Model Context Protocol (MCP) servers in C# |
 
 ## Source

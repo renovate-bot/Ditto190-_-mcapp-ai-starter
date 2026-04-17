@@ -13,14 +13,14 @@ copilot plugin install rust-mcp-development@awesome-copilot
 
 ### Commands (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command                                           | Description                                                                                                                          |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `/rust-mcp-development:rust-mcp-server-generator` | Generate a complete Rust Model Context Protocol server project with tools, prompts, resources, and tests using the official rmcp SDK |
 
 ### Agents
 
-| Agent | Description |
-|-------|-------------|
+| Agent             | Description                                                                                  |
+| ----------------- | -------------------------------------------------------------------------------------------- |
 | `rust-mcp-expert` | Expert assistant for Rust MCP server development using the rmcp SDK with tokio async runtime |
 
 ## Source

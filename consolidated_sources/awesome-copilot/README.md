@@ -1,6 +1,6 @@
 # 🤖 Awesome GitHub Copilot
-[![Powered by Awesome Copilot](https://img.shields.io/badge/Powered_by-Awesome_Copilot-blue?logo=githubcopilot)](https://aka.ms/awesome-github-copilot) [![GitHub contributors from allcontributors.org](https://img.shields.io/github/all-contributors/github/awesome-copilot?color=ee8449)](#contributors-)
 
+[![Powered by Awesome Copilot](https://img.shields.io/badge/Powered_by-Awesome_Copilot-blue?logo=githubcopilot)](https://aka.ms/awesome-github-copilot) [![GitHub contributors from allcontributors.org](https://img.shields.io/github/all-contributors/github/awesome-copilot?color=ee8449)](#contributors-)
 
 A community created collection of custom agents and instructions to supercharge your GitHub Copilot experience across different domains, languages, and use cases.
 
@@ -20,12 +20,11 @@ This repository provides a comprehensive toolkit for enhancing GitHub Copilot wi
 
 Discover our curated plugins of agents and skills organized around specific themes and workflows.
 
-| Name | Description | Items | Tags |
-| ---- | ----------- | ----- | ---- |
-| [Awesome Copilot](plugins/awesome-copilot/README.md) | Meta skills that help you discover and generate curated GitHub Copilot agents, collections, instructions, and skills. | 5 items | github-copilot, discovery, meta, prompt-engineering, agents |
-| [Copilot SDK](plugins/copilot-sdk/README.md) | Build applications with the GitHub Copilot SDK across multiple programming languages. Includes comprehensive instructions for C#, Go, Node.js/TypeScript, and Python to help you create AI-powered applications. | 5 items | copilot-sdk, sdk, csharp, go, nodejs, typescript, python, ai, github-copilot |
-| [Partners](plugins/partners/README.md) | Custom agents that have been created by GitHub partners | 20 items | devops, security, database, cloud, infrastructure, observability, feature-flags, cicd, migration, performance |
-
+| Name                                                 | Description                                                                                                                                                                                                      | Items    | Tags                                                                                                          |
+| ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
+| [Awesome Copilot](plugins/awesome-copilot/README.md) | Meta skills that help you discover and generate curated GitHub Copilot agents, collections, instructions, and skills.                                                                                            | 5 items  | github-copilot, discovery, meta, prompt-engineering, agents                                                   |
+| [Copilot SDK](plugins/copilot-sdk/README.md)         | Build applications with the GitHub Copilot SDK across multiple programming languages. Includes comprehensive instructions for C#, Go, Node.js/TypeScript, and Python to help you create AI-powered applications. | 5 items  | copilot-sdk, sdk, csharp, go, nodejs, typescript, python, ai, github-copilot                                  |
+| [Partners](plugins/partners/README.md)               | Custom agents that have been created by GitHub partners                                                                                                                                                          | 20 items | devops, security, database, cloud, infrastructure, observability, feature-flags, cicd, migration, performance |
 
 ## How to Install Customizations
 

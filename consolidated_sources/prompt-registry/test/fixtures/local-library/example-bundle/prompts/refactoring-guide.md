@@ -25,26 +25,32 @@ Follow these core principles:
 ## Common Refactoring Patterns
 
 **Extract Method**
+
 - When: Long methods or duplicate code
 - How: Extract logical blocks into named methods
 
 **Rename**
+
 - When: Unclear names
 - How: Use descriptive, intention-revealing names
 
 **Extract Class**
+
 - When: Class has too many responsibilities
 - How: Split into focused, single-responsibility classes
 
 **Replace Conditional with Polymorphism**
+
 - When: Complex type-based conditionals
 - How: Use inheritance or interfaces
 
 **Introduce Parameter Object**
+
 - When: Too many parameters
 - How: Group related parameters into objects
 
 **Replace Magic Numbers with Constants**
+
 - When: Hardcoded values without context
 - How: Extract to named constants
 
@@ -60,24 +66,29 @@ Follow these core principles:
 ## Output Format
 
 **Current Issues:**
+
 - List code smells and problems
 
 **Proposed Refactoring:**
+
 - Step-by-step refactoring plan
 
 **Benefits:**
+
 - How this improves the code
 
 **Before & After:**
+
 ```
 # Before
 [current code]
 
-# After  
+# After
 [refactored code]
 ```
 
 **Testing Notes:**
+
 - What to test to ensure correctness
 
 Always prioritize readability and maintainability over clever tricks.

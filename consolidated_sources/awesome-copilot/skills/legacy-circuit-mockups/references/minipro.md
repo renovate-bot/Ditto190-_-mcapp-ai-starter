@@ -22,20 +22,20 @@ It is widely used in **Linux**, **macOS**, and **Windows** environments, especia
 
 ### 3.1 Memory Devices
 
-* Parallel EEPROM (e.g., AT28C256)
-* Flash memory (29xxx series)
-* EPROM (27xxx series)
-* SRAM (read/verify only)
+- Parallel EEPROM (e.g., AT28C256)
+- Flash memory (29xxx series)
+- EPROM (27xxx series)
+- SRAM (read/verify only)
 
 ### 3.2 Logic and PLDs
 
-* GAL16V8 / GAL22V10
-* PAL devices (limited)
+- GAL16V8 / GAL22V10
+- PAL devices (limited)
 
 ### 3.3 Other Devices
 
-* Some microcontrollers (device-dependent)
-* Logic IC testing (selected models)
+- Some microcontrollers (device-dependent)
+- Logic IC testing (selected models)
 
 ---
 
@@ -57,8 +57,8 @@ sudo make install
 
 ### 4.2 Windows
 
-* Install via MSYS2 or prebuilt binaries
-* Requires libusb driver (WinUSB)
+- Install via MSYS2 or prebuilt binaries
+- Requires libusb driver (WinUSB)
 
 ---
 
@@ -122,9 +122,9 @@ minipro -p AT28C256 -v rom.bin
 minipro -p AT28C256 -w monitor.bin
 ```
 
-* Software Data Protection is handled automatically
-* Write cycle delays are internally managed
-* Verification performed after programming
+- Software Data Protection is handled automatically
+- Write cycle delays are internally managed
+- Verification performed after programming
 
 ---
 
@@ -134,8 +134,8 @@ minipro -p AT28C256 -w monitor.bin
 minipro -p SST39SF040 -e -w firmware.bin
 ```
 
-* Erase step required for Flash devices
-* Sector erase handled automatically
+- Erase step required for Flash devices
+- Sector erase handled automatically
 
 ---
 
@@ -145,8 +145,8 @@ minipro -p SST39SF040 -e -w firmware.bin
 minipro -p 27C256 -r eprom.bin
 ```
 
-* UV erase required before reprogramming
-* minipro verifies blank state before write
+- UV erase required before reprogramming
+- minipro verifies blank state before write
 
 ---
 
@@ -156,9 +156,9 @@ minipro -p 27C256 -r eprom.bin
 minipro -p GAL22V10 -w logic.jed
 ```
 
-* Uses JEDEC files
-* Supports read, write, and verify
-* Fuse maps viewable via `-I`
+- Uses JEDEC files
+- Supports read, write, and verify
+- Fuse maps viewable via `-I`
 
 ---
 
@@ -175,10 +175,10 @@ minipro -p GAL22V10 -w logic.jed
 
 ## 12. Safety and Best Practices
 
-* Always confirm device orientation in ZIF socket
-* Use correct device identifier (`-p`)
-* Do not hot-insert chips during operation
-* Use adapters for PLCC, SOP, TSOP packages
+- Always confirm device orientation in ZIF socket
+- Use correct device identifier (`-p`)
+- Do not hot-insert chips during operation
+- Use adapters for PLCC, SOP, TSOP packages
 
 ---
 
@@ -194,18 +194,18 @@ minipro -p GAL22V10 -w logic.jed
 
 ## 14. Limitations
 
-* Not all devices are supported
-* Some microcontrollers require proprietary tools
-* In-circuit programming (ISP) not supported
+- Not all devices are supported
+- Some microcontrollers require proprietary tools
+- In-circuit programming (ISP) not supported
 
 ---
 
 ## 15. References
 
-* <https://gitlab.com/DavidGriffith/minipro>
-* <https://www.hadex.cz/spec/m545b.pdf>
-* <https://github.com/mikeroyal/Firmware-Guide>
-* <https://mike42.me/blog/2021-08-a-first-look-at-programmable-logic>
-* <https://retrocomputingforum.com/>
+- <https://gitlab.com/DavidGriffith/minipro>
+- <https://www.hadex.cz/spec/m545b.pdf>
+- <https://github.com/mikeroyal/Firmware-Guide>
+- <https://mike42.me/blog/2021-08-a-first-look-at-programmable-logic>
+- <https://retrocomputingforum.com/>
 
 ---

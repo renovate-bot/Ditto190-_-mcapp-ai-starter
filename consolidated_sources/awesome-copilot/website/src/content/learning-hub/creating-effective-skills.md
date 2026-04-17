@@ -1,10 +1,10 @@
 ---
-title: 'Creating Effective Skills'
-description: 'Master the art of writing reusable, shareable skill folders that deliver consistent results across your team.'
+title: "Creating Effective Skills"
+description: "Master the art of writing reusable, shareable skill folders that deliver consistent results across your team."
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: '2026-02-26'
-estimatedReadingTime: '9 minutes'
+lastUpdated: "2026-02-26"
+estimatedReadingTime: "9 minutes"
 tags:
   - skills
   - customization
@@ -30,6 +30,7 @@ Skills are folders containing a `SKILL.md` file and optional bundled assets. The
 - **Asset references**: Links to bundled templates, scripts, schemas, and reference documents
 
 **Key advantages over the older prompt file format**:
+
 - Skills support extended frontmatter for **agent discovery**—agents can find and invoke skills automatically, while prompts required manual slash-command invocation
 - Skills can **bundle additional files** (reference docs, templates, scripts) alongside their instructions, giving the AI richer context
 - Skills are **more normalised across coding agent systems** via the open [Agent Skills specification](https://agentskills.io/home)
@@ -38,11 +39,13 @@ Skills are folders containing a `SKILL.md` file and optional bundled assets. The
 ### How Skills Differ from Other Customizations
 
 **Skills vs Instructions**:
+
 - Skills are invoked explicitly (by agents or users); instructions apply automatically
 - Skills drive specific tasks with bundled resources; instructions provide ongoing context
 - Use skills for workflows you trigger on demand; use instructions for standards that always apply
 
 **Skills vs Agents**:
+
 - Skills are task-focused capabilities; agents are specialized personas
 - Skills work with standard Copilot tools and bundle their own assets; agents may require MCP servers or custom integrations
 - Use skills for repeatable tasks; use agents for complex multi-step workflows that need persistent state
@@ -58,7 +61,7 @@ Every effective skill has two parts: a `SKILL.md` file with frontmatter and inst
 ```markdown
 ---
 name: generate-tests
-description: 'Generate comprehensive unit tests for the selected code, covering happy path, edge cases, and error conditions'
+description: "Generate comprehensive unit tests for the selected code, covering happy path, edge cases, and error conditions"
 ---
 
 # generate-tests
@@ -79,6 +82,7 @@ Use this skill when you need to create or expand test coverage for existing code
 ```
 
 **Why This Works**:
+
 - Clear `name` field provides the slash-command identifier
 - Rich `description` tells agents when to invoke this skill
 - Structured instructions provide specific, actionable guidance
@@ -117,13 +121,15 @@ The YAML frontmatter controls how Copilot discovers and executes your skill.
 ### Required Fields
 
 **name**: Kebab-case identifier matching the folder name
+
 ```yaml
 name: generate-tests
 ```
 
 **description**: Brief summary of what the skill does and when to use it (10–1024 characters, wrapped in single quotes)
+
 ```yaml
-description: 'Generate comprehensive unit tests for a component, covering happy path, edge cases, and error conditions'
+description: "Generate comprehensive unit tests for a component, covering happy path, edge cases, and error conditions"
 ```
 
 ### Description Best Practices
@@ -147,7 +153,7 @@ See [`skills/conventional-commit/SKILL.md`](https://github.com/github/awesome-co
 ```markdown
 ---
 name: conventional-commit
-description: 'Generate conventional commit messages from staged changes following the Conventional Commits specification'
+description: "Generate conventional commit messages from staged changes following the Conventional Commits specification"
 ---
 
 # conventional-commit
@@ -200,6 +206,7 @@ This skill packages schema documentation, starter templates, and utility scripts
 ### Structure Your Skills
 
 **1. Start with clear objectives**:
+
 ```markdown
 # skill-name
 
@@ -207,16 +214,19 @@ Your goal is to [specific task] for [specific target].
 ```
 
 **2. Add "When to Use" guidance** (helps agent discovery):
+
 ```markdown
 ## When to Use This Skill
 
 Use this skill when:
+
 - A user asks to [trigger phrase 1]
 - You need to [trigger phrase 2]
 - Keywords: [keyword1], [keyword2], [keyword3]
 ```
 
 **3. Define requirements explicitly**:
+
 ```markdown
 ## Requirements
 
@@ -226,6 +236,7 @@ Use this skill when:
 ```
 
 **4. Reference bundled assets**:
+
 ```markdown
 ## References
 
@@ -234,11 +245,14 @@ Use this skill when:
 ```
 
 **5. Provide examples**:
+
 ```markdown
 ### Good Example
+
 [Show desired output]
 
 ### What to Avoid
+
 [Show problematic patterns]
 ```
 
@@ -256,26 +270,33 @@ Use this skill when:
 ### Writing Style Guidelines
 
 **Use imperative mood**:
+
 - ✅ "Generate unit tests for the selected function"
 - ❌ "You should generate some tests"
 
 **Be specific about requirements**:
+
 - ✅ "Use Jest with React Testing Library"
 - ❌ "Use whatever testing framework"
 
 **Provide guardrails**:
+
 - ✅ "Do not modify existing test files; create new ones"
 - ❌ "Update tests as needed"
 
 **Structure complex skills**:
+
 ```markdown
 ## Step 1: Analysis
+
 [Analyze requirements]
 
 ## Step 2: Generation
+
 [Generate code]
 
 ## Step 3: Validation
+
 [Check output]
 ```
 
@@ -286,7 +307,7 @@ Use this skill when:
 ```markdown
 ---
 name: scaffold-feature
-description: 'Scaffold a new feature with implementation, tests, and documentation following project conventions'
+description: "Scaffold a new feature with implementation, tests, and documentation following project conventions"
 ---
 
 # scaffold-feature
@@ -307,7 +328,7 @@ Use the existing code style and conventions found in the codebase.
 ```markdown
 ---
 name: explain-architecture
-description: 'Analyze and explain code architecture, design patterns, and data flow for selected code'
+description: "Analyze and explain code architecture, design patterns, and data flow for selected code"
 ---
 
 # explain-architecture
@@ -327,7 +348,7 @@ Keep explanations concise and developer-focused.
 ```markdown
 ---
 name: run-test-suite
-description: 'Execute the project test suite, parse failures, and suggest fixes for failing tests'
+description: "Execute the project test suite, parse failures, and suggest fixes for failing tests"
 ---
 
 # run-test-suite
@@ -396,6 +417,7 @@ Now that you understand effective skills, you can:
 - **Decision Framework**: Choosing the Right Customization _(coming soon)_ — When to use skills vs other types
 
 **Suggested Reading Order**:
+
 1. This article (creating effective skills)
 2. [Building Custom Agents](../building-custom-agents/) — More sophisticated workflows
 3. Choosing the Right Customization _(coming soon)_ — Decision guidance

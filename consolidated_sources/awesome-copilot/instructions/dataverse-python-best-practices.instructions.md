@@ -1,11 +1,13 @@
 # Dataverse SDK for Python - Best Practices Guide
 
 ## Overview
+
 Production-ready patterns and best practices extracted from Microsoft's official PowerPlatform-DataverseClient-Python repository, examples, and recommended workflows.
 
 ## 1. Installation & Environment Setup
 
 ### Production Installation
+
 ```bash
 # Install the published SDK from PyPI
 pip install PowerPlatform-Dataverse-Client
@@ -18,6 +20,7 @@ pip install pandas
 ```
 
 ### Development Installation
+
 ```bash
 # Clone the repository
 git clone https://github.com/microsoft/PowerPlatform-DataverseClient-Python.git
@@ -31,11 +34,13 @@ pip install pytest pytest-cov black isort mypy ruff
 ```
 
 ### Python Version Support
+
 - **Minimum**: Python 3.10
 - **Recommended**: Python 3.11+ for best performance
 - **Supported**: Python 3.10, 3.11, 3.12, 3.13, 3.14
 
 ### Verify Installation
+
 ```python
 from PowerPlatform.Dataverse import __version__
 from PowerPlatform.Dataverse.client import DataverseClient
@@ -50,6 +55,7 @@ print("Installation successful!")
 ## 2. Authentication Patterns
 
 ### Interactive Development (Browser-Based)
+
 ```python
 from azure.identity import InteractiveBrowserCredential
 from PowerPlatform.Dataverse.client import DataverseClient
@@ -61,6 +67,7 @@ client = DataverseClient("https://yourorg.crm.dynamics.com", credential)
 **When to use:** Local development, interactive testing, single-user scenarios.
 
 ### Production (Client Secret)
+
 ```python
 from azure.identity import ClientSecretCredential
 from PowerPlatform.Dataverse.client import DataverseClient
@@ -76,6 +83,7 @@ client = DataverseClient("https://yourorg.crm.dynamics.com", credential)
 **When to use:** Server-side applications, Azure automation, scheduled jobs.
 
 ### Certificate-Based Authentication
+
 ```python
 from azure.identity import ClientCertificateCredential
 from PowerPlatform.Dataverse.client import DataverseClient
@@ -91,6 +99,7 @@ client = DataverseClient("https://yourorg.crm.dynamics.com", credential)
 **When to use:** Highly secure environments, certificate-pinning requirements.
 
 ### Azure CLI Authentication
+
 ```python
 from azure.identity import AzureCliCredential
 from PowerPlatform.Dataverse.client import DataverseClient
@@ -117,12 +126,12 @@ def fetch_account(account_id):
 # ✅ PATTERN: Singleton client
 class DataverseService:
     _instance = None
-    
+
     def __new__(cls):
         if cls._instance is None:
             credential = InteractiveBrowserCredential()
             cls._instance = DataverseClient(
-                "https://yourorg.crm.dynamics.com", 
+                "https://yourorg.crm.dynamics.com",
                 credential
             )
         return cls._instance
@@ -137,6 +146,7 @@ account = service.get("account", account_id)
 ## 4. Configuration Optimization
 
 ### Connection Settings
+
 ```python
 from PowerPlatform.Dataverse.core.config import DataverseConfig
 from PowerPlatform.Dataverse.client import DataverseClient
@@ -152,6 +162,7 @@ client = DataverseClient("https://yourorg.crm.dynamics.com", credential, config)
 ```
 
 **Key configuration options:**
+
 - `language_code`: Language for API responses (default: 1033 for English)
 
 ---
@@ -161,6 +172,7 @@ client = DataverseClient("https://yourorg.crm.dynamics.com", credential, config)
 ### Create Operations
 
 #### Single Record
+
 ```python
 record_data = {
     "name": "Contoso Ltd",
@@ -173,6 +185,7 @@ print(f"Created: {record_id}")
 ```
 
 #### Bulk Create (Automatically Optimized)
+
 ```python
 # SDK automatically uses CreateMultiple for arrays > 1 record
 records = [
@@ -188,12 +201,14 @@ print(f"Created {len(created_ids)} records")
 ### Read Operations
 
 #### Single Record by ID
+
 ```python
 account = client.get("account", "account-guid-here")
 print(account.get("name"))
 ```
 
 #### Query with Filtering & Selection
+
 ```python
 # Returns paginated results (generator)
 for page in client.get(
@@ -208,6 +223,7 @@ for page in client.get(
 ```
 
 **Key parameters:**
+
 - `filter`: OData filter (must use **lowercase** logical names)
 - `select`: Fields to retrieve (improves performance)
 - `orderby`: Sort results
@@ -215,11 +231,12 @@ for page in client.get(
 - `page_size`: Override page size for pagination
 
 #### SQL Queries (Read-Only)
+
 ```python
 # SQL queries are read-only; use for complex analytics
 results = client.query_sql("""
-    SELECT TOP 10 name, creditlimit 
-    FROM account 
+    SELECT TOP 10 name, creditlimit
+    FROM account
     WHERE creditlimit > 50000
     ORDER BY name
 """)
@@ -229,6 +246,7 @@ for row in results:
 ```
 
 **Limitations:**
+
 - Read-only (SELECT only, no DML)
 - Useful for complex joins and analytics
 - May be disabled by org policy
@@ -236,6 +254,7 @@ for row in results:
 ### Update Operations
 
 #### Single Record
+
 ```python
 client.update("account", "account-guid", {
     "creditlimit": 150000.00,
@@ -244,6 +263,7 @@ client.update("account", "account-guid", {
 ```
 
 #### Bulk Update (Broadcast Same Change)
+
 ```python
 # Update all selected records with same data
 account_ids = ["id1", "id2", "id3"]
@@ -254,6 +274,7 @@ client.update("account", account_ids, {
 ```
 
 #### Paired Updates (1:1 Record Updates)
+
 ```python
 # For different updates per record, send multiple calls
 updates = {
@@ -268,11 +289,13 @@ for record_id, data in updates.items():
 ### Delete Operations
 
 #### Single Record
+
 ```python
 client.delete("account", "account-guid")
 ```
 
 #### Bulk Delete (Optimized)
+
 ```python
 # SDK automatically uses BulkDelete for large lists
 record_ids = ["id1", "id2", "id3", ...]
@@ -284,6 +307,7 @@ client.delete("account", record_ids, use_bulk_delete=True)
 ## 6. Error Handling & Recovery
 
 ### Exception Hierarchy
+
 ```python
 from PowerPlatform.Dataverse.core.errors import (
     DataverseError,           # Base class
@@ -304,6 +328,7 @@ except DataverseError as e:
 ```
 
 ### Retry Logic Pattern
+
 ```python
 import time
 from PowerPlatform.Dataverse.core.errors import HttpError
@@ -316,7 +341,7 @@ def create_with_retry(table_name, record_data, max_retries=3):
         except HttpError as e:
             if attempt == max_retries - 1:
                 raise
-            
+
             # Exponential backoff: 1s, 2s, 4s
             backoff_seconds = 2 ** attempt
             print(f"Attempt {attempt + 1} failed. Retrying in {backoff_seconds}s...")
@@ -327,6 +352,7 @@ created_ids = create_with_retry("account", {"name": "Contoso"})
 ```
 
 ### 429 (Request Rate Limit) Handling
+
 ```python
 import time
 from PowerPlatform.Dataverse.core.errors import HttpError
@@ -348,6 +374,7 @@ except HttpError as e:
 ## 7. Table & Column Management
 
 ### Create Custom Table
+
 ```python
 from enum import IntEnum
 
@@ -376,6 +403,7 @@ print(f"Created table: {table_info['table_schema_name']}")
 ```
 
 ### Get Table Metadata
+
 ```python
 table_info = client.get_table_info("account")
 print(f"Schema Name: {table_info['table_schema_name']}")
@@ -385,6 +413,7 @@ print(f"Primary ID: {table_info['primary_id_attribute']}")
 ```
 
 ### List All Tables
+
 ```python
 tables = client.list_tables()
 for table in tables:
@@ -392,6 +421,7 @@ for table in tables:
 ```
 
 ### Column Management
+
 ```python
 # Add columns to existing table
 client.create_columns("new_CustomTable", {
@@ -411,6 +441,7 @@ client.delete_table("new_CustomTable")
 ## 8. Paging & Large Result Sets
 
 ### Pagination Pattern
+
 ```python
 # Retrieve all accounts in pages
 all_accounts = []
@@ -426,6 +457,7 @@ print(f"Total: {len(all_accounts)} records")
 ```
 
 ### Manual Paging with Continuation Tokens
+
 ```python
 # For complex paging scenarios
 skip_count = 0
@@ -435,7 +467,7 @@ while True:
     page = client.get("account", top=page_size, skip=skip_count)
     if not page:
         break
-    
+
     print(f"Page {skip_count // page_size + 1}: {len(page)} records")
     skip_count += page_size
 ```
@@ -445,6 +477,7 @@ while True:
 ## 9. File Operations
 
 ### Upload Small Files (< 128 MB)
+
 ```python
 from pathlib import Path
 
@@ -462,6 +495,7 @@ print(f"Upload successful: {response}")
 ```
 
 ### Upload Large Files with Chunking
+
 ```python
 from pathlib import Path
 
@@ -484,6 +518,7 @@ print(f"Chunked upload complete")
 ## 10. OData Filter Optimization
 
 ### Case Sensitivity Rules
+
 ```python
 # ❌ WRONG: Uppercase logical names
 results = client.get("account", filter="Name eq 'Contoso'")
@@ -496,6 +531,7 @@ results = client.get("account", filter="name eq 'Contoso Ltd'")
 ```
 
 ### Filter Expression Examples
+
 ```python
 # Equality
 client.get("account", filter="name eq 'Contoso'")
@@ -516,6 +552,7 @@ client.get("account", filter="not(statecode eq 1)")
 ```
 
 ### Select & Expand
+
 ```python
 # Select specific columns (improves performance)
 client.get("account", select=["name", "creditlimit", "telephone1"])
@@ -533,6 +570,7 @@ client.get(
 ## 11. Cache Management
 
 ### Flushing Cache
+
 ```python
 # Clear SDK internal cache after bulk operations
 client.flush_cache()
@@ -548,23 +586,28 @@ client.flush_cache()
 ## 12. Performance Best Practices
 
 ### Do's ✅
+
 1. **Use `select` parameter**: Only fetch needed columns
+
    ```python
    client.get("account", select=["name", "creditlimit"])
    ```
 
 2. **Batch operations**: Create/update multiple records at once
+
    ```python
    ids = client.create("account", [record1, record2, record3])
    ```
 
 3. **Use paging**: Don't load all records at once
+
    ```python
    for page in client.get("account", top=1000):
        process_page(page)
    ```
 
 4. **Reuse client instance**: Create once, use many times
+
    ```python
    client = DataverseClient(url, credential)  # Once
    # Reuse throughout app
@@ -576,13 +619,16 @@ client.flush_cache()
    ```
 
 ### Don'ts ❌
+
 1. **Don't fetch all columns**: Specify what you need
+
    ```python
    # Slow
    client.get("account")
    ```
 
 2. **Don't create records in loops**: Batch them
+
    ```python
    # Slow
    for record in records:
@@ -590,6 +636,7 @@ client.flush_cache()
    ```
 
 3. **Don't load all results at once**: Use pagination
+
    ```python
    # Slow
    all_accounts = list(client.get("account"))
@@ -607,6 +654,7 @@ client.flush_cache()
 ## 13. Common Patterns Summary
 
 ### Pattern: Upsert (Create or Update)
+
 ```python
 def upsert_account(name, data):
     """Create account or update if exists."""
@@ -626,11 +674,12 @@ def upsert_account(name, data):
 ```
 
 ### Pattern: Bulk Operation with Error Recovery
+
 ```python
 def create_with_recovery(records):
     """Create records with per-record error tracking."""
     results = {"success": [], "failed": []}
-    
+
     try:
         ids = client.create("account", records)
         results["success"] = ids
@@ -642,7 +691,7 @@ def create_with_recovery(records):
                 results["success"].append(ids[0])
             except Exception as e:
                 results["failed"].append({"index": i, "record": record, "error": str(e)})
-    
+
     return results
 ```
 
@@ -651,16 +700,19 @@ def create_with_recovery(records):
 ## 14. Dependencies & Versions
 
 ### Core Dependencies
+
 - **azure-identity** >= 1.17.0 (Authentication)
 - **azure-core** >= 1.30.2 (HTTP client)
 - **requests** >= 2.32.0 (HTTP requests)
 - **Python** >= 3.10
 
 ### Optional Dependencies
+
 - **pandas** (Data manipulation)
 - **reportlab** (PDF generation for file examples)
 
 ### Development Tools
+
 - **pytest** >= 7.0.0 (Testing)
 - **black** >= 23.0.0 (Code formatting)
 - **mypy** >= 1.0.0 (Type checking)
@@ -671,6 +723,7 @@ def create_with_recovery(records):
 ## 15. Troubleshooting Common Issues
 
 ### ImportError: No module named 'PowerPlatform'
+
 ```bash
 # Verify installation
 pip show PowerPlatform-Dataverse-Client
@@ -683,6 +736,7 @@ which python  # Should show venv path
 ```
 
 ### Authentication Failed
+
 ```python
 # Verify credentials have Dataverse access
 # Try interactive auth first for testing
@@ -698,6 +752,7 @@ credential = InteractiveBrowserCredential(
 ```
 
 ### HTTP 429 Rate Limiting
+
 ```python
 # Reduce request frequency
 # Implement exponential backoff (see Error Handling section)
@@ -706,6 +761,7 @@ client.get("account", top=500)  # Instead of 5000
 ```
 
 ### MetadataError: Table Not Found
+
 ```python
 # Verify table exists (schema name is case-insensitive for existence, but case-sensitive for API)
 tables = client.list_tables()
@@ -716,6 +772,7 @@ table_info = client.get_table_info("new_customprefixed_table")
 ```
 
 ### SQL Query Not Enabled
+
 ```python
 # query_sql() requires org config
 # If disabled, fallback to OData
@@ -729,6 +786,7 @@ except Exception:
 ---
 
 ## Reference Links
+
 - [Official Repository](https://github.com/microsoft/PowerPlatform-DataverseClient-Python)
 - [PyPI Package](https://pypi.org/project/PowerPlatform-Dataverse-Client/)
 - [Azure Identity Documentation](https://learn.microsoft.com/en-us/python/api/overview/azure/identity-readme)

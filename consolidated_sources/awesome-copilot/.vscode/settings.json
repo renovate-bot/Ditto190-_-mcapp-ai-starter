@@ -6,9 +6,7 @@
     "files.trimTrailingWhitespace": false,
     "editor.formatOnSave": true
   },
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
   "files.associations": {
     "*.agent.md": "chatagent",
     "*.instructions.md": "instructions",
@@ -16,6 +14,6 @@
   },
   "yaml.schemas": {
     "./.schemas/collection.schema.json": "*.collection.yml",
-    "./.schemas/tools.schema.json": "website/data/tools.yml",
+    "./.schemas/tools.schema.json": "website/data/tools.yml"
   }
 }

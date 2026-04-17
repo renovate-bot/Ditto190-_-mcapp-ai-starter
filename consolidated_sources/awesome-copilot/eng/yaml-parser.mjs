@@ -44,7 +44,7 @@ function parseFrontmatter(filePath) {
           // Remove only trailing whitespace/newlines; preserve internal formatting
           frontmatter.description = frontmatter.description.replace(
             /[\s\r\n]+$/g,
-            ""
+            "",
           );
         }
       }
@@ -52,7 +52,7 @@ function parseFrontmatter(filePath) {
       return frontmatter;
     },
     filePath,
-    null
+    null,
   );
 }
 
@@ -137,7 +137,7 @@ function parseSkillMetadata(skillPath) {
       // Validate required fields
       if (!frontmatter?.name || !frontmatter?.description) {
         console.warn(
-          `Invalid skill at ${skillPath}: missing name or description in frontmatter`
+          `Invalid skill at ${skillPath}: missing name or description in frontmatter`,
         );
         return null;
       }
@@ -172,7 +172,7 @@ function parseSkillMetadata(skillPath) {
       };
     },
     skillPath,
-    null
+    null,
   );
 }
 
@@ -194,7 +194,7 @@ function parseHookMetadata(hookPath) {
       // Validate required fields
       if (!frontmatter?.name || !frontmatter?.description) {
         console.warn(
-          `Invalid hook at ${hookPath}: missing name or description in frontmatter`
+          `Invalid hook at ${hookPath}: missing name or description in frontmatter`,
         );
         return null;
       }
@@ -212,7 +212,7 @@ function parseHookMetadata(hookPath) {
           }
         } catch (error) {
           console.warn(
-            `Failed to parse hooks.json at ${hookPath}: ${error.message}`
+            `Failed to parse hooks.json at ${hookPath}: ${error.message}`,
           );
         }
       }
@@ -249,7 +249,7 @@ function parseHookMetadata(hookPath) {
       };
     },
     hookPath,
-    null
+    null,
   );
 }
 
@@ -270,7 +270,7 @@ function parseWorkflowMetadata(filePath) {
       // Validate required fields
       if (!frontmatter?.name || !frontmatter?.description) {
         console.warn(
-          `Invalid workflow at ${filePath}: missing name or description in frontmatter`
+          `Invalid workflow at ${filePath}: missing name or description in frontmatter`,
         );
         return null;
       }
@@ -292,7 +292,7 @@ function parseWorkflowMetadata(filePath) {
       };
     },
     filePath,
-    null
+    null,
   );
 }
 
@@ -308,7 +308,7 @@ function parseYamlFile(filePath) {
       return yaml.load(content, { schema: yaml.JSON_SCHEMA });
     },
     filePath,
-    null
+    null,
   );
 }
 

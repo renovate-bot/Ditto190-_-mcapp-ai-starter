@@ -6,11 +6,11 @@ Repository-level installation allows teams to share Copilot configurations throu
 
 When installing a bundle, you can choose from three options:
 
-| Option | Location | Visibility | Use Case |
-|--------|----------|------------|----------|
-| **Repository - Commit to Git** | `.github/` directories | All team members | Shared team configurations |
-| **Repository - Local Only** | `.github/` directories | Only you | Personal customizations |
-| **User Profile** | User config directory | All your workspaces | Personal global settings |
+| Option                         | Location               | Visibility          | Use Case                   |
+| ------------------------------ | ---------------------- | ------------------- | -------------------------- |
+| **Repository - Commit to Git** | `.github/` directories | All team members    | Shared team configurations |
+| **Repository - Local Only**    | `.github/` directories | Only you            | Personal customizations    |
+| **User Profile**               | User config directory  | All your workspaces | Personal global settings   |
 
 ## Installing at Repository Scope
 
@@ -44,6 +44,7 @@ your-repo/
 ```
 
 **Benefits:**
+
 - Team members get the same configurations automatically
 - Version-controlled history of changes
 - Works with CI/CD and code review workflows
@@ -75,6 +76,7 @@ prompt-registry.local.lock.json
 ```
 
 **Benefits:**
+
 - Personal customizations that don't affect the team
 - Experiment with bundles before committing
 - Override team configurations locally
@@ -84,9 +86,9 @@ prompt-registry.local.lock.json
 
 When bundles are installed at repository scope, lockfiles are created at the repository root to track installations:
 
-| Lockfile | Purpose | Git Tracking |
-|----------|---------|--------------|
-| `prompt-registry.lock.json` | Committed bundles | Tracked in Git |
+| Lockfile                          | Purpose            | Git Tracking      |
+| --------------------------------- | ------------------ | ----------------- |
+| `prompt-registry.lock.json`       | Committed bundles  | Tracked in Git    |
 | `prompt-registry.local.lock.json` | Local-only bundles | Excluded from Git |
 
 These files:
@@ -137,6 +139,7 @@ The local lockfile is automatically added to `.git/info/exclude` when created, e
 ```
 
 **Commit the main lockfile** (`prompt-registry.lock.json`) to version control so team members can:
+
 - See which bundles are installed
 - Get prompted to enable repository bundles when opening the project
 - Receive automated update PRs via Renovate
@@ -190,19 +193,20 @@ Updates work the same as user-level bundles:
 4. Commit the updated files and lockfile
 
 If you've modified bundle files locally, you'll see a warning before updating with options to:
+
 - **Contribute Changes** — Open the bundle's repository to submit your changes
 - **Override** — Replace local files with the update
 - **Cancel** — Keep your local changes
 
 ## File Locations
 
-| File Type | Repository Location |
-|-----------|---------------------|
-| Prompts (`.prompt.md`) | `.github/prompts/` |
-| Instructions (`.instructions.md`) | `.github/instructions/` |
-| Agents (`.agent.md`) | `.github/agents/` |
-| Skills | `.github/skills/<skill-name>/` |
-| MCP Servers | `.vscode/mcp.json` |
+| File Type                         | Repository Location            |
+| --------------------------------- | ------------------------------ |
+| Prompts (`.prompt.md`)            | `.github/prompts/`             |
+| Instructions (`.instructions.md`) | `.github/instructions/`        |
+| Agents (`.agent.md`)              | `.github/agents/`              |
+| Skills                            | `.github/skills/<skill-name>/` |
+| MCP Servers                       | `.vscode/mcp.json`             |
 
 ## Troubleshooting
 

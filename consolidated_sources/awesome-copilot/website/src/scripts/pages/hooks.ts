@@ -59,7 +59,7 @@ function sortItems(items: Hook[]): Hook[] {
 
 function applyFiltersAndRender(): void {
   const searchInput = document.getElementById(
-    "search-input"
+    "search-input",
   ) as HTMLInputElement;
   const countEl = document.getElementById("results-count");
   const query = searchInput?.value || "";
@@ -68,12 +68,12 @@ function applyFiltersAndRender(): void {
 
   if (currentFilters.hooks.length > 0) {
     results = results.filter((item) =>
-      item.hooks.some((h) => currentFilters.hooks.includes(h))
+      item.hooks.some((h) => currentFilters.hooks.includes(h)),
     );
   }
   if (currentFilters.tags.length > 0) {
     results = results.filter((item) =>
-      item.tags.some((t) => currentFilters.tags.includes(t))
+      item.tags.some((t) => currentFilters.tags.includes(t)),
     );
   }
 
@@ -85,13 +85,13 @@ function applyFiltersAndRender(): void {
     activeFilters.push(
       `${currentFilters.hooks.length} hook event${
         currentFilters.hooks.length > 1 ? "s" : ""
-      }`
+      }`,
     );
   if (currentFilters.tags.length > 0)
     activeFilters.push(
       `${currentFilters.tags.length} tag${
         currentFilters.tags.length > 1 ? "s" : ""
-      }`
+      }`,
     );
   let countText = `${results.length} of ${allItems.length} hooks`;
   if (activeFilters.length > 0) {
@@ -114,26 +114,26 @@ function renderItems(items: Hook[], query = ""): void {
     .map(
       (item) => `
     <div class="resource-item" data-path="${escapeHtml(
-      item.readmeFile
+      item.readmeFile,
     )}" data-hook-id="${escapeHtml(item.id)}">
       <div class="resource-info">
         <div class="resource-title">${
           query ? search.highlight(item.title, query) : escapeHtml(item.title)
         }</div>
         <div class="resource-description">${escapeHtml(
-          item.description || "No description"
+          item.description || "No description",
         )}</div>
         <div class="resource-meta">
           ${item.hooks
             .map(
               (h) =>
-                `<span class="resource-tag tag-hook">${escapeHtml(h)}</span>`
+                `<span class="resource-tag tag-hook">${escapeHtml(h)}</span>`,
             )
             .join("")}
           ${item.tags
             .map(
               (t) =>
-                `<span class="resource-tag tag-tag">${escapeHtml(t)}</span>`
+                `<span class="resource-tag tag-tag">${escapeHtml(t)}</span>`,
             )
             .join("")}
           ${
@@ -148,7 +148,7 @@ function renderItems(items: Hook[], query = ""): void {
       </div>
       <div class="resource-actions">
         <button class="btn btn-primary download-hook-btn" data-hook-id="${escapeHtml(
-          item.id
+          item.id,
         )}" title="Download as ZIP">
           <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
             <path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/>
@@ -157,11 +157,11 @@ function renderItems(items: Hook[], query = ""): void {
           Download
         </button>
         <a href="${getGitHubUrl(
-          item.path
+          item.path,
         )}" class="btn btn-secondary" target="_blank" onclick="event.stopPropagation()" title="View on GitHub">GitHub</a>
       </div>
     </div>
-  `
+  `,
     )
     .join("");
 
@@ -186,7 +186,7 @@ function renderItems(items: Hook[], query = ""): void {
 
 async function downloadHook(
   hookId: string,
-  btn: HTMLButtonElement
+  btn: HTMLButtonElement,
 ): Promise<void> {
   const hook = allItems.find((item) => item.id === hookId);
   if (!hook) {
@@ -257,8 +257,7 @@ async function downloadHook(
       btn.innerHTML = originalContent;
     }, 2000);
   } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "Download failed.";
+    const message = error instanceof Error ? error.message : "Download failed.";
     showToast(message, "error");
     btn.innerHTML =
       '<svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 0 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06z"/></svg> Failed';
@@ -272,11 +271,11 @@ async function downloadHook(
 export async function initHooksPage(): Promise<void> {
   const list = document.getElementById("resource-list");
   const searchInput = document.getElementById(
-    "search-input"
+    "search-input",
   ) as HTMLInputElement;
   const clearFiltersBtn = document.getElementById("clear-filters");
   const sortSelect = document.getElementById(
-    "sort-select"
+    "sort-select",
   ) as HTMLSelectElement;
 
   const data = await fetchData<HooksData>("hooks.json");
@@ -298,7 +297,7 @@ export async function initHooksPage(): Promise<void> {
     data.filters.hooks.map((h) => ({ value: h, label: h })),
     "value",
     "label",
-    true
+    true,
   );
   document.getElementById("filter-hook")?.addEventListener("change", () => {
     currentFilters.hooks = getChoicesValues(hookSelect);
@@ -313,7 +312,7 @@ export async function initHooksPage(): Promise<void> {
     data.filters.tags.map((t) => ({ value: t, label: t })),
     "value",
     "label",
-    true
+    true,
   );
   document.getElementById("filter-tag")?.addEventListener("change", () => {
     currentFilters.tags = getChoicesValues(tagSelect);
@@ -328,7 +327,7 @@ export async function initHooksPage(): Promise<void> {
   applyFiltersAndRender();
   searchInput?.addEventListener(
     "input",
-    debounce(() => applyFiltersAndRender(), 200)
+    debounce(() => applyFiltersAndRender(), 200),
   );
 
   clearFiltersBtn?.addEventListener("click", () => {

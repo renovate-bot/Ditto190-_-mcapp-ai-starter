@@ -1,5 +1,5 @@
 ---
-applyTo: '**'
+applyTo: "**"
 ---
 
 # Dataverse SDK for Python — Performance & Optimization Guide
@@ -9,6 +9,7 @@ Based on official Microsoft Dataverse and Azure SDK performance guidance.
 ## 1. Performance Overview
 
 The Dataverse SDK for Python is optimized for Python developers but has some limitations in preview:
+
 - **Minimal retry policy**: Only network errors are retried by default
 - **No DeleteMultiple**: Use individual deletes or update status instead
 - **Limited OData batching**: General-purpose OData batching not supported
@@ -54,6 +55,7 @@ accounts = client.get(
 ```
 
 **OData filter examples**:
+
 ```python
 # Equals
 filter="statecode eq 0"
@@ -104,6 +106,7 @@ for page in pages:  # Each iteration fetches one page
 ```
 
 **Benefits**:
+
 - Memory efficient (pages loaded on-demand)
 - Fast time-to-first-result
 - Can stop early if needed
@@ -160,12 +163,12 @@ client.update("account", account_ids, updates)
 
 Based on table complexity (per Microsoft guidance):
 
-| Table Type | Batch Size | Max Threads |
-|------------|-----------|-------------|
-| OOB (Account, Contact, Lead) | 200-300 | 30 |
-| Simple (few lookups) | ≤10 | 50 |
-| Moderately complex | ≤100 | 30 |
-| Large/complex (>100 cols, >20 lookups) | 10-20 | 10-20 |
+| Table Type                             | Batch Size | Max Threads |
+| -------------------------------------- | ---------- | ----------- |
+| OOB (Account, Contact, Lead)           | 200-300    | 30          |
+| Simple (few lookups)                   | ≤10        | 50          |
+| Moderately complex                     | ≤100       | 30          |
+| Large/complex (>100 cols, >20 lookups) | 10-20      | 10-20       |
 
 ```python
 def bulk_create_optimized(client, table_name, payloads, batch_size=200):
@@ -256,7 +259,7 @@ async def get_accounts_async(client):
     # For now, use sync with executor
     loop = asyncio.get_event_loop()
     accounts = await loop.run_in_executor(
-        None, 
+        None,
         lambda: list(client.get("account"))
     )
     return accounts
@@ -342,12 +345,12 @@ import gc
 
 def process_large_table(client, table_name):
     """Process millions of records without memory issues."""
-    
+
     for page in client.get(table_name, page_size=5000):
         for record in page:
             result = process_record(record)
             save_result(result)
-        
+
         # Force garbage collection between pages
         gc.collect()
 ```
@@ -359,18 +362,18 @@ import pandas as pd
 
 def load_to_dataframe_chunked(client, table_name, chunk_size=10000):
     """Load data to DataFrame in chunks."""
-    
+
     dfs = []
     for page in client.get(table_name, page_size=1000):
         df_chunk = pd.DataFrame(page)
         dfs.append(df_chunk)
-        
+
         # Combine when chunk threshold reached
         if len(dfs) >= chunk_size // 1000:
             df = pd.concat(dfs, ignore_index=True)
             process_chunk(df)
             dfs = []
-    
+
     # Process remaining
     if dfs:
         df = pd.concat(dfs, ignore_index=True)
@@ -389,7 +392,7 @@ from PowerPlatform.Dataverse.core.errors import DataverseError
 
 def call_with_backoff(func, max_retries=3):
     """Call function with exponential backoff for rate limits."""
-    
+
     for attempt in range(max_retries):
         try:
             return func()
@@ -421,16 +424,16 @@ SDK doesn't have transactional guarantees:
 
 def create_with_consistency_check(client, table_name, payloads):
     """Create records and verify all succeeded."""
-    
+
     try:
         ids = client.create(table_name, payloads)
-        
+
         # Verify all records created
         created = client.get(
             table_name,
             filter=f"isof(Microsoft.Dynamics.CRM.{table_name})"
         )
-        
+
         if len(ids) != count_created:
             print(f"⚠️ Only {count_created}/{len(ids)} records created")
             # Handle partial failure
@@ -477,18 +480,18 @@ def create_accounts(client, payloads):
 
 ## 13. Performance Checklist
 
-| Item | Status | Notes |
-|------|--------|-------|
-| Reuse client instance | ☐ | Create once, reuse |
-| Use select to limit columns | ☐ | Only retrieve needed data |
-| Filter server-side with OData | ☐ | Don't fetch all and filter |
-| Use pagination with page_size | ☐ | Process incrementally |
-| Batch operations | ☐ | Use create/update for multiple |
-| Tune batch size by table type | ☐ | OOB=200-300, Simple=≤10 |
-| Handle rate limiting (429) | ☐ | Implement exponential backoff |
-| Use chunked upload for large files | ☐ | SDK handles for >128MB |
-| Monitor operation duration | ☐ | Log timing for analysis |
-| Test with production-like data | ☐ | Performance varies with data volume |
+| Item                               | Status | Notes                               |
+| ---------------------------------- | ------ | ----------------------------------- |
+| Reuse client instance              | ☐      | Create once, reuse                  |
+| Use select to limit columns        | ☐      | Only retrieve needed data           |
+| Filter server-side with OData      | ☐      | Don't fetch all and filter          |
+| Use pagination with page_size      | ☐      | Process incrementally               |
+| Batch operations                   | ☐      | Use create/update for multiple      |
+| Tune batch size by table type      | ☐      | OOB=200-300, Simple=≤10             |
+| Handle rate limiting (429)         | ☐      | Implement exponential backoff       |
+| Use chunked upload for large files | ☐      | SDK handles for >128MB              |
+| Monitor operation duration         | ☐      | Log timing for analysis             |
+| Test with production-like data     | ☐      | Performance varies with data volume |
 
 ---
 

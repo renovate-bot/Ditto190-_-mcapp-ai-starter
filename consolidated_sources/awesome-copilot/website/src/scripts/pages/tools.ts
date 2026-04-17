@@ -52,7 +52,7 @@ function formatMultilineText(text: string): string {
 
 function applyFiltersAndRender(): void {
   const searchInput = document.getElementById(
-    "search-input"
+    "search-input",
   ) as HTMLInputElement;
   const countEl = document.getElementById("results-count");
   const query = searchInput?.value || "";
@@ -62,7 +62,7 @@ function applyFiltersAndRender(): void {
 
   if (currentFilters.categories.length > 0) {
     results = results.filter((item) =>
-      currentFilters.categories.includes(item.category)
+      currentFilters.categories.includes(item.category),
     );
   }
 
@@ -96,7 +96,7 @@ function renderTools(tools: Tool[], query = ""): void {
         badges.push('<span class="tool-badge featured">Featured</span>');
       }
       badges.push(
-        `<span class="tool-badge category">${escapeHtml(tool.category)}</span>`
+        `<span class="tool-badge category">${escapeHtml(tool.category)}</span>`,
       );
 
       const features =
@@ -135,7 +135,7 @@ function renderTools(tools: Tool[], query = ""): void {
             <pre><code>${escapeHtml(tool.configuration.content)}</code></pre>
           </div>
           <button class="copy-config-btn" data-config="${encodeURIComponent(
-            tool.configuration.content
+            tool.configuration.content,
           )}">
             <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
               <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"/>
@@ -149,47 +149,47 @@ function renderTools(tools: Tool[], query = ""): void {
       const actions: string[] = [];
       if (tool.links.blog) {
         actions.push(
-          `<a href="${tool.links.blog}" class="btn btn-secondary" target="_blank" rel="noopener">📖 Blog</a>`
+          `<a href="${tool.links.blog}" class="btn btn-secondary" target="_blank" rel="noopener">📖 Blog</a>`,
         );
       }
       if (tool.links.marketplace) {
         actions.push(
-          `<a href="${tool.links.marketplace}" class="btn btn-secondary" target="_blank" rel="noopener">🏪 Marketplace</a>`
+          `<a href="${tool.links.marketplace}" class="btn btn-secondary" target="_blank" rel="noopener">🏪 Marketplace</a>`,
         );
       }
       if (tool.links.npm) {
         actions.push(
-          `<a href="${tool.links.npm}" class="btn btn-secondary" target="_blank" rel="noopener">📦 npm</a>`
+          `<a href="${tool.links.npm}" class="btn btn-secondary" target="_blank" rel="noopener">📦 npm</a>`,
         );
       }
       if (tool.links.pypi) {
         actions.push(
-          `<a href="${tool.links.pypi}" class="btn btn-secondary" target="_blank" rel="noopener">🐍 PyPI</a>`
+          `<a href="${tool.links.pypi}" class="btn btn-secondary" target="_blank" rel="noopener">🐍 PyPI</a>`,
         );
       }
       if (tool.links.documentation) {
         actions.push(
-          `<a href="${tool.links.documentation}" class="btn btn-secondary" target="_blank" rel="noopener">📚 Docs</a>`
+          `<a href="${tool.links.documentation}" class="btn btn-secondary" target="_blank" rel="noopener">📚 Docs</a>`,
         );
       }
       if (tool.links.github) {
         actions.push(
-          `<a href="${tool.links.github}" class="btn btn-secondary" target="_blank" rel="noopener">GitHub</a>`
+          `<a href="${tool.links.github}" class="btn btn-secondary" target="_blank" rel="noopener">GitHub</a>`,
         );
       }
       if (tool.links.vscode) {
         actions.push(
-          `<a href="${tool.links.vscode}" class="btn btn-primary" target="_blank" rel="noopener">Install in VS Code</a>`
+          `<a href="${tool.links.vscode}" class="btn btn-primary" target="_blank" rel="noopener">Install in VS Code</a>`,
         );
       }
       if (tool.links["vscode-insiders"]) {
         actions.push(
-          `<a href="${tool.links["vscode-insiders"]}" class="btn btn-outline" target="_blank" rel="noopener">VS Code Insiders</a>`
+          `<a href="${tool.links["vscode-insiders"]}" class="btn btn-outline" target="_blank" rel="noopener">VS Code Insiders</a>`,
         );
       }
       if (tool.links["visual-studio"]) {
         actions.push(
-          `<a href="${tool.links["visual-studio"]}" class="btn btn-outline" target="_blank" rel="noopener">Visual Studio</a>`
+          `<a href="${tool.links["visual-studio"]}" class="btn btn-outline" target="_blank" rel="noopener">Visual Studio</a>`,
         );
       }
 
@@ -255,10 +255,10 @@ function setupCopyConfigHandlers(): void {
 export async function initToolsPage(): Promise<void> {
   const container = document.getElementById("tools-list");
   const searchInput = document.getElementById(
-    "search-input"
+    "search-input",
   ) as HTMLInputElement;
   const categoryFilter = document.getElementById(
-    "filter-category"
+    "filter-category",
   ) as HTMLSelectElement;
   const clearFiltersBtn = document.getElementById("clear-filters");
 
@@ -289,7 +289,7 @@ export async function initToolsPage(): Promise<void> {
       '<option value="">All Categories</option>' +
       data.filters.categories
         .map(
-          (c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`
+          (c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`,
         )
         .join("");
 
@@ -304,7 +304,7 @@ export async function initToolsPage(): Promise<void> {
   // Search input handler
   searchInput?.addEventListener(
     "input",
-    debounce(() => applyFiltersAndRender(), 200)
+    debounce(() => applyFiltersAndRender(), 200),
   );
 
   // Clear filters

@@ -8,14 +8,14 @@ A technical Markdown specification for **emulating the MOS Technology / WDC 6522
 
 This document defines the functional behavior required to emulate:
 
-* MOS Technology 6522 VIA
-* WDC 65C22 VIA (CMOS variant, where noted)
+- MOS Technology 6522 VIA
+- WDC 65C22 VIA (CMOS variant, where noted)
 
 Out of scope:
 
-* Analog electrical characteristics
-* Bus contention and propagation delay
-* Undocumented silicon race conditions
+- Analog electrical characteristics
+- Bus contention and propagation delay
+- Undocumented silicon race conditions
 
 ---
 
@@ -75,8 +75,8 @@ Registers are selected using RS3-RS0.
 
 ## 5. Data Direction Registers
 
-* Bit = 1  Output
-* Bit = 0  Input
+- Bit = 1  Output
+- Bit = 0  Input
 
 ```text
 output = ORx & DDRx
@@ -89,13 +89,13 @@ input  = external & ~DDRx
 
 ### Read
 
-* Returns input pins for bits configured as input
-* Returns output latch for bits configured as output
+- Returns input pins for bits configured as input
+- Returns output latch for bits configured as output
 
 ### Write
 
-* Updates output latch only
-* Actual pin value depends on DDR
+- Updates output latch only
+- Actual pin value depends on DDR
 
 ---
 
@@ -103,20 +103,20 @@ input  = external & ~DDRx
 
 ### Timer 1 (T1)
 
-* 16-bit down counter
-* Can generate interrupts
-* Optional PB7 toggle
+- 16-bit down counter
+- Can generate interrupts
+- Optional PB7 toggle
 
 ### Timer 2 (T2)
 
-* 16-bit down counter
-* One-shot or pulse counting (CB1)
+- 16-bit down counter
+- One-shot or pulse counting (CB1)
 
 ### Timer Emulation Rules
 
-* Decrement once per CPU cycle
-* Reload from latch when appropriate
-* Set interrupt flag on underflow
+- Decrement once per CPU cycle
+- Reload from latch when appropriate
+- Set interrupt flag on underflow
 
 ---
 
@@ -124,15 +124,15 @@ input  = external & ~DDRx
 
 Modes controlled via ACR:
 
-* Disabled
-* Shift in under CB1 clock
-* Shift out under system clock
+- Disabled
+- Shift in under CB1 clock
+- Shift out under system clock
 
 Emulator requirements:
 
-* 8-bit shift
-* Correct bit order
-* Optional external clock handling
+- 8-bit shift
+- Correct bit order
+- Optional external clock handling
 
 ---
 
@@ -142,17 +142,17 @@ Emulator requirements:
 
 Controls:
 
-* Timer 1 mode
-* Timer 2 mode
-* Shift register mode
-* PB7 behavior
+- Timer 1 mode
+- Timer 2 mode
+- Shift register mode
+- PB7 behavior
 
 ### Peripheral Control Register (PCR)
 
 Controls:
 
-* CA1/CB1 edge sensitivity
-* CA2/CB2 handshake / pulse / output modes
+- CA1/CB1 edge sensitivity
+- CA2/CB2 handshake / pulse / output modes
 
 ---
 
@@ -173,8 +173,8 @@ Controls:
 
 ### Interrupt Enable Register (IER)
 
-* Bit 7 = set/clear mode
-* Bits 0-6 enable individual sources
+- Bit 7 = set/clear mode
+- Bits 0-6 enable individual sources
 
 ### IRQ Logic
 
@@ -188,18 +188,18 @@ IRQ = (IFR & IER & 0x7F) != 0
 
 ### CA1 / CB1
 
-* Edge-detect inputs
-* Trigger interrupts
+- Edge-detect inputs
+- Trigger interrupts
 
 ### CA2 / CB2
 
-* Input or output
-* Pulse or handshake modes
+- Input or output
+- Pulse or handshake modes
 
 Emulator must:
 
-* Track pin state
-* Detect configured edges
+- Track pin state
+- Detect configured edges
 
 ---
 
@@ -207,12 +207,12 @@ Emulator must:
 
 On reset:
 
-* DDRx = $00
-* ORx = $00
-* Timers stopped
-* IFR cleared
-* IER cleared
-* IRQ inactive
+- DDRx = $00
+- ORx = $00
+- Timers stopped
+- IFR cleared
+- IER cleared
+- IRQ inactive
 
 ---
 
@@ -243,8 +243,8 @@ On reset:
 CPU cycle  VIA tick  update timers  update IRQ
 ```
 
-* VIA must be clocked in sync with CPU
-* IRQ line sampled by CPU at instruction boundaries
+- VIA must be clocked in sync with CPU
+- IRQ line sampled by CPU at instruction boundaries
 
 ---
 
@@ -252,16 +252,16 @@ CPU cycle  VIA tick  update timers  update IRQ
 
 ### Recommended Tests
 
-* VIA timer test ROMs
-* Port read/write tests
-* Interrupt priority tests
+- VIA timer test ROMs
+- Port read/write tests
+- Interrupt priority tests
 
 ### Validation Checklist
 
-* Timers count correctly
-* IRQ asserts and clears properly
-* DDR behavior correct
-* Side effects implemented
+- Timers count correctly
+- IRQ asserts and clears properly
+- DDR behavior correct
+- Side effects implemented
 
 ---
 
@@ -277,9 +277,9 @@ CPU cycle  VIA tick  update timers  update IRQ
 
 ## 18. Reference Links
 
-* [https://www.westerndesigncenter.com/wdc/documentation](https://www.westerndesigncenter.com/wdc/documentation)
-* [https://www.princeton.edu/~mae412/HANDOUTS/Datasheets/6522.pdf](https://www.princeton.edu/~mae412/HANDOUTS/Datasheets/6522.pdf)
-* [https://www.nesdev.org/wiki/6522](https://www.nesdev.org/wiki/6522)
+- [https://www.westerndesigncenter.com/wdc/documentation](https://www.westerndesigncenter.com/wdc/documentation)
+- [https://www.princeton.edu/~mae412/HANDOUTS/Datasheets/6522.pdf](https://www.princeton.edu/~mae412/HANDOUTS/Datasheets/6522.pdf)
+- [https://www.nesdev.org/wiki/6522](https://www.nesdev.org/wiki/6522)
 
 ---
 

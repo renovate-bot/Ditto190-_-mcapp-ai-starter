@@ -1,5 +1,7 @@
 #content-area {
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* via Mintlify theme */
+  --font-mono:
+    var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace; /* via Mintlify theme */
 
   h5 {
     font-weight: 500;
@@ -9,8 +11,6 @@
     font-weight: 400;
   }
 }
-
-
 
 /*** Add automatic section numbers to headings and table of contents items ***/
 
@@ -81,8 +81,6 @@ body:has(#enable-section-numbers) {
   }
 }
 
-
-
 /* Logo carousel */
 .logo-carousel {
   overflow: hidden;
@@ -99,10 +97,16 @@ body:has(#enable-section-numbers) {
 }
 
 @keyframes logo-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(calc(-50% - 1.5rem)); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 1.5rem));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .logo-carousel-track { animation: none; }
+  .logo-carousel-track {
+    animation: none;
+  }
 }

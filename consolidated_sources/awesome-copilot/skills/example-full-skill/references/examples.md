@@ -7,6 +7,7 @@ This document provides detailed usage examples for the `example-full-skill` Agen
 ### Example 1: Validate and Process (JSON output)
 
 **Input data** (`input.json`):
+
 ```json
 {
   "items": [
@@ -31,6 +32,7 @@ This document provides detailed usage examples for the `example-full-skill` Agen
 ```
 
 **Step 1: Validate**
+
 ```bash
 uv run scripts/validate.py \
   --input input.json \
@@ -39,6 +41,7 @@ uv run scripts/validate.py \
 ```
 
 **Output** (stderr - progress):
+
 ```
 Validating 2 items...
   ✓ Item 0: user-1
@@ -52,6 +55,7 @@ Validation Summary:
 ```
 
 **Output** (stdout - structured):
+
 ```json
 {
   "valid": true,
@@ -63,11 +67,13 @@ Validation Summary:
 ```
 
 **Step 2: Process**
+
 ```bash
 bash scripts/process.sh input.json output.json --verbose
 ```
 
 **Output** (stdout):
+
 ```json
 {
   "status": "success",
@@ -77,6 +83,7 @@ bash scripts/process.sh input.json output.json --verbose
 ```
 
 **Result file** (`output.json`):
+
 ```json
 {
   "processed": 2,
@@ -114,6 +121,7 @@ deno run --allow-read scripts/extract.ts \
 ```
 
 **CSV output** (`output.csv`):
+
 ```csv
 id,name,email,status
 "user-1","Alice Smith","alice@example.com","active"
@@ -123,6 +131,7 @@ id,name,email,status
 ### Example 3: Handling Validation Errors
 
 **Invalid input** (`invalid.json`):
+
 ```json
 {
   "items": [
@@ -142,6 +151,7 @@ id,name,email,status
 ```
 
 **Validate**:
+
 ```bash
 uv run scripts/validate.py \
   --input invalid.json \
@@ -150,6 +160,7 @@ uv run scripts/validate.py \
 ```
 
 **Output** (validation report):
+
 ```json
 {
   "valid": false,
@@ -161,9 +172,7 @@ uv run scripts/validate.py \
       "valid": false,
       "item_index": 0,
       "item_id": "user-1",
-      "errors": [
-        "invalid email format: not-an-email"
-      ]
+      "errors": ["invalid email format: not-an-email"]
     },
     {
       "valid": false,
@@ -208,6 +217,7 @@ deno run --allow-read scripts/extract.ts \
 ```
 
 **Output** (`summary.json`):
+
 ```json
 {
   "total_items": 2,
@@ -235,17 +245,17 @@ Combine all scripts in a pipeline:
 # Validate first
 if uv run scripts/validate.py --input input.json --schema references/schema.json; then
   echo "✓ Validation passed"
-  
+
   # Process to JSON
   bash scripts/process.sh input.json processed.json
-  
+
   # Extract summary
   deno run --allow-read scripts/extract.ts \
     --file processed.json \
     --fields id,status \
     --output summary.json \
     --pretty
-  
+
   echo "✓ Pipeline complete"
   cat summary.json
 else
@@ -263,6 +273,7 @@ bash scripts/process.sh --format table input.json -
 ```
 
 **Output**:
+
 ```
 ID      NAME          EMAIL                  STATUS
 ---     ---           ---                    ---
@@ -306,6 +317,7 @@ bash /path/to/example-full-skill/scripts/process.sh users.json output.json
 All scripts provide meaningful exit codes and error messages:
 
 **Exit code 1** (invalid arguments):
+
 ```bash
 $ bash scripts/process.sh --format xml input.json output.json
 Error: Invalid format 'xml'
@@ -315,6 +327,7 @@ $ echo $?
 ```
 
 **Exit code 2** (file not found):
+
 ```bash
 $ uv run scripts/validate.py --input missing.json --schema schema.json
 Error: Input file not found: missing.json
@@ -323,6 +336,7 @@ $ echo $?
 ```
 
 **Exit code 3** (validation failed):
+
 ```bash
 $ uv run scripts/validate.py --input invalid.json --schema schema.json
 # (validation report with errors)

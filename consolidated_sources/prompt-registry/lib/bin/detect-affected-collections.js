@@ -1,12 +1,16 @@
 #!/usr/bin/env node
-const path = require('path');
+const path = require("path");
 
-const { listCollectionFiles, readCollection, resolveCollectionItemPaths } = require('../dist');
+const {
+  listCollectionFiles,
+  readCollection,
+  resolveCollectionItemPaths,
+} = require("../dist");
 
 function parseArgs(argv) {
   const out = { changedPaths: [] };
   for (let i = 0; i < argv.length; i++) {
-    if (argv[i] === '--changed-path' && argv[i + 1]) {
+    if (argv[i] === "--changed-path" && argv[i + 1]) {
       out.changedPaths.push(argv[i + 1]);
       i++;
     }
@@ -15,7 +19,7 @@ function parseArgs(argv) {
 }
 
 function normalizePath(p) {
-  return String(p).replace(/\\/g, '/').replace(/^\//, '').trim();
+  return String(p).replace(/\\/g, "/").replace(/^\//, "").trim();
 }
 
 const repoRoot = process.cwd();
@@ -48,4 +52,4 @@ for (const file of collectionFiles) {
   }
 }
 
-process.stdout.write(JSON.stringify({ affected }, null, 2) + '\n');
+process.stdout.write(JSON.stringify({ affected }, null, 2) + "\n");

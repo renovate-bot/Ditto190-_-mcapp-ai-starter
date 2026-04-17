@@ -15,9 +15,7 @@
     "model-context-protocol",
     "adaptive-cards"
   ],
-  "agents": [
-    "./agents"
-  ],
+  "agents": ["./agents"],
   "skills": [
     "./skills/mcp-create-declarative-agent",
     "./skills/mcp-create-adaptive-cards",

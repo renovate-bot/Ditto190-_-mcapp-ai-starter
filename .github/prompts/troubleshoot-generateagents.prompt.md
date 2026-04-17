@@ -1,6 +1,6 @@
 ---
 name: troubleshoot-generateagents
-description: 'Diagnose and suggest fixes for common issues running `GenerateAgents.md` CLI and `generateagents-mcp` server.'
+description: "Diagnose and suggest fixes for common issues running `GenerateAgents.md` CLI and `generateagents-mcp` server."
 argument-hint: Optionally supply an error message or log snippet
 agent: agent
 ---

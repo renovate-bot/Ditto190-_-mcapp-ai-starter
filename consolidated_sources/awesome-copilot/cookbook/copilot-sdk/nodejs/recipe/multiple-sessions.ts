@@ -12,13 +12,17 @@ console.log("Created 3 independent sessions");
 
 // Each session maintains its own conversation history
 await session1.sendAndWait({ prompt: "You are helping with a Python project" });
-await session2.sendAndWait({ prompt: "You are helping with a TypeScript project" });
+await session2.sendAndWait({
+  prompt: "You are helping with a TypeScript project",
+});
 await session3.sendAndWait({ prompt: "You are helping with a Go project" });
 
 console.log("Sent initial context to all sessions");
 
 // Follow-up messages stay in their respective contexts
-await session1.sendAndWait({ prompt: "How do I create a virtual environment?" });
+await session1.sendAndWait({
+  prompt: "How do I create a virtual environment?",
+});
 await session2.sendAndWait({ prompt: "How do I set up tsconfig?" });
 await session3.sendAndWait({ prompt: "How do I initialize a module?" });
 

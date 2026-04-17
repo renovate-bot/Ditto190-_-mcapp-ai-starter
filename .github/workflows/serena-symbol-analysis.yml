@@ -27,7 +27,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Full history for analysis
+          fetch-depth: 0 # Full history for analysis
 
       - name: Setup Python
         uses: actions/setup-python@v5

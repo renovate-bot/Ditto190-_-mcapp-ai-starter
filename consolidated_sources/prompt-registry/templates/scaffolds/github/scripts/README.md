@@ -6,17 +6,17 @@ This directory is reserved for project-specific scripts that are not part of the
 
 Most collection scripts are provided by the `@prompt-registry/collection-scripts` npm package. These are available as CLI commands after running `npm install`:
 
-| Command | Description |
-|---------|-------------|
-| `validate-collections` | Validate collection YAML files |
-| `validate-skills` | Validate skill folders against the Agent Skills specification |
-| `build-collection-bundle` | Build a collection bundle ZIP |
-| `compute-collection-version` | Compute next version from git tags |
-| `detect-affected-collections` | Detect collections affected by file changes |
-| `generate-manifest` | Generate deployment manifest |
-| `publish-collections` | Build and publish affected collections |
-| `list-collections` | List all collections in repo |
-| `create-skill` | Create a new skill directory structure (interactive wizard) |
+| Command                       | Description                                                   |
+| ----------------------------- | ------------------------------------------------------------- |
+| `validate-collections`        | Validate collection YAML files                                |
+| `validate-skills`             | Validate skill folders against the Agent Skills specification |
+| `build-collection-bundle`     | Build a collection bundle ZIP                                 |
+| `compute-collection-version`  | Compute next version from git tags                            |
+| `detect-affected-collections` | Detect collections affected by file changes                   |
+| `generate-manifest`           | Generate deployment manifest                                  |
+| `publish-collections`         | Build and publish affected collections                        |
+| `list-collections`            | List all collections in repo                                  |
+| `create-skill`                | Create a new skill directory structure (interactive wizard)   |
 
 ## Usage
 

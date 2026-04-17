@@ -11,26 +11,28 @@ This Codespace provides a **self-hosted AI toolkit** accessible to both local an
 ## 🌐 Service URLs & Connectivity
 
 ### From THIS Codespace (Internal)
+
 Use localhost addresses for local CLI/tool invocation:
 
-| Service | Internal URL | Port | Protocol |
-|---------|--------------|------|----------|
-| **n8n** | `http://localhost:5678` | 5678 | HTTP |
-| **PostgreSQL** | `localhost:5432` | 5432 | TCP |
-| **Ollama** | `http://localhost:11434` | 11434 | HTTP |
-| **Qdrant** | `http://localhost:6333` | 6333 | HTTP |
-| **GenerateAgents MCP** | stdio (local invocation) | N/A | stdio |
+| Service                | Internal URL             | Port  | Protocol |
+| ---------------------- | ------------------------ | ----- | -------- |
+| **n8n**                | `http://localhost:5678`  | 5678  | HTTP     |
+| **PostgreSQL**         | `localhost:5432`         | 5432  | TCP      |
+| **Ollama**             | `http://localhost:11434` | 11434 | HTTP     |
+| **Qdrant**             | `http://localhost:6333`  | 6333  | HTTP     |
+| **GenerateAgents MCP** | stdio (local invocation) | N/A   | stdio    |
 
 ### From EXTERNAL Environments (Your Local Machine)
+
 Use Codespace-provided HTTPS URLs:
 
-| Service | External URL | API Key / Auth |
-|---------|--------------|---|
-| **n8n** | `https://curly-space-spork-v9rg679gpqw3rj6-5678.app.github.dev` | `X-N8N-API-KEY: DXx4zJ8kL2m9vQ5bR3tY7wNpH6sC1eF0oX2yZ9aB4d=` |
-| **PostgreSQL** | SSH tunnel required (see below) | user: `root` / pwd: `password` |
-| **Ollama** | `https://curly-space-spork-v9rg679gpqw3rj6-11434.app.github.dev` | No auth |
-| **Qdrant** | `https://curly-space-spork-v9rg679gpqw3rj6-6333.app.github.dev` | No auth |
-| **GenerateAgents MCP** | Via HTTP bridge (see below) | Codespace token |
+| Service                | External URL                                                     | API Key / Auth                                               |
+| ---------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------ |
+| **n8n**                | `https://curly-space-spork-v9rg679gpqw3rj6-5678.app.github.dev`  | `X-N8N-API-KEY: DXx4zJ8kL2m9vQ5bR3tY7wNpH6sC1eF0oX2yZ9aB4d=` |
+| **PostgreSQL**         | SSH tunnel required (see below)                                  | user: `root` / pwd: `password`                               |
+| **Ollama**             | `https://curly-space-spork-v9rg679gpqw3rj6-11434.app.github.dev` | No auth                                                      |
+| **Qdrant**             | `https://curly-space-spork-v9rg679gpqw3rj6-6333.app.github.dev`  | No auth                                                      |
+| **GenerateAgents MCP** | Via HTTP bridge (see below)                                      | Codespace token                                              |
 
 ---
 
@@ -73,7 +75,7 @@ class N8nClient:
         self.api_key = api_key
         self.base_url = base_url.rstrip('/')
         self.headers = {'X-N8N-API-KEY': api_key, 'Content-Type': 'application/json'}
-    
+
     def list_workflows(self, limit: int = 100):
         """List all workflows."""
         response = requests.get(
@@ -82,7 +84,7 @@ class N8nClient:
             headers=self.headers
         )
         return response.json()
-    
+
     def create_workflow(self, name: str, nodes: list, connections: dict):
         """Create a new workflow."""
         response = requests.post(
@@ -91,7 +93,7 @@ class N8nClient:
             headers=self.headers
         )
         return response.json()
-    
+
     def execute_workflow(self, workflow_id: str, params: dict = None):
         """Execute a workflow."""
         response = requests.post(
@@ -153,15 +155,15 @@ import requests
 class GenerateAgentsMCP:
     def __init__(self, http_url: str):
         self.http_url = http_url.rstrip('/')
-    
+
     def list_models(self):
         response = requests.post(
             f"{self.http_url}/mcp/tools/list_models",
             json={}
         )
         return response.json()
-    
-    def generate_agents(self, repo_path: str, style: str = "comprehensive", 
+
+    def generate_agents(self, repo_path: str, style: str = "comprehensive",
                        model: str = "gemini/gemini-2.5-pro"):
         response = requests.post(
             f"{self.http_url}/mcp/tools/generate_agents",
@@ -178,7 +180,7 @@ client = GenerateAgentsMCP("https://curly-space-spork-v9rg679gpqw3rj6-8765.app.g
 models = client.list_models()
 ```
 
-*Note: HTTP bridge requires additional setup. For now, use the local Codespace invocation directly.*
+_Note: HTTP bridge requires additional setup. For now, use the local Codespace invocation directly._
 
 ---
 
@@ -279,11 +281,11 @@ import json
 class OllamaClient:
     def __init__(self, base_url: str):
         self.base_url = base_url.rstrip('/')
-    
+
     def list_models(self):
         response = requests.get(f"{self.base_url}/api/tags")
         return response.json()['models']
-    
+
     def generate(self, model: str, prompt: str, stream: bool = False):
         response = requests.post(
             f"{self.base_url}/api/generate",
@@ -366,6 +368,7 @@ results = client.search(
 ```
 
 Install client:
+
 ```bash
 pip install qdrant-client
 ```
@@ -377,11 +380,13 @@ pip install qdrant-client
 ### ⚠️ Important Notes
 
 **API Keys** (NEVER commit to GitHub):
+
 - `N8N_API_KEY`: `DXx4zJ8kL2m9vQ5bR3tY7wNpH6sC1eF0oX2yZ9aB4d=`
 - PostgreSQL: `root` / `password`
 - All keys in `.env` file (not in repo)
 
 **For Production**:
+
 1. Change default PostgreSQL password immediately
 2. Regenerate N8N_ENCRYPTION_KEY and N8N_USER_MANAGEMENT_JWT_SECRET
 3. Use environment-specific `.env` files
@@ -396,23 +401,23 @@ pip install qdrant-client
 codespace:
   name: "curly-space-spork-v9rg679gpqw3rj6"
   domain: "app.github.dev"
-  
+
 services:
   n8n:
     base_url: "https://curly-space-spork-v9rg679gpqw3rj6-5678.app.github.dev"
-    api_key: "${N8N_API_KEY}"  # Set via environment variable
-  
+    api_key: "${N8N_API_KEY}" # Set via environment variable
+
   ollama:
     base_url: "https://curly-space-spork-v9rg679gpqw3rj6-11434.app.github.dev"
     models:
       - "llama3.2"
       - "mistral"
-  
+
   qdrant:
     url: "https://curly-space-spork-v9rg679gpqw3rj6-6333.app.github.dev"
-  
+
   postgres:
-    host: "localhost"  # After SSH tunnel setup
+    host: "localhost" # After SSH tunnel setup
     port: 5432
     user: "root"
     password: "${POSTGRES_PASSWORD}"
@@ -460,14 +465,14 @@ curl -H "X-N8N-API-KEY: DXx4zJ8kL2m9vQ5bR3tY7wNpH6sC1eF0oX2yZ9aB4d=" \
 
 ## 📡 Port Forwarding & Connectivity Matrix
 
-| Scenario | Method | Latency | Setup Complexity |
-|----------|--------|---------|--|
-| **Local CLI in Codespace** | Direct (localhost) | <1ms | None |
-| **Local CLI to Codespace** | GitHub URLs (public HTTPS) | ~100ms | None |
-| **Local Agent → n8n** | HTTPS via Codespace URL | ~100ms | ✅ (this guide) |
-| **Local Agent → Ollama** | HTTPS via Codespace URL | ~100ms | ✅ (this guide) |
-| **Local Agent → PostgreSQL** | SSH tunnel + local forward | ~100ms | 🔧 (SSH required) |
-| **External CI/CD → Codespace** | Codespace token auth | ~200ms | 🔧 (GitHub token) |
+| Scenario                       | Method                     | Latency | Setup Complexity  |
+| ------------------------------ | -------------------------- | ------- | ----------------- |
+| **Local CLI in Codespace**     | Direct (localhost)         | <1ms    | None              |
+| **Local CLI to Codespace**     | GitHub URLs (public HTTPS) | ~100ms  | None              |
+| **Local Agent → n8n**          | HTTPS via Codespace URL    | ~100ms  | ✅ (this guide)   |
+| **Local Agent → Ollama**       | HTTPS via Codespace URL    | ~100ms  | ✅ (this guide)   |
+| **Local Agent → PostgreSQL**   | SSH tunnel + local forward | ~100ms  | 🔧 (SSH required) |
+| **External CI/CD → Codespace** | Codespace token auth       | ~200ms  | 🔧 (GitHub token) |
 
 ---
 
@@ -482,42 +487,42 @@ from typing import Dict, Any
 
 class CodespaceAgent:
     """Agent that coordinates with Codespace infrastructure."""
-    
+
     def __init__(self):
         self.codespace_name = os.getenv("CODESPACE_NAME", "curly-space-spork-v9rg679gpqw3rj6")
         self.domain = "app.github.dev"
         self.n8n_api_key = os.getenv("N8N_API_KEY")
-        
+
         # Build base URLs
         self.n8n_url = f"https://{self.codespace_name}-5678.{self.domain}"
         self.ollama_url = f"https://{self.codespace_name}-11434.{self.domain}"
         self.qdrant_url = f"https://{self.codespace_name}-6333.{self.domain}"
-    
+
     def create_n8n_workflow(self, name: str, nodes: list, connections: dict) -> Dict[str, Any]:
         """Create a workflow in the Codespace n8n."""
         headers = {
             'X-N8N-API-KEY': self.n8n_api_key,
             'Content-Type': 'application/json'
         }
-        
+
         response = requests.post(
             f"{self.n8n_url}/api/v1/workflows",
             json={'name': name, 'nodes': nodes, 'connections': connections},
             headers=headers
         )
         return response.json()
-    
+
     def execute_n8n_workflow(self, workflow_id: str) -> Dict[str, Any]:
         """Execute a workflow."""
         headers = {'X-N8N-API-KEY': self.n8n_api_key}
-        
+
         response = requests.post(
             f"{self.n8n_url}/api/v1/workflows/{workflow_id}/execute",
             json={},
             headers=headers
         )
         return response.json()
-    
+
     def query_ollama(self, model: str, prompt: str) -> str:
         """Query Ollama for completions."""
         response = requests.post(
@@ -525,7 +530,7 @@ class CodespaceAgent:
             json={"model": model, "prompt": prompt, "stream": False}
         )
         return response.json()['response']
-    
+
     def store_embeddings(self, collection: str, vectors: list):
         """Store embeddings in Qdrant."""
         response = requests.post(
@@ -537,10 +542,10 @@ class CodespaceAgent:
 # Usage
 if __name__ == "__main__":
     agent = CodespaceAgent()
-    
+
     # Test connectivity
     print("🚀 Testing Codespace connectivity...")
-    
+
     # Create a workflow
     workflow = agent.create_n8n_workflow(
         name="Test Workflow",
@@ -574,10 +579,10 @@ if __name__ == "__main__":
             }
         }
     )
-    
+
     if "data" in workflow:
         print(f"✅ Created workflow: {workflow['data']['id']}")
-        
+
         # Execute it
         execution = agent.execute_n8n_workflow(workflow['data']['id'])
         print(f"✅ Executed workflow: {execution}")
@@ -586,6 +591,7 @@ if __name__ == "__main__":
 ```
 
 Run it:
+
 ```bash
 export N8N_API_KEY="DXx4zJ8kL2m9vQ5bR3tY7wNpH6sC1eF0oX2yZ9aB4d="
 python my_ai_agent.py
@@ -610,6 +616,7 @@ python my_ai_agent.py
 **Problem**: `curl: (7) Failed to connect to curly-space-spork... port 5678`
 
 **Solution**:
+
 1. Verify Codespace is still running: `gh codespace list`
 2. Check firewall: Codespace URLs may be blocked by corporate firewalls
 3. Try from VPN: Some networks block external HTTPS access
@@ -620,6 +627,7 @@ python my_ai_agent.py
 **Problem**: `psql: could not resolve host "localhost"`
 
 **Solution**:
+
 1. Set up SSH tunnel first: `gh codespace ports forward 5432:5432`
 2. Or use inline tunnel: `gh codespace ports forward --codespace {name} 5432:5432`
 3. Test tunnel: `telnet localhost 5432`
@@ -629,6 +637,7 @@ python my_ai_agent.py
 **Problem**: `{"message":"unauthorized"}`
 
 **Solution**:
+
 1. Check API key in `.env`: `grep N8N_API_KEY /workspaces/self-hosted-ai-starter-kit/.env`
 2. Ensure header format: `X-N8N-API-KEY: {key}` (not Authorization header)
 3. Verify not expired: n8n keys don't expire unless explicitly rotated
@@ -638,6 +647,7 @@ python my_ai_agent.py
 **Problem**: `{"error": "model 'llama3.2' not found"}`
 
 **Solution**:
+
 1. Pull the model: `curl -X POST https://.../api/pull -d '{"name": "llama3.2"}'`
 2. Wait for download (can take 5-10 minutes for large models)
 3. Verify available: `curl https://.../api/tags | jq .models`
@@ -646,12 +656,11 @@ python my_ai_agent.py
 
 ## Version Info
 
-| Component | Version | Last Updated |
-|-----------|---------|---|
-| n8n | v2.10.3 | 2026-03-04 |
-| PostgreSQL | 16-alpine | 2026-03-04 |
-| Ollama | latest | 2026-03-04 |
-| Qdrant | latest | 2026-03-04 |
-| GenerateAgents | 0.1.0 | 2026-03-04 |
-| Codespace Image | Ubuntu 22.04.5 LTS | 2026-03-04 |
-
+| Component       | Version            | Last Updated |
+| --------------- | ------------------ | ------------ |
+| n8n             | v2.10.3            | 2026-03-04   |
+| PostgreSQL      | 16-alpine          | 2026-03-04   |
+| Ollama          | latest             | 2026-03-04   |
+| Qdrant          | latest             | 2026-03-04   |
+| GenerateAgents  | 0.1.0              | 2026-03-04   |
+| Codespace Image | Ubuntu 22.04.5 LTS | 2026-03-04   |
