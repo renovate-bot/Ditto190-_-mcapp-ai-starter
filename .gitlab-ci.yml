@@ -13,6 +13,9 @@
 #   test      → run unit tests (no API keys needed)
 #   audit     → security/dependency scan
 #   build     → build artifacts (on main branch only)
+#   auxiliary → GitLab → GitHub bridge (MR pipelines only)
+#               Requires CI variables: GITHUB_TOKEN_FOR_GITLAB, GITHUB_REPO
+#               See docs/github-gitlab-integration.md for setup instructions.
 #   notify    → summary job
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -21,6 +24,7 @@ stages:
   - test
   - audit
   - build
+  - auxiliary  # GitLab → GitHub bridge (MR pipelines only, when GITHUB_TOKEN_FOR_GITLAB is set)
   - notify
 
 # ── Shared defaults ───────────────────────────────────────────────────────────
@@ -295,7 +299,55 @@ build:awesome-copilot:
     expire_in: 30 days
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# STAGE 5 — notify  (pipeline summary)
+# STAGE 5 — auxiliary  (GitLab → GitHub bridge, MR pipelines only)
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# These jobs report GitLab CI results back to GitHub so that:
+#   • The GitHub commit gets a status badge ("gitlab-ci / <project>").
+#   • On failure, a summary comment is posted to the corresponding GitHub PR.
+#
+# Required CI variables (Project → Settings → CI/CD → Variables):
+#   GITHUB_TOKEN_FOR_GITLAB  GitHub PAT with `repo` scope (Protected + Masked).
+#   GITHUB_REPO              owner/repo on GitHub (e.g. Ditto190/mcapp-ai-starter).
+#
+# Both jobs are no-ops when these variables are absent, so there is no risk
+# of breaking existing pipelines that have not yet configured the bridge.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Post a commit status to GitHub on every MR pipeline run.
+gl:github-commit-status:
+  stage: auxiliary
+  image: python:3.12-slim
+  when: always  # Run even when previous jobs fail, so GitHub always gets a status.
+  before_script:
+    - pip install requests --quiet
+  script:
+    - |
+      echo "Reporting GitLab pipeline status to GitHub commit status API…"
+      python scripts/gitlab_report_to_github.py --mode status
+  variables:
+    # CI_JOB_STATUS reflects the status of the most recently completed job.
+    # We override it here so the status script sees the overall pipeline result.
+    CI_PIPELINE_STATUS: "$CI_JOB_STATUS"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $GITHUB_TOKEN_FOR_GITLAB && $GITHUB_REPO'
+
+# Post a PR review comment when the pipeline fails (avoids noise on success).
+gl:github-pr-comment-on-failure:
+  stage: auxiliary
+  image: python:3.12-slim
+  when: on_failure
+  before_script:
+    - pip install requests --quiet
+  script:
+    - |
+      echo "Pipeline failed — posting summary comment to GitHub PR…"
+      python scripts/gitlab_report_to_github.py --mode review
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $GITHUB_TOKEN_FOR_GITLAB && $GITHUB_REPO'
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STAGE 6 — notify  (pipeline summary)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 notify:summary:
