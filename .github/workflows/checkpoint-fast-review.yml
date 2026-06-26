@@ -1,15 +1,11 @@
 name: Checkpoint Fast Review
 
-"on":
-  push:
-    branches-ignore:
-      - main
-      - master
-    paths-ignore:
-      - "docs/**"
-      - "**/*.md"
-  pull_request:
-    types: [opened, reopened, synchronize, ready_for_review]
+on:
+  # DISABLED - run only via ChatOps or manual trigger
+  # pull_request:
+  #   branches: [main]
+  #   types: [opened, reopened, synchronize, ready_for_review]
+  # Allow ChatOps slash-command trigger from PR comments.
   issue_comment:
     types: [created]
   workflow_dispatch:

@@ -1,0 +1,159 @@
+{
+  "root": "tools/external",
+  "repos": [
+    {
+      "name": "awesome-neovim-modme",
+      "path": "tools/external/awesome-neovim-modme",
+      "type": "script-collection",
+      "files": [
+        ".gitignore",
+        "CONTRIBUTING.md",
+        "README.md",
+        ".yamllint.yml",
+        "LICENSE",
+        "MAINTAINERS.md"
+      ]
+    },
+    {
+      "name": "system-manager",
+      "path": "tools/external/system-manager",
+      "type": "nix-project",
+      "files": [
+        ".envrc",
+        "shell.nix",
+        "CHANGELOG.md",
+        "renovate.json",
+        "default.nix",
+        ".gitignore",
+        ".pre-commit-config.yaml",
+        "CONTRIBUTING.md",
+        "Cargo.toml",
+        "buildbot-nix.toml",
+        ".treefmt.toml",
+        "package.nix",
+        "README.md",
+        "flake.lock",
+        "flake.nix",
+        "Cargo.lock",
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "tree-sitter-vimdoc-vim",
+      "path": "tools/external/tree-sitter-vimdoc-vim",
+      "type": "script-collection",
+      "files": [
+        ".gitattributes",
+        "tree-sitter.json",
+        "grammar.js",
+        "package.json",
+        ".gitignore",
+        "setup.py",
+        "pyproject.toml",
+        "Cargo.toml",
+        "package-lock.json",
+        ".editorconfig",
+        "Makefile",
+        "binding.gyp",
+        "README.md",
+        "LICENSE",
+        "Package.swift"
+      ]
+    },
+    {
+      "name": "awesome-sysadmin",
+      "path": "tools/external/awesome-sysadmin",
+      "type": "misc",
+      "files": [
+        "LICENSE.txt",
+        ".gitignore",
+        "README.md"
+      ]
+    },
+    {
+      "name": "tree-sitter-vimdoc",
+      "path": "tools/external/tree-sitter-vimdoc",
+      "type": "script-collection",
+      "files": [
+        ".gitattributes",
+        "tree-sitter.json",
+        "grammar.js",
+        "package.json",
+        ".gitignore",
+        "setup.py",
+        "pyproject.toml",
+        "Cargo.toml",
+        "package-lock.json",
+        ".editorconfig",
+        "Makefile",
+        "binding.gyp",
+        "README.md",
+        "LICENSE",
+        "Package.swift"
+      ]
+    },
+    {
+      "name": "devcontainer.vim",
+      "path": "tools/external/devcontainer.vim",
+      "type": "neovim-plugin",
+      "files": [
+        "CLAUDE.md",
+        "README_en.md",
+        "main.go",
+        "main_test.go",
+        "vimrc.template.vim",
+        "bash_complete_func.bash",
+        ".gitignore",
+        "NOTICE",
+        "go.sum",
+        "Makefile",
+        "README.md",
+        "DEVELOPMENT.md",
+        "devcontainer.vim.template.json",
+        "LICENSE",
+        "go.mod"
+      ]
+    },
+    {
+      "name": "mason.nvim",
+      "path": "tools/external/mason.nvim",
+      "type": "neovim-plugin",
+      "files": [
+        "vim.yml",
+        "CHANGELOG.md",
+        "selene.toml",
+        "PACKAGES.md",
+        ".gitignore",
+        "SECURITY.md",
+        "CONTRIBUTING.md",
+        ".editorconfig",
+        "Makefile",
+        "stylua.toml",
+        "README.md",
+        ".cbfmt.toml",
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "treefmt-nix",
+      "path": "tools/external/treefmt-nix",
+      "type": "nix-project",
+      "files": [
+        "examples.sh",
+        "LICENSE.md",
+        "renovate.json",
+        "default.nix",
+        "treefmt.nix",
+        ".gitignore",
+        "run-tests.sh",
+        "supported-programs.sh",
+        "README.md",
+        "module-options.nix",
+        "flake.lock",
+        "flake.nix",
+        "programs.nix",
+        "flake-module.nix"
+      ]
+    }
+  ]
+}

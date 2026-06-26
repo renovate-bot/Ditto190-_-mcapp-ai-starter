@@ -1,0 +1,13 @@
+name: "vim-nixos"
+display_name: "Neovim + NixOS Helper Collection"
+description: "A small collection aggregating analyst agents and helper scripts to bootstrap Neovim and NixOS composable tooling from tools/external."
+items:
+  - type: agent
+    id: .github/agents/vim-tools-analyst.agent.md
+  - type: agent
+    id: .github/agents/nixos-tools-analyst.agent.md
+  - type: script
+    id: scripts/tools_inventory.py
+usage: |
+  Run the inventory script to generate `tools/external_inventory.json`,
+  then use the analyst agents to produce recommendations and PR-ready snippets.

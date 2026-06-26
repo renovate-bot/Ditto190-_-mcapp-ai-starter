@@ -1,0 +1,29 @@
+{
+    // devcontainer.vim configuration — merged with .devcontainer/devcontainer.json
+    // https://github.com/mikoto2000/devcontainer.vim
+    //
+    // Usage:  devcontainer.vim --nvim start .
+    //         devcontainer.vim --nvim exec .
+    //
+    // This file controls how devcontainer.vim launches Neovim inside the container.
+    // The host Neovim binary / AppImage is transferred into the container automatically.
+    // Specify NeoVim on the host; devcontainer.vim will transfer it into the container.
+    // Set to empty string to use the container's system neovim (useful on ARM/macOS).
+    "neovimPath": "",
+    // Pass editor config files into the container so plugins/lazy.nvim work inside.
+    "additionalMounts": [
+        {
+            "type": "bind",
+            "source": "${localWorkspaceFolder}/nvim",
+            "target": "/root/.config/nvim"
+        }
+    ],
+    // Forward clipboard from container → host via clipboard-data-receiver.
+    // Start clipboard-data-receiver on the host before running devcontainer.vim.
+    "clipboardDataReceiverPort": 49200,
+    // Environment variable set inside Vim when running via devcontainer.vim.
+    // Use in Lua: if vim.g.devcontainer_vim then ... end
+    "envs": {
+        "DEVCONTAINER_VIM": "1"
+    }
+}

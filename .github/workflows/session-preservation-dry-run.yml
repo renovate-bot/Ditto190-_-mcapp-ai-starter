@@ -1,14 +1,15 @@
 name: Session Preservation Dry Run
 
 "on":
-  pull_request:
-    branches: [main]
-    paths:
-      - ".github/workflows/session-preservation-dry-run.yml"
-      - ".gitignore"
-      - "docs/codespace-session-end.md"
-      - "package.json"
-      - "scripts/session-*.sh"
+  # DISABLED - run only on main branch or manual trigger
+  # pull_request:
+  #   branches: [main]
+  #   paths:
+  #     - ".github/workflows/session-preservation-dry-run.yml"
+  #     - ".gitignore"
+  #     - "docs/codespace-session-end.md"
+  #     - "package.json"
+  #     - "scripts/session-*.sh"
   push:
     branches: [main]
     paths:

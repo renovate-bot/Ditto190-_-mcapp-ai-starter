@@ -4,21 +4,30 @@ name: Serena Symbol Analysis + Targeted Testing
 # with GitHub Actions to drive smart, targeted testing on PRs.
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    paths:
-      - "**/*.py"
-      - "**/*.ts"
-      - "**/*.js"
+  # DISABLED - experimental workflow, run only via manual trigger
+  # pull_request:
+  #   branches: [main]
+  #   types: [opened, synchronize, reopened]
+  #   paths:
+  #     - "**/*.py"
+  #     - "**/*.ts"
+  #     - "**/*.js"
+  workflow_dispatch:
 
 permissions:
   contents: read
   pull-requests: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   analyze-changed-symbols:
     name: Analyze changed symbols (Serena demo)
     runs-on: ubuntu-latest
+    # Skip if not a pull_request (since we disabled PR trigger, this effectively disables the workflow)
+    if: github.event_name == 'pull_request'
     outputs:
       changed_modules: ${{ steps.serena.outputs.modules }}
       test_targets: ${{ steps.serena.outputs.tests }}

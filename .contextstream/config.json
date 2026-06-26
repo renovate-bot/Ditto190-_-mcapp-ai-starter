@@ -1,0 +1,13 @@
+{
+  "associated_at": "2026-04-04T22:46:21.433230132+00:00",
+  "configured_editors": [
+    "copilot"
+  ],
+  "context_pack": true,
+  "indexing_enabled": true,
+  "project_id": "7c5cc839-6f0d-4186-a5ba-16bf61313405",
+  "project_name": "mcapp-ai-starter",
+  "updated_at": "2026-04-03T23:45:49.415Z",
+  "version": "0.2.16",
+  "workspace_id": "16d99449-f219-41fd-b021-1cb09e2eedeb",
+}

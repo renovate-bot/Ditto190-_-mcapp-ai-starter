@@ -332,9 +332,7 @@ def validate_agentspec_content(spec: dict[str, Any]) -> dict[str, Any]:
 
     if "agents" in spec and not isinstance(spec["agents"], dict):
         all_errors.append(
-            _create_validation_error(
-                "schema", "root.agents", "Field 'agents' must be an object"
-            )
+            _create_validation_error("schema", "root.agents", "Field 'agents' must be an object")
         )
         # Return early if agents is malformed; can't validate further
         return {
@@ -355,7 +353,7 @@ def validate_agentspec_content(spec: dict[str, Any]) -> dict[str, Any]:
                 )
                 continue
 
-            for key in ["type", "description", "model", "capabilities"]:
+            for key in ["type", "description"]:
                 if key not in agent:
                     all_errors.append(
                         _create_validation_error(
@@ -462,7 +460,9 @@ def _emit_agents_md(spec: dict[str, Any]) -> str:
             ]
         )
         for capability in agent.get("capabilities", []):
-            lines.append(f"- **{capability.get('name', 'unnamed')}**: {capability.get('description', '')}")
+            lines.append(
+                f"- **{capability.get('name', 'unnamed')}**: {capability.get('description', '')}"
+            )
         lines.append("")
 
     return "\n".join(lines).rstrip() + "\n"
@@ -493,9 +493,7 @@ def _emit_n8n_workflow(spec: dict[str, Any]) -> dict[str, Any]:
     for index in range(len(agent_names) - 1):
         current_agent = agent_names[index]
         next_agent = agent_names[index + 1]
-        connections[current_agent] = {
-            "main": [[{"node": next_agent, "type": "main", "index": 0}]]
-        }
+        connections[current_agent] = {"main": [[{"node": next_agent, "type": "main", "index": 0}]]}
 
     return {
         "name": spec.get("name", "agentspec-workflow"),
@@ -570,7 +568,9 @@ def emit_agentspec_artifacts(
 
     if "n8n-workflow" in normalized_targets:
         workflow_path = out_dir / f"{path.stem}.n8n.workflow.json"
-        workflow_path.write_text(json.dumps(_emit_n8n_workflow(spec), indent=2) + "\n", encoding="utf-8")
+        workflow_path.write_text(
+            json.dumps(_emit_n8n_workflow(spec), indent=2) + "\n", encoding="utf-8"
+        )
         emitted["n8n-workflow"] = str(workflow_path)
 
     unsupported = sorted(

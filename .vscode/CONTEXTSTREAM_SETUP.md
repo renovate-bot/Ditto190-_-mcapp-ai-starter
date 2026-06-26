@@ -15,9 +15,11 @@ ContextStream provides:
 ✅ **Already configured** in `.vscode/mcp.json`:
 
 - Server: `contextstream`
-- Command: `npx -y @contextstream/mcp-server@latest`
-- API URL: `https://api.contextstream.io`
-- API Key: Prompted on first use (secure input)
+- Type: `http`
+- URL: `https://mcp.contextstream.io/mcp?default_context_mode=fast`
+- Auth: handled by VS Code for the hosted MCP endpoint; do not hardcode API keys in workspace config files
+
+Important: do not define the same `contextstream` server in multiple active MCP config files for this workspace (for example both a root-level `mcp.json` and `.vscode/mcp.json`). Keep a single active definition to avoid startup conflicts.
 
 ## Getting Your API Key
 
@@ -123,14 +125,14 @@ Lessons are auto-surfaced in future sessions to prevent repeated mistakes.
 
 ## Best Practices
 
-### ✅ DO:
+### ✅ DO
 
 - Let AI call `context_smart` at start of each response
 - Use `search(mode="hybrid")` BEFORE local file reads
 - Capture important decisions with `session(action="capture")`
 - Initialize workspace once per project
 
-### ❌ DON'T:
+### ❌ DON'T
 
 - Skip initialization (tools won't work without setup)
 - Use local grep/search when ContextStream is available
@@ -157,10 +159,10 @@ Lessons are auto-surfaced in future sessions to prevent repeated mistakes.
 
 ## Documentation
 
-- **Full MCP Docs:** https://contextstream.io/docs/mcp
-- **Tool Reference:** https://contextstream.io/docs/mcp/tools
-- **GitHub Repository:** https://github.com/contextstream/mcp-server
-- **Pricing:** https://contextstream.io/pricing
+- **Full MCP Docs:** <https://contextstream.io/docs/mcp>
+- **Tool Reference:** <https://contextstream.io/docs/mcp/tools>
+- **GitHub Repository:** <https://github.com/contextstream/mcp-server>
+- **Pricing:** <https://contextstream.io/pricing>
 
 ## Token Efficiency (v0.4.x)
 

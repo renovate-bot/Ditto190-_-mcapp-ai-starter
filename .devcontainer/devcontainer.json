@@ -14,6 +14,9 @@
     },
     "ghcr.io/devcontainers/features/node:1": {
       "version": "20"
+    },
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "1.22"
     }
   },
   "forwardPorts": [
@@ -53,12 +56,12 @@
       "visibility": "private"
     }
   },
-  "initializeCommand": "npm install -g @contextstream/mcp-server@latest",
   "onCreateCommand": "bash .devcontainer/pre-install.sh",
   "customizations": {
     "vscode": {
       "extensions": [
         "charliermarsh.ruff",
+        "golang.go",
         "dbaeumer.vscode-eslint",
         "davidanson.vscode-markdownlint",
         "eamodio.gitlens",
@@ -82,12 +85,14 @@
         "usernamehw.errorlens",
         "yzhang.markdown-all-in-one",
         "digitarald.agent-memory",
-        "blackbox.blackbox"
+        "blackbox.blackbox",
+        "vscodevim.vim"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
         "terminal.integrated.env.linux": {
-          "MEMORY_GUARD": "enabled"
+          "MEMORY_GUARD": "enabled",
+          "MCAPP_NO_VENV": "1"
         },
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -126,6 +131,7 @@
     "QDRANT_HOST": "qdrant",
     "QDRANT_PORT": "6333",
     "UV_SYSTEM_PYTHON": "1",
+    "MCAPP_NO_VENV": "1",
     "NIX_CONFIG": "experimental-features = nix-command flakes"
   },
   "hostRequirements": {

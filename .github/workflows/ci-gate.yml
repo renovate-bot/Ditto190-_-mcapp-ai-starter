@@ -1,0 +1,221 @@
+name: CI Gate (Merge Readiness)
+
+# This workflow acts as the single required status check for the main branch.
+# It aggregates the results of the individual CI jobs and reports a unified
+# pass/fail to GitHub's branch-protection rules.
+#
+# Branch protection on `main` should require ONLY this check — not every
+# individual job. Individual jobs report back here, and this gate counts passes.
+#
+# Minimum pass threshold: at least MIN_REQUIRED_PASSES checks must succeed.
+
+on:
+  # The gate only runs when a PR targets main.
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+  # Allow manual re-evaluation from the Actions tab.
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "PR number to evaluate"
+        required: false
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+concurrency:
+  group: ci-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Minimum number of required checks that must pass before this gate reports
+  # success. Raise this as more required jobs are added to the CI matrix.
+  MIN_REQUIRED_PASSES: 3
+
+jobs:
+  # ──────────────────────────────────────────────────────────────────────────
+  # Wait for the sibling CI workflows to report their status.
+  # GitHub sets check-run conclusions as they complete; we poll here.
+  # ──────────────────────────────────────────────────────────────────────────
+  wait-for-ci:
+    name: Wait for CI checks
+    runs-on: ubuntu-latest
+    # Skip on draft PRs; re-evaluate when converted to "ready_for_review".
+    if: github.event.pull_request.draft == false
+
+    outputs:
+      pass_count: ${{ steps.count.outputs.pass_count }}
+      fail_count: ${{ steps.count.outputs.fail_count }}
+      required_met: ${{ steps.count.outputs.required_met }}
+
+    steps:
+      - name: Checkout (for scripts)
+        uses: actions/checkout@v4
+
+      - name: Wait up to 20 min for sibling checks
+        id: poll
+        uses: actions/github-script@v7
+        timeout-minutes: 22
+        with:
+          script: |
+            const WAIT_INTERVAL_MS  = 30_000;  // 30 s between polls
+            const MAX_WAIT_MS       = 20 * 60 * 1000; // 20 min ceiling
+            const sha = context.payload.pull_request?.head.sha ?? context.sha;
+
+            // Required check names — must match the `name:` field of each job
+            // across all sibling workflows that we want to gate on.
+            const REQUIRED_CHECKS = [
+              "Build & test",            // ci.yml
+              "Validate Docker Compose", // repo-ci.yml
+              "Analyze changed symbols (Serena demo)", // serena-symbol-analysis.yml
+            ];
+
+            const start = Date.now();
+            let latest = {};
+
+            while (true) {
+              const { data: { check_runs } } = await github.rest.checks.listForRef({
+                owner: context.repo.owner,
+                repo:  context.repo.repo,
+                ref:   sha,
+                per_page: 100,
+              });
+
+              // Index by name, keeping the most-recent run for each name.
+              for (const run of check_runs) {
+                const prev = latest[run.name];
+                if (!prev || new Date(run.started_at) > new Date(prev.started_at)) {
+                  latest[run.name] = run;
+                }
+              }
+
+              const pending = REQUIRED_CHECKS.filter(n => {
+                const r = latest[n];
+                return !r || r.status !== "completed";
+              });
+
+              if (pending.length === 0) break;
+              if (Date.now() - start > MAX_WAIT_MS) {
+                core.warning(`Timed out waiting for: ${pending.join(", ")}`);
+                break;
+              }
+
+              core.info(`Waiting for: ${pending.join(", ")} — polling again in 30 s`);
+              await new Promise(r => setTimeout(r, WAIT_INTERVAL_MS));
+            }
+
+            // Persist results for next step
+            core.setOutput("check_results", JSON.stringify(latest));
+            return latest;
+
+      - name: Count pass / fail
+        id: count
+        uses: actions/github-script@v7
+        env:
+          MIN_PASSES: ${{ env.MIN_REQUIRED_PASSES }}
+        with:
+          script: |
+            const results = ${{ steps.poll.outputs.result }};
+            const REQUIRED_CHECKS = [
+              "Build & test",
+              "Validate Docker Compose",
+              "Analyze changed symbols (Serena demo)",
+            ];
+
+            let pass = 0, fail = 0, skipped = 0;
+            const rows = [];
+
+            for (const name of REQUIRED_CHECKS) {
+              const run = results[name];
+              const conclusion = run?.conclusion ?? "missing";
+              if (conclusion === "success" || conclusion === "neutral") {
+                pass++;
+                rows.push(`| ✅ | ${name} |`);
+              } else if (conclusion === "skipped") {
+                skipped++;
+                rows.push(`| ⏭️ | ${name} |`);
+              } else {
+                fail++;
+                rows.push(`| ❌ | ${name} (${conclusion}) |`);
+              }
+            }
+
+            const minPasses    = parseInt(process.env.MIN_PASSES, 10);
+            const required_met = pass >= minPasses;
+
+            core.setOutput("pass_count",   pass);
+            core.setOutput("fail_count",   fail);
+            core.setOutput("required_met", required_met);
+
+            const badge = required_met
+              ? `> ✅ **CI Gate PASSED** — ${pass}/${REQUIRED_CHECKS.length} checks passed (minimum ${minPasses})`
+              : `> ❌ **CI Gate FAILED** — only ${pass}/${REQUIRED_CHECKS.length} checks passed (minimum ${minPasses} required)`;
+
+            const body = [
+              "## CI Gate — Merge Readiness Report",
+              "",
+              badge,
+              "",
+              "| Status | Check |",
+              "|--------|-------|",
+              ...rows,
+              "",
+              `> Skipped: ${skipped} | Failed: ${fail} | Run: [${context.runId}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${context.runId})`,
+            ].join("\n");
+
+            // Post or update a sticky comment on the PR.
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const marker = "<!-- ci-gate-report -->";
+            const existing = comments.find(c => c.body.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner:      context.repo.owner,
+                repo:       context.repo.repo,
+                comment_id: existing.id,
+                body:       marker + "\n" + body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner:       context.repo.owner,
+                repo:        context.repo.repo,
+                issue_number: context.issue.number,
+                body:        marker + "\n" + body,
+              });
+            }
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # The gate job: succeeds only when the minimum pass threshold is met.
+  # Branch protection should target THIS job name: "gate".
+  # ──────────────────────────────────────────────────────────────────────────
+  gate:
+    name: "Gate — minimum 3 passing checks required"
+    needs: wait-for-ci
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Evaluate gate result
+        env:
+          PASS_COUNT: ${{ needs.wait-for-ci.outputs.pass_count }}
+          FAIL_COUNT: ${{ needs.wait-for-ci.outputs.fail_count }}
+          REQUIRED_MET: ${{ needs.wait-for-ci.outputs.required_met }}
+        run: |
+          echo "Passes : $PASS_COUNT"
+          echo "Failures: $FAIL_COUNT"
+          echo "Gate    : $REQUIRED_MET"
+
+          if [[ "$REQUIRED_MET" == "true" ]]; then
+            echo "✅ CI Gate PASSED — merge is allowed."
+          else
+            echo "❌ CI Gate FAILED — not enough checks passed to allow merge."
+            exit 1
+          fi

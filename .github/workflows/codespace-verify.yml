@@ -9,14 +9,20 @@ on:
       - "docker-compose.yml"
       - "llm.config.json"
       - "scripts/**"
-  pull_request:
-    paths:
-      - ".devcontainer/**"
-      - ".env.example"
-      - "docker-compose.yml"
-      - "llm.config.json"
-      - "scripts/**"
+  # DISABLED - run only on main branch or manual trigger
+  # pull_request:
+  #   branches: [main]
+  #   paths:
+  #     - ".devcontainer/**"
+  #     - ".env.example"
+  #     - "docker-compose.yml"
+  #     - "llm.config.json"
+  #     - "scripts/**"
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read

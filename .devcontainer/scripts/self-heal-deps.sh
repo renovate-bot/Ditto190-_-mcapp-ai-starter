@@ -75,16 +75,25 @@ if ! command -v uv &>/dev/null; then
 fi
 ok "uv: $(uv --version)"
 
-for py_dir in GenerateAgents.md generateagents-mcp agentskills/skills-ref; do
-  if [ -f "${py_dir}/pyproject.toml" ] || [ -f "${py_dir}/uv.lock" ]; then
-    if [ ! -d "${py_dir}/.venv" ]; then
-      fix "Creating venv in ${py_dir}/"
-      (cd "$py_dir" && uv sync 2>&1 | tail -3)
-    else
-      ok "${py_dir}/.venv exists"
+# Allow opting out of per-project .venv creation when using a shared UV workflow.
+# Set MCAPP_NO_VENV=1 in the environment or dev profile to prevent this script
+# from creating per-project .venv folders. When set, we run `uv sync` at the
+# workspace root (UV workspace) instead of creating .venv in each project.
+if [ "${MCAPP_NO_VENV:-0}" = "1" ]; then
+  fix "MCAPP_NO_VENV=1 — skipping per-project .venv creation; running uv sync at repo root"
+  (uv sync 2>&1 | tail -3) || true
+else
+  for py_dir in GenerateAgents.md generateagents-mcp agentskills/skills-ref; do
+    if [ -f "${py_dir}/pyproject.toml" ] || [ -f "${py_dir}/uv.lock" ]; then
+      if [ ! -d "${py_dir}/.venv" ]; then
+        fix "Creating venv in ${py_dir}/"
+        (cd "$py_dir" && uv sync 2>&1 | tail -3)
+      else
+        ok "${py_dir}/.venv exists"
+      fi
     fi
-  fi
-done
+  done
+fi
 
 # ── Docker images ─────────────────────────────────────────────────────────────
 section "Docker images"

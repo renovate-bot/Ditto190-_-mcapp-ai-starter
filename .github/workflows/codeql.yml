@@ -3,14 +3,24 @@ name: CodeQL Security Analysis
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  # pull_request:
+  #   branches: [main]  # DISABLED - run only on main and schedule
   schedule:
     # Weekly Sunday 01:30 UTC
     - cron: "30 1 * * 0"
 
 permissions:
   contents: read
+
+concurrency:
+  # For schedule runs (no ref variation), use workflow name only to avoid queue buildup.
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+concurrency:
+  # For schedule runs (no ref variation), use workflow name only to avoid queue buildup.
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   analyze:

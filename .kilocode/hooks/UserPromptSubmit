@@ -1,3 +1,0 @@
-#!/bin/bash
-# ContextStream user-prompt-submit Hook Wrapper for Cline/Roo/Kilo Code
-exec node "/usr/local/share/nvm/versions/node/v20.20.2/lib/node_modules/@contextstream/mcp-server/dist/index.js" hook user-prompt-submit

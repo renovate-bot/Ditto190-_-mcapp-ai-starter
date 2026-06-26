@@ -32,7 +32,12 @@ _mcapp_load_dotenv() {
     val="${val#\"}"
     val="${val%\'}"
     val="${val#\'}"
-    export "$key=$val"
+    # Security: do NOT export CI tokens via this dev profile. Skip GitHub tokens
+    if [ "$key" = "GITHUB_TOKEN" ] || [ "$key" = "GH_TOKEN" ]; then
+      echo "[dev_profile] Skipping export of $key for local interactive shells"
+    else
+      export "$key=$val"
+    fi
   done < "$file"
 }
 
@@ -48,17 +53,15 @@ _mcapp_add_paths() {
   export PATH
 }
 
-_mcapp_activate_venv() {
-  local root venv
-  root=$(_mcapp_project_root)
-  venv="$root/.venv"
-  if [ -f "$venv/bin/activate" ]; then
-    # Avoid re-activating if already active
-    if [ -z "$VIRTUAL_ENV" ]; then
-      # shellcheck source=/dev/null
-      source "$venv/bin/activate"
-      echo "[dev_profile] Activated virtualenv: $venv"
-    fi
+_mcapp_activate_uv() {
+  # Guide user to UV-based workflow instead of per-project venvs
+  # UV workspace is configured in pyproject.toml root
+  if command -v uv >/dev/null 2>&1; then
+    echo "[dev_profile] ✓ UV found ($(uv --version))"
+    echo "[dev_profile] Using UV workspace (no venv isolation)"
+    echo "[dev_profile] Tip: uv sync to install deps for any project, uv run to execute"
+  else
+    echo "[dev_profile] ⚠ UV not found; install from https://astral.sh/uv/install.sh"
   fi
 }
 
@@ -88,7 +91,8 @@ _mcapp_prompt() {
 mcapp_dev_setup() {
   _mcapp_load_dotenv
   _mcapp_add_paths
-  _mcapp_activate_venv
+  # export MCAPP_NO_VENV=1
+  _mcapp_activate_uv
   _mcapp_contextstream_helpers
   _mcapp_prompt
   # Quick status
@@ -101,8 +105,12 @@ mcapp_dev_setup() {
   fi
 }
 
-# Auto-run setup when this file is sourced
-mcapp_dev_setup
+# Auto-run setup when this file is sourced, but only for interactive shells.
+# Suppress startup output to avoid noisy messages in new terminals; users can
+# call `mcapp_dev_setup` manually to see full status.
+if [[ $- == *i* ]]; then
+  mcapp_dev_setup >/dev/null 2>&1 || true
+fi
 
 export MCAPP_DEV_PROFILE_LOADED=1
 

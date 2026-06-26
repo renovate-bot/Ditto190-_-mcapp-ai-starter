@@ -9,7 +9,7 @@
 .session-state/
 
 # Local agent and MCP state (machine/session specific)
-.contextstream/
+.contextstream
 .copilot/
 .claude/
 .mcp.json
@@ -31,3 +31,10 @@ skills-lock.json
 __pycache__/
 *.pyc
 node_modules
+
+# Ignore migration repodumps (large external project dumps)
+/migration/repodumps/
+.mcp.json.bak
+.mcp.json.disabled
+.mcp.json.orig
+reports/recycle/

@@ -98,7 +98,7 @@ gh extension install github/gh-aw
 gh aw compile
 ```
 
-4. **Commit** both the `.md` source and the generated `.lock.yml` file:
+1. **Commit** both the `.md` source and the generated `.lock.yml` file:
 
 ```bash
 git add .github/workflows/daily-issues-report.md
