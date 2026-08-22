@@ -41,7 +41,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.14"
 
       - name: Get changed files
         id: changed
@@ -82,7 +82,7 @@ jobs:
         if: matrix.component != 'prompt-registry'
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.14"
 
       - name: Setup Node.js (for TypeScript components)
         if: matrix.component == 'prompt-registry'
