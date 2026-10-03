@@ -14,3 +14,5 @@ overrides:
 minimumReleaseAge: 2880 # 2 days
 minimumReleaseAgeExclude:
   - "@alloy-js/*"
+  # Renovate security update: vitest@4.1.11
+  - vitest@4.1.11
