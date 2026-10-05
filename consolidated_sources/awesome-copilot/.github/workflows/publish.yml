@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout staged branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: staged
           fetch-depth: 0

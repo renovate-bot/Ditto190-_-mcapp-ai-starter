@@ -132,7 +132,7 @@ jobs:
     outputs:
       passed: ${{ steps.mark-passed.outputs.passed }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -188,7 +188,7 @@ jobs:
     outputs:
       verdict: ${{ steps.review.outputs.verdict }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-python@v5
         with:

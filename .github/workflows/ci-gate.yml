@@ -54,7 +54,7 @@ jobs:
 
     steps:
       - name: Checkout (for scripts)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Wait up to 20 min for sibling checks
         id: poll

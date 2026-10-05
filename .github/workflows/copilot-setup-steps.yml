@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -54,7 +54,7 @@ jobs:
           echo "npm: $(npm --version || echo 'npm not installed')"
 
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Install gh-aw extension
         uses: github/gh-aw-actions/setup-cli@73ae9ce231580f337133352d321d42b6bf54b6a9 # v0.66.1
         with:

@@ -28,7 +28,7 @@ jobs:
       contains(join(fromJson('["' + join(github.event.pull_request?.paths || github.event.commits.*.modified || []) + '"]')), '.env.example')
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Validate compose config
         run: docker compose --env-file .env.example config -q
@@ -44,7 +44,7 @@ jobs:
        contains(github.event.pull_request?.paths_joined || '', 'GenerateAgents/'))
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -71,7 +71,7 @@ jobs:
       contains(github.event.pull_request?.paths_joined || '', 'prompt-registry/')
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -101,7 +101,7 @@ jobs:
       contains(github.event.pull_request?.paths_joined || '', 'awesome-copilot/')
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
