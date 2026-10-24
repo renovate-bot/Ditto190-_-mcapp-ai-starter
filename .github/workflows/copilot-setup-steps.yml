@@ -37,7 +37,7 @@ jobs:
       - name: Set up Python 3
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: "3.15"
 
       - name: Install Python dependencies (if present)
         run: |
@@ -56,9 +56,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
       - name: Install gh-aw extension
-        uses: github/gh-aw-actions/setup-cli@73ae9ce231580f337133352d321d42b6bf54b6a9 # v0.66.1
+        uses: github/gh-aw-actions/setup-cli@e89a5670dc4c790b37ade361215b8d72d8ce8942 # v0.93.3
         with:
-          version: v0.66.1
+          version: v0.93.3
       - name: Verify Python installation
         run: |
           echo "Python: $(python --version || echo 'python not installed')"
