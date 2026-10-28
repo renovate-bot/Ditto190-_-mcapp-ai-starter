@@ -817,7 +817,7 @@
     "@eslint/js": "^9.39.2",
     "@istanbuljs/nyc-config-typescript": "^1.0.0",
     "@playwright/test": "^1.56.1",
-    "@types/adm-zip": "^0.5.7",
+    "@types/adm-zip": "^0.6.0",
     "@types/fs-extra": "^11.0.4",
     "@types/js-yaml": "^4.0.9",
     "@types/mocha": "^10.0.10",
