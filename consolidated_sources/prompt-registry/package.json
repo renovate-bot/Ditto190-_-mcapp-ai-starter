@@ -868,7 +868,7 @@
       "glob": "^13.0.0"
     },
     "readdir-glob": {
-      "minimatch": "^10.2.1"
+      "minimatch": "^11.0.0"
     }
   },
   "nyc": {
